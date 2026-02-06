@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import useSettingsStore from "./store/useSettingsStore";
 import Header from "./components/layout/Header";
 import Navigation from "./components/layout/Navigation";
@@ -8,13 +8,14 @@ function App() {
   const [activeTab, setActiveTab] = useState("home");
   const theme = useSettingsStore((state) => state.theme);
 
+  useEffect(() => {
+    document.documentElement.setAttribute("data-theme", theme);
+  }, [theme]);
+
   return (
     <div
-      className={`min-h-screen ${
-        theme === "dark"
-          ? "bg-amber-950 text-amber-50"
-          : "bg-amber-50 text-amber-900"
-      }`}
+      style={{ background: "var(--bg-primary)", color: "var(--text-primary)" }}
+      className="min-h-screen"
     >
       <Header />
       <main className="pb-16 px-4 py-4">

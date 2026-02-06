@@ -1,8 +1,49 @@
 @import "tailwindcss";
-```
 
-Salvează cu **Ctrl + S**.
+:root {
+  --bg-primary: #fffbf5;
+  --bg-secondary: #fff5e6;
+  --bg-tertiary: #f5ebe0;
+  --bg-card: #ffffff;
+  --text-primary: #3d2914;
+  --text-secondary: #5d3a1a;
+  --text-muted: #8b7355;
+  --accent: #8b5a2b;
+  --accent-light: rgba(139, 90, 43, 0.08);
+  --accent-medium: rgba(139, 90, 43, 0.15);
+  --border: #d4a574;
+  --success: #4caf50;
+  --warning: #ff6b35;
+  --shadow: rgba(93, 58, 26, 0.08);
+}
 
-Acum testăm — în PowerShell:
-```
-npm run dev
+[data-theme="dark"] {
+  --bg-primary: #1a1612;
+  --bg-secondary: #252019;
+  --bg-tertiary: #2d261e;
+  --bg-card: #332b22;
+  --text-primary: #f5ebe0;
+  --text-secondary: #e8d5b7;
+  --text-muted: #b8a088;
+  --accent: #d4a574;
+  --accent-light: rgba(212, 165, 116, 0.12);
+  --accent-medium: rgba(212, 165, 116, 0.2);
+  --border: #6b5a4a;
+  --success: #66bb6a;
+  --warning: #ff8a65;
+  --shadow: rgba(0, 0, 0, 0.3);
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Nunito", sans-serif;
+  background: var(--bg-primary);
+  color: var(--text-primary);
+  min-height: 100vh;
+  -webkit-font-smoothing: antialiased;
+}

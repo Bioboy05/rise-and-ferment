@@ -1,18 +1,21 @@
-import useSettingsStore from "../../store/useSettingsStore";
 import ThemeToggle from "./ThemeToggle";
 
 function Header() {
-  const theme = useSettingsStore((state) => state.theme);
-
   return (
     <header
-      className={`px-4 py-3 flex items-center justify-between ${
-        theme === "dark"
-          ? "bg-amber-900 text-amber-50"
-          : "bg-amber-100 text-amber-900"
-      }`}
+      style={{
+        background: "var(--bg-secondary)",
+        color: "var(--text-primary)",
+        borderBottom: "1px solid var(--border)",
+      }}
+      className="px-4 py-3 flex items-center justify-between"
     >
-      <h1 className="text-xl font-bold">🍞 Rise & Ferment</h1>
+      <h1
+        className="text-xl font-bold"
+        style={{ fontFamily: "Caveat, cursive" }}
+      >
+        Rise & Ferment
+      </h1>
       <ThemeToggle />
     </header>
   );

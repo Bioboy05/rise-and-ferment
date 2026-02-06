@@ -1,37 +1,32 @@
-import useSettingsStore from "../../store/useSettingsStore";
-
 const tabs = [
-  { id: "home", label: "🏠 Acasă" },
-  { id: "history", label: "📋 Istoric" },
-  { id: "recipes", label: "🥄 Rețete" },
-  { id: "stats", label: "📊 Statistici" },
-  { id: "settings", label: "⚙️ Setări" },
+  { id: "home", label: "Acasă", icon: "🏠" },
+  { id: "history", label: "Istoric", icon: "📋" },
+  { id: "recipes", label: "Rețete", icon: "🥄" },
+  { id: "stats", label: "Statistici", icon: "📊" },
+  { id: "settings", label: "Setări", icon: "⚙️" },
 ];
 
 function Navigation({ activeTab, onTabChange }) {
-  const theme = useSettingsStore((state) => state.theme);
-
   return (
     <nav
-      className={`fixed bottom-0 left-0 right-0 flex justify-around py-2 border-t ${
-        theme === "dark"
-          ? "bg-amber-900 border-amber-800 text-amber-200"
-          : "bg-white border-amber-200 text-amber-700"
-      }`}
+      style={{
+        background: "var(--bg-card)",
+        borderTop: "1px solid var(--border)",
+      }}
+      className="fixed bottom-0 left-0 right-0 flex justify-around py-2"
     >
       {tabs.map((tab) => (
         <button
           key={tab.id}
           onClick={() => onTabChange(tab.id)}
-          className={`flex flex-col items-center text-xs px-2 py-1 rounded-lg transition ${
-            activeTab === tab.id
-              ? theme === "dark"
-                ? "text-amber-50 font-bold"
-                : "text-amber-900 font-bold"
-              : "opacity-60 hover:opacity-100"
-          }`}
+          className="flex flex-col items-center text-xs px-2 py-1 transition"
+          style={{
+            color: activeTab === tab.id ? "var(--accent)" : "var(--text-muted)",
+            fontWeight: activeTab === tab.id ? "700" : "400",
+          }}
         >
-          {tab.label}
+          <span className="text-lg">{tab.icon}</span>
+          <span>{tab.label}</span>
         </button>
       ))}
     </nav>
