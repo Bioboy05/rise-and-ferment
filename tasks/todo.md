@@ -63,25 +63,27 @@ Fișier: `rise-ferment-v4.1.html` (~530KB, ~7200 linii)
 ### Faza 2 — Date statice și utilități
 > Datele din HTML trebuie extrase în fișiere separate pentru a fi consumate de componente.
 
-- [ ] **2.1 Fișiere de date (`src/data/`)**
-  - `dayGuides.js` — instrucțiuni zilele 1-14 (multilingv)
-  - `lessons.js` — 8 lecții cu titlu, conținut, icoane (multilingv)
-  - `recipes.js` — 15 rețete (titlu, timp, dificultate, ingrediente, pași, tips)
-  - `troubleshooting.js` — probleme comune + serioase + normal timeline
-  - `motivational.js` — mesaje motivaționale (greeting, daily, streak, action)
-  - `celebrations.js` — 4 tipuri (firstBread, streak7, streak30, day7) cu emoji/titlu/text
-  - `dailyQuotes.js` — citate zilnice de brutar
+- [x] **2.1 Fișiere de date (`src/data/`)** ✅
+  - `lessons.js` — 14 lecții cu icon, titleKey, shortKey, contentKey
+  - `dailyTasks.js` — 7 zile cu titleKey, taskKey, actionKey, action type
+  - `recipes.js` — 15 rețete (5 bread + 5 discard + 5 other) cu i18n keys
+  - `troubleshooting.js` — checks, common, serious, normal timeline
+  - `dailyQuotes.js` — greetings, daily (1-7), streak milestones, action messages
+  - `celebrations.js` — 4 milestones (day7, firstBread, streak7, streak30) cu condition functions
+  - ⚠️ dayGuides.js — NU creat separat, se integrează prin dailyTasks + lessons
+  - ⚠️ Toate datele referențiază i18n keys — conținut HTML complet se adaugă la i18n în Faza 3+
 
-- [ ] **2.2 Funcții utilitare (`src/utils/`)**
-  - `dateHelpers.js` — formatare timp relativ, calcul zile, locale map
-  - `calculations.js` — rețetă pâine per loaves, calcul ingrediente
-  - `starterHelpers.js` — getStarterStatus(), getTimeSince(), calcul streak din history
-  - `exportHelpers.js` — export/import JSON, generare ICS calendar
+- [x] **2.2 Funcții utilitare (`src/utils/`)** ✅
+  - `dateHelpers.js` — getTimeSince, formatTimeAgo, isToday, formatICSDate
+  - `calculations.js` — calculateBreadRecipe (base: 100/400/280/8 per loaf)
+  - `starterHelpers.js` — calculateStreak, getStarterStatus, normalizeStarter
+  - `exportHelpers.js` — exportData, importData (with validation), generateICS
+  - FeedingCard.jsx refactored: getTimeSince imported from utils
 
-- [ ] **2.3 Custom hooks (`src/hooks/`)**
-  - `useActiveStarter.js` — shortcut: `const starter = useActiveStarter()`
-  - `useStreak.js` — calculează streak din `starter.history` dates (nu contor)
-  - `useLocalStorage.js` — hook generic (dacă e necesar pe lângă persist)
+- [x] **2.3 Custom hooks (`src/hooks/`)** ✅
+  - `useActiveStarter.js` — shortcut for getActiveStarter()
+  - `useStreak.js` — derives streak from history via calculateStreak
+  - useLocalStorage.js — NOT needed (Zustand persist handles everything)
 
 ---
 
