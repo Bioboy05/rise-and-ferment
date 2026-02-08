@@ -22,3 +22,9 @@ dist-ssr
 *.njsproj
 *.sln
 *.sw?
+
+# Windows artifacts
+nul
+
+# Reference files
+rise-ferment-v4.1.html
