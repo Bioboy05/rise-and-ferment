@@ -1,0 +1,98 @@
+/**
+ * Troubleshooting data — structured from existing i18n keys.
+ *
+ * Categories:
+ * - checks: first things to verify (temp, water, flour, patience)
+ * - common: common issues (hooch, smells, not doubling, bubbles)
+ * - serious: serious issues (mold)
+ * - normal: what's normal timeline (day ranges)
+ */
+
+const troubleshooting = {
+  introKey: "troubleIntro",
+
+  checks: [
+    {
+      id: "temp",
+      icon: "🌡️",
+      titleKey: "troubleTemp",
+      descKey: "troubleTempDesc",
+    },
+    {
+      id: "water",
+      icon: "💧",
+      titleKey: "troubleWater",
+      descKey: "troubleWaterDesc",
+    },
+    {
+      id: "flour",
+      icon: "🌾",
+      titleKey: "troubleFlour",
+      descKey: "troubleFlourDesc",
+    },
+    {
+      id: "patience",
+      icon: "⏳",
+      titleKey: "troublePatience",
+      descKey: "troublePatienceDesc",
+    },
+  ],
+
+  common: [
+    {
+      id: "hooch",
+      icon: "🟤",
+      titleKey: "troubleHooch",
+      descKey: "troubleHoochDesc",
+      severity: "info",
+    },
+    {
+      id: "acetone",
+      icon: "👃",
+      titleKey: "troubleSmellAcetone",
+      descKey: "troubleSmellAcetoneDesc",
+      severity: "warning",
+    },
+    {
+      id: "sour",
+      icon: "😖",
+      titleKey: "troubleSmellStrong",
+      descKey: "troubleSmellStrongDesc",
+      severity: "warning",
+    },
+    {
+      id: "notDoubling",
+      icon: "📏",
+      titleKey: "troubleNotDoubling",
+      descKey: "troubleNotDoublingDesc",
+      severity: "info",
+    },
+    {
+      id: "bubblesBurst",
+      icon: "🫧",
+      titleKey: "troubleBubblesBurst",
+      descKey: "troubleBubblesBurstDesc",
+      severity: "info",
+    },
+  ],
+
+  serious: [
+    {
+      id: "mold",
+      icon: "🦠",
+      titleKey: "troubleMold",
+      descKey: "troubleMoldDesc",
+      severity: "danger",
+    },
+  ],
+
+  normal: [
+    { id: "day1", descKey: "normalDay1" },
+    { id: "day3", descKey: "normalDay3" },
+    { id: "day5", descKey: "normalDay5" },
+    { id: "day7", descKey: "normalDay7" },
+    { id: "smell", descKey: "normalSmell" },
+  ],
+};
+
+export default troubleshooting;
