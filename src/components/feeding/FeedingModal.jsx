@@ -430,6 +430,7 @@ function FeedingModal({ onClose }) {
         <textarea
           value={note}
           onChange={(e) => setNote(e.target.value)}
+          maxLength={500}
           placeholder={t("notesPlaceholder")}
           style={{
             width: "100%",

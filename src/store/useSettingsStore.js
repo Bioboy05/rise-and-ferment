@@ -1,6 +1,9 @@
 import { create } from "zustand";
 import { persist } from "zustand/middleware";
 
+const VALID_LANGUAGES = ["ro", "en", "de", "fr", "es", "it"];
+const VALID_TEMP_UNITS = ["c", "f"];
+
 const useSettingsStore = create(
   persist(
     (set) => ({
@@ -29,11 +32,15 @@ const useSettingsStore = create(
       theme: state.theme === "light" ? "dark" : "light",
     })),
 
-  setLanguage: (lang) => set({ language: lang }),
+  setLanguage: (lang) => {
+    if (VALID_LANGUAGES.includes(lang)) set({ language: lang });
+  },
   toggleBeginnerMode: () =>
     set((state) => ({ beginnerMode: !state.beginnerMode })),
   toggleSound: () => set((state) => ({ soundEnabled: !state.soundEnabled })),
-  setTempUnit: (unit) => set({ tempUnit: unit }),
+  setTempUnit: (unit) => {
+    if (VALID_TEMP_UNITS.includes(unit)) set({ tempUnit: unit });
+  },
   incrementSessions: () => set((state) => ({ sessions: state.sessions + 1 })),
     }),
     {

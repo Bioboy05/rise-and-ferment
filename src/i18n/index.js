@@ -9,13 +9,15 @@ import es from './locales/es.json'
 import it from './locales/it.json'
 
 // Read persisted language from Zustand's localStorage entry
+const VALID_LANGUAGES = ['ro', 'en', 'de', 'fr', 'es', 'it']
 let savedLanguage = 'en'
 try {
   const stored = localStorage.getItem('riseFermentSettings')
   if (stored) {
     const parsed = JSON.parse(stored)
-    if (parsed.state?.language) {
-      savedLanguage = parsed.state.language
+    const lang = parsed.state?.language
+    if (typeof lang === 'string' && VALID_LANGUAGES.includes(lang)) {
+      savedLanguage = lang
     }
   }
 } catch {
