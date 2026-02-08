@@ -1,4 +1,5 @@
 import { create } from "zustand";
+import { persist } from "zustand/middleware";
 
 const createStarter = (id, name = "Pufi") => ({
   id,
@@ -20,7 +21,9 @@ const createStarter = (id, name = "Pufi") => ({
   completedDays: [],
 });
 
-const useStarterStore = create((set, get) => ({
+const useStarterStore = create(
+  persist(
+    (set, get) => ({
   starters: [createStarter("starter_1", "Pufi")],
   activeStarterId: "starter_1",
 
@@ -91,6 +94,15 @@ const useStarterStore = create((set, get) => ({
       }),
     }));
   },
-}));
+    }),
+    {
+      name: "riseFermentStarters",
+      partialize: (state) => ({
+        starters: state.starters,
+        activeStarterId: state.activeStarterId,
+      }),
+    }
+  )
+);
 
 export default useStarterStore;

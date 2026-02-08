@@ -1,12 +1,17 @@
-const tabs = [
-  { id: "home", label: "Acasă", icon: "🏠" },
-  { id: "history", label: "Istoric", icon: "📋" },
-  { id: "recipes", label: "Rețete", icon: "🥄" },
-  { id: "stats", label: "Statistici", icon: "📊" },
-  { id: "settings", label: "Setări", icon: "⚙️" },
-];
+import { NavLink } from "react-router-dom";
+import { useTranslation } from "react-i18next";
 
-function Navigation({ activeTab, onTabChange }) {
+function Navigation() {
+  const { t } = useTranslation();
+
+  const tabs = [
+    { to: "/", label: t("tabHome"), icon: "🏠" },
+    { to: "/history", label: t("tabHistory"), icon: "📋" },
+    { to: "/recipes", label: t("tabLearn"), icon: "🥄" },
+    { to: "/stats", label: t("tabStats"), icon: "📊" },
+    { to: "/settings", label: t("tabSettings"), icon: "⚙️" },
+  ];
+
   return (
     <nav
       style={{
@@ -16,18 +21,19 @@ function Navigation({ activeTab, onTabChange }) {
       className="fixed bottom-0 left-0 right-0 flex justify-around py-2"
     >
       {tabs.map((tab) => (
-        <button
-          key={tab.id}
-          onClick={() => onTabChange(tab.id)}
-          className="flex flex-col items-center text-xs px-2 py-1 transition"
-          style={{
-            color: activeTab === tab.id ? "var(--accent)" : "var(--text-muted)",
-            fontWeight: activeTab === tab.id ? "700" : "400",
-          }}
+        <NavLink
+          key={tab.to}
+          to={tab.to}
+          end={tab.to === "/"}
+          className="flex flex-col items-center text-xs px-2 py-1 transition no-underline"
+          style={({ isActive }) => ({
+            color: isActive ? "var(--accent)" : "var(--text-muted)",
+            fontWeight: isActive ? "700" : "400",
+          })}
         >
           <span className="text-lg">{tab.icon}</span>
           <span>{tab.label}</span>
-        </button>
+        </NavLink>
       ))}
     </nav>
   );

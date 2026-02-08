@@ -1,11 +1,15 @@
-import { useState, useEffect } from "react";
+import { useEffect } from "react";
+import { Routes, Route, Navigate } from "react-router-dom";
 import useSettingsStore from "./store/useSettingsStore";
 import Header from "./components/layout/Header";
 import Navigation from "./components/layout/Navigation";
 import HomePage from "./pages/HomePage";
+import HistoryPage from "./pages/HistoryPage";
+import RecipesPage from "./pages/RecipesPage";
+import StatsPage from "./pages/StatsPage";
+import SettingsPage from "./pages/SettingsPage";
 
 function App() {
-  const [activeTab, setActiveTab] = useState("home");
   const theme = useSettingsStore((state) => state.theme);
 
   useEffect(() => {
@@ -19,9 +23,16 @@ function App() {
     >
       <Header />
       <main className="pb-16 px-4 py-4">
-        {activeTab === "home" && <HomePage />}
+        <Routes>
+          <Route path="/" element={<HomePage />} />
+          <Route path="/history" element={<HistoryPage />} />
+          <Route path="/recipes" element={<RecipesPage />} />
+          <Route path="/stats" element={<StatsPage />} />
+          <Route path="/settings" element={<SettingsPage />} />
+          <Route path="*" element={<Navigate to="/" replace />} />
+        </Routes>
       </main>
-      <Navigation activeTab={activeTab} onTabChange={setActiveTab} />
+      <Navigation />
     </div>
   );
 }

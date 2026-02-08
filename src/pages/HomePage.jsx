@@ -1,6 +1,9 @@
+import { useTranslation } from "react-i18next";
 import useStarterStore from "../store/useStarterStore";
+import FeedingCard from "../components/feeding/FeedingCard";
 
 function HomePage() {
+  const { t } = useTranslation();
   const getActiveStarter = useStarterStore((state) => state.getActiveStarter);
   const starter = getActiveStarter();
 
@@ -14,12 +17,14 @@ function HomePage() {
           {starter.name}
         </h2>
         <p className="mt-2" style={{ color: "var(--text-muted)" }}>
-          Ziua {starter.currentDay}
+          {t("dayLabel")} {starter.currentDay}
         </p>
         <p className="mt-1 text-sm" style={{ color: "var(--text-muted)" }}>
-          Hidratare: {starter.hydration}% • Făină: {starter.flourType}
+          {t("hydration")}: {starter.hydration}% • {t("flourLabel")}: {starter.flourType}
         </p>
       </div>
+
+      <FeedingCard />
     </div>
   );
 }

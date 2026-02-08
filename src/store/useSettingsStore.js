@@ -1,6 +1,9 @@
 import { create } from "zustand";
+import { persist } from "zustand/middleware";
 
-const useSettingsStore = create((set) => ({
+const useSettingsStore = create(
+  persist(
+    (set) => ({
   theme: "light",
   language: "ro",
   beginnerMode: true,
@@ -32,6 +35,23 @@ const useSettingsStore = create((set) => ({
   toggleSound: () => set((state) => ({ soundEnabled: !state.soundEnabled })),
   setTempUnit: (unit) => set({ tempUnit: unit }),
   incrementSessions: () => set((state) => ({ sessions: state.sessions + 1 })),
-}));
+    }),
+    {
+      name: "riseFermentSettings",
+      partialize: (state) => ({
+        theme: state.theme,
+        language: state.language,
+        beginnerMode: state.beginnerMode,
+        soundEnabled: state.soundEnabled,
+        tempUnit: state.tempUnit,
+        sessions: state.sessions,
+        notifications: state.notifications,
+        scheduledBakes: state.scheduledBakes,
+        calcLoaves: state.calcLoaves,
+        bakeNotes: state.bakeNotes,
+      }),
+    }
+  )
+);
 
 export default useSettingsStore;
