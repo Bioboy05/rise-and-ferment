@@ -4,15 +4,17 @@
 
 | Fișier | Status |
 |--------|--------|
-| `App.jsx` + `main.jsx` | App shell cu tab state manual |
+| `App.jsx` + `main.jsx` | App shell cu Router + i18n |
 | `index.css` | CSS variables light/dark complet |
-| `useStarterStore.js` | Zustand store complet (fără persistență) |
-| `useSettingsStore.js` | Zustand store complet (fără persistență) |
-| `Header.jsx` + `Navigation.jsx` + `ThemeToggle.jsx` | Layout funcțional |
+| `useStarterStore.js` | Zustand store + persist + validare/sanitizare |
+| `useSettingsStore.js` | Zustand store + persist + whitelist inputs |
+| `Header.jsx` + `Navigation.jsx` + `ThemeToggle.jsx` | Layout funcțional cu NavLink |
 | `HomePage.jsx` | Afișează starter info + FeedingCard |
 | `FeedingCard.jsx` + `FeedingModal.jsx` | Hrănire completă (modal, calculator, tărâțe, temp, note) |
+| `src/i18n/` | Config + 6 fișiere locale (parțial — nu toate 256 chei) |
+| 4 pagini placeholder | HistoryPage, RecipesPage, StatsPage, SettingsPage |
 
-**Lipsă:** Persistență, i18n, Router, 4 pagini, onboarding, rețete, statistici, lecții, troubleshooting, planner, sunet, celebrări, import/export.
+**Lipsă:** Migrare persistență din format vechi, chei i18n complete, 4 pagini reale, onboarding, rețete, statistici, lecții, troubleshooting, planner, sunet, celebrări, import/export.
 
 ---
 
@@ -37,24 +39,24 @@ Fișier: `rise-ferment-v4.1.html` (~530KB, ~7200 linii)
 ### Faza 1 — Infrastructură critică
 > Fundația pe care se construiesc toate feature-urile. Fără asta, nimic nu persistă și nu se traduce.
 
-- [ ] **1.1 Persistență localStorage pentru Zustand**
-  - Adaugă `zustand/middleware` persist la ambele store-uri
-  - Cheie: `riseFermentV3` (compatibil cu HTML-ul original)
-  - Migrare automată din formatul vechi `maiauaMea`
-  - Verificare: refresh browser → state-ul rămâne
+- [x] **1.1 Persistență localStorage pentru Zustand** ✅
+  - ~~Adaugă `zustand/middleware` persist la ambele store-uri~~
+  - ⚠️ Cheie actuală: `riseFermentStarters`/`riseFermentSettings` (NU `riseFermentV3`)
+  - [ ] TODO: Migrare automată din formatul vechi `maiauaMea`
+  - ~~Verificare: refresh browser → state-ul rămâne~~
 
-- [ ] **1.2 Configurare i18next**
-  - Instalare + config `src/i18n/index.js`
-  - Extrage cele 256 chei din HTML în 6 fișiere JSON (`src/i18n/locales/`)
-  - Provider în `main.jsx`
-  - Înlocuiește textele hardcodate existente cu `t('key')`
-  - Verificare: switch limbă → toate textele se schimbă
+- [x] **1.2 Configurare i18next** ✅ (parțial)
+  - ~~Instalare + config `src/i18n/index.js`~~
+  - ⚠️ Nu toate 256 chei extrase — componentele existente au chei, restul lipsesc
+  - ~~Provider în `main.jsx`~~
+  - ~~Înlocuiește textele hardcodate existente cu `t('key')`~~
+  - [ ] TODO: Extrage restul cheilor + verificare switch limbă complet
 
-- [ ] **1.3 React Router**
-  - Înlocuiește `activeTab` state cu `react-router-dom`
-  - Rute: `/` (home), `/history`, `/recipes`, `/stats`, `/settings`
-  - `Navigation.jsx` → `NavLink` cu URL-uri
-  - Verificare: navigare + URL se schimbă + back button funcționează
+- [x] **1.3 React Router** ✅
+  - ~~Înlocuiește `activeTab` state cu `react-router-dom`~~
+  - ~~Rute: `/` (home), `/history`, `/recipes`, `/stats`, `/settings`~~
+  - ~~`Navigation.jsx` → `NavLink` cu URL-uri~~
+  - ~~Verificare: navigare + URL se schimbă + back button funcționează~~
 
 ---
 
