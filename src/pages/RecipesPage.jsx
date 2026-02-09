@@ -42,6 +42,11 @@ function RecipesPage() {
           gap: "8px",
           marginBottom: "16px",
           overflowX: "auto",
+          WebkitOverflowScrolling: "touch",
+          scrollSnapType: "x mandatory",
+          scrollbarWidth: "none",
+          msOverflowStyle: "none",
+          paddingBottom: "4px",
         }}
       >
         {recipeCategories.map((cat) => (
@@ -58,6 +63,8 @@ function RecipesPage() {
               fontWeight: activeCategory === cat.id ? "700" : "400",
               cursor: "pointer",
               whiteSpace: "nowrap",
+              scrollSnapAlign: "start",
+              flexShrink: 0,
             }}
           >
             {cat.icon} {t(cat.labelKey)}
