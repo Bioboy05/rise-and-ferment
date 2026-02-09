@@ -92,6 +92,7 @@ function FeedingModal({ onClose }) {
       >
         <button
           onClick={() => changeAmount(-25)}
+          aria-label={t("feedDecrease") || "Decrease amount"}
           style={{
             width: "48px",
             height: "48px",
@@ -131,6 +132,7 @@ function FeedingModal({ onClose }) {
         </div>
         <button
           onClick={() => changeAmount(25)}
+          aria-label={t("feedIncrease") || "Increase amount"}
           style={{
             width: "48px",
             height: "48px",

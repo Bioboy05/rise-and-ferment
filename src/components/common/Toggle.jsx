@@ -27,6 +27,9 @@ function Toggle({ checked, onChange, label, description }) {
       )}
       <button
         onClick={() => onChange(!checked)}
+        role="switch"
+        aria-checked={checked}
+        aria-label={label}
         style={{
           width: "48px",
           height: "28px",

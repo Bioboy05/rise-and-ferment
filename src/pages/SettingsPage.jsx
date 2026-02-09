@@ -166,6 +166,7 @@ function SettingsPage() {
               />
               <button
                 onClick={handleSaveName}
+                aria-label={t("settingsSaved") || "Save"}
                 style={{
                   padding: "8px 16px",
                   borderRadius: "8px",
@@ -174,6 +175,8 @@ function SettingsPage() {
                   color: "white",
                   fontSize: "14px",
                   cursor: "pointer",
+                  minWidth: "44px",
+                  minHeight: "44px",
                 }}
               >
                 ✓
