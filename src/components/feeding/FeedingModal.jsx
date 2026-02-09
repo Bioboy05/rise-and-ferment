@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { useTranslation } from "react-i18next";
 import useStarterStore from "../../store/useStarterStore";
+import useSettingsStore from "../../store/useSettingsStore";
 import Modal from "../common/Modal";
 import Toggle from "../common/Toggle";
 
@@ -10,6 +11,7 @@ function FeedingModal({ onClose }) {
   const updateStarter = useStarterStore((state) => state.updateStarter);
   const addFeeding = useStarterStore((state) => state.addFeeding);
 
+  const tempUnit = useSettingsStore((state) => state.tempUnit);
   const starter = getActiveStarter();
 
   const [amount, setAmount] = useState(starter.feedAmount);
@@ -28,7 +30,8 @@ function FeedingModal({ onClose }) {
     let validTemp = null;
     if (temperature) {
       const parsed = parseFloat(temperature);
-      if (!isNaN(parsed) && parsed >= 0 && parsed <= 50) {
+      const maxTemp = tempUnit === "f" ? 122 : 50;
+      if (!isNaN(parsed) && parsed >= 0 && parsed <= maxTemp) {
         validTemp = parsed;
       }
     }
@@ -302,11 +305,12 @@ function FeedingModal({ onClose }) {
         </span>
         <input
           type="number"
+          inputMode="decimal"
           value={temperature}
           onChange={(e) => setTemperature(e.target.value)}
-          placeholder="23"
-          min="10"
-          max="40"
+          placeholder={tempUnit === "f" ? "73" : "23"}
+          min={tempUnit === "f" ? "50" : "10"}
+          max={tempUnit === "f" ? "104" : "40"}
           step="0.5"
           style={{
             width: "60px",
@@ -319,7 +323,7 @@ function FeedingModal({ onClose }) {
             color: "var(--text-primary)",
           }}
         />
-        <span style={{ color: "var(--text-muted)" }}>°C</span>
+        <span style={{ color: "var(--text-muted)" }}>{tempUnit === "f" ? "°F" : "°C"}</span>
       </div>
 
       {/* Notes */}
