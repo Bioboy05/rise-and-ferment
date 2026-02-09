@@ -11,10 +11,15 @@ import SettingsPage from "./pages/SettingsPage";
 
 function App() {
   const theme = useSettingsStore((state) => state.theme);
+  const language = useSettingsStore((state) => state.language);
 
   useEffect(() => {
     document.documentElement.setAttribute("data-theme", theme);
   }, [theme]);
+
+  useEffect(() => {
+    document.documentElement.lang = language;
+  }, [language]);
 
   return (
     <div
