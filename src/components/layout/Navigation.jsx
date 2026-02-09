@@ -26,11 +26,15 @@ function Navigation() {
           key={tab.to}
           to={tab.to}
           end={tab.to === "/"}
-          className="flex flex-col items-center text-xs px-2 py-1 transition no-underline"
+          className="flex flex-col items-center justify-center text-xs transition no-underline"
           style={({ isActive }) => ({
             color: isActive ? "var(--accent)" : "var(--text-muted)",
             fontWeight: isActive ? "700" : "400",
+            minWidth: "44px",
+            minHeight: "44px",
+            padding: "4px 6px",
           })}
+          aria-label={tab.label}
         >
           <span className="text-lg">{tab.icon}</span>
           <span>{tab.label}</span>

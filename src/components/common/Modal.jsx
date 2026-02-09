@@ -49,12 +49,13 @@ function Modal({ onClose, title, children }) {
           )}
           <button
             onClick={onClose}
+            aria-label="Close"
             style={{
               background: "var(--bg-secondary)",
               border: "none",
               borderRadius: "50%",
-              width: "32px",
-              height: "32px",
+              width: "44px",
+              height: "44px",
               fontSize: "16px",
               cursor: "pointer",
               color: "var(--text-muted)",
@@ -62,6 +63,7 @@ function Modal({ onClose, title, children }) {
               alignItems: "center",
               justifyContent: "center",
               marginLeft: "auto",
+              flexShrink: 0,
             }}
           >
             ✕
