@@ -296,6 +296,25 @@ Faza 6 (polish)           →  ultimul, după ce totul merge
 
 ---
 
+## Audit UX/PWA/Design — Completat
+
+- [x] **P1.1** Safe-area padding (viewport-fit=cover, nav, header, main)
+- [x] **P1.2** Modal maxHeight 85dvh + safe-area bottom
+- [x] **P1.3** Touch targets min 44x44px (nav, modal, theme toggle)
+- [x] **P1.4** Body min-height 100dvh
+- [x] **P1.5** Temperature input: inputMode="decimal" + tempUnit (°C/°F)
+- [x] **P1.6** Recipe tabs: scroll-snap + -webkit-overflow-scrolling
+- [x] **P1.7** HTML lang sync cu i18n language
+- [x] **P2.8** manifest.json (standalone, theme_color, SVG icon)
+- [x] **P2.9** PWA meta tags (theme-color, apple-mobile-web-app)
+- [x] **P2.10** Service worker (vite-plugin-pwa + Workbox)
+- [x] **P3.11** Inline styles → CSS classes + Tailwind utilities
+- [x] **P3.12** SVG Icon system (30+ icons, replacing emojis)
+- [x] **P3.13** aria-labels on all icon buttons
+- [x] **P3.14** Premium styling (font variables, consistent design)
+
+---
+
 ## Note tehnice
 
 ### Convenții de urmat
