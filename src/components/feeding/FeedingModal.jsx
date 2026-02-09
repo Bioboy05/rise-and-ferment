@@ -1,6 +1,8 @@
 import { useState } from "react";
 import { useTranslation } from "react-i18next";
 import useStarterStore from "../../store/useStarterStore";
+import Modal from "../common/Modal";
+import Toggle from "../common/Toggle";
 
 function FeedingModal({ onClose }) {
   const { t } = useTranslation();
@@ -46,441 +48,334 @@ function FeedingModal({ onClose }) {
   };
 
   return (
-    <div
-      style={{
-        position: "fixed",
-        inset: 0,
-        background: "rgba(0,0,0,0.5)",
-        display: "flex",
-        alignItems: "flex-end",
-        justifyContent: "center",
-        zIndex: 1000,
-        padding: "16px",
-      }}
-      onClick={(e) => {
-        if (e.target === e.currentTarget) onClose();
-      }}
-    >
+    <Modal onClose={onClose} title={t("feedTitle")}>
+      {/* 1:1:1 Technique */}
       <div
         style={{
-          background: "var(--bg-card)",
-          borderRadius: "24px 24px 16px 16px",
-          width: "100%",
-          maxWidth: "448px",
-          maxHeight: "85vh",
-          overflowY: "auto",
-          padding: "24px 20px",
+          background: "var(--bg-secondary)",
+          border: "1px solid var(--success)",
+          borderRadius: "12px",
+          padding: "12px 16px",
+          marginBottom: "20px",
+          fontSize: "14px",
+          color: "var(--text-secondary)",
         }}
       >
-        {/* Header */}
-        <div
-          style={{
-            display: "flex",
-            justifyContent: "space-between",
-            alignItems: "center",
-            marginBottom: "20px",
-          }}
-        >
-          <h2
-            style={{
-              fontFamily: "Caveat, cursive",
-              fontSize: "1.6rem",
-              color: "var(--text-primary)",
-            }}
-          >
-            {t("feedTitle")}
-          </h2>
-          <button
-            onClick={onClose}
-            style={{
-              background: "var(--bg-secondary)",
-              border: "none",
-              borderRadius: "50%",
-              width: "32px",
-              height: "32px",
-              fontSize: "16px",
-              cursor: "pointer",
-              color: "var(--text-muted)",
-              display: "flex",
-              alignItems: "center",
-              justifyContent: "center",
-            }}
-          >
-            ✕
-          </button>
-        </div>
+        <strong>🎯 {t("technique111")}</strong>
+        <br />
+        {t("technique111Desc")}
+      </div>
 
-        {/* 1:1:1 Technique */}
-        <div
+      {/* Amount selector */}
+      <p
+        style={{
+          textAlign: "center",
+          color: "var(--text-muted)",
+          marginBottom: "16px",
+          fontSize: "14px",
+        }}
+      >
+        {t("howMuchKept")}
+      </p>
+      <div
+        style={{
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "center",
+          gap: "20px",
+          marginBottom: "16px",
+        }}
+      >
+        <button
+          onClick={() => changeAmount(-25)}
           style={{
+            width: "48px",
+            height: "48px",
+            borderRadius: "50%",
+            border: "2px solid var(--border)",
             background: "var(--bg-secondary)",
-            border: "1px solid var(--success)",
-            borderRadius: "12px",
-            padding: "12px 16px",
-            marginBottom: "20px",
-            fontSize: "14px",
-            color: "var(--text-secondary)",
-          }}
-        >
-          <strong>🎯 {t("technique111")}</strong>
-          <br />
-          {t("technique111Desc")}
-        </div>
-
-        {/* Amount selector */}
-        <p
-          style={{
-            textAlign: "center",
-            color: "var(--text-muted)",
-            marginBottom: "16px",
-            fontSize: "14px",
-          }}
-        >
-          {t("howMuchKept")}
-        </p>
-        <div
-          style={{
+            fontSize: "20px",
+            fontWeight: "700",
+            cursor: "pointer",
+            color: "var(--text-primary)",
             display: "flex",
             alignItems: "center",
             justifyContent: "center",
-            gap: "20px",
-            marginBottom: "16px",
           }}
         >
-          <button
-            onClick={() => changeAmount(-25)}
+          −
+        </button>
+        <div style={{ textAlign: "center" }}>
+          <span
             style={{
-              width: "48px",
-              height: "48px",
-              borderRadius: "50%",
-              border: "2px solid var(--border)",
-              background: "var(--bg-secondary)",
-              fontSize: "20px",
-              fontWeight: "700",
-              cursor: "pointer",
-              color: "var(--text-primary)",
-              display: "flex",
-              alignItems: "center",
-              justifyContent: "center",
+              fontSize: "2.5rem",
+              fontWeight: "800",
+              color: "var(--accent)",
             }}
           >
-            −
-          </button>
-          <div style={{ textAlign: "center" }}>
-            <span
-              style={{
-                fontSize: "2.5rem",
-                fontWeight: "800",
-                color: "var(--accent)",
-              }}
-            >
-              {amount}
-            </span>
-            <span
-              style={{
-                fontSize: "1.2rem",
-                color: "var(--text-muted)",
-                marginLeft: "4px",
-              }}
-            >
-              g
-            </span>
-          </div>
-          <button
-            onClick={() => changeAmount(25)}
+            {amount}
+          </span>
+          <span
             style={{
-              width: "48px",
-              height: "48px",
-              borderRadius: "50%",
-              border: "2px solid var(--border)",
-              background: "var(--bg-secondary)",
-              fontSize: "20px",
-              fontWeight: "700",
-              cursor: "pointer",
-              color: "var(--text-primary)",
-              display: "flex",
-              alignItems: "center",
-              justifyContent: "center",
+              fontSize: "1.2rem",
+              color: "var(--text-muted)",
+              marginLeft: "4px",
             }}
           >
-            +
-          </button>
+            g
+          </span>
         </div>
-
-        {/* Recipe display */}
-        <div
+        <button
+          onClick={() => changeAmount(25)}
           style={{
+            width: "48px",
+            height: "48px",
+            borderRadius: "50%",
+            border: "2px solid var(--border)",
             background: "var(--bg-secondary)",
-            borderRadius: "12px",
-            padding: "12px 16px",
-            marginBottom: "16px",
-            fontSize: "14px",
-            color: "var(--text-secondary)",
+            fontSize: "20px",
+            fontWeight: "700",
+            cursor: "pointer",
+            color: "var(--text-primary)",
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "center",
           }}
         >
-          <strong>{t("feedAdd")}:</strong>
-          <br />• {amount}g {t("feedWaterTemp")}
-          <br />•{" "}
-          {useBran
-            ? `${whiteFlour}g ${t("feedWhiteFlour")} + ${branAmount}g ${t("feedBran")} 🌾`
-            : `${amount}g ${t("feedWhiteFlour")}`}
-        </div>
+          +
+        </button>
+      </div>
 
-        {/* Bran toggle */}
-        <div
-          style={{
-            background: "var(--bg-secondary)",
-            borderRadius: "16px",
-            padding: "16px",
-            marginBottom: "16px",
-          }}
-        >
-          <div
-            style={{
-              display: "flex",
-              alignItems: "center",
-              justifyContent: "space-between",
-            }}
-          >
-            <div>
-              <strong style={{ color: "var(--text-secondary)" }}>
-                🌾 {t("addBran")}
-              </strong>
-              <div
-                style={{
-                  fontSize: "12px",
-                  color: "var(--text-muted)",
-                  marginTop: "2px",
-                }}
-              >
-                {t("branHint")}
-              </div>
-            </div>
-            <button
-              onClick={() => setUseBran(!useBran)}
-              style={{
-                width: "48px",
-                height: "28px",
-                borderRadius: "14px",
-                border: "none",
-                background: useBran ? "var(--success)" : "var(--bg-tertiary)",
-                cursor: "pointer",
-                position: "relative",
-                transition: "background 0.2s",
-              }}
-            >
-              <div
-                style={{
-                  width: "22px",
-                  height: "22px",
-                  borderRadius: "50%",
-                  background: "white",
-                  position: "absolute",
-                  top: "3px",
-                  left: useBran ? "23px" : "3px",
-                  transition: "left 0.2s",
-                  boxShadow: "0 1px 3px rgba(0,0,0,0.2)",
-                }}
-              />
-            </button>
-          </div>
-          {useBran && (
-            <div
-              style={{
-                fontSize: "13px",
-                color: "var(--text-secondary)",
-                paddingTop: "12px",
-                marginTop: "12px",
-                borderTop: "1px dashed var(--border)",
-              }}
-            >
-              {t("branMix")}
-              <div
-                style={{
-                  marginTop: "6px",
-                  fontSize: "12px",
-                  color: "var(--warning)",
-                }}
-              >
-                {t("branWarning")}
-              </div>
-            </div>
-          )}
-        </div>
+      {/* Recipe display */}
+      <div
+        style={{
+          background: "var(--bg-secondary)",
+          borderRadius: "12px",
+          padding: "12px 16px",
+          marginBottom: "16px",
+          fontSize: "14px",
+          color: "var(--text-secondary)",
+        }}
+      >
+        <strong>{t("feedAdd")}:</strong>
+        <br />• {amount}g {t("feedWaterTemp")}
+        <br />•{" "}
+        {useBran
+          ? `${whiteFlour}g ${t("feedWhiteFlour")} + ${branAmount}g ${t("feedBran")} 🌾`
+          : `${amount}g ${t("feedWhiteFlour")}`}
+      </div>
 
-        {/* Feeding steps */}
-        <div
-          style={{
-            background:
-              "linear-gradient(135deg, var(--bg-secondary) 0%, var(--accent-light) 100%)",
-            borderRadius: "16px",
-            padding: "16px",
-            marginBottom: "16px",
-            border: "1px solid var(--border)",
-          }}
-        >
+      {/* Bran toggle */}
+      <div
+        style={{
+          background: "var(--bg-secondary)",
+          borderRadius: "16px",
+          padding: "16px",
+          marginBottom: "16px",
+        }}
+      >
+        <Toggle
+          checked={useBran}
+          onChange={setUseBran}
+          label={`🌾 ${t("addBran")}`}
+          description={t("branHint")}
+        />
+        {useBran && (
           <div
             style={{
-              display: "flex",
-              alignItems: "center",
-              gap: "8px",
-              marginBottom: "12px",
-            }}
-          >
-            <span style={{ fontSize: "18px" }}>💡</span>
-            <strong
-              style={{ color: "var(--text-secondary)", fontSize: "14px" }}
-            >
-              {t("feedTipsTitle")}
-            </strong>
-          </div>
-          <div
-            style={{
-              display: "flex",
-              flexDirection: "column",
-              gap: "8px",
               fontSize: "13px",
               color: "var(--text-secondary)",
+              paddingTop: "12px",
+              marginTop: "12px",
+              borderTop: "1px dashed var(--border)",
             }}
           >
-            {[
-              t("feedStep1"),
-              t("feedStep2"),
-              t("feedStep3"),
-            ].map((step, i) => (
-              <div
-                key={i}
-                style={{
-                  display: "flex",
-                  alignItems: "center",
-                  gap: "10px",
-                  padding: "8px",
-                  background: "var(--bg-card)",
-                  borderRadius: "10px",
-                }}
-              >
-                <span
-                  style={{
-                    width: "24px",
-                    height: "24px",
-                    background: "var(--accent)",
-                    color: "white",
-                    borderRadius: "50%",
-                    display: "flex",
-                    alignItems: "center",
-                    justifyContent: "center",
-                    fontSize: "12px",
-                    fontWeight: "700",
-                    flexShrink: 0,
-                  }}
-                >
-                  {i + 1}
-                </span>
-                <span>{step}</span>
-              </div>
-            ))}
+            {t("branMix")}
+            <div
+              style={{
+                marginTop: "6px",
+                fontSize: "12px",
+                color: "var(--warning)",
+              }}
+            >
+              {t("branWarning")}
+            </div>
           </div>
-        </div>
+        )}
+      </div>
 
-        {/* Temperature input */}
+      {/* Feeding steps */}
+      <div
+        style={{
+          background:
+            "linear-gradient(135deg, var(--bg-secondary) 0%, var(--accent-light) 100%)",
+          borderRadius: "16px",
+          padding: "16px",
+          marginBottom: "16px",
+          border: "1px solid var(--border)",
+        }}
+      >
         <div
           style={{
             display: "flex",
             alignItems: "center",
-            gap: "10px",
-            padding: "12px 16px",
-            background: "var(--bg-secondary)",
-            borderRadius: "12px",
+            gap: "8px",
             marginBottom: "12px",
           }}
         >
-          <span>🌡️</span>
-          <span
-            style={{
-              flex: 1,
-              color: "var(--text-secondary)",
-              fontSize: "14px",
-            }}
+          <span style={{ fontSize: "18px" }}>💡</span>
+          <strong
+            style={{ color: "var(--text-secondary)", fontSize: "14px" }}
           >
-            {t("roomTemp")}
-          </span>
-          <input
-            type="number"
-            value={temperature}
-            onChange={(e) => setTemperature(e.target.value)}
-            placeholder="23"
-            min="10"
-            max="40"
-            step="0.5"
-            style={{
-              width: "60px",
-              padding: "6px 8px",
-              border: "1px solid var(--border)",
-              borderRadius: "8px",
-              fontSize: "14px",
-              textAlign: "center",
-              background: "var(--bg-card)",
-              color: "var(--text-primary)",
-            }}
-          />
-          <span style={{ color: "var(--text-muted)" }}>°C</span>
+            {t("feedTipsTitle")}
+          </strong>
         </div>
-
-        {/* Notes */}
-        <textarea
-          value={note}
-          onChange={(e) => setNote(e.target.value)}
-          maxLength={500}
-          placeholder={t("notesPlaceholder")}
+        <div
           style={{
-            width: "100%",
-            padding: "12px",
-            border: "1px solid var(--border)",
-            borderRadius: "12px",
+            display: "flex",
+            flexDirection: "column",
+            gap: "8px",
+            fontSize: "13px",
+            color: "var(--text-secondary)",
+          }}
+        >
+          {[
+            t("feedStep1"),
+            t("feedStep2"),
+            t("feedStep3"),
+          ].map((step, i) => (
+            <div
+              key={i}
+              style={{
+                display: "flex",
+                alignItems: "center",
+                gap: "10px",
+                padding: "8px",
+                background: "var(--bg-card)",
+                borderRadius: "10px",
+              }}
+            >
+              <span
+                style={{
+                  width: "24px",
+                  height: "24px",
+                  background: "var(--accent)",
+                  color: "white",
+                  borderRadius: "50%",
+                  display: "flex",
+                  alignItems: "center",
+                  justifyContent: "center",
+                  fontSize: "12px",
+                  fontWeight: "700",
+                  flexShrink: 0,
+                }}
+              >
+                {i + 1}
+              </span>
+              <span>{step}</span>
+            </div>
+          ))}
+        </div>
+      </div>
+
+      {/* Temperature input */}
+      <div
+        style={{
+          display: "flex",
+          alignItems: "center",
+          gap: "10px",
+          padding: "12px 16px",
+          background: "var(--bg-secondary)",
+          borderRadius: "12px",
+          marginBottom: "12px",
+        }}
+      >
+        <span>🌡️</span>
+        <span
+          style={{
+            flex: 1,
+            color: "var(--text-secondary)",
             fontSize: "14px",
-            resize: "none",
-            height: "60px",
+          }}
+        >
+          {t("roomTemp")}
+        </span>
+        <input
+          type="number"
+          value={temperature}
+          onChange={(e) => setTemperature(e.target.value)}
+          placeholder="23"
+          min="10"
+          max="40"
+          step="0.5"
+          style={{
+            width: "60px",
+            padding: "6px 8px",
+            border: "1px solid var(--border)",
+            borderRadius: "8px",
+            fontSize: "14px",
+            textAlign: "center",
             background: "var(--bg-card)",
             color: "var(--text-primary)",
-            marginBottom: "16px",
           }}
         />
-
-        {/* Buttons */}
-        <button
-          onClick={handleSave}
-          style={{
-            width: "100%",
-            padding: "14px",
-            borderRadius: "12px",
-            border: "none",
-            background: "var(--accent)",
-            color: "white",
-            fontSize: "16px",
-            fontWeight: "700",
-            cursor: "pointer",
-            marginBottom: "8px",
-          }}
-        >
-          {t("saveFeed")}
-        </button>
-        <button
-          onClick={onClose}
-          style={{
-            width: "100%",
-            padding: "12px",
-            borderRadius: "12px",
-            border: "1px solid var(--border)",
-            background: "transparent",
-            color: "var(--text-muted)",
-            fontSize: "14px",
-            cursor: "pointer",
-          }}
-        >
-          {t("cancel")}
-        </button>
+        <span style={{ color: "var(--text-muted)" }}>°C</span>
       </div>
-    </div>
+
+      {/* Notes */}
+      <textarea
+        value={note}
+        onChange={(e) => setNote(e.target.value)}
+        maxLength={500}
+        placeholder={t("notesPlaceholder")}
+        style={{
+          width: "100%",
+          padding: "12px",
+          border: "1px solid var(--border)",
+          borderRadius: "12px",
+          fontSize: "14px",
+          resize: "none",
+          height: "60px",
+          background: "var(--bg-card)",
+          color: "var(--text-primary)",
+          marginBottom: "16px",
+        }}
+      />
+
+      {/* Buttons */}
+      <button
+        onClick={handleSave}
+        style={{
+          width: "100%",
+          padding: "14px",
+          borderRadius: "12px",
+          border: "none",
+          background: "var(--accent)",
+          color: "white",
+          fontSize: "16px",
+          fontWeight: "700",
+          cursor: "pointer",
+          marginBottom: "8px",
+        }}
+      >
+        {t("saveFeed")}
+      </button>
+      <button
+        onClick={onClose}
+        style={{
+          width: "100%",
+          padding: "12px",
+          borderRadius: "12px",
+          border: "1px solid var(--border)",
+          background: "transparent",
+          color: "var(--text-muted)",
+          fontSize: "14px",
+          cursor: "pointer",
+        }}
+      >
+        {t("cancel")}
+      </button>
+    </Modal>
   );
 }
 
