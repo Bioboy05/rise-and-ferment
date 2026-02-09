@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+  <rect width="512" height="512" rx="96" fill="#FFFBF5"/>
+  <g transform="translate(96, 56)">
+    <!-- Jar body -->
+    <rect x="40" y="80" width="240" height="280" rx="24" fill="none" stroke="#8B5A2B" stroke-width="12"/>
+    <!-- Jar lid -->
+    <rect x="60" y="40" width="200" height="50" rx="12" fill="#8B5A2B"/>
+    <!-- Starter level -->
+    <path d="M52 220 C80 200, 140 210, 200 195 C260 180, 270 200, 268 220 L268 336 C268 348 258 360 246 360 L74 360 C62 360 52 348 52 336 Z" fill="#D4A574" opacity="0.3"/>
+    <!-- Bubbles -->
+    <circle cx="120" cy="280" r="14" fill="none" stroke="#8B5A2B" stroke-width="4" opacity="0.5"/>
+    <circle cx="200" cy="260" r="10" fill="none" stroke="#8B5A2B" stroke-width="4" opacity="0.4"/>
+    <circle cx="160" cy="310" r="8" fill="none" stroke="#8B5A2B" stroke-width="4" opacity="0.3"/>
+    <circle cx="140" cy="240" r="6" fill="none" stroke="#8B5A2B" stroke-width="4" opacity="0.4"/>
+  </g>
+</svg>
