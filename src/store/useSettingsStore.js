@@ -42,6 +42,12 @@ const useSettingsStore = create(
     if (VALID_TEMP_UNITS.includes(unit)) set({ tempUnit: unit });
   },
   incrementSessions: () => set((state) => ({ sessions: state.sessions + 1 })),
+
+  resetAll: () => {
+    localStorage.removeItem("riseFermentSettings");
+    localStorage.removeItem("riseFermentStarters");
+    window.location.reload();
+  },
     }),
     {
       name: "riseFermentSettings",
