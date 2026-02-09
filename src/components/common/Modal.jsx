@@ -21,9 +21,10 @@ function Modal({ onClose, title, children }) {
           borderRadius: "24px 24px 16px 16px",
           width: "100%",
           maxWidth: "448px",
-          maxHeight: "85vh",
+          maxHeight: "85dvh",
           overflowY: "auto",
           padding: "24px 20px",
+          paddingBottom: "calc(24px + env(safe-area-inset-bottom, 0px))",
         }}
       >
         {/* Header */}
