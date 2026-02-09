@@ -90,40 +90,35 @@ Fișier: `rise-ferment-v4.1.html` (~530KB, ~7200 linii)
 ### Faza 3 — Pagini și componente de bază
 > Completarea celor 4 pagini lipsă + componente comune reutilizabile.
 
-- [ ] **3.1 Componente comune (`src/components/common/`)**
-  - `Modal.jsx` — overlay reutilizabil (backdrop click, close button, animație)
+- [x] **3.1 Componente comune (`src/components/common/`)** ✅
+  - `Modal.jsx` — overlay reutilizabil (backdrop click, close button)
   - `Toggle.jsx` — toggle switch reutilizabil (extras din FeedingModal)
-  - `TipBox.jsx` — tip box colorat (success/warning/info) reutilizabil
+  - `TipBox.jsx` — tip box colorat (success/warning/info/danger)
+  - FeedingModal refactored to use Modal + Toggle
 
-- [ ] **3.2 SettingsPage**
-  - Note personale (textarea)
-  - Secțiune starter (nume, hidratare)
-  - Beginner mode toggle
-  - Temă + limbă
-  - Notificări + sunet
-  - Unități (greutate, temperatură)
-  - Export/Import data
-  - Reset app (cu confirmare)
+- [x] **3.2 SettingsPage** ✅
+  - 8 secțiuni: starter name edit, personal notes, appearance (theme + language 3x2), beginner mode, sound, temperature units, backup (export/import), reset with modal
+  - Added resetAll() to settings store
+  - Added ~200 i18n keys (settings + all 15 recipes in en + ro)
 
-- [ ] **3.3 HistoryPage**
-  - Listă hrăniri din `starter.history[]`
-  - Fiecare entry: timp, cantitate, temperatură, notă, bran
-  - Empty state: "Nicio hrănire încă"
-  - Statistici mini: total, medie temp
+- [x] **3.3 HistoryPage** ✅
+  - Feeding list grouped by date (newest first)
+  - Each entry: time, amount, bran indicator, temp, note
+  - Mini stats bar (total feedings, avg temp)
+  - Empty state
 
-- [ ] **3.4 RecipesPage + RecipeModal**
-  - Grid cu 15 rețete din `src/data/recipes.js`
-  - 3 categorii: Pâini cu maia, Rețete cu discard, Alte rețete
-  - Card: gradient bg + SVG icon + titlu + dificultate/timp
-  - Modal rețetă: intro, ingrediente, pași, tips
-  - Click pe card → deschide modal
+- [x] **3.4 RecipesPage + RecipeModal** ✅
+  - 3 category tabs (Bread/Discard/Other) with pill buttons
+  - 2-column gradient card grid with icon, title, difficulty stars, time
+  - RecipeModal with ingredients, numbered steps, tip box
+  - All 15 recipes working
 
-- [ ] **3.5 StatsPage**
-  - Quick stats grid (total hrăniri, streak, medie temp, vârstă starter)
-  - Grafic activitate (ultimele 14 zile) — bar chart simplu cu div-uri
-  - Grafic temperatură — line chart cu div-uri/SVG
-  - Pattern săptămânal — heatmap per zi
-  - Fără librărie externă — chart-uri cu CSS/SVG ca în original
+- [x] **3.5 StatsPage** ✅
+  - Quick stats grid 2x2 (total feedings, streak, avg temp, age)
+  - 14-day activity bar chart (CSS divs)
+  - Temperature SVG polyline chart with fill area
+  - Weekly pattern heatmap (7 boxes, opacity by frequency)
+  - Empty state
 
 ---
 
