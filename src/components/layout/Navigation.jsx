@@ -17,6 +17,7 @@ function Navigation() {
       style={{
         background: "var(--bg-card)",
         borderTop: "1px solid var(--border)",
+        paddingBottom: "env(safe-area-inset-bottom, 0px)",
       }}
       className="fixed bottom-0 left-0 right-0 flex justify-around py-2"
     >
