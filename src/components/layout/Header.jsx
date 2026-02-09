@@ -12,7 +12,7 @@ function Header() {
     >
       <h1
         className="text-xl font-bold"
-        style={{ fontFamily: "Caveat, cursive" }}
+        style={{ fontFamily: "var(--font-display)" }}
       >
         Rise & Ferment
       </h1>

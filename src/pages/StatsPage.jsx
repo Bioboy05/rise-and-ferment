@@ -57,26 +57,12 @@ function StatsPage() {
   if (totalFeedings === 0) {
     return (
       <div className="max-w-md mx-auto">
-        <div style={{ textAlign: "center", padding: "48px 20px" }}>
+        <div className="text-center" style={{ padding: "48px 20px" }}>
           <Icon name="stats" size={48} style={{ color: "var(--accent)" }} />
-          <h2
-            style={{
-              fontFamily: "Caveat, cursive",
-              fontSize: "1.6rem",
-              color: "var(--text-primary)",
-              marginTop: "16px",
-            }}
-          >
+          <h2 className="page-title" style={{ marginTop: "16px" }}>
             {t("statsTitle")}
           </h2>
-          <p
-            style={{
-              color: "var(--text-muted)",
-              fontSize: "14px",
-              marginTop: "12px",
-              lineHeight: "1.5",
-            }}
-          >
+          <p className="text-sm" style={{ color: "var(--text-muted)", marginTop: "12px", lineHeight: "1.5" }}>
             {t("statsEmpty")}
           </p>
         </div>
@@ -104,104 +90,41 @@ function StatsPage() {
   const weeklyPattern = getWeeklyPattern(history);
   const maxWeekly = Math.max(...weeklyPattern, 1);
 
-  const statCardStyle = {
-    background: "var(--bg-card)",
-    borderRadius: "12px",
-    padding: "12px",
-    textAlign: "center",
-  };
-
-  const statValueStyle = {
-    fontSize: "1.4rem",
-    fontWeight: "800",
-    color: "var(--accent)",
-  };
-
-  const statLabelStyle = {
-    fontSize: "11px",
-    color: "var(--text-muted)",
-    marginTop: "2px",
-  };
-
   return (
     <div className="max-w-md mx-auto" style={{ paddingBottom: "24px" }}>
-      <h2
-        style={{
-          fontFamily: "Caveat, cursive",
-          fontSize: "1.8rem",
-          color: "var(--text-primary)",
-          textAlign: "center",
-          marginBottom: "16px",
-        }}
-      >
-        {t("statsTitle")}
-      </h2>
+      <h2 className="page-title">{t("statsTitle")}</h2>
 
       {/* Quick Stats Grid (2x2) */}
-      <div
-        style={{
-          display: "grid",
-          gridTemplateColumns: "1fr 1fr",
-          gap: "8px",
-          marginBottom: "20px",
-        }}
-      >
-        <div style={statCardStyle}>
-          <div style={statValueStyle}>{totalFeedings}</div>
-          <div style={statLabelStyle}>{t("totalFeedings")}</div>
+      <div className="grid grid-cols-2 gap-2 mb-5">
+        <div className="card text-center" style={{ marginBottom: 0 }}>
+          <div className="stat-value">{totalFeedings}</div>
+          <div className="stat-label">{t("totalFeedings")}</div>
         </div>
-        <div style={statCardStyle}>
-          <div style={statValueStyle}>{streak}</div>
-          <div style={statLabelStyle}>{t("currentStreak")}</div>
+        <div className="card text-center" style={{ marginBottom: 0 }}>
+          <div className="stat-value">{streak}</div>
+          <div className="stat-label">{t("currentStreak")}</div>
         </div>
-        <div style={statCardStyle}>
-          <div style={statValueStyle}>{avgTemp ? `${avgTemp}°` : "—"}</div>
-          <div style={statLabelStyle}>{t("avgTemp")}</div>
+        <div className="card text-center" style={{ marginBottom: 0 }}>
+          <div className="stat-value">{avgTemp ? `${avgTemp}°` : "—"}</div>
+          <div className="stat-label">{t("avgTemp")}</div>
         </div>
-        <div style={statCardStyle}>
-          <div style={statValueStyle}>{ageDays}</div>
-          <div style={statLabelStyle}>{t("starterAge")}</div>
+        <div className="card text-center" style={{ marginBottom: 0 }}>
+          <div className="stat-value">{ageDays}</div>
+          <div className="stat-label">{t("starterAge")}</div>
         </div>
       </div>
 
       {/* Activity Chart (14 days) */}
-      <div
-        style={{
-          background: "var(--bg-card)",
-          borderRadius: "16px",
-          padding: "16px",
-          marginBottom: "16px",
-        }}
-      >
-        <h3
-          style={{
-            fontSize: "14px",
-            fontWeight: "700",
-            color: "var(--text-primary)",
-            marginBottom: "12px",
-          }}
-        >
+      <div className="card" style={{ padding: "16px" }}>
+        <h3 className="text-sm font-bold mb-3" style={{ color: "var(--text-primary)" }}>
           {t("activityChart")}
         </h3>
-        <div
-          style={{
-            display: "flex",
-            alignItems: "flex-end",
-            gap: "4px",
-            height: "80px",
-          }}
-        >
+        <div className="flex items-end gap-1" style={{ height: "80px" }}>
           {activity.map((day, i) => (
             <div
               key={i}
-              style={{
-                flex: 1,
-                display: "flex",
-                flexDirection: "column",
-                alignItems: "center",
-                height: "100%",
-                justifyContent: "flex-end",
-              }}
+              className="flex-1 flex flex-col items-center justify-end"
+              style={{ height: "100%" }}
             >
               <div
                 style={{
@@ -213,13 +136,7 @@ function StatsPage() {
                   transition: "height 0.3s",
                 }}
               />
-              <div
-                style={{
-                  fontSize: "8px",
-                  color: "var(--text-muted)",
-                  marginTop: "4px",
-                }}
-              >
+              <div style={{ fontSize: "8px", color: "var(--text-muted)", marginTop: "4px" }}>
                 {day.date.getDate()}
               </div>
             </div>
@@ -228,26 +145,12 @@ function StatsPage() {
       </div>
 
       {/* Temperature Chart */}
-      <div
-        style={{
-          background: "var(--bg-card)",
-          borderRadius: "16px",
-          padding: "16px",
-          marginBottom: "16px",
-        }}
-      >
-        <h3
-          style={{
-            fontSize: "14px",
-            fontWeight: "700",
-            color: "var(--text-primary)",
-            marginBottom: "12px",
-          }}
-        >
+      <div className="card" style={{ padding: "16px" }}>
+        <h3 className="text-sm font-bold mb-3" style={{ color: "var(--text-primary)" }}>
           {t("tempChart")}
         </h3>
         {tempPoints.length < 2 ? (
-          <p style={{ fontSize: "13px", color: "var(--text-muted)", textAlign: "center" }}>
+          <p className="text-xs text-center" style={{ color: "var(--text-muted)" }}>
             {tempPoints.length === 0 ? t("statsNoTemp") : t("tempHint")}
           </p>
         ) : (
@@ -263,7 +166,6 @@ function StatsPage() {
                 const maxT = Math.max(...validTemps) + 1;
                 const rangeT = maxT - minT || 1;
 
-                // Build points for valid temp entries only
                 const points = [];
                 tempData.forEach((d, i) => {
                   if (d.temp !== null) {
@@ -275,12 +177,10 @@ function StatsPage() {
 
                 return (
                   <>
-                    {/* Fill area */}
                     <polygon
                       points={`${points[0].split(",")[0]},90 ${points.join(" ")} ${points[points.length - 1].split(",")[0]},90`}
                       fill="var(--accent-light)"
                     />
-                    {/* Line */}
                     <polyline
                       points={points.join(" ")}
                       fill="none"
@@ -289,17 +189,10 @@ function StatsPage() {
                       strokeLinecap="round"
                       strokeLinejoin="round"
                     />
-                    {/* Dots */}
                     {points.map((p, i) => {
                       const [cx, cy] = p.split(",");
                       return (
-                        <circle
-                          key={i}
-                          cx={cx}
-                          cy={cy}
-                          r="3"
-                          fill="var(--accent)"
-                        />
+                        <circle key={i} cx={cx} cy={cy} r="3" fill="var(--accent)" />
                       );
                     })}
                   </>
@@ -311,46 +204,16 @@ function StatsPage() {
       </div>
 
       {/* Weekly Pattern */}
-      <div
-        style={{
-          background: "var(--bg-card)",
-          borderRadius: "16px",
-          padding: "16px",
-        }}
-      >
-        <h3
-          style={{
-            fontSize: "14px",
-            fontWeight: "700",
-            color: "var(--text-primary)",
-            marginBottom: "4px",
-          }}
-        >
+      <div className="card" style={{ padding: "16px", marginBottom: 0 }}>
+        <h3 className="text-sm font-bold" style={{ color: "var(--text-primary)", marginBottom: "4px" }}>
           {t("weeklyPattern")}
         </h3>
-        <p
-          style={{
-            fontSize: "12px",
-            color: "var(--text-muted)",
-            marginBottom: "12px",
-          }}
-        >
+        <p className="text-xs mb-3" style={{ color: "var(--text-muted)" }}>
           {t("weeklyPatternDesc")}
         </p>
-        <div
-          style={{
-            display: "flex",
-            gap: "6px",
-          }}
-        >
+        <div className="flex gap-1.5">
           {weeklyPattern.map((count, i) => (
-            <div
-              key={i}
-              style={{
-                flex: 1,
-                textAlign: "center",
-              }}
-            >
+            <div key={i} className="flex-1 text-center">
               <div
                 style={{
                   width: "100%",

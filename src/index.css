@@ -15,6 +15,8 @@
   --success: #4caf50;
   --warning: #ff6b35;
   --shadow: rgba(93, 58, 26, 0.08);
+  --font-display: "Caveat", cursive;
+  --font-body: "Nunito", sans-serif;
 }
 
 [data-theme="dark"] {
@@ -41,12 +43,134 @@
 }
 
 body {
-  font-family: "Nunito", sans-serif;
+  font-family: var(--font-body);
   background: var(--bg-primary);
   color: var(--text-primary);
   min-height: 100dvh;
   -webkit-font-smoothing: antialiased;
   padding-top: env(safe-area-inset-top, 0px);
+}
+
+/* ========================================
+   COMPONENT CLASSES
+   ======================================== */
+
+/* Page title — Caveat cursive display font */
+.page-title {
+  font-family: var(--font-display);
+  font-size: 1.8rem;
+  color: var(--text-primary);
+  text-align: center;
+  margin-bottom: 16px;
+}
+
+/* Card — bg-card with rounded corners */
+.card {
+  background: var(--bg-card);
+  border-radius: 16px;
+  padding: 16px;
+  margin-bottom: 12px;
+}
+
+/* Section label — uppercase muted */
+.section-label {
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  margin-bottom: 12px;
+}
+
+/* Primary button — accent bg, white text */
+.btn-primary {
+  width: 100%;
+  padding: 14px;
+  border-radius: 12px;
+  border: none;
+  background: var(--accent);
+  color: white;
+  font-size: 16px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: opacity 0.2s;
+}
+.btn-primary:active {
+  opacity: 0.85;
+}
+
+/* Secondary button — bordered, transparent */
+.btn-secondary {
+  width: 100%;
+  padding: 12px;
+  border-radius: 12px;
+  border: 1px solid var(--border);
+  background: transparent;
+  color: var(--text-muted);
+  font-size: 14px;
+  cursor: pointer;
+  transition: opacity 0.2s;
+}
+.btn-secondary:active {
+  opacity: 0.85;
+}
+
+/* Pill button — for tabs, filters */
+.btn-pill {
+  padding: 8px 16px;
+  border-radius: 20px;
+  border: 1px solid var(--border);
+  background: var(--bg-card);
+  color: var(--text-secondary);
+  font-size: 14px;
+  cursor: pointer;
+  white-space: nowrap;
+  flex-shrink: 0;
+  transition: all 0.2s;
+}
+.btn-pill[data-active="true"] {
+  border: 2px solid var(--accent);
+  background: var(--accent-light);
+  color: var(--accent);
+  font-weight: 700;
+}
+
+/* Stat value — large accent number */
+.stat-value {
+  font-size: 1.4rem;
+  font-weight: 800;
+  color: var(--accent);
+}
+
+/* Stat label — small muted text */
+.stat-label {
+  font-size: 11px;
+  color: var(--text-muted);
+  margin-top: 2px;
+}
+
+/* Input field */
+.input-field {
+  padding: 8px 12px;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  font-size: 16px;
+  background: var(--bg-secondary);
+  color: var(--text-primary);
+  font-family: var(--font-body);
+}
+
+/* Textarea field */
+.textarea-field {
+  width: 100%;
+  padding: 12px;
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  font-size: 14px;
+  resize: none;
+  background: var(--bg-secondary);
+  color: var(--text-primary);
+  font-family: var(--font-body);
 }
 
 /* Hide scrollbar for horizontal scroll containers */
@@ -56,4 +180,15 @@ body {
 .hide-scrollbar {
   -ms-overflow-style: none;
   scrollbar-width: none;
+}
+
+/* Status toast */
+.status-toast {
+  background: var(--success);
+  color: white;
+  border-radius: 12px;
+  padding: 10px 16px;
+  margin-bottom: 12px;
+  font-size: 14px;
+  text-align: center;
 }

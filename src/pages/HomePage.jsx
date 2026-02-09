@@ -12,7 +12,7 @@ function HomePage() {
       <div className="text-center py-8">
         <h2
           className="text-2xl font-bold"
-          style={{ fontFamily: "Caveat, cursive", fontSize: "2rem" }}
+          style={{ fontFamily: "var(--font-display)", fontSize: "2rem" }}
         >
           {starter.name}
         </h2>

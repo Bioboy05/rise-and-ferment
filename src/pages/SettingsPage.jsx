@@ -5,6 +5,7 @@ import useSettingsStore from "../store/useSettingsStore";
 import useActiveStarter from "../hooks/useActiveStarter";
 import Modal from "../components/common/Modal";
 import Toggle from "../components/common/Toggle";
+import Icon from "../components/common/Icon";
 import { exportData, importData } from "../utils/exportHelpers";
 
 const languages = [
@@ -93,58 +94,17 @@ function SettingsPage() {
     e.target.value = "";
   };
 
-  const sectionStyle = {
-    background: "var(--bg-card)",
-    borderRadius: "16px",
-    padding: "16px",
-    marginBottom: "12px",
-  };
-
-  const labelStyle = {
-    fontSize: "13px",
-    fontWeight: "700",
-    color: "var(--text-muted)",
-    textTransform: "uppercase",
-    letterSpacing: "0.5px",
-    marginBottom: "12px",
-  };
-
   return (
     <div className="max-w-md mx-auto" style={{ paddingBottom: "24px" }}>
-      {/* Page title */}
-      <h2
-        style={{
-          fontFamily: "Caveat, cursive",
-          fontSize: "1.8rem",
-          color: "var(--text-primary)",
-          textAlign: "center",
-          marginBottom: "20px",
-        }}
-      >
-        {t("settingsTitle")}
-      </h2>
+      <h2 className="page-title">{t("settingsTitle")}</h2>
 
       {/* Status message */}
-      {statusMsg && (
-        <div
-          style={{
-            background: "var(--success)",
-            color: "white",
-            borderRadius: "12px",
-            padding: "10px 16px",
-            marginBottom: "12px",
-            fontSize: "14px",
-            textAlign: "center",
-          }}
-        >
-          {statusMsg}
-        </div>
-      )}
+      {statusMsg && <div className="status-toast">{statusMsg}</div>}
 
       {/* 1. My Starter */}
-      <div style={sectionStyle}>
-        <div style={labelStyle}>{t("myStarter")}</div>
-        <div style={{ display: "flex", alignItems: "center", gap: "10px", marginBottom: "12px" }}>
+      <div className="card">
+        <div className="section-label">{t("myStarter")}</div>
+        <div className="flex items-center gap-2.5 mb-3">
           {editingName ? (
             <>
               <input
@@ -153,174 +113,96 @@ function SettingsPage() {
                 onChange={(e) => setNameValue(e.target.value)}
                 maxLength={50}
                 autoFocus
-                style={{
-                  flex: 1,
-                  padding: "8px 12px",
-                  border: "1px solid var(--border)",
-                  borderRadius: "8px",
-                  fontSize: "16px",
-                  background: "var(--bg-secondary)",
-                  color: "var(--text-primary)",
-                }}
+                className="input-field flex-1"
                 onKeyDown={(e) => { if (e.key === "Enter") handleSaveName(); }}
               />
               <button
                 onClick={handleSaveName}
                 aria-label={t("settingsSaved") || "Save"}
-                style={{
-                  padding: "8px 16px",
-                  borderRadius: "8px",
-                  border: "none",
-                  background: "var(--accent)",
-                  color: "white",
-                  fontSize: "14px",
-                  cursor: "pointer",
-                  minWidth: "44px",
-                  minHeight: "44px",
-                }}
+                className="btn-primary"
+                style={{ width: "auto", minWidth: "44px", minHeight: "44px", padding: "8px 16px" }}
               >
-                ✓
+                <Icon name="check" size={18} />
               </button>
             </>
           ) : (
             <>
-              <span
-                style={{
-                  flex: 1,
-                  fontSize: "18px",
-                  fontWeight: "700",
-                  color: "var(--text-primary)",
-                }}
-              >
+              <span className="flex-1 text-lg font-bold" style={{ color: "var(--text-primary)" }}>
                 {starter.name}
               </span>
               <button
                 onClick={() => { setNameValue(starter.name); setEditingName(true); }}
-                style={{
-                  padding: "6px 14px",
-                  borderRadius: "8px",
-                  border: "1px solid var(--border)",
-                  background: "var(--bg-secondary)",
-                  color: "var(--text-secondary)",
-                  fontSize: "13px",
-                  cursor: "pointer",
-                }}
+                className="btn-secondary"
+                style={{ width: "auto", padding: "6px 14px", fontSize: "13px" }}
               >
                 {t("editName")}
               </button>
             </>
           )}
         </div>
-        <div
-          style={{
-            display: "flex",
-            alignItems: "center",
-            gap: "8px",
-            fontSize: "14px",
-            color: "var(--text-muted)",
-          }}
-        >
+        <div className="flex items-center gap-2 text-sm" style={{ color: "var(--text-muted)" }}>
           <span>{t("hydration")}:</span>
-          <span style={{ fontWeight: "700", color: "var(--text-secondary)" }}>
+          <span className="font-bold" style={{ color: "var(--text-secondary)" }}>
             {starter.hydration}%
           </span>
-          <span style={{ fontSize: "12px" }}>({t("hydrationDesc")})</span>
+          <span className="text-xs">({t("hydrationDesc")})</span>
         </div>
       </div>
 
       {/* 2. Personal Notes */}
-      <div style={sectionStyle}>
-        <div style={labelStyle}>{t("personalNotes")}</div>
+      <div className="card">
+        <div className="section-label">{t("personalNotes")}</div>
         <textarea
           value={notesValue}
           onChange={(e) => setNotesValue(e.target.value)}
           onBlur={handleSaveNotes}
           maxLength={500}
           placeholder={t("personalNotesPlaceholder")}
-          style={{
-            width: "100%",
-            padding: "12px",
-            border: "1px solid var(--border)",
-            borderRadius: "12px",
-            fontSize: "14px",
-            resize: "none",
-            height: "80px",
-            background: "var(--bg-secondary)",
-            color: "var(--text-primary)",
-          }}
+          className="textarea-field"
+          style={{ height: "80px" }}
         />
       </div>
 
       {/* 3. Appearance */}
-      <div style={sectionStyle}>
-        <div style={labelStyle}>{t("appearance")}</div>
+      <div className="card">
+        <div className="section-label">{t("appearance")}</div>
         {/* Theme toggle */}
-        <div
-          style={{
-            display: "flex",
-            gap: "8px",
-            marginBottom: "16px",
-          }}
-        >
+        <div className="flex gap-2 mb-4">
           {["light", "dark"].map((t_) => (
             <button
               key={t_}
               onClick={() => { if (theme !== t_) toggleTheme(); }}
-              style={{
-                flex: 1,
-                padding: "10px",
-                borderRadius: "12px",
-                border: theme === t_ ? "2px solid var(--accent)" : "1px solid var(--border)",
-                background: theme === t_ ? "var(--accent-light)" : "var(--bg-secondary)",
-                color: theme === t_ ? "var(--accent)" : "var(--text-muted)",
-                fontSize: "14px",
-                fontWeight: theme === t_ ? "700" : "400",
-                cursor: "pointer",
-              }}
+              className="btn-pill flex-1"
+              data-active={theme === t_}
+              style={{ padding: "10px" }}
             >
+              <Icon name={t_ === "light" ? "sun" : "moon"} size={16} style={{ display: "inline", verticalAlign: "middle", marginRight: "6px" }} />
               {t_ === "light" ? t("themeLight") : t("themeDark")}
             </button>
           ))}
         </div>
         {/* Language grid */}
-        <div style={{ fontSize: "13px", color: "var(--text-muted)", marginBottom: "8px" }}>
+        <div className="text-xs mb-2" style={{ color: "var(--text-muted)" }}>
           {t("language")}
         </div>
-        <div
-          style={{
-            display: "grid",
-            gridTemplateColumns: "1fr 1fr 1fr",
-            gap: "8px",
-          }}
-        >
+        <div className="grid grid-cols-3 gap-2">
           {languages.map((lang) => (
             <button
               key={lang.code}
               onClick={() => handleLanguageChange(lang.code)}
-              style={{
-                padding: "10px 8px",
-                borderRadius: "10px",
-                border: language === lang.code ? "2px solid var(--accent)" : "1px solid var(--border)",
-                background: language === lang.code ? "var(--accent-light)" : "var(--bg-secondary)",
-                color: language === lang.code ? "var(--accent)" : "var(--text-secondary)",
-                fontSize: "13px",
-                fontWeight: language === lang.code ? "700" : "400",
-                cursor: "pointer",
-                display: "flex",
-                flexDirection: "column",
-                alignItems: "center",
-                gap: "4px",
-              }}
+              className="btn-pill flex flex-col items-center gap-1"
+              data-active={language === lang.code}
+              style={{ padding: "10px 8px" }}
             >
-              <span style={{ fontSize: "20px" }}>{lang.flag}</span>
-              <span>{t(lang.labelKey)}</span>
+              <span className="text-xl">{lang.flag}</span>
+              <span className="text-xs">{t(lang.labelKey)}</span>
             </button>
           ))}
         </div>
       </div>
 
       {/* 4. Beginner Mode */}
-      <div style={sectionStyle}>
+      <div className="card">
         <Toggle
           checked={beginnerMode}
           onChange={toggleBeginnerMode}
@@ -330,7 +212,7 @@ function SettingsPage() {
       </div>
 
       {/* 5. Sound */}
-      <div style={sectionStyle}>
+      <div className="card">
         <Toggle
           checked={soundEnabled}
           onChange={toggleSound}
@@ -340,9 +222,9 @@ function SettingsPage() {
       </div>
 
       {/* 6. Units (temperature) */}
-      <div style={sectionStyle}>
-        <div style={labelStyle}>{t("temperature")}</div>
-        <div style={{ display: "flex", gap: "8px" }}>
+      <div className="card">
+        <div className="section-label">{t("temperature")}</div>
+        <div className="flex gap-2">
           {[
             { unit: "c", label: t("unitCelsius") },
             { unit: "f", label: t("unitFahrenheit") },
@@ -350,17 +232,9 @@ function SettingsPage() {
             <button
               key={unit}
               onClick={() => setTempUnit(unit)}
-              style={{
-                flex: 1,
-                padding: "10px",
-                borderRadius: "12px",
-                border: tempUnit === unit ? "2px solid var(--accent)" : "1px solid var(--border)",
-                background: tempUnit === unit ? "var(--accent-light)" : "var(--bg-secondary)",
-                color: tempUnit === unit ? "var(--accent)" : "var(--text-muted)",
-                fontSize: "14px",
-                fontWeight: tempUnit === unit ? "700" : "400",
-                cursor: "pointer",
-              }}
+              className="btn-pill flex-1"
+              data-active={tempUnit === unit}
+              style={{ padding: "10px" }}
             >
               {label}
             </button>
@@ -369,40 +243,18 @@ function SettingsPage() {
       </div>
 
       {/* 7. Backup */}
-      <div style={sectionStyle}>
-        <div style={labelStyle}>{t("backupTitle")}</div>
-        <p style={{ fontSize: "13px", color: "var(--text-muted)", marginBottom: "12px" }}>
+      <div className="card">
+        <div className="section-label">{t("backupTitle")}</div>
+        <p className="text-xs mb-3" style={{ color: "var(--text-muted)" }}>
           {t("backupHint")}
         </p>
-        <div style={{ display: "flex", gap: "8px" }}>
-          <button
-            onClick={handleExport}
-            style={{
-              flex: 1,
-              padding: "12px",
-              borderRadius: "12px",
-              border: "1px solid var(--border)",
-              background: "var(--bg-secondary)",
-              color: "var(--text-secondary)",
-              fontSize: "14px",
-              cursor: "pointer",
-            }}
-          >
+        <div className="flex gap-2">
+          <button onClick={handleExport} className="btn-secondary flex-1 flex items-center justify-center gap-2">
+            <Icon name="download" size={16} />
             {t("exportBtn")}
           </button>
-          <button
-            onClick={() => fileInputRef.current?.click()}
-            style={{
-              flex: 1,
-              padding: "12px",
-              borderRadius: "12px",
-              border: "1px solid var(--border)",
-              background: "var(--bg-secondary)",
-              color: "var(--text-secondary)",
-              fontSize: "14px",
-              cursor: "pointer",
-            }}
-          >
+          <button onClick={() => fileInputRef.current?.click()} className="btn-secondary flex-1 flex items-center justify-center gap-2">
+            <Icon name="upload" size={16} />
             {t("importBtn")}
           </button>
           <input
@@ -416,27 +268,26 @@ function SettingsPage() {
       </div>
 
       {/* 8. Reset */}
-      <div style={{ ...sectionStyle, border: "1px solid var(--warning)" }}>
-        <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center" }}>
+      <div className="card" style={{ border: "1px solid var(--warning)" }}>
+        <div className="flex justify-between items-center">
           <div>
-            <div style={{ fontWeight: "700", color: "var(--warning)", fontSize: "14px" }}>
+            <div className="font-bold text-sm" style={{ color: "var(--warning)" }}>
               {t("resetApp")}
             </div>
-            <div style={{ fontSize: "12px", color: "var(--text-muted)", marginTop: "2px" }}>
+            <div className="text-xs mt-0.5" style={{ color: "var(--text-muted)" }}>
               {t("resetDesc")}
             </div>
           </div>
           <button
             onClick={() => setShowResetModal(true)}
+            className="btn-secondary"
             style={{
+              width: "auto",
               padding: "8px 16px",
-              borderRadius: "10px",
-              border: "1px solid var(--warning)",
-              background: "transparent",
+              borderColor: "var(--warning)",
               color: "var(--warning)",
               fontSize: "13px",
               fontWeight: "700",
-              cursor: "pointer",
             }}
           >
             {t("resetApp")}
@@ -447,38 +298,19 @@ function SettingsPage() {
       {/* Reset confirmation modal */}
       {showResetModal && (
         <Modal onClose={() => setShowResetModal(false)} title={t("resetConfirmTitle")}>
-          <p style={{ fontSize: "14px", color: "var(--text-secondary)", marginBottom: "20px" }}>
+          <p className="text-sm mb-5" style={{ color: "var(--text-secondary)" }}>
             {t("resetConfirmDesc")}
           </p>
           <button
             onClick={resetAll}
-            style={{
-              width: "100%",
-              padding: "14px",
-              borderRadius: "12px",
-              border: "none",
-              background: "var(--warning)",
-              color: "white",
-              fontSize: "16px",
-              fontWeight: "700",
-              cursor: "pointer",
-              marginBottom: "8px",
-            }}
+            className="btn-primary mb-2"
+            style={{ background: "var(--warning)" }}
           >
             {t("resetConfirmBtn")}
           </button>
           <button
             onClick={() => setShowResetModal(false)}
-            style={{
-              width: "100%",
-              padding: "12px",
-              borderRadius: "12px",
-              border: "1px solid var(--border)",
-              background: "transparent",
-              color: "var(--text-muted)",
-              fontSize: "14px",
-              cursor: "pointer",
-            }}
+            className="btn-secondary"
           >
             {t("resetCancelBtn")}
           </button>

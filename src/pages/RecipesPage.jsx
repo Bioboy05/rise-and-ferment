@@ -2,6 +2,7 @@ import { useState } from "react";
 import { useTranslation } from "react-i18next";
 import recipes, { recipeCategories } from "../data/recipes";
 import RecipeModal from "../components/recipes/RecipeModal";
+import Icon from "../components/common/Icon";
 
 function RecipesPage() {
   const { t } = useTranslation();
@@ -23,49 +24,24 @@ function RecipesPage() {
 
   return (
     <div className="max-w-md mx-auto" style={{ paddingBottom: "24px" }}>
-      <h2
-        style={{
-          fontFamily: "Caveat, cursive",
-          fontSize: "1.8rem",
-          color: "var(--text-primary)",
-          textAlign: "center",
-          marginBottom: "16px",
-        }}
-      >
-        {t("allRecipes")}
-      </h2>
+      <h2 className="page-title">{t("allRecipes")}</h2>
 
       {/* Category tabs */}
       <div
+        className="hide-scrollbar flex gap-2 mb-4"
         style={{
-          display: "flex",
-          gap: "8px",
-          marginBottom: "16px",
           overflowX: "auto",
           WebkitOverflowScrolling: "touch",
           scrollSnapType: "x mandatory",
-          scrollbarWidth: "none",
-          msOverflowStyle: "none",
-          paddingBottom: "4px",
         }}
       >
         {recipeCategories.map((cat) => (
           <button
             key={cat.id}
             onClick={() => setActiveCategory(cat.id)}
-            style={{
-              padding: "8px 16px",
-              borderRadius: "20px",
-              border: activeCategory === cat.id ? "2px solid var(--accent)" : "1px solid var(--border)",
-              background: activeCategory === cat.id ? "var(--accent-light)" : "var(--bg-card)",
-              color: activeCategory === cat.id ? "var(--accent)" : "var(--text-secondary)",
-              fontSize: "14px",
-              fontWeight: activeCategory === cat.id ? "700" : "400",
-              cursor: "pointer",
-              whiteSpace: "nowrap",
-              scrollSnapAlign: "start",
-              flexShrink: 0,
-            }}
+            className="btn-pill"
+            data-active={activeCategory === cat.id}
+            style={{ scrollSnapAlign: "start" }}
           >
             {cat.icon} {t(cat.labelKey)}
           </button>
@@ -73,17 +49,12 @@ function RecipesPage() {
       </div>
 
       {/* Recipe grid */}
-      <div
-        style={{
-          display: "grid",
-          gridTemplateColumns: "1fr 1fr",
-          gap: "10px",
-        }}
-      >
+      <div className="grid grid-cols-2 gap-2.5">
         {filtered.map((recipe) => (
           <button
             key={recipe.id}
             onClick={() => setSelectedRecipe(recipe)}
+            aria-label={t(recipe.titleKey)}
             style={{
               background: `linear-gradient(135deg, ${recipe.gradient[0]}, ${recipe.gradient[1]})`,
               borderRadius: "16px",
@@ -99,28 +70,19 @@ function RecipesPage() {
           >
             <span style={{ fontSize: "32px" }}>{recipe.icon}</span>
             <div>
-              <div
-                style={{
-                  fontSize: "14px",
-                  fontWeight: "700",
-                  color: "white",
-                  marginBottom: "4px",
-                  lineHeight: "1.2",
-                }}
-              >
+              <div className="text-sm font-bold" style={{ color: "white", marginBottom: "4px", lineHeight: "1.2" }}>
                 {t(recipe.titleKey)}
               </div>
-              <div
-                style={{
-                  display: "flex",
-                  alignItems: "center",
-                  gap: "6px",
-                  fontSize: "11px",
-                  color: "rgba(255,255,255,0.8)",
-                }}
-              >
-                <span>{"⭐".repeat(recipe.difficulty)}</span>
-                <span>⏱ {formatTime(recipe.timeMinutes)}</span>
+              <div className="flex items-center gap-1.5" style={{ fontSize: "11px", color: "rgba(255,255,255,0.8)" }}>
+                <span>
+                  {Array.from({ length: recipe.difficulty }, (_, i) => (
+                    <Icon key={i} name="star-filled" size={10} style={{ display: "inline" }} />
+                  ))}
+                </span>
+                <span>
+                  <Icon name="clock" size={10} style={{ display: "inline", verticalAlign: "middle", marginRight: "2px" }} />
+                  {formatTime(recipe.timeMinutes)}
+                </span>
               </div>
             </div>
           </button>

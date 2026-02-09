@@ -29,26 +29,12 @@ function HistoryPage() {
   if (totalFeedings === 0) {
     return (
       <div className="max-w-md mx-auto">
-        <div style={{ textAlign: "center", padding: "48px 20px" }}>
+        <div className="text-center" style={{ padding: "48px 20px" }}>
           <Icon name="clipboard" size={48} style={{ color: "var(--accent)" }} />
-          <h2
-            style={{
-              fontFamily: "Caveat, cursive",
-              fontSize: "1.6rem",
-              color: "var(--text-primary)",
-              marginTop: "16px",
-            }}
-          >
+          <h2 className="page-title" style={{ marginTop: "16px" }}>
             {t("historyTitle")}
           </h2>
-          <p
-            style={{
-              color: "var(--text-muted)",
-              fontSize: "14px",
-              marginTop: "12px",
-              lineHeight: "1.5",
-            }}
-          >
+          <p className="text-sm" style={{ color: "var(--text-muted)", marginTop: "12px", lineHeight: "1.5" }}>
             {t("historyEmpty")}
           </p>
         </div>
@@ -58,151 +44,53 @@ function HistoryPage() {
 
   return (
     <div className="max-w-md mx-auto" style={{ paddingBottom: "24px" }}>
-      <h2
-        style={{
-          fontFamily: "Caveat, cursive",
-          fontSize: "1.8rem",
-          color: "var(--text-primary)",
-          textAlign: "center",
-          marginBottom: "16px",
-        }}
-      >
-        {t("historyTitle")}
-      </h2>
+      <h2 className="page-title">{t("historyTitle")}</h2>
 
       {/* Mini stats bar */}
-      <div
-        style={{
-          display: "flex",
-          gap: "8px",
-          marginBottom: "16px",
-        }}
-      >
-        <div
-          style={{
-            flex: 1,
-            background: "var(--bg-card)",
-            borderRadius: "12px",
-            padding: "12px",
-            textAlign: "center",
-          }}
-        >
-          <div
-            style={{
-              fontSize: "1.4rem",
-              fontWeight: "800",
-              color: "var(--accent)",
-            }}
-          >
-            {totalFeedings}
-          </div>
-          <div style={{ fontSize: "12px", color: "var(--text-muted)" }}>
-            {t("historyFeedingsCount")}
-          </div>
+      <div className="flex gap-2 mb-4">
+        <div className="card flex-1 text-center" style={{ marginBottom: 0 }}>
+          <div className="stat-value">{totalFeedings}</div>
+          <div className="stat-label">{t("historyFeedingsCount")}</div>
         </div>
-        <div
-          style={{
-            flex: 1,
-            background: "var(--bg-card)",
-            borderRadius: "12px",
-            padding: "12px",
-            textAlign: "center",
-          }}
-        >
-          <div
-            style={{
-              fontSize: "1.4rem",
-              fontWeight: "800",
-              color: "var(--accent)",
-            }}
-          >
-            {avgTemp ? `${avgTemp}°` : "—"}
-          </div>
-          <div style={{ fontSize: "12px", color: "var(--text-muted)" }}>
-            {t("historyAvgTemp")}
-          </div>
+        <div className="card flex-1 text-center" style={{ marginBottom: 0 }}>
+          <div className="stat-value">{avgTemp ? `${avgTemp}°` : "—"}</div>
+          <div className="stat-label">{t("historyAvgTemp")}</div>
         </div>
       </div>
 
       {/* Feeding list grouped by date */}
       {dateGroups.map(([dateKey, entries]) => (
-        <div key={dateKey} style={{ marginBottom: "16px" }}>
-          <div
-            style={{
-              fontSize: "13px",
-              fontWeight: "700",
-              color: "var(--text-muted)",
-              textTransform: "uppercase",
-              letterSpacing: "0.5px",
-              marginBottom: "8px",
-              paddingLeft: "4px",
-            }}
-          >
+        <div key={dateKey} className="mb-4">
+          <div className="section-label" style={{ paddingLeft: "4px" }}>
             {dateKey}
           </div>
-          <div
-            style={{
-              display: "flex",
-              flexDirection: "column",
-              gap: "6px",
-            }}
-          >
+          <div className="flex flex-col gap-1.5">
             {entries.map((entry, i) => (
               <div
                 key={i}
-                style={{
-                  background: "var(--bg-card)",
-                  borderRadius: "12px",
-                  padding: "12px 16px",
-                  display: "flex",
-                  alignItems: "center",
-                  gap: "12px",
-                }}
+                className="card flex items-center gap-3"
+                style={{ marginBottom: 0, padding: "12px 16px" }}
               >
                 {/* Time */}
-                <div
-                  style={{
-                    fontSize: "13px",
-                    color: "var(--text-muted)",
-                    minWidth: "60px",
-                  }}
-                >
+                <div className="text-xs" style={{ color: "var(--text-muted)", minWidth: "60px" }}>
                   {formatTimeAgo(entry.time, t)}
                 </div>
 
                 {/* Amount + details */}
-                <div style={{ flex: 1 }}>
-                  <div
-                    style={{
-                      fontSize: "15px",
-                      fontWeight: "700",
-                      color: "var(--text-primary)",
-                    }}
-                  >
+                <div className="flex-1">
+                  <div className="text-sm font-bold" style={{ color: "var(--text-primary)" }}>
                     {t("historyAmount", { amount: entry.amount })}
                     {entry.withBran && (
                       <span
-                        style={{
-                          fontSize: "12px",
-                          color: "var(--accent)",
-                          marginLeft: "6px",
-                          display: "inline-flex",
-                          alignItems: "center",
-                          gap: "2px",
-                        }}
+                        className="inline-flex items-center gap-0.5 ml-1.5"
+                        style={{ fontSize: "12px", color: "var(--accent)" }}
                       >
                         <Icon name="wheat" size={12} /> {t("historyWithBran")}
                       </span>
                     )}
                   </div>
                   {entry.note && (
-                    <div
-                      style={{
-                        fontSize: "12px",
-                        color: "var(--text-muted)",
-                        marginTop: "2px",
-                      }}
-                    >
+                    <div className="text-xs mt-0.5" style={{ color: "var(--text-muted)" }}>
                       {entry.note}
                     </div>
                   )}
@@ -211,15 +99,16 @@ function HistoryPage() {
                 {/* Temperature */}
                 {entry.temp != null && (
                   <div
+                    className="text-xs flex items-center gap-1"
                     style={{
-                      fontSize: "13px",
                       color: "var(--text-secondary)",
                       background: "var(--bg-secondary)",
                       borderRadius: "8px",
                       padding: "4px 8px",
                     }}
                   >
-                    <Icon name="thermometer" size={14} style={{ display: "inline", verticalAlign: "middle", marginRight: "2px" }} />{t("historyTemp", { temp: entry.temp })}
+                    <Icon name="thermometer" size={14} />
+                    {t("historyTemp", { temp: entry.temp })}
                   </div>
                 )}
               </div>

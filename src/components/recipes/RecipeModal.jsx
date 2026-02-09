@@ -1,6 +1,7 @@
 import { useTranslation } from "react-i18next";
 import Modal from "../common/Modal";
 import TipBox from "../common/TipBox";
+import Icon from "../common/Icon";
 
 function RecipeModal({ recipe, onClose }) {
   const { t } = useTranslation();
@@ -38,11 +39,20 @@ function RecipeModal({ recipe, onClose }) {
           color: "var(--text-muted)",
         }}
       >
-        <span>
-          {"⭐".repeat(recipe.difficulty)}{"☆".repeat(3 - recipe.difficulty)}
+        <span className="flex items-center gap-0.5">
+          {Array.from({ length: recipe.difficulty }, (_, i) => (
+            <Icon key={`f${i}`} name="star-filled" size={14} style={{ color: "var(--accent)" }} />
+          ))}
+          {Array.from({ length: 3 - recipe.difficulty }, (_, i) => (
+            <Icon key={`e${i}`} name="star" size={14} />
+          ))}
         </span>
-        <span>⏱ {formatTime(recipe.timeMinutes)}</span>
-        <span>🍽 {recipe.servings} {t("recipeServings")}</span>
+        <span className="flex items-center gap-1">
+          <Icon name="clock" size={14} /> {formatTime(recipe.timeMinutes)}
+        </span>
+        <span className="flex items-center gap-1">
+          <Icon name="utensils" size={14} /> {recipe.servings} {t("recipeServings")}
+        </span>
       </div>
 
       {/* Ingredients */}
