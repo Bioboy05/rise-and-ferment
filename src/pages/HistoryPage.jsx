@@ -1,6 +1,7 @@
 import { useTranslation } from "react-i18next";
 import useActiveStarter from "../hooks/useActiveStarter";
 import { formatTimeAgo } from "../utils/dateHelpers";
+import Icon from "../components/common/Icon";
 
 function HistoryPage() {
   const { t } = useTranslation();
@@ -29,7 +30,7 @@ function HistoryPage() {
     return (
       <div className="max-w-md mx-auto">
         <div style={{ textAlign: "center", padding: "48px 20px" }}>
-          <span style={{ fontSize: "48px" }}>📋</span>
+          <Icon name="clipboard" size={48} style={{ color: "var(--accent)" }} />
           <h2
             style={{
               fontFamily: "Caveat, cursive",
@@ -185,9 +186,12 @@ function HistoryPage() {
                           fontSize: "12px",
                           color: "var(--accent)",
                           marginLeft: "6px",
+                          display: "inline-flex",
+                          alignItems: "center",
+                          gap: "2px",
                         }}
                       >
-                        🌾 {t("historyWithBran")}
+                        <Icon name="wheat" size={12} /> {t("historyWithBran")}
                       </span>
                     )}
                   </div>
@@ -215,7 +219,7 @@ function HistoryPage() {
                       padding: "4px 8px",
                     }}
                   >
-                    🌡️ {t("historyTemp", { temp: entry.temp })}
+                    <Icon name="thermometer" size={14} style={{ display: "inline", verticalAlign: "middle", marginRight: "2px" }} />{t("historyTemp", { temp: entry.temp })}
                   </div>
                 )}
               </div>

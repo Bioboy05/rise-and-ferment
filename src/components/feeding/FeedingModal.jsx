@@ -4,6 +4,7 @@ import useStarterStore from "../../store/useStarterStore";
 import useSettingsStore from "../../store/useSettingsStore";
 import Modal from "../common/Modal";
 import Toggle from "../common/Toggle";
+import Icon from "../common/Icon";
 
 function FeedingModal({ onClose }) {
   const { t } = useTranslation();
@@ -64,7 +65,7 @@ function FeedingModal({ onClose }) {
           color: "var(--text-secondary)",
         }}
       >
-        <strong>🎯 {t("technique111")}</strong>
+        <strong><Icon name="target" size={16} style={{ display: "inline", verticalAlign: "middle", marginRight: "4px" }} />{t("technique111")}</strong>
         <br />
         {t("technique111Desc")}
       </div>
@@ -164,7 +165,7 @@ function FeedingModal({ onClose }) {
         <br />• {amount}g {t("feedWaterTemp")}
         <br />•{" "}
         {useBran
-          ? `${whiteFlour}g ${t("feedWhiteFlour")} + ${branAmount}g ${t("feedBran")} 🌾`
+          ? `${whiteFlour}g ${t("feedWhiteFlour")} + ${branAmount}g ${t("feedBran")} `
           : `${amount}g ${t("feedWhiteFlour")}`}
       </div>
 
@@ -180,7 +181,7 @@ function FeedingModal({ onClose }) {
         <Toggle
           checked={useBran}
           onChange={setUseBran}
-          label={`🌾 ${t("addBran")}`}
+          label={` ${t("addBran")}`}
           description={t("branHint")}
         />
         {useBran && (
@@ -226,7 +227,7 @@ function FeedingModal({ onClose }) {
             marginBottom: "12px",
           }}
         >
-          <span style={{ fontSize: "18px" }}>💡</span>
+          <Icon name="lightbulb" size={18} style={{ color: "var(--accent)" }} />
           <strong
             style={{ color: "var(--text-secondary)", fontSize: "14px" }}
           >
@@ -293,7 +294,7 @@ function FeedingModal({ onClose }) {
           marginBottom: "12px",
         }}
       >
-        <span>🌡️</span>
+        <Icon name="thermometer" size={18} />
         <span
           style={{
             flex: 1,

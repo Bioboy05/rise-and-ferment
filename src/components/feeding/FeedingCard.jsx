@@ -3,6 +3,7 @@ import { useTranslation } from "react-i18next";
 import useStarterStore from "../../store/useStarterStore";
 import { getTimeSince } from "../../utils/dateHelpers";
 import FeedingModal from "./FeedingModal";
+import Icon from "../common/Icon";
 
 function FeedingCard() {
   const { t } = useTranslation();
@@ -64,7 +65,7 @@ function FeedingCard() {
               fontWeight: "600",
             }}
           >
-            ⏰ {t("notFedFor", { hours: Math.floor(hoursSinceLastFed) })}
+            <Icon name="clock" size={16} style={{ display: "inline", verticalAlign: "middle", marginRight: "4px" }} />{t("notFedFor", { hours: Math.floor(hoursSinceLastFed) })}
           </div>
         )}
 

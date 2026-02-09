@@ -1,4 +1,5 @@
 import useSettingsStore from "../../store/useSettingsStore";
+import Icon from "../common/Icon";
 
 function ThemeToggle() {
   const { theme, toggleTheme } = useSettingsStore();
@@ -6,12 +7,11 @@ function ThemeToggle() {
   return (
     <button
       onClick={toggleTheme}
-      className="text-2xl rounded-lg hover:opacity-75 transition flex items-center justify-center"
-      style={{ minWidth: "44px", minHeight: "44px" }}
-      title={theme === "light" ? "Dark mode" : "Light mode"}
+      className="rounded-lg hover:opacity-75 transition flex items-center justify-center"
+      style={{ minWidth: "44px", minHeight: "44px", color: "var(--text-muted)" }}
       aria-label={theme === "light" ? "Dark mode" : "Light mode"}
     >
-      {theme === "light" ? "🌙" : "☀️"}
+      <Icon name={theme === "light" ? "moon" : "sun"} size={22} />
     </button>
   );
 }

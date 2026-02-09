@@ -1,6 +1,7 @@
 import { useTranslation } from "react-i18next";
 import useActiveStarter from "../hooks/useActiveStarter";
 import useStreak from "../hooks/useStreak";
+import Icon from "../components/common/Icon";
 
 const dayKeys = ["daySun", "dayMon", "dayTue", "dayWed", "dayThu", "dayFri", "daySat"];
 
@@ -57,7 +58,7 @@ function StatsPage() {
     return (
       <div className="max-w-md mx-auto">
         <div style={{ textAlign: "center", padding: "48px 20px" }}>
-          <span style={{ fontSize: "48px" }}>📊</span>
+          <Icon name="stats" size={48} style={{ color: "var(--accent)" }} />
           <h2
             style={{
               fontFamily: "Caveat, cursive",

@@ -140,7 +140,7 @@ function RecipeModal({ recipe, onClose }) {
 
       {/* Tip */}
       {recipe.tipKey && (
-        <TipBox type="info" icon="💡">
+        <TipBox type="info">
           <strong>{t("recipeTips")}:</strong> {t(recipe.tipKey)}
         </TipBox>
       )}

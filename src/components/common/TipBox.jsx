@@ -1,3 +1,5 @@
+import Icon from "./Icon";
+
 const typeColors = {
   info: "var(--accent)",
   warning: "var(--warning)",
@@ -5,8 +7,16 @@ const typeColors = {
   danger: "#e53935",
 };
 
+const typeIcons = {
+  info: "lightbulb",
+  warning: "alert",
+  success: "check",
+  danger: "alert",
+};
+
 function TipBox({ type = "info", icon, children }) {
   const borderColor = typeColors[type] || typeColors.info;
+  const iconName = typeIcons[type] || "lightbulb";
 
   return (
     <div
@@ -17,12 +27,13 @@ function TipBox({ type = "info", icon, children }) {
         padding: "12px 16px",
         fontSize: "14px",
         color: "var(--text-secondary)",
+        display: "flex",
+        gap: "10px",
+        alignItems: "flex-start",
       }}
     >
-      {icon && (
-        <span style={{ marginRight: "8px", fontSize: "16px" }}>{icon}</span>
-      )}
-      {children}
+      <Icon name={icon || iconName} size={18} style={{ color: borderColor, flexShrink: 0, marginTop: "1px" }} />
+      <div>{children}</div>
     </div>
   );
 }

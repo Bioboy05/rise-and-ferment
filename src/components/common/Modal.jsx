@@ -1,3 +1,5 @@
+import Icon from "./Icon";
+
 function Modal({ onClose, title, children }) {
   return (
     <div
@@ -66,7 +68,7 @@ function Modal({ onClose, title, children }) {
               flexShrink: 0,
             }}
           >
-            ✕
+            <Icon name="close" size={18} />
           </button>
         </div>
 
