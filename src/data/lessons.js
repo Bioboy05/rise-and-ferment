@@ -1,110 +1,104 @@
 /**
- * Sourdough starter lessons.
- *
- * Each lesson uses i18n keys for title/short/content.
- * The `contentKey` points to an i18n key containing HTML content —
- * components should sanitize with DOMPurify before rendering.
- *
- * When the full HTML lesson content is added to i18n files (Phase 3+),
- * each lesson's contentKey will map to the complete lesson text.
- * For now, we define the structure and metadata.
+ * Sourdough starter lessons — 14 educational modules.
+ * Icons reference the Icon component's name strings.
+ * Content rendered as plain text with white-space: pre-line.
  */
 
 const lessons = [
   {
     id: 1,
-    icon: "🌾",
+    icon: "wheat",
     titleKey: "lessonTitle1",
     shortKey: "lessonShort1",
     contentKey: "lessonContent1",
   },
   {
     id: 2,
-    icon: "🌡️",
+    icon: "thermometer",
     titleKey: "lessonTitle2",
     shortKey: "lessonShort2",
     contentKey: "lessonContent2",
   },
   {
     id: 3,
-    icon: "💧",
+    icon: "droplet",
     titleKey: "lessonTitle3",
     shortKey: "lessonShort3",
     contentKey: "lessonContent3",
   },
   {
     id: 4,
-    icon: "🎯",
+    icon: "target",
     titleKey: "lessonTitle4",
     shortKey: "lessonShort4",
     contentKey: "lessonContent4",
   },
   {
     id: 5,
-    icon: "🔬",
+    icon: "flask",
     titleKey: "lessonTitle5",
     shortKey: "lessonShort5",
     contentKey: "lessonContent5",
   },
   {
     id: 6,
-    icon: "🍞",
+    icon: "bread",
     titleKey: "lessonTitle6",
     shortKey: "lessonShort6",
     contentKey: "lessonContent6",
   },
   {
     id: 7,
-    icon: "❄️",
+    icon: "star",
     titleKey: "lessonTitle7",
     shortKey: "lessonShort7",
     contentKey: "lessonContent7",
   },
   {
     id: 8,
-    icon: "⚗️",
+    icon: "flask",
     titleKey: "lessonTitle8",
     shortKey: "lessonShort8",
     contentKey: "lessonContent8",
   },
   {
     id: 9,
-    icon: "🧪",
+    icon: "droplet",
     titleKey: "lessonTitle9",
     shortKey: "lessonShort9",
     contentKey: "lessonContent9",
   },
   {
     id: 10,
-    icon: "🏠",
+    icon: "thermometer",
     titleKey: "lessonTitle10",
     shortKey: "lessonShort10",
     contentKey: "lessonContent10",
   },
   {
     id: 11,
-    icon: "🌿",
+    icon: "wheat",
     titleKey: "lessonTitle11",
     shortKey: "lessonShort11",
     contentKey: "lessonContent11",
   },
   {
     id: 12,
-    icon: "📏",
+    icon: "target",
     titleKey: "lessonTitle12",
     shortKey: "lessonShort12",
     contentKey: "lessonContent12",
   },
   {
     id: 13,
-    icon: "🔄",
+    icon: "clock",
     titleKey: "lessonTitle13",
     shortKey: "lessonShort13",
     contentKey: "lessonContent13",
   },
   {
     id: 14,
-    icon: "🎓",
+    icon: "star",
     titleKey: "lessonTitle14",
     shortKey: "lessonShort14",
     contentKey: "lessonContent14",
