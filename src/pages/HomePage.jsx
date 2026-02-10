@@ -1,11 +1,14 @@
 import { useTranslation } from "react-i18next";
 import useStarterStore from "../store/useStarterStore";
 import FeedingCard from "../components/feeding/FeedingCard";
+import DayGuide from "../components/starter/DayGuide";
 
 function HomePage() {
   const { t } = useTranslation();
   const getActiveStarter = useStarterStore((state) => state.getActiveStarter);
   const starter = getActiveStarter();
+
+  const showDayGuide = starter.isNewStarter && starter.currentDay <= 14;
 
   return (
     <div className="max-w-md mx-auto">
@@ -23,6 +26,8 @@ function HomePage() {
           {t("hydration")}: {starter.hydration}% • {t("flourLabel")}: {starter.flourType}
         </p>
       </div>
+
+      {showDayGuide && <DayGuide />}
 
       <FeedingCard />
     </div>
