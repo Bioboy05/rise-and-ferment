@@ -7,6 +7,7 @@ const VALID_TEMP_UNITS = ["c", "f"];
 const useSettingsStore = create(
   persist(
     (set) => ({
+  onboardingComplete: false,
   theme: "light",
   language: "ro",
   beginnerMode: true,
@@ -41,6 +42,7 @@ const useSettingsStore = create(
   setTempUnit: (unit) => {
     if (VALID_TEMP_UNITS.includes(unit)) set({ tempUnit: unit });
   },
+  completeOnboarding: () => set({ onboardingComplete: true }),
   incrementSessions: () => set((state) => ({ sessions: state.sessions + 1 })),
 
   resetAll: () => {
@@ -52,6 +54,7 @@ const useSettingsStore = create(
     {
       name: "riseFermentSettings",
       partialize: (state) => ({
+        onboardingComplete: state.onboardingComplete,
         theme: state.theme,
         language: state.language,
         beginnerMode: state.beginnerMode,

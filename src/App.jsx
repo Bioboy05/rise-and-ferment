@@ -8,10 +8,12 @@ import HistoryPage from "./pages/HistoryPage";
 import RecipesPage from "./pages/RecipesPage";
 import StatsPage from "./pages/StatsPage";
 import SettingsPage from "./pages/SettingsPage";
+import OnboardingPage from "./pages/OnboardingPage";
 
 function App() {
   const theme = useSettingsStore((state) => state.theme);
   const language = useSettingsStore((state) => state.language);
+  const onboardingComplete = useSettingsStore((state) => state.onboardingComplete);
 
   useEffect(() => {
     document.documentElement.setAttribute("data-theme", theme);
@@ -20,6 +22,10 @@ function App() {
   useEffect(() => {
     document.documentElement.lang = language;
   }, [language]);
+
+  if (!onboardingComplete) {
+    return <OnboardingPage />;
+  }
 
   return (
     <div
