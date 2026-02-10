@@ -1,14 +1,19 @@
+import { useState } from "react";
 import { useTranslation } from "react-i18next";
 import useStarterStore from "../store/useStarterStore";
 import FeedingCard from "../components/feeding/FeedingCard";
 import DayGuide from "../components/starter/DayGuide";
+import DailyTaskCard from "../components/starter/DailyTaskCard";
+import FeedingModal from "../components/feeding/FeedingModal";
 
 function HomePage() {
   const { t } = useTranslation();
   const getActiveStarter = useStarterStore((state) => state.getActiveStarter);
   const starter = getActiveStarter();
+  const [taskFeedModal, setTaskFeedModal] = useState(false);
 
   const showDayGuide = starter.isNewStarter && starter.currentDay <= 14;
+  const showDailyTask = starter.isNewStarter && starter.currentDay <= 7;
 
   return (
     <div className="max-w-md mx-auto">
@@ -28,8 +33,11 @@ function HomePage() {
       </div>
 
       {showDayGuide && <DayGuide />}
+      {showDailyTask && <DailyTaskCard onFeed={() => setTaskFeedModal(true)} />}
 
       <FeedingCard />
+
+      {taskFeedModal && <FeedingModal onClose={() => setTaskFeedModal(false)} />}
     </div>
   );
 }
