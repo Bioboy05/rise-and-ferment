@@ -775,6 +775,225 @@ body {
   transform: scale(0.98);
 }
 
+/* Splash Screen */
+.splash-screen {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(135deg, #fdf6e3 0%, #f5e6d3 100%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  z-index: 9999;
+  transition: opacity 0.5s ease, visibility 0.5s ease;
+}
+
+[data-theme="dark"] .splash-screen {
+  background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+}
+
+.splash-screen.hidden {
+  opacity: 0;
+  visibility: hidden;
+}
+
+.splash-logo {
+  font-size: 100px;
+  animation: splashBounce 1s ease-in-out;
+}
+
+.splash-title {
+  font-family: "Caveat", cursive;
+  font-size: 36px;
+  color: #8b7355;
+  margin-top: 16px;
+  animation: splashFadeIn 1s ease 0.3s both;
+}
+
+[data-theme="dark"] .splash-title {
+  color: #d4a574;
+}
+
+.splash-subtitle {
+  font-size: 14px;
+  color: #a89080;
+  margin-top: 8px;
+  animation: splashFadeIn 1s ease 0.5s both;
+}
+
+.splash-loader {
+  width: 40px;
+  height: 40px;
+  border: 3px solid #e8dcc8;
+  border-top-color: #8b7355;
+  border-radius: 50%;
+  margin-top: 32px;
+  animation: splashSpin 1s linear infinite, splashFadeIn 1s ease 0.7s both;
+}
+
+[data-theme="dark"] .splash-loader {
+  border-color: #333;
+  border-top-color: #d4a574;
+}
+
+@keyframes splashBounce {
+  0% {
+    transform: scale(0) rotate(-10deg);
+    opacity: 0;
+  }
+  50% {
+    transform: scale(1.2) rotate(5deg);
+  }
+  100% {
+    transform: scale(1) rotate(0deg);
+    opacity: 1;
+  }
+}
+
+@keyframes splashFadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes splashSpin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* Confetti */
+.confetti-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  pointer-events: none;
+  z-index: 9998;
+  overflow: hidden;
+}
+
+.confetti {
+  position: absolute;
+  width: 10px;
+  height: 10px;
+  top: -10px;
+  animation: confettiFall 3s ease-out forwards;
+}
+
+.confetti.circle {
+  border-radius: 50%;
+}
+
+.confetti.square {
+  border-radius: 2px;
+}
+
+.confetti.triangle {
+  width: 0;
+  height: 0;
+  border-left: 5px solid transparent;
+  border-right: 5px solid transparent;
+  border-bottom: 10px solid currentColor;
+  background: none !important;
+}
+
+@keyframes confettiFall {
+  0% {
+    transform: translateY(0) rotate(0deg) scale(1);
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(100vh) rotate(720deg) scale(0.5);
+    opacity: 0;
+  }
+}
+
+/* Celebration overlay */
+.celebration-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.7);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  z-index: 9997;
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.3s ease;
+}
+
+.celebration-overlay.active {
+  opacity: 1;
+  visibility: visible;
+}
+
+.celebration-content {
+  background: var(--bg-card);
+  border-radius: 24px;
+  padding: 32px;
+  text-align: center;
+  max-width: 300px;
+  transform: scale(0.8);
+  transition: transform 0.3s ease;
+}
+
+.celebration-overlay.active .celebration-content {
+  transform: scale(1);
+}
+
+.celebration-emoji {
+  font-size: 80px;
+  animation: celebrationPulse 0.5s ease infinite alternate;
+}
+
+.celebration-title {
+  font-family: "Caveat", cursive;
+  font-size: 28px;
+  color: var(--accent);
+  margin: 16px 0 8px;
+}
+
+.celebration-text {
+  font-size: 14px;
+  color: var(--text-secondary);
+  margin-bottom: 20px;
+}
+
+.celebration-btn {
+  background: var(--accent);
+  color: white;
+  border: none;
+  padding: 14px 32px;
+  border-radius: 25px;
+  font-family: "Nunito", sans-serif;
+  font-size: 16px;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+@keyframes celebrationPulse {
+  from {
+    transform: scale(1);
+  }
+  to {
+    transform: scale(1.1);
+  }
+}
+
 .info-card {
   margin: 0 20px 16px;
   padding: 16px 20px;
