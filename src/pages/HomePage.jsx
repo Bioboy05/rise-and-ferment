@@ -6,6 +6,7 @@ import useSettingsStore from "../store/useSettingsStore";
 import useStreak from "../hooks/useStreak";
 import FeedingModal from "../components/feeding/FeedingModal";
 import dailyTasks from "../data/dailyTasks";
+import { getDailyQuote, getStreakQuote } from "../data/dailyQuotes";
 import troubleshooting from "../data/troubleshooting";
 import Modal from "../components/common/Modal";
 import { formatTimeAgo } from "../utils/dateHelpers";
@@ -35,6 +36,14 @@ function HomePage() {
     if (displayDay >= 7) return t("progressReady");
     return t("progressGrowing");
   }, [displayDay, isPreview, t]);
+
+  const motivationalKey = useMemo(() => {
+    if (isPreview) return null;
+    const streakKey = getStreakQuote(streak);
+    if (streakKey) return streakKey;
+    if (starter.isNewStarter) return getDailyQuote(displayDay);
+    return null;
+  }, [displayDay, isPreview, starter.isNewStarter, streak]);
 
   useEffect(() => {
     if (!starter.lastCompletedDate) return;
@@ -178,6 +187,12 @@ function HomePage() {
             <div className="status-main">{dayTask ? t(dayTask.titleKey) : t("statusWelcome")}</div>
             <div className="status-sub">{dayTask ? t(dayTask.taskKey) : t("statusWelcomeSub")}</div>
           </div>
+
+          {motivationalKey && (
+            <div className="motivational-card">
+              <span className="motivational-text">{t(motivationalKey)}</span>
+            </div>
+          )}
 
           {showDayGuide && (
             <div className="day-tracker">
@@ -366,6 +381,12 @@ function HomePage() {
             <div className="status-main">{status.main}</div>
             <div className={`status-sub ${status.cls}`}>{status.sub}</div>
           </div>
+
+          {motivationalKey && (
+            <div className="motivational-card">
+              <span className="motivational-text">{t(motivationalKey)}</span>
+            </div>
+          )}
 
           <button
             className={`main-btn ${status.cls === "urgent" ? "urgent" : ""}`}

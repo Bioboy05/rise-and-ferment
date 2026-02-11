@@ -633,6 +633,47 @@ body {
   margin-top: 16px;
 }
 
+/* Motivational card */
+.motivational-card {
+  background: linear-gradient(135deg, var(--accent-light) 0%, var(--accent-medium) 100%);
+  border-radius: 20px;
+  padding: 18px 22px;
+  margin: 0 20px 20px;
+  text-align: center;
+  border-left: 5px solid var(--accent);
+  animation: motivationalFadeIn 0.5s ease;
+  box-shadow: 0 4px 12px var(--shadow);
+  position: relative;
+  overflow: hidden;
+}
+
+.motivational-card::before {
+  content: "✨";
+  position: absolute;
+  top: 8px;
+  right: 12px;
+  font-size: 18px;
+  opacity: 0.6;
+}
+
+.motivational-text {
+  font-size: 15px;
+  color: var(--text-secondary);
+  line-height: 1.6;
+  font-style: italic;
+}
+
+@keyframes motivationalFadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
 /* SETTINGS */
 .settings-section {
   margin-bottom: 24px;
