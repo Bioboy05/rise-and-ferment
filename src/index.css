@@ -1261,3 +1261,203 @@ body::after {
   cursor: not-allowed;
 }
 
+/* ========================================
+   RECIPE CARDS - New Grid Design
+   ======================================== */
+.recipe-category-title {
+  font-family: "Caveat", cursive;
+  font-size: 24px;
+  font-weight: 600;
+  color: var(--text-secondary);
+  margin: 24px 0 16px;
+  padding-bottom: 8px;
+  border-bottom: 2px dashed var(--border);
+}
+
+.recipe-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 12px;
+  margin-bottom: 8px;
+}
+
+@media (min-width: 400px) {
+  .recipe-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 16px;
+  }
+}
+
+.recipe-card-new {
+  background: var(--bg-card);
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: 0 2px 8px var(--shadow);
+  cursor: pointer;
+  transition: all 0.2s ease;
+  border: 1px solid var(--border);
+}
+
+.recipe-card-new:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 16px var(--shadow);
+}
+
+.recipe-card-new:active {
+  transform: scale(0.98);
+}
+
+.recipe-card-img {
+  height: 100px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+
+.recipe-card-img svg {
+  opacity: 0.9;
+  filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.2));
+}
+
+.recipe-card-info {
+  padding: 12px;
+}
+
+.recipe-card-title {
+  font-family: "Caveat", cursive;
+  font-size: 20px;
+  font-weight: 600;
+  color: var(--text-primary);
+  line-height: 1.2;
+}
+
+.recipe-card-meta {
+  font-size: 12px;
+  color: var(--text-muted);
+  margin-top: 4px;
+}
+
+/* ========================================
+   RECIPE MODAL STYLES
+   ======================================== */
+.recipe-modal-meta {
+  display: flex;
+  gap: 16px;
+  justify-content: center;
+  margin-bottom: 16px;
+  padding: 12px;
+  background: var(--accent-light);
+  border-radius: 12px;
+}
+
+.recipe-modal-meta span {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 14px;
+  color: var(--text-secondary);
+}
+
+.recipe-modal-intro {
+  text-align: center;
+  font-style: italic;
+  color: var(--text-muted);
+  margin-bottom: 20px;
+  padding: 0 12px;
+  line-height: 1.6;
+}
+
+.recipe-modal-section {
+  margin-bottom: 24px;
+}
+
+.recipe-section-title {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-family: "Caveat", cursive;
+  font-size: 22px;
+  color: var(--accent);
+  margin-bottom: 12px;
+  padding-bottom: 8px;
+  border-bottom: 2px dashed var(--border);
+}
+
+.recipe-section-title svg {
+  color: var(--accent);
+}
+
+.recipe-ingredients {
+  list-style: none;
+  padding: 0;
+}
+
+.recipe-ingredients li {
+  padding: 10px 12px;
+  background: var(--bg-secondary);
+  margin-bottom: 6px;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 15px;
+}
+
+.recipe-ingredients li::before {
+  content: "";
+  width: 8px;
+  height: 8px;
+  background: var(--accent);
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+.recipe-steps {
+  padding-left: 0;
+  counter-reset: step-counter;
+  list-style: none;
+}
+
+.recipe-steps li {
+  position: relative;
+  padding: 14px 12px 14px 50px;
+  background: var(--bg-card);
+  margin-bottom: 8px;
+  border-radius: 12px;
+  border: 1px solid var(--border);
+  font-size: 15px;
+  line-height: 1.5;
+  counter-increment: step-counter;
+}
+
+.recipe-steps li::before {
+  content: counter(step-counter);
+  position: absolute;
+  left: 12px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 28px;
+  height: 28px;
+  background: var(--accent);
+  color: white;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+  font-size: 14px;
+}
+
+.recipe-modal-tips {
+  background: linear-gradient(135deg, var(--accent-light) 0%, var(--bg-secondary) 100%);
+  border-radius: 12px;
+  padding: 16px;
+  border-left: 4px solid var(--accent);
+  margin-top: 16px;
+}
+
+.recipe-modal-tips strong {
+  color: var(--accent);
+}
+
