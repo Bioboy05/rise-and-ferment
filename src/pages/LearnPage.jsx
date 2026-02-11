@@ -29,7 +29,10 @@ function LearnPage() {
 
   return (
     <div className="max-w-md mx-auto" style={{ paddingBottom: "24px" }}>
-      <h2 className="page-title">{t("learnTitle")}</h2>
+      <div className="photo-frame">
+        <h2 className="page-title">{t("learnTitle")}</h2>
+        <div className="corner-photo learn-photo" />
+      </div>
 
       {/* Section toggle */}
       <div className="flex gap-2 mb-4 justify-center">

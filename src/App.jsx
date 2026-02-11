@@ -29,6 +29,8 @@ function App() {
 
   return (
     <div className="app-shell" style={{ color: "var(--text-primary)" }}>
+      <div className="ambient-photo ambient-photo-1" />
+      <div className="ambient-photo ambient-photo-2" />
       <Header />
       <main className="app-main">
         <Routes>

@@ -92,7 +92,10 @@ function StatsPage() {
 
   return (
     <div className="max-w-md mx-auto" style={{ paddingBottom: "24px" }}>
-      <h2 className="page-title">{t("statsTitle")}</h2>
+      <div className="photo-frame">
+        <h2 className="page-title">{t("statsTitle")}</h2>
+        <div className="corner-photo congrats-photo" />
+      </div>
 
       {/* Quick Stats Grid (2x2) */}
       <div className="grid grid-cols-2 gap-2 mb-5">

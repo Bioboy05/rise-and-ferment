@@ -53,6 +53,8 @@ function Header() {
       ) : (
         <ThemeToggle className="icon-btn" />
       )}
+
+      {isHome && <div className="corner-photo header-photo" />}
     </header>
   );
 }
