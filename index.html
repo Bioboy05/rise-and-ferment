@@ -12,6 +12,7 @@
 :root{--cream:#FFFBF5;--cream-warm:#FFF5E6;--parchment:#F5EBE0;--crust:#8B5A2B;--crust-deep:#5D3A1A;--crust-light:#D4A574;--flour:#FFFFFF;--crumb:#3D2914;--rye:#6B4C2F;--wheat:#C4956A;--honey:#E8A849;--olive:#6B8F4E;--olive-soft:#8FB06A;--rosemary:#4A7043;--tomato:#C94C30;--font-display:'Playfair Display',Georgia,serif;--font-hand:'Caveat',cursive;--font-body:'Nunito',-apple-system,sans-serif;--nav-h:72px;--gap:clamp(80px,12vw,140px);--max:1200px;--narrow:800px}
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}html{scroll-behavior:smooth;scroll-padding-top:var(--nav-h)}
 body{font-family:var(--font-body);color:var(--crumb);background:var(--cream);line-height:1.7;overflow-x:hidden;-webkit-font-smoothing:antialiased}
+body.menu-open{overflow:hidden}
 img{max-width:100%;display:block}a{color:inherit;text-decoration:none}button{cursor:pointer;font-family:inherit;border:none;background:none}
 .ctn{max-width:var(--max);margin:0 auto;padding:0 clamp(20px,5vw,40px)}.ctn--n{max-width:var(--narrow)}
 .sl{font-family:var(--font-hand);font-size:clamp(1.1rem,2.5vw,1.4rem);color:var(--crust);letter-spacing:.02em;margin-bottom:8px}
@@ -104,15 +105,15 @@ img{max-width:100%;display:block}a{color:inherit;text-decoration:none}button{cur
 .blog{padding:var(--gap) 0}.blog__head{display:flex;justify-content:space-between;align-items:flex-end;margin-bottom:48px;flex-wrap:wrap;gap:20px}
 .blog__va{font-size:.95rem;font-weight:700;color:var(--crust);display:flex;align-items:center;gap:6px;cursor:pointer;transition:gap .3s}.blog__va:hover{gap:10px}
 .blog__grid{display:grid;grid-template-columns:repeat(3,1fr);gap:28px}
-.bc{background:var(--flour);border-radius:24px;overflow:hidden;border:1px solid rgba(139,90,43,.06);transition:all .4s;cursor:pointer}.bc:hover{transform:translateY(-6px);box-shadow:0 20px 60px rgba(93,58,26,.12)}
-.bc__img{height:220px;overflow:hidden;position:relative}
+.bc{background:var(--flour);border-radius:24px;overflow:hidden;border:1px solid rgba(139,90,43,.06);transition:all .4s;cursor:pointer;position:relative;isolation:isolate}.bc:hover{transform:translateY(-6px);box-shadow:0 20px 60px rgba(93,58,26,.12)}
+.bc__img{height:220px;overflow:hidden;position:relative;contain:layout paint}
 .bc__scene{width:100%;height:100%;position:relative}
 .scene--starter{background:linear-gradient(145deg,#F5EBE0 0%,#E8D5B7 40%,#D4A574 100%)}.scene--trouble{background:linear-gradient(145deg,#FFF5E6 0%,#F5EBE0 40%,#E8D5B7 100%)}
 .scene--tools{background:linear-gradient(145deg,#D4A574 0%,#8B5A2B 60%,#5D3A1A 100%)}.scene--manifesto{background:linear-gradient(145deg,#E8F0E0 0%,#6B8F4E 60%,#4A7043 100%)}
-.scene__center{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);display:flex;flex-direction:column;align-items:center;gap:8px}
-.scene__svg{filter:drop-shadow(0 8px 24px rgba(93,58,26,.2))}
+.scene__center{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);display:flex;flex-direction:column;align-items:center;gap:8px;z-index:1;max-width:100%;max-height:100%}
+.scene__svg{filter:drop-shadow(0 8px 24px rgba(93,58,26,.2));width:min(80px,72%);height:auto;display:block;max-width:80px;max-height:80px}
 .bc__cat{position:absolute;top:14px;left:14px;background:rgba(255,251,245,.92);backdrop-filter:blur(8px);padding:5px 14px;border-radius:100px;font-size:.75rem;font-weight:700;color:var(--crust);text-transform:uppercase;letter-spacing:.05em;z-index:2}
-.bc__body{padding:24px}.bc__meta{font-size:.8rem;color:var(--wheat);font-weight:600;margin-bottom:10px}
+.bc__body{padding:24px;position:relative;z-index:2;background:var(--flour)}.bc__meta{font-size:.8rem;color:var(--wheat);font-weight:600;margin-bottom:10px}
 .bc__title{font-family:var(--font-display);font-size:1.2rem;font-weight:700;color:var(--crust-deep);margin-bottom:10px;line-height:1.3;transition:color .3s}.bc:hover .bc__title{color:var(--crust)}
 .bc__exc{font-size:.9rem;color:var(--rye);line-height:1.6;margin-bottom:16px}
 .bc__rm{font-size:.88rem;font-weight:700;color:var(--crust);display:inline-flex;align-items:center;gap:6px;transition:gap .3s}.bc:hover .bc__rm{gap:10px}
@@ -211,6 +212,7 @@ img{max-width:100%;display:block}a{color:inherit;text-decoration:none}button{cur
 @media(max-width:1024px){.hero__c{grid-template-columns:1fr;text-align:center}.hero__desc{margin:0 auto 36px}.hero__acts{justify-content:center}.hero__proof{justify-content:center}.hero__vis{margin-top:40px}.feat-row{grid-template-columns:1fr;text-align:center}.feat-row--rev{direction:ltr}.feat-row__bul{align-items:center}.starter-grid,.fmc-grid{margin:0 auto}.blog__grid{grid-template-columns:1fr 1fr}.bp__grid{grid-template-columns:1fr 1fr}.test__grid{grid-template-columns:1fr 1fr}.ft__top{grid-template-columns:1fr 1fr}}
 @media(max-width:768px){.nav__links{display:none}.nav__ham{display:flex}.nav__links.active{display:flex;flex-direction:column;position:fixed;top:var(--nav-h);left:0;right:0;bottom:0;background:var(--cream);padding:32px;gap:24px;animation:fadeIn .3s ease}.hero{min-height:auto;padding-top:calc(var(--nav-h) + 20px)}.phone{transform:rotate(0deg)}.blog__grid,.bp__grid{grid-template-columns:1fr}.tools__grid{grid-template-columns:1fr}.lead__card{grid-template-columns:1fr;text-align:center}.lead__inc{align-items:center}.lead__form{justify-content:center}.lead__vis{order:-1}.test__grid{grid-template-columns:1fr}.nl__input{min-width:100%}.nl__perks{flex-direction:column;align-items:center}.ft__top{grid-template-columns:1fr;text-align:center}.ft__brand-txt{margin:12px auto 0}.ft__social{justify-content:center}.ft__links{align-items:center}.ft__btm{justify-content:center;text-align:center}.ft__btm-links{justify-content:center}}
 @media(max-width:480px){.hero__acts{flex-direction:column;width:100%}.hero__acts .btn{width:100%;justify-content:center}.hero__fl{display:none}.prob__grid{grid-template-columns:1fr}.starter-card:nth-child(2),.starter-card:nth-child(4),.fmc:nth-child(2),.fmc:nth-child(4){transform:none}.lead__card{padding:28px 20px}}
+@media(max-width:768px){.nav__links.active{z-index:1100;overflow-y:auto;overscroll-behavior:contain;box-shadow:0 24px 46px rgba(93,58,26,.14)}}
 </style>
 </head>
 <body>
@@ -250,7 +252,7 @@ img{max-width:100%;display:block}a{color:inherit;text-decoration:none}button{cur
 <li><div class="lang-sw" id="langSw"><button class="lang-sw__btn" onclick="toggleLangDrop(event)"><svg><use href="#ico-globe"/></svg> <span id="langLabel">EN</span></button><div class="lang-sw__drop" id="langDrop"><div class="lang-sw__opt active" data-lang="en">🇬🇧 English</div><div class="lang-sw__opt" data-lang="ro">🇷🇴 Română</div><div class="lang-sw__opt" data-lang="it">🇮🇹 Italiano</div><div class="lang-sw__opt" data-lang="de">🇩🇪 Deutsch</div><div class="lang-sw__opt" data-lang="fr">🇫🇷 Français</div><div class="lang-sw__opt" data-lang="es">🇪🇸 Español</div></div></div></li>
 </ul>
 <a href="/app" class="btn nav__cta">Try the App — Free</a>
-<button class="nav__ham" id="ham" aria-label="Menu"><span></span><span></span><span></span></button>
+<button class="nav__ham" id="ham" aria-label="Menu" aria-expanded="false"><span></span><span></span><span></span></button>
 </div></nav>
 
 <!-- PLACEHOLDER: sections injected by next step -->
@@ -358,49 +360,563 @@ img{max-width:100%;display:block}a{color:inherit;text-decoration:none}button{cur
 </div></footer>
 
 <script>
+if ("serviceWorker" in navigator) {
+  navigator.serviceWorker.getRegistrations().then((registrations) => {
+    registrations.forEach((registration) => registration.unregister());
+  });
+}
+if ("caches" in window) {
+  caches.keys().then((keys) => keys.forEach((key) => caches.delete(key)));
+}
+
 const A=[{id:'first-starter',scene:'scene--starter',svgId:'ico-jar',date:'2026-02-05',rt:{en:'9 min read',ro:'9 min lectură',it:'9 min di lettura'},cat:{en:'Beginner Guide',ro:'Ghid începători',it:'Guida principianti'},title:{en:'Your First Sourdough Starter: A Day-by-Day Guide',ro:'Prima ta maia: Ghidul complet, zi cu zi',it:'Il tuo primo lievito madre: Guida giorno per giorno'},exc:{en:'No science degree needed. Just flour, water, patience, and a friend who\'s been there.',ro:'Nu ai nevoie de diplomă în chimie. Doar făină, apă, răbdare și o prietenă care a trecut prin asta.',it:'Non serve una laurea in chimica. Solo farina, acqua, pazienza.'},content:{en:'<p>I\'m going to be honest with you right from the start: the first time I tried to make a sourdough starter, I killed it. On day three. My two kids were sick, I forgot to feed it, and when I came back to it — it smelled like something died inside my kitchen cupboard. I cried a little. Then I tried again.</p><p>And that second try? That\'s the one that changed everything in our house.</p><p>So if you\'re reading this thinking <em>"I can barely remember to water my plants, how am I going to keep a living culture alive?"</em> — hi, welcome, you\'re my people. This guide is written for you. Not for people with professional kitchens and unlimited free time. For us — the ones who make lunches with one hand while answering emails with the other. Or the ones living alone who just want to create something meaningful with their hands.</p><h2>What you\'ll need (and it\'s less than you think)</h2><p>A jar. Any clean jar. Flour — whole wheat or rye works best for starting, plain white works after. Water — if your tap water is chlorinated, just let it sit for an hour or use filtered. A rubber band to mark the level. That\'s it. You don\'t need a $40 proofing jar from Instagram. I started with an old jam jar.</p><h2>Days 1-3: The "Is anything happening?" phase</h2><p>Mix equal parts flour and water — I do 50g each. Stir it well, cover loosely, and put it somewhere warm. Then... wait. Day two, do the same — discard half, feed fresh flour and water. Day three, same thing. Here\'s what nobody tells you: <strong>it\'s going to stink.</strong> Like really stink. This is NORMAL. The good guys are winning. Just keep feeding.</p><div class="tip-box"><strong>Busy human tip:</strong> Set a phone alarm. I feed mine right after breakfast. It takes 3 minutes. Less time than making coffee.</div><h2>Days 4-7: The first signs of life</h2><p>Somewhere around day 4 or 5, you\'ll see bubbles. Real bubbles. This is the moment you\'ll text your best friend a photo of flour paste. The smell shifts from funky to slightly tangy, almost like yogurt.</p><h2>Days 7-14: Building strength</h2><p>Now it\'s about consistency. Feed at the same time. Watch it double in size. When it reliably doubles within 4-8 hours, you have a healthy starter ready for baking.</p><blockquote>I named mine "Luna" because she came alive at night while I was finally sitting down after the kids fell asleep. Name yours. It sounds silly, but it makes you care.</blockquote><h2>The honest truth</h2><p>Some days you\'ll forget. That\'s fine. Starters are remarkably resilient — like us. They survive neglect, come back from the cold, and keep rising. In a world that\'s constantly trying to sell us faster, cheaper, more convenient — choosing to make something with your own hands, slowly... that\'s what <em>Rise & Ferment</em> means.</p>',ro:'<p>O să fiu sinceră cu tine de la bun început: prima dată când am încercat să fac maia, am omorât-o. În ziua a treia. Copiii mei erau amândoi răciți, am uitat să o hrănesc, și când m-am întors la ea — mirosea ca și cum ceva murise în dulapul din bucătărie. Am plâns puțin. Apoi am încercat din nou.</p><p>Și a doua încercare? Aceea a schimbat totul în casa noastră.</p><p>Deci dacă citești asta gândindu-te <em>"abia îmi amintesc să ud florile, cum o să țin în viață o cultură?"</em> — bună, bine ai venit, ești cu mine.</p><h2>De ce ai nevoie (și e mai puțin decât crezi)</h2><p>Un borcan. Orice borcan curat. Făină — integrală sau de secară merge cel mai bine la început. Apă — dacă apa de la robinet e clorinată, las-o să stea o oră. O gumă de cauciuc ca să marchezi nivelul. Atât.</p><h2>Zilele 1-3: Faza "Se întâmplă ceva?"</h2><p>Amestecă părți egale de făină și apă — 50g din fiecare. <strong>O să miroasă urât.</strong> Este NORMAL. Bacteriile bune câștigă.</p><div class="tip-box"><strong>Sfat de mămică ocupată:</strong> Pune o alarmă pe telefon. Durează 3 minute.</div><h2>Zilele 4-7: Primele semne de viață</h2><p>Pe la ziua 4-5, o să vezi bule adevărate. Mirosul se schimbă spre ceva ușor acru, ca iaurtul.</p><h2>Zilele 7-14: Construim putere</h2><p>Acum e vorba de consistență. Hrănește la aceeași oră. Când își dublează constant volumul în 4-8 ore, e gata.</p><blockquote>Pe a mea am numit-o "Luna" pentru că prindea viață noaptea. Dă-i un nume. Te face să-ți pese.</blockquote><h2>Adevărul sincer</h2><p>Maielele sunt remarcabil de reziliente — ca noi. Într-o lume care vrea totul rapid — alegerea de a face ceva cu mâinile, încet... asta e <em>Rise & Ferment</em>.</p>',it:'<p>Sarò sincera con te fin dall\'inizio: la prima volta che ho provato a fare il lievito madre, l\'ho ucciso. Al terzo giorno. Ho pianto un po\'. Poi ho riprovato.</p><p>E quel secondo tentativo? Quello ha cambiato tutto nella nostra casa.</p><h2>Di cosa hai bisogno</h2><p>Un barattolo pulito. Farina integrale o di segale. Acqua. Un elastico. Tutto qui.</p><h2>Giorni 1-3: "Sta succedendo qualcosa?"</h2><p>Mescola parti uguali di farina e acqua — 50g ciascuno. <strong>Puzzerà.</strong> È NORMALE.</p><div class="tip-box"><strong>Consiglio:</strong> Metti una sveglia. Ci vogliono 3 minuti.</div><h2>Giorni 4-7: Segni di vita</h2><p>Intorno al giorno 4-5, vedrai le bolle vere. L\'odore cambia da strano a leggermente acidulo.</p><h2>Giorni 7-14: Costruire la forza</h2><p>Ora è questione di costanza. Quando raddoppia in 4-8 ore, è pronto.</p><blockquote>Il mio l\'ho chiamato "Luna". Dai un nome al tuo. Ti fa tenere di più.</blockquote><p>Scegliere di fare qualcosa con le proprie mani, lentamente... è ciò che <em>Rise & Ferment</em> significa.</p>'}},{id:'smells-weird',scene:'scene--trouble',svgId:'ico-jar',date:'2026-01-28',rt:{en:'7 min read',ro:'7 min lectură',it:'7 min di lettura'},cat:{en:'Troubleshooting',ro:'Depanare',it:'Risoluzione problemi'},title:{en:'My Starter Smells Like Nail Polish — Is It Dead?',ro:'Maiaua mea miroase a acetonă — e moartă?',it:'Il mio lievito puzza di acetone — è morto?'},exc:{en:'That funky smell on Day 3? Totally normal. Here are the 5 scariest moments and why they\'re fine.',ro:'Mirosul ăla dubios din ziua 3? Total normal. 5 momente înfricoșătoare care sunt de fapt OK.',it:'Quell\'odore strano al giorno 3? Totalmente normale. 5 momenti spaventosi che vanno bene.'},content:{en:'<p>Let me guess. You started your sourdough starter three days ago, full of hope. You opened the jar this morning and — <em>what IS that smell?</em></p><p>Take a breath (maybe not near the jar). Your starter is probably fine.</p><h2>Scary moment #1: "Chemistry lab smell"</h2><p>The acetone smell = hungry starter. Feed it twice a day for 2-3 days. Done.</p><h2>Scary moment #2: "Weird liquid on top"</h2><p>That\'s "hooch" — alcohol. Not mold. Pour off or stir in, then feed.</p><h2>Scary moment #3: "Not rising at all"</h2><p>Days 4-6 go quiet. Good bacteria taking over. <strong>Be patient.</strong></p><div class="tip-box"><strong>Warm spot trick:</strong> Top of the fridge or oven with just the light on. Game changer.</div><h2>Scary moment #4: "Pink/orange spots"</h2><p>This one IS a problem. Contamination. Start fresh. It happens.</p><h2>Scary moment #5: "Forgot for 3 days"</h2><p>Almost never dead. Feed 2-3 days. These organisms survived thousands of years.</p><h2>The real lesson</h2><p><strong>Most problems have simple solutions.</strong> Our grandmothers made bread without thermometers. They just did it, consistently.</p>',ro:'<p>Lasă-mă să ghicesc. Ai deschis borcanul azi dimineață și — <em>ce e mirosul ăsta?</em></p><p>Maiaua ta probabil e bine.</p><h2>#1: "Miroase a chimicale"</h2><p>Mirosul de acetonă = foame. Hrănește-o de 2x pe zi.</p><h2>#2: "Lichid ciudat deasupra"</h2><p>Se numește "hooch." E alcool, nu mucegai. Toarnă-l și hrănește.</p><h2>#3: "Nu crește deloc"</h2><p>Zilele 4-6 sunt liniștite. Bacteriile bune preiau controlul.</p><div class="tip-box"><strong>Trucul cu locul cald:</strong> Deasupra frigiderului sau în cuptor cu lumina aprinsă.</div><h2>#4: "E ceva roz"</h2><p>Asta DA e problemă. Mucegai. Arunc-o și începe din nou.</p><h2>#5: "Am uitat 3 zile"</h2><p>Aproape niciodată moartă. Hrănește-o 2-3 zile.</p><h2>Lecția</h2><p><strong>Majoritatea problemelor au soluții simple.</strong></p>',it:'<p>L\'odore di acetone = fame. Nutrilo. Il "hooch" = alcol, non muffa. Giorni 4-6 silenziosi = normale.</p><div class="tip-box"><strong>Trucco:</strong> Sopra il frigo o nel forno con la luce accesa.</div><p>Rosa/arancione = muffa, ricomincia. Dimenticato 3 giorni = quasi mai morto.</p><p><strong>La maggior parte dei problemi ha soluzioni semplici.</strong></p>'}},{id:'essential-tools',scene:'scene--tools',svgId:'ico-scale',date:'2026-01-21',rt:{en:'10 min read',ro:'10 min lectură',it:'10 min di lettura'},cat:{en:'Equipment',ro:'Echipament',it:'Attrezzatura'},title:{en:'The Only 5 Tools You Actually Need',ro:'Singurele 5 ustensile de care ai nevoie',it:'I soli 5 strumenti che ti servono'},exc:{en:'Forget the $200 equipment lists. Most is already in your kitchen.',ro:'Uită de listele de sute de euro. Majoritatea sunt deja în bucătăria ta.',it:'Dimentica le liste da centinaia di euro. La maggior parte è già nella tua cucina.'},content:{en:'<p>When I first got into sourdough, I went down a rabbit hole of "essential equipment" lists. I bought none of that. I made my first loaf with tools already in my kitchen.</p><h2>1. Kitchen scale (~$12)</h2><p>The ONE non-negotiable. Baking by cups can vary 33%.</p><div class="tip-box"><strong>My pick:</strong> Any scale with 1g accuracy. You\'re making bread, not medicine.</div><h2>2. Dutch oven (~$35)</h2><p>The "secret" to bakery-quality crust. Any heavy pot with lid works.</p><h2>3. Bench scraper (~$5)</h2><p>Before I bought one, I used an old credit card. Not proud, but it worked.</p><h2>4. Sharp blade (free to ~$9)</h2><p>I scored my first 20 loaves with a regular knife.</p><h2>5. Clean towel and bowl (free)</h2><p>Before a banneton, I proofed in a bowl with a floured towel. Perfectly round.</p><h2>The real message</h2><p>For thousands of years, people made bread with their hands and whatever they had. Let\'s not let consumerism gatekeep bread.</p>',ro:'<p>Când am intrat în lumea maielor, am căzut într-o gaură neagră de "echipament esențial." N-am cumpărat nimic din astea la început.</p><h2>1. Cântar de bucătărie (~60 lei)</h2><p>SINGURUL lucru ne-negociabil.</p><h2>2. Oală de fontă (~150 lei)</h2><p>Secretul crustei. Orice oală grea cu capac merge.</p><h2>3. Racletă (~25 lei)</h2><p>Am folosit un card vechi. A funcționat.</p><h2>4. Lamă ascuțită (gratis - 45 lei)</h2><p>Primele 20 de pâini — cuțit obișnuit.</p><h2>5. Prosop și bol (gratis)</h2><p>Bol cu prosop pudrat cu făină = banneton.</p><p>Coptul nu ar trebui să fie exclusivist. Să nu lăsăm consumismul să pună bariere la pâine.</p>',it:'<p>Non ho comprato niente all\'inizio. La prima pagnotta l\'ho fatta con attrezzi già in cucina.</p><h2>1. Bilancia (~12€)</h2><p>L\'unica cosa non negoziabile.</p><h2>2. Pentola olandese (~35€)</h2><p>Il segreto della crosta. Qualsiasi pentola pesante funziona.</p><h2>3. Tarocco (~5€)</h2><p>Prima usavo una carta di credito.</p><h2>4. Lama (~9€)</h2><p>Le prime 20 pagnotte con un coltello normale.</p><h2>5. Asciugamano e ciotola (gratis)</h2><p>La panificazione non dovrebbe essere esclusiva.</p>'}},{id:'rise-against',scene:'scene--manifesto',svgId:'ico-wheat',date:'2026-02-08',rt:{en:'8 min read',ro:'8 min lectură',it:'8 min di lettura'},cat:{en:'Manifesto',ro:'Manifest',it:'Manifesto'},title:{en:'Rise & Ferment: Why We Choose Real Bread',ro:'Rise & Ferment: De ce alegem pâinea adevărată',it:'Rise & Ferment: Perché scegliamo il pane vero'},exc:{en:'This isn\'t just about bread. It\'s about authenticity, community, and the courage to slow down.',ro:'Nu e doar despre pâine. E despre autenticitate, comunitate și curajul de a încetini.',it:'Non si tratta solo di pane. Si tratta di autenticità, comunità e coraggio.'},content:{en:'<p>When I started making sourdough, I told myself it was about health. But after a year, I realized it\'s about something much bigger.</p><h2>The name is not an accident</h2><p><strong>To rise</strong> — against convenience culture, against uniformity, against loneliness. <strong>To ferment</strong> — slowly, patiently. Choosing to wait 14 hours for dough to rise is a radical act.</p><h2>What bread taught me</h2><p>When you bake, you make too much. Every time. Suddenly you\'re at your neighbor\'s door with a warm loaf. Bread builds community.</p><blockquote>In a world full of transactions, bread is a gift. We desperately need more gifts.</blockquote><h2>Against uniformity</h2><p>Every sourdough loaf is different. Making something uniquely YOURS is quiet rebellion.</p><h2>The village we lost</h2><p>My grandmother had a village. We can rebuild it. Differently. But with the same spirit.</p><h2>An invitation</h2><p>Make bread. Share it. Teach someone. Rise against what doesn\'t serve you. Let the good things ferment slowly. And when in doubt — knead.</p>',ro:'<p>Când am început să fac pâine cu maia, mi-am spus că e despre sănătate. Dar după un an, am realizat că e despre ceva mai mare.</p><h2>Numele nu e întâmplător</h2><p><strong>To rise — a te ridica</strong> — împotriva convenienței, uniformității, singurătății. <strong>To ferment</strong> — încet, cu răbdare. A aștepta 14 ore e un act radical.</p><h2>Ce m-a învățat pâinea</h2><p>Faci prea mult. Mereu. Și brusc ești la ușa vecinei cu o pâine caldă.</p><blockquote>Într-o lume plină de tranzacții, pâinea e un dar.</blockquote><h2>Împotriva uniformizării</h2><p>Fiecare pâine e diferită. E o rebeliune liniștită.</p><h2>Satul pe care l-am pierdut</h2><p>Bunica avea un sat. Îl putem reconstrui.</p><h2>O invitație</h2><p>Fă pâine. Împarte-o. Ridică-te împotriva a ceea ce nu te servește. Lasă lucrurile bune să fermenteze încet. Și când ai dubii — frământă.</p>',it:'<p>Quando ho iniziato, mi sono detta che era per la salute. Ma si tratta di molto di più.</p><h2>Il nome non è un caso</h2><p><strong>Rise</strong> — contro la comodità, l\'uniformità, la solitudine. <strong>Ferment</strong> — lentamente, con pazienza.</p><h2>Cosa mi ha insegnato il pane</h2><p>Ne fai troppo. Ogni volta. E improvvisamente sei alla porta della vicina con una pagnotta calda.</p><blockquote>In un mondo pieno di transazioni, il pane è un dono.</blockquote><h2>Contro l\'uniformità</h2><p>Ogni pagnotta è diversa. È una ribellione silenziosa.</p><h2>Un invito</h2><p>Fai il pane. Condividilo. Alzati contro ciò che non ti serve. E quando hai dubbi — impasta.</p>'}}];
 
 // ═══ STATE ═══
-let lang='en',currentView='landing';
-const LANGS={en:{back:'← Back to home',backBlog:'← Back to blog',title:'The Blog',heading:'Learn, bake, repeat',sub:'Stories, guides, and honest tips from one busy human to another.',rm:'Read more',by:'By',writtenBy:'Written by',bio:'A busy human, sourdough enthusiast, and the person behind Rise & Ferment. I believe baking bread is a small act of love.',shareCta:'Did this help?',shareText:'Share it with a friend thinking about starting their sourdough journey.',tryApp:'Try Rise & Ferment — Free'},ro:{back:'← Înapoi acasă',backBlog:'← Înapoi la blog',title:'Blogul',heading:'Citește, coace, repetă',sub:'Povești, ghiduri și sfaturi sincere.',rm:'Citește mai mult',by:'De',writtenBy:'Scris de',bio:'O persoană ocupată, pasionată de maia și creatorul Rise & Ferment.',shareCta:'Ți-a fost de folos?',shareText:'Împărtășește cu cineva care se gândește să înceapă.',tryApp:'Încearcă Rise & Ferment — Gratis'},it:{back:'← Torna alla home',backBlog:'← Torna al blog',title:'Il Blog',heading:'Leggi, cuoci, ripeti',sub:'Storie, guide e consigli sinceri.',rm:'Leggi di più',by:'Di',writtenBy:'Scritto da',bio:'Una persona impegnata, appassionata di lievito madre e la persona dietro Rise & Ferment.',shareCta:'Ti è stato utile?',shareText:'Condividilo con qualcuno che sta pensando di iniziare.',tryApp:'Prova Rise & Ferment — Gratis'}};
+const SUPPORTED_LANGS = ["en", "ro", "it", "de", "fr", "es"];
+const SETTINGS_STORAGE_KEY = "riseFermentSettings";
 
-function fmtDate(d,l){const o={year:'numeric',month:'long',day:'numeric'};return new Date(d).toLocaleDateString(l==='ro'?'ro-RO':l==='it'?'it-IT':'en-US',o)}
+function normalizeLangCode(code) {
+  if (typeof code !== "string") return null;
+  const cleaned = code.trim().toLowerCase().replace(/_/g, "-");
+  if (SUPPORTED_LANGS.includes(cleaned)) return cleaned;
+  const base = cleaned.split("-")[0];
+  return SUPPORTED_LANGS.includes(base) ? base : null;
+}
 
-function blogCard(a,dl){const l=lang;return`<article class="bc reveal rv${dl}" onclick="showArticle('${a.id}')"><div class="bc__img"><div class="bc__scene ${a.scene}"><div class="scene__center"><svg class="scene__svg" width="80" height="80" viewBox="0 0 48 48"><use href="#${a.svgId}"/></svg></div></div><span class="bc__cat">${a.cat[l]||a.cat.en}</span></div><div class="bc__body"><p class="bc__meta">${fmtDate(a.date,l)} · ${a.rt[l]||a.rt.en}</p><h3 class="bc__title">${a.title[l]||a.title.en}</h3><p class="bc__exc">${a.exc[l]||a.exc.en}</p><span class="bc__rm">${LANGS[l]?.rm||'Read more'} →</span></div></article>`}
+function detectBrowserLang() {
+  const candidates = [];
+  if (Array.isArray(navigator.languages)) candidates.push(...navigator.languages);
+  if (typeof navigator.language === "string") candidates.push(navigator.language);
+  if (typeof Intl !== "undefined" && typeof Intl.DateTimeFormat === "function") {
+    const locale = Intl.DateTimeFormat().resolvedOptions().locale;
+    if (typeof locale === "string") candidates.push(locale);
+  }
 
-function renderPreview(){document.getElementById('blogGrid').innerHTML=A.slice(0,3).map((a,i)=>blogCard(a,i+1)).join('');initObs()}
+  for (const value of candidates) {
+    const normalized = normalizeLangCode(value);
+    if (normalized) return normalized;
+  }
+  return null;
+}
 
-function showLanding(){currentView='landing';document.getElementById('landingPage').style.display='';document.getElementById('blogListPage').classList.remove('active');document.getElementById('articlePage').classList.remove('active');window.scrollTo({top:0,behavior:'smooth'});closeMob()}
+function readPersistedLang() {
+  try {
+    const raw = localStorage.getItem(SETTINGS_STORAGE_KEY);
+    if (!raw) return null;
+    const parsed = JSON.parse(raw);
+    const stored = parsed?.state?.language ?? parsed?.language;
+    return normalizeLangCode(stored);
+  } catch {
+    return null;
+  }
+}
 
-function showBlogPage(){currentView='blogList';document.getElementById('landingPage').style.display='none';document.getElementById('articlePage').classList.remove('active');document.getElementById('blogListPage').classList.add('active');renderBlogList();window.scrollTo({top:0});closeMob()}
+function persistLang(langCode) {
+  if (!SUPPORTED_LANGS.includes(langCode)) return;
 
-function showArticle(id){currentView='article';document.getElementById('landingPage').style.display='none';document.getElementById('blogListPage').classList.remove('active');document.getElementById('articlePage').classList.add('active');renderArticle(id);window.scrollTo({top:0})}
+  try {
+    const raw = localStorage.getItem(SETTINGS_STORAGE_KEY);
+    const parsed = raw ? JSON.parse(raw) : {};
+    const safeParsed = parsed && typeof parsed === "object" ? parsed : {};
+    const currentState =
+      safeParsed.state && typeof safeParsed.state === "object"
+        ? safeParsed.state
+        : {};
 
-function closeMob(){document.getElementById('navLinks').classList.remove('active');document.getElementById('ham').querySelectorAll('span').forEach(s=>{s.style.transform='';s.style.opacity=''})}
+    localStorage.setItem(
+      SETTINGS_STORAGE_KEY,
+      JSON.stringify({
+        ...safeParsed,
+        state: { ...currentState, language: langCode },
+        version: Number.isInteger(safeParsed.version) ? safeParsed.version : 0
+      })
+    );
+  } catch {
+    // no-op: storage failures should not block language switching
+  }
+}
 
-function langBtns(artId){const flags={en:'🇬🇧 English',ro:'🇷🇴 Română',it:'🇮🇹 Italiano'};return Object.entries(flags).map(([k,v])=>`<button class="a-lang__btn ${lang===k?'active':''}" onclick="setLang('${k}');${artId?`renderArticle('${artId}')`:currentView==='blogList'?'renderBlogList()':'renderPreview()'};">${v}</button>`).join('')}
+let lang = readPersistedLang() || detectBrowserLang() || "en";
+let currentView = "landing";
+let currentArticleId = null;
 
-function renderBlogList(){const l=lang,L=LANGS[l]||LANGS.en;document.getElementById('blogListPage').innerHTML=`<span class="bp__back" onclick="showLanding()">${L.back}</span><div style="margin-bottom:32px"><div class="a-lang">${langBtns()}</div><p class="sl" style="margin-top:16px">${L.title}</p><h2 class="st">${L.heading}</h2><p class="ss">${L.sub}</p></div><div class="bp__grid">${A.map((a,i)=>blogCard(a,(i%4)+1)).join('')}</div>`;initObs()}
+const LANGS = {
+  en: {
+    back: "← Back to home",
+    backBlog: "← Back to blog",
+    title: "The Blog",
+    heading: "Learn, bake, repeat",
+    sub: "Stories, guides, and honest tips from one busy human to another.",
+    rm: "Read more",
+    by: "By",
+    writtenBy: "Written by",
+    bio: "A busy human, sourdough enthusiast, and the person behind Rise & Ferment. I believe baking bread is a small act of love.",
+    shareCta: "Did this help?",
+    shareText: "Share it with a friend thinking about starting their sourdough journey.",
+    tryApp: "Try Rise & Ferment — Free"
+  },
+  ro: {
+    back: "← Înapoi acasă",
+    backBlog: "← Înapoi la blog",
+    title: "Blogul",
+    heading: "Citește, coace, repetă",
+    sub: "Povești, ghiduri și sfaturi sincere.",
+    rm: "Citește mai mult",
+    by: "De",
+    writtenBy: "Scris de",
+    bio: "O persoană ocupată, pasionată de maia și creatorul Rise & Ferment.",
+    shareCta: "Ți-a fost de folos?",
+    shareText: "Împărtășește cu cineva care se gândește să înceapă.",
+    tryApp: "Încearcă Rise & Ferment — Gratis"
+  },
+  it: {
+    back: "← Torna alla home",
+    backBlog: "← Torna al blog",
+    title: "Il Blog",
+    heading: "Leggi, cuoci, ripeti",
+    sub: "Storie, guide e consigli sinceri.",
+    rm: "Leggi di più",
+    by: "Di",
+    writtenBy: "Scritto da",
+    bio: "Una persona impegnata, appassionata di lievito madre e la persona dietro Rise & Ferment.",
+    shareCta: "Ti è stato utile?",
+    shareText: "Condividilo con qualcuno che sta pensando di iniziare.",
+    tryApp: "Prova Rise & Ferment — Gratis"
+  },
+  de: {
+    back: "← Zurück zur Startseite",
+    backBlog: "← Zurück zum Blog",
+    title: "Der Blog",
+    heading: "Lernen, backen, wiederholen",
+    sub: "Geschichten, Guides und ehrliche Tipps.",
+    rm: "Weiterlesen",
+    by: "Von",
+    writtenBy: "Geschrieben von",
+    bio: "Ein vielbeschäftigter Mensch, Sauerteig-Fan und die Person hinter Rise & Ferment.",
+    shareCta: "Hat dir das geholfen?",
+    shareText: "Teile es mit jemandem, der mit Sauerteig starten möchte.",
+    tryApp: "Rise & Ferment gratis testen"
+  },
+  fr: {
+    back: "← Retour à l'accueil",
+    backBlog: "← Retour au blog",
+    title: "Le Blog",
+    heading: "Apprendre, cuire, recommencer",
+    sub: "Histoires, guides et conseils sincères.",
+    rm: "Lire la suite",
+    by: "Par",
+    writtenBy: "Écrit par",
+    bio: "Une personne occupée, passionnée de levain, derrière Rise & Ferment.",
+    shareCta: "Ça t'a aidé ?",
+    shareText: "Partage avec quelqu'un qui veut commencer le levain.",
+    tryApp: "Essayer Rise & Ferment — Gratuit"
+  },
+  es: {
+    back: "← Volver al inicio",
+    backBlog: "← Volver al blog",
+    title: "El Blog",
+    heading: "Aprende, hornea, repite",
+    sub: "Historias, guías y consejos honestos.",
+    rm: "Leer más",
+    by: "Por",
+    writtenBy: "Escrito por",
+    bio: "Una persona ocupada, apasionada por la masa madre y creadora de Rise & Ferment.",
+    shareCta: "¿Te ayudó?",
+    shareText: "Compártelo con alguien que quiera empezar.",
+    tryApp: "Probar Rise & Ferment — Gratis"
+  }
+};
 
-function renderArticle(id){const a=A.find(x=>x.id===id);if(!a)return;const l=lang,L=LANGS[l]||LANGS.en;document.getElementById('articlePage').innerHTML=`<span class="ap__back" onclick="showBlogPage()">${L.backBlog}</span><div class="a-lang">${langBtns(id)}</div><div class="a-head"><span class="a-cat">${a.cat[l]||a.cat.en}</span><h1 class="a-title">${a.title[l]||a.title.en}</h1><div class="a-meta"><span>${L.by} Rise & Ferment</span><span>${fmtDate(a.date,l)}</span><span>${a.rt[l]||a.rt.en}</span></div></div><div class="a-hero ${a.scene}"><div class="scene__center"><svg class="scene__svg" width="120" height="120" viewBox="0 0 48 48"><use href="#${a.svgId}"/></svg></div></div><div class="a-content">${a.content[l]||a.content.en}<div class="a-author"><div class="a-author__av" style="width:56px;height:56px;border-radius:50%;background:linear-gradient(135deg,var(--parchment),var(--crust-light));display:flex;align-items:center;justify-content:center"><svg style="color:var(--crust)" width="32" height="32"><use href="#ico-person"/></svg></div><div><p class="a-author__name">${L.writtenBy} Rise & Ferment</p><p class="a-author__bio">${L.bio}</p></div></div><div class="a-share"><h3>${L.shareCta}</h3><p>${L.shareText}</p><a href="/app" class="btn btn--p btn--sm">${L.tryApp} →</a></div></div>`}
+const LANDING_I18N = {
+  en: {
+    navFeatures: "Features",
+    navBlog: "Blog",
+    navTools: "Baking Tools",
+    navGuide: "Free Guide",
+    navCta: "Try the App — Free",
+    heroBadge: "AI-illustrated • Real sourdough science",
+    heroTitle: "Your First Loaf<br>Starts <em>Here</em>",
+    heroHand: "Meet Elena, our AI-created baking companion ✨",
+    heroDesc: "The beginner-friendly app that guides real people through sourdough baking — from your first starter to your first perfect loaf. Real tips, real science, zero gatekeeping.",
+    heroStart: "Start Baking Today",
+    heroGuide: "Get Free Guide",
+    heroProof: "Join <strong>2,400+</strong> home bakers already using Rise & Ferment",
+    heroFloat1: "14-day streak!",
+    heroFloat2: "Feed in 2 hours",
+    heroFloat3: "24°C — Perfect",
+    mockHi: "Good morning! ☀️",
+    mockName: '"Luna" is thriving',
+    mockHealth: "Healthy & Active",
+    mockDay: "Day Streak",
+    mockTemp: "Temperature",
+    mockBtn: "Time to Feed",
+    probSub: "Sound familiar?",
+    probTitle: "We know the struggle",
+    probText: "Every sourdough journey starts with the same questions.",
+    blogSub: "From the blog",
+    blogTitle: "Learn, bake, repeat",
+    blogText: "Practical guides and honest tips from someone who started just like you.",
+    blogCta: "View all articles →"
+  },
+  ro: {
+    navFeatures: "Funcționalități",
+    navBlog: "Blog",
+    navTools: "Unelte de copt",
+    navGuide: "Ghid gratuit",
+    navCta: "Încearcă aplicația — Gratis",
+    heroBadge: "Ilustrat AI • Știință reală pentru maia",
+    heroTitle: "Prima ta pâine<br>începe <em>aici</em>",
+    heroHand: "Fă cunoștință cu Elena, companionul nostru AI pentru copt ✨",
+    heroDesc: "Aplicația prietenoasă pentru începători care te ghidează pas cu pas — de la prima maia la prima pâine reușită.",
+    heroStart: "Începe să coci azi",
+    heroGuide: "Ia ghidul gratuit",
+    heroProof: "Alătură-te celor <strong>2.400+</strong> brutari de acasă care folosesc Rise & Ferment",
+    heroFloat1: "Streak de 14 zile!",
+    heroFloat2: "Hrănire în 2 ore",
+    heroFloat3: "24°C — Perfect",
+    mockHi: "Bună dimineața! ☀️",
+    mockName: '"Luna" merge excelent',
+    mockHealth: "Sănătoasă & activă",
+    mockDay: "Zile la rând",
+    mockTemp: "Temperatură",
+    mockBtn: "E timpul de hrănire",
+    probSub: "Sună cunoscut?",
+    probTitle: "Știm perfect cum e",
+    probText: "Fiecare călătorie cu maia începe cu aceleași întrebări.",
+    blogSub: "Din blog",
+    blogTitle: "Citește, coace, repetă",
+    blogText: "Ghiduri practice și sfaturi sincere de la cineva care a început exact ca tine.",
+    blogCta: "Vezi toate articolele →"
+  },
+  it: {
+    navFeatures: "Funzionalità",
+    navBlog: "Blog",
+    navTools: "Strumenti da forno",
+    navGuide: "Guida gratuita",
+    navCta: "Prova l'app — Gratis",
+    heroBadge: "Illustrato con AI • Scienza reale del lievito madre",
+    heroTitle: "La tua prima pagnotta<br>inizia <em>qui</em>",
+    heroHand: "Ti presentiamo Elena, la nostra compagna AI per la panificazione ✨",
+    heroDesc: "L'app pensata per principianti che ti guida passo dopo passo — dal primo lievito madre alla prima pagnotta perfetta.",
+    heroStart: "Inizia a sfornare oggi",
+    heroGuide: "Scarica la guida gratuita",
+    heroProof: "Unisciti a <strong>2.400+</strong> home baker che usano già Rise & Ferment",
+    heroFloat1: "Streak di 14 giorni!",
+    heroFloat2: "Nutrire tra 2 ore",
+    heroFloat3: "24°C — Perfetto",
+    mockHi: "Buongiorno! ☀️",
+    mockName: '"Luna" è in forma',
+    mockHealth: "Sano e attivo",
+    mockDay: "Giorni consecutivi",
+    mockTemp: "Temperatura",
+    mockBtn: "È ora di nutrire",
+    probSub: "Ti suona familiare?",
+    probTitle: "Conosciamo bene questa fatica",
+    probText: "Ogni percorso con il lievito madre inizia con le stesse domande.",
+    blogSub: "Dal blog",
+    blogTitle: "Leggi, cuoci, ripeti",
+    blogText: "Guide pratiche e consigli sinceri da chi ha iniziato proprio come te.",
+    blogCta: "Vedi tutti gli articoli →"
+  },
+  de: {
+    navFeatures: "Funktionen",
+    navBlog: "Blog",
+    navTools: "Backwerkzeuge",
+    navGuide: "Kostenloser Guide",
+    navCta: "App testen — kostenlos",
+    heroBadge: "KI-illustriert • Echte Sauerteig-Wissenschaft",
+    heroTitle: "Dein erstes Brot<br>beginnt <em>hier</em>",
+    heroHand: "Lerne Elena kennen, unsere KI-Backbegleiterin ✨",
+    heroDesc: "Die einsteigerfreundliche App, die dich Schritt für Schritt begleitet — vom ersten Starter bis zum ersten gelungenen Brot.",
+    heroStart: "Heute mit Backen starten",
+    heroGuide: "Kostenlosen Guide holen",
+    heroProof: "Mach mit bei <strong>2.400+</strong> Hobbybäckern, die Rise & Ferment schon nutzen",
+    heroFloat1: "14-Tage-Streak!",
+    heroFloat2: "Füttern in 2 Stunden",
+    heroFloat3: "24°C — Perfekt",
+    mockHi: "Guten Morgen! ☀️",
+    mockName: '"Luna" entwickelt sich super',
+    mockHealth: "Gesund & aktiv",
+    mockDay: "Tagesserie",
+    mockTemp: "Temperatur",
+    mockBtn: "Zeit zum Füttern",
+    probSub: "Kommt dir das bekannt vor?",
+    probTitle: "Wir kennen den Kampf",
+    probText: "Jede Sauerteig-Reise startet mit denselben Fragen.",
+    blogSub: "Aus dem Blog",
+    blogTitle: "Lernen, backen, wiederholen",
+    blogText: "Praktische Guides und ehrliche Tipps von jemandem, der genauso angefangen hat wie du.",
+    blogCta: "Alle Artikel ansehen →"
+  },
+  fr: {
+    navFeatures: "Fonctionnalités",
+    navBlog: "Blog",
+    navTools: "Outils de boulange",
+    navGuide: "Guide gratuit",
+    navCta: "Essayer l'application — Gratuit",
+    heroBadge: "Illustré par IA • Vraie science du levain",
+    heroTitle: "Ton premier pain<br>commence <em>ici</em>",
+    heroHand: "Voici Elena, notre compagne de boulange créée par IA ✨",
+    heroDesc: "L'app pensée pour débutants qui te guide pas à pas — du premier levain au premier pain réussi.",
+    heroStart: "Commencer à cuire aujourd'hui",
+    heroGuide: "Obtenir le guide gratuit",
+    heroProof: "Rejoins <strong>2.400+</strong> boulangers maison qui utilisent déjà Rise & Ferment",
+    heroFloat1: "Série de 14 jours !",
+    heroFloat2: "Nourrir dans 2 heures",
+    heroFloat3: "24°C — Parfait",
+    mockHi: "Bonjour ! ☀️",
+    mockName: '"Luna" se porte très bien',
+    mockHealth: "Sain & actif",
+    mockDay: "Jours d'affilée",
+    mockTemp: "Température",
+    mockBtn: "C'est l'heure de nourrir",
+    probSub: "Ça te parle ?",
+    probTitle: "On connaît bien cette galère",
+    probText: "Chaque parcours au levain commence avec les mêmes questions.",
+    blogSub: "Du blog",
+    blogTitle: "Lire, cuire, recommencer",
+    blogText: "Des guides pratiques et des conseils sincères de quelqu'un qui a commencé comme toi.",
+    blogCta: "Voir tous les articles →"
+  },
+  es: {
+    navFeatures: "Funciones",
+    navBlog: "Blog",
+    navTools: "Herramientas de horneado",
+    navGuide: "Guía gratuita",
+    navCta: "Probar la app — Gratis",
+    heroBadge: "Ilustrado con IA • Ciencia real de masa madre",
+    heroTitle: "Tu primer pan<br>empieza <em>aquí</em>",
+    heroHand: "Conoce a Elena, nuestra compañera de horneado creada con IA ✨",
+    heroDesc: "La app para principiantes que te guía paso a paso — desde tu primer cultivo hasta tu primer pan perfecto.",
+    heroStart: "Empieza a hornear hoy",
+    heroGuide: "Obtener guía gratuita",
+    heroProof: "Únete a <strong>2.400+</strong> panaderos caseros que ya usan Rise & Ferment",
+    heroFloat1: "Racha de 14 días!",
+    heroFloat2: "Alimentar en 2 horas",
+    heroFloat3: "24°C — Perfecto",
+    mockHi: "Buenos días! ☀️",
+    mockName: '"Luna" va excelente',
+    mockHealth: "Sano y activo",
+    mockDay: "Días seguidos",
+    mockTemp: "Temperatura",
+    mockBtn: "Hora de alimentar",
+    probSub: "¿Te suena familiar?",
+    probTitle: "Conocemos bien esa lucha",
+    probText: "Cada viaje con masa madre empieza con las mismas preguntas.",
+    blogSub: "Del blog",
+    blogTitle: "Aprender, hornear, repetir",
+    blogText: "Guías prácticas y consejos honestos de alguien que empezó igual que tú.",
+    blogCta: "Ver todos los artículos →"
+  }
+};
 
-function setLang(l){lang=l;document.getElementById('langLabel').textContent=l.toUpperCase();renderPreview();document.querySelectorAll('.lang-sw__opt').forEach(o=>{o.classList.toggle('active',o.dataset.lang===l)});document.getElementById('langDrop').classList.remove('open')}
+function setText(selector, value) {
+  const el = document.querySelector(selector);
+  if (el && typeof value === "string") el.textContent = value;
+}
 
-function initObs(){const obs=new IntersectionObserver((entries)=>{entries.forEach(e=>{if(e.isIntersecting)e.target.classList.add('vis')})},{threshold:.1,rootMargin:'0px 0px -50px 0px'});document.querySelectorAll('.reveal:not(.vis)').forEach(el=>obs.observe(el))}
+function setHtml(selector, value) {
+  const el = document.querySelector(selector);
+  if (el && typeof value === "string") el.innerHTML = value;
+}
 
-function toggleLangDrop(e){e.stopPropagation();document.getElementById('langDrop').classList.toggle('open')}
+function applyLandingTranslations() {
+  const L = LANDING_I18N[lang] || LANDING_I18N.en;
+
+  setText('#navLinks li:nth-child(1) .nav__link', L.navFeatures);
+  setText('#navLinks li:nth-child(2) .nav__link', L.navBlog);
+  setText('#navLinks li:nth-child(3) .nav__link', L.navTools);
+  setText('#navLinks li:nth-child(4) .nav__link', L.navGuide);
+  setText('.nav__cta', L.navCta);
+
+  setHtml('.hero__badge', `<span class="hero__badge-dot"></span> ${L.heroBadge}`);
+  setHtml('.hero__title', L.heroTitle);
+  setText('.hero__hand', L.heroHand);
+  setText('.hero__desc', L.heroDesc);
+  setHtml('.hero__acts .btn--p', `${L.heroStart} <span class="btn__ar">→</span>`);
+  setHtml('.hero__acts .btn--s', `<svg width="20" height="20"><use href="#ico-book"/></svg> ${L.heroGuide}`);
+  setHtml('.hero__proof-text', L.heroProof);
+  setHtml('.hero__fl--1', `<svg width="20" height="20"><use href="#ico-fire"/></svg> ${L.heroFloat1}`);
+  setHtml('.hero__fl--2', `<svg width="20" height="20"><use href="#ico-clock"/></svg> ${L.heroFloat2}`);
+  setHtml('.hero__fl--3', `<svg width="20" height="20"><use href="#ico-health"/></svg> ${L.heroFloat3}`);
+
+  setText('.mock__hi', L.mockHi);
+  setText('.mock__name', L.mockName);
+  setHtml('.mock__health', `<span class="mock__health-dot"></span> ${L.mockHealth}`);
+  setText('.mock__stats .mock__stat:nth-child(1) .mock__stat-l', L.mockDay);
+  setText('.mock__stats .mock__stat:nth-child(2) .mock__stat-l', L.mockTemp);
+  setHtml('.mock__btn', `<svg width="20" height="20"><use href="#ico-bread"/></svg> ${L.mockBtn}`);
+
+  setText('.prob__head .sl', L.probSub);
+  setText('.prob__head .st', L.probTitle);
+  setText('.prob__head .ss', L.probText);
+
+  setText('.blog__head .sl', L.blogSub);
+  setText('.blog__head .st', L.blogTitle);
+  setText('.blog__head .ss', L.blogText);
+  setText('.blog__va', L.blogCta);
+
+  document.documentElement.lang = lang;
+  const label = document.getElementById('langLabel');
+  if (label) label.textContent = lang.toUpperCase();
+}
+
+function fmtDate(d, l) {
+  const localeMap = { en: 'en-US', ro: 'ro-RO', it: 'it-IT', de: 'de-DE', fr: 'fr-FR', es: 'es-ES' };
+  const locale = localeMap[l] || localeMap.en;
+  const options = { year: 'numeric', month: 'long', day: 'numeric' };
+  return new Date(d).toLocaleDateString(locale, options);
+}
+
+function blogCard(a, dl) {
+  const l = lang;
+  return `<article class="bc reveal rv${dl}" onclick="showArticle('${a.id}')"><div class="bc__img"><div class="bc__scene ${a.scene}"><div class="scene__center"><svg class="scene__svg" width="80" height="80" viewBox="0 0 48 48"><use href="#${a.svgId}"/></svg></div></div><span class="bc__cat">${a.cat[l] || a.cat.en}</span></div><div class="bc__body"><p class="bc__meta">${fmtDate(a.date, l)} · ${a.rt[l] || a.rt.en}</p><h3 class="bc__title">${a.title[l] || a.title.en}</h3><p class="bc__exc">${a.exc[l] || a.exc.en}</p><span class="bc__rm">${LANGS[l]?.rm || 'Read more'} →</span></div></article>`;
+}
+
+function renderPreview() {
+  document.getElementById('blogGrid').innerHTML = A.slice(0, 3).map((a, i) => blogCard(a, i + 1)).join('');
+  initObs();
+}
+
+function showLanding() {
+  currentView = 'landing';
+  currentArticleId = null;
+  document.getElementById('landingPage').style.display = '';
+  document.getElementById('blogListPage').classList.remove('active');
+  document.getElementById('articlePage').classList.remove('active');
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+  closeMob();
+}
+
+function showBlogPage() {
+  currentView = 'blogList';
+  currentArticleId = null;
+  document.getElementById('landingPage').style.display = 'none';
+  document.getElementById('articlePage').classList.remove('active');
+  document.getElementById('blogListPage').classList.add('active');
+  renderBlogList();
+  window.scrollTo({ top: 0 });
+  closeMob();
+}
+
+function showArticle(id) {
+  currentView = 'article';
+  currentArticleId = id;
+  document.getElementById('landingPage').style.display = 'none';
+  document.getElementById('blogListPage').classList.remove('active');
+  document.getElementById('articlePage').classList.add('active');
+  renderArticle(id);
+  window.scrollTo({ top: 0 });
+}
+
+function setMenuOpen(open) {
+  const navLinks = document.getElementById('navLinks');
+  const ham = document.getElementById('ham');
+  const spans = ham.querySelectorAll('span');
+
+  navLinks.classList.toggle('active', open);
+  document.body.classList.toggle('menu-open', open);
+  ham.setAttribute('aria-expanded', open ? 'true' : 'false');
+
+  if (open) {
+    spans[0].style.transform = 'rotate(45deg) translate(5px,5px)';
+    spans[1].style.opacity = '0';
+    spans[2].style.transform = 'rotate(-45deg) translate(5px,-5px)';
+  } else {
+    spans[0].style.transform = '';
+    spans[1].style.opacity = '';
+    spans[2].style.transform = '';
+  }
+}
+
+function closeMob() {
+  setMenuOpen(false);
+}
+
+function langBtns() {
+  const flags = {
+    en: '🇬🇧 English',
+    ro: '🇷🇴 Română',
+    it: '🇮🇹 Italiano',
+    de: '🇩🇪 Deutsch',
+    fr: '🇫🇷 Français',
+    es: '🇪🇸 Español'
+  };
+
+  return Object.entries(flags)
+    .map(([k, v]) => `<button class="a-lang__btn ${lang === k ? 'active' : ''}" onclick="setLang('${k}')">${v}</button>`)
+    .join('');
+}
+
+function renderBlogList() {
+  const l = lang;
+  const L = LANGS[l] || LANGS.en;
+  document.getElementById('blogListPage').innerHTML = `<span class="bp__back" onclick="showLanding()">${L.back}</span><div style="margin-bottom:32px"><div class="a-lang">${langBtns()}</div><p class="sl" style="margin-top:16px">${L.title}</p><h2 class="st">${L.heading}</h2><p class="ss">${L.sub}</p></div><div class="bp__grid">${A.map((a, i) => blogCard(a, (i % 4) + 1)).join('')}</div>`;
+  initObs();
+}
+
+function renderArticle(id) {
+  const a = A.find((x) => x.id === id);
+  if (!a) return;
+
+  currentArticleId = id;
+  const l = lang;
+  const L = LANGS[l] || LANGS.en;
+
+  document.getElementById('articlePage').innerHTML = `<span class="ap__back" onclick="showBlogPage()">${L.backBlog}</span><div class="a-lang">${langBtns()}</div><div class="a-head"><span class="a-cat">${a.cat[l] || a.cat.en}</span><h1 class="a-title">${a.title[l] || a.title.en}</h1><div class="a-meta"><span>${L.by} Rise & Ferment</span><span>${fmtDate(a.date, l)}</span><span>${a.rt[l] || a.rt.en}</span></div></div><div class="a-hero ${a.scene}"><div class="scene__center"><svg class="scene__svg" width="120" height="120" viewBox="0 0 48 48"><use href="#${a.svgId}"/></svg></div></div><div class="a-content">${a.content[l] || a.content.en}<div class="a-author"><div class="a-author__av" style="width:56px;height:56px;border-radius:50%;background:linear-gradient(135deg,var(--parchment),var(--crust-light));display:flex;align-items:center;justify-content:center"><svg style="color:var(--crust)" width="32" height="32"><use href="#ico-person"/></svg></div><div><p class="a-author__name">${L.writtenBy} Rise & Ferment</p><p class="a-author__bio">${L.bio}</p></div></div><div class="a-share"><h3>${L.shareCta}</h3><p>${L.shareText}</p><a href="/app" class="btn btn--p btn--sm">${L.tryApp} →</a></div></div>`;
+}
+
+function setLang(l) {
+  lang = SUPPORTED_LANGS.includes(l) ? l : "en";
+  persistLang(lang);
+
+  applyLandingTranslations();
+
+  if (currentView === 'article' && currentArticleId) {
+    renderArticle(currentArticleId);
+  } else if (currentView === 'blogList') {
+    renderBlogList();
+  } else {
+    renderPreview();
+  }
+
+  document.querySelectorAll('.lang-sw__opt').forEach((o) => {
+    o.classList.toggle('active', o.dataset.lang === lang);
+  });
+
+  const drop = document.getElementById('langDrop');
+  if (drop) drop.classList.remove('open');
+}
+
+function initObs() {
+  const obs = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((e) => {
+        if (e.isIntersecting) e.target.classList.add('vis');
+      });
+    },
+    { threshold: .1, rootMargin: '0px 0px -50px 0px' }
+  );
+
+  document.querySelectorAll('.reveal:not(.vis)').forEach((el) => obs.observe(el));
+}
+
+function toggleLangDrop(e) {
+  e.stopPropagation();
+  document.getElementById('langDrop').classList.toggle('open');
+}
 
 function handleLead(e){e.preventDefault();const b=e.target.querySelector('button');b.textContent='✓ Check your inbox!';b.style.background='#6B8F4E';e.target.querySelector('input').value='';window.open('/7-day-sourdough-starter-guide.pdf','_blank');setTimeout(()=>{b.textContent='Get the Guide →';b.style.background=''},3000)}
 function handleNL(e){e.preventDefault();const b=e.target.querySelector('button');b.textContent='✓ You are in!';b.style.background='#6B8F4E';e.target.querySelector('input').value='';setTimeout(()=>{b.textContent='Subscribe Free';b.style.background=''},3000)}
-
 // ═══ INIT ═══
 window.addEventListener('scroll',()=>{document.getElementById('nav').classList.toggle('scrolled',window.scrollY>50)});
-document.getElementById('ham').addEventListener('click',()=>{const nl=document.getElementById('navLinks');nl.classList.toggle('active');const sp=document.getElementById('ham').querySelectorAll('span');if(nl.classList.contains('active')){sp[0].style.transform='rotate(45deg) translate(5px,5px)';sp[1].style.opacity='0';sp[2].style.transform='rotate(-45deg) translate(5px,-5px)'}else{sp[0].style.transform='';sp[1].style.opacity='';sp[2].style.transform=''}});
+document.getElementById('ham').addEventListener('click',()=>{const open=!document.getElementById('navLinks').classList.contains('active');setMenuOpen(open)});
 document.addEventListener('click',()=>document.getElementById('langDrop').classList.remove('open'));
 document.querySelectorAll('.lang-sw__opt').forEach(o=>{o.addEventListener('click',(e)=>{e.stopPropagation();setLang(o.dataset.lang)})});
 document.querySelectorAll('a[href^="#"]').forEach(a=>{a.addEventListener('click',function(e){const t=this.getAttribute('href');if(t.length>1){const el=document.querySelector(t);if(el){e.preventDefault();el.scrollIntoView({behavior:'smooth'})}}})});
-renderPreview();initObs();
+setLang(lang);
 
 </script>
 </body>
 </html>
+

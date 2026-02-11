@@ -7,22 +7,10 @@ import de from './locales/de.json'
 import fr from './locales/fr.json'
 import es from './locales/es.json'
 import it from './locales/it.json'
-import { isSupportedLanguage, SUPPORTED_LANGUAGES } from '../constants/languages'
+import { SUPPORTED_LANGUAGES } from '../constants/languages'
+import { resolveInitialLanguage } from '../utils/languageDetection'
 
-// Read persisted language from Zustand's localStorage entry
-let savedLanguage = 'ro'
-try {
-  const stored = localStorage.getItem('riseFermentSettings')
-  if (stored) {
-    const parsed = JSON.parse(stored)
-    const lang = parsed.state?.language
-    if (isSupportedLanguage(lang)) {
-      savedLanguage = lang
-    }
-  }
-} catch {
-  // fallback to 'en'
-}
+const savedLanguage = resolveInitialLanguage('en')
 
 i18n.use(initReactI18next).init({
   resources: {

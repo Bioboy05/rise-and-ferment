@@ -6,15 +6,17 @@ import useActiveStarter from "../hooks/useActiveStarter";
 import { exportData, importData } from "../utils/exportHelpers";
 import { normalizeStarter } from "../utils/starterHelpers";
 import { isSupportedLanguage } from "../constants/languages";
+import { resolveInitialLanguage } from "../utils/languageDetection";
 
 function sanitizeImportedSettings(settings) {
   const raw = settings && typeof settings === "object" ? settings : {};
   const notifications = raw.notifications && typeof raw.notifications === "object" ? raw.notifications : {};
+  const defaultLanguage = resolveInitialLanguage("en");
 
   return {
     onboardingComplete: Boolean(raw.onboardingComplete),
     theme: raw.theme === "dark" ? "dark" : "light",
-    language: isSupportedLanguage(raw.language) ? raw.language : "ro",
+    language: isSupportedLanguage(raw.language) ? raw.language : defaultLanguage,
     beginnerMode: raw.beginnerMode !== false,
     soundEnabled: raw.soundEnabled !== false,
     tempUnit: raw.tempUnit === "f" ? "f" : "c",

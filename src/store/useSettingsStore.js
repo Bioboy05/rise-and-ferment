@@ -1,9 +1,11 @@
 import { create } from "zustand";
 import { persist } from "zustand/middleware";
 import { isSupportedLanguage } from "../constants/languages";
+import { resolveInitialLanguage } from "../utils/languageDetection";
 
 const VALID_TEMP_UNITS = ["c", "f"];
 const VALID_WEIGHT_UNITS = ["g", "oz"];
+const DEFAULT_LANGUAGE = resolveInitialLanguage("en");
 
 function clampInteger(value, min, max, fallback) {
   const parsed = Number(value);
@@ -32,7 +34,7 @@ function sanitizeHydratedSettings(rawState) {
   return {
     onboardingComplete: Boolean(source.onboardingComplete),
     theme: source.theme === "dark" ? "dark" : "light",
-    language: isSupportedLanguage(source.language) ? source.language : "ro",
+    language: isSupportedLanguage(source.language) ? source.language : DEFAULT_LANGUAGE,
     beginnerMode: source.beginnerMode !== false,
     soundEnabled: source.soundEnabled !== false,
     tempUnit: VALID_TEMP_UNITS.includes(source.tempUnit) ? source.tempUnit : "c",
@@ -50,7 +52,7 @@ const useSettingsStore = create(
     (set) => ({
       onboardingComplete: false,
       theme: "light",
-      language: "ro",
+      language: DEFAULT_LANGUAGE,
       beginnerMode: true,
       soundEnabled: true,
       tempUnit: "c",
