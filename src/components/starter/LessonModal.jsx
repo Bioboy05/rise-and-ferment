@@ -1,9 +1,10 @@
 import { useTranslation } from "react-i18next";
 import Modal from "../common/Modal";
+import { sanitizeLimitedHtml } from "../../utils/sanitizeHtml";
 
 function LessonModal({ lesson, onClose }) {
   const { t } = useTranslation();
-  const html = t(lesson.contentKey).replace(/\n/g, "<br>");
+  const html = sanitizeLimitedHtml(t(lesson.contentKey), { convertNewlines: true });
 
   return (
     <Modal onClose={onClose} title={t(lesson.titleKey)}>

@@ -52,7 +52,7 @@ function OnboardingPage() {
         style: "warning",
       },
       fridge: {
-        icon: "â„ï¸",
+        icon: "❄️",
         title: t("existingAdviceFridgeTitle"),
         desc: t("existingAdviceFridgeDesc"),
         style: "info",
@@ -228,7 +228,7 @@ function OnboardingPage() {
                 { id: "active", emoji: "🟢", title: t("existingA1a"), desc: t("existingA1aDesc") },
                 { id: "hungry", emoji: "🟡", title: t("existingA1b"), desc: t("existingA1bDesc") },
                 { id: "neglected", emoji: "🟠", title: t("existingA1c"), desc: t("existingA1cDesc") },
-                { id: "fridge", emoji: "â„ï¸", title: t("existingA1d"), desc: t("existingA1dDesc") },
+                { id: "fridge", emoji: "❄️", title: t("existingA1d"), desc: t("existingA1dDesc") },
               ].map((opt) => {
                 const isActive = existingHealth === opt.id;
                 return (
@@ -301,7 +301,7 @@ function OnboardingPage() {
           <p className="onboarding-question">{t("shoppingTitle")}</p>
           <div className="shopping-list">
             <div className="shopping-item">
-              <span className="shopping-icon">âš–ï¸</span>
+              <span className="shopping-icon">⚖️</span>
               <span>{t("shopScale")}</span>
             </div>
             <div className="shopping-item">
@@ -349,11 +349,11 @@ function OnboardingPage() {
               textAlign: "left",
             }}
           >
-            <strong>âœ… {t("adoptChecklist")}</strong>
+            <strong>✅ {t("adoptChecklist")}</strong>
             <div style={{ marginTop: "10px", fontSize: "13px", lineHeight: 1.9, color: "var(--text-secondary)" }}>
-              <div>â˜ {t("adoptCheck1")}</div>
-              <div>â˜ {t("adoptCheck2")}</div>
-              <div>â˜ {t("adoptCheck3")}</div>
+              <div>☐ {t("adoptCheck1")}</div>
+              <div>☐ {t("adoptCheck2")}</div>
+              <div>☐ {t("adoptCheck3")}</div>
             </div>
           </div>
 

@@ -41,6 +41,21 @@ export default defineConfig({
         main: "index.html",
         app: "app.html",
       },
+      output: {
+        manualChunks(id) {
+          if (id.includes("src/i18n/locales")) return "i18n-locales";
+          if (id.includes("node_modules/react") || id.includes("node_modules/react-dom") || id.includes("node_modules/react-router-dom")) {
+            return "vendor-react";
+          }
+          if (id.includes("node_modules/i18next") || id.includes("node_modules/react-i18next")) {
+            return "vendor-i18n";
+          }
+          if (id.includes("node_modules/zustand")) {
+            return "vendor-state";
+          }
+          return undefined;
+        },
+      },
     },
   },
 });

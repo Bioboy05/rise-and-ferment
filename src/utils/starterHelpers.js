@@ -2,6 +2,32 @@
  * Starter-related utility functions.
  */
 
+const MAX_NAME_LENGTH = 50;
+const MAX_NOTE_LENGTH = 500;
+const MAX_HISTORY_ENTRIES = 5000;
+const VALID_HYDRATION = new Set(["100", "80", "60"]);
+
+function sanitizeString(value, maxLength) {
+  if (typeof value !== "string") return "";
+  return value.trim().slice(0, maxLength);
+}
+
+function sanitizeHistory(history) {
+  if (!Array.isArray(history)) return [];
+
+  return history
+    .slice(-MAX_HISTORY_ENTRIES)
+    .map((entry) => ({
+      time: typeof entry?.time === "number" ? entry.time : Date.now(),
+      amount: typeof entry?.amount === "number" ? Math.max(0, Math.min(500, entry.amount)) : 50,
+      withBran: entry?.withBran === true,
+      temp: typeof entry?.temp === "number" && entry.temp >= 0 && entry.temp <= 60 ? entry.temp : null,
+      note: entry?.note ? sanitizeString(String(entry.note), MAX_NOTE_LENGTH) : null,
+      flourType: sanitizeString(String(entry?.flourType || "white"), 30) || "white",
+    }))
+    .filter((entry) => Number.isFinite(entry.time));
+}
+
 /**
  * Calculate the current feeding streak from history entries.
  * Streak = number of consecutive calendar days with at least one feeding,
@@ -105,23 +131,41 @@ export function getStarterStatus(starter, t) {
  * @returns {Object} Starter with all fields guaranteed
  */
 export function normalizeStarter(s) {
+  const source = s && typeof s === "object" ? s : {};
+  const normalizedHistory = sanitizeHistory(source.history);
+
+  const rawCurrentDay = Number(source.currentDay);
+  const currentDay = Number.isFinite(rawCurrentDay)
+    ? Math.max(1, Math.min(14, Math.round(rawCurrentDay)))
+    : 1;
+
+  const rawPreviewDay = Number(source.previewingDay);
+  const previewingDay =
+    Number.isFinite(rawPreviewDay) && rawPreviewDay >= 1 && rawPreviewDay <= 14
+      ? Math.round(rawPreviewDay)
+      : null;
+
+  const hydration = VALID_HYDRATION.has(String(source.hydration)) ? String(source.hydration) : "100";
+
   return {
-    id: s.id || "starter_1",
-    name: s.name || "Pufi",
-    flourType: s.flourType || "white",
-    hydration: s.hydration || "100",
-    createdAt: s.createdAt || null,
-    lastFed: s.lastFed || null,
-    isNewStarter: s.isNewStarter || false,
-    currentDay: s.currentDay || 1,
-    previewingDay: s.previewingDay || null,
-    todayCompleted: s.todayCompleted || false,
-    lastCompletedDate: s.lastCompletedDate || null,
-    history: Array.isArray(s.history) ? s.history : [],
-    streak: s.streak || 0,
-    feedAmount: s.feedAmount || 50,
-    useBran: s.useBran || false,
-    personalNotes: s.personalNotes || "",
-    completedDays: Array.isArray(s.completedDays) ? s.completedDays : [],
+    id: sanitizeString(String(source.id || "starter_1"), 100) || "starter_1",
+    name: sanitizeString(String(source.name || "Pufi"), MAX_NAME_LENGTH) || "Pufi",
+    flourType: sanitizeString(String(source.flourType || "white"), 30) || "white",
+    hydration,
+    createdAt: Number.isFinite(source.createdAt) ? source.createdAt : null,
+    lastFed: Number.isFinite(source.lastFed) ? source.lastFed : null,
+    isNewStarter: Boolean(source.isNewStarter),
+    currentDay,
+    previewingDay,
+    todayCompleted: Boolean(source.todayCompleted),
+    lastCompletedDate: typeof source.lastCompletedDate === "string" ? source.lastCompletedDate : null,
+    history: normalizedHistory,
+    streak: Number.isFinite(source.streak) ? Math.max(0, Math.round(source.streak)) : 0,
+    feedAmount: Number.isFinite(source.feedAmount) ? Math.max(25, Math.min(200, Math.round(source.feedAmount))) : 50,
+    useBran: Boolean(source.useBran),
+    personalNotes: sanitizeString(String(source.personalNotes || ""), MAX_NOTE_LENGTH),
+    completedDays: Array.isArray(source.completedDays)
+      ? source.completedDays.filter((value) => typeof value === "string").slice(-60)
+      : [],
   };
 }

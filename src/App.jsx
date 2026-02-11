@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import { Routes, Route, Navigate } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 import useSettingsStore from "./store/useSettingsStore";
@@ -16,6 +16,36 @@ import OnboardingPage from "./pages/OnboardingPage";
 import PlannerPage from "./pages/PlannerPage";
 import { checkMilestones } from "./data/celebrations";
 
+const CELEBRATION_STORAGE_KEY = "riseFermentCelebrations";
+
+function loadCelebratedMilestones() {
+  try {
+    const raw = localStorage.getItem(CELEBRATION_STORAGE_KEY);
+    const parsed = raw ? JSON.parse(raw) : [];
+    return new Set(Array.isArray(parsed) ? parsed.filter((id) => typeof id === "string") : []);
+  } catch {
+    return new Set();
+  }
+}
+
+function saveCelebratedMilestones(ids) {
+  localStorage.setItem(CELEBRATION_STORAGE_KEY, JSON.stringify([...ids]));
+}
+
+function pseudoRandom(seed, offset) {
+  const x = Math.sin(seed * 12.9898 + offset * 78.233) * 43758.5453;
+  return x - Math.floor(x);
+}
+
+function hashString(value) {
+  let hash = 0;
+  for (let i = 0; i < value.length; i++) {
+    hash = (hash << 5) - hash + value.charCodeAt(i);
+    hash |= 0;
+  }
+  return Math.abs(hash);
+}
+
 function App() {
   const { t } = useTranslation();
   const theme = useSettingsStore((state) => state.theme);
@@ -25,8 +55,7 @@ function App() {
   const starter = getActiveStarter();
   const streak = useStreak();
   const [splashHidden, setSplashHidden] = useState(false);
-  const [celebration, setCelebration] = useState(null);
-  const [confettiPieces, setConfettiPieces] = useState([]);
+  const [dismissedCelebrationId, setDismissedCelebrationId] = useState(null);
 
   useEffect(() => {
     document.documentElement.setAttribute("data-theme", theme);
@@ -41,31 +70,41 @@ function App() {
     return () => clearTimeout(timer);
   }, []);
 
-  useEffect(() => {
-    const stored = localStorage.getItem("riseFermentCelebrations");
-    const celebrated = new Set(stored ? JSON.parse(stored) : []);
-    const milestone = checkMilestones(starter, streak, celebrated);
-    if (milestone) {
-      setCelebration(milestone);
-      celebrated.add(milestone.id);
-      localStorage.setItem("riseFermentCelebrations", JSON.stringify([...celebrated]));
-      const colors = ["#FFB300", "#FF7043", "#8BC34A", "#29B6F6", "#AB47BC", "#FFD54F"];
-      const shapes = ["circle", "square", "triangle"];
-      const pieces = Array.from({ length: 60 }, (_, i) => ({
-        id: `confetti-${i}-${Date.now()}`,
-        left: Math.random() * 100,
-        color: colors[Math.floor(Math.random() * colors.length)],
-        shape: shapes[Math.floor(Math.random() * shapes.length)],
-        delay: Math.random() * 0.6,
-        duration: 2.8 + Math.random() * 1.2,
-      }));
-      setConfettiPieces(pieces);
-    }
-  }, [starter, streak]);
+  const celebration = useMemo(() => {
+    const celebrated = loadCelebratedMilestones();
+    const next = checkMilestones(starter, streak, celebrated);
+    if (!next) return null;
+    if (dismissedCelebrationId === next.id) return null;
+    return next;
+  }, [starter, streak, dismissedCelebrationId]);
+
+  const confettiPieces = useMemo(() => {
+    if (!celebration) return [];
+    const colors = ["#FFB300", "#FF7043", "#8BC34A", "#29B6F6", "#AB47BC", "#FFD54F"];
+    const shapes = ["circle", "square", "triangle"];
+    const seed = hashString(celebration.id);
+
+    return Array.from({ length: 60 }, (_, i) => {
+      const colorIndex = Math.floor(pseudoRandom(seed, i + 1) * colors.length);
+      const shapeIndex = Math.floor(pseudoRandom(seed, i + 101) * shapes.length);
+
+      return {
+        id: `confetti-${celebration.id}-${i}`,
+        left: pseudoRandom(seed, i + 201) * 100,
+        color: colors[colorIndex],
+        shape: shapes[shapeIndex],
+        delay: pseudoRandom(seed, i + 301) * 0.6,
+        duration: 2.8 + pseudoRandom(seed, i + 401) * 1.2,
+      };
+    });
+  }, [celebration]);
 
   const closeCelebration = () => {
-    setCelebration(null);
-    setConfettiPieces([]);
+    if (!celebration) return;
+    const celebrated = loadCelebratedMilestones();
+    celebrated.add(celebration.id);
+    saveCelebratedMilestones(celebrated);
+    setDismissedCelebrationId(celebration.id);
   };
 
   return (

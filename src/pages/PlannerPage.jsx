@@ -4,6 +4,7 @@ import useSettingsStore from "../store/useSettingsStore";
 import useStarterStore from "../store/useStarterStore";
 import { calculateBreadRecipe } from "../utils/calculations";
 import { generateICS } from "../utils/exportHelpers";
+import { sanitizeLimitedHtml } from "../utils/sanitizeHtml";
 
 function PlannerPage() {
   const { t } = useTranslation();
@@ -140,7 +141,7 @@ function PlannerPage() {
         {schedule.warning && (
           <div
             className="tip-box warning"
-            dangerouslySetInnerHTML={{ __html: schedule.warning }}
+            dangerouslySetInnerHTML={{ __html: sanitizeLimitedHtml(schedule.warning) }}
           />
         )}
       </div>

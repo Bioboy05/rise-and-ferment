@@ -1,3 +1,4 @@
+import { useState } from "react";
 import { useTranslation } from "react-i18next";
 import lessons from "../data/lessons";
 import LessonCard from "../components/starter/LessonCard";

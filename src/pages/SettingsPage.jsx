@@ -5,6 +5,41 @@ import useSettingsStore from "../store/useSettingsStore";
 import useActiveStarter from "../hooks/useActiveStarter";
 import { exportData, importData } from "../utils/exportHelpers";
 import { normalizeStarter } from "../utils/starterHelpers";
+import { isSupportedLanguage } from "../constants/languages";
+
+function sanitizeImportedSettings(settings) {
+  const raw = settings && typeof settings === "object" ? settings : {};
+  const notifications = raw.notifications && typeof raw.notifications === "object" ? raw.notifications : {};
+
+  return {
+    onboardingComplete: Boolean(raw.onboardingComplete),
+    theme: raw.theme === "dark" ? "dark" : "light",
+    language: isSupportedLanguage(raw.language) ? raw.language : "ro",
+    beginnerMode: raw.beginnerMode !== false,
+    soundEnabled: raw.soundEnabled !== false,
+    tempUnit: raw.tempUnit === "f" ? "f" : "c",
+    weightUnit: raw.weightUnit === "oz" ? "oz" : "g",
+    sessions: Number.isFinite(Number(raw.sessions)) ? Math.max(0, Math.round(Number(raw.sessions))) : 0,
+    notifications: {
+      enabled: Boolean(notifications.enabled),
+      urgentEnabled: notifications.urgentEnabled !== false,
+      urgentHours: Number.isFinite(Number(notifications.urgentHours))
+        ? Math.max(1, Math.min(72, Math.round(Number(notifications.urgentHours))))
+        : 24,
+      dailyEnabled: Boolean(notifications.dailyEnabled),
+      dailyTime:
+        typeof notifications.dailyTime === "string" && /^\d{2}:\d{2}$/.test(notifications.dailyTime)
+          ? notifications.dailyTime
+          : "09:00",
+      pushEnabled: Boolean(notifications.pushEnabled),
+    },
+    scheduledBakes: Array.isArray(raw.scheduledBakes) ? raw.scheduledBakes.slice(0, 100) : [],
+    calcLoaves: Number.isFinite(Number(raw.calcLoaves))
+      ? Math.max(1, Math.min(10, Math.round(Number(raw.calcLoaves))))
+      : 1,
+    bakeNotes: String(raw.bakeNotes || "").slice(0, 500),
+  };
+}
 
 function SettingsPage() {
   const { t, i18n } = useTranslation();
@@ -43,8 +78,16 @@ function SettingsPage() {
     if (!file) return;
     try {
       const data = await importData(file);
+      const seenIds = new Set();
       const normalizedStarters = Array.isArray(data.starters)
-        ? data.starters.map(normalizeStarter)
+        ? data.starters
+            .slice(0, 10)
+            .map(normalizeStarter)
+            .filter((starterItem) => {
+              if (seenIds.has(starterItem.id)) return false;
+              seenIds.add(starterItem.id);
+              return true;
+            })
         : [];
       if (normalizedStarters.length === 0) {
         throw new Error("No starters found in backup");
@@ -63,10 +106,11 @@ function SettingsPage() {
         })
       );
       if (data.settings) {
+        const safeSettings = sanitizeImportedSettings(data.settings);
         localStorage.setItem(
           "riseFermentSettings",
           JSON.stringify({
-            state: data.settings,
+            state: safeSettings,
             version: 0,
           })
         );

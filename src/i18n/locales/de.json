@@ -18,7 +18,7 @@
     "recipeLevelAdvanced": "Advanced",
     "recipeLevelFavorite": "Favorite",
     "recipeBaguetteTitle": "French Baguette",
-    "recipeBaguetteDesc": "The ultimate bakerâ€™s test: crisp crust, airy crumb, and beautiful slashes. Practice makes the difference.",
+    "recipeBaguetteDesc": "The ultimate baker’s test: crisp crust, airy crumb, and beautiful slashes. Practice makes the difference.",
     "recipeBaguetteIng1": "80g active starter",
     "recipeBaguetteIng2": "500g bread flour (or type 550)",
     "recipeBaguetteIng3": "350g cold water (70%)",
@@ -33,12 +33,11 @@
     "recipeBaguetteStep8": "Shape baguettes, roll tight, seal the seam.",
     "recipeBaguetteStep9": "Proof on a floured couche with folds for support.",
     "recipeBaguetteStep10": "Cold proof 12-16 hours.",
-    "recipeBaguetteStep11": "Preheat oven to 250Â°C with stone or steel.",
-    "recipeBaguetteStep12": "Transfer and score quickly at 45Â°.",
+    "recipeBaguetteStep11": "Preheat oven to 250°C with stone or steel.",
+    "recipeBaguetteStep12": "Transfer and score quickly at 45°.",
     "recipeBaguetteStep13": "Bake with steam 10 minutes, then 12-15 minutes without steam.",
-    "recipeBaguetteTip": "ðŸ’¡ Scoring: hold the blade at 45Â° and move with confidence. Practice makes perfect baguettes!",
+    "recipeBaguetteTip": "💡 Scoring: hold the blade at 45° and move with confidence. Practice makes perfect baguettes!",
     "comingSoon": "Kommt bald...",
-
     "welcome": "Willkommen!",
     "appDesc": "Rise & Ferment hilft dir, einen gesunden Sauerteig Schritt für Schritt zu züchten und zu pflegen.",
     "howToStart": "Wie möchtest du anfangen?",
@@ -114,7 +113,6 @@
     "backToCurrent": "↩ Zurück zum aktuellen Tag",
     "congratsTitle": "Herzlichen Glückwunsch!",
     "congratsDesc": "Du hast 7 Tage Pflege abgeschlossen! Dein Starter ist bereit zum Brotbacken!",
-
     "dayGuideTitle1": "Die Geburt deines Starters",
     "dayGuideContent1": "Mische 50g Roggenmehl + 50g warmes Wasser (28-30°C) in einem sauberen Glas.\nGut rühren bis es glatt ist — keine trockenen Klumpen.\nMarkiere den Stand mit einem Gummiband und decke locker ab.\nStelle es an einen warmen Ort (24-26°C). Jetzt warten wir!",
     "dayGuideTitle2": "Geduld-Tag",
@@ -143,7 +141,6 @@
     "dayGuideContent13": "Morgen kannst du dein erstes Brot backen!\nBaue heute Abend einen Vorteig: 25g Starter + 50g Mehl + 50g Wasser.\nLass ihn über Nacht gehen (8-10 Stunden).\nEr sollte morgens blasig und gewölbt sein.",
     "dayGuideTitle14": "Abschlusstag!",
     "dayGuideContent14": "Dein Starter hat seine Reise von Mehl und Wasser zu einer lebendigen Kultur vollendet!\nDu hast jetzt einen zuverlässigen Sauerteig-Starter.\nAb hier: 2-3x/Woche füttern oder zwischen Backrunden im Kühlschrank aufbewahren.\nSchau im Lernbereich nach deinem ersten Brotrezept!",
-
     "dayTask1Title": "Erstelle deinen Starter",
     "dayTask1": "Mische 50g Roggenmehl mit 50g warmem Wasser. Glatt rühren, locker abdecken.",
     "dayTask1Action": "Erste Fütterung eintragen",
@@ -172,7 +169,6 @@
     "dayTask7": "Füttern und genau beobachten. Schwimmtest — schwimmt ein Löffel voll auf Wasser?",
     "dayTask7Action": "Rezepte entdecken",
     "dayTask7Content": "Wenn er sich in 4-6 Stunden verdoppelt und schwimmt, bist du bereit zum Backen!",
-
     "lessonTitle1": "Mehl & Wasser: Die Grundlagen",
     "lessonShort1": "Warum die Mehlsorte wichtig ist und wie Wasser deinen Starter beeinflusst",
     "lessonContent1": "Alles beginnt mit Mehl und Wasser.\n\nMehl liefert die Nahrung (Stärke und Zucker), die Wildhefen und Bakterien brauchen.\n\n- Roggenmehl: Reich an Nährstoffen, ideal zum Starten\n- Weizenmehl: Konsistent und vorhersehbar, ideal für tägliches Füttern\n- Vollkornmehl: Extra Mineralien, gut für gelegentliche Abwechslung\n\nWasserqualität zählt:\n- Gefiltertes Wasser verwenden, wenn Leitungswasser stark gechlort ist\n- Warmes Wasser (25-30°C) beschleunigt die Gärung\n- Kaltes Wasser verlangsamt sie\n\nDas Standardverhältnis ist 1:1:1 — gleiche Teile Starter, Mehl und Wasser nach Gewicht.",

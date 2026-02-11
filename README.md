@@ -1,16 +1,73 @@
-# React + Vite
+# Rise & Ferment
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Mobile-first sourdough companion app built with React + Vite.
 
-Currently, two official plugins are available:
+## Quick start
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+```bash
+npm install
+npm run dev
+```
 
-## React Compiler
+Build for production:
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+```bash
+npm run build
+```
 
-## Expanding the ESLint configuration
+Preview production build:
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+```bash
+npm run preview
+```
+
+## Quality checks
+
+Run the full local quality gate before pushing:
+
+```bash
+npm run qa
+```
+
+It runs:
+- `lint` (ESLint rules, React hooks safety)
+- `build` (production compile)
+- `qa:personas` (scenario checks for beginner and power-user flows, plus data safety checks)
+
+Optional encoding cleanup for locale files:
+
+```bash
+npm run qa:encoding
+```
+
+## Project structure
+
+- `src/pages`: screen-level UI
+- `src/components`: reusable UI components
+- `src/store`: Zustand state stores
+- `src/i18n`: translations and i18n setup
+- `src/utils`: pure helpers and sanitization
+- `src/constants`: shared constants
+- `tasks`: maintenance and QA scripts
+
+## Architecture notes
+
+- i18n resources are merged with English fallback in `src/i18n/index.js`.
+- User-imported backup data is sanitized before writing to local storage.
+- All controlled HTML rendering goes through `sanitizeLimitedHtml` in `src/utils/sanitizeHtml.js`.
+- Vite build uses manual chunks in `vite.config.js` to keep bundles easier to tune.
+
+## Security baseline
+
+- Starter and settings imports are normalized and clamped.
+- Backup import rejects invalid/malformed content.
+- UI HTML insertion is allowlist-based (small allowed tags set only).
+
+## Editing guide
+
+When adding features:
+
+1. Keep UI text in locale files under `src/i18n/locales`.
+2. Keep business logic in `src/utils` or `src/store`, not inline in page render.
+3. Run `npm run qa` before commit.
+

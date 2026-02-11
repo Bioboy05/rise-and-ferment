@@ -138,16 +138,18 @@ const useStarterStore = create(
   },
 
   completeDay: (id) => {
+    if (!isValidId(id)) return;
     set((state) => ({
       starters: state.starters.map((s) => {
         if (s.id !== id) return s;
+        if (s.todayCompleted) return s;
         const today = new Date().toDateString();
         return {
           ...s,
           todayCompleted: true,
           lastCompletedDate: today,
-          currentDay: s.currentDay + 1,
-          completedDays: [...s.completedDays, today],
+          currentDay: Math.min(14, s.currentDay + 1),
+          completedDays: s.completedDays.includes(today) ? s.completedDays : [...s.completedDays, today],
           previewingDay: null,
         };
       }),

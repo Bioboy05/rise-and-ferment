@@ -1,8 +1,9 @@
 import { create } from "zustand";
 import { persist } from "zustand/middleware";
+import { isSupportedLanguage } from "../constants/languages";
 
-const VALID_LANGUAGES = ["ro", "en", "de", "fr", "es", "it"];
 const VALID_TEMP_UNITS = ["c", "f"];
+const VALID_WEIGHT_UNITS = ["g", "oz"];
 
 const useSettingsStore = create(
   persist(
@@ -35,7 +36,7 @@ const useSettingsStore = create(
     })),
 
   setLanguage: (lang) => {
-    if (VALID_LANGUAGES.includes(lang)) set({ language: lang });
+    if (isSupportedLanguage(lang)) set({ language: lang });
   },
   toggleBeginnerMode: () =>
     set((state) => ({ beginnerMode: !state.beginnerMode })),
@@ -44,7 +45,7 @@ const useSettingsStore = create(
     if (VALID_TEMP_UNITS.includes(unit)) set({ tempUnit: unit });
   },
   setWeightUnit: (unit) => {
-    if (unit === "g" || unit === "oz") set({ weightUnit: unit });
+    if (VALID_WEIGHT_UNITS.includes(unit)) set({ weightUnit: unit });
   },
   toggleNotifications: () =>
     set((state) => ({
@@ -80,7 +81,6 @@ const useSettingsStore = create(
         soundEnabled: state.soundEnabled,
   tempUnit: state.tempUnit,
   weightUnit: state.weightUnit,
-        weightUnit: state.weightUnit,
         sessions: state.sessions,
         notifications: state.notifications,
         scheduledBakes: state.scheduledBakes,

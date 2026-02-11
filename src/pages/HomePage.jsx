@@ -10,6 +10,7 @@ import { getDailyQuote, getStreakQuote } from "../data/dailyQuotes";
 import troubleshooting from "../data/troubleshooting";
 import Modal from "../components/common/Modal";
 import { formatTimeAgo } from "../utils/dateHelpers";
+import { sanitizeLimitedHtml } from "../utils/sanitizeHtml";
 
 function HomePage() {
   const { t } = useTranslation();
@@ -23,6 +24,7 @@ function HomePage() {
 
   const [taskFeedModal, setTaskFeedModal] = useState(false);
   const [troubleOpen, setTroubleOpen] = useState(false);
+  const [nowMs, setNowMs] = useState(() => Date.now());
 
   const displayDay = starter.previewingDay ?? starter.currentDay;
   const isPreview = starter.previewingDay !== null && starter.previewingDay !== starter.currentDay;
@@ -46,16 +48,17 @@ function HomePage() {
   }, [displayDay, isPreview, starter.isNewStarter, streak]);
 
   useEffect(() => {
-    if (!starter.lastCompletedDate) return;
+    const interval = setInterval(() => setNowMs(Date.now()), 60000);
+    return () => clearInterval(interval);
+  }, []);
+
+  useEffect(() => {
+    if (!starter.lastCompletedDate || !starter.todayCompleted) return;
     const today = new Date().toDateString();
     if (starter.lastCompletedDate !== today) {
-      const updates = { todayCompleted: false };
-      if (starter.isNewStarter && starter.currentDay < 7) {
-        updates.currentDay = starter.currentDay + 1;
-      }
-      updateStarter(starter.id, updates);
+      updateStarter(starter.id, { todayCompleted: false });
     }
-  }, [starter, updateStarter]);
+  }, [starter.id, starter.lastCompletedDate, starter.todayCompleted, updateStarter]);
 
   const goToDay = (day) => {
     updateStarter(starter.id, { previewingDay: day });
@@ -81,9 +84,7 @@ function HomePage() {
   const showDayGuide = starter.isNewStarter && starter.currentDay <= 14;
   const showDailyTask = starter.isNewStarter && starter.currentDay <= 7;
 
-  const hoursSince = starter.lastFed
-    ? Math.floor((Date.now() - starter.lastFed) / (1000 * 60 * 60))
-    : null;
+  const hoursSince = starter.lastFed ? Math.floor((nowMs - starter.lastFed) / (1000 * 60 * 60)) : null;
   const isUrgent = hoursSince !== null && hoursSince > 24;
 
   const status = useMemo(() => {
@@ -105,9 +106,7 @@ function HomePage() {
     return { main: t("statusHungry"), sub: t("statusHungrySub"), cls: "urgent" };
   }, [hoursSince, beginnerMode, t]);
 
-  const ageDays = starter.createdAt
-    ? Math.floor((Date.now() - starter.createdAt) / (1000 * 60 * 60 * 24))
-    : 0;
+  const ageDays = starter.createdAt ? Math.floor((nowMs - starter.createdAt) / (1000 * 60 * 60 * 24)) : 0;
 
   return (
     <div>
@@ -217,10 +216,12 @@ function HomePage() {
                   else if (day === starter.currentDay && starter.todayCompleted) cls = "done";
                   else if (day === starter.currentDay) cls = "current";
                   return (
-                    <div
+                    <button
+                      type="button"
                       key={day}
                       className={`day-dot ${cls}`}
                       onClick={() => goToDay(day)}
+                      aria-label={`${t("dayLabel")} ${day}`}
                     />
                   );
                 })}
@@ -242,7 +243,7 @@ function HomePage() {
               <div
                 className="task-content"
                 dangerouslySetInnerHTML={{
-                  __html: dayTask ? t(dayTask.contentKey) : "",
+                  __html: dayTask ? sanitizeLimitedHtml(t(dayTask.contentKey), { convertNewlines: true }) : "",
                 }}
               />
               {!isPreview && (

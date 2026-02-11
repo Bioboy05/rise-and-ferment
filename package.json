@@ -7,7 +7,10 @@
     "dev": "vite",
     "build": "vite build",
     "lint": "eslint .",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "qa:personas": "node tasks/persona-qa.mjs",
+    "qa:encoding": "node tasks/fix-mojibake.mjs",
+    "qa": "npm run lint && npm run build && npm run qa:personas"
   },
   "dependencies": {
     "i18next": "^25.8.4",

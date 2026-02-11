@@ -18,7 +18,7 @@
     "recipeLevelAdvanced": "Advanced",
     "recipeLevelFavorite": "Favorite",
     "recipeBaguetteTitle": "French Baguette",
-    "recipeBaguetteDesc": "The ultimate bakerâ€™s test: crisp crust, airy crumb, and beautiful slashes. Practice makes the difference.",
+    "recipeBaguetteDesc": "The ultimate baker’s test: crisp crust, airy crumb, and beautiful slashes. Practice makes the difference.",
     "recipeBaguetteIng1": "80g active starter",
     "recipeBaguetteIng2": "500g bread flour (or type 550)",
     "recipeBaguetteIng3": "350g cold water (70%)",
@@ -33,12 +33,11 @@
     "recipeBaguetteStep8": "Shape baguettes, roll tight, seal the seam.",
     "recipeBaguetteStep9": "Proof on a floured couche with folds for support.",
     "recipeBaguetteStep10": "Cold proof 12-16 hours.",
-    "recipeBaguetteStep11": "Preheat oven to 250Â°C with stone or steel.",
-    "recipeBaguetteStep12": "Transfer and score quickly at 45Â°.",
+    "recipeBaguetteStep11": "Preheat oven to 250°C with stone or steel.",
+    "recipeBaguetteStep12": "Transfer and score quickly at 45°.",
     "recipeBaguetteStep13": "Bake with steam 10 minutes, then 12-15 minutes without steam.",
-    "recipeBaguetteTip": "ðŸ’¡ Scoring: hold the blade at 45Â° and move with confidence. Practice makes perfect baguettes!",
+    "recipeBaguetteTip": "💡 Scoring: hold the blade at 45° and move with confidence. Practice makes perfect baguettes!",
     "comingSoon": "Próximamente...",
-
     "welcome": "¡Bienvenido!",
     "appDesc": "Rise & Ferment te ayuda a cultivar y mantener una masa madre saludable, paso a paso.",
     "howToStart": "¿Cómo quieres empezar?",
@@ -114,7 +113,6 @@
     "backToCurrent": "↩ Volver al día actual",
     "congratsTitle": "¡Felicidades!",
     "congratsDesc": "¡Has completado 7 días de cuidado! ¡Tu masa madre está lista para hacer pan!",
-
     "dayGuideTitle1": "El nacimiento de tu masa madre",
     "dayGuideContent1": "Mezcla 50g de harina de centeno + 50g de agua tibia (28-30°C) en un frasco limpio.\nRemueve bien hasta que quede suave — sin grumos.\nMarca el nivel con una goma elástica y tapa ligeramente.\nColoca en un lugar cálido (24-26°C). ¡Ahora esperamos!",
     "dayGuideTitle2": "Día de paciencia",
@@ -143,7 +141,6 @@
     "dayGuideContent13": "¡Mañana puedes hornear tu primer pan!\nPrepara un prefermento esta noche: 25g masa madre + 50g harina + 50g agua.\nDeja fermentar toda la noche (8-10 horas).\nDebería estar burbujeante y abombado por la mañana.",
     "dayGuideTitle14": "¡Día de graduación!",
     "dayGuideContent14": "¡Tu masa madre ha completado su viaje de harina y agua a una cultura viva!\nAhora tienes una masa madre fiable.\nDesde aquí: alimenta 2-3x/semana, o guárdala en la nevera entre horneados.\n¡Revisa la sección Aprender para tu primera receta de pan!",
-
     "dayTask1Title": "Crea tu masa madre",
     "dayTask1": "Mezcla 50g de harina de centeno con 50g de agua tibia. Remueve hasta que esté suave, tapa ligeramente.",
     "dayTask1Action": "Registrar primera alimentación",
@@ -172,7 +169,6 @@
     "dayTask7": "Alimenta y observa de cerca. Prueba de flotación — ¿una cucharada flota en agua?",
     "dayTask7Action": "Explorar recetas",
     "dayTask7Content": "Si dobla en 4-6 horas y flota, ¡estás lista para hornear!",
-
     "lessonTitle1": "Harina y agua: Lo básico",
     "lessonShort1": "Por qué el tipo de harina importa y cómo el agua afecta tu masa madre",
     "lessonContent1": "Todo empieza con harina y agua.\n\nLa harina proporciona el alimento (almidón y azúcares) que las levaduras salvajes y bacterias necesitan.\n\n- Harina de centeno: Rica en nutrientes, ideal para empezar\n- Harina blanca: Consistente y predecible, ideal para alimentación diaria\n- Harina integral: Minerales extra, buena para variedad ocasional\n\nLa calidad del agua importa:\n- Usa agua filtrada si el agua del grifo está muy clorada\n- Agua tibia (25-30°C) acelera la fermentación\n- Agua fría la ralentiza\n\nLa proporción estándar es 1:1:1 — partes iguales de masa madre, harina y agua en peso.",

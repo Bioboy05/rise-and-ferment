@@ -1,3 +1,4 @@
+import { useEffect, useState } from "react";
 import { useTranslation } from "react-i18next";
 import useActiveStarter from "../hooks/useActiveStarter";
 import useStreak from "../hooks/useStreak";
@@ -35,6 +36,12 @@ function StatsPage() {
   const starter = useActiveStarter();
   const streak = useStreak();
   const history = starter.history || [];
+  const [nowMs, setNowMs] = useState(() => Date.now());
+
+  useEffect(() => {
+    const interval = setInterval(() => setNowMs(Date.now()), 60000);
+    return () => clearInterval(interval);
+  }, []);
 
   const totalFeedings = history.length;
   const tempsWithValue = history.filter((e) => e.temp != null);
@@ -43,9 +50,9 @@ function StatsPage() {
       ? (tempsWithValue.reduce((s, e) => s + e.temp, 0) / tempsWithValue.length).toFixed(1)
       : null;
   const ageDays = starter.createdAt
-    ? Math.floor((Date.now() - new Date(starter.createdAt).getTime()) / (1000 * 60 * 60 * 24))
+    ? Math.floor((nowMs - new Date(starter.createdAt).getTime()) / (1000 * 60 * 60 * 24))
     : history[0]
-      ? Math.floor((Date.now() - new Date(history[0].time).getTime()) / (1000 * 60 * 60 * 24))
+      ? Math.floor((nowMs - new Date(history[0].time).getTime()) / (1000 * 60 * 60 * 24))
       : 0;
 
   const activity = getLast14DaysActivity(history);
