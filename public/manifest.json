@@ -2,7 +2,7 @@
   "name": "Rise & Ferment — Sourdough Starter Tracker",
   "short_name": "Rise & Ferment",
   "description": "Track your sourdough starter's journey with daily feedings, recipes, and guided learning.",
-  "start_url": "/",
+  "start_url": "/app",
   "display": "standalone",
   "orientation": "portrait",
   "theme_color": "#8B5A2B",
@@ -14,10 +14,15 @@
       "type": "image/svg+xml"
     },
     {
-      "src": "/icons/icon.svg",
+      "src": "/icons/icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "/icons/icon-512.png",
       "sizes": "512x512",
-      "type": "image/svg+xml",
-      "purpose": "maskable"
+      "type": "image/png",
+      "purpose": "any maskable"
     }
   ],
   "categories": ["food", "lifestyle", "education"]

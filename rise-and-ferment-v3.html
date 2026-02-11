@@ -2,9 +2,6 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
-<meta name="description" content="Rise & Ferment is a beginner-friendly sourdough app and free starter guide. Real tips, real science, no gatekeeping.">
-<meta property="og:title" content="Rise & Ferment — Your Sourdough Journey Starts Here">
-<meta property="og:description" content="Beginner-friendly app + free 7‑day starter guide. Real tips, real science.">
 <title>Rise & Ferment — Your Sourdough Journey Starts Here</title>
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@400;600;700&family=Nunito:wght@400;500;600;700;800&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,600&display=swap" rel="stylesheet">
@@ -166,7 +163,6 @@ img{max-width:100%;display:block}a{color:inherit;text-decoration:none}button{cur
 .lead__input{flex:1;min-width:200px;padding:14px 20px;border:2px solid rgba(139,90,43,.15);border-radius:14px;font-family:var(--font-body);font-size:.95rem;background:var(--flour);color:var(--crumb);outline:none;transition:border-color .3s}.lead__input:focus{border-color:var(--crust)}.lead__input::placeholder{color:var(--wheat)}
 .lead__sub{padding:14px 28px;background:var(--crust);color:var(--cream);border-radius:14px;font-size:.95rem;font-weight:700;border:none;cursor:pointer;transition:all .3s;box-shadow:0 4px 16px rgba(139,90,43,.25)}.lead__sub:hover{background:var(--crust-deep);transform:translateY(-1px)}
 .lead__priv{font-size:.78rem;color:var(--wheat);margin-top:12px}
-.lead__link{color:var(--crust);font-weight:700;text-decoration:underline;text-decoration-thickness:2px;text-underline-offset:3px}
 .lead__vis{display:flex;justify-content:center;position:relative;z-index:2}
 .pdf-mock{width:clamp(200px,25vw,280px);background:var(--flour);border-radius:8px;box-shadow:0 20px 60px rgba(93,58,26,.2),8px 8px 0 var(--parchment);transform:rotate(-3deg);overflow:hidden;transition:transform .5s}.pdf-mock:hover{transform:rotate(0deg) scale(1.03)}
 .pdf-mock__h{background:linear-gradient(135deg,var(--crust),var(--crust-deep));padding:24px 20px;text-align:center}
@@ -249,7 +245,7 @@ img{max-width:100%;display:block}a{color:inherit;text-decoration:none}button{cur
 <li><a href="#guide" class="nav__link" onclick="showLanding()">Free Guide</a></li>
 <li><div class="lang-sw" id="langSw"><button class="lang-sw__btn" onclick="toggleLangDrop(event)"><svg><use href="#ico-globe"/></svg> <span id="langLabel">EN</span></button><div class="lang-sw__drop" id="langDrop"><div class="lang-sw__opt active" data-lang="en">🇬🇧 English</div><div class="lang-sw__opt" data-lang="ro">🇷🇴 Română</div><div class="lang-sw__opt" data-lang="it">🇮🇹 Italiano</div><div class="lang-sw__opt" data-lang="de">🇩🇪 Deutsch</div><div class="lang-sw__opt" data-lang="fr">🇫🇷 Français</div><div class="lang-sw__opt" data-lang="es">🇪🇸 Español</div></div></div></li>
 </ul>
-<a href="/app" class="btn nav__cta">Try the App — Free</a>
+<a href="#app" class="btn nav__cta">Try the App — Free</a>
 <button class="nav__ham" id="ham" aria-label="Menu"><span></span><span></span><span></span></button>
 </div></nav>
 
@@ -259,11 +255,11 @@ img{max-width:100%;display:block}a{color:inherit;text-decoration:none}button{cur
 <!-- HERO -->
 <section class="hero" id="hero"><div class="hero__bg hero__bg--1"></div><div class="hero__bg hero__bg--2"></div><div class="ctn"><div class="hero__c">
 <div class="hero__text">
-<div class="hero__badge"><span class="hero__badge-dot"></span> AI-illustrated • Real sourdough science</div>
+<div class="hero__badge"><span class="hero__badge-dot"></span> Available in 6 languages</div>
 <h1 class="hero__title">Your First Loaf<br>Starts <em>Here</em></h1>
-<p class="hero__hand">Meet Elena, our AI-created baking companion ✨</p>
-<p class="hero__desc">The beginner-friendly app that guides real people through sourdough baking — from your first starter to your first perfect loaf. Real tips, real science, zero gatekeeping.</p>
-<div class="hero__acts"><a href="/app" class="btn btn--p">Start Baking Today <span class="btn__ar">→</span></a><a href="#guide" class="btn btn--s"><svg width="20" height="20"><use href="#ico-book"/></svg> Get Free Guide</a></div>
+<p class="hero__hand">Because every great bread starts with a happy starter ✨</p>
+<p class="hero__desc">The beginner-friendly app that guides real people through sourdough baking — from your first starter to your first perfect loaf. No experience needed. Just curiosity.</p>
+<div class="hero__acts"><a href="#app" class="btn btn--p">Start Baking Today <span class="btn__ar">→</span></a><a href="#guide" class="btn btn--s"><svg width="20" height="20"><use href="#ico-book"/></svg> Get Free Guide</a></div>
 <div class="hero__proof"><div class="hero__avs"><div class="hero__av hero__av--1"><svg width="20" height="20"><use href="#ico-person"/></svg></div><div class="hero__av hero__av--2"><svg width="20" height="20"><use href="#ico-person"/></svg></div><div class="hero__av hero__av--3"><svg width="20" height="20"><use href="#ico-person"/></svg></div><div class="hero__av hero__av--4"><svg width="20" height="20"><use href="#ico-person"/></svg></div></div><p class="hero__proof-text">Join <strong>2,400+</strong> home bakers already using Rise & Ferment</p></div>
 </div>
 <div class="hero__vis">
@@ -320,7 +316,7 @@ img{max-width:100%;display:block}a{color:inherit;text-decoration:none}button{cur
 <section class="lead" id="guide"><div class="ctn"><div class="lead__card reveal">
 <div class="lead__text"><div class="lead__badge"><svg width="18" height="18"><use href="#ico-book"/></svg> Free Download</div><h2 class="lead__t">The 7-Day Sourdough<br>Starter Guide</h2><p class="lead__d">Everything you need to create your first sourdough starter — condensed into a beautiful, printable PDF.</p>
 <ul class="lead__inc"><li><svg width="18" height="18" style="color:var(--olive)"><use href="#ico-check"/></svg> Day-by-day instructions</li><li><svg width="18" height="18" style="color:var(--olive)"><use href="#ico-check"/></svg> Shopping list</li><li><svg width="18" height="18" style="color:var(--olive)"><use href="#ico-check"/></svg> Troubleshooting cheat sheet</li><li><svg width="18" height="18" style="color:var(--olive)"><use href="#ico-check"/></svg> Your first bread recipe</li><li><svg width="18" height="18" style="color:var(--olive)"><use href="#ico-check"/></svg> Printable feeding schedule</li></ul>
-<form class="lead__form" onsubmit="handleLead(event)"><input type="email" class="lead__input" placeholder="you@email.com" required><button type="submit" class="lead__sub">Get the Guide →</button></form><p class="lead__priv">No spam, ever. Unsubscribe anytime.</p><p class="lead__priv"><a class="lead__link" href="/7-day-sourdough-starter-guide.pdf" target="_blank" rel="noopener">Download instantly</a></p></div>
+<form class="lead__form" onsubmit="handleLead(event)"><input type="email" class="lead__input" placeholder="your@email.com" required><button type="submit" class="lead__sub">Send Me the Guide →</button></form><p class="lead__priv">No spam, ever. Unsubscribe anytime.</p></div>
 <div class="lead__vis"><div class="pdf-mock"><div class="pdf-mock__h"><div class="pdf-mock__h-t">The 7-Day<br>Sourdough Starter<br>Guide</div><div class="pdf-mock__h-s">by Rise & Ferment</div></div><div class="pdf-mock__b"><div class="pdf-mock__line"></div><div class="pdf-mock__line"></div><div class="pdf-mock__line"></div><div class="pdf-mock__line"></div><div class="pdf-mock__line"></div><div class="pdf-mock__line"></div></div></div></div>
 </div></div></section>
 
@@ -336,7 +332,7 @@ img{max-width:100%;display:block}a{color:inherit;text-decoration:none}button{cur
 <!-- NEWSLETTER -->
 <section class="nl" id="newsletter"><div class="ctn"><div class="nl__card reveal">
 <h2 class="nl__t">Fresh tips, straight from the oven</h2>
-<p class="nl__d">Weekly recipes, baking tips, and Elena's best starter advice. Join the early list.</p>
+<p class="nl__d">Weekly recipes, baking tips, and the occasional exclusive deal. Join 1,200+ home bakers.</p>
 <form class="nl__form" onsubmit="handleNL(event)"><input type="email" class="nl__input" placeholder="Enter your email" required><button type="submit" class="nl__btn">Subscribe Free</button></form>
 <div class="nl__perks"><span class="nl__perk">✓ Weekly recipes</span><span class="nl__perk">✓ No spam</span><span class="nl__perk">✓ Unsubscribe anytime</span></div>
 </div></div></section>
@@ -350,7 +346,7 @@ img{max-width:100%;display:block}a{color:inherit;text-decoration:none}button{cur
 <footer class="ft"><div class="ctn">
 <div class="ft__top">
 <div><div class="ft__logo"><div class="ft__logo-ico"><svg viewBox="0 0 48 48"><use href="#ico-jar"/></svg></div><span class="ft__logo-text">Rise & Ferment</span></div><p class="ft__brand-txt">The beginner-friendly sourdough companion. Making real bread accessible to everyone.</p><div class="ft__social"><a href="#" class="ft__slink" aria-label="Instagram"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="5"/></svg></a><a href="#" class="ft__slink" aria-label="TikTok"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M19.59 6.69a4.83 4.83 0 01-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 01-2.88 2.5 2.89 2.89 0 01-2.89-2.89 2.89 2.89 0 012.89-2.89c.28 0 .54.04.79.1v-3.5a6.37 6.37 0 00-.79-.05A6.34 6.34 0 003.15 15.2a6.34 6.34 0 0010.86 4.46V13a8.28 8.28 0 005.58 2.16V11.7a4.83 4.83 0 01-3.58-1.43V6.69h3.58z"/></svg></a></div></div>
-<div><h4 class="ft__col-t">App</h4><ul class="ft__links"><li><a href="#features" class="ft__link" onclick="showLanding()">Features</a></li><li><a href="/app" class="ft__link">Open App</a></li></ul></div>
+<div><h4 class="ft__col-t">App</h4><ul class="ft__links"><li><a href="#features" class="ft__link" onclick="showLanding()">Features</a></li><li><a href="#" class="ft__link">Download</a></li></ul></div>
 <div><h4 class="ft__col-t">Learn</h4><ul class="ft__links"><li><span class="ft__link" onclick="showBlogPage()">Blog</span></li><li><a href="#guide" class="ft__link" onclick="showLanding()">Free Guide</a></li></ul></div>
 <div><h4 class="ft__col-t">Connect</h4><ul class="ft__links"><li><a href="#" class="ft__link">Instagram</a></li><li><a href="#" class="ft__link">TikTok</a></li><li><a href="#" class="ft__link">YouTube</a></li></ul></div>
 </div>
@@ -382,7 +378,7 @@ function langBtns(artId){const flags={en:'🇬🇧 English',ro:'🇷🇴 Român�
 
 function renderBlogList(){const l=lang,L=LANGS[l]||LANGS.en;document.getElementById('blogListPage').innerHTML=`<span class="bp__back" onclick="showLanding()">${L.back}</span><div style="margin-bottom:32px"><div class="a-lang">${langBtns()}</div><p class="sl" style="margin-top:16px">${L.title}</p><h2 class="st">${L.heading}</h2><p class="ss">${L.sub}</p></div><div class="bp__grid">${A.map((a,i)=>blogCard(a,(i%4)+1)).join('')}</div>`;initObs()}
 
-function renderArticle(id){const a=A.find(x=>x.id===id);if(!a)return;const l=lang,L=LANGS[l]||LANGS.en;document.getElementById('articlePage').innerHTML=`<span class="ap__back" onclick="showBlogPage()">${L.backBlog}</span><div class="a-lang">${langBtns(id)}</div><div class="a-head"><span class="a-cat">${a.cat[l]||a.cat.en}</span><h1 class="a-title">${a.title[l]||a.title.en}</h1><div class="a-meta"><span>${L.by} Rise & Ferment</span><span>${fmtDate(a.date,l)}</span><span>${a.rt[l]||a.rt.en}</span></div></div><div class="a-hero ${a.scene}"><div class="scene__center"><svg class="scene__svg" width="120" height="120" viewBox="0 0 48 48"><use href="#${a.svgId}"/></svg></div></div><div class="a-content">${a.content[l]||a.content.en}<div class="a-author"><div class="a-author__av" style="width:56px;height:56px;border-radius:50%;background:linear-gradient(135deg,var(--parchment),var(--crust-light));display:flex;align-items:center;justify-content:center"><svg style="color:var(--crust)" width="32" height="32"><use href="#ico-person"/></svg></div><div><p class="a-author__name">${L.writtenBy} Rise & Ferment</p><p class="a-author__bio">${L.bio}</p></div></div><div class="a-share"><h3>${L.shareCta}</h3><p>${L.shareText}</p><a href="/app" class="btn btn--p btn--sm">${L.tryApp} →</a></div></div>`}
+function renderArticle(id){const a=A.find(x=>x.id===id);if(!a)return;const l=lang,L=LANGS[l]||LANGS.en;document.getElementById('articlePage').innerHTML=`<span class="ap__back" onclick="showBlogPage()">${L.backBlog}</span><div class="a-lang">${langBtns(id)}</div><div class="a-head"><span class="a-cat">${a.cat[l]||a.cat.en}</span><h1 class="a-title">${a.title[l]||a.title.en}</h1><div class="a-meta"><span>${L.by} Rise & Ferment</span><span>${fmtDate(a.date,l)}</span><span>${a.rt[l]||a.rt.en}</span></div></div><div class="a-hero ${a.scene}"><div class="scene__center"><svg class="scene__svg" width="120" height="120" viewBox="0 0 48 48"><use href="#${a.svgId}"/></svg></div></div><div class="a-content">${a.content[l]||a.content.en}<div class="a-author"><div class="a-author__av" style="width:56px;height:56px;border-radius:50%;background:linear-gradient(135deg,var(--parchment),var(--crust-light));display:flex;align-items:center;justify-content:center"><svg style="color:var(--crust)" width="32" height="32"><use href="#ico-person"/></svg></div><div><p class="a-author__name">${L.writtenBy} Rise & Ferment</p><p class="a-author__bio">${L.bio}</p></div></div><div class="a-share"><h3>${L.shareCta}</h3><p>${L.shareText}</p><a href="#app" class="btn btn--p btn--sm">${L.tryApp} →</a></div></div>`}
 
 function setLang(l){lang=l;document.getElementById('langLabel').textContent=l.toUpperCase();renderPreview();document.querySelectorAll('.lang-sw__opt').forEach(o=>{o.classList.toggle('active',o.dataset.lang===l)});document.getElementById('langDrop').classList.remove('open')}
 
@@ -390,8 +386,8 @@ function initObs(){const obs=new IntersectionObserver((entries)=>{entries.forEac
 
 function toggleLangDrop(e){e.stopPropagation();document.getElementById('langDrop').classList.toggle('open')}
 
-function handleLead(e){e.preventDefault();const b=e.target.querySelector('button');b.textContent='✓ Check your inbox!';b.style.background='#6B8F4E';e.target.querySelector('input').value='';window.open('/7-day-sourdough-starter-guide.pdf','_blank');setTimeout(()=>{b.textContent='Get the Guide →';b.style.background=''},3000)}
-function handleNL(e){e.preventDefault();const b=e.target.querySelector('button');b.textContent='✓ You are in!';b.style.background='#6B8F4E';e.target.querySelector('input').value='';setTimeout(()=>{b.textContent='Subscribe Free';b.style.background=''},3000)}
+function handleLead(e){e.preventDefault();const b=e.target.querySelector('button');b.textContent='✓ Check your inbox!';b.style.background='#6B8F4E';e.target.querySelector('input').value='';setTimeout(()=>{b.textContent='Send Me the Guide →';b.style.background=''},3000)}
+function handleNL(e){e.preventDefault();const b=e.target.querySelector('button');b.textContent='✓ Welcome aboard!';b.style.background='#6B8F4E';e.target.querySelector('input').value='';setTimeout(()=>{b.textContent='Subscribe Free';b.style.background=''},3000)}
 
 // ═══ INIT ═══
 window.addEventListener('scroll',()=>{document.getElementById('nav').classList.toggle('scrolled',window.scrollY>50)});

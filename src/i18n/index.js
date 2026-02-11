@@ -10,7 +10,7 @@ import it from './locales/it.json'
 
 // Read persisted language from Zustand's localStorage entry
 const VALID_LANGUAGES = ['ro', 'en', 'de', 'fr', 'es', 'it']
-let savedLanguage = 'en'
+let savedLanguage = 'ro'
 try {
   const stored = localStorage.getItem('riseFermentSettings')
   if (stored) {

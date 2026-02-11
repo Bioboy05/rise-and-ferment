@@ -7,6 +7,7 @@ import Modal from "../components/common/Modal";
 import Toggle from "../components/common/Toggle";
 import Icon from "../components/common/Icon";
 import { exportData, importData } from "../utils/exportHelpers";
+import { normalizeStarter } from "../utils/starterHelpers";
 
 const languages = [
   { code: "ro", flag: "🇷🇴", labelKey: "languageRo" },
@@ -75,10 +76,20 @@ function SettingsPage() {
     if (!file) return;
     try {
       const data = await importData(file);
-      const name = data.starters?.[0]?.name || "Starter";
+      const normalizedStarters = Array.isArray(data.starters)
+        ? data.starters.map(normalizeStarter)
+        : [];
+      if (normalizedStarters.length === 0) {
+        throw new Error("No starters found in backup");
+      }
+      const activeStarterId =
+        normalizedStarters.find((s) => s.id === data.activeStarterId)?.id ||
+        normalizedStarters[0].id;
+
+      const name = normalizedStarters[0]?.name || "Starter";
       if (!window.confirm(`${t("confirmImport")} ${name}?`)) return;
       localStorage.setItem("riseFermentStarters", JSON.stringify({
-        state: { starters: data.starters, activeStarterId: data.activeStarterId },
+        state: { starters: normalizedStarters, activeStarterId },
         version: 0,
       }));
       if (data.settings) {
