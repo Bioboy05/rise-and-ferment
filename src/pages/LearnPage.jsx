@@ -9,7 +9,7 @@ import Icon from "../components/common/Icon";
 
 function LearnPage() {
   const { t } = useTranslation();
-  const [section, setSection] = useState("lessons"); // "lessons" | "recipes"
+  const [section, setSection] = useState("recipes"); // "lessons" | "recipes"
   const [selectedLesson, setSelectedLesson] = useState(null);
   const [selectedRecipe, setSelectedRecipe] = useState(null);
   const [activeCategory, setActiveCategory] = useState("bread");
