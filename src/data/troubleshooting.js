@@ -3,7 +3,7 @@
  *
  * Categories:
  * - checks: first things to verify (temp, water, flour, patience)
- * - common: common issues (hooch, smells, not doubling, bubbles)
+ * - common: common issues (hooch, smells, not doubling)
  * - serious: serious issues (mold)
  * - normal: what's normal timeline (day ranges)
  */
@@ -48,30 +48,23 @@ const troubleshooting = {
     },
     {
       id: "acetone",
-      icon: "👃",
+      icon: "💅",
       titleKey: "troubleSmellAcetone",
       descKey: "troubleSmellAcetoneDesc",
       severity: "warning",
     },
     {
       id: "sour",
-      icon: "😖",
+      icon: "🍋",
       titleKey: "troubleSmellStrong",
       descKey: "troubleSmellStrongDesc",
       severity: "warning",
     },
     {
       id: "notDoubling",
-      icon: "📏",
+      icon: "📊",
       titleKey: "troubleNotDoubling",
       descKey: "troubleNotDoublingDesc",
-      severity: "info",
-    },
-    {
-      id: "bubblesBurst",
-      icon: "🫧",
-      titleKey: "troubleBubblesBurst",
-      descKey: "troubleBubblesBurstDesc",
       severity: "info",
     },
   ],
@@ -91,7 +84,6 @@ const troubleshooting = {
     { id: "day3", descKey: "normalDay3" },
     { id: "day5", descKey: "normalDay5" },
     { id: "day7", descKey: "normalDay7" },
-    { id: "smell", descKey: "normalSmell" },
   ],
 };
 

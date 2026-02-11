@@ -265,19 +265,64 @@ function HomePage() {
 
           {troubleOpen && (
             <Modal onClose={() => setTroubleOpen(false)} title={t("troubleTitle")}>
-              <div style={{ fontSize: "14px", color: "var(--text-muted)", marginBottom: "16px" }}>
-                {t(troubleshooting.introKey)}
-              </div>
-              {troubleshooting.sections.map((section) => (
-                <div key={section.titleKey} style={{ marginBottom: "12px" }}>
-                  <div style={{ fontWeight: 700, color: "var(--text-secondary)" }}>
-                    {t(section.titleKey)}
-                  </div>
-                  <div style={{ fontSize: "13px", color: "var(--text-muted)" }}>
-                    {t(section.descKey)}
-                  </div>
+              <div className="tip-box warning">{t(troubleshooting.introKey)}</div>
+
+              <div className="tip-box tip-box-normal">
+                <strong>✅ {t("whatsNormal")}</strong>
+                <div className="trouble-list">
+                  {troubleshooting.normal.map((item) => (
+                    <div key={item.id} className="trouble-item">
+                      {t(item.descKey)}
+                    </div>
+                  ))}
                 </div>
-              ))}
+              </div>
+
+              <div className="tip-box">
+                <strong>🔧 {t("checkLabel")}</strong>
+                <div className="trouble-list">
+                  {troubleshooting.checks.map((item) => (
+                    <div key={item.id} className="trouble-item">
+                      <span className="trouble-emoji">{item.icon}</span>
+                      <span className="trouble-title">{t(item.titleKey)}</span>
+                      <span className="trouble-sep"> - </span>
+                      <span className="trouble-desc">{t(item.descKey)}</span>
+                    </div>
+                  ))}
+                </div>
+              </div>
+
+              <div className="tip-box tip-box-warning">
+                <strong>🆘 {t("commonIssues")}</strong>
+                <div className="trouble-list">
+                  {troubleshooting.common.map((item) => (
+                    <div key={item.id} className="trouble-item">
+                      <span className="trouble-emoji">{item.icon}</span>
+                      <span className="trouble-title">{t(item.titleKey)}</span>
+                      <div className="trouble-sub">{t(item.descKey)}</div>
+                    </div>
+                  ))}
+                </div>
+              </div>
+
+              <div className="tip-box tip-box-danger">
+                <strong>⚠️ {t("seriousIssues")}</strong>
+                <div className="trouble-list">
+                  {troubleshooting.serious.map((item) => (
+                    <div key={item.id} className="trouble-item">
+                      <span className="trouble-emoji">{item.icon}</span>
+                      <span className="trouble-title">{t(item.titleKey)}</span>
+                      <div className="trouble-sub">{t(item.descKey)}</div>
+                    </div>
+                  ))}
+                </div>
+              </div>
+
+              <div className="tip-box success trouble-encourage">
+                <span className="trouble-encourage-emoji">💪</span>
+                <span>{t("encourageAfterTrouble")}</span>
+              </div>
+
               <button className="btn btn-primary" onClick={() => setTroubleOpen(false)}>
                 {t("understood")}
               </button>
@@ -417,9 +462,7 @@ function HomePage() {
           </div>
 
           <div className="info-card" style={{ display: "flex" }}>
-            <span className="info-label">
-              🌡️ {t("tempIdeal")}
-            </span>
+            <span className="info-label">🌡️ {t("tempIdeal")}</span>
           </div>
 
           {taskFeedModal && <FeedingModal onClose={() => setTaskFeedModal(false)} />}

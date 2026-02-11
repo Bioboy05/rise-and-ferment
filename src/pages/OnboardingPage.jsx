@@ -1,4 +1,4 @@
-import { useMemo, useState } from "react";
+﻿import { useMemo, useState } from "react";
 import { useTranslation } from "react-i18next";
 import useSettingsStore from "../store/useSettingsStore";
 import useStarterStore from "../store/useStarterStore";
@@ -52,7 +52,7 @@ function OnboardingPage() {
         style: "warning",
       },
       fridge: {
-        icon: "❄️",
+        icon: "â„ï¸",
         title: t("existingAdviceFridgeTitle"),
         desc: t("existingAdviceFridgeDesc"),
         style: "info",
@@ -228,7 +228,7 @@ function OnboardingPage() {
                 { id: "active", emoji: "🟢", title: t("existingA1a"), desc: t("existingA1aDesc") },
                 { id: "hungry", emoji: "🟡", title: t("existingA1b"), desc: t("existingA1bDesc") },
                 { id: "neglected", emoji: "🟠", title: t("existingA1c"), desc: t("existingA1cDesc") },
-                { id: "fridge", emoji: "❄️", title: t("existingA1d"), desc: t("existingA1dDesc") },
+                { id: "fridge", emoji: "â„ï¸", title: t("existingA1d"), desc: t("existingA1dDesc") },
               ].map((opt) => {
                 const isActive = existingHealth === opt.id;
                 return (
@@ -301,7 +301,7 @@ function OnboardingPage() {
           <p className="onboarding-question">{t("shoppingTitle")}</p>
           <div className="shopping-list">
             <div className="shopping-item">
-              <span className="shopping-icon">⚖️</span>
+              <span className="shopping-icon">âš–ï¸</span>
               <span>{t("shopScale")}</span>
             </div>
             <div className="shopping-item">
@@ -349,11 +349,11 @@ function OnboardingPage() {
               textAlign: "left",
             }}
           >
-            <strong>✅ {t("adoptChecklist")}</strong>
+            <strong>âœ… {t("adoptChecklist")}</strong>
             <div style={{ marginTop: "10px", fontSize: "13px", lineHeight: 1.9, color: "var(--text-secondary)" }}>
-              <div>☐ {t("adoptCheck1")}</div>
-              <div>☐ {t("adoptCheck2")}</div>
-              <div>☐ {t("adoptCheck3")}</div>
+              <div>â˜ {t("adoptCheck1")}</div>
+              <div>â˜ {t("adoptCheck2")}</div>
+              <div>â˜ {t("adoptCheck3")}</div>
             </div>
           </div>
 
@@ -422,7 +422,7 @@ function OnboardingPage() {
               </div>
             </div>
             <div className="source-item">
-              <div className="source-icon">ðŸ›’</div>
+              <div className="source-icon">🛒</div>
               <div>
                 <div className="source-name">{t("adoptShop")}</div>
                 <div className="source-desc">{t("adoptShopDesc")}</div>
@@ -477,3 +477,5 @@ function OnboardingPage() {
 }
 
 export default OnboardingPage;
+
+

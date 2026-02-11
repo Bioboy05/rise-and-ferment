@@ -2283,3 +2283,114 @@ body::after {
   color: var(--accent);
 }
 
+.tip-box {
+  background: linear-gradient(135deg, var(--bg-secondary) 0%, var(--bg-tertiary) 100%);
+  border-radius: 16px;
+  padding: 18px;
+  margin-bottom: 16px;
+  font-size: 14px;
+  color: var(--text-secondary);
+  line-height: 1.7;
+  border: 1px solid var(--accent-light);
+  position: relative;
+}
+
+.tip-box::before {
+  content: "💡";
+  position: absolute;
+  top: -10px;
+  left: 16px;
+  background: var(--bg-card);
+  padding: 2px 6px;
+  border-radius: 8px;
+  font-size: 14px;
+}
+
+.tip-box.warning {
+  background: linear-gradient(135deg, rgba(255, 107, 53, 0.08) 0%, rgba(255, 107, 53, 0.15) 100%);
+  border-left: 4px solid var(--warning);
+  border-color: rgba(255, 107, 53, 0.2);
+}
+
+.tip-box.warning::before {
+  content: "⚠️";
+}
+
+.tip-box.success {
+  background: linear-gradient(135deg, rgba(76, 175, 80, 0.08) 0%, rgba(76, 175, 80, 0.15) 100%);
+  border-left: 4px solid var(--success);
+  border-color: rgba(76, 175, 80, 0.2);
+}
+
+.tip-box.success::before {
+  content: "✅";
+}
+
+.tip-box.info {
+  background: linear-gradient(135deg, rgba(33, 150, 243, 0.08) 0%, rgba(33, 150, 243, 0.15) 100%);
+  border-left: 4px solid #2196f3;
+  border-color: rgba(33, 150, 243, 0.2);
+}
+
+.tip-box.info::before {
+  content: "ℹ️";
+}
+
+.tip-box-normal {
+  background: var(--accent-light);
+  border-left: 4px solid var(--success);
+}
+
+.tip-box-warning {
+  border-left: 4px solid var(--warning);
+}
+
+.tip-box-danger {
+  border-left: 4px solid #e74c3c;
+}
+
+.trouble-list {
+  margin-top: 12px;
+  display: grid;
+  gap: 10px;
+}
+
+.trouble-item {
+  font-size: 13px;
+  color: var(--text-muted);
+}
+
+.tip-box-normal .trouble-item {
+  color: var(--text-secondary);
+}
+
+.trouble-emoji {
+  margin-right: 6px;
+}
+
+.trouble-title {
+  font-weight: 700;
+  color: var(--text-secondary);
+}
+
+.trouble-desc {
+  color: var(--text-muted);
+}
+
+.trouble-sub {
+  color: var(--text-muted);
+  font-size: 13px;
+  margin-left: 22px;
+  margin-top: 6px;
+}
+
+.trouble-encourage {
+  text-align: center;
+}
+
+.trouble-encourage-emoji {
+  display: block;
+  font-size: 24px;
+  margin-bottom: 8px;
+}
+
