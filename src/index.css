@@ -633,6 +633,148 @@ body {
   margin-top: 16px;
 }
 
+/* SETTINGS */
+.settings-section {
+  margin-bottom: 24px;
+}
+
+.settings-section-title {
+  font-family: "Caveat", cursive;
+  font-size: 20px;
+  color: var(--text-muted);
+  margin-bottom: 12px;
+  padding-left: 4px;
+}
+
+.settings-card {
+  background: var(--bg-card);
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: 0 2px 8px var(--shadow);
+}
+
+.settings-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 16px 20px;
+  border-bottom: 1px solid var(--accent-light);
+  gap: 12px;
+}
+
+.settings-row:last-child {
+  border-bottom: none;
+}
+
+.settings-label {
+  font-size: 15px;
+  color: var(--text-secondary);
+  font-weight: 500;
+}
+
+.settings-sublabel {
+  font-size: 12px;
+  color: var(--text-muted);
+  margin-top: 2px;
+}
+
+.settings-select {
+  padding: 8px 12px;
+  border-radius: 8px;
+  border: 1px solid var(--border);
+  background: var(--bg-secondary);
+  color: var(--text-secondary);
+  font-size: 14px;
+}
+
+.settings-input {
+  padding: 8px 12px;
+  border-radius: 8px;
+  border: 1px solid var(--border);
+  background: var(--bg-secondary);
+  color: var(--text-secondary);
+  font-family: "Caveat", cursive;
+  font-size: 18px;
+  width: 140px;
+  text-align: center;
+}
+
+.toggle-switch {
+  width: 52px;
+  height: 28px;
+  border-radius: 14px;
+  background: var(--bg-secondary);
+  border: 1px solid var(--border);
+  position: relative;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.toggle-switch.on {
+  background: var(--accent);
+  border-color: var(--accent);
+}
+
+.toggle-knob {
+  width: 22px;
+  height: 22px;
+  background: white;
+  border-radius: 50%;
+  position: absolute;
+  top: 2px;
+  left: 2px;
+  transition: all 0.2s;
+}
+
+.toggle-switch.on .toggle-knob {
+  transform: translateX(24px);
+}
+
+.danger-btn {
+  width: 100%;
+  background: transparent;
+  border: 2px solid var(--warning);
+  color: var(--warning);
+  padding: 14px 20px;
+  border-radius: 16px;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.backup-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  width: 100%;
+  padding: 14px 20px;
+  border-radius: 12px;
+  border: 2px solid var(--border);
+  font-family: "Nunito", sans-serif;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.backup-btn.export {
+  background: var(--accent-light);
+  color: var(--accent);
+}
+
+.backup-btn.import {
+  background: var(--bg-secondary);
+  color: var(--text-secondary);
+}
+
+.backup-btn:hover {
+  transform: scale(1.02);
+}
+
+.backup-btn:active {
+  transform: scale(0.98);
+}
+
 .info-card {
   margin: 0 20px 16px;
   padding: 16px 20px;

@@ -13,6 +13,7 @@ const useSettingsStore = create(
   beginnerMode: true,
   soundEnabled: true,
   tempUnit: "c",
+  weightUnit: "g",
   sessions: 0,
 
   notifications: {
@@ -42,6 +43,16 @@ const useSettingsStore = create(
   setTempUnit: (unit) => {
     if (VALID_TEMP_UNITS.includes(unit)) set({ tempUnit: unit });
   },
+  setWeightUnit: (unit) => {
+    if (unit === "g" || unit === "oz") set({ weightUnit: unit });
+  },
+  toggleNotifications: () =>
+    set((state) => ({
+      notifications: {
+        ...state.notifications,
+        enabled: !state.notifications.enabled,
+      },
+    })),
   setCalcLoaves: (loaves) =>
     set({
       calcLoaves: Math.max(1, Math.min(10, Math.round(Number(loaves) || 1))),
@@ -64,10 +75,12 @@ const useSettingsStore = create(
       partialize: (state) => ({
         onboardingComplete: state.onboardingComplete,
         theme: state.theme,
-        language: state.language,
+  language: state.language,
         beginnerMode: state.beginnerMode,
         soundEnabled: state.soundEnabled,
-        tempUnit: state.tempUnit,
+  tempUnit: state.tempUnit,
+  weightUnit: state.weightUnit,
+        weightUnit: state.weightUnit,
         sessions: state.sessions,
         notifications: state.notifications,
         scheduledBakes: state.scheduledBakes,

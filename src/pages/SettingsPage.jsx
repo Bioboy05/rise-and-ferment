@@ -1,22 +1,10 @@
-import { useState, useRef } from "react";
+import { useRef } from "react";
 import { useTranslation } from "react-i18next";
 import useStarterStore from "../store/useStarterStore";
 import useSettingsStore from "../store/useSettingsStore";
 import useActiveStarter from "../hooks/useActiveStarter";
-import Modal from "../components/common/Modal";
-import Toggle from "../components/common/Toggle";
-import Icon from "../components/common/Icon";
 import { exportData, importData } from "../utils/exportHelpers";
 import { normalizeStarter } from "../utils/starterHelpers";
-
-const languages = [
-  { code: "ro", flag: "🇷🇴", labelKey: "languageRo" },
-  { code: "en", flag: "🇬🇧", labelKey: "languageEn" },
-  { code: "de", flag: "🇩🇪", labelKey: "languageDe" },
-  { code: "fr", flag: "🇫🇷", labelKey: "languageFr" },
-  { code: "es", flag: "🇪🇸", labelKey: "languageEs" },
-  { code: "it", flag: "🇮🇹", labelKey: "languageIt" },
-];
 
 function SettingsPage() {
   const { t, i18n } = useTranslation();
@@ -27,37 +15,17 @@ function SettingsPage() {
   const beginnerMode = useSettingsStore((state) => state.beginnerMode);
   const soundEnabled = useSettingsStore((state) => state.soundEnabled);
   const tempUnit = useSettingsStore((state) => state.tempUnit);
+  const weightUnit = useSettingsStore((state) => state.weightUnit);
+  const notificationsEnabled = useSettingsStore((state) => state.notifications.enabled);
   const toggleTheme = useSettingsStore((state) => state.toggleTheme);
   const setLanguage = useSettingsStore((state) => state.setLanguage);
   const toggleBeginnerMode = useSettingsStore((state) => state.toggleBeginnerMode);
   const toggleSound = useSettingsStore((state) => state.toggleSound);
   const setTempUnit = useSettingsStore((state) => state.setTempUnit);
+  const setWeightUnit = useSettingsStore((state) => state.setWeightUnit);
+  const toggleNotifications = useSettingsStore((state) => state.toggleNotifications);
   const resetAll = useSettingsStore((state) => state.resetAll);
-
-  const [editingName, setEditingName] = useState(false);
-  const [nameValue, setNameValue] = useState(starter.name);
-  const [notesValue, setNotesValue] = useState(starter.personalNotes || "");
-  const [showResetModal, setShowResetModal] = useState(false);
-  const [statusMsg, setStatusMsg] = useState(null);
   const fileInputRef = useRef(null);
-
-  const showStatus = (msg) => {
-    setStatusMsg(msg);
-    setTimeout(() => setStatusMsg(null), 3000);
-  };
-
-  const handleSaveName = () => {
-    const trimmed = nameValue.trim();
-    if (trimmed && trimmed !== starter.name) {
-      updateStarter(starter.id, { name: trimmed });
-    }
-    setEditingName(false);
-  };
-
-  const handleSaveNotes = () => {
-    updateStarter(starter.id, { personalNotes: notesValue.trim() });
-    showStatus(t("settingsSaved"));
-  };
 
   const handleLanguageChange = (code) => {
     setLanguage(code);
@@ -68,7 +36,6 @@ function SettingsPage() {
     const starterState = useStarterStore.getState();
     const settingsState = useSettingsStore.getState();
     exportData(starterState, settingsState);
-    showStatus(t("exportSuccess"));
   };
 
   const handleImport = async (e) => {
@@ -88,15 +55,21 @@ function SettingsPage() {
 
       const name = normalizedStarters[0]?.name || "Starter";
       if (!window.confirm(`${t("confirmImport")} ${name}?`)) return;
-      localStorage.setItem("riseFermentStarters", JSON.stringify({
-        state: { starters: normalizedStarters, activeStarterId },
-        version: 0,
-      }));
-      if (data.settings) {
-        localStorage.setItem("riseFermentSettings", JSON.stringify({
-          state: data.settings,
+      localStorage.setItem(
+        "riseFermentStarters",
+        JSON.stringify({
+          state: { starters: normalizedStarters, activeStarterId },
           version: 0,
-        }));
+        })
+      );
+      if (data.settings) {
+        localStorage.setItem(
+          "riseFermentSettings",
+          JSON.stringify({
+            state: data.settings,
+            version: 0,
+          })
+        );
       }
       window.location.reload();
     } catch {
@@ -106,227 +79,228 @@ function SettingsPage() {
   };
 
   return (
-    <div className="max-w-md mx-auto" style={{ paddingBottom: "24px" }}>
-      <h2 className="page-title">{t("settingsTitle")}</h2>
-
-      {/* Status message */}
-      {statusMsg && <div className="status-toast">{statusMsg}</div>}
-
-      {/* 1. My Starter */}
-      <div className="card">
-        <div className="section-label">{t("myStarter")}</div>
-        <div className="flex items-center gap-2.5 mb-3">
-          {editingName ? (
-            <>
-              <input
-                type="text"
-                value={nameValue}
-                onChange={(e) => setNameValue(e.target.value)}
-                maxLength={50}
-                autoFocus
-                className="input-field flex-1"
-                onKeyDown={(e) => { if (e.key === "Enter") handleSaveName(); }}
-              />
-              <button
-                onClick={handleSaveName}
-                aria-label={t("settingsSaved") || "Save"}
-                className="btn-primary"
-                style={{ width: "auto", minWidth: "44px", minHeight: "44px", padding: "8px 16px" }}
-              >
-                <Icon name="check" size={18} />
-              </button>
-            </>
-          ) : (
-            <>
-              <span className="flex-1 text-lg font-bold" style={{ color: "var(--text-primary)" }}>
-                {starter.name}
-              </span>
-              <button
-                onClick={() => { setNameValue(starter.name); setEditingName(true); }}
-                className="btn-secondary"
-                style={{ width: "auto", padding: "6px 14px", fontSize: "13px" }}
-              >
-                {t("editName")}
-              </button>
-            </>
-          )}
-        </div>
-        <div className="flex items-center gap-2 text-sm" style={{ color: "var(--text-muted)" }}>
-          <span>{t("hydration")}:</span>
-          <span className="font-bold" style={{ color: "var(--text-secondary)" }}>
-            {starter.hydration}%
-          </span>
-          <span className="text-xs">({t("hydrationDesc")})</span>
-        </div>
-      </div>
-
-      {/* 2. Personal Notes */}
-      <div className="card">
-        <div className="section-label">{t("personalNotes")}</div>
-        <textarea
-          value={notesValue}
-          onChange={(e) => setNotesValue(e.target.value)}
-          onBlur={handleSaveNotes}
-          maxLength={500}
-          placeholder={t("personalNotesPlaceholder")}
-          className="textarea-field"
-          style={{ height: "80px" }}
-        />
-      </div>
-
-      {/* 3. Appearance */}
-      <div className="card">
-        <div className="section-label">{t("appearance")}</div>
-        {/* Theme toggle */}
-        <div className="flex gap-2 mb-4">
-          {["light", "dark"].map((t_) => (
-            <button
-              key={t_}
-              onClick={() => { if (theme !== t_) toggleTheme(); }}
-              className="btn-pill flex-1"
-              data-active={theme === t_}
-              style={{ padding: "10px" }}
-            >
-              <Icon name={t_ === "light" ? "sun" : "moon"} size={16} style={{ display: "inline", verticalAlign: "middle", marginRight: "6px" }} />
-              {t_ === "light" ? t("themeLight") : t("themeDark")}
-            </button>
-          ))}
-        </div>
-        {/* Language grid */}
-        <div className="text-xs mb-2" style={{ color: "var(--text-muted)" }}>
-          {t("language")}
-        </div>
-        <div className="grid grid-cols-3 gap-2">
-          {languages.map((lang) => (
-            <button
-              key={lang.code}
-              onClick={() => handleLanguageChange(lang.code)}
-              className="btn-pill flex flex-col items-center gap-1"
-              data-active={language === lang.code}
-              style={{ padding: "10px 8px" }}
-            >
-              <span className="text-xl">{lang.flag}</span>
-              <span className="text-xs">{t(lang.labelKey)}</span>
-            </button>
-          ))}
-        </div>
-      </div>
-
-      {/* 4. Beginner Mode */}
-      <div className="card">
-        <Toggle
-          checked={beginnerMode}
-          onChange={toggleBeginnerMode}
-          label={t("beginnerMode")}
-          description={t("beginnerModeDesc")}
-        />
-      </div>
-
-      {/* 5. Sound */}
-      <div className="card">
-        <Toggle
-          checked={soundEnabled}
-          onChange={toggleSound}
-          label={t("soundEffects")}
-          description={t("soundEffectsDesc")}
-        />
-      </div>
-
-      {/* 6. Units (temperature) */}
-      <div className="card">
-        <div className="section-label">{t("temperature")}</div>
-        <div className="flex gap-2">
-          {[
-            { unit: "c", label: t("unitCelsius") },
-            { unit: "f", label: t("unitFahrenheit") },
-          ].map(({ unit, label }) => (
-            <button
-              key={unit}
-              onClick={() => setTempUnit(unit)}
-              className="btn-pill flex-1"
-              data-active={tempUnit === unit}
-              style={{ padding: "10px" }}
-            >
-              {label}
-            </button>
-          ))}
-        </div>
-      </div>
-
-      {/* 7. Backup */}
-      <div className="card">
-        <div className="section-label">{t("backupTitle")}</div>
-        <p className="text-xs mb-3" style={{ color: "var(--text-muted)" }}>
-          {t("backupHint")}
-        </p>
-        <div className="flex gap-2">
-          <button onClick={handleExport} className="btn-secondary flex-1 flex items-center justify-center gap-2">
-            <Icon name="download" size={16} />
-            {t("exportBtn")}
-          </button>
-          <button onClick={() => fileInputRef.current?.click()} className="btn-secondary flex-1 flex items-center justify-center gap-2">
-            <Icon name="upload" size={16} />
-            {t("importBtn")}
-          </button>
-          <input
-            ref={fileInputRef}
-            type="file"
-            accept=".json"
-            onChange={handleImport}
-            style={{ display: "none" }}
+    <div className="section" style={{ paddingTop: "10px" }}>
+      <div className="settings-section">
+        <div className="settings-section-title">📝 <span>{t("personalNotes")}</span></div>
+        <div className="settings-card">
+          <textarea
+            className="notes-textarea"
+            value={starter.personalNotes || ""}
+            placeholder={t("personalNotesPlaceholder")}
+            onChange={(e) => updateStarter(starter.id, { personalNotes: e.target.value })}
           />
         </div>
       </div>
 
-      {/* 8. Reset */}
-      <div className="card" style={{ border: "1px solid var(--warning)" }}>
-        <div className="flex justify-between items-center">
-          <div>
-            <div className="font-bold text-sm" style={{ color: "var(--warning)" }}>
-              {t("resetApp")}
+      <div className="settings-section">
+        <div className="settings-section-title">🫙 <span>{t("myStarter")}</span></div>
+        <div className="settings-card">
+          <div className="settings-row">
+            <div>
+              <div className="settings-label">{t("starterName")}</div>
             </div>
-            <div className="text-xs mt-0.5" style={{ color: "var(--text-muted)" }}>
-              {t("resetDesc")}
-            </div>
+            <input
+              type="text"
+              className="settings-input"
+              value={starter.name}
+              onChange={(e) => updateStarter(starter.id, { name: e.target.value })}
+            />
           </div>
-          <button
-            onClick={() => setShowResetModal(true)}
-            className="btn-secondary"
-            style={{
-              width: "auto",
-              padding: "8px 16px",
-              borderColor: "var(--warning)",
-              color: "var(--warning)",
-              fontSize: "13px",
-              fontWeight: "700",
-            }}
-          >
-            {t("resetApp")}
-          </button>
+          <div className="settings-row">
+            <div>
+              <div className="settings-label">{t("hydration")}</div>
+              <div className="settings-sublabel">{t("hydrationDesc")}</div>
+            </div>
+            <select
+              className="settings-select"
+              value={starter.hydration || "100"}
+              onChange={(e) => updateStarter(starter.id, { hydration: e.target.value })}
+            >
+              <option value="100">100% (1:1:1)</option>
+              <option value="80">80%</option>
+              <option value="60">60% ({t("hydration60")})</option>
+            </select>
+          </div>
         </div>
       </div>
 
-      {/* Reset confirmation modal */}
-      {showResetModal && (
-        <Modal onClose={() => setShowResetModal(false)} title={t("resetConfirmTitle")}>
-          <p className="text-sm mb-5" style={{ color: "var(--text-secondary)" }}>
-            {t("resetConfirmDesc")}
-          </p>
-          <button
-            onClick={resetAll}
-            className="btn-primary mb-2"
-            style={{ background: "var(--warning)" }}
-          >
-            {t("resetConfirmBtn")}
-          </button>
-          <button
-            onClick={() => setShowResetModal(false)}
-            className="btn-secondary"
-          >
-            {t("resetCancelBtn")}
-          </button>
-        </Modal>
-      )}
+      <div className="settings-section">
+        <div className="settings-section-title">🌟 <span>{t("beginnerMode")}</span></div>
+        <div className="settings-card">
+          <div className="settings-row">
+            <div>
+              <div className="settings-label">{t("beginnerMode")}</div>
+              <div className="settings-sublabel">{t("beginnerModeDesc")}</div>
+            </div>
+            <button
+              className={`toggle-switch ${beginnerMode ? "on" : ""}`}
+              type="button"
+              onClick={toggleBeginnerMode}
+              aria-label={t("beginnerMode")}
+            >
+              <div className="toggle-knob" />
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <div className="settings-section">
+        <div className="settings-section-title">🎨 <span>{t("appearance")}</span></div>
+        <div className="settings-card">
+          <div className="settings-row">
+            <div>
+              <div className="settings-label">{t("theme")}</div>
+              <div className="settings-sublabel">{t("themeDesc")}</div>
+            </div>
+            <select
+              className="settings-select"
+              value={theme}
+              onChange={(e) => {
+                if (e.target.value !== theme) toggleTheme();
+              }}
+            >
+              <option value="light">{t("themeLight")}</option>
+              <option value="dark">{t("themeDark")}</option>
+            </select>
+          </div>
+          <div className="settings-row">
+            <div>
+              <div className="settings-label">{t("language")}</div>
+            </div>
+            <select
+              className="settings-select"
+              value={language}
+              onChange={(e) => handleLanguageChange(e.target.value)}
+            >
+              <option value="ro">🇷🇴 {t("languageRo")}</option>
+              <option value="en">🇬🇧 {t("languageEn")}</option>
+              <option value="de">🇩🇪 {t("languageDe")}</option>
+              <option value="fr">🇫🇷 {t("languageFr")}</option>
+              <option value="es">🇪🇸 {t("languageEs")}</option>
+              <option value="it">🇮🇹 {t("languageIt")}</option>
+            </select>
+          </div>
+        </div>
+      </div>
+
+      <div className="settings-section">
+        <div className="settings-section-title">🔔 <span>{t("notifications")}</span></div>
+        <div className="settings-card">
+          <div className="settings-row">
+            <div>
+              <div className="settings-label">{t("feedingReminder")}</div>
+              <div className="settings-sublabel">{t("feedingReminderDesc")}</div>
+            </div>
+            <button
+              className={`toggle-switch ${notificationsEnabled ? "on" : ""}`}
+              type="button"
+              onClick={toggleNotifications}
+              aria-label={t("feedingReminder")}
+            >
+              <div className="toggle-knob" />
+            </button>
+          </div>
+          <div className="settings-row">
+            <div>
+              <div className="settings-label">{t("soundEffects")}</div>
+              <div className="settings-sublabel">{t("soundEffectsDesc")}</div>
+            </div>
+            <button
+              className={`toggle-switch ${soundEnabled ? "on" : ""}`}
+              type="button"
+              onClick={toggleSound}
+              aria-label={t("soundEffects")}
+            >
+              <div className="toggle-knob" />
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <div className="settings-section">
+        <div className="settings-section-title">📏 <span>{t("units")}</span></div>
+        <div className="settings-card">
+          <div className="settings-row">
+            <div>
+              <div className="settings-label">{t("weight")}</div>
+            </div>
+            <select
+              className="settings-select"
+              value={weightUnit}
+              onChange={(e) => setWeightUnit(e.target.value)}
+            >
+              <option value="g">{t("unitGrams")}</option>
+              <option value="oz">{t("unitOunces")}</option>
+            </select>
+          </div>
+          <div className="settings-row">
+            <div>
+              <div className="settings-label">{t("temperature")}</div>
+            </div>
+            <select
+              className="settings-select"
+              value={tempUnit}
+              onChange={(e) => setTempUnit(e.target.value)}
+            >
+              <option value="c">{t("unitCelsius")}</option>
+              <option value="f">{t("unitFahrenheit")}</option>
+            </select>
+          </div>
+        </div>
+      </div>
+
+      <div className="settings-section">
+        <div className="settings-section-title">💾 <span>{t("backupTitle")}</span></div>
+        <div className="settings-card">
+          <div className="settings-row" style={{ flexDirection: "column", gap: "12px" }}>
+            <button className="backup-btn export" type="button" onClick={handleExport}>
+              <span>📤</span> <span>{t("exportBtn")}</span>
+            </button>
+            <button
+              className="backup-btn import"
+              type="button"
+              onClick={() => fileInputRef.current?.click()}
+            >
+              <span>📥</span> <span>{t("importBtn")}</span>
+            </button>
+            <input
+              ref={fileInputRef}
+              type="file"
+              accept=".json"
+              style={{ display: "none" }}
+              onChange={handleImport}
+            />
+            <p
+              style={{
+                fontSize: "11px",
+                color: "var(--text-muted)",
+                textAlign: "center",
+                margin: 0,
+              }}
+            >
+              {t("backupHint")}
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <div className="settings-section" style={{ marginTop: "32px" }}>
+        <button className="danger-btn" type="button" onClick={resetAll}>
+          {t("resetApp")}
+        </button>
+        <p style={{ textAlign: "center", fontSize: "12px", color: "var(--text-muted)", marginTop: "8px" }}>
+          {t("resetDesc")}
+        </p>
+      </div>
+
+      <div style={{ textAlign: "center", marginTop: "40px", paddingBottom: "20px" }}>
+        <p style={{ fontFamily: "Caveat, cursive", fontSize: "24px", color: "var(--accent)" }}>
+          Rise &amp; Ferment
+        </p>
+        <p style={{ fontSize: "12px", color: "var(--text-muted)" }}>
+          v3.0 • <span>{t("madeWith")}</span>
+        </p>
+      </div>
     </div>
   );
 }
