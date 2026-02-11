@@ -24,7 +24,8 @@ function Header() {
 
   const routeTitleMap = {
     "/history": "historyTitle",
-    "/recipes": "learnTitle",
+    "/recipes": "allRecipes",
+    "/learn": "learnTitle",
     "/stats": "statsTitle",
     "/settings": "settingsTitle",
   };

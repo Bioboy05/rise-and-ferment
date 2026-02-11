@@ -6,6 +6,7 @@ import Navigation from "./components/layout/Navigation";
 import HomePage from "./pages/HomePage";
 import HistoryPage from "./pages/HistoryPage";
 import LearnPage from "./pages/LearnPage";
+import RecipesPage from "./pages/RecipesPage";
 import StatsPage from "./pages/StatsPage";
 import SettingsPage from "./pages/SettingsPage";
 import OnboardingPage from "./pages/OnboardingPage";
@@ -36,7 +37,8 @@ function App() {
         <Routes>
           <Route path="/" element={<HomePage />} />
           <Route path="/history" element={<HistoryPage />} />
-          <Route path="/recipes" element={<LearnPage />} />
+          <Route path="/recipes" element={<RecipesPage />} />
+          <Route path="/learn" element={<LearnPage />} />
           <Route path="/stats" element={<StatsPage />} />
           <Route path="/settings" element={<SettingsPage />} />
           <Route path="*" element={<Navigate to="/" replace />} />
