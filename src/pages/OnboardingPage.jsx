@@ -421,6 +421,13 @@ function OnboardingPage() {
                 <div className="source-desc">{t("adoptGroupsDesc")}</div>
               </div>
             </div>
+            <div className="source-item">
+              <div className="source-icon">ðŸ›’</div>
+              <div>
+                <div className="source-name">{t("adoptShop")}</div>
+                <div className="source-desc">{t("adoptShopDesc")}</div>
+              </div>
+            </div>
           </div>
           <button className="btn btn-primary" onClick={goToName}>
             {t("gotStarter")}
