@@ -531,6 +531,54 @@ body {
   letter-spacing: 0.5px;
 }
 
+/* CHARTS & STATS */
+.chart-card {
+  background: var(--bg-card);
+  border-radius: 16px;
+  padding: 16px;
+  margin-bottom: 16px;
+  box-shadow: 0 2px 8px var(--shadow);
+}
+
+.chart-title {
+  font-family: "Caveat", cursive;
+  font-size: 18px;
+  color: var(--text-secondary);
+  margin-bottom: 12px;
+}
+
+.chart-bar {
+  background: var(--accent-light);
+  border-radius: 4px;
+  min-height: 8px;
+  transition: height 0.3s ease;
+}
+
+.chart-bar.active {
+  background: var(--accent);
+}
+
+.stat-mini {
+  background: var(--bg-card);
+  border-radius: 16px;
+  padding: 16px;
+  text-align: center;
+  box-shadow: 0 2px 8px var(--shadow);
+}
+
+.stat-mini-value {
+  font-size: 28px;
+  font-weight: 700;
+  color: var(--accent);
+  font-family: "Caveat", cursive;
+}
+
+.stat-mini-label {
+  font-size: 12px;
+  color: var(--text-muted);
+  margin-top: 4px;
+}
+
 .info-card {
   margin: 0 20px 16px;
   padding: 16px 20px;
