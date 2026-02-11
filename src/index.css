@@ -576,6 +576,15 @@ body {
   background-image: var(--photo-bread);
 }
 
+.main-card-photo {
+  width: 70px;
+  height: 124px;
+  top: 8px;
+  right: -14px;
+  transform: rotate(8deg);
+  background-image: var(--photo-bread);
+}
+
 .learn-photo {
   width: 55px;
   height: 98px;
