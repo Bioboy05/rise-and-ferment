@@ -579,6 +579,60 @@ body {
   margin-top: 4px;
 }
 
+.history-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 16px;
+  margin-bottom: 8px;
+  background: var(--bg-card);
+  border-radius: 12px;
+  animation: fadeInUp 0.3s ease-out backwards;
+}
+
+.history-item:nth-child(1) {
+  animation-delay: 0s;
+}
+
+.history-item:nth-child(2) {
+  animation-delay: 0.05s;
+}
+
+.history-item:nth-child(3) {
+  animation-delay: 0.1s;
+}
+
+.history-item:nth-child(4) {
+  animation-delay: 0.15s;
+}
+
+.history-item:nth-child(5) {
+  animation-delay: 0.2s;
+}
+
+.history-time {
+  font-size: 14px;
+  color: var(--text-secondary);
+}
+
+.history-amount {
+  font-family: "Caveat", cursive;
+  font-size: 20px;
+  color: var(--accent);
+  font-weight: 600;
+}
+
+.empty-state {
+  text-align: center;
+  padding: 40px 20px;
+}
+
+.empty-text {
+  font-size: 16px;
+  color: var(--text-muted);
+  margin-top: 16px;
+}
+
 .info-card {
   margin: 0 20px 16px;
   padding: 16px 20px;

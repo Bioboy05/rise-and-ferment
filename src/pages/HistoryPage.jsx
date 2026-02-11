@@ -1,121 +1,84 @@
 import { useTranslation } from "react-i18next";
 import useActiveStarter from "../hooks/useActiveStarter";
-import { formatTimeAgo } from "../utils/dateHelpers";
-import Icon from "../components/common/Icon";
+import useSettingsStore from "../store/useSettingsStore";
 
 function HistoryPage() {
   const { t } = useTranslation();
   const starter = useActiveStarter();
+  const language = useSettingsStore((state) => state.language);
   const history = starter.history || [];
 
-  // Group feedings by calendar date (newest first)
-  const grouped = {};
-  for (let i = history.length - 1; i >= 0; i--) {
-    const entry = history[i];
-    const dateKey = new Date(entry.time).toLocaleDateString();
-    if (!grouped[dateKey]) grouped[dateKey] = [];
-    grouped[dateKey].push(entry);
-  }
-  const dateGroups = Object.entries(grouped);
-
-  // Mini stats
-  const totalFeedings = history.length;
-  const tempsWithValue = history.filter((e) => e.temp != null);
-  const avgTemp =
-    tempsWithValue.length > 0
-      ? (tempsWithValue.reduce((s, e) => s + e.temp, 0) / tempsWithValue.length).toFixed(1)
-      : null;
-
-  if (totalFeedings === 0) {
+  if (history.length === 0) {
     return (
-      <div className="max-w-md mx-auto">
-        <div className="text-center" style={{ padding: "48px 20px" }}>
-          <Icon name="clipboard" size={48} style={{ color: "var(--accent)" }} />
-          <h2 className="page-title" style={{ marginTop: "16px" }}>
-            {t("historyTitle")}
-          </h2>
-          <p className="text-sm" style={{ color: "var(--text-muted)", marginTop: "12px", lineHeight: "1.5" }}>
-            {t("historyEmpty")}
-          </p>
+      <div className="section">
+        <h2 className="section-title">{t("historyTitle")}</h2>
+        <div className="empty-state">
+          <div style={{ fontSize: "50px" }}>📋</div>
+          <div className="empty-text">{t("noFeedingsYet")}</div>
         </div>
       </div>
     );
   }
 
+  const localeMap = {
+    ro: "ro-RO",
+    en: "en-US",
+    de: "de-DE",
+    fr: "fr-FR",
+    es: "es-ES",
+    it: "it-IT",
+  };
+  const locale = localeMap[language] || localeMap.ro;
+  const todayStr = new Date().toDateString();
+
   return (
-    <div className="max-w-md mx-auto" style={{ paddingBottom: "24px" }}>
-      <h2 className="page-title">{t("historyTitle")}</h2>
-
-      {/* Mini stats bar */}
-      <div className="flex gap-2 mb-4">
-        <div className="card flex-1 text-center" style={{ marginBottom: 0 }}>
-          <div className="stat-value">{totalFeedings}</div>
-          <div className="stat-label">{t("historyFeedingsCount")}</div>
-        </div>
-        <div className="card flex-1 text-center" style={{ marginBottom: 0 }}>
-          <div className="stat-value">{avgTemp ? `${avgTemp}°` : "—"}</div>
-          <div className="stat-label">{t("historyAvgTemp")}</div>
-        </div>
-      </div>
-
-      {/* Feeding list grouped by date */}
-      {dateGroups.map(([dateKey, entries]) => (
-        <div key={dateKey} className="mb-4">
-          <div className="section-label" style={{ paddingLeft: "4px" }}>
-            {dateKey}
-          </div>
-          <div className="flex flex-col gap-1.5">
-            {entries.map((entry, i) => (
-              <div
-                key={i}
-                className="card flex items-center gap-3"
-                style={{ marginBottom: 0, padding: "12px 16px" }}
-              >
-                {/* Time */}
-                <div className="text-xs" style={{ color: "var(--text-muted)", minWidth: "60px" }}>
-                  {formatTimeAgo(entry.time, t)}
-                </div>
-
-                {/* Amount + details */}
-                <div className="flex-1">
-                  <div className="text-sm font-bold" style={{ color: "var(--text-primary)" }}>
-                    {t("historyAmount", { amount: entry.amount })}
-                    {entry.withBran && (
-                      <span
-                        className="inline-flex items-center gap-0.5 ml-1.5"
-                        style={{ fontSize: "12px", color: "var(--accent)" }}
-                      >
-                        <Icon name="wheat" size={12} /> {t("historyWithBran")}
-                      </span>
-                    )}
-                  </div>
-                  {entry.note && (
-                    <div className="text-xs mt-0.5" style={{ color: "var(--text-muted)" }}>
-                      {entry.note}
-                    </div>
-                  )}
-                </div>
-
-                {/* Temperature */}
-                {entry.temp != null && (
-                  <div
-                    className="text-xs flex items-center gap-1"
-                    style={{
-                      color: "var(--text-secondary)",
-                      background: "var(--bg-secondary)",
-                      borderRadius: "8px",
-                      padding: "4px 8px",
-                    }}
-                  >
-                    <Icon name="thermometer" size={14} />
-                    {t("historyTemp", { temp: entry.temp })}
-                  </div>
-                )}
+    <div className="section">
+      <h2 className="section-title">{t("historyTitle")}</h2>
+      <div id="history-list">
+        {history.slice(0, 20).map((entry, i) => {
+          const d = new Date(entry.time);
+          let label = d.toLocaleDateString(locale, { day: "numeric", month: "short" });
+          if (d.toDateString() === todayStr) label = t("today");
+          const time = d.toLocaleTimeString([], { hour: "2-digit", minute: "2-digit" });
+          return (
+            <div
+              key={`${entry.time}-${i}`}
+              className="history-item"
+              style={{ flexDirection: "column", alignItems: "flex-start" }}
+            >
+              <div style={{ display: "flex", justifyContent: "space-between", width: "100%", alignItems: "center" }}>
+                <span className="history-time">{`${label}, ${time}`}</span>
+                <span className="history-amount">
+                  {entry.amount}g
+                  {entry.withBran ? (
+                    <span style={{ fontSize: "11px", color: "var(--accent)", marginLeft: "6px" }}>🌾</span>
+                  ) : null}
+                  {entry.temp != null ? (
+                    <span style={{ fontSize: "11px", color: "var(--text-muted)", marginLeft: "4px" }}>
+                      🌡️{entry.temp}°
+                    </span>
+                  ) : null}
+                </span>
               </div>
-            ))}
-          </div>
-        </div>
-      ))}
+              {entry.note ? (
+                <div
+                  style={{
+                    fontSize: "11px",
+                    color: "var(--text-muted)",
+                    marginTop: "2px",
+                    whiteSpace: "nowrap",
+                    overflow: "hidden",
+                    textOverflow: "ellipsis",
+                    maxWidth: "200px",
+                  }}
+                >
+                  📝 {entry.note}
+                </div>
+              ) : null}
+            </div>
+          );
+        })}
+      </div>
     </div>
   );
 }
