@@ -11,6 +11,7 @@ import RecipesPage from "./pages/RecipesPage";
 import StatsPage from "./pages/StatsPage";
 import SettingsPage from "./pages/SettingsPage";
 import OnboardingPage from "./pages/OnboardingPage";
+import PlannerPage from "./pages/PlannerPage";
 
 function App() {
   const { t } = useTranslation();
@@ -46,6 +47,7 @@ function App() {
                   <Route path="/" element={<HomePage />} />
                   <Route path="/history" element={<HistoryPage />} />
                   <Route path="/recipes" element={<RecipesPage />} />
+                  <Route path="/planner" element={<PlannerPage />} />
                   <Route path="/learn" element={<LearnPage />} />
                   <Route path="/stats" element={<StatsPage />} />
                   <Route path="/settings" element={<SettingsPage />} />

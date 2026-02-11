@@ -8,8 +8,8 @@ function Navigation() {
   const tabs = [
     { to: "/", label: t("tabHome"), icon: "home" },
     { to: "/recipes", label: t("tabRecipes"), icon: "bread" },
+    { to: "/planner", label: t("tabPlanner"), icon: "planner" },
     { to: "/history", label: t("tabHistory"), icon: "history" },
-    { to: "/stats", label: t("tabStats"), icon: "stats" },
     { to: "/learn", label: t("tabLearn"), icon: "book" },
   ];
 

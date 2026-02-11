@@ -1419,6 +1419,167 @@ body::after {
 }
 
 /* ========================================
+   PLANNER
+   ======================================== */
+.planner-card {
+  background: var(--bg-card);
+  border-radius: 24px;
+  padding: 24px;
+  margin-bottom: 18px;
+  box-shadow: 0 4px 16px var(--shadow);
+  border: 1px solid var(--accent-light);
+  animation: fadeInUp 0.4s ease-out backwards;
+}
+
+.planner-card:nth-child(1) {
+  animation-delay: 0.1s;
+}
+
+.planner-card:nth-child(2) {
+  animation-delay: 0.15s;
+}
+
+.planner-card:nth-child(3) {
+  animation-delay: 0.2s;
+}
+
+.planner-question {
+  font-family: "Caveat", cursive;
+  font-size: 22px;
+  color: var(--text-secondary);
+  text-align: center;
+}
+
+.time-input,
+.day-select {
+  padding: 14px 18px;
+  border-radius: 16px;
+  border: 2px solid var(--border);
+  background: var(--bg-secondary);
+  color: var(--text-secondary);
+  font-family: "Caveat", cursive;
+  font-size: 20px;
+  transition: all 0.2s;
+}
+
+.time-input:focus,
+.day-select:focus {
+  outline: none;
+  border-color: var(--accent);
+  box-shadow: 0 0 0 3px var(--accent-light);
+}
+
+.schedule-title {
+  font-family: "Caveat", cursive;
+  font-size: 24px;
+  color: var(--text-secondary);
+  margin-bottom: 16px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.schedule-step {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  padding: 12px 0;
+  border-bottom: 1px dashed var(--border);
+}
+
+.schedule-step:last-child {
+  border-bottom: none;
+}
+
+.schedule-time-block {
+  min-width: 70px;
+  text-align: center;
+}
+
+.schedule-time {
+  font-family: "Caveat", cursive;
+  font-size: 18px;
+  font-weight: 700;
+  color: var(--accent);
+  display: block;
+}
+
+.schedule-day {
+  font-size: 10px;
+  color: var(--text-muted);
+  display: block;
+  margin-top: 2px;
+}
+
+.schedule-action {
+  font-size: 14px;
+  color: var(--text-secondary);
+  line-height: 1.4;
+  flex: 1;
+}
+
+.schedule-step.done {
+  opacity: 0.5;
+}
+
+.schedule-step.done .schedule-action {
+  text-decoration: line-through;
+}
+
+.calc-btn {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  background: var(--bg-secondary);
+  border: 2px solid var(--border);
+  cursor: pointer;
+  font-size: 24px;
+  color: var(--accent);
+}
+
+.recipe-mini {
+  background: var(--bg-secondary);
+  border-radius: 12px;
+  padding: 12px;
+  margin-top: 12px;
+}
+
+.recipe-row-mini {
+  display: flex;
+  justify-content: space-between;
+  padding: 6px 0;
+  font-size: 14px;
+  color: var(--text-secondary);
+}
+
+.recipe-row-mini span:last-child {
+  font-weight: 600;
+  color: var(--accent);
+}
+
+.notes-textarea {
+  width: 100%;
+  min-height: 100px;
+  padding: 12px;
+  border-radius: 12px;
+  border: 2px solid var(--border);
+  background: var(--bg-secondary);
+  color: var(--text-secondary);
+  font-family: "Nunito", sans-serif;
+  font-size: 14px;
+  resize: vertical;
+}
+
+.notes-textarea.small {
+  min-height: 60px;
+}
+
+.notes-textarea:focus {
+  outline: none;
+  border-color: var(--accent);
+}
+
+/* ========================================
    RECIPE CARDS - New Grid Design
    ======================================== */
 .recipe-category-title {

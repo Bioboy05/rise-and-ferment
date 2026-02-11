@@ -42,6 +42,14 @@ const useSettingsStore = create(
   setTempUnit: (unit) => {
     if (VALID_TEMP_UNITS.includes(unit)) set({ tempUnit: unit });
   },
+  setCalcLoaves: (loaves) =>
+    set({
+      calcLoaves: Math.max(1, Math.min(10, Math.round(Number(loaves) || 1))),
+    }),
+  setBakeNotes: (notes) =>
+    set({
+      bakeNotes: String(notes || "").slice(0, 500),
+    }),
   completeOnboarding: () => set({ onboardingComplete: true }),
   incrementSessions: () => set((state) => ({ sessions: state.sessions + 1 })),
 
