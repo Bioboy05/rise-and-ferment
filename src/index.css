@@ -192,3 +192,347 @@ body {
   font-size: 14px;
   text-align: center;
 }
+
+/* ========================================
+   V4.1 LOOK & FEEL (core cards, header, nav)
+   ======================================== */
+
+.app-shell {
+  max-width: 480px;
+  margin: 0 auto;
+  min-height: 100dvh;
+  background: var(--bg-primary);
+}
+
+.app-main {
+  padding-bottom: calc(84px + env(safe-area-inset-bottom, 0px));
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 24px;
+  position: relative;
+}
+
+.greeting {
+  font-family: var(--font-display);
+  font-size: 18px;
+  color: var(--text-muted);
+}
+
+.starter-name {
+  font-family: var(--font-display);
+  font-size: 32px;
+  font-weight: 700;
+  color: var(--text-secondary);
+}
+
+.icon-btn {
+  width: 46px;
+  height: 46px;
+  border-radius: 50%;
+  background: var(--accent-light);
+  border: 1px solid var(--accent-light);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.25s ease;
+}
+
+.icon-btn:hover {
+  background: var(--accent-medium);
+  border-color: var(--accent);
+  transform: scale(1.05);
+}
+
+.icon-btn:active {
+  transform: scale(0.95);
+}
+
+.icon-btn svg {
+  stroke: var(--accent);
+  fill: none;
+}
+
+.main-card {
+  margin: 0 20px 20px;
+  padding: 28px 24px;
+  background: var(--bg-card);
+  border-radius: 28px;
+  box-shadow: 0 4px 20px var(--shadow);
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+  border: 1px solid rgba(212, 165, 116, 0.2);
+}
+
+.main-card::before {
+  content: "";
+  position: absolute;
+  top: -30px;
+  right: -30px;
+  width: 80px;
+  height: 80px;
+  background: radial-gradient(circle, var(--accent-light) 0%, transparent 70%);
+  border-radius: 50%;
+  opacity: 0.5;
+}
+
+.status-main {
+  font-family: var(--font-display);
+  font-size: 28px;
+  font-weight: 600;
+  color: var(--text-secondary);
+  margin-top: 16px;
+}
+
+.status-sub {
+  font-size: 14px;
+  color: var(--text-muted);
+  margin-top: 8px;
+  padding: 8px 16px;
+  background: var(--accent-light);
+  border-radius: 20px;
+  display: inline-block;
+}
+
+.status-sub.urgent {
+  background: rgba(255, 107, 53, 0.12);
+  color: var(--warning);
+}
+
+.status-sub.good {
+  background: rgba(76, 175, 80, 0.12);
+  color: var(--success);
+}
+
+.main-btn {
+  display: block;
+  width: calc(100% - 48px);
+  margin: 0 24px 24px;
+  padding: 20px;
+  background: linear-gradient(135deg, #8b5a2b 0%, #6b4423 50%, #5a3a1d 100%);
+  color: #fff;
+  border: none;
+  border-radius: 50px;
+  font-family: var(--font-display);
+  font-size: 26px;
+  font-weight: 600;
+  cursor: pointer;
+  box-shadow: 0 6px 20px rgba(107, 68, 35, 0.35),
+    inset 0 1px 0 rgba(255, 255, 255, 0.1);
+  transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+  position: relative;
+  overflow: hidden;
+}
+
+.main-btn::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 255, 255, 0.15),
+    transparent
+  );
+  transition: left 0.5s;
+}
+
+.main-btn:hover::before {
+  left: 100%;
+}
+
+.main-btn:active {
+  transform: scale(0.97);
+  box-shadow: 0 3px 10px rgba(107, 68, 35, 0.4);
+}
+
+.main-btn.success {
+  background: linear-gradient(135deg, #66bb6a 0%, #43a047 100%);
+}
+
+.main-btn.urgent {
+  background: linear-gradient(135deg, #ff7043 0%, #e64a19 100%);
+  animation: pulse 2s infinite;
+}
+
+.main-btn:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+@keyframes pulse {
+  0%,
+  100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.02);
+  }
+}
+
+.secondary-btn {
+  display: block;
+  width: calc(100% - 48px);
+  margin: 0 24px 16px;
+  padding: 14px;
+  background: transparent;
+  color: var(--accent);
+  border: 2px dashed var(--border);
+  border-radius: 50px;
+  font-family: var(--font-display);
+  font-size: 20px;
+  cursor: pointer;
+}
+
+.stats-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 12px;
+  padding: 0 20px;
+  margin-bottom: 24px;
+}
+
+.stat-card {
+  background: var(--bg-card);
+  border-radius: 20px;
+  padding: 16px;
+  text-align: center;
+  box-shadow: 0 2px 8px var(--shadow);
+  transition: all 0.25s ease;
+  border: 1px solid transparent;
+}
+
+.stat-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 6px 16px var(--shadow);
+  border-color: var(--accent-light);
+}
+
+.stat-value {
+  font-family: var(--font-display);
+  font-size: 28px;
+  font-weight: 700;
+  color: var(--text-secondary);
+}
+
+.stat-label {
+  font-size: 12px;
+  color: var(--text-muted);
+  margin-top: 4px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.urgent-alert {
+  margin: 0 20px 16px;
+  padding: 16px 20px;
+  background: linear-gradient(135deg, #ff6b35 0%, #d44d00 100%);
+  border-radius: 16px;
+  color: white;
+  box-shadow: 0 4px 20px rgba(255, 107, 53, 0.4);
+}
+
+.urgent-alert-content {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.urgent-icon {
+  font-size: 28px;
+}
+
+.urgent-text {
+  flex: 1;
+}
+
+.urgent-title {
+  font-weight: 700;
+  font-size: 16px;
+  margin-bottom: 4px;
+}
+
+.urgent-subtitle {
+  font-size: 13px;
+  opacity: 0.9;
+}
+
+.urgent-btn {
+  background: white;
+  color: #d44d00;
+  border: none;
+  padding: 10px 16px;
+  border-radius: 20px;
+  font-weight: 700;
+  cursor: pointer;
+  white-space: nowrap;
+}
+
+.nav-bar {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: var(--bg-card);
+  border-top: 1px solid var(--border);
+  padding-bottom: env(safe-area-inset-bottom, 0px);
+}
+
+.nav-inner {
+  display: flex;
+  justify-content: space-around;
+  position: relative;
+}
+
+.nav-item {
+  flex: 1;
+  padding: 10px 0;
+  text-align: center;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.nav-item:hover {
+  background: var(--accent-light);
+}
+
+.nav-icon {
+  width: 40px;
+  height: 40px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  transition: all 0.2s ease;
+}
+
+.nav-icon svg {
+  stroke: var(--text-muted);
+  transition: all 0.2s ease;
+}
+
+.nav-item.active .nav-icon svg {
+  stroke: var(--accent);
+}
+
+.nav-label {
+  font-family: var(--font-display);
+  font-size: 14px;
+  margin-top: 4px;
+  color: var(--text-muted);
+  transition: all 0.2s;
+}
+
+.nav-item.active .nav-label {
+  color: var(--text-secondary);
+  font-weight: 600;
+}

@@ -28,12 +28,9 @@ function App() {
   }
 
   return (
-    <div
-      style={{ background: "var(--bg-primary)", color: "var(--text-primary)" }}
-      className="min-h-dvh"
-    >
+    <div className="app-shell" style={{ color: "var(--text-primary)" }}>
       <Header />
-      <main className="px-4 py-4" style={{ paddingBottom: "calc(64px + env(safe-area-inset-bottom, 0px))" }}>
+      <main className="app-main">
         <Routes>
           <Route path="/" element={<HomePage />} />
           <Route path="/history" element={<HistoryPage />} />

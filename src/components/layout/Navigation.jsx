@@ -14,33 +14,24 @@ function Navigation() {
   ];
 
   return (
-    <nav
-      style={{
-        background: "var(--bg-card)",
-        borderTop: "1px solid var(--border)",
-        paddingBottom: "env(safe-area-inset-bottom, 0px)",
-      }}
-      className="fixed bottom-0 left-0 right-0 flex justify-around py-2"
-    >
-      {tabs.map((tab) => (
-        <NavLink
-          key={tab.to}
-          to={tab.to}
-          end={tab.to === "/"}
-          className="flex flex-col items-center justify-center text-xs transition no-underline"
-          style={({ isActive }) => ({
-            color: isActive ? "var(--accent)" : "var(--text-muted)",
-            fontWeight: isActive ? "700" : "400",
-            minWidth: "44px",
-            minHeight: "44px",
-            padding: "4px 6px",
-          })}
-          aria-label={tab.label}
-        >
-          <Icon name={tab.icon} size={22} />
-          <span style={{ marginTop: "2px" }}>{tab.label}</span>
-        </NavLink>
-      ))}
+    <nav className="nav-bar">
+      <div className="nav-inner">
+        {tabs.map((tab) => (
+          <NavLink
+            key={tab.to}
+            to={tab.to}
+            end={tab.to === "/"}
+            className={({ isActive }) => `nav-item ${isActive ? "active" : ""}`}
+            style={{ textDecoration: "none" }}
+            aria-label={tab.label}
+          >
+            <div className="nav-icon">
+              <Icon name={tab.icon} size={22} />
+            </div>
+            <div className="nav-label">{tab.label}</div>
+          </NavLink>
+        ))}
+      </div>
     </nav>
   );
 }

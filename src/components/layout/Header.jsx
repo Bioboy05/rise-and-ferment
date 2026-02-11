@@ -1,22 +1,58 @@
+import { useMemo } from "react";
+import { useLocation, useNavigate } from "react-router-dom";
+import { useTranslation } from "react-i18next";
+import useActiveStarter from "../../hooks/useActiveStarter";
 import ThemeToggle from "./ThemeToggle";
+import Icon from "../common/Icon";
+
+function getGreetingKey(hour) {
+  if (hour < 12) return "greetingMorning";
+  if (hour < 18) return "greetingAfternoon";
+  return "greetingEvening";
+}
 
 function Header() {
+  const { t } = useTranslation();
+  const location = useLocation();
+  const navigate = useNavigate();
+  const starter = useActiveStarter();
+
+  const greeting = useMemo(() => {
+    const hour = new Date().getHours();
+    return t(getGreetingKey(hour));
+  }, [t]);
+
+  const routeTitleMap = {
+    "/history": "historyTitle",
+    "/recipes": "learnTitle",
+    "/stats": "statsTitle",
+    "/settings": "settingsTitle",
+  };
+
+  const titleKey = routeTitleMap[location.pathname];
+  const pageTitle = titleKey ? t(titleKey) : "Rise & Ferment";
+  const isHome = location.pathname === "/";
+
   return (
-    <header
-      style={{
-        background: "var(--bg-secondary)",
-        color: "var(--text-primary)",
-        borderBottom: "1px solid var(--border)",
-      }}
-      className="px-4 py-3 flex items-center justify-between"
-    >
-      <h1
-        className="text-xl font-bold"
-        style={{ fontFamily: "var(--font-display)" }}
-      >
-        Rise & Ferment
-      </h1>
-      <ThemeToggle />
+    <header className="header">
+      <div>
+        {isHome ? (
+          <>
+            <div className="greeting">{greeting}</div>
+            <div className="starter-name">{starter.name}</div>
+          </>
+        ) : (
+          <div className="starter-name">{pageTitle}</div>
+        )}
+      </div>
+
+      {isHome ? (
+        <button className="icon-btn" onClick={() => navigate("/settings")} aria-label={t("settingsTitle")}>
+          <Icon name="settings" size={22} />
+        </button>
+      ) : (
+        <ThemeToggle className="icon-btn" />
+      )}
     </header>
   );
 }
