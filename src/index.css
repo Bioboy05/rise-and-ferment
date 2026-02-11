@@ -56,6 +56,15 @@ body {
   padding-top: env(safe-area-inset-top, 0px);
 }
 
+button:focus-visible,
+a:focus-visible,
+input:focus-visible,
+textarea:focus-visible,
+select:focus-visible {
+  outline: 3px solid var(--accent-medium);
+  outline-offset: 2px;
+}
+
 /* ========================================
    COMPONENT CLASSES
    ======================================== */
@@ -216,6 +225,28 @@ body {
   box-shadow: 0 25px 80px rgba(0, 0, 0, 0.15), 0 0 0 12px #1a1a1a;
   overflow: hidden;
   position: relative;
+  isolation: isolate;
+}
+
+.phone-frame::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(circle at 18% 14%, rgba(255, 255, 255, 0.42), transparent 42%),
+    radial-gradient(circle at 78% 88%, rgba(139, 90, 43, 0.1), transparent 44%);
+  pointer-events: none;
+  z-index: 0;
+}
+
+.phone-frame::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.32);
+  pointer-events: none;
+  z-index: 1;
 }
 
 .phone-notch {
@@ -264,8 +295,41 @@ body {
   }
 }
 
+@media (max-width: 360px) {
+  .section {
+    padding: 0 14px;
+  }
+  .section-title {
+    font-size: 24px;
+    gap: 8px;
+  }
+}
+
 .app-main {
   padding-bottom: calc(84px + env(safe-area-inset-bottom, 0px));
+}
+
+.section {
+  padding: 0 20px;
+}
+
+.section-title {
+  font-family: "Caveat", cursive;
+  font-size: 28px;
+  font-weight: 600;
+  color: var(--text-secondary);
+  margin-bottom: 20px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.section-title::after {
+  content: "";
+  flex: 1;
+  height: 2px;
+  background: linear-gradient(90deg, var(--accent-light), transparent);
+  border-radius: 1px;
 }
 
 .header {
@@ -1327,18 +1391,39 @@ body::after {
   display: flex;
   justify-content: space-around;
   position: relative;
+  padding: 4px 6px 0;
 }
 
 .nav-item {
   flex: 1;
   padding: 10px 0;
+  margin: 0 4px;
+  border-radius: 14px;
   text-align: center;
   cursor: pointer;
   transition: all 0.2s ease;
+  position: relative;
 }
 
 .nav-item:hover {
   background: var(--accent-light);
+}
+
+.nav-item.active {
+  background: var(--accent-light);
+  transform: translateY(-2px);
+}
+
+.nav-item.active::before {
+  content: "";
+  position: absolute;
+  top: -4px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 24px;
+  height: 3px;
+  background: var(--accent);
+  border-radius: 2px;
 }
 
 .nav-icon {
