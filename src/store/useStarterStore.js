@@ -75,9 +75,22 @@ const useStarterStore = create(
     if (!isValidId(id) || typeof updates !== "object" || updates === null) return;
     // Whitelist: only allow known starter fields to be updated
     const allowedKeys = [
-      "name", "flourType", "hydration", "createdAt", "lastFed",
-      "isNewStarter", "currentDay", "previewingDay", "todayCompleted",
-      "lastCompletedDate", "feedAmount", "useBran", "personalNotes",
+      "name",
+      "flourType",
+      "hydration",
+      "createdAt",
+      "lastFed",
+      "isNewStarter",
+      "currentDay",
+      "previewingDay",
+      "todayCompleted",
+      "lastCompletedDate",
+      "feedAmount",
+      "useBran",
+      "personalNotes",
+      "history",
+      "streak",
+      "completedDays",
     ];
     const safe = {};
     for (const key of allowedKeys) {

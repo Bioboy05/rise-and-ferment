@@ -1,17 +1,15 @@
-import { useState } from "react";
+import { useMemo, useState } from "react";
 import { useTranslation } from "react-i18next";
 import useSettingsStore from "../store/useSettingsStore";
 import useStarterStore from "../store/useStarterStore";
-import Icon from "../components/common/Icon";
-import TipBox from "../components/common/TipBox";
 
 const LANGUAGES = [
-  { code: "ro", label: "languageRo" },
-  { code: "en", label: "languageEn" },
-  { code: "de", label: "languageDe" },
-  { code: "fr", label: "languageFr" },
-  { code: "es", label: "languageEs" },
-  { code: "it", label: "languageIt" },
+  { code: "ro", flag: "🇷🇴", name: "Română" },
+  { code: "en", flag: "🇬🇧", name: "English" },
+  { code: "de", flag: "🇩🇪", name: "Deutsch" },
+  { code: "fr", flag: "🇫🇷", name: "Français" },
+  { code: "es", flag: "🇪🇸", name: "Español" },
+  { code: "it", flag: "🇮🇹", name: "Italiano" },
 ];
 
 const MAX_NAME_LENGTH = 50;
@@ -27,457 +25,446 @@ function OnboardingPage() {
   const updateStarter = useStarterStore((s) => s.updateStarter);
   const getActiveStarter = useStarterStore((s) => s.getActiveStarter);
 
-  const [step, setStep] = useState(0);
   const [path, setPath] = useState(null); // "create" | "adopt" | "existing"
-  const [existingAnswer, setExistingAnswer] = useState(null);
+  const [step, setStep] = useState("start"); // start | shopping | adopt | existing | name
+  const [existingHealth, setExistingHealth] = useState(null); // active | hungry | neglected | fridge
   const [name, setName] = useState("");
 
-  const handleLanguageChange = (code) => {
-    setLanguage(code);
-    i18n.changeLanguage(code);
+  const advice = useMemo(() => {
+    if (!existingHealth) return null;
+    const map = {
+      active: {
+        icon: "🎉",
+        title: t("existingAdviceActiveTitle"),
+        desc: t("existingAdviceActiveDesc"),
+        style: "success",
+      },
+      hungry: {
+        icon: "😋",
+        title: t("existingAdviceHungryTitle"),
+        desc: t("existingAdviceHungryDesc"),
+        style: "warning",
+      },
+      neglected: {
+        icon: "💪",
+        title: t("existingAdviceNeglectedTitle"),
+        desc: t("existingAdviceNeglectedDesc"),
+        style: "warning",
+      },
+      fridge: {
+        icon: "❄️",
+        title: t("existingAdviceFridgeTitle"),
+        desc: t("existingAdviceFridgeDesc"),
+        style: "info",
+      },
+    };
+    return map[existingHealth] || null;
+  }, [existingHealth, t]);
+
+  const handleSelectPath = (nextPath) => {
+    setPath(nextPath);
+    if (nextPath === "create") setStep("shopping");
+    else if (nextPath === "adopt") setStep("adopt");
+    else if (nextPath === "existing") setStep("existing");
+    else setStep("name");
   };
 
-  const handleFinalize = () => {
-    const starter = getActiveStarter();
-    const safeName = name.trim().slice(0, MAX_NAME_LENGTH) || "Pufi";
+  const goBackToStart = () => {
+    setStep("start");
+    setExistingHealth(null);
+  };
 
-    const updates = { name: safeName };
+  const goToName = () => setStep("name");
+
+  const handleFinish = () => {
+    const starter = getActiveStarter();
+    const safeName = name.trim().slice(0, MAX_NAME_LENGTH) || "Maiaua";
+
     if (path === "create") {
-      updates.isNewStarter = true;
-      updates.currentDay = 1;
-      updates.createdAt = Date.now();
-    } else if (path === "adopt") {
-      updates.isNewStarter = false;
-      updates.currentDay = 1;
-      updates.createdAt = Date.now();
+      updateStarter(starter.id, {
+        name: safeName,
+        createdAt: Date.now(),
+        isNewStarter: true,
+        currentDay: 1,
+        todayCompleted: false,
+        lastCompletedDate: null,
+        lastFed: null,
+        previewingDay: null,
+        history: [],
+        streak: 0,
+        completedDays: [],
+      });
     } else {
-      // existing
-      updates.isNewStarter = false;
-      updates.currentDay = 8;
-      updates.createdAt = Date.now();
+      updateStarter(starter.id, {
+        name: safeName,
+        createdAt: Date.now(),
+        isNewStarter: false,
+        currentDay: 1,
+        todayCompleted: false,
+        lastCompletedDate: null,
+        lastFed: null,
+        previewingDay: null,
+        history: [],
+        streak: 0,
+        completedDays: [],
+      });
     }
 
-    updateStarter(starter.id, updates);
     completeOnboarding();
   };
 
-  // Step 2 path-specific step number for navigation
-  const goToPathStep = () => setStep(2);
-  const goToName = () => setStep(3);
+  const themeIcon = theme === "dark" ? "☀️" : "🌙";
+  const nameQuestion = path === "create" ? t("nameQuestionNew") : t("nameQuestion");
 
   return (
-    <div
-      style={{ background: "var(--bg-primary)", color: "var(--text-primary)" }}
-      className="min-h-dvh flex flex-col"
-    >
-      <div className="flex-1 flex flex-col items-center justify-center px-6 py-8 max-w-md mx-auto w-full">
+    <div className="onboarding">
+      <div style={{ display: "flex", justifyContent: "flex-end", width: "100%", marginBottom: "16px" }}>
+        <button className="theme-toggle-btn" onClick={toggleTheme} aria-label="Toggle theme">
+          <span>{themeIcon}</span>
+        </button>
+      </div>
 
-        {/* Step 0: Welcome */}
-        {step === 0 && (
-          <div className="w-full text-center">
-            <div style={{ fontSize: "3rem", marginBottom: "8px" }}>
-              <Icon name="wheat" size={48} style={{ color: "var(--accent)" }} />
+      <div style={{ position: "relative", width: "140px", height: "145px", margin: "0 auto 16px" }}>
+        <svg
+          viewBox="0 0 100 130"
+          width="95"
+          height="125"
+          style={{ filter: "drop-shadow(0 8px 20px rgba(139, 90, 43, 0.2))" }}
+        >
+          <rect x="20" y="0" width="60" height="14" rx="4" fill="#8B5A2B" />
+          <rect x="24" y="3" width="52" height="4" fill="#A67C52" opacity="0.7" />
+          <rect x="16" y="12" width="68" height="7" rx="2" fill="#6B4423" />
+          <path
+            d="M20 19 L16 115 Q16 125 28 125 L72 125 Q84 125 84 115 L80 19 Z"
+            fill="rgba(245, 235, 224, 0.5)"
+            stroke="var(--border)"
+            strokeWidth="2"
+          />
+          <path
+            d="M24 24 L21 110 Q21 115 26 115 L32 115 Q37 115 37 110 L40 24 Z"
+            fill="rgba(255,255,255,0.5)"
+          />
+          <path
+            d="M20 80 Q35 72 50 75 Q65 72 80 80 L79 115 Q79 122 70 122 L30 122 Q21 122 21 115 Z"
+            fill="var(--accent)"
+            opacity="0.6"
+          >
+            <animate
+              attributeName="d"
+              values="M20 80 Q35 72 50 75 Q65 72 80 80 L79 115 Q79 122 70 122 L30 122 Q21 122 21 115 Z;
+                      M20 75 Q38 68 50 70 Q62 68 80 75 L79 115 Q79 122 70 122 L30 122 Q21 122 21 115 Z;
+                      M20 80 Q35 72 50 75 Q65 72 80 80 L79 115 Q79 122 70 122 L30 122 Q21 122 21 115 Z"
+              dur="3s"
+              repeatCount="indefinite"
+            />
+          </path>
+          <circle cx="35" cy="95" r="3" fill="rgba(255,255,255,0.7)">
+            <animate attributeName="cy" values="100;85;100" dur="2.5s" repeatCount="indefinite" />
+          </circle>
+          <circle cx="55" cy="90" r="4" fill="rgba(255,255,255,0.6)">
+            <animate attributeName="cy" values="98;82;98" dur="3s" repeatCount="indefinite" />
+          </circle>
+          <circle cx="70" cy="93" r="2.5" fill="rgba(255,255,255,0.7)">
+            <animate attributeName="cy" values="97;88;97" dur="2.2s" repeatCount="indefinite" />
+          </circle>
+        </svg>
+
+        <svg
+          viewBox="0 0 60 55"
+          width="55"
+          height="50"
+          style={{
+            position: "absolute",
+            bottom: "0px",
+            right: "-10px",
+            filter: "drop-shadow(0 6px 12px rgba(139, 90, 43, 0.35))",
+            transform: "rotate(8deg)",
+          }}
+        >
+          <ellipse cx="30" cy="35" rx="27" ry="18" fill="#C9A67A" />
+          <ellipse cx="30" cy="32" rx="25" ry="16" fill="#DEB887" />
+          <ellipse cx="30" cy="29" rx="22" ry="14" fill="#E8CFA0" />
+          <path d="M18 28 Q30 22 42 28" stroke="#8B5A2B" strokeWidth="1.5" fill="none" opacity="0.4" />
+          <path d="M30 20 L30 38" stroke="#8B5A2B" strokeWidth="1" fill="none" opacity="0.3" />
+          <ellipse cx="24" cy="26" rx="6" ry="4" fill="rgba(255,255,255,0.3)" />
+        </svg>
+      </div>
+
+      <h1 className="onboarding-title">{t("welcome")}</h1>
+      <p className="onboarding-desc">{t("appDesc")}</p>
+
+      {step === "start" && (
+        <div id="onboard-step1">
+          <p className="onboarding-question">{t("howToStart")}</p>
+          <div className="option-cards">
+            <div className="option-card" onClick={() => handleSelectPath("create")}>
+              <div className="option-icon">🌱</div>
+              <div className="option-title">{t("pathCreate")}</div>
+              <div className="option-desc">{t("pathCreateDesc")}</div>
             </div>
-            <h1
-              style={{
-                fontFamily: "var(--font-display)",
-                fontSize: "2.2rem",
-                color: "var(--text-primary)",
-                marginBottom: "8px",
-              }}
-            >
-              {t("welcome")}
-            </h1>
-            <p
-              style={{
-                color: "var(--text-muted)",
-                fontSize: "15px",
-                lineHeight: "1.5",
-                marginBottom: "32px",
-              }}
-            >
-              {t("appDesc")}
+            <div className="option-card" onClick={() => handleSelectPath("adopt")}>
+              <div className="option-icon">🤝</div>
+              <div className="option-title">{t("pathAdopt")}</div>
+              <div className="option-desc">{t("pathAdoptDesc")}</div>
+            </div>
+            <div className="option-card" onClick={() => handleSelectPath("existing")}>
+              <div className="option-icon">🫙</div>
+              <div className="option-title">{t("pathExisting")}</div>
+              <div className="option-desc">{t("pathExistingDesc")}</div>
+            </div>
+          </div>
+        </div>
+      )}
+
+      {step === "existing" && (
+        <div id="onboard-step-existing" style={{ width: "100%" }}>
+          <p className="onboarding-question">{t("existingTitle")}</p>
+          <div className="health-quiz" style={{ marginBottom: "20px" }}>
+            <p style={{ fontSize: "14px", color: "var(--text-muted)", marginBottom: "12px" }}>
+              {t("existingQ1")}
             </p>
-
-            {/* Language picker */}
-            <div className="grid grid-cols-2 gap-2 mb-6">
-              {LANGUAGES.map((lang) => (
-                <button
-                  key={lang.code}
-                  onClick={() => handleLanguageChange(lang.code)}
-                  className="btn-pill"
-                  data-active={language === lang.code}
-                >
-                  {t(lang.label)}
-                </button>
-              ))}
+            <div style={{ display: "flex", flexDirection: "column", gap: "10px" }}>
+              {[
+                { id: "active", emoji: "🟢", title: t("existingA1a"), desc: t("existingA1aDesc") },
+                { id: "hungry", emoji: "🟡", title: t("existingA1b"), desc: t("existingA1bDesc") },
+                { id: "neglected", emoji: "🟠", title: t("existingA1c"), desc: t("existingA1cDesc") },
+                { id: "fridge", emoji: "❄️", title: t("existingA1d"), desc: t("existingA1dDesc") },
+              ].map((opt) => {
+                const isActive = existingHealth === opt.id;
+                return (
+                  <div
+                    key={opt.id}
+                    className="health-option"
+                    onClick={() => setExistingHealth(opt.id)}
+                    style={{
+                      padding: "14px 16px",
+                      background: isActive ? "var(--accent-light)" : "var(--bg-card)",
+                      borderRadius: "14px",
+                      border: `2px solid ${isActive ? "var(--accent)" : "var(--border)"}`,
+                      cursor: "pointer",
+                      transition: "all 0.2s",
+                      display: "flex",
+                      alignItems: "center",
+                      gap: "12px",
+                    }}
+                  >
+                    <span style={{ fontSize: "20px" }}>{opt.emoji}</span>
+                    <div>
+                      <div style={{ fontWeight: 600, color: "var(--text-secondary)" }}>{opt.title}</div>
+                      <div style={{ fontSize: "12px", color: "var(--text-muted)" }}>{opt.desc}</div>
+                    </div>
+                  </div>
+                );
+              })}
             </div>
+          </div>
 
-            {/* Theme toggle */}
-            <button
-              onClick={toggleTheme}
-              className="btn-secondary mb-6"
-              style={{ display: "flex", alignItems: "center", justifyContent: "center", gap: "8px" }}
-            >
-              <Icon name={theme === "light" ? "moon" : "sun"} size={18} />
-              {theme === "light" ? t("themeDark") : t("themeLight")}
-            </button>
+          {advice && (
+            <div style={{ marginBottom: "16px" }}>
+              <div
+                className="tip-box"
+                style={{
+                  background: "var(--accent-light)",
+                  borderLeft:
+                    advice.style === "success"
+                      ? "4px solid var(--success)"
+                      : advice.style === "info"
+                        ? "4px solid var(--accent)"
+                        : "4px solid var(--warning)",
+                  padding: "12px 16px",
+                  borderRadius: "12px",
+                  textAlign: "left",
+                }}
+              >
+                <strong>
+                  {advice.icon} {advice.title}
+                </strong>
+                <br />
+                <span style={{ fontSize: "13px" }}>{advice.desc}</span>
+              </div>
+            </div>
+          )}
 
-            <button onClick={() => setStep(1)} className="btn-primary">
+          {existingHealth && (
+            <button className="btn btn-primary" onClick={goToName} style={{ marginBottom: "8px" }}>
               {t("continueSetup")}
             </button>
-          </div>
-        )}
+          )}
+          <button className="btn btn-secondary" onClick={goBackToStart}>
+            {t("goBack")}
+          </button>
+        </div>
+      )}
 
-        {/* Step 1: Path selection */}
-        {step === 1 && (
-          <div className="w-full">
-            <h2
-              style={{
-                fontFamily: "var(--font-display)",
-                fontSize: "1.8rem",
-                textAlign: "center",
-                marginBottom: "24px",
-              }}
-            >
-              {t("howToStart")}
-            </h2>
-
-            <div className="flex flex-col gap-3">
-              {[
-                { id: "create", icon: "wheat", titleKey: "pathCreate", descKey: "pathCreateDesc" },
-                { id: "adopt", icon: "droplet", titleKey: "pathAdopt", descKey: "pathAdoptDesc" },
-                { id: "existing", icon: "target", titleKey: "pathExisting", descKey: "pathExistingDesc" },
-              ].map((p) => (
-                <button
-                  key={p.id}
-                  onClick={() => { setPath(p.id); goToPathStep(); }}
-                  className="card"
-                  style={{
-                    border: "1px solid var(--border)",
-                    cursor: "pointer",
-                    textAlign: "left",
-                    display: "flex",
-                    gap: "14px",
-                    alignItems: "center",
-                    padding: "18px 16px",
-                  }}
-                >
-                  <div
-                    style={{
-                      width: "44px",
-                      height: "44px",
-                      borderRadius: "12px",
-                      background: "var(--accent-light)",
-                      display: "flex",
-                      alignItems: "center",
-                      justifyContent: "center",
-                      flexShrink: 0,
-                    }}
-                  >
-                    <Icon name={p.icon} size={22} style={{ color: "var(--accent)" }} />
-                  </div>
-                  <div>
-                    <div style={{ fontWeight: "700", fontSize: "15px", marginBottom: "2px" }}>
-                      {t(p.titleKey)}
-                    </div>
-                    <div style={{ color: "var(--text-muted)", fontSize: "13px" }}>
-                      {t(p.descKey)}
-                    </div>
-                  </div>
-                </button>
-              ))}
+      {step === "shopping" && (
+        <div id="onboard-step-shopping" style={{ width: "100%" }}>
+          <p className="onboarding-question">{t("shoppingTitle")}</p>
+          <div className="shopping-list">
+            <div className="shopping-item">
+              <span className="shopping-icon">⚖️</span>
+              <span>{t("shopScale")}</span>
             </div>
-
-            <button
-              onClick={() => setStep(0)}
-              className="btn-secondary mt-4"
-            >
-              {t("goBack")}
-            </button>
-          </div>
-        )}
-
-        {/* Step 2: Path-specific */}
-        {step === 2 && path === "create" && (
-          <div className="w-full">
-            <h2
-              style={{
-                fontFamily: "var(--font-display)",
-                fontSize: "1.6rem",
-                textAlign: "center",
-                marginBottom: "20px",
-              }}
-            >
-              {t("shoppingTitle")}
-            </h2>
-
-            <div className="flex flex-col gap-2 mb-6">
-              {["shopScale", "shopWhiteFlour", "shopRyeFlour", "shopBran", "shopWater", "shopJar"].map((key) => (
-                <div
-                  key={key}
-                  style={{
-                    display: "flex",
-                    alignItems: "center",
-                    gap: "10px",
-                    padding: "10px 14px",
-                    background: "var(--bg-secondary)",
-                    borderRadius: "10px",
-                    fontSize: "14px",
-                    color: "var(--text-secondary)",
-                  }}
-                >
-                  <Icon name="check" size={16} style={{ color: "var(--success)", flexShrink: 0 }} />
-                  {t(key)}
-                </div>
-              ))}
+            <div className="shopping-item">
+              <span className="shopping-icon">🌾</span>
+              <span>{t("shopWhiteFlour")}</span>
             </div>
-
-            <button onClick={goToName} className="btn-primary mb-3">
-              {t("haveEverything")}
-            </button>
-            <button onClick={() => setStep(1)} className="btn-secondary">
-              {t("goBack")}
-            </button>
+            <div className="shopping-item">
+              <span className="shopping-icon">🪵</span>
+              <span>{t("shopRyeFlour")}</span>
+            </div>
+            <div className="shopping-item">
+              <span className="shopping-icon">🥣</span>
+              <span>{t("shopBran")}</span>
+            </div>
+            <div className="shopping-item">
+              <span className="shopping-icon">💧</span>
+              <span>{t("shopWater")}</span>
+            </div>
+            <div className="shopping-item">
+              <span className="shopping-icon">🫙</span>
+              <span>{t("shopJar")}</span>
+            </div>
           </div>
-        )}
+          <button className="btn btn-primary" onClick={goToName}>
+            {t("haveEverything")}
+          </button>
+          <button className="btn btn-secondary" onClick={goBackToStart}>
+            {t("goBack")}
+          </button>
+        </div>
+      )}
 
-        {step === 2 && path === "adopt" && (
-          <div className="w-full">
-            <h2
-              style={{
-                fontFamily: "var(--font-display)",
-                fontSize: "1.6rem",
-                textAlign: "center",
-                marginBottom: "16px",
-              }}
-            >
-              {t("adoptTitle")}
-            </h2>
+      {step === "adopt" && (
+        <div id="onboard-step-adopt" style={{ width: "100%" }}>
+          <p className="onboarding-question">{t("adoptTitle")}</p>
 
-            <TipBox type="info">{t("adoptTip")}</TipBox>
+          <div
+            className="tip-box"
+            style={{
+              background: "var(--accent-light)",
+              marginBottom: "16px",
+              borderLeft: "4px solid var(--success)",
+              padding: "12px 16px",
+              borderRadius: "12px",
+              textAlign: "left",
+            }}
+          >
+            <strong>✅ {t("adoptChecklist")}</strong>
+            <div style={{ marginTop: "10px", fontSize: "13px", lineHeight: 1.9, color: "var(--text-secondary)" }}>
+              <div>☐ {t("adoptCheck1")}</div>
+              <div>☐ {t("adoptCheck2")}</div>
+              <div>☐ {t("adoptCheck3")}</div>
+            </div>
+          </div>
 
-            <div className="mt-4 mb-4">
-              <p className="section-label">{t("adoptSourcesTitle")}</p>
-              <div className="flex flex-col gap-2">
-                {[
-                  { key: "adoptFriends", descKey: "adoptFriendsDesc", icon: "star" },
-                  { key: "adoptBakery", descKey: "adoptBakeryDesc", icon: "bread" },
-                  { key: "adoptGroups", descKey: "adoptGroupsDesc", icon: "book" },
-                  { key: "adoptShop", descKey: "adoptShopDesc", icon: "download" },
-                ].map((src) => (
-                  <div
-                    key={src.key}
-                    style={{
-                      padding: "12px 14px",
-                      background: "var(--bg-secondary)",
-                      borderRadius: "10px",
-                      fontSize: "14px",
-                    }}
-                  >
-                    <div style={{ display: "flex", alignItems: "center", gap: "8px", fontWeight: "600" }}>
-                      <Icon name={src.icon} size={16} style={{ color: "var(--accent)" }} />
-                      {t(src.key)}
-                    </div>
-                    <div style={{ color: "var(--text-muted)", fontSize: "13px", marginTop: "2px", marginLeft: "24px" }}>
-                      {t(src.descKey)}
-                    </div>
-                  </div>
-                ))}
+          <div
+            className="tip-box success"
+            style={{
+              marginBottom: "16px",
+              background: "var(--bg-card)",
+              padding: "12px 16px",
+              borderRadius: "12px",
+              textAlign: "left",
+              borderLeft: "4px solid var(--success)",
+            }}
+          >
+            <strong>🗓️ {t("adoptFirst3Days")}</strong>
+            <div style={{ marginTop: "10px", fontSize: "13px", lineHeight: 1.9, color: "var(--text-secondary)" }}>
+              <div>
+                <strong style={{ color: "var(--accent)" }}>Ziua 1:</strong> {t("adoptDay1")}
+              </div>
+              <div>
+                <strong style={{ color: "var(--accent)" }}>Ziua 2:</strong> {t("adoptDay2")}
+              </div>
+              <div>
+                <strong style={{ color: "var(--accent)" }}>Ziua 3:</strong> {t("adoptDay3")}
               </div>
             </div>
+          </div>
 
-            <div className="mb-4">
-              <p className="section-label">{t("adoptChecklist")}</p>
-              <div className="flex flex-col gap-1.5">
-                {["adoptCheck1", "adoptCheck2", "adoptCheck3"].map((key) => (
-                  <div
-                    key={key}
-                    style={{
-                      display: "flex",
-                      alignItems: "center",
-                      gap: "8px",
-                      fontSize: "14px",
-                      color: "var(--text-secondary)",
-                      paddingLeft: "4px",
-                    }}
-                  >
-                    <Icon name="check" size={14} style={{ color: "var(--success)", flexShrink: 0 }} />
-                    {t(key)}
-                  </div>
-                ))}
+          <div
+            className="tip-box info"
+            style={{
+              marginBottom: "16px",
+              background: "var(--bg-card)",
+              padding: "12px 16px",
+              borderRadius: "12px",
+              textAlign: "left",
+              borderLeft: "4px solid var(--accent)",
+            }}
+          >
+            <strong>💡</strong> {t("adoptTip")}
+          </div>
+
+          <p style={{ fontSize: "14px", color: "var(--text-muted)", margin: "16px 0 12px", fontWeight: 600 }}>
+            {t("adoptSourcesTitle")}
+          </p>
+          <div className="adopt-sources">
+            <div className="source-item">
+              <div className="source-icon">👨‍👩‍👧</div>
+              <div>
+                <div className="source-name">{t("adoptFriends")}</div>
+                <div className="source-desc">{t("adoptFriendsDesc")}</div>
               </div>
             </div>
-
-            <button onClick={goToName} className="btn-primary mb-3">
-              {t("gotStarter")}
-            </button>
-            <button
-              onClick={() => { setPath("create"); }}
-              className="btn-secondary mb-3"
-            >
-              {t("preferCreate")}
-            </button>
-            <button onClick={() => setStep(1)} className="btn-secondary">
-              {t("goBack")}
-            </button>
-          </div>
-        )}
-
-        {step === 2 && path === "existing" && (
-          <div className="w-full">
-            <h2
-              style={{
-                fontFamily: "var(--font-display)",
-                fontSize: "1.6rem",
-                textAlign: "center",
-                marginBottom: "20px",
-              }}
-            >
-              {t("existingTitle")}
-            </h2>
-
-            {!existingAnswer ? (
-              <>
-                <p
-                  style={{
-                    color: "var(--text-muted)",
-                    fontSize: "14px",
-                    textAlign: "center",
-                    marginBottom: "16px",
-                  }}
-                >
-                  {t("existingQ1")}
-                </p>
-
-                <div className="flex flex-col gap-2 mb-4">
-                  {[
-                    { id: "active", key: "existingA1a", descKey: "existingA1aDesc" },
-                    { id: "hungry", key: "existingA1b", descKey: "existingA1bDesc" },
-                    { id: "neglected", key: "existingA1c", descKey: "existingA1cDesc" },
-                    { id: "fridge", key: "existingA1d", descKey: "existingA1dDesc" },
-                  ].map((opt) => (
-                    <button
-                      key={opt.id}
-                      onClick={() => setExistingAnswer(opt.id)}
-                      className="card"
-                      style={{
-                        border: "1px solid var(--border)",
-                        cursor: "pointer",
-                        textAlign: "left",
-                        padding: "14px 16px",
-                      }}
-                    >
-                      <div style={{ fontWeight: "600", fontSize: "14px" }}>{t(opt.key)}</div>
-                      <div style={{ color: "var(--text-muted)", fontSize: "13px", marginTop: "2px" }}>
-                        {t(opt.descKey)}
-                      </div>
-                    </button>
-                  ))}
-                </div>
-
-                <button onClick={() => setStep(1)} className="btn-secondary">
-                  {t("goBack")}
-                </button>
-              </>
-            ) : (
-              <>
-                {/* Show advice based on answer */}
-                <HealthAdvice answer={existingAnswer} t={t} />
-
-                <button onClick={goToName} className="btn-primary mb-3">
-                  {t("continueSetup")}
-                </button>
-                <button
-                  onClick={() => setExistingAnswer(null)}
-                  className="btn-secondary"
-                >
-                  {t("goBack")}
-                </button>
-              </>
-            )}
-          </div>
-        )}
-
-        {/* Step 3: Name input */}
-        {step === 3 && (
-          <div className="w-full text-center">
-            <div style={{ marginBottom: "16px" }}>
-              <Icon name="wheat" size={40} style={{ color: "var(--accent)" }} />
+            <div className="source-item">
+              <div className="source-icon">🏪</div>
+              <div>
+                <div className="source-name">{t("adoptBakery")}</div>
+                <div className="source-desc">{t("adoptBakeryDesc")}</div>
+              </div>
             </div>
-            <h2
-              style={{
-                fontFamily: "var(--font-display)",
-                fontSize: "1.8rem",
-                marginBottom: "8px",
-              }}
-            >
-              {path === "create" ? t("nameQuestionNew") : t("nameQuestion")}
-            </h2>
-            <p style={{ color: "var(--text-muted)", fontSize: "14px", marginBottom: "24px" }}>
-              Pufi, Maya, Dora, Bubbles...
-            </p>
-
-            <input
-              type="text"
-              value={name}
-              onChange={(e) => setName(e.target.value.slice(0, MAX_NAME_LENGTH))}
-              placeholder="Pufi"
-              className="input-field mb-6"
-              style={{
-                width: "100%",
-                textAlign: "center",
-                fontSize: "1.3rem",
-                fontWeight: "600",
-                padding: "14px",
-              }}
-              autoFocus
-            />
-
-            <button onClick={handleFinalize} className="btn-primary mb-3">
-              {t("letsStart")}
-            </button>
-            <button onClick={() => setStep(2)} className="btn-secondary">
-              {t("goBack")}
-            </button>
+            <div className="source-item">
+              <div className="source-icon">📱</div>
+              <div>
+                <div className="source-name">{t("adoptGroups")}</div>
+                <div className="source-desc">{t("adoptGroupsDesc")}</div>
+              </div>
+            </div>
           </div>
-        )}
+          <button className="btn btn-primary" onClick={goToName}>
+            {t("gotStarter")}
+          </button>
+          <button className="btn btn-secondary" onClick={goBackToStart}>
+            {t("goBack")}
+          </button>
+        </div>
+      )}
+
+      {step === "name" && (
+        <div id="onboard-step-name" style={{ width: "100%" }}>
+          <p className="onboarding-question" id="name-question">
+            {nameQuestion}
+          </p>
+          <input
+            type="text"
+            className="onboarding-input"
+            placeholder="ex: Pufi, Maya, Dora..."
+            value={name}
+            onChange={(e) => setName(e.target.value)}
+          />
+          <button className="btn btn-primary" onClick={handleFinish}>
+            {t("letsStart")}
+          </button>
+        </div>
+      )}
+
+      <div className="lang-grid">
+        {LANGUAGES.map((lang) => (
+          <button
+            key={lang.code}
+            className={`lang-btn ${language === lang.code ? "active" : ""}`}
+            onClick={() => {
+              setLanguage(lang.code);
+              i18n.changeLanguage(lang.code);
+            }}
+            data-lang={lang.code}
+          >
+            <span className="lang-flag">{lang.flag}</span>
+            <span className="lang-name">{lang.name}</span>
+          </button>
+        ))}
       </div>
-    </div>
-  );
-}
-
-function HealthAdvice({ answer, t }) {
-  const adviceMap = {
-    active: { titleKey: "existingAdviceActiveTitle", descKey: "existingAdviceActiveDesc", icon: "check", type: "success" },
-    hungry: { titleKey: "existingAdviceHungryTitle", descKey: "existingAdviceHungryDesc", icon: "alert", type: "warning" },
-    neglected: { titleKey: "existingAdviceNeglectedTitle", descKey: "existingAdviceNeglectedDesc", icon: "alert", type: "warning" },
-    fridge: { titleKey: "existingAdviceFridgeTitle", descKey: "existingAdviceFridgeDesc", icon: "thermometer", type: "info" },
-  };
-
-  const advice = adviceMap[answer];
-  if (!advice) return null;
-
-  return (
-    <div
-      className="card mb-4"
-      style={{
-        border: "1px solid var(--border)",
-        textAlign: "center",
-        padding: "24px 20px",
-      }}
-    >
-      <Icon
-        name={advice.icon}
-        size={32}
-        style={{ color: "var(--accent)", marginBottom: "12px" }}
-      />
-      <h3 style={{ fontWeight: "700", fontSize: "16px", marginBottom: "8px" }}>
-        {t(advice.titleKey)}
-      </h3>
-      <p style={{ color: "var(--text-secondary)", fontSize: "14px", lineHeight: "1.5" }}>
-        {t(advice.descKey)}
-      </p>
     </div>
   );
 }
