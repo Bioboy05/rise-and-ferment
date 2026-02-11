@@ -30,16 +30,19 @@ function HistoryPage() {
   };
   const locale = localeMap[language] || localeMap.ro;
   const todayStr = new Date().toDateString();
+  const recentHistory = [...history]
+    .sort((a, b) => b.time - a.time)
+    .slice(0, 20);
 
   return (
     <div className="section">
       <h2 className="section-title">{t("historyTitle")}</h2>
       <div id="history-list">
-        {history.slice(0, 20).map((entry, i) => {
+        {recentHistory.map((entry, i) => {
           const d = new Date(entry.time);
           let label = d.toLocaleDateString(locale, { day: "numeric", month: "short" });
           if (d.toDateString() === todayStr) label = t("today");
-          const time = d.toLocaleTimeString([], { hour: "2-digit", minute: "2-digit" });
+          const time = d.toLocaleTimeString(locale, { hour: "2-digit", minute: "2-digit" });
           return (
             <div
               key={`${entry.time}-${i}`}

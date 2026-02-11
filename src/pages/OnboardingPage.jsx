@@ -119,7 +119,7 @@ function OnboardingPage() {
   return (
     <div className="onboarding">
       <div style={{ display: "flex", justifyContent: "flex-end", width: "100%", marginBottom: "16px" }}>
-        <button className="theme-toggle-btn" onClick={toggleTheme} aria-label="Toggle theme">
+        <button type="button" className="theme-toggle-btn" onClick={toggleTheme} aria-label="Toggle theme">
           <span>{themeIcon}</span>
         </button>
       </div>
@@ -197,21 +197,21 @@ function OnboardingPage() {
         <div id="onboard-step1">
           <p className="onboarding-question">{t("howToStart")}</p>
           <div className="option-cards">
-            <div className="option-card" onClick={() => handleSelectPath("create")}>
+            <button type="button" className="option-card" onClick={() => handleSelectPath("create")}>
               <div className="option-icon">🌱</div>
               <div className="option-title">{t("pathCreate")}</div>
               <div className="option-desc">{t("pathCreateDesc")}</div>
-            </div>
-            <div className="option-card" onClick={() => handleSelectPath("adopt")}>
+            </button>
+            <button type="button" className="option-card" onClick={() => handleSelectPath("adopt")}>
               <div className="option-icon">🤝</div>
               <div className="option-title">{t("pathAdopt")}</div>
               <div className="option-desc">{t("pathAdoptDesc")}</div>
-            </div>
-            <div className="option-card" onClick={() => handleSelectPath("existing")}>
+            </button>
+            <button type="button" className="option-card" onClick={() => handleSelectPath("existing")}>
               <div className="option-icon">🫙</div>
               <div className="option-title">{t("pathExisting")}</div>
               <div className="option-desc">{t("pathExistingDesc")}</div>
-            </div>
+            </button>
           </div>
         </div>
       )}
@@ -232,8 +232,9 @@ function OnboardingPage() {
               ].map((opt) => {
                 const isActive = existingHealth === opt.id;
                 return (
-                  <div
+                  <button
                     key={opt.id}
+                    type="button"
                     className="health-option"
                     onClick={() => setExistingHealth(opt.id)}
                     style={{
@@ -253,7 +254,7 @@ function OnboardingPage() {
                       <div style={{ fontWeight: 600, color: "var(--text-secondary)" }}>{opt.title}</div>
                       <div style={{ fontSize: "12px", color: "var(--text-muted)" }}>{opt.desc}</div>
                     </div>
-                  </div>
+                  </button>
                 );
               })}
             </div>
@@ -286,11 +287,11 @@ function OnboardingPage() {
           )}
 
           {existingHealth && (
-            <button className="btn btn-primary" onClick={goToName} style={{ marginBottom: "8px" }}>
+            <button type="button" className="btn btn-primary" onClick={goToName} style={{ marginBottom: "8px" }}>
               {t("continueSetup")}
             </button>
           )}
-          <button className="btn btn-secondary" onClick={goBackToStart}>
+          <button type="button" className="btn btn-secondary" onClick={goBackToStart}>
             {t("goBack")}
           </button>
         </div>
@@ -325,10 +326,10 @@ function OnboardingPage() {
               <span>{t("shopJar")}</span>
             </div>
           </div>
-          <button className="btn btn-primary" onClick={goToName}>
+          <button type="button" className="btn btn-primary" onClick={goToName}>
             {t("haveEverything")}
           </button>
-          <button className="btn btn-secondary" onClick={goBackToStart}>
+          <button type="button" className="btn btn-secondary" onClick={goBackToStart}>
             {t("goBack")}
           </button>
         </div>
@@ -429,10 +430,10 @@ function OnboardingPage() {
               </div>
             </div>
           </div>
-          <button className="btn btn-primary" onClick={goToName}>
+          <button type="button" className="btn btn-primary" onClick={goToName}>
             {t("gotStarter")}
           </button>
-          <button className="btn btn-secondary" onClick={goBackToStart}>
+          <button type="button" className="btn btn-secondary" onClick={goBackToStart}>
             {t("goBack")}
           </button>
         </div>
@@ -450,7 +451,7 @@ function OnboardingPage() {
             value={name}
             onChange={(e) => setName(e.target.value)}
           />
-          <button className="btn btn-primary" onClick={handleFinish}>
+          <button type="button" className="btn btn-primary" onClick={handleFinish}>
             {t("letsStart")}
           </button>
         </div>
@@ -460,6 +461,7 @@ function OnboardingPage() {
         {LANGUAGES.map((lang) => (
           <button
             key={lang.code}
+            type="button"
             className={`lang-btn ${language === lang.code ? "active" : ""}`}
             onClick={() => {
               setLanguage(lang.code);

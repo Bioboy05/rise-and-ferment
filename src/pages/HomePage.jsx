@@ -6,6 +6,7 @@ import useSettingsStore from "../store/useSettingsStore";
 import useStreak from "../hooks/useStreak";
 import FeedingModal from "../components/feeding/FeedingModal";
 import dailyTasks from "../data/dailyTasks";
+import dayGuides from "../data/dayGuides";
 import { getDailyQuote, getStreakQuote } from "../data/dailyQuotes";
 import troubleshooting from "../data/troubleshooting";
 import Modal from "../components/common/Modal";
@@ -30,6 +31,8 @@ function HomePage() {
   const isPreview = starter.previewingDay !== null && starter.previewingDay !== starter.currentDay;
 
   const dayTask = dailyTasks[displayDay] || null;
+  const dayGuide = dayGuides.find((guide) => guide.day === displayDay) || null;
+  const dayGuidePreview = dayGuide ? t(dayGuide.contentKey).split("\n")[0] : null;
 
   const progressText = useMemo(() => {
     if (isPreview) return `${t("progressInstructions")} ${displayDay}`;
@@ -65,7 +68,7 @@ function HomePage() {
   };
 
   const previewDay = (delta) => {
-    const next = Math.min(7, Math.max(1, displayDay + delta));
+    const next = Math.min(14, Math.max(1, displayDay + delta));
     goToDay(next);
   };
 
@@ -82,7 +85,7 @@ function HomePage() {
   };
 
   const showDayGuide = starter.isNewStarter && starter.currentDay <= 14;
-  const showDailyTask = starter.isNewStarter && starter.currentDay <= 7;
+  const showDailyTask = starter.isNewStarter && starter.currentDay <= 14;
 
   const hoursSince = starter.lastFed ? Math.floor((nowMs - starter.lastFed) / (1000 * 60 * 60)) : null;
   const isUrgent = hoursSince !== null && hoursSince > 24;
@@ -183,8 +186,12 @@ function HomePage() {
                 <rect x="10" y="70" width="60" height="3" rx="1" fill="var(--warning)" opacity="0.8" />
               </svg>
             </div>
-            <div className="status-main">{dayTask ? t(dayTask.titleKey) : t("statusWelcome")}</div>
-            <div className="status-sub">{dayTask ? t(dayTask.taskKey) : t("statusWelcomeSub")}</div>
+            <div className="status-main">
+              {dayTask ? t(dayTask.titleKey) : dayGuide ? t(dayGuide.titleKey) : t("statusWelcome")}
+            </div>
+            <div className="status-sub">
+              {dayTask ? t(dayTask.taskKey) : dayGuidePreview || t("statusWelcomeSub")}
+            </div>
           </div>
 
           {motivationalKey && (
@@ -196,14 +203,19 @@ function HomePage() {
           {showDayGuide && (
             <div className="day-tracker">
               <div className="day-nav">
-                <button className="day-nav-btn" onClick={() => previewDay(-1)} disabled={displayDay <= 1}>
+                <button type="button" className="day-nav-btn" onClick={() => previewDay(-1)} disabled={displayDay <= 1}>
                   ‹
                 </button>
                 <div className="day-center">
                   <div className="day-label">{t("dayLabel")}</div>
                   <div className="day-number">{displayDay}</div>
                 </div>
-                <button className="day-nav-btn" onClick={() => previewDay(1)} disabled={displayDay >= 7}>
+                <button
+                  type="button"
+                  className="day-nav-btn"
+                  onClick={() => previewDay(1)}
+                  disabled={displayDay >= 14}
+                >
                   ›
                 </button>
               </div>
@@ -229,7 +241,7 @@ function HomePage() {
               {isPreview && (
                 <div className="preview-indicator">
                   <span>{t("previewMode")}</span>
-                  <button className="back-to-current" onClick={backToCurrentDay}>
+                  <button type="button" className="back-to-current" onClick={backToCurrentDay}>
                     {t("backToCurrent")}
                   </button>
                 </div>
@@ -243,11 +255,14 @@ function HomePage() {
               <div
                 className="task-content"
                 dangerouslySetInnerHTML={{
-                  __html: dayTask ? sanitizeLimitedHtml(t(dayTask.contentKey), { convertNewlines: true }) : "",
+                  __html: sanitizeLimitedHtml(t(dayTask?.contentKey || dayGuide?.contentKey || ""), {
+                    convertNewlines: true,
+                  }),
                 }}
               />
               {!isPreview && (
                 <button
+                  type="button"
                   className={`task-action-btn ${starter.todayCompleted ? "success" : ""}`}
                   onClick={handleTaskAction}
                   disabled={starter.todayCompleted}
@@ -259,7 +274,7 @@ function HomePage() {
           )}
 
           {displayDay >= 3 && !isPreview && (
-            <button className="secondary-btn" onClick={() => setTroubleOpen(true)}>
+            <button type="button" className="secondary-btn" onClick={() => setTroubleOpen(true)}>
               {t("notGrowing")}
             </button>
           )}
@@ -324,7 +339,7 @@ function HomePage() {
                 <span>{t("encourageAfterTrouble")}</span>
               </div>
 
-              <button className="btn btn-primary" onClick={() => setTroubleOpen(false)}>
+              <button type="button" className="btn btn-primary" onClick={() => setTroubleOpen(false)}>
                 {t("understood")}
               </button>
             </Modal>
@@ -344,7 +359,7 @@ function HomePage() {
                     {t("notFedFor", { hours: hoursSince })}
                   </div>
                 </div>
-                <button className="urgent-btn" onClick={() => setTaskFeedModal(true)}>
+                <button type="button" className="urgent-btn" onClick={() => setTaskFeedModal(true)}>
                   {t("feedNow")}
                 </button>
               </div>
@@ -435,6 +450,7 @@ function HomePage() {
           )}
 
           <button
+            type="button"
             className={`main-btn ${status.cls === "urgent" ? "urgent" : ""}`}
             onClick={() => setTaskFeedModal(true)}
           >

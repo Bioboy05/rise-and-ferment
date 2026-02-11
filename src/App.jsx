@@ -47,7 +47,7 @@ function hashString(value) {
 }
 
 function App() {
-  const { t } = useTranslation();
+  const { t, i18n } = useTranslation();
   const theme = useSettingsStore((state) => state.theme);
   const language = useSettingsStore((state) => state.language);
   const onboardingComplete = useSettingsStore((state) => state.onboardingComplete);
@@ -63,8 +63,11 @@ function App() {
   }, [theme]);
 
   useEffect(() => {
+    if (i18n.language !== language) {
+      i18n.changeLanguage(language);
+    }
     document.documentElement.lang = language;
-  }, [language]);
+  }, [i18n, language]);
 
   useEffect(() => {
     const timer = setTimeout(() => setSplashHidden(true), 1400);

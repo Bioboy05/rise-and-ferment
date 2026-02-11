@@ -6,6 +6,7 @@ const MAX_NAME_LENGTH = 50;
 const MAX_NOTE_LENGTH = 500;
 const MAX_HISTORY_ENTRIES = 5000;
 const VALID_HYDRATION = new Set(["100", "80", "60"]);
+const STARTER_PROGRAM_DAYS = 14;
 
 function sanitizeString(value, maxLength) {
   if (typeof value !== "string") return "";
@@ -167,5 +168,35 @@ export function normalizeStarter(s) {
     completedDays: Array.isArray(source.completedDays)
       ? source.completedDays.filter((value) => typeof value === "string").slice(-60)
       : [],
+  };
+}
+
+/**
+ * Progress a starter through one guided day completion.
+ * Used by state stores and tests so day progression rules stay consistent.
+ *
+ * @param {Object} starter - Current starter state
+ * @param {string} today - Calendar day label
+ * @returns {Object} Updated starter state
+ */
+export function advanceStarterDay(starter, today = new Date().toDateString()) {
+  if (!starter || typeof starter !== "object") return starter;
+  if (starter.todayCompleted) return starter;
+
+  const currentDay = Number.isFinite(Number(starter.currentDay))
+    ? Math.max(1, Math.round(Number(starter.currentDay)))
+    : 1;
+  const completedDays = Array.isArray(starter.completedDays) ? starter.completedDays : [];
+  const reachedProgramEnd = currentDay >= STARTER_PROGRAM_DAYS;
+
+  return {
+    ...starter,
+    todayCompleted: true,
+    lastCompletedDate: today,
+    currentDay: Math.min(STARTER_PROGRAM_DAYS, currentDay + 1),
+    completedDays: completedDays.includes(today) ? completedDays : [...completedDays, today],
+    previewingDay: null,
+    // Graduate to regular flow after the final guided day is completed.
+    isNewStarter: reachedProgramEnd ? false : Boolean(starter.isNewStarter),
   };
 }

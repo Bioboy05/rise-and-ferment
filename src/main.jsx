@@ -17,7 +17,9 @@ if ('caches' in window) {
 
 const params = new URLSearchParams(window.location.search)
 const redirectPath = params.get('path')
-if (redirectPath) {
+const isSafeRedirectPath =
+  typeof redirectPath === 'string' && redirectPath.startsWith('/') && !redirectPath.startsWith('//')
+if (isSafeRedirectPath) {
   window.history.replaceState(null, '', redirectPath)
 }
 

@@ -20,12 +20,17 @@ function getLast14DaysActivity(history) {
 }
 
 function getTempData(history) {
-  return history.filter((h) => h.temp != null).slice(0, 14).reverse();
+  return history
+    .filter((h) => Number.isFinite(h?.time) && h.temp != null)
+    .sort((a, b) => b.time - a.time)
+    .slice(0, 14)
+    .reverse();
 }
 
 function getWeeklyPattern(history) {
   const counts = [0, 0, 0, 0, 0, 0, 0];
   history.forEach((h) => {
+    if (!Number.isFinite(h?.time)) return;
     counts[new Date(h.time).getDay()]++;
   });
   return counts;

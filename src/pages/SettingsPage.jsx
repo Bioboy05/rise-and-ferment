@@ -73,6 +73,11 @@ function SettingsPage() {
     exportData(starterState, settingsState);
   };
 
+  const handleReset = () => {
+    if (!window.confirm(t("confirmReset"))) return;
+    resetAll();
+  };
+
   const handleImport = async (e) => {
     const file = e.target.files?.[0];
     if (!file) return;
@@ -329,7 +334,7 @@ function SettingsPage() {
       </div>
 
       <div className="settings-section" style={{ marginTop: "32px" }}>
-        <button className="danger-btn" type="button" onClick={resetAll}>
+        <button className="danger-btn" type="button" onClick={handleReset}>
           {t("resetApp")}
         </button>
         <p style={{ textAlign: "center", fontSize: "12px", color: "var(--text-muted)", marginTop: "8px" }}>
