@@ -531,6 +531,23 @@ body {
   letter-spacing: 0.5px;
 }
 
+.info-card {
+  margin: 0 20px 16px;
+  padding: 16px 20px;
+  background: var(--bg-card);
+  border-radius: 16px;
+  box-shadow: 0 2px 8px var(--shadow);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.info-label {
+  font-size: 15px;
+  color: var(--text-secondary);
+  font-weight: 600;
+}
+
 .urgent-alert {
   margin: 0 20px 16px;
   padding: 16px 20px;
