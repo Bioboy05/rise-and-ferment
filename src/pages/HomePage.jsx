@@ -4,6 +4,7 @@ import { useNavigate } from "react-router-dom";
 import useStarterStore from "../store/useStarterStore";
 import useSettingsStore from "../store/useSettingsStore";
 import useStreak from "../hooks/useStreak";
+import useActiveStarter from "../hooks/useActiveStarter";
 import FeedingModal from "../components/feeding/FeedingModal";
 import dailyTasks from "../data/dailyTasks";
 import dayGuides from "../data/dayGuides";
@@ -16,10 +17,9 @@ import { sanitizeLimitedHtml } from "../utils/sanitizeHtml";
 function HomePage() {
   const { t } = useTranslation();
   const navigate = useNavigate();
-  const getActiveStarter = useStarterStore((state) => state.getActiveStarter);
   const updateStarter = useStarterStore((state) => state.updateStarter);
   const completeDay = useStarterStore((state) => state.completeDay);
-  const starter = getActiveStarter();
+  const starter = useActiveStarter();
   const streak = useStreak();
   const beginnerMode = useSettingsStore((s) => s.beginnerMode);
 
@@ -221,7 +221,7 @@ function HomePage() {
               </div>
               <div className="day-progress">{progressText}</div>
               <div className="day-dots">
-                {Array.from({ length: 7 }, (_, i) => i + 1).map((day) => {
+                {Array.from({ length: 14 }, (_, i) => i + 1).map((day) => {
                   let cls = "";
                   if (isPreview && day === displayDay) cls = "previewing";
                   else if (day < starter.currentDay) cls = "done";

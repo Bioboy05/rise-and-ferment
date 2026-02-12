@@ -7,6 +7,8 @@ import useStarterStore from "../store/useStarterStore";
  * @returns {Object} The active starter
  */
 export default function useActiveStarter() {
-  const getActiveStarter = useStarterStore((state) => state.getActiveStarter);
-  return getActiveStarter();
+  return useStarterStore((state) => {
+    const active = state.starters.find((starter) => starter.id === state.activeStarterId);
+    return active || state.starters[0];
+  });
 }

@@ -1,14 +1,14 @@
 import { useTranslation } from "react-i18next";
 import useStarterStore from "../../store/useStarterStore";
+import useActiveStarter from "../../hooks/useActiveStarter";
 import dayGuides from "../../data/dayGuides";
 import Icon from "../common/Icon";
 
 function DayGuide() {
   const { t } = useTranslation();
-  const getActiveStarter = useStarterStore((s) => s.getActiveStarter);
   const updateStarter = useStarterStore((s) => s.updateStarter);
   const completeDay = useStarterStore((s) => s.completeDay);
-  const starter = getActiveStarter();
+  const starter = useActiveStarter();
 
   const currentDay = starter.currentDay;
   const previewingDay = starter.previewingDay;

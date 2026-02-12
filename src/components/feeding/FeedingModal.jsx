@@ -2,18 +2,18 @@ import { useState } from "react";
 import { useTranslation } from "react-i18next";
 import useStarterStore from "../../store/useStarterStore";
 import useSettingsStore from "../../store/useSettingsStore";
+import useActiveStarter from "../../hooks/useActiveStarter";
 import Modal from "../common/Modal";
 import Toggle from "../common/Toggle";
 import Icon from "../common/Icon";
 
 function FeedingModal({ onClose }) {
   const { t } = useTranslation();
-  const getActiveStarter = useStarterStore((state) => state.getActiveStarter);
   const updateStarter = useStarterStore((state) => state.updateStarter);
   const addFeeding = useStarterStore((state) => state.addFeeding);
 
   const tempUnit = useSettingsStore((state) => state.tempUnit);
-  const starter = getActiveStarter();
+  const starter = useActiveStarter();
 
   const [amount, setAmount] = useState(starter.feedAmount);
   const [useBran, setUseBran] = useState(false);

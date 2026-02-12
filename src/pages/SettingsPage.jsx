@@ -8,6 +8,8 @@ import { normalizeStarter } from "../utils/starterHelpers";
 import { isSupportedLanguage } from "../constants/languages";
 import { resolveInitialLanguage } from "../utils/languageDetection";
 
+const VALID_GLASS_PRESETS = ["subtle", "balanced", "wow"];
+
 function sanitizeImportedSettings(settings) {
   const raw = settings && typeof settings === "object" ? settings : {};
   const notifications = raw.notifications && typeof raw.notifications === "object" ? raw.notifications : {};
@@ -19,6 +21,7 @@ function sanitizeImportedSettings(settings) {
     language: isSupportedLanguage(raw.language) ? raw.language : defaultLanguage,
     beginnerMode: raw.beginnerMode !== false,
     soundEnabled: raw.soundEnabled !== false,
+    glassPreset: VALID_GLASS_PRESETS.includes(raw.glassPreset) ? raw.glassPreset : "subtle",
     tempUnit: raw.tempUnit === "f" ? "f" : "c",
     weightUnit: raw.weightUnit === "oz" ? "oz" : "g",
     sessions: Number.isFinite(Number(raw.sessions)) ? Math.max(0, Math.round(Number(raw.sessions))) : 0,
@@ -51,6 +54,7 @@ function SettingsPage() {
   const language = useSettingsStore((state) => state.language);
   const beginnerMode = useSettingsStore((state) => state.beginnerMode);
   const soundEnabled = useSettingsStore((state) => state.soundEnabled);
+  const glassPreset = useSettingsStore((state) => state.glassPreset);
   const tempUnit = useSettingsStore((state) => state.tempUnit);
   const weightUnit = useSettingsStore((state) => state.weightUnit);
   const notificationsEnabled = useSettingsStore((state) => state.notifications.enabled);
@@ -58,6 +62,7 @@ function SettingsPage() {
   const setLanguage = useSettingsStore((state) => state.setLanguage);
   const toggleBeginnerMode = useSettingsStore((state) => state.toggleBeginnerMode);
   const toggleSound = useSettingsStore((state) => state.toggleSound);
+  const setGlassPreset = useSettingsStore((state) => state.setGlassPreset);
   const setTempUnit = useSettingsStore((state) => state.setTempUnit);
   const setWeightUnit = useSettingsStore((state) => state.setWeightUnit);
   const toggleNotifications = useSettingsStore((state) => state.toggleNotifications);
@@ -81,8 +86,12 @@ function SettingsPage() {
   };
 
   const handleImport = async (e) => {
-    const file = e.target.files?.[0];
-    if (!file) return;
+    const input = e.target;
+    const file = input.files?.[0];
+    if (!file) {
+      input.value = "";
+      return;
+    }
     try {
       const data = await importData(file);
       const seenIds = new Set();
@@ -125,8 +134,9 @@ function SettingsPage() {
       window.location.reload();
     } catch {
       alert(t("importError"));
+    } finally {
+      input.value = "";
     }
-    e.target.value = "";
   };
 
   return (
@@ -212,6 +222,25 @@ function SettingsPage() {
             >
               <option value="light">{t("themeLight")}</option>
               <option value="dark">{t("themeDark")}</option>
+            </select>
+          </div>
+          <div className="settings-row">
+            <div>
+              <div className="settings-label">
+                {t("glassPresetLabel", { defaultValue: "Glass style" })}
+              </div>
+              <div className="settings-sublabel">
+                {t("glassPresetDesc", { defaultValue: "Premium depth without visual clutter" })}
+              </div>
+            </div>
+            <select
+              className="settings-select"
+              value={glassPreset}
+              onChange={(e) => setGlassPreset(e.target.value)}
+            >
+              <option value="subtle">{t("glassPresetSubtle", { defaultValue: "Subtle" })}</option>
+              <option value="balanced">{t("glassPresetBalanced", { defaultValue: "Balanced" })}</option>
+              <option value="wow">{t("glassPresetWow", { defaultValue: "Wow" })}</option>
             </select>
           </div>
           <div className="settings-row">

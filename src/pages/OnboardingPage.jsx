@@ -23,7 +23,6 @@ function OnboardingPage() {
   const completeOnboarding = useSettingsStore((s) => s.completeOnboarding);
 
   const updateStarter = useStarterStore((s) => s.updateStarter);
-  const getActiveStarter = useStarterStore((s) => s.getActiveStarter);
 
   const [path, setPath] = useState(null); // "create" | "adopt" | "existing"
   const [step, setStep] = useState("start"); // start | shopping | adopt | existing | name
@@ -77,7 +76,7 @@ function OnboardingPage() {
   const goToName = () => setStep("name");
 
   const handleFinish = () => {
-    const starter = getActiveStarter();
+    const starter = useStarterStore.getState().getActiveStarter();
     const safeName = name.trim().slice(0, MAX_NAME_LENGTH) || "Maiaua";
 
     if (path === "create") {

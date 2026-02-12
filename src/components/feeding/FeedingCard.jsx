@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import { useTranslation } from "react-i18next";
 import useStarterStore from "../../store/useStarterStore";
+import useActiveStarter from "../../hooks/useActiveStarter";
 import { getTimeSince } from "../../utils/dateHelpers";
 import FeedingModal from "./FeedingModal";
 import Icon from "../common/Icon";
@@ -11,8 +12,7 @@ function FeedingCard() {
   const [justFed, setJustFed] = useState(false);
   const [now, setNow] = useState(Date.now);
 
-  const getActiveStarter = useStarterStore((state) => state.getActiveStarter);
-  const starter = getActiveStarter();
+  const starter = useActiveStarter();
 
   // Update "now" every minute so time display stays fresh
   useEffect(() => {
@@ -30,7 +30,7 @@ function FeedingCard() {
     setModalOpen(false);
     setNow(Date.now());
     // Check if a feeding was just added
-    const updated = getActiveStarter();
+    const updated = useStarterStore.getState().getActiveStarter();
     if (updated.lastFed !== starter.lastFed) {
       setJustFed(true);
       setTimeout(() => setJustFed(false), 3000);

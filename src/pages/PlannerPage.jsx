@@ -1,7 +1,7 @@
 import { useMemo, useState } from "react";
 import { useTranslation } from "react-i18next";
 import useSettingsStore from "../store/useSettingsStore";
-import useStarterStore from "../store/useStarterStore";
+import useActiveStarter from "../hooks/useActiveStarter";
 import { calculateBreadRecipe } from "../utils/calculations";
 import { generateICS } from "../utils/exportHelpers";
 import { sanitizeLimitedHtml } from "../utils/sanitizeHtml";
@@ -12,7 +12,7 @@ function PlannerPage() {
   const bakeNotes = useSettingsStore((state) => state.bakeNotes);
   const setCalcLoaves = useSettingsStore((state) => state.setCalcLoaves);
   const setBakeNotes = useSettingsStore((state) => state.setBakeNotes);
-  const activeStarter = useStarterStore((state) => state.getActiveStarter());
+  const activeStarter = useActiveStarter();
 
   const [readyTime, setReadyTime] = useState("12:00");
   const [readyDayOffset, setReadyDayOffset] = useState(0);
@@ -20,12 +20,15 @@ function PlannerPage() {
   const ingredients = useMemo(() => calculateBreadRecipe(loaves), [loaves]);
 
   const schedule = useMemo(() => {
-    const [hours, mins] = readyTime.split(":").map(Number);
+    const [rawHours, rawMins] = readyTime.split(":").map(Number);
+    const hours = Number.isFinite(rawHours) ? Math.max(0, Math.min(23, rawHours)) : 12;
+    const mins = Number.isFinite(rawMins) ? Math.max(0, Math.min(59, rawMins)) : 0;
+    const now = new Date();
     const targetDate = new Date();
     targetDate.setDate(targetDate.getDate() + Number(readyDayOffset));
     targetDate.setHours(hours, mins, 0, 0);
 
-    const hoursUntilReady = (targetDate - new Date()) / (1000 * 60 * 60);
+    const hoursUntilReady = (targetDate - now) / (1000 * 60 * 60);
     const MIN_HOURS = 20;
 
     const warning =
@@ -58,7 +61,7 @@ function PlannerPage() {
       t("daySat"),
     ];
 
-    const today = new Date();
+    const today = new Date(now);
     today.setHours(0, 0, 0, 0);
 
     const items = steps
@@ -90,7 +93,7 @@ function PlannerPage() {
           timeStr,
           dayLabel,
           action: step.action,
-          done: stepDate < new Date(),
+          done: stepDate < now,
         };
       })
       .reverse();

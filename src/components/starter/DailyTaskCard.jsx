@@ -1,6 +1,6 @@
 import { useTranslation } from "react-i18next";
 import { useNavigate } from "react-router-dom";
-import useStarterStore from "../../store/useStarterStore";
+import useActiveStarter from "../../hooks/useActiveStarter";
 import dailyTasks from "../../data/dailyTasks";
 import Icon from "../common/Icon";
 
@@ -13,8 +13,7 @@ const actionIcons = {
 function DailyTaskCard({ onFeed }) {
   const { t } = useTranslation();
   const navigate = useNavigate();
-  const getActiveStarter = useStarterStore((s) => s.getActiveStarter);
-  const starter = getActiveStarter();
+  const starter = useActiveStarter();
 
   const day = starter.currentDay;
   const task = dailyTasks[day];

@@ -3,11 +3,31 @@ import Icon from "./Icon";
 
 function Modal({ onClose, title, children }) {
   useEffect(() => {
-    const previousOverflow = document.body.style.overflow;
-    document.body.style.overflow = "hidden";
+    const body = document.body;
+    const currentLocks = Number.parseInt(body.dataset.modalLockCount || "0", 10);
+    const safeCurrentLocks = Number.isFinite(currentLocks) && currentLocks > 0 ? currentLocks : 0;
+
+    if (safeCurrentLocks === 0) {
+      body.dataset.modalLockPreviousOverflow = body.style.overflow || "";
+    }
+
+    body.dataset.modalLockCount = String(safeCurrentLocks + 1);
+    body.style.overflow = "hidden";
 
     return () => {
-      document.body.style.overflow = previousOverflow;
+      const lockCount = Number.parseInt(body.dataset.modalLockCount || "0", 10);
+      const safeLockCount = Number.isFinite(lockCount) && lockCount > 0 ? lockCount : 0;
+      const nextLockCount = Math.max(0, safeLockCount - 1);
+
+      if (nextLockCount === 0) {
+        body.style.overflow = body.dataset.modalLockPreviousOverflow || "";
+        delete body.dataset.modalLockCount;
+        delete body.dataset.modalLockPreviousOverflow;
+        return;
+      }
+
+      body.dataset.modalLockCount = String(nextLockCount);
+      body.style.overflow = "hidden";
     };
   }, []);
 

@@ -23,10 +23,9 @@ if (isSafeRedirectPath) {
   window.history.replaceState(null, '', redirectPath)
 }
 
-const isAppRoute =
-  window.location.pathname.startsWith('/app') ||
-  window.location.pathname.startsWith('/app.html')
-const routerBase = isAppRoute ? '/app' : '/'
+const isAppHtmlRoute = window.location.pathname.startsWith('/app.html')
+const isAppRoute = window.location.pathname === '/app' || window.location.pathname.startsWith('/app/')
+const routerBase = isAppHtmlRoute ? '/app.html' : isAppRoute ? '/app' : '/'
 
 createRoot(document.getElementById('root')).render(
   <StrictMode>
