@@ -50,6 +50,7 @@ async function run() {
     await ensureOnboardingComplete(page);
     await page.waitForSelector(".main-card", { timeout: 15000 });
     assert((await page.locator(".ambient-photo").count()) === 0, "Unexpected ambient photo layer present");
+    assert((await page.locator(".corner-photo").count()) === 0, "Unexpected corner photo decoration present");
     checks.push("home-loaded");
 
     const dotCount = await page.locator(".day-dots .day-dot").count();
@@ -103,9 +104,8 @@ async function run() {
     assert(fileName.endsWith(".ics"), `Expected ICS download, got '${fileName}'`);
     checks.push("planner-export");
 
-    await page.locator(".nav-item").first().click();
-    await page.waitForSelector(".header .icon-btn", { timeout: 10000 });
-    await page.locator(".header .icon-btn").first().click();
+    await page.waitForSelector(".header-actions .icon-btn", { timeout: 10000 });
+    await page.locator(".header-actions .icon-btn").nth(1).click();
     await page.waitForSelector(".settings-section", { timeout: 10000 });
     const glassSelect = page.locator("select.settings-select", {
       has: page.locator('option[value="subtle"]'),
@@ -134,6 +134,35 @@ async function run() {
       `Scroll did not move (before=${scrollCheck.before}, after=${scrollCheck.after}, scrollHeight=${scrollCheck.scrollHeight}, clientHeight=${scrollCheck.clientHeight})`
     );
     checks.push("scroll");
+
+    const navPlacement = await page.evaluate(() => {
+      const nav = document.querySelector(".nav-bar");
+      if (!nav) return { found: false };
+      const rect = nav.getBoundingClientRect();
+      const vh = window.innerHeight;
+      return {
+        found: true,
+        top: rect.top,
+        bottom: rect.bottom,
+        vh,
+      };
+    });
+    assert(navPlacement.found, "Nav bar missing");
+    assert(
+      navPlacement.bottom <= navPlacement.vh + 2,
+      `Nav bar bottom out of viewport (bottom=${navPlacement.bottom}, vh=${navPlacement.vh})`
+    );
+    assert(
+      navPlacement.top >= navPlacement.vh * 0.65,
+      `Nav bar too high on screen (top=${navPlacement.top}, vh=${navPlacement.vh})`
+    );
+    checks.push("nav-placement");
+
+    const hasThemeToggle = await page
+      .locator('button[aria-label="Dark mode"], button[aria-label="Light mode"]')
+      .count();
+    assert(hasThemeToggle > 0, "Theme toggle button missing");
+    checks.push("theme-toggle");
 
     const appHtmlPage = await context.newPage();
     await appHtmlPage.goto(`${BASE_URL}/app.html`, { waitUntil: "domcontentloaded" });

@@ -116,7 +116,6 @@ function HomePage() {
       {starter.isNewStarter && (
         <>
           <div className="main-card parchment-card">
-            <div className="corner-photo main-card-photo" />
             <svg className="wheat-decoration wheat-left" width="40" height="120" viewBox="0 0 40 120">
               <g fill="var(--accent)">
                 <ellipse cx="20" cy="15" rx="6" ry="12" />
@@ -367,7 +366,6 @@ function HomePage() {
           )}
 
           <div className="main-card parchment-card">
-            <div className="corner-photo main-card-photo" />
             <svg className="wheat-decoration wheat-left" width="40" height="120" viewBox="0 0 40 120">
               <g fill="var(--accent)">
                 <ellipse cx="20" cy="15" rx="6" ry="12" />

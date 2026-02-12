@@ -34,6 +34,7 @@ function Header() {
   const titleKey = routeTitleMap[location.pathname];
   const pageTitle = titleKey ? t(titleKey) : "Rise & Ferment";
   const isHome = location.pathname === "/";
+  const isSettings = location.pathname === "/settings";
 
   return (
     <header className="header">
@@ -48,15 +49,14 @@ function Header() {
         )}
       </div>
 
-      {isHome ? (
-        <button className="icon-btn" onClick={() => navigate("/settings")} aria-label={t("settingsTitle")}>
-          <Icon name="settings" size={22} />
-        </button>
-      ) : (
+      <div className="header-actions">
         <ThemeToggle className="icon-btn" />
-      )}
-
-      {isHome && <div className="corner-photo header-photo" />}
+        {!isSettings && (
+          <button className="icon-btn" onClick={() => navigate("/settings")} aria-label={t("settingsTitle")}>
+            <Icon name="settings" size={22} />
+          </button>
+        )}
+      </div>
     </header>
   );
 }
