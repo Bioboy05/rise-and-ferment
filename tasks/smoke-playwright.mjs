@@ -43,9 +43,34 @@ async function run() {
     assert((await page.locator(".splash-logo-jar svg").count()) > 0, "Splash jar icon missing");
     checks.push("splash");
 
-    const glassPreset = await page.evaluate(() => document.documentElement.getAttribute("data-glass"));
-    assert(glassPreset === "subtle", `Expected default glass preset subtle, got '${glassPreset}'`);
-    checks.push("default-glass-subtle");
+    const glassMode = await page.evaluate(() => document.documentElement.getAttribute("data-glass"));
+    assert(glassMode === "glassy", `Expected glass mode 'glassy', got '${glassMode}'`);
+    const themeMode = await page.evaluate(() => document.documentElement.getAttribute("data-theme"));
+    assert(themeMode === "dark", `Expected default theme 'dark', got '${themeMode}'`);
+    checks.push("default-dark-glassy");
+
+    const onboardingVisible = await page.locator(".onboarding").isVisible().catch(() => false);
+    if (onboardingVisible) {
+      const onboardingScroll = await page.evaluate(() => {
+        const main = document.querySelector(".app-main");
+        if (!main) return { found: false };
+        const before = main.scrollTop;
+        main.scrollTop = before + 220;
+        return {
+          found: true,
+          before,
+          after: main.scrollTop,
+          scrollHeight: main.scrollHeight,
+          clientHeight: main.clientHeight,
+        };
+      });
+      assert(onboardingScroll.found, "Onboarding scroll container missing");
+      assert(
+        onboardingScroll.after > onboardingScroll.before || onboardingScroll.scrollHeight <= onboardingScroll.clientHeight,
+        `Onboarding scroll blocked (before=${onboardingScroll.before}, after=${onboardingScroll.after}, scrollHeight=${onboardingScroll.scrollHeight}, clientHeight=${onboardingScroll.clientHeight})`
+      );
+      checks.push("onboarding-scroll");
+    }
 
     await ensureOnboardingComplete(page);
     await page.waitForSelector(".main-card", { timeout: 15000 });
@@ -107,13 +132,9 @@ async function run() {
     await page.waitForSelector(".header-actions .icon-btn", { timeout: 10000 });
     await page.locator(".header-actions .icon-btn").nth(1).click();
     await page.waitForSelector(".settings-section", { timeout: 10000 });
-    const glassSelect = page.locator("select.settings-select", {
-      has: page.locator('option[value="subtle"]'),
-    });
-    assert((await glassSelect.count()) > 0, "Glass preset selector missing in settings");
-    const selectedGlass = await glassSelect.first().inputValue();
-    assert(selectedGlass === "subtle", `Glass preset in settings should default to subtle, got '${selectedGlass}'`);
-    checks.push("settings-glass");
+    const hasThemeSelect = await page.locator("select.settings-select").count();
+    assert(hasThemeSelect > 0, "Settings controls missing");
+    checks.push("settings-open");
 
     const scrollCheck = await page.evaluate(() => {
       const container = document.querySelector(".app-container");

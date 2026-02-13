@@ -50,7 +50,6 @@ function App() {
   const { t, i18n } = useTranslation();
   const theme = useSettingsStore((state) => state.theme);
   const language = useSettingsStore((state) => state.language);
-  const glassPreset = useSettingsStore((state) => state.glassPreset);
   const onboardingComplete = useSettingsStore((state) => state.onboardingComplete);
   const starter = useActiveStarter();
   const streak = useStreak();
@@ -60,8 +59,8 @@ function App() {
 
   useEffect(() => {
     document.documentElement.setAttribute("data-theme", theme);
-    document.documentElement.setAttribute("data-glass", glassPreset);
-  }, [theme, glassPreset]);
+    document.documentElement.setAttribute("data-glass", "glassy");
+  }, [theme]);
 
   useEffect(() => {
     if (i18n.language !== language) {
@@ -223,11 +222,13 @@ function App() {
         <div className="phone-notch" />
         <div className="app-container">
           {!onboardingComplete ? (
-            <OnboardingPage />
+            <main className="app-main onboarding-main">
+              <OnboardingPage />
+            </main>
           ) : (
             <>
               <Header />
-              <main className="app-main">
+              <main className="app-main with-nav">
                 <Routes>
                   <Route path="/" element={<HomePage />} />
                   <Route path="/history" element={<HistoryPage />} />

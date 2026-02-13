@@ -5,7 +5,6 @@ import { resolveInitialLanguage } from "../utils/languageDetection";
 
 const VALID_TEMP_UNITS = ["c", "f"];
 const VALID_WEIGHT_UNITS = ["g", "oz"];
-const VALID_GLASS_PRESETS = ["subtle", "balanced", "wow"];
 const DEFAULT_LANGUAGE = resolveInitialLanguage("en");
 
 function clampInteger(value, min, max, fallback) {
@@ -34,11 +33,10 @@ function sanitizeHydratedSettings(rawState) {
 
   return {
     onboardingComplete: Boolean(source.onboardingComplete),
-    theme: source.theme === "dark" ? "dark" : "light",
+    theme: source.theme === "light" ? "light" : "dark",
     language: isSupportedLanguage(source.language) ? source.language : DEFAULT_LANGUAGE,
     beginnerMode: source.beginnerMode !== false,
     soundEnabled: source.soundEnabled !== false,
-    glassPreset: VALID_GLASS_PRESETS.includes(source.glassPreset) ? source.glassPreset : "subtle",
     tempUnit: VALID_TEMP_UNITS.includes(source.tempUnit) ? source.tempUnit : "c",
     weightUnit: VALID_WEIGHT_UNITS.includes(source.weightUnit) ? source.weightUnit : "g",
     sessions: clampInteger(source.sessions, 0, 100000, 0),
@@ -53,11 +51,10 @@ const useSettingsStore = create(
   persist(
     (set) => ({
       onboardingComplete: false,
-      theme: "light",
+      theme: "dark",
       language: DEFAULT_LANGUAGE,
       beginnerMode: true,
       soundEnabled: true,
-      glassPreset: "subtle",
       tempUnit: "c",
       weightUnit: "g",
       sessions: 0,
@@ -77,7 +74,7 @@ const useSettingsStore = create(
 
       toggleTheme: () =>
         set((state) => ({
-          theme: state.theme === "light" ? "dark" : "light",
+          theme: state.theme === "dark" ? "light" : "dark",
         })),
 
       setLanguage: (lang) => {
@@ -86,9 +83,6 @@ const useSettingsStore = create(
 
       toggleBeginnerMode: () => set((state) => ({ beginnerMode: !state.beginnerMode })),
       toggleSound: () => set((state) => ({ soundEnabled: !state.soundEnabled })),
-      setGlassPreset: (preset) => {
-        if (VALID_GLASS_PRESETS.includes(preset)) set({ glassPreset: preset });
-      },
 
       setTempUnit: (unit) => {
         if (VALID_TEMP_UNITS.includes(unit)) set({ tempUnit: unit });
@@ -133,7 +127,6 @@ const useSettingsStore = create(
         language: state.language,
         beginnerMode: state.beginnerMode,
         soundEnabled: state.soundEnabled,
-        glassPreset: state.glassPreset,
         tempUnit: state.tempUnit,
         weightUnit: state.weightUnit,
         sessions: state.sessions,

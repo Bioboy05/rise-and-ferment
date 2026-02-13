@@ -20,7 +20,6 @@ export function exportData(starterState, settingsState) {
       language: settingsState.language,
       beginnerMode: settingsState.beginnerMode,
       soundEnabled: settingsState.soundEnabled,
-      glassPreset: settingsState.glassPreset,
       tempUnit: settingsState.tempUnit,
     },
   };
