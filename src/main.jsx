@@ -17,16 +17,6 @@ try {
 }
 document.documentElement.setAttribute('data-glass', 'glassy')
 
-// Clean up legacy service workers/caches from old builds so updates show immediately.
-if ('serviceWorker' in navigator) {
-  navigator.serviceWorker.getRegistrations().then((registrations) => {
-    registrations.forEach((registration) => registration.unregister())
-  })
-}
-if ('caches' in window) {
-  caches.keys().then((keys) => keys.forEach((key) => caches.delete(key)))
-}
-
 const params = new URLSearchParams(window.location.search)
 const redirectPath = params.get('path')
 const isSafeRedirectPath =

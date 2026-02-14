@@ -2,49 +2,17 @@ import { create } from "zustand";
 import { persist } from "zustand/middleware";
 import { isSupportedLanguage } from "../constants/languages";
 import { resolveInitialLanguage } from "../utils/languageDetection";
+import { sanitizeSettings } from "../utils/settingsSanitizer";
+
+const DEFAULT_LANGUAGE = resolveInitialLanguage("en");
 
 const VALID_TEMP_UNITS = ["c", "f"];
 const VALID_WEIGHT_UNITS = ["g", "oz"];
-const DEFAULT_LANGUAGE = resolveInitialLanguage("en");
 
 function clampInteger(value, min, max, fallback) {
   const parsed = Number(value);
   if (!Number.isFinite(parsed)) return fallback;
   return Math.max(min, Math.min(max, Math.round(parsed)));
-}
-
-function sanitizeNotifications(raw) {
-  const source = raw && typeof raw === "object" ? raw : {};
-  return {
-    enabled: Boolean(source.enabled),
-    urgentEnabled: source.urgentEnabled !== false,
-    urgentHours: clampInteger(source.urgentHours, 1, 72, 24),
-    dailyEnabled: Boolean(source.dailyEnabled),
-    dailyTime:
-      typeof source.dailyTime === "string" && /^\d{2}:\d{2}$/.test(source.dailyTime)
-        ? source.dailyTime
-        : "09:00",
-    pushEnabled: Boolean(source.pushEnabled),
-  };
-}
-
-function sanitizeHydratedSettings(rawState) {
-  const source = rawState && typeof rawState === "object" ? rawState : {};
-
-  return {
-    onboardingComplete: Boolean(source.onboardingComplete),
-    theme: source.theme === "light" ? "light" : "dark",
-    language: isSupportedLanguage(source.language) ? source.language : DEFAULT_LANGUAGE,
-    beginnerMode: source.beginnerMode !== false,
-    soundEnabled: source.soundEnabled !== false,
-    tempUnit: VALID_TEMP_UNITS.includes(source.tempUnit) ? source.tempUnit : "c",
-    weightUnit: VALID_WEIGHT_UNITS.includes(source.weightUnit) ? source.weightUnit : "g",
-    sessions: clampInteger(source.sessions, 0, 100000, 0),
-    notifications: sanitizeNotifications(source.notifications),
-    scheduledBakes: Array.isArray(source.scheduledBakes) ? source.scheduledBakes.slice(0, 100) : [],
-    calcLoaves: clampInteger(source.calcLoaves, 1, 10, 1),
-    bakeNotes: String(source.bakeNotes || "").slice(0, 500),
-  };
 }
 
 const useSettingsStore = create(
@@ -137,7 +105,7 @@ const useSettingsStore = create(
       }),
       merge: (persistedState, currentState) => {
         const raw = persistedState?.state ?? persistedState;
-        const safe = sanitizeHydratedSettings(raw);
+        const safe = sanitizeSettings(raw);
         return { ...currentState, ...safe };
       },
     }

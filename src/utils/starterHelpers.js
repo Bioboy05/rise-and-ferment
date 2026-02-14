@@ -2,16 +2,16 @@
  * Starter-related utility functions.
  */
 
-const MAX_NAME_LENGTH = 50;
-const MAX_NOTE_LENGTH = 500;
-const MAX_HISTORY_ENTRIES = 5000;
-const VALID_HYDRATION = new Set(["100", "80", "60"]);
-const STARTER_PROGRAM_DAYS = 14;
+import {
+  MAX_NAME_LENGTH,
+  MAX_NOTE_LENGTH,
+  MAX_HISTORY_ENTRIES,
+  STARTER_PROGRAM_DAYS,
+  sanitizeString,
+} from "../constants/validation";
 
-function sanitizeString(value, maxLength) {
-  if (typeof value !== "string") return "";
-  return value.trim().slice(0, maxLength);
-}
+const VALID_HYDRATION = new Set(["100", "80", "60"]);
+
 
 function sanitizeHistory(history) {
   if (!Array.isArray(history)) return [];
@@ -69,60 +69,8 @@ export function calculateStreak(history) {
   return streak;
 }
 
-/**
- * Determine the current status of a starter based on feeding history.
- * Returns an object with status key and translated label/subtitle.
- *
- * @param {Object} starter - The starter object
- * @param {Function} t - i18next translation function
- * @returns {{ key: string, label: string, subtitle: string }}
- */
-export function getStarterStatus(starter, t) {
-  if (!starter.lastFed) {
-    return {
-      key: "welcome",
-      label: t("statusWelcome"),
-      subtitle: t("statusWelcomeSub"),
-    };
-  }
 
-  const hoursSince = (Date.now() - starter.lastFed) / (1000 * 60 * 60);
 
-  // At peak: 4-6 hours after feeding
-  if (hoursSince >= 4 && hoursSince <= 6) {
-    return {
-      key: "pmc",
-      label: t("statusPMC"),
-      subtitle: t("statusPMCSub"),
-    };
-  }
-
-  // Just past peak: 6-8 hours
-  if (hoursSince > 6 && hoursSince <= 8) {
-    return {
-      key: "postPeak",
-      label: t("statusPostPeak"),
-      subtitle: t("statusPostPeakSub"),
-    };
-  }
-
-  // Still rising: 0-4 hours
-  if (hoursSince < 4) {
-    const remaining = Math.ceil(4 - hoursSince);
-    return {
-      key: "growing",
-      label: t("statusGrowing"),
-      subtitle: t("statusGrowingSub", { h: remaining }),
-    };
-  }
-
-  // Hungry: more than 8 hours
-  return {
-    key: "hungry",
-    label: t("statusHungry"),
-    subtitle: t("statusHungrySub"),
-  };
-}
 
 /**
  * Normalize a starter object to ensure all expected fields exist.

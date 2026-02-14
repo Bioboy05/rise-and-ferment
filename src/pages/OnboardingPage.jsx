@@ -2,6 +2,7 @@
 import { useTranslation } from "react-i18next";
 import useSettingsStore from "../store/useSettingsStore";
 import useStarterStore from "../store/useStarterStore";
+import { MAX_NAME_LENGTH, sanitizeString } from "../constants/validation";
 
 const LANGUAGES = [
   { code: "ro", flag: "🇷🇴", name: "Română" },
@@ -11,8 +12,6 @@ const LANGUAGES = [
   { code: "es", flag: "🇪🇸", name: "Español" },
   { code: "it", flag: "🇮🇹", name: "Italiano" },
 ];
-
-const MAX_NAME_LENGTH = 50;
 
 function OnboardingPage() {
   const { t, i18n } = useTranslation();
@@ -77,7 +76,7 @@ function OnboardingPage() {
 
   const handleFinish = () => {
     const starter = useStarterStore.getState().getActiveStarter();
-    const safeName = name.trim().slice(0, MAX_NAME_LENGTH) || "Maiaua";
+    const safeName = sanitizeString(name, MAX_NAME_LENGTH) || "Maiaua";
 
     if (path === "create") {
       updateStarter(starter.id, {

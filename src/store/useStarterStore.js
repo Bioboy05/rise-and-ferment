@@ -1,16 +1,13 @@
 import { create } from "zustand";
 import { persist } from "zustand/middleware";
 import { advanceStarterDay, normalizeStarter } from "../utils/starterHelpers";
-
-const MAX_NAME_LENGTH = 50;
-const MAX_NOTE_LENGTH = 500;
-const MAX_STARTERS = 10;
-const MAX_HISTORY_ENTRIES = 5000;
-
-const sanitizeString = (value, maxLength) => {
-  if (typeof value !== "string") return "";
-  return value.trim().slice(0, maxLength);
-};
+import {
+  MAX_NAME_LENGTH,
+  MAX_NOTE_LENGTH,
+  MAX_STARTERS,
+  MAX_HISTORY_ENTRIES,
+  sanitizeString,
+} from "../constants/validation";
 
 const isValidId = (id) => typeof id === "string" && id.length > 0 && id.length <= 100;
 
