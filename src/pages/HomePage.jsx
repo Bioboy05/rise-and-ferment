@@ -1,6 +1,5 @@
 import { useEffect, useMemo, useState } from "react";
 import { useTranslation } from "react-i18next";
-import { useNavigate } from "react-router-dom";
 import useStarterStore from "../store/useStarterStore";
 import useSettingsStore from "../store/useSettingsStore";
 import useStreak from "../hooks/useStreak";
@@ -17,7 +16,6 @@ import { formatTimeAgo } from "../utils/dateHelpers";
 
 function HomePage() {
   const { t } = useTranslation();
-  const navigate = useNavigate();
   const updateStarter = useStarterStore((state) => state.updateStarter);
   const completeMilestone = useStarterStore((state) => state.completeMilestone);
   const starter = useActiveStarter();
@@ -28,19 +26,18 @@ function HomePage() {
   const [troubleOpen, setTroubleOpen] = useState(false);
   const [nowMs, setNowMs] = useState(() => Date.now());
 
-  const displayMilestoneId = starter.previewingMilestoneId ?? starter.currentMilestoneId;
+  // Milestone display logic
+  const displayMilestoneId =
+    starter.previewingMilestoneId != null
+      ? starter.previewingMilestoneId
+      : starter.currentMilestoneId;
+
   const isPreview =
-    starter.previewingMilestoneId !== null &&
+    starter.previewingMilestoneId != null &&
     starter.previewingMilestoneId !== starter.currentMilestoneId;
 
   const currentMilestone = getMilestoneById(displayMilestoneId) || MILESTONES[0];
   const currentMilestoneIndex = MILESTONES.findIndex((m) => m.id === starter.currentMilestoneId);
-  const displayMilestoneIndex = MILESTONES.findIndex((m) => m.id === displayMilestoneId);
-
-  const progressText = useMemo(() => {
-    if (isPreview) return t("milestonePreview");
-    return t(currentMilestone.descKey);
-  }, [isPreview, currentMilestone, t]);
 
   const motivationalKey = useMemo(() => {
     if (isPreview) return null;
@@ -50,10 +47,20 @@ function HomePage() {
     return null;
   }, [isPreview, starter.guidedMode, starter.currentDay, streak]);
 
+  // Update clock every minute
   useEffect(() => {
     const interval = setInterval(() => setNowMs(Date.now()), 60000);
     return () => clearInterval(interval);
   }, []);
+
+  // Reset todayCompleted at midnight
+  useEffect(() => {
+    if (!starter.lastCompletedDate || !starter.todayCompleted) return;
+    const today = new Date().toDateString();
+    if (starter.lastCompletedDate !== today) {
+      updateStarter(starter.id, { todayCompleted: false });
+    }
+  }, [starter.id, starter.lastCompletedDate, starter.todayCompleted, updateStarter]);
 
   const goToMilestone = (milestoneId) => {
     updateStarter(starter.id, { previewingMilestoneId: milestoneId });
@@ -64,7 +71,7 @@ function HomePage() {
   };
 
   const handleMilestoneComplete = () => {
-    if (starter.milestoneCompleted || isPreview) return;
+    if (isPreview) return;
     completeMilestone(starter.id, starter.currentMilestoneId);
   };
 
@@ -94,7 +101,7 @@ function HomePage() {
               {currentMilestone.emoji} {t(currentMilestone.titleKey)}
             </div>
             <div className="status-sub">
-              {t(currentMilestone.taskKey)}
+              {t(currentMilestone.descKey)}
             </div>
           </div>
 
@@ -150,9 +157,12 @@ function HomePage() {
 
           {/* Milestone Task Card */}
           <div className="task-card">
-            <div className="task-title">📋 {t(currentMilestone.taskKey)}</div>
+            <div className="task-title">📋 {t("todayTask")}</div>
             <div className="task-content">
-              {t(currentMilestone.tipKey)}
+              {t(currentMilestone.taskKey)}
+            </div>
+            <div className="task-content" style={{ marginTop: "8px", opacity: 0.8, fontStyle: "italic" }}>
+              💡 {t(currentMilestone.tipKey)}
             </div>
             {!isPreview && (
               <button
@@ -166,7 +176,34 @@ function HomePage() {
             )}
           </div>
 
-          {displayMilestoneIndex >= 1 && !isPreview && (
+          {/* Feed button — always available in guided mode */}
+          <button
+            type="button"
+            className={`main-btn ${isUrgent ? "urgent" : ""}`}
+            onClick={() => setTaskFeedModal(true)}
+          >
+            {t("feedButton")}
+          </button>
+
+          {/* Stats for guided mode */}
+          <div className="stats-grid">
+            <div className="stat-card">
+              <div className="stat-value">
+                {starter.lastFed ? formatTimeAgo(starter.lastFed, t) : t("noFeedingsYet")}
+              </div>
+              <div className="stat-label">{t("lastFed")}</div>
+            </div>
+            <div className="stat-card">
+              <div className="stat-value">{starter.history.length}</div>
+              <div className="stat-label">{t("totalFeedings")}</div>
+            </div>
+            <div className="stat-card">
+              <div className="stat-value">{streak > 0 ? `${streak} 🔥` : "0"}</div>
+              <div className="stat-label">{t("streak")}</div>
+            </div>
+          </div>
+
+          {!isPreview && (
             <button type="button" className="secondary-btn" onClick={() => setTroubleOpen(true)}>
               {t("notGrowing")}
             </button>
@@ -237,6 +274,8 @@ function HomePage() {
               </button>
             </Modal>
           )}
+
+          {taskFeedModal && <FeedingModal onClose={() => setTaskFeedModal(false)} />}
         </>
       )}
 
