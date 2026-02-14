@@ -3,6 +3,7 @@ import { useTranslation } from "react-i18next";
 import useSettingsStore from "../store/useSettingsStore";
 import useStarterStore from "../store/useStarterStore";
 import { MAX_NAME_LENGTH, sanitizeString } from "../constants/validation";
+import { FIRST_MILESTONE_ID } from "../data/milestones";
 
 const LANGUAGES = [
   { code: "ro", flag: "🇷🇴", name: "Română" },
@@ -78,35 +79,70 @@ function OnboardingPage() {
     const starter = useStarterStore.getState().getActiveStarter();
     const safeName = sanitizeString(name, MAX_NAME_LENGTH) || "Maiaua";
 
+    // Determine milestone and guided mode based on onboarding path
+    let guidedMode = "new";
+    let currentMilestoneId = FIRST_MILESTONE_ID; // seed-activation
+    let milestoneHistory = [];
+    let isNewStarter = true;
+
     if (path === "create") {
-      updateStarter(starter.id, {
-        name: safeName,
-        createdAt: Date.now(),
-        isNewStarter: true,
-        currentDay: 1,
-        todayCompleted: false,
-        lastCompletedDate: null,
-        lastFed: null,
-        previewingDay: null,
-        history: [],
-        streak: 0,
-        completedDays: [],
-      });
-    } else {
-      updateStarter(starter.id, {
-        name: safeName,
-        createdAt: Date.now(),
-        isNewStarter: false,
-        currentDay: 1,
-        todayCompleted: false,
-        lastCompletedDate: null,
-        lastFed: null,
-        previewingDay: null,
-        history: [],
-        streak: 0,
-        completedDays: [],
-      });
+      guidedMode = "new";
+      currentMilestoneId = FIRST_MILESTONE_ID;
+      isNewStarter = true;
+    } else if (path === "adopt") {
+      // Adopted starters are already alive — start at visible-expansion
+      guidedMode = "new";
+      currentMilestoneId = "visible-expansion";
+      milestoneHistory = [{ id: "seed-activation", reachedAt: Date.now(), evidence: "adopted" }];
+      isNewStarter = true;
+    } else if (path === "existing") {
+      // Map health quiz result to milestone
+      if (existingHealth === "active") {
+        guidedMode = "self-paced";
+        currentMilestoneId = "bake-ready";
+        milestoneHistory = [
+          { id: "seed-activation", reachedAt: Date.now(), evidence: "existing" },
+          { id: "visible-expansion", reachedAt: Date.now(), evidence: "existing" },
+          { id: "strengthening", reachedAt: Date.now(), evidence: "existing" },
+          { id: "bake-ready", reachedAt: Date.now(), evidence: "existing" },
+        ];
+        isNewStarter = false;
+      } else if (existingHealth === "hungry") {
+        guidedMode = "reactivation";
+        currentMilestoneId = "strengthening";
+        milestoneHistory = [
+          { id: "seed-activation", reachedAt: Date.now(), evidence: "existing" },
+          { id: "visible-expansion", reachedAt: Date.now(), evidence: "existing" },
+        ];
+        isNewStarter = true;
+      } else {
+        // neglected or fridge — needs reactivation from earlier milestone
+        guidedMode = "reactivation";
+        currentMilestoneId = "visible-expansion";
+        milestoneHistory = [
+          { id: "seed-activation", reachedAt: Date.now(), evidence: "existing" },
+        ];
+        isNewStarter = true;
+      }
     }
+
+    updateStarter(starter.id, {
+      name: safeName,
+      createdAt: Date.now(),
+      isNewStarter,
+      currentDay: 1,
+      todayCompleted: false,
+      lastCompletedDate: null,
+      lastFed: null,
+      previewingDay: null,
+      previewingMilestoneId: null,
+      history: [],
+      streak: 0,
+      completedDays: [],
+      currentMilestoneId,
+      milestoneHistory,
+      guidedMode,
+    });
 
     completeOnboarding();
   };
