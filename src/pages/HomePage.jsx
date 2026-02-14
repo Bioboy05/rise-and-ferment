@@ -7,21 +7,19 @@ import useStreak from "../hooks/useStreak";
 import useActiveStarter from "../hooks/useActiveStarter";
 import useStarterStatus from "../hooks/useStarterStatus";
 import FeedingModal from "../components/feeding/FeedingModal";
-import dailyTasks from "../data/dailyTasks";
-import dayGuides from "../data/dayGuides";
+import { MILESTONES, getMilestoneById } from "../data/milestones";
 import { getDailyQuote, getStreakQuote } from "../data/dailyQuotes";
 import troubleshooting from "../data/troubleshooting";
 import Modal from "../components/common/Modal";
 import JarIllustration from "../components/common/JarIllustration";
 import WheatDecoration from "../components/common/WheatDecoration";
 import { formatTimeAgo } from "../utils/dateHelpers";
-import { sanitizeLimitedHtml } from "../utils/sanitizeHtml";
 
 function HomePage() {
   const { t } = useTranslation();
   const navigate = useNavigate();
   const updateStarter = useStarterStore((state) => state.updateStarter);
-  const completeDay = useStarterStore((state) => state.completeDay);
+  const completeMilestone = useStarterStore((state) => state.completeMilestone);
   const starter = useActiveStarter();
   const streak = useStreak();
   const beginnerMode = useSettingsStore((s) => s.beginnerMode);
@@ -30,87 +28,73 @@ function HomePage() {
   const [troubleOpen, setTroubleOpen] = useState(false);
   const [nowMs, setNowMs] = useState(() => Date.now());
 
-  const displayDay = starter.previewingDay ?? starter.currentDay;
-  const isPreview = starter.previewingDay !== null && starter.previewingDay !== starter.currentDay;
+  const displayMilestoneId = starter.previewingMilestoneId ?? starter.currentMilestoneId;
+  const isPreview =
+    starter.previewingMilestoneId !== null &&
+    starter.previewingMilestoneId !== starter.currentMilestoneId;
 
-  const dayTask = dailyTasks[displayDay] || null;
-  const dayGuide = dayGuides.find((guide) => guide.day === displayDay) || null;
-  const dayGuidePreview = dayGuide ? t(dayGuide.contentKey).split("\n")[0] : null;
+  const currentMilestone = getMilestoneById(displayMilestoneId) || MILESTONES[0];
+  const currentMilestoneIndex = MILESTONES.findIndex((m) => m.id === starter.currentMilestoneId);
+  const displayMilestoneIndex = MILESTONES.findIndex((m) => m.id === displayMilestoneId);
 
   const progressText = useMemo(() => {
-    if (isPreview) return `${t("progressInstructions")} ${displayDay}`;
-    if (displayDay < 3) return t("progressBacteria");
-    if (displayDay < 5) return t("progressGrowing");
-    if (displayDay >= 7) return t("progressReady");
-    return t("progressGrowing");
-  }, [displayDay, isPreview, t]);
+    if (isPreview) return t("milestonePreview");
+    return t(currentMilestone.descKey);
+  }, [isPreview, currentMilestone, t]);
 
   const motivationalKey = useMemo(() => {
     if (isPreview) return null;
     const streakKey = getStreakQuote(streak);
     if (streakKey) return streakKey;
-    if (starter.isNewStarter) return getDailyQuote(displayDay);
+    if (starter.guidedMode === "new") return getDailyQuote(starter.currentDay);
     return null;
-  }, [displayDay, isPreview, starter.isNewStarter, streak]);
+  }, [isPreview, starter.guidedMode, starter.currentDay, streak]);
 
   useEffect(() => {
     const interval = setInterval(() => setNowMs(Date.now()), 60000);
     return () => clearInterval(interval);
   }, []);
 
-  useEffect(() => {
-    if (!starter.lastCompletedDate || !starter.todayCompleted) return;
-    const today = new Date().toDateString();
-    if (starter.lastCompletedDate !== today) {
-      updateStarter(starter.id, { todayCompleted: false });
-    }
-  }, [starter.id, starter.lastCompletedDate, starter.todayCompleted, updateStarter]);
-
-  const goToDay = (day) => {
-    updateStarter(starter.id, { previewingDay: day });
+  const goToMilestone = (milestoneId) => {
+    updateStarter(starter.id, { previewingMilestoneId: milestoneId });
   };
 
-  const previewDay = (delta) => {
-    const next = Math.min(14, Math.max(1, displayDay + delta));
-    goToDay(next);
+  const backToCurrentMilestone = () => {
+    updateStarter(starter.id, { previewingMilestoneId: null });
   };
 
-  const backToCurrentDay = () => {
-    updateStarter(starter.id, { previewingDay: null });
+  const handleMilestoneComplete = () => {
+    if (starter.milestoneCompleted || isPreview) return;
+    completeMilestone(starter.id, starter.currentMilestoneId);
   };
 
-  const handleTaskAction = () => {
-    if (starter.todayCompleted || isPreview) return;
-    if (dayTask?.action === "learn") {
-      navigate("/recipes");
-    }
-    completeDay(starter.id);
-  };
-
-  const showDayGuide = starter.isNewStarter && starter.currentDay <= 14;
-  const showDailyTask = starter.isNewStarter && starter.currentDay <= 14;
+  const isGuidedMode = starter.guidedMode === "new" || starter.guidedMode === "reactivation";
 
   const hoursSince = starter.lastFed ? Math.floor((nowMs - starter.lastFed) / (1000 * 60 * 60)) : null;
   const isUrgent = hoursSince !== null && hoursSince > 24;
 
   const status = useStarterStatus(nowMs);
 
-
   const ageDays = starter.createdAt ? Math.floor((nowMs - starter.createdAt) / (1000 * 60 * 60 * 24)) : 0;
+
+  // Check if current milestone was already completed in history
+  const isMilestoneAlreadyDone = starter.milestoneHistory?.some(
+    (entry) => entry.id === starter.currentMilestoneId
+  );
 
   return (
     <div>
-      {starter.isNewStarter && (
+      {isGuidedMode && (
         <>
           <div className="main-card parchment-card">
             <WheatDecoration side="left" />
             <WheatDecoration side="right" />
             <JarIllustration />
             <div className="status-main">
-              {dayTask ? t(dayTask.titleKey) : dayGuide ? t(dayGuide.titleKey) : t("statusWelcome")}
+              {currentMilestone.emoji} {t(currentMilestone.titleKey)}
             </div>
             <div className="status-sub">
-              {dayTask ? t(dayTask.taskKey) : dayGuidePreview || t("statusWelcomeSub")}
+              {t(currentMilestone.taskKey)}
             </div>
           </div>
 
@@ -120,80 +104,69 @@ function HomePage() {
             </div>
           )}
 
-          {showDayGuide && (
-            <div className="day-tracker">
-              <div className="day-nav">
-                <button type="button" className="day-nav-btn" onClick={() => previewDay(-1)} disabled={displayDay <= 1}>
-                  ‹
-                </button>
-                <div className="day-center">
-                  <div className="day-label">{t("dayLabel")}</div>
-                  <div className="day-number">{displayDay}</div>
-                </div>
-                <button
-                  type="button"
-                  className="day-nav-btn"
-                  onClick={() => previewDay(1)}
-                  disabled={displayDay >= 14}
-                >
-                  ›
-                </button>
-              </div>
-              <div className="day-progress">{progressText}</div>
-              <div className="day-dots">
-                {Array.from({ length: 14 }, (_, i) => i + 1).map((day) => {
-                  let cls = "";
-                  if (isPreview && day === displayDay) cls = "previewing";
-                  else if (day < starter.currentDay) cls = "done";
-                  else if (day === starter.currentDay && starter.todayCompleted) cls = "done";
-                  else if (day === starter.currentDay) cls = "current";
-                  return (
-                    <button
-                      type="button"
-                      key={day}
-                      className={`day-dot ${cls}`}
-                      onClick={() => goToDay(day)}
-                      aria-label={`${t("dayLabel")} ${day}`}
-                    />
-                  );
-                })}
-              </div>
-              {isPreview && (
-                <div className="preview-indicator">
-                  <span>{t("previewMode")}</span>
-                  <button type="button" className="back-to-current" onClick={backToCurrentDay}>
-                    {t("backToCurrent")}
+          {/* Milestone Timeline */}
+          <div className="day-tracker" id="milestone-timeline">
+            <div className="day-progress">{t("milestoneTimeline")}</div>
+            <div className="milestone-steps">
+              {MILESTONES.map((milestone, index) => {
+                const isCompleted = index < currentMilestoneIndex ||
+                  (index === currentMilestoneIndex && isMilestoneAlreadyDone);
+                const isCurrent = index === currentMilestoneIndex && !isMilestoneAlreadyDone;
+                const isPreviewing = isPreview && milestone.id === displayMilestoneId;
+
+                let cls = "milestone-step";
+                if (isPreviewing) cls += " previewing";
+                else if (isCompleted) cls += " done";
+                else if (isCurrent) cls += " current";
+
+                return (
+                  <button
+                    type="button"
+                    key={milestone.id}
+                    className={cls}
+                    onClick={() => goToMilestone(milestone.id)}
+                    aria-label={t(milestone.titleKey)}
+                    title={t(milestone.titleKey)}
+                  >
+                    <span className="milestone-emoji">{milestone.emoji}</span>
+                    <span className="milestone-step-label">{t(milestone.titleKey)}</span>
+                    {isCompleted && <span className="milestone-check">✓</span>}
                   </button>
-                </div>
-              )}
+                );
+              })}
             </div>
-          )}
-
-          {showDailyTask && (
-            <div className="task-card">
-              <div className="task-title">📋 {t("todayTask")}</div>
-              <div
-                className="task-content"
-                dangerouslySetInnerHTML={{
-                  __html: sanitizeLimitedHtml(t(dayTask?.contentKey || dayGuide?.contentKey || ""), {
-                    convertNewlines: true,
-                  }),
-                }}
-              />
-              {!isPreview && (
-                <button
-                  type="button"
-                  className={`task-action-btn ${starter.todayCompleted ? "success" : ""}`}
-                  onClick={handleTaskAction}
-                  disabled={starter.todayCompleted}
-                >
-                  {starter.todayCompleted ? t("doneForToday") : dayTask ? t(dayTask.actionKey) : t("feedButton")}
+            <div className="day-progress" style={{ fontSize: "0.8em", opacity: 0.7 }}>
+              {t("milestoneTypicalDays", { days: currentMilestone.typicalDays })}
+            </div>
+            {isPreview && (
+              <div className="preview-indicator">
+                <span>{t("milestonePreview")}</span>
+                <button type="button" className="back-to-current" onClick={backToCurrentMilestone}>
+                  {t("milestoneBackToCurrent")}
                 </button>
-              )}
-            </div>
-          )}
+              </div>
+            )}
+          </div>
 
-          {displayDay >= 3 && !isPreview && (
+          {/* Milestone Task Card */}
+          <div className="task-card">
+            <div className="task-title">📋 {t(currentMilestone.taskKey)}</div>
+            <div className="task-content">
+              {t(currentMilestone.tipKey)}
+            </div>
+            {!isPreview && (
+              <button
+                type="button"
+                className={`task-action-btn ${isMilestoneAlreadyDone ? "success" : ""}`}
+                onClick={handleMilestoneComplete}
+                disabled={isMilestoneAlreadyDone}
+              >
+                {isMilestoneAlreadyDone ? t("doneForToday") : t("milestoneCompleteBtn")}
+              </button>
+            )}
+          </div>
+
+          {displayMilestoneIndex >= 1 && !isPreview && (
             <button type="button" className="secondary-btn" onClick={() => setTroubleOpen(true)}>
               {t("notGrowing")}
             </button>
@@ -267,7 +240,7 @@ function HomePage() {
         </>
       )}
 
-      {!starter.isNewStarter && (
+      {!isGuidedMode && (
         <>
           {isUrgent && (
             <div className="urgent-alert">
