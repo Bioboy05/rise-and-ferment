@@ -1,6 +1,6 @@
 import { create } from "zustand";
 import { persist } from "zustand/middleware";
-import { advanceStarterDay, normalizeStarter } from "../utils/starterHelpers";
+import { advanceStarterDay, advanceMilestone, normalizeStarter } from "../utils/starterHelpers";
 import {
   MAX_NAME_LENGTH,
   MAX_NOTE_LENGTH,
@@ -8,26 +8,35 @@ import {
   MAX_HISTORY_ENTRIES,
   sanitizeString,
 } from "../constants/validation";
+import { FIRST_MILESTONE_ID } from "../data/milestones";
 
 const isValidId = (id) => typeof id === "string" && id.length > 0 && id.length <= 100;
 
-const createStarter = (id, name = "Pufi") => ({
+const createStarter = (id, name = "Pufi", guidedMode = "new") => ({
   id,
   name,
   flourType: "white",
   hydration: "100",
   createdAt: null,
   lastFed: null,
-  isNewStarter: false,
-  currentDay: 1,
-  previewingDay: null,
-  todayCompleted: false,
-  lastCompletedDate: null,
   history: [],
   streak: 0,
   feedAmount: 50,
   useBran: false,
   personalNotes: "",
+  // Milestone model (primary)
+  currentMilestoneId: guidedMode === "self-paced" ? "bake-ready" : FIRST_MILESTONE_ID,
+  milestoneHistory: [],
+  guidedMode,
+  previewingMilestoneId: null,
+  milestoneCompleted: false,
+  lastMilestoneCompletedAt: null,
+  // Legacy fields (kept for compat)
+  isNewStarter: guidedMode !== "self-paced",
+  currentDay: 1,
+  previewingDay: null,
+  todayCompleted: false,
+  lastCompletedDate: null,
   completedDays: [],
 });
 
@@ -110,16 +119,24 @@ const useStarterStore = create(
           "hydration",
           "createdAt",
           "lastFed",
-          "isNewStarter",
-          "currentDay",
-          "previewingDay",
-          "todayCompleted",
-          "lastCompletedDate",
           "feedAmount",
           "useBran",
           "personalNotes",
           "history",
           "streak",
+          // Milestone fields
+          "currentMilestoneId",
+          "milestoneHistory",
+          "guidedMode",
+          "previewingMilestoneId",
+          "milestoneCompleted",
+          "lastMilestoneCompletedAt",
+          // Legacy fields
+          "isNewStarter",
+          "currentDay",
+          "previewingDay",
+          "todayCompleted",
+          "lastCompletedDate",
           "completedDays",
         ];
 
@@ -181,6 +198,17 @@ const useStarterStore = create(
               todayCompleted: true,
               lastCompletedDate: new Date().toDateString(),
             };
+          }),
+        }));
+      },
+
+      completeMilestone: (id, milestoneId, evidence = null) => {
+        if (!isValidId(id)) return;
+
+        set((state) => ({
+          starters: state.starters.map((starter) => {
+            if (starter.id !== id) return starter;
+            return advanceMilestone(starter, milestoneId, evidence);
           }),
         }));
       },

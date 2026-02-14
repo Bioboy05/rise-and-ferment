@@ -9,21 +9,40 @@
  */
 
 const celebrations = [
+  // Milestone-based celebrations
   {
-    id: "day7",
-    emoji: "🎉",
-    titleKey: "congratsTitle",
-    descKey: "congratsDesc",
-    condition: (starter) => starter.currentDay >= 7,
-  },
-  {
-    id: "firstBread",
-    emoji: "🍞",
-    titleKey: "celebrateFirstBreadTitle",
-    descKey: "celebrateFirstBreadDesc",
+    id: "milestone-seed",
+    emoji: "🌱",
+    titleKey: "celebrateSeedTitle",
+    descKey: "celebrateSeedDesc",
     condition: (starter) =>
-      starter.history.length >= 7 && starter.currentDay >= 7,
+      starter.milestoneHistory?.some((m) => m.id === "seed-activation"),
   },
+  {
+    id: "milestone-expansion",
+    emoji: "📈",
+    titleKey: "celebrateExpansionTitle",
+    descKey: "celebrateExpansionDesc",
+    condition: (starter) =>
+      starter.milestoneHistory?.some((m) => m.id === "visible-expansion"),
+  },
+  {
+    id: "milestone-strength",
+    emoji: "💪",
+    titleKey: "celebrateStrengthTitle",
+    descKey: "celebrateStrengthDesc",
+    condition: (starter) =>
+      starter.milestoneHistory?.some((m) => m.id === "strengthening"),
+  },
+  {
+    id: "milestone-bake-ready",
+    emoji: "🍞",
+    titleKey: "celebrateBakeReadyTitle",
+    descKey: "celebrateBakeReadyDesc",
+    condition: (starter) =>
+      starter.milestoneHistory?.some((m) => m.id === "bake-ready"),
+  },
+  // Streak-based celebrations (unchanged)
   {
     id: "streak7",
     emoji: "💕",
