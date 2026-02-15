@@ -137,6 +137,7 @@ select:focus-visible {
   flex-shrink: 0;
   transition: all 0.2s;
 }
+
 .btn-pill[data-active="true"] {
   border: 2px solid var(--accent);
   background: var(--accent-light);
@@ -186,6 +187,7 @@ select:focus-visible {
 .hide-scrollbar::-webkit-scrollbar {
   display: none;
 }
+
 .hide-scrollbar {
   -ms-overflow-style: none;
   scrollbar-width: none;
@@ -219,12 +221,10 @@ select:focus-visible {
   max-width: 390px;
   width: min(390px, 100%);
   margin: 0 auto;
-  background: linear-gradient(
-    180deg,
-    var(--bg-primary) 0%,
-    var(--bg-secondary) 50%,
-    var(--bg-tertiary) 100%
-  );
+  background: linear-gradient(180deg,
+      var(--bg-primary) 0%,
+      var(--bg-secondary) 50%,
+      var(--bg-tertiary) 100%);
   min-height: 100dvh;
   height: 100dvh;
   border-radius: 40px;
@@ -238,23 +238,19 @@ select:focus-visible {
   content: "";
   position: absolute;
   inset: 0;
-  background: linear-gradient(
-    180deg,
-    rgba(255, 255, 255, 0.3) 0%,
-    rgba(255, 255, 255, 0.06) 28%,
-    rgba(255, 255, 255, 0) 100%
-  );
+  background: linear-gradient(180deg,
+      rgba(255, 255, 255, 0.3) 0%,
+      rgba(255, 255, 255, 0.06) 28%,
+      rgba(255, 255, 255, 0) 100%);
   pointer-events: none;
   z-index: 0;
 }
 
 [data-glass="glassy"] .phone-frame::before {
-  background: linear-gradient(
-    180deg,
-    rgba(255, 255, 255, 0.38) 0%,
-    rgba(255, 255, 255, 0.1) 22%,
-    rgba(255, 255, 255, 0) 100%
-  );
+  background: linear-gradient(180deg,
+      rgba(255, 255, 255, 0.38) 0%,
+      rgba(255, 255, 255, 0.1) 22%,
+      rgba(255, 255, 255, 0) 100%);
 }
 
 .phone-frame::after {
@@ -304,12 +300,15 @@ select:focus-visible {
     min-height: 100dvh;
     height: 100dvh;
   }
+
   .phone-notch {
     display: none;
   }
+
   .app-container {
     padding-top: 0;
   }
+
   .desktop-info {
     display: none;
   }
@@ -319,6 +318,7 @@ select:focus-visible {
   .section {
     padding: 0 14px;
   }
+
   .section-title {
     font-size: 24px;
     gap: 8px;
@@ -505,12 +505,10 @@ select:focus-visible {
   left: -100%;
   width: 100%;
   height: 100%;
-  background: linear-gradient(
-    90deg,
-    transparent,
-    rgba(255, 255, 255, 0.15),
-    transparent
-  );
+  background: linear-gradient(90deg,
+      transparent,
+      rgba(255, 255, 255, 0.15),
+      transparent);
   transition: left 0.5s;
 }
 
@@ -538,31 +536,37 @@ select:focus-visible {
 }
 
 @keyframes pulse {
+
   0%,
   100% {
     transform: scale(1);
   }
+
   50% {
     transform: scale(1.02);
   }
 }
 
 @keyframes floatWheat {
+
   0%,
   100% {
     transform: translateY(0) rotate(0deg);
   }
+
   50% {
     transform: translateY(-6px) rotate(6deg);
   }
 }
 
 @keyframes bubble {
+
   0%,
   100% {
     transform: scale(1);
     opacity: 0.6;
   }
+
   50% {
     transform: scale(1.15);
     opacity: 1;
@@ -574,6 +578,7 @@ select:focus-visible {
     opacity: 0;
     transform: translateY(12px);
   }
+
   to {
     opacity: 1;
     transform: translateY(0);
@@ -603,13 +608,15 @@ select:focus-visible {
 }
 
 .stat-card {
-  background: var(--bg-card);
+  background: color-mix(in srgb, var(--bg-card) 72%, transparent);
+  backdrop-filter: blur(12px) saturate(130%);
+  -webkit-backdrop-filter: blur(12px) saturate(130%);
   border-radius: 20px;
   padding: 16px;
   text-align: center;
-  box-shadow: 0 2px 8px var(--shadow);
+  box-shadow: 0 4px 16px var(--shadow);
   transition: all 0.25s ease;
-  border: 1px solid transparent;
+  border: 1px solid color-mix(in srgb, var(--border) 30%, transparent);
 }
 
 .stat-card:hover {
@@ -635,11 +642,14 @@ select:focus-visible {
 
 /* CHARTS & STATS */
 .chart-card {
-  background: var(--bg-card);
+  background: color-mix(in srgb, var(--bg-card) 72%, transparent);
+  backdrop-filter: blur(12px) saturate(130%);
+  -webkit-backdrop-filter: blur(12px) saturate(130%);
   border-radius: 16px;
   padding: 16px;
   margin-bottom: 16px;
-  box-shadow: 0 2px 8px var(--shadow);
+  box-shadow: 0 4px 16px var(--shadow);
+  border: 1px solid color-mix(in srgb, var(--border) 30%, transparent);
 }
 
 .chart-title {
@@ -661,11 +671,14 @@ select:focus-visible {
 }
 
 .stat-mini {
-  background: var(--bg-card);
+  background: color-mix(in srgb, var(--bg-card) 72%, transparent);
+  backdrop-filter: blur(12px) saturate(130%);
+  -webkit-backdrop-filter: blur(12px) saturate(130%);
   border-radius: 16px;
   padding: 16px;
   text-align: center;
-  box-shadow: 0 2px 8px var(--shadow);
+  box-shadow: 0 4px 16px var(--shadow);
+  border: 1px solid color-mix(in srgb, var(--border) 30%, transparent);
 }
 
 .stat-mini-value {
@@ -687,8 +700,11 @@ select:focus-visible {
   align-items: center;
   padding: 16px;
   margin-bottom: 8px;
-  background: var(--bg-card);
+  background: color-mix(in srgb, var(--bg-card) 68%, transparent);
+  backdrop-filter: blur(8px) saturate(120%);
+  -webkit-backdrop-filter: blur(8px) saturate(120%);
   border-radius: 12px;
+  border: 1px solid color-mix(in srgb, var(--border) 20%, transparent);
   animation: fadeInUp 0.3s ease-out backwards;
 }
 
@@ -737,25 +753,34 @@ select:focus-visible {
 
 /* Motivational card */
 .motivational-card {
-  background: linear-gradient(135deg, var(--accent-light) 0%, var(--accent-medium) 100%);
+  background: linear-gradient(135deg,
+      color-mix(in srgb, var(--accent-light) 100%, transparent),
+      color-mix(in srgb, var(--accent-medium) 80%, transparent));
+  backdrop-filter: blur(12px) saturate(130%);
+  -webkit-backdrop-filter: blur(12px) saturate(130%);
   border-radius: 20px;
   padding: 18px 22px;
   margin: 0 20px 20px;
   text-align: center;
   border-left: 5px solid var(--accent);
   animation: motivationalFadeIn 0.5s ease;
-  box-shadow: 0 4px 12px var(--shadow);
+  box-shadow: 0 4px 16px var(--shadow);
   position: relative;
   overflow: hidden;
+  border: 1px solid color-mix(in srgb, var(--border) 30%, transparent);
+  border-left: 5px solid var(--accent);
 }
 
 .motivational-card::before {
-  content: "✨";
+  content: "";
   position: absolute;
-  top: 8px;
-  right: 12px;
-  font-size: 18px;
-  opacity: 0.6;
+  top: -10px;
+  right: -10px;
+  width: 50px;
+  height: 50px;
+  background: radial-gradient(circle, rgba(255, 255, 255, 0.25) 0%, transparent 70%);
+  border-radius: 50%;
+  opacity: 0.7;
 }
 
 .motivational-text {
@@ -770,6 +795,7 @@ select:focus-visible {
     opacity: 0;
     transform: translateY(8px);
   }
+
   to {
     opacity: 1;
     transform: translateY(0);
@@ -790,10 +816,13 @@ select:focus-visible {
 }
 
 .settings-card {
-  background: var(--bg-card);
+  background: color-mix(in srgb, var(--bg-card) 72%, transparent);
+  backdrop-filter: blur(12px) saturate(130%);
+  -webkit-backdrop-filter: blur(12px) saturate(130%);
   border-radius: 16px;
   overflow: hidden;
-  box-shadow: 0 2px 8px var(--shadow);
+  box-shadow: 0 4px 16px var(--shadow);
+  border: 1px solid color-mix(in srgb, var(--border) 30%, transparent);
 }
 
 .settings-row {
@@ -996,9 +1025,11 @@ select:focus-visible {
     transform: scale(0) rotate(-10deg);
     opacity: 0;
   }
+
   50% {
     transform: scale(1.2) rotate(5deg);
   }
+
   100% {
     transform: scale(1) rotate(0deg);
     opacity: 1;
@@ -1010,6 +1041,7 @@ select:focus-visible {
     opacity: 0;
     transform: translateY(10px);
   }
+
   to {
     opacity: 1;
     transform: translateY(0);
@@ -1067,16 +1099,15 @@ select:focus-visible {
     transform: translate3d(0, -12vh, 0) rotate(0deg) scale(var(--confetti-scale-start, 1));
     opacity: 0;
   }
+
   8% {
     opacity: 1;
   }
+
   100% {
-    transform: translate3d(
-        var(--confetti-drift, 0px),
+    transform: translate3d(var(--confetti-drift, 0px),
         var(--confetti-fall-distance, 110vh),
-        0
-      )
-      rotate(var(--confetti-rotate, 720deg)) scale(0.5);
+        0) rotate(var(--confetti-rotate, 720deg)) scale(0.5);
     opacity: 0;
   }
 }
@@ -1167,6 +1198,7 @@ select:focus-visible {
   from {
     transform: scale(1);
   }
+
   to {
     transform: scale(1.1);
   }
@@ -2586,5 +2618,3 @@ body::after {
   font-size: 24px;
   margin-bottom: 8px;
 }
-
-
