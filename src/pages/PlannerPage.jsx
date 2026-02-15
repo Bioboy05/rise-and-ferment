@@ -1,4 +1,4 @@
-import { useMemo, useState } from "react";
+﻿import { useMemo, useState } from "react";
 import { useTranslation } from "react-i18next";
 import useSettingsStore from "../store/useSettingsStore";
 import useActiveStarter from "../hooks/useActiveStarter";
@@ -39,16 +39,16 @@ function PlannerPage() {
           : "";
 
     const steps = [
-      { time: 0, action: `🍞 ${t("stepBreadReady")}` },
-      { time: 0.75, action: `🔥 ${t("stepBaking")}` },
-      { time: 4.75, action: `❄️ ${t("stepFromFridge")}` },
-      { time: 8.75, action: `🥣 ${t("stepShape")}` },
-      { time: 9.25, action: `📦 ${t("stepFold")}` },
-      { time: 17.25, action: `🌙 ${t("stepBulk")}` },
-      { time: 17.75, action: `🧂 ${t("stepSalt")}` },
-      { time: 18.25, action: `⏳ ${t("stepAutolyse")}` },
-      { time: 18.75, action: `🥄 ${t("stepMix")}` },
-      { time: 24.75, action: `🌱 ${t("stepFeed")}` },
+      { time: 0, action: t("stepBreadReady") },
+      { time: 0.75, action: t("stepBaking") },
+      { time: 4.75, action: t("stepFromFridge") },
+      { time: 8.75, action: t("stepShape") },
+      { time: 9.25, action: t("stepFold") },
+      { time: 17.25, action: t("stepBulk") },
+      { time: 17.75, action: t("stepSalt") },
+      { time: 18.25, action: t("stepAutolyse") },
+      { time: 18.75, action: t("stepMix") },
+      { time: 24.75, action: t("stepFeed") },
     ];
 
     const dayNames = [
@@ -194,7 +194,7 @@ function PlannerPage() {
               onClick={() => setCalcLoaves(loaves - 1)}
               type="button"
             >
-              −
+              -
             </button>
             <span
               style={{

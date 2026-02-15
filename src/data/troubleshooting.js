@@ -14,25 +14,25 @@ const troubleshooting = {
   checks: [
     {
       id: "temp",
-      icon: "🌡️",
+      iconName: "thermometer",
       titleKey: "troubleTemp",
       descKey: "troubleTempDesc",
     },
     {
       id: "water",
-      icon: "💧",
+      iconName: "droplet",
       titleKey: "troubleWater",
       descKey: "troubleWaterDesc",
     },
     {
       id: "flour",
-      icon: "🌾",
+      iconName: "sprout",
       titleKey: "troubleFlour",
       descKey: "troubleFlourDesc",
     },
     {
       id: "patience",
-      icon: "⏳",
+      iconName: "hourglass",
       titleKey: "troublePatience",
       descKey: "troublePatienceDesc",
     },
@@ -41,28 +41,28 @@ const troubleshooting = {
   common: [
     {
       id: "hooch",
-      icon: "🟤",
+      iconName: "flask",
       titleKey: "troubleHooch",
       descKey: "troubleHoochDesc",
       severity: "info",
     },
     {
       id: "acetone",
-      icon: "💅",
+      iconName: "alert",
       titleKey: "troubleSmellAcetone",
       descKey: "troubleSmellAcetoneDesc",
       severity: "warning",
     },
     {
       id: "sour",
-      icon: "🍋",
+      iconName: "info",
       titleKey: "troubleSmellStrong",
       descKey: "troubleSmellStrongDesc",
       severity: "warning",
     },
     {
       id: "notDoubling",
-      icon: "📊",
+      iconName: "trending-up",
       titleKey: "troubleNotDoubling",
       descKey: "troubleNotDoublingDesc",
       severity: "info",
@@ -72,7 +72,7 @@ const troubleshooting = {
   serious: [
     {
       id: "mold",
-      icon: "🦠",
+      iconName: "alert",
       titleKey: "troubleMold",
       descKey: "troubleMoldDesc",
       severity: "danger",

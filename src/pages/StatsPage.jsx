@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { useTranslation } from "react-i18next";
 import useActiveStarter from "../hooks/useActiveStarter";
 import useStreak from "../hooks/useStreak";
+import Icon from "../components/common/Icon";
 
 const dayKeys = ["daySun", "dayMon", "dayTue", "dayWed", "dayThu", "dayFri", "daySat"];
 
@@ -96,7 +97,8 @@ function StatsPage() {
 
       <div className="chart-card">
         <div className="chart-title">
-          📈 <span>{t("activityChart")}</span>
+          <Icon name="trending-up" size={16} style={{ display: "inline", verticalAlign: "middle", marginRight: "6px" }} />
+          <span>{t("activityChart")}</span>
         </div>
         <div
           id="activity-chart"
@@ -138,7 +140,8 @@ function StatsPage() {
 
       <div className="chart-card">
         <div className="chart-title">
-          🌡️ <span>{t("tempChart")}</span>
+          <Icon name="thermometer" size={16} style={{ display: "inline", verticalAlign: "middle", marginRight: "6px" }} />
+          <span>{t("tempChart")}</span>
         </div>
         <div id="temp-chart" style={{ height: "80px", position: "relative" }}>
           <div
@@ -208,7 +211,8 @@ function StatsPage() {
 
       <div className="chart-card">
         <div className="chart-title">
-          📅 <span>{t("weeklyPattern")}</span>
+          <Icon name="planner" size={16} style={{ display: "inline", verticalAlign: "middle", marginRight: "6px" }} />
+          <span>{t("weeklyPattern")}</span>
         </div>
         <div id="weekly-pattern" style={{ display: "flex", justifyContent: "space-between", gap: "8px" }}>
           {weeklyPattern.map((count, i) => {

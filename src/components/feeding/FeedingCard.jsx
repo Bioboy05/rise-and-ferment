@@ -42,7 +42,7 @@ function FeedingCard() {
       {isUrgent && (
         <div className="urgent-alert">
           <div className="urgent-alert-content">
-            <span className="urgent-icon">🚨</span>
+            <span className="urgent-icon"><Icon name="alert" size={20} /></span>
             <div className="urgent-text">
               <div className="urgent-title">{t("urgentTitle")}</div>
               <div className="urgent-subtitle">

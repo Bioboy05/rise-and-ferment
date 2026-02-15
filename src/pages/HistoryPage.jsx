@@ -1,6 +1,7 @@
 import { useTranslation } from "react-i18next";
 import useActiveStarter from "../hooks/useActiveStarter";
 import useSettingsStore from "../store/useSettingsStore";
+import Icon from "../components/common/Icon";
 
 function HistoryPage() {
   const { t } = useTranslation();
@@ -13,7 +14,9 @@ function HistoryPage() {
       <div className="section">
         <h2 className="section-title">{t("historyTitle")}</h2>
         <div className="empty-state">
-          <div style={{ fontSize: "50px" }}>📋</div>
+          <div style={{ marginBottom: "8px" }}>
+            <Icon name="clipboard" size={40} style={{ opacity: 0.4 }} />
+          </div>
           <div className="empty-text">{t("noFeedingsYet")}</div>
         </div>
       </div>
@@ -51,14 +54,15 @@ function HistoryPage() {
             >
               <div style={{ display: "flex", justifyContent: "space-between", width: "100%", alignItems: "center" }}>
                 <span className="history-time">{`${label}, ${time}`}</span>
-                <span className="history-amount">
+                <span className="history-amount" style={{ display: "flex", alignItems: "center", gap: "6px" }}>
                   {entry.amount}g
                   {entry.withBran ? (
-                    <span style={{ fontSize: "11px", color: "var(--accent)", marginLeft: "6px" }}>🌾</span>
+                    <Icon name="sprout" size={13} style={{ color: "var(--accent)" }} />
                   ) : null}
                   {entry.temp != null ? (
-                    <span style={{ fontSize: "11px", color: "var(--text-muted)", marginLeft: "4px" }}>
-                      🌡️{entry.temp}°
+                    <span style={{ display: "inline-flex", alignItems: "center", gap: "2px", fontSize: "11px", color: "var(--text-muted)" }}>
+                      <Icon name="thermometer" size={12} />
+                      {entry.temp}°
                     </span>
                   ) : null}
                 </span>
@@ -66,6 +70,9 @@ function HistoryPage() {
               {entry.note ? (
                 <div
                   style={{
+                    display: "flex",
+                    alignItems: "center",
+                    gap: "4px",
                     fontSize: "11px",
                     color: "var(--text-muted)",
                     marginTop: "2px",
@@ -75,7 +82,8 @@ function HistoryPage() {
                     maxWidth: "200px",
                   }}
                 >
-                  📝 {entry.note}
+                  <Icon name="note" size={11} />
+                  <span>{entry.note}</span>
                 </div>
               ) : null}
             </div>

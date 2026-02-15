@@ -20,7 +20,7 @@ const recipes = [
     difficulty: 2,
     timeMinutes: 1440,
     servings: 1,
-    icon: "🍞",
+    iconName: "bread",
     gradient: ["#8B5A2B", "#D2691E"],
     ingredientsKeys: [
       "recipeClassicIng1",
@@ -47,7 +47,7 @@ const recipes = [
     difficulty: 2,
     timeMinutes: 1440,
     servings: 1,
-    icon: "🌾",
+    iconName: "sprout",
     gradient: ["#5D4037", "#8D6E63"],
     ingredientsKeys: [
       "recipeWholeWheatIng1",
@@ -73,7 +73,7 @@ const recipes = [
     difficulty: 3,
     timeMinutes: 1200,
     servings: 1,
-    icon: "🌿",
+    iconName: "leaf",
     gradient: ["#3E2723", "#5D4037"],
     ingredientsKeys: [
       "recipeRyeIng1",
@@ -98,7 +98,7 @@ const recipes = [
     difficulty: 1,
     timeMinutes: 720,
     servings: 6,
-    icon: "🫒",
+    iconName: "leaf",
     gradient: ["#558B2F", "#7CB342"],
     ingredientsKeys: [
       "recipeFocacciaIng1",
@@ -123,7 +123,7 @@ const recipes = [
     difficulty: 3,
     timeMinutes: 1080,
     servings: 2,
-    icon: "🥖",
+    iconName: "bread",
     gradient: ["#BF8B2E", "#D4A84B"],
     ingredientsKeys: [
       "recipeCiabattaIng1",
@@ -148,7 +148,7 @@ const recipes = [
     difficulty: 3,
     timeMinutes: 1680,
     servings: 3,
-    icon: "🥖",
+    iconName: "bread",
     gradient: ["#8D6E63", "#5D4037"],
     ingredientsKeys: [
       "recipeBaguetteIng1",
@@ -183,7 +183,7 @@ const recipes = [
     difficulty: 1,
     timeMinutes: 20,
     servings: 8,
-    icon: "🥞",
+    iconName: "utensils",
     gradient: ["#F9A825", "#FFB74D"],
     ingredientsKeys: [
       "recipePancakesIng1",
@@ -207,7 +207,7 @@ const recipes = [
     difficulty: 1,
     timeMinutes: 30,
     servings: 20,
-    icon: "🍪",
+    iconName: "utensils",
     gradient: ["#A1887F", "#BCAAA4"],
     ingredientsKeys: [
       "recipeCrackersIng1",
@@ -230,7 +230,7 @@ const recipes = [
     difficulty: 2,
     timeMinutes: 480,
     servings: 2,
-    icon: "🍕",
+    iconName: "utensils",
     gradient: ["#D32F2F", "#EF5350"],
     ingredientsKeys: [
       "recipePizzaIng1",
@@ -255,7 +255,7 @@ const recipes = [
     difficulty: 1,
     timeMinutes: 60,
     servings: 8,
-    icon: "🍌",
+    iconName: "loaf",
     gradient: ["#FFA726", "#FFB74D"],
     ingredientsKeys: [
       "recipeBananaBreadIng1",
@@ -279,7 +279,7 @@ const recipes = [
     difficulty: 1,
     timeMinutes: 25,
     servings: 6,
-    icon: "🧇",
+    iconName: "utensils",
     gradient: ["#F57F17", "#FFB300"],
     ingredientsKeys: [
       "recipeWafflesIng1",
@@ -304,7 +304,7 @@ const recipes = [
     difficulty: 3,
     timeMinutes: 960,
     servings: 1,
-    icon: "🧈",
+    iconName: "loaf",
     gradient: ["#E65100", "#FF8F00"],
     ingredientsKeys: [
       "recipeBriocheIng1",
@@ -329,7 +329,7 @@ const recipes = [
     difficulty: 3,
     timeMinutes: 1080,
     servings: 8,
-    icon: "🥯",
+    iconName: "bread",
     gradient: ["#6D4C41", "#8D6E63"],
     ingredientsKeys: [
       "recipeBagelsIng1",
@@ -355,7 +355,7 @@ const recipes = [
     difficulty: 2,
     timeMinutes: 720,
     servings: 12,
-    icon: "🌀",
+    iconName: "utensils",
     gradient: ["#4E342E", "#795548"],
     ingredientsKeys: [
       "recipeCinnamonIng1",
@@ -379,7 +379,7 @@ const recipes = [
     difficulty: 2,
     timeMinutes: 720,
     servings: 8,
-    icon: "🫓",
+    iconName: "bread",
     gradient: ["#FF8F00", "#FFB300"],
     ingredientsKeys: [
       "recipeMuffinsIng1",
@@ -402,7 +402,7 @@ const recipes = [
     difficulty: 2,
     timeMinutes: 600,
     servings: 8,
-    icon: "🥨",
+    iconName: "bread",
     gradient: ["#795548", "#A1887F"],
     ingredientsKeys: [
       "recipePretzelsIng1",
@@ -436,7 +436,7 @@ export function getRecipesByCategory(category) {
  * Recipe categories with i18n keys for display.
  */
 export const recipeCategories = [
-  { id: "bread", labelKey: "recipeCategoryBread", icon: "🍞" },
-  { id: "discard", labelKey: "recipeCategoryDiscard", icon: "♻️" },
-  { id: "other", labelKey: "recipeCategoryOther", icon: "🧁" },
+  { id: "bread", labelKey: "recipeCategoryBread", iconName: "bread" },
+  { id: "discard", labelKey: "recipeCategoryDiscard", iconName: "flask" },
+  { id: "other", labelKey: "recipeCategoryOther", iconName: "utensils" },
 ];

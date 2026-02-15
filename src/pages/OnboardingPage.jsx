@@ -4,14 +4,15 @@ import useSettingsStore from "../store/useSettingsStore";
 import useStarterStore from "../store/useStarterStore";
 import { MAX_NAME_LENGTH, sanitizeString } from "../constants/validation";
 import { FIRST_MILESTONE_ID } from "../data/milestones";
+import Icon from "../components/common/Icon";
 
 const LANGUAGES = [
-  { code: "ro", flag: "🇷🇴", name: "Română" },
-  { code: "en", flag: "🇬🇧", name: "English" },
-  { code: "de", flag: "🇩🇪", name: "Deutsch" },
-  { code: "fr", flag: "🇫🇷", name: "Français" },
-  { code: "es", flag: "🇪🇸", name: "Español" },
-  { code: "it", flag: "🇮🇹", name: "Italiano" },
+  { code: "ro", label: "RO", name: "Română" },
+  { code: "en", label: "EN", name: "English" },
+  { code: "de", label: "DE", name: "Deutsch" },
+  { code: "fr", label: "FR", name: "Français" },
+  { code: "es", label: "ES", name: "Español" },
+  { code: "it", label: "IT", name: "Italiano" },
 ];
 
 function OnboardingPage() {
@@ -33,25 +34,25 @@ function OnboardingPage() {
     if (!existingHealth) return null;
     const map = {
       active: {
-        icon: "🎉",
+        iconName: "circle-check",
         title: t("existingAdviceActiveTitle"),
         desc: t("existingAdviceActiveDesc"),
         style: "success",
       },
       hungry: {
-        icon: "😋",
+        iconName: "alert",
         title: t("existingAdviceHungryTitle"),
         desc: t("existingAdviceHungryDesc"),
         style: "warning",
       },
       neglected: {
-        icon: "💪",
+        iconName: "muscle",
         title: t("existingAdviceNeglectedTitle"),
         desc: t("existingAdviceNeglectedDesc"),
         style: "warning",
       },
       fridge: {
-        icon: "❄️",
+        iconName: "snowflake",
         title: t("existingAdviceFridgeTitle"),
         desc: t("existingAdviceFridgeDesc"),
         style: "info",
@@ -147,14 +148,13 @@ function OnboardingPage() {
     completeOnboarding();
   };
 
-  const themeIcon = theme === "dark" ? "☀️" : "🌙";
   const nameQuestion = path === "create" ? t("nameQuestionNew") : t("nameQuestion");
 
   return (
     <div className="onboarding">
       <div style={{ display: "flex", justifyContent: "flex-end", width: "100%", marginBottom: "16px" }}>
         <button type="button" className="theme-toggle-btn" onClick={toggleTheme} aria-label="Toggle theme">
-          <span>{themeIcon}</span>
+          <Icon name={theme === "dark" ? "sun" : "moon"} size={20} />
         </button>
       </div>
 
@@ -232,17 +232,17 @@ function OnboardingPage() {
           <p className="onboarding-question">{t("howToStart")}</p>
           <div className="option-cards">
             <button type="button" className="option-card" onClick={() => handleSelectPath("create")}>
-              <div className="option-icon">🌱</div>
+              <div className="option-icon"><Icon name="seedling" size={28} /></div>
               <div className="option-title">{t("pathCreate")}</div>
               <div className="option-desc">{t("pathCreateDesc")}</div>
             </button>
             <button type="button" className="option-card" onClick={() => handleSelectPath("adopt")}>
-              <div className="option-icon">🤝</div>
+              <div className="option-icon"><Icon name="handshake" size={28} /></div>
               <div className="option-title">{t("pathAdopt")}</div>
               <div className="option-desc">{t("pathAdoptDesc")}</div>
             </button>
             <button type="button" className="option-card" onClick={() => handleSelectPath("existing")}>
-              <div className="option-icon">🫙</div>
+              <div className="option-icon"><Icon name="jar" size={28} /></div>
               <div className="option-title">{t("pathExisting")}</div>
               <div className="option-desc">{t("pathExistingDesc")}</div>
             </button>
@@ -259,10 +259,10 @@ function OnboardingPage() {
             </p>
             <div style={{ display: "flex", flexDirection: "column", gap: "10px" }}>
               {[
-                { id: "active", emoji: "🟢", title: t("existingA1a"), desc: t("existingA1aDesc") },
-                { id: "hungry", emoji: "🟡", title: t("existingA1b"), desc: t("existingA1bDesc") },
-                { id: "neglected", emoji: "🟠", title: t("existingA1c"), desc: t("existingA1cDesc") },
-                { id: "fridge", emoji: "❄️", title: t("existingA1d"), desc: t("existingA1dDesc") },
+                { id: "active", iconName: "circle-check", title: t("existingA1a"), desc: t("existingA1aDesc") },
+                { id: "hungry", iconName: "alert", title: t("existingA1b"), desc: t("existingA1bDesc") },
+                { id: "neglected", iconName: "fire", title: t("existingA1c"), desc: t("existingA1cDesc") },
+                { id: "fridge", iconName: "snowflake", title: t("existingA1d"), desc: t("existingA1dDesc") },
               ].map((opt) => {
                 const isActive = existingHealth === opt.id;
                 return (
@@ -283,7 +283,7 @@ function OnboardingPage() {
                       gap: "12px",
                     }}
                   >
-                    <span style={{ fontSize: "20px" }}>{opt.emoji}</span>
+                    <span style={{ fontSize: "20px" }}><Icon name={opt.iconName} size={20} /></span>
                     <div>
                       <div style={{ fontWeight: 600, color: "var(--text-secondary)" }}>{opt.title}</div>
                       <div style={{ fontSize: "12px", color: "var(--text-muted)" }}>{opt.desc}</div>
@@ -299,32 +299,31 @@ function OnboardingPage() {
               <div
                 className="tip-box"
                 style={{
-                  background: "var(--accent-light)",
-                  borderLeft:
-                    advice.style === "success"
-                      ? "4px solid var(--success)"
-                      : advice.style === "info"
-                        ? "4px solid var(--accent)"
-                        : "4px solid var(--warning)",
+                  borderLeft: `4px solid var(--${advice.style === "success" ? "success" : advice.style === "warning" ? "warning" : "accent"})`,
                   padding: "12px 16px",
                   borderRadius: "12px",
                   textAlign: "left",
                 }}
               >
-                <strong>
-                  {advice.icon} {advice.title}
-                </strong>
-                <br />
-                <span style={{ fontSize: "13px" }}>{advice.desc}</span>
+                <div style={{ display: "flex", alignItems: "center", gap: "8px", marginBottom: "8px" }}>
+                  <Icon name={advice.iconName} size={20} />
+                  <strong>{advice.title}</strong>
+                </div>
+                <div style={{ fontSize: "13px", color: "var(--text-secondary)" }}>
+                  {advice.desc}
+                </div>
               </div>
             </div>
           )}
 
-          {existingHealth && (
-            <button type="button" className="btn btn-primary" onClick={goToName} style={{ marginBottom: "8px" }}>
-              {t("continueSetup")}
-            </button>
-          )}
+          <button
+            type="button"
+            className="btn btn-primary"
+            disabled={!existingHealth}
+            onClick={goToName}
+          >
+            {t("continueBtn")}
+          </button>
           <button type="button" className="btn btn-secondary" onClick={goBackToStart}>
             {t("goBack")}
           </button>
@@ -336,27 +335,27 @@ function OnboardingPage() {
           <p className="onboarding-question">{t("shoppingTitle")}</p>
           <div className="shopping-list">
             <div className="shopping-item">
-              <span className="shopping-icon">⚖️</span>
+              <span className="shopping-icon"><Icon name="scale" size={18} /></span>
               <span>{t("shopScale")}</span>
             </div>
             <div className="shopping-item">
-              <span className="shopping-icon">🌾</span>
+              <span className="shopping-icon"><Icon name="sprout" size={18} /></span>
               <span>{t("shopWhiteFlour")}</span>
             </div>
             <div className="shopping-item">
-              <span className="shopping-icon">🪵</span>
+              <span className="shopping-icon"><Icon name="leaf" size={18} /></span>
               <span>{t("shopRyeFlour")}</span>
             </div>
             <div className="shopping-item">
-              <span className="shopping-icon">🥣</span>
+              <span className="shopping-icon"><Icon name="bowl" size={18} /></span>
               <span>{t("shopBran")}</span>
             </div>
             <div className="shopping-item">
-              <span className="shopping-icon">💧</span>
+              <span className="shopping-icon"><Icon name="droplet" size={18} /></span>
               <span>{t("shopWater")}</span>
             </div>
             <div className="shopping-item">
-              <span className="shopping-icon">🫙</span>
+              <span className="shopping-icon"><Icon name="jar" size={18} /></span>
               <span>{t("shopJar")}</span>
             </div>
           </div>
@@ -384,11 +383,23 @@ function OnboardingPage() {
               textAlign: "left",
             }}
           >
-            <strong>✅ {t("adoptChecklist")}</strong>
+            <div style={{ display: "flex", alignItems: "center", gap: "6px" }}>
+              <Icon name="check" size={16} />
+              <strong>{t("adoptChecklist")}</strong>
+            </div>
             <div style={{ marginTop: "10px", fontSize: "13px", lineHeight: 1.9, color: "var(--text-secondary)" }}>
-              <div>☐ {t("adoptCheck1")}</div>
-              <div>☐ {t("adoptCheck2")}</div>
-              <div>☐ {t("adoptCheck3")}</div>
+              <div>
+                <Icon name="circle-dot" size={12} style={{ display: "inline", verticalAlign: "middle", marginRight: "4px" }} />
+                {t("adoptCheck1")}
+              </div>
+              <div>
+                <Icon name="circle-dot" size={12} style={{ display: "inline", verticalAlign: "middle", marginRight: "4px" }} />
+                {t("adoptCheck2")}
+              </div>
+              <div>
+                <Icon name="circle-dot" size={12} style={{ display: "inline", verticalAlign: "middle", marginRight: "4px" }} />
+                {t("adoptCheck3")}
+              </div>
             </div>
           </div>
 
@@ -403,7 +414,10 @@ function OnboardingPage() {
               borderLeft: "4px solid var(--success)",
             }}
           >
-            <strong>🗓️ {t("adoptFirst3Days")}</strong>
+            <div style={{ display: "flex", alignItems: "center", gap: "6px" }}>
+              <Icon name="planner" size={16} />
+              <strong>{t("adoptFirst3Days")}</strong>
+            </div>
             <div style={{ marginTop: "10px", fontSize: "13px", lineHeight: 1.9, color: "var(--text-secondary)" }}>
               <div>
                 <strong style={{ color: "var(--accent)" }}>Ziua 1:</strong> {t("adoptDay1")}
@@ -428,7 +442,10 @@ function OnboardingPage() {
               borderLeft: "4px solid var(--accent)",
             }}
           >
-            <strong>💡</strong> {t("adoptTip")}
+            <div style={{ display: "flex", alignItems: "center", gap: "6px" }}>
+              <Icon name="lightbulb" size={16} />
+              <span>{t("adoptTip")}</span>
+            </div>
           </div>
 
           <p style={{ fontSize: "14px", color: "var(--text-muted)", margin: "16px 0 12px", fontWeight: 600 }}>
@@ -436,28 +453,28 @@ function OnboardingPage() {
           </p>
           <div className="adopt-sources">
             <div className="source-item">
-              <div className="source-icon">👨‍👩‍👧</div>
+              <div className="source-icon"><Icon name="users" size={20} /></div>
               <div>
                 <div className="source-name">{t("adoptFriends")}</div>
                 <div className="source-desc">{t("adoptFriendsDesc")}</div>
               </div>
             </div>
             <div className="source-item">
-              <div className="source-icon">🏪</div>
+              <div className="source-icon"><Icon name="store" size={20} /></div>
               <div>
                 <div className="source-name">{t("adoptBakery")}</div>
                 <div className="source-desc">{t("adoptBakeryDesc")}</div>
               </div>
             </div>
             <div className="source-item">
-              <div className="source-icon">📱</div>
+              <div className="source-icon"><Icon name="phone" size={20} /></div>
               <div>
                 <div className="source-name">{t("adoptGroups")}</div>
                 <div className="source-desc">{t("adoptGroupsDesc")}</div>
               </div>
             </div>
             <div className="source-item">
-              <div className="source-icon">🛒</div>
+              <div className="source-icon"><Icon name="cart" size={20} /></div>
               <div>
                 <div className="source-name">{t("adoptShop")}</div>
                 <div className="source-desc">{t("adoptShopDesc")}</div>
@@ -503,7 +520,7 @@ function OnboardingPage() {
             }}
             data-lang={lang.code}
           >
-            <span className="lang-flag">{lang.flag}</span>
+            <span className="lang-flag">{lang.label}</span>
             <span className="lang-name">{lang.name}</span>
           </button>
         ))}
@@ -513,5 +530,3 @@ function OnboardingPage() {
 }
 
 export default OnboardingPage;
-
-

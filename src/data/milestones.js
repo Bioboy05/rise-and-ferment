@@ -8,7 +8,7 @@
  * Each milestone has:
  * - id: unique string identifier (used in store and i18n)
  * - order: numeric sort order
- * - emoji: displayed in timeline UI
+ * - iconName: SVG icon name from Icon.jsx
  * - titleKey / descKey / taskKey / tipKey: i18n keys
  * - criteria: metadata describing what needs to happen (for reference/display)
  * - typicalDays: human-readable typical timeline (not enforced)
@@ -18,7 +18,7 @@ export const MILESTONES = [
     {
         id: "seed-activation",
         order: 1,
-        emoji: "🌱",
+        iconName: "seedling",
         titleKey: "milestoneSeedTitle",
         descKey: "milestoneSeedDesc",
         taskKey: "milestoneSeedTask",
@@ -29,7 +29,7 @@ export const MILESTONES = [
     {
         id: "visible-expansion",
         order: 2,
-        emoji: "📈",
+        iconName: "trending-up",
         titleKey: "milestoneExpansionTitle",
         descKey: "milestoneExpansionDesc",
         taskKey: "milestoneExpansionTask",
@@ -40,7 +40,7 @@ export const MILESTONES = [
     {
         id: "strengthening",
         order: 3,
-        emoji: "💪",
+        iconName: "muscle",
         titleKey: "milestoneStrengthTitle",
         descKey: "milestoneStrengthDesc",
         taskKey: "milestoneStrengthTask",
@@ -51,7 +51,7 @@ export const MILESTONES = [
     {
         id: "bake-ready",
         order: 4,
-        emoji: "🍞",
+        iconName: "loaf",
         titleKey: "milestoneBakeReadyTitle",
         descKey: "milestoneBakeReadyDesc",
         taskKey: "milestoneBakeReadyTask",

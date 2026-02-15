@@ -1,5 +1,6 @@
 import { useTranslation } from "react-i18next";
 import Modal from "../common/Modal";
+import Icon from "../common/Icon";
 
 function RecipeModal({ recipe, onClose }) {
   const { t } = useTranslation();
@@ -10,8 +11,14 @@ function RecipeModal({ recipe, onClose }) {
   return (
     <Modal onClose={onClose} title={t(recipe.titleKey)}>
       <div className="recipe-modal-meta">
-        <span>⏱️ {timeLabel}</span>
-        <span>📊 {difficultyLabel}</span>
+        <span>
+          <Icon name="clock" size={14} style={{ display: "inline", verticalAlign: "middle", marginRight: "4px" }} />
+          {timeLabel}
+        </span>
+        <span>
+          <Icon name="trending-up" size={14} style={{ display: "inline", verticalAlign: "middle", marginRight: "4px" }} />
+          {difficultyLabel}
+        </span>
       </div>
 
       <div className="recipe-modal-intro">{t(recipe.descKey)}</div>

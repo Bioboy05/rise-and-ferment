@@ -3,7 +3,7 @@
  *
  * Each milestone has:
  * - id: unique identifier (used as localStorage key for one-time display)
- * - emoji: displayed in the celebration overlay
+ * - iconName: SVG icon name from Icon.jsx
  * - titleKey / descKey: i18n keys for the celebration text
  * - condition: function that checks if milestone is reached
  */
@@ -12,7 +12,7 @@ const celebrations = [
   // Milestone-based celebrations
   {
     id: "milestone-seed",
-    emoji: "🌱",
+    iconName: "seedling",
     titleKey: "celebrateSeedTitle",
     descKey: "celebrateSeedDesc",
     condition: (starter) =>
@@ -20,7 +20,7 @@ const celebrations = [
   },
   {
     id: "milestone-expansion",
-    emoji: "📈",
+    iconName: "trending-up",
     titleKey: "celebrateExpansionTitle",
     descKey: "celebrateExpansionDesc",
     condition: (starter) =>
@@ -28,7 +28,7 @@ const celebrations = [
   },
   {
     id: "milestone-strength",
-    emoji: "💪",
+    iconName: "muscle",
     titleKey: "celebrateStrengthTitle",
     descKey: "celebrateStrengthDesc",
     condition: (starter) =>
@@ -36,7 +36,7 @@ const celebrations = [
   },
   {
     id: "milestone-bake-ready",
-    emoji: "🍞",
+    iconName: "loaf",
     titleKey: "celebrateBakeReadyTitle",
     descKey: "celebrateBakeReadyDesc",
     condition: (starter) =>
@@ -45,14 +45,14 @@ const celebrations = [
   // Streak-based celebrations (unchanged)
   {
     id: "streak7",
-    emoji: "💕",
+    iconName: "fire",
     titleKey: "celebrateStreak7Title",
     descKey: "celebrateStreak7Desc",
     condition: (_starter, streak) => streak >= 7,
   },
   {
     id: "streak30",
-    emoji: "👑",
+    iconName: "star-filled",
     titleKey: "celebrateStreak30Title",
     descKey: "celebrateStreak30Desc",
     condition: (_starter, streak) => streak >= 30,

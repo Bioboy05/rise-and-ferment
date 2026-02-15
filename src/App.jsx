@@ -5,6 +5,7 @@ import useSettingsStore from "./store/useSettingsStore";
 import useStreak from "./hooks/useStreak";
 import useActiveStarter from "./hooks/useActiveStarter";
 import Header from "./components/layout/Header";
+import Icon from "./components/common/Icon";
 import Navigation from "./components/layout/Navigation";
 import HomePage from "./pages/HomePage";
 import HistoryPage from "./pages/HistoryPage";
@@ -200,7 +201,7 @@ function App() {
         {celebration && (
           <div className="celebration-content">
             <div className="celebration-emoji" id="celebration-emoji">
-              {celebration.emoji}
+              <Icon name={celebration.iconName} size={48} />
             </div>
             <div className="celebration-title" id="celebration-title">
               {t(celebration.titleKey)}
@@ -216,7 +217,7 @@ function App() {
       </div>
 
       <p className="desktop-info">
-        {"\u{1F4F1}"} Rise &amp; Ferment v3.0 - <span>{t("desktopInfo")}</span>
+        <Icon name="phone" size={16} style={{ display: "inline", verticalAlign: "middle", marginRight: "4px" }} /> Rise &amp; Ferment v3.0 - <span>{t("desktopInfo")}</span>
       </p>
       <div className="phone-frame" style={{ color: "var(--text-primary)" }}>
         <div className="phone-notch" />

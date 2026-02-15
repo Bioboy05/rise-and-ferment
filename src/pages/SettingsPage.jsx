@@ -6,6 +6,7 @@ import useActiveStarter from "../hooks/useActiveStarter";
 import { exportData, importData } from "../utils/exportHelpers";
 import { normalizeStarter } from "../utils/starterHelpers";
 import { sanitizeSettings } from "../utils/settingsSanitizer";
+import Icon from "../components/common/Icon";
 
 function SettingsPage() {
   const { t, i18n } = useTranslation();
@@ -101,7 +102,10 @@ function SettingsPage() {
   return (
     <div className="section" style={{ paddingTop: "10px" }}>
       <div className="settings-section">
-        <div className="settings-section-title">📝 <span>{t("personalNotes")}</span></div>
+        <div className="settings-section-title">
+          <Icon name="note" size={16} style={{ display: "inline", verticalAlign: "middle", marginRight: "6px" }} />
+          <span>{t("personalNotes")}</span>
+        </div>
         <div className="settings-card">
           <textarea
             className="notes-textarea"
@@ -113,7 +117,10 @@ function SettingsPage() {
       </div>
 
       <div className="settings-section">
-        <div className="settings-section-title">🫙 <span>{t("myStarter")}</span></div>
+        <div className="settings-section-title">
+          <Icon name="jar" size={16} style={{ display: "inline", verticalAlign: "middle", marginRight: "6px" }} />
+          <span>{t("myStarter")}</span>
+        </div>
         <div className="settings-card">
           <div className="settings-row">
             <div>
@@ -145,7 +152,10 @@ function SettingsPage() {
       </div>
 
       <div className="settings-section">
-        <div className="settings-section-title">🌟 <span>{t("beginnerMode")}</span></div>
+        <div className="settings-section-title">
+          <Icon name="star" size={16} style={{ display: "inline", verticalAlign: "middle", marginRight: "6px" }} />
+          <span>{t("beginnerMode")}</span>
+        </div>
         <div className="settings-card">
           <div className="settings-row">
             <div>
@@ -165,7 +175,10 @@ function SettingsPage() {
       </div>
 
       <div className="settings-section">
-        <div className="settings-section-title">🎨 <span>{t("appearance")}</span></div>
+        <div className="settings-section-title">
+          <Icon name={theme === "dark" ? "moon" : "sun"} size={16} style={{ display: "inline", verticalAlign: "middle", marginRight: "6px" }} />
+          <span>{t("appearance")}</span>
+        </div>
         <div className="settings-card">
           <div className="settings-row">
             <div>
@@ -192,19 +205,22 @@ function SettingsPage() {
               value={language}
               onChange={(e) => handleLanguageChange(e.target.value)}
             >
-              <option value="ro">🇷🇴 {t("languageRo")}</option>
-              <option value="en">🇬🇧 {t("languageEn")}</option>
-              <option value="de">🇩🇪 {t("languageDe")}</option>
-              <option value="fr">🇫🇷 {t("languageFr")}</option>
-              <option value="es">🇪🇸 {t("languageEs")}</option>
-              <option value="it">🇮🇹 {t("languageIt")}</option>
+              <option value="ro">{t("languageRo")}</option>
+              <option value="en">{t("languageEn")}</option>
+              <option value="de">{t("languageDe")}</option>
+              <option value="fr">{t("languageFr")}</option>
+              <option value="es">{t("languageEs")}</option>
+              <option value="it">{t("languageIt")}</option>
             </select>
           </div>
         </div>
       </div>
 
       <div className="settings-section">
-        <div className="settings-section-title">🔔 <span>{t("notifications")}</span></div>
+        <div className="settings-section-title">
+          <Icon name="alert" size={16} style={{ display: "inline", verticalAlign: "middle", marginRight: "6px" }} />
+          <span>{t("notifications")}</span>
+        </div>
         <div className="settings-card">
           <div className="settings-row">
             <div>
@@ -238,7 +254,10 @@ function SettingsPage() {
       </div>
 
       <div className="settings-section">
-        <div className="settings-section-title">📏 <span>{t("units")}</span></div>
+        <div className="settings-section-title">
+          <Icon name="scale" size={16} style={{ display: "inline", verticalAlign: "middle", marginRight: "6px" }} />
+          <span>{t("units")}</span>
+        </div>
         <div className="settings-card">
           <div className="settings-row">
             <div>
@@ -270,18 +289,21 @@ function SettingsPage() {
       </div>
 
       <div className="settings-section">
-        <div className="settings-section-title">💾 <span>{t("backupTitle")}</span></div>
+        <div className="settings-section-title">
+          <Icon name="download" size={16} style={{ display: "inline", verticalAlign: "middle", marginRight: "6px" }} />
+          <span>{t("backupTitle")}</span>
+        </div>
         <div className="settings-card">
           <div className="settings-row" style={{ flexDirection: "column", gap: "12px" }}>
             <button className="backup-btn export" type="button" onClick={handleExport}>
-              <span>📤</span> <span>{t("exportBtn")}</span>
+              <Icon name="upload" size={16} /> <span>{t("exportBtn")}</span>
             </button>
             <button
               className="backup-btn import"
               type="button"
               onClick={() => fileInputRef.current?.click()}
             >
-              <span>📥</span> <span>{t("importBtn")}</span>
+              <Icon name="download" size={16} /> <span>{t("importBtn")}</span>
             </button>
             <input
               ref={fileInputRef}
@@ -318,7 +340,7 @@ function SettingsPage() {
           Rise &amp; Ferment
         </p>
         <p style={{ fontSize: "12px", color: "var(--text-muted)" }}>
-          v3.0 • <span>{t("madeWith")}</span>
+          v3.0 &bull; <span>{t("madeWith")}</span>
         </p>
       </div>
     </div>

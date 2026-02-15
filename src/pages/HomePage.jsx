@@ -6,6 +6,7 @@ import useStreak from "../hooks/useStreak";
 import useActiveStarter from "../hooks/useActiveStarter";
 import useStarterStatus from "../hooks/useStarterStatus";
 import FeedingModal from "../components/feeding/FeedingModal";
+import Icon from "../components/common/Icon";
 import { MILESTONES, getMilestoneById } from "../data/milestones";
 import { getDailyQuote, getStreakQuote } from "../data/dailyQuotes";
 import troubleshooting from "../data/troubleshooting";
@@ -98,7 +99,8 @@ function HomePage() {
             <WheatDecoration side="right" />
             <JarIllustration />
             <div className="status-main">
-              {currentMilestone.emoji} {t(currentMilestone.titleKey)}
+              <Icon name={currentMilestone.iconName} size={20} className="status-icon" />
+              {" "}{t(currentMilestone.titleKey)}
             </div>
             <div className="status-sub">
               {t(currentMilestone.descKey)}
@@ -135,9 +137,15 @@ function HomePage() {
                     aria-label={t(milestone.titleKey)}
                     title={t(milestone.titleKey)}
                   >
-                    <span className="milestone-emoji">{milestone.emoji}</span>
+                    <span className="milestone-emoji">
+                      <Icon name={milestone.iconName} size={18} />
+                    </span>
                     <span className="milestone-step-label">{t(milestone.titleKey)}</span>
-                    {isCompleted && <span className="milestone-check">✓</span>}
+                    {isCompleted && (
+                      <span className="milestone-check">
+                        <Icon name="check" size={12} />
+                      </span>
+                    )}
                   </button>
                 );
               })}
@@ -147,8 +155,12 @@ function HomePage() {
             </div>
             {isPreview && (
               <div className="preview-indicator">
-                <span>{t("milestonePreview")}</span>
+                <span>
+                  <Icon name="eye" size={14} style={{ display: "inline", verticalAlign: "middle", marginRight: "4px" }} />
+                  {t("milestonePreview")}
+                </span>
                 <button type="button" className="back-to-current" onClick={backToCurrentMilestone}>
+                  <Icon name="arrow-left" size={14} style={{ display: "inline", verticalAlign: "middle", marginRight: "4px" }} />
                   {t("milestoneBackToCurrent")}
                 </button>
               </div>
@@ -157,12 +169,16 @@ function HomePage() {
 
           {/* Milestone Task Card */}
           <div className="task-card">
-            <div className="task-title">📋 {t("todayTask")}</div>
+            <div className="task-title">
+              <Icon name="clipboard" size={16} className="task-icon" />
+              {" "}{t("todayTask")}
+            </div>
             <div className="task-content">
               {t(currentMilestone.taskKey)}
             </div>
             <div className="task-content" style={{ marginTop: "8px", opacity: 0.8, fontStyle: "italic" }}>
-              💡 {t(currentMilestone.tipKey)}
+              <Icon name="lightbulb" size={14} className="task-icon" />
+              {" "}{t(currentMilestone.tipKey)}
             </div>
             {!isPreview && (
               <button
@@ -171,12 +187,16 @@ function HomePage() {
                 onClick={handleMilestoneComplete}
                 disabled={isMilestoneAlreadyDone}
               >
-                {isMilestoneAlreadyDone ? t("doneForToday") : t("milestoneCompleteBtn")}
+                {isMilestoneAlreadyDone ? (
+                  <><Icon name="check" size={16} className="task-icon" /> {t("doneForToday")}</>
+                ) : (
+                  t("milestoneCompleteBtn")
+                )}
               </button>
             )}
           </div>
 
-          {/* Feed button — always available in guided mode */}
+          {/* Feed button */}
           <button
             type="button"
             className={`main-btn ${isUrgent ? "urgent" : ""}`}
@@ -198,7 +218,11 @@ function HomePage() {
               <div className="stat-label">{t("totalFeedings")}</div>
             </div>
             <div className="stat-card">
-              <div className="stat-value">{streak > 0 ? `${streak} 🔥` : "0"}</div>
+              <div className="stat-value">
+                {streak > 0 ? (
+                  <><span>{streak}</span> <Icon name="fire" size={16} className="streak-icon" /></>
+                ) : "0"}
+              </div>
               <div className="stat-label">{t("streak")}</div>
             </div>
           </div>
@@ -214,7 +238,7 @@ function HomePage() {
               <div className="tip-box warning">{t(troubleshooting.introKey)}</div>
 
               <div className="tip-box tip-box-normal">
-                <strong>✅ {t("whatsNormal")}</strong>
+                <strong>{t("whatsNormal")}</strong>
                 <div className="trouble-list">
                   {troubleshooting.normal.map((item) => (
                     <div key={item.id} className="trouble-item">
@@ -225,13 +249,13 @@ function HomePage() {
               </div>
 
               <div className="tip-box">
-                <strong>🔧 {t("checkLabel")}</strong>
+                <strong>{t("checkLabel")}</strong>
                 <div className="trouble-list">
                   {troubleshooting.checks.map((item) => (
                     <div key={item.id} className="trouble-item">
-                      <span className="trouble-emoji">{item.icon}</span>
+                      <Icon name={item.iconName} size={16} className="trouble-icon" />
                       <span className="trouble-title">{t(item.titleKey)}</span>
-                      <span className="trouble-sep"> - </span>
+                      <span className="trouble-sep"> — </span>
                       <span className="trouble-desc">{t(item.descKey)}</span>
                     </div>
                   ))}
@@ -239,11 +263,11 @@ function HomePage() {
               </div>
 
               <div className="tip-box tip-box-warning">
-                <strong>🆘 {t("commonIssues")}</strong>
+                <strong>{t("commonIssues")}</strong>
                 <div className="trouble-list">
                   {troubleshooting.common.map((item) => (
                     <div key={item.id} className="trouble-item">
-                      <span className="trouble-emoji">{item.icon}</span>
+                      <Icon name={item.iconName} size={16} className="trouble-icon" />
                       <span className="trouble-title">{t(item.titleKey)}</span>
                       <div className="trouble-sub">{t(item.descKey)}</div>
                     </div>
@@ -252,11 +276,11 @@ function HomePage() {
               </div>
 
               <div className="tip-box tip-box-danger">
-                <strong>⚠️ {t("seriousIssues")}</strong>
+                <strong>{t("seriousIssues")}</strong>
                 <div className="trouble-list">
                   {troubleshooting.serious.map((item) => (
                     <div key={item.id} className="trouble-item">
-                      <span className="trouble-emoji">{item.icon}</span>
+                      <Icon name={item.iconName} size={16} className="trouble-icon" />
                       <span className="trouble-title">{t(item.titleKey)}</span>
                       <div className="trouble-sub">{t(item.descKey)}</div>
                     </div>
@@ -265,7 +289,6 @@ function HomePage() {
               </div>
 
               <div className="tip-box success trouble-encourage">
-                <span className="trouble-encourage-emoji">💪</span>
                 <span>{t("encourageAfterTrouble")}</span>
               </div>
 
@@ -284,7 +307,9 @@ function HomePage() {
           {isUrgent && (
             <div className="urgent-alert">
               <div className="urgent-alert-content">
-                <span className="urgent-icon">🚨</span>
+                <span className="urgent-icon">
+                  <Icon name="alert" size={20} />
+                </span>
                 <div className="urgent-text">
                   <div className="urgent-title">{t("urgentTitle")}</div>
                   <div className="urgent-subtitle">
@@ -337,13 +362,18 @@ function HomePage() {
               <div className="stat-label">{t("totalFeedings")}</div>
             </div>
             <div className="stat-card">
-              <div className="stat-value">{streak > 0 ? `${streak} 🔥` : "0"}</div>
+              <div className="stat-value">
+                {streak > 0 ? (
+                  <><span>{streak}</span> <Icon name="fire" size={16} className="streak-icon" /></>
+                ) : "0"}
+              </div>
               <div className="stat-label">{t("streak")}</div>
             </div>
           </div>
 
-          <div className="info-card" style={{ display: "flex" }}>
-            <span className="info-label">🌡️ {t("tempIdeal")}</span>
+          <div className="info-card" style={{ display: "flex", alignItems: "center", gap: "8px" }}>
+            <Icon name="thermometer" size={16} />
+            <span className="info-label">{t("tempIdeal")}</span>
           </div>
 
           {taskFeedModal && <FeedingModal onClose={() => setTaskFeedModal(false)} />}
