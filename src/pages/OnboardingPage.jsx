@@ -229,7 +229,7 @@ function OnboardingPage() {
               <div className="option-desc">{t("pathCreateDesc")}</div>
             </button>
             <button type="button" className="option-card" onClick={() => handleSelectPath("adopt")}>
-              <div className="option-icon"><Icon name="handshake" size={28} /></div>
+              <div className="option-icon"><Icon name="gift" size={28} /></div>
               <div className="option-title">{t("pathAdopt")}</div>
               <div className="option-desc">{t("pathAdoptDesc")}</div>
             </button>
