@@ -314,7 +314,7 @@ function OnboardingPage() {
             disabled={!existingHealth}
             onClick={goToName}
           >
-            {t("continueBtn")}
+            {t("continueSetup")}
           </button>
           <button type="button" className="btn btn-secondary" onClick={goBackToStart}>
             {t("goBack")}
