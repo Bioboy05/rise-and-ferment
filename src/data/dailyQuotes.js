@@ -36,7 +36,7 @@ const dailyQuotes = {
 
   action: {
     feedDone: "motivationalFeedDone",
-    floatPass: "motivationalFloatPass",
+    starterReady: "motivationalStarterReady",
     afterTrouble: "encourageAfterTrouble",
   },
 };

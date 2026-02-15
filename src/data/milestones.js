@@ -56,7 +56,15 @@ export const MILESTONES = [
         descKey: "milestoneBakeReadyDesc",
         taskKey: "milestoneBakeReadyTask",
         tipKey: "milestoneBakeReadyTip",
-        criteria: { floatTestPassed: true },
+        criteria: {
+            readinessSignals: [
+                "volumeDoubling",
+                "visibleBubbles",
+                "airyTexture",
+                "pleasantAroma",
+                "predictableTiming",
+            ],
+        },
         typicalDays: "7–14+",
     },
 ];

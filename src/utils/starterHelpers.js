@@ -193,7 +193,7 @@ export function normalizeStarter(s) {
  *
  * @param {Object} starter - Current starter state
  * @param {string} milestoneId - The milestone being completed
- * @param {string} [evidence] - Optional evidence string (e.g., "float test passed")
+ * @param {string} [evidence] - Optional evidence string (e.g., "readiness signals confirmed")
  * @returns {Object} Updated starter state
  */
 export function advanceMilestone(starter, milestoneId, evidence = null) {
