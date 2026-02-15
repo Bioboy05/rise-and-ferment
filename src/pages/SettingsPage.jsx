@@ -7,6 +7,7 @@ import { exportData, importData } from "../utils/exportHelpers";
 import { normalizeStarter } from "../utils/starterHelpers";
 import { sanitizeSettings } from "../utils/settingsSanitizer";
 import Icon from "../components/common/Icon";
+import { LANGUAGES } from "../constants/languages";
 
 function SettingsPage() {
   const { t, i18n } = useTranslation();
@@ -143,9 +144,9 @@ function SettingsPage() {
               value={starter.hydration || "100"}
               onChange={(e) => updateStarter(starter.id, { hydration: e.target.value })}
             >
-              <option value="100">100% (1:1:1)</option>
-              <option value="80">80%</option>
-              <option value="60">60% ({t("hydration60")})</option>
+              <option value="100">{t("hydration100")}</option>
+              <option value="80">{t("hydration80")}</option>
+              <option value="60">{t("hydration60")}</option>
             </select>
           </div>
         </div>
@@ -205,12 +206,11 @@ function SettingsPage() {
               value={language}
               onChange={(e) => handleLanguageChange(e.target.value)}
             >
-              <option value="ro">🇷🇴 RO</option>
-              <option value="en">🇬🇧 EN</option>
-              <option value="de">🇩🇪 DE</option>
-              <option value="fr">🇫🇷 FR</option>
-              <option value="es">🇪🇸 ES</option>
-              <option value="it">🇮🇹 IT</option>
+              {LANGUAGES.map((lang) => (
+                <option key={lang.code} value={lang.code}>
+                  {lang.flag} {lang.code.toUpperCase()}
+                </option>
+              ))}
             </select>
           </div>
         </div>

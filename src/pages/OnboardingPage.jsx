@@ -5,15 +5,7 @@ import useStarterStore from "../store/useStarterStore";
 import { MAX_NAME_LENGTH, sanitizeString } from "../constants/validation";
 import { FIRST_MILESTONE_ID } from "../data/milestones";
 import Icon from "../components/common/Icon";
-
-const LANGUAGES = [
-  { code: "ro", flag: "🇷🇴" },
-  { code: "en", flag: "🇬🇧" },
-  { code: "de", flag: "🇩🇪" },
-  { code: "fr", flag: "🇫🇷" },
-  { code: "es", flag: "🇪🇸" },
-  { code: "it", flag: "🇮🇹" },
-];
+import { LANGUAGES } from "../constants/languages";
 
 function OnboardingPage() {
   const { t, i18n } = useTranslation();
@@ -420,13 +412,13 @@ function OnboardingPage() {
             </div>
             <div style={{ marginTop: "10px", fontSize: "13px", lineHeight: 1.9, color: "var(--text-secondary)" }}>
               <div>
-                <strong style={{ color: "var(--accent)" }}>Ziua 1:</strong> {t("adoptDay1")}
+                <strong style={{ color: "var(--accent)" }}>{t("dayLabel")} 1:</strong> {t("adoptDay1")}
               </div>
               <div>
-                <strong style={{ color: "var(--accent)" }}>Ziua 2:</strong> {t("adoptDay2")}
+                <strong style={{ color: "var(--accent)" }}>{t("dayLabel")} 2:</strong> {t("adoptDay2")}
               </div>
               <div>
-                <strong style={{ color: "var(--accent)" }}>Ziua 3:</strong> {t("adoptDay3")}
+                <strong style={{ color: "var(--accent)" }}>{t("dayLabel")} 3:</strong> {t("adoptDay3")}
               </div>
             </div>
           </div>
@@ -498,7 +490,7 @@ function OnboardingPage() {
           <input
             type="text"
             className="onboarding-input"
-            placeholder="ex: Pufi, Maya, Dora..."
+            placeholder={t("starterNamePlaceholder")}
             value={name}
             onChange={(e) => setName(e.target.value)}
           />

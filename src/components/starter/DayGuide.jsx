@@ -192,7 +192,7 @@ function DayGuide() {
         <button
           onClick={() => handlePreview(displayDay + 1)}
           disabled={displayDay >= 14}
-          aria-label="Next day"
+          aria-label={t("nextDay")}
           style={{
             width: "36px",
             height: "36px",

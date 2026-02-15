@@ -18,7 +18,7 @@ const WINDOW = 5;
 /** Numeric scores for each observation level (higher = healthier). */
 const RISE_SCORES = { none: 0, slight: 1, doubled: 3, tripled: 4 };
 const BUBBLE_SCORES = { none: 0, few: 1, many: 3, honeycomb: 4 };
-const AROMA_SCORES = { none: 0, floury: 1, mild: 2, tangy: 3, sour: 2, unpleasant: -1 };
+const AROMA_SCORES = { none: 0, floury: 1, mild: 2, tangy: 3, sour: 1, unpleasant: -1 };
 
 /**
  * Score a single feeding observation (0-12 max, -1 possible for unpleasant).
@@ -87,7 +87,8 @@ export function getStarterInsights(history) {
         tips.push("tipOverFermented");
     }
 
-    // Determine overall level
+    // Determine overall level — young starters get gentler thresholds
+    const isYoungStarter = history.length < WINDOW;
     let level;
     let insightKey;
 
@@ -98,6 +99,10 @@ export function getStarterInsights(history) {
         level = "growing";
         insightKey = "insightGrowing";
         if (tips.length === 0) tips.push("tipKeepGoing");
+    } else if (isYoungStarter) {
+        level = "early";
+        insightKey = "insightEarlyStage";
+        if (tips.length === 0) tips.push("tipEarlyDaysNormal");
     } else if (avgScore >= 0) {
         level = "struggling";
         insightKey = "insightStruggling";
