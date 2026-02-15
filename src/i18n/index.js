@@ -26,6 +26,8 @@ i18n.use(initReactI18next).init({
   supportedLngs: SUPPORTED_LANGUAGES,
   interpolation: {
     escapeValue: false,
+    prefix: '{',
+    suffix: '}',
   },
   returnNull: false,
   returnEmptyString: false,
