@@ -7,12 +7,12 @@ import { FIRST_MILESTONE_ID } from "../data/milestones";
 import Icon from "../components/common/Icon";
 
 const LANGUAGES = [
-  { code: "ro", label: "🇷🇴", name: "RO" },
-  { code: "en", label: "🇬🇧", name: "EN" },
-  { code: "de", label: "🇩🇪", name: "DE" },
-  { code: "fr", label: "🇫🇷", name: "FR" },
-  { code: "es", label: "🇪🇸", name: "ES" },
-  { code: "it", label: "🇮🇹", name: "IT" },
+  { code: "ro", flag: "🇷🇴" },
+  { code: "en", flag: "🇬🇧" },
+  { code: "de", flag: "🇩🇪" },
+  { code: "fr", flag: "🇫🇷" },
+  { code: "es", flag: "🇪🇸" },
+  { code: "it", flag: "🇮🇹" },
 ];
 
 function OnboardingPage() {
@@ -520,8 +520,8 @@ function OnboardingPage() {
             }}
             data-lang={lang.code}
           >
-            <span className="lang-flag">{lang.label}</span>
-            <span className="lang-name">{lang.name}</span>
+            <span className="lang-flag">{lang.flag}</span>
+            <span className="lang-name">{lang.code.toUpperCase()}</span>
           </button>
         ))}
       </div>
