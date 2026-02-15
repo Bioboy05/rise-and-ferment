@@ -205,12 +205,12 @@ function SettingsPage() {
               value={language}
               onChange={(e) => handleLanguageChange(e.target.value)}
             >
-              <option value="ro">{t("languageRo")}</option>
-              <option value="en">{t("languageEn")}</option>
-              <option value="de">{t("languageDe")}</option>
-              <option value="fr">{t("languageFr")}</option>
-              <option value="es">{t("languageEs")}</option>
-              <option value="it">{t("languageIt")}</option>
+              <option value="ro">🇷🇴 RO</option>
+              <option value="en">🇬🇧 EN</option>
+              <option value="de">🇩🇪 DE</option>
+              <option value="fr">🇫🇷 FR</option>
+              <option value="es">🇪🇸 ES</option>
+              <option value="it">🇮🇹 IT</option>
             </select>
           </div>
         </div>

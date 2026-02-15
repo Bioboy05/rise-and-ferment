@@ -7,12 +7,12 @@ import { FIRST_MILESTONE_ID } from "../data/milestones";
 import Icon from "../components/common/Icon";
 
 const LANGUAGES = [
-  { code: "ro", label: "RO", name: "Română" },
-  { code: "en", label: "EN", name: "English" },
-  { code: "de", label: "DE", name: "Deutsch" },
-  { code: "fr", label: "FR", name: "Français" },
-  { code: "es", label: "ES", name: "Español" },
-  { code: "it", label: "IT", name: "Italiano" },
+  { code: "ro", label: "🇷🇴", name: "RO" },
+  { code: "en", label: "🇬🇧", name: "EN" },
+  { code: "de", label: "🇩🇪", name: "DE" },
+  { code: "fr", label: "🇫🇷", name: "FR" },
+  { code: "es", label: "🇪🇸", name: "ES" },
+  { code: "it", label: "🇮🇹", name: "IT" },
 ];
 
 function OnboardingPage() {
