@@ -1,8 +1,9 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useMemo } from "react";
 import { useTranslation } from "react-i18next";
 import useStarterStore from "../../store/useStarterStore";
 import useActiveStarter from "../../hooks/useActiveStarter";
 import { getTimeSince } from "../../utils/dateHelpers";
+import { getStarterInsights } from "../../utils/feedingInsights";
 import FeedingModal from "./FeedingModal";
 import Icon from "../common/Icon";
 
@@ -25,6 +26,19 @@ function FeedingCard() {
     ? (now - starter.lastFed) / (1000 * 60 * 60)
     : null;
   const isUrgent = hoursSinceLastFed !== null && hoursSinceLastFed > 24;
+
+  const insights = useMemo(
+    () => getStarterInsights(starter.history),
+    [starter.history]
+  );
+
+  const insightColors = {
+    thriving: "var(--success)",
+    growing: "var(--accent)",
+    struggling: "var(--warning)",
+    early: "var(--text-muted)",
+    unknown: "var(--text-muted)",
+  };
 
   const handleModalClose = () => {
     setModalOpen(false);
@@ -139,6 +153,40 @@ function FeedingCard() {
         <div className={`status-sub ${isUrgent ? "urgent" : "good"}`}>
           {isUrgent ? t("urgentTitle") : t("lastFed")}
         </div>
+
+        {/* Starter Health Insight */}
+        {insights.insightKey && (
+          <div
+            style={{
+              marginTop: "12px",
+              padding: "10px 14px",
+              borderRadius: "12px",
+              background: "var(--accent-light)",
+              borderLeft: `3px solid ${insightColors[insights.level] || "var(--text-muted)"}`,
+              fontSize: "13px",
+              color: "var(--text-secondary)",
+              lineHeight: "1.4",
+            }}
+          >
+            <div style={{ fontWeight: "600", marginBottom: insights.tips.length > 0 ? "6px" : 0 }}>
+              {t(insights.insightKey)}
+            </div>
+            {insights.tips.slice(0, 2).map((tipKey) => (
+              <div
+                key={tipKey}
+                style={{
+                  fontSize: "12px",
+                  color: "var(--text-muted)",
+                  paddingLeft: "8px",
+                  borderLeft: "2px solid var(--border)",
+                  marginTop: "4px",
+                }}
+              >
+                {t(tipKey)}
+              </div>
+            ))}
+          </div>
+        )}
       </div>
 
       <button

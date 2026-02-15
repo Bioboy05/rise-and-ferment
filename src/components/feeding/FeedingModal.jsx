@@ -19,6 +19,9 @@ function FeedingModal({ onClose }) {
   const [useBran, setUseBran] = useState(false);
   const [temperature, setTemperature] = useState("");
   const [note, setNote] = useState("");
+  const [riseLevel, setRiseLevel] = useState(null);
+  const [bubbleActivity, setBubbleActivity] = useState(null);
+  const [aroma, setAroma] = useState(null);
 
   const changeAmount = (delta) => {
     setAmount((prev) => Math.max(25, Math.min(200, prev + delta)));
@@ -44,6 +47,9 @@ function FeedingModal({ onClose }) {
       temp: validTemp,
       note: note.trim() || null,
       flourType: starter.flourType || "white",
+      riseLevel,
+      bubbleActivity,
+      aroma,
     };
 
     addFeeding(starter.id, entry);
@@ -350,6 +356,150 @@ function FeedingModal({ onClose }) {
       />
 
       {/* Buttons */}
+
+      {/* --- Observation Section --- */}
+      <div
+        style={{
+          background: "linear-gradient(135deg, var(--bg-secondary) 0%, var(--accent-light) 100%)",
+          borderRadius: "16px",
+          padding: "16px",
+          marginBottom: "16px",
+          border: "1px solid var(--border)",
+        }}
+      >
+        <div
+          style={{
+            display: "flex",
+            alignItems: "center",
+            gap: "8px",
+            marginBottom: "14px",
+          }}
+        >
+          <Icon name="eye" size={18} style={{ color: "var(--accent)" }} />
+          <strong
+            style={{ color: "var(--text-secondary)", fontSize: "14px" }}
+          >
+            {t("observationTitle")}
+          </strong>
+        </div>
+        <p
+          style={{
+            fontSize: "12px",
+            color: "var(--text-muted)",
+            marginBottom: "14px",
+          }}
+        >
+          {t("observationHint")}
+        </p>
+
+        {/* Rise Level */}
+        <div style={{ marginBottom: "12px" }}>
+          <div
+            style={{
+              fontSize: "13px",
+              fontWeight: "600",
+              color: "var(--text-secondary)",
+              marginBottom: "8px",
+            }}
+          >
+            {t("observeRise")}
+          </div>
+          <div style={{ display: "flex", flexWrap: "wrap", gap: "6px" }}>
+            {["none", "slight", "doubled", "tripled"].map((val) => (
+              <button
+                key={val}
+                type="button"
+                onClick={() => setRiseLevel(riseLevel === val ? null : val)}
+                style={{
+                  padding: "6px 12px",
+                  borderRadius: "20px",
+                  border: riseLevel === val ? "2px solid var(--accent)" : "1px solid var(--border)",
+                  background: riseLevel === val ? "var(--accent-light)" : "var(--bg-card)",
+                  color: riseLevel === val ? "var(--accent)" : "var(--text-secondary)",
+                  fontSize: "12px",
+                  fontWeight: riseLevel === val ? "700" : "500",
+                  cursor: "pointer",
+                  transition: "all 0.2s",
+                }}
+              >
+                {t(`rise_${val}`)}
+              </button>
+            ))}
+          </div>
+        </div>
+
+        {/* Bubble Activity */}
+        <div style={{ marginBottom: "12px" }}>
+          <div
+            style={{
+              fontSize: "13px",
+              fontWeight: "600",
+              color: "var(--text-secondary)",
+              marginBottom: "8px",
+            }}
+          >
+            {t("observeBubbles")}
+          </div>
+          <div style={{ display: "flex", flexWrap: "wrap", gap: "6px" }}>
+            {["none", "few", "many", "honeycomb"].map((val) => (
+              <button
+                key={val}
+                type="button"
+                onClick={() => setBubbleActivity(bubbleActivity === val ? null : val)}
+                style={{
+                  padding: "6px 12px",
+                  borderRadius: "20px",
+                  border: bubbleActivity === val ? "2px solid var(--accent)" : "1px solid var(--border)",
+                  background: bubbleActivity === val ? "var(--accent-light)" : "var(--bg-card)",
+                  color: bubbleActivity === val ? "var(--accent)" : "var(--text-secondary)",
+                  fontSize: "12px",
+                  fontWeight: bubbleActivity === val ? "700" : "500",
+                  cursor: "pointer",
+                  transition: "all 0.2s",
+                }}
+              >
+                {t(`bubble_${val}`)}
+              </button>
+            ))}
+          </div>
+        </div>
+
+        {/* Aroma */}
+        <div>
+          <div
+            style={{
+              fontSize: "13px",
+              fontWeight: "600",
+              color: "var(--text-secondary)",
+              marginBottom: "8px",
+            }}
+          >
+            {t("observeAroma")}
+          </div>
+          <div style={{ display: "flex", flexWrap: "wrap", gap: "6px" }}>
+            {["none", "floury", "mild", "tangy", "sour", "unpleasant"].map((val) => (
+              <button
+                key={val}
+                type="button"
+                onClick={() => setAroma(aroma === val ? null : val)}
+                style={{
+                  padding: "6px 12px",
+                  borderRadius: "20px",
+                  border: aroma === val ? "2px solid var(--accent)" : "1px solid var(--border)",
+                  background: aroma === val ? "var(--accent-light)" : "var(--bg-card)",
+                  color: aroma === val ? "var(--accent)" : "var(--text-secondary)",
+                  fontSize: "12px",
+                  fontWeight: aroma === val ? "700" : "500",
+                  cursor: "pointer",
+                  transition: "all 0.2s",
+                }}
+              >
+                {t(`aroma_${val}`)}
+              </button>
+            ))}
+          </div>
+        </div>
+      </div>
       <button
         onClick={handleSave}
         style={{

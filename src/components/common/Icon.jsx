@@ -375,6 +375,7 @@ const icons = {
   ),
 };
 
+
 function Icon({ name, size = 24, className = "", style = {} }) {
   const paths = icons[name];
   if (!paths) return null;

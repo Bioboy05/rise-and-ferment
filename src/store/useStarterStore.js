@@ -2,6 +2,11 @@ import { create } from "zustand";
 import { persist } from "zustand/middleware";
 import { advanceStarterDay, advanceMilestone, normalizeStarter } from "../utils/starterHelpers";
 import {
+  VALID_RISE_LEVELS,
+  VALID_BUBBLE_ACTIVITIES,
+  VALID_AROMAS,
+} from "../utils/feedingInsights";
+import {
   MAX_NAME_LENGTH,
   MAX_NOTE_LENGTH,
   MAX_STARTERS,
@@ -180,6 +185,10 @@ const useStarterStore = create(
               : null,
           note: entry.note ? sanitizeString(String(entry.note), MAX_NOTE_LENGTH) : null,
           flourType: sanitizeString(String(entry.flourType || "white"), 30) || "white",
+          // Observation fields (optional)
+          riseLevel: VALID_RISE_LEVELS.includes(entry.riseLevel) ? entry.riseLevel : null,
+          bubbleActivity: VALID_BUBBLE_ACTIVITIES.includes(entry.bubbleActivity) ? entry.bubbleActivity : null,
+          aroma: VALID_AROMAS.includes(entry.aroma) ? entry.aroma : null,
         };
 
         set((state) => ({
