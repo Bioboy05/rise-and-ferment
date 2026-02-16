@@ -22,6 +22,13 @@
       rel="stylesheet"
     />
     <title>Rise & Ferment</title>
+    <!-- GA4: Replace G-XXXXXXXXXX with your real Measurement ID -->
+    <script>
+      window.GA_ID='G-XXXXXXXXXX';
+      (function(){var c=localStorage.getItem('rf_cookie_consent');if(c!=='accepted')return;
+      var s=document.createElement('script');s.async=true;s.src='https://www.googletagmanager.com/gtag/js?id='+window.GA_ID;document.head.appendChild(s);
+      window.dataLayer=window.dataLayer||[];function g(){dataLayer.push(arguments)}window.gtag=g;g('js',new Date());g('config',window.GA_ID)})();
+    </script>
   </head>
   <body>
     <div id="root"></div>

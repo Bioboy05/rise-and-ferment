@@ -6,6 +6,8 @@
 <meta property="og:title" content="Rise & Ferment — Your Sourdough Journey Starts Here">
 <meta property="og:description" content="Beginner-friendly app + free 7‑day starter guide. Real tips, real science.">
 <title>Rise & Ferment — Your Sourdough Journey Starts Here</title>
+<!-- GA4: Replace G-XXXXXXXXXX with your real Measurement ID from analytics.google.com -->
+<script>window.GA_ID='G-XXXXXXXXXX';function loadGA4(){if(window._ga4Loaded)return;window._ga4Loaded=true;var s=document.createElement('script');s.async=true;s.src='https://www.googletagmanager.com/gtag/js?id='+window.GA_ID;document.head.appendChild(s);window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments)}window.gtag=gtag;gtag('js',new Date());gtag('config',window.GA_ID)}</script>
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@400;600;700&family=Nunito:wght@400;500;600;700;800&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,600&display=swap" rel="stylesheet">
 <style>
@@ -232,6 +234,41 @@ img{max-width:100%;display:block}a{color:inherit;text-decoration:none}button{cur
 @media(max-width:768px){.nav__links{display:none}.nav__ham{display:flex}.nav__links.active{display:flex;flex-direction:column;position:fixed;top:var(--nav-h);left:0;right:0;bottom:0;background:var(--cream);padding:32px;gap:24px;animation:fadeIn .3s ease}[data-theme="dark"] .nav__links.active{background:var(--cream)}.hero{min-height:auto;padding-top:calc(var(--nav-h) + 20px)}.phone{transform:rotate(0deg)}.blog__grid,.bp__grid{grid-template-columns:1fr}.tools__grid{grid-template-columns:1fr}.lead__card{grid-template-columns:1fr;text-align:center}.lead__inc{align-items:center}.lead__form{justify-content:center}.lead__vis{order:-1}.test__grid{grid-template-columns:1fr}.nl__input{min-width:100%}.nl__perks{flex-direction:column;align-items:center}.ft__top{grid-template-columns:1fr;text-align:center}.ft__brand-txt{margin:12px auto 0}.ft__social{justify-content:center}.ft__links{align-items:center}.ft__btm{justify-content:center;text-align:center}.ft__btm-links{justify-content:center}}
 @media(max-width:480px){.hero__acts{flex-direction:column;width:100%}.hero__acts .btn{width:100%;justify-content:center}.hero__fl{display:none}.prob__grid{grid-template-columns:1fr}.starter-card:nth-child(2),.starter-card:nth-child(4),.fmc:nth-child(2),.fmc:nth-child(4){transform:none}.lead__card{padding:28px 20px}}
 @media(max-width:768px){.nav__links.active{z-index:1100;overflow-y:auto;overscroll-behavior:contain;box-shadow:0 24px 46px rgba(93,58,26,.14)}}
+/* COOKIE CONSENT */
+.cc{position:fixed;bottom:0;left:0;right:0;z-index:9999;background:var(--flour);border-top:1px solid rgba(139,90,43,.1);padding:16px 24px;display:flex;align-items:center;justify-content:center;gap:16px;flex-wrap:wrap;font-size:.88rem;color:var(--rye);box-shadow:0 -4px 24px rgba(0,0,0,.08);transform:translateY(100%);transition:transform .4s ease}
+.cc.vis{transform:translateY(0)}
+[data-theme="dark"] .cc{background:rgba(26,22,18,.95);border-color:rgba(212,165,116,.1);box-shadow:0 -4px 24px rgba(0,0,0,.2)}
+.cc__btns{display:flex;gap:8px}
+.cc__btn{padding:8px 20px;border-radius:100px;font-size:.85rem;font-weight:700;cursor:pointer;transition:all .3s}
+.cc__btn--a{background:var(--crust);color:var(--cream)}.cc__btn--a:hover{opacity:.9}
+.cc__btn--d{background:transparent;color:var(--rye);border:1.5px solid rgba(139,90,43,.2)}.cc__btn--d:hover{border-color:var(--crust)}
+/* EXIT POPUP */
+.ep{position:fixed;inset:0;z-index:10000;display:none;align-items:center;justify-content:center;background:rgba(0,0,0,.5);backdrop-filter:blur(4px);animation:fadeIn .3s ease}
+.ep.vis{display:flex}
+.ep__card{background:var(--flour);border-radius:24px;padding:40px 32px;max-width:420px;width:90%;text-align:center;position:relative;box-shadow:0 24px 64px rgba(0,0,0,.2)}
+[data-theme="dark"] .ep__card{background:#1E1A15;border:1px solid rgba(212,165,116,.1)}
+.ep__close{position:absolute;top:16px;right:16px;width:32px;height:32px;border-radius:50%;display:flex;align-items:center;justify-content:center;color:var(--rye);cursor:pointer;transition:all .2s}.ep__close:hover{background:rgba(139,90,43,.1)}
+.ep__emoji{font-size:3rem;margin-bottom:12px}
+.ep__t{font-family:var(--font-display);font-size:1.4rem;font-weight:700;color:var(--crust-deep);margin-bottom:8px}
+.ep__d{font-size:.95rem;color:var(--rye);margin-bottom:20px;line-height:1.6}
+.ep__form{display:flex;gap:10px;flex-wrap:wrap;justify-content:center}
+.ep__input{flex:1;min-width:200px;padding:12px 16px;border-radius:100px;border:1.5px solid rgba(139,90,43,.15);background:var(--cream);color:var(--crumb);font-size:.95rem}
+[data-theme="dark"] .ep__input{background:rgba(26,22,18,.8);border-color:rgba(212,165,116,.15)}
+.ep__btn{padding:12px 24px;border-radius:100px;background:var(--crust);color:var(--cream);font-weight:700;font-size:.95rem;cursor:pointer;transition:all .3s}.ep__btn:hover{opacity:.9}
+/* STICKY CTA */
+.scta{position:fixed;bottom:0;left:0;right:0;z-index:9998;background:var(--flour);border-top:1px solid rgba(139,90,43,.08);padding:12px 20px;display:flex;align-items:center;justify-content:center;gap:12px;flex-wrap:wrap;box-shadow:0 -4px 20px rgba(0,0,0,.06);transform:translateY(100%);transition:transform .4s ease}
+.scta.vis{transform:translateY(0)}
+[data-theme="dark"] .scta{background:rgba(26,22,18,.95);border-color:rgba(212,165,116,.08);box-shadow:0 -4px 20px rgba(0,0,0,.15)}
+.scta__t{font-size:.88rem;font-weight:700;color:var(--crust-deep);white-space:nowrap}
+.scta__form{display:flex;gap:8px}
+.scta__input{padding:8px 14px;border-radius:100px;border:1.5px solid rgba(139,90,43,.15);background:var(--cream);color:var(--crumb);font-size:.85rem;width:200px}
+[data-theme="dark"] .scta__input{background:rgba(26,22,18,.8);border-color:rgba(212,165,116,.15)}
+.scta__btn{padding:8px 18px;border-radius:100px;background:var(--crust);color:var(--cream);font-weight:700;font-size:.85rem;cursor:pointer;transition:all .3s}.scta__btn:hover{opacity:.9}
+.scta__x{padding:4px 8px;color:var(--rye);cursor:pointer;font-size:1.2rem;opacity:.5;transition:opacity .2s}.scta__x:hover{opacity:1}
+@media(max-width:480px){.scta__t{display:none}.scta__input{width:140px}}
+/* TOOLS TIERS */
+.tools__tier{margin-bottom:16px}
+.tools__tier-t{font-family:var(--font-hand);font-size:1.3rem;color:var(--crust);margin-bottom:16px;padding-left:4px}
 </style>
 </head>
 <body>
@@ -258,6 +295,12 @@ img{max-width:100%;display:block}a{color:inherit;text-decoration:none}button{cur
 <symbol id="ico-check" viewBox="0 0 20 20"><polyline points="4,10 8,14 16,6" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></symbol>
 <symbol id="ico-person" viewBox="0 0 32 32"><circle cx="16" cy="10" r="6" fill="currentColor" opacity=".7"/><path d="M6 30C6 22 10 18 16 18C22 18 26 22 26 30" fill="currentColor" opacity=".5"/></symbol>
 <symbol id="ico-plus" viewBox="0 0 48 48"><circle cx="24" cy="24" r="16" fill="none" stroke="#D4A574" stroke-width="2" stroke-dasharray="4 3"/><line x1="24" y1="16" x2="24" y2="32" stroke="#D4A574" stroke-width="2.5" stroke-linecap="round"/><line x1="16" y1="24" x2="32" y2="24" stroke="#D4A574" stroke-width="2.5" stroke-linecap="round"/></symbol>
+<symbol id="ico-mixer" viewBox="0 0 48 48"><rect x="18" y="28" width="12" height="14" rx="3" fill="#D4A574"/><rect x="20" y="22" width="8" height="6" rx="2" fill="#E8D5B7"/><circle cx="24" cy="16" r="8" fill="none" stroke="#8B5A2B" stroke-width="2"/><circle cx="24" cy="16" r="4" fill="#E8A849" opacity=".3"/><rect x="22" y="6" width="4" height="6" rx="2" fill="#8B5A2B"/></symbol>
+<symbol id="ico-premium-dutch" viewBox="0 0 48 48"><ellipse cx="24" cy="36" rx="18" ry="5" fill="#E8A849" opacity=".3"/><rect x="6" y="18" width="36" height="18" rx="6" fill="#E8A849"/><ellipse cx="24" cy="18" rx="18" ry="5" fill="#D4A574"/><path d="M14 14C14 14 18 10 24 10C30 10 34 14 34 14" stroke="#D4A574" stroke-width="2.5" stroke-linecap="round" fill="none"/><circle cx="24" cy="9" r="2.5" fill="#E8A849"/></symbol>
+<symbol id="ico-proofbox" viewBox="0 0 48 48"><rect x="8" y="14" width="32" height="24" rx="4" fill="#F5EBE0" stroke="#D4A574" stroke-width="1.5"/><rect x="12" y="18" width="24" height="16" rx="2" fill="#FFF5E6"/><line x1="16" y1="26" x2="32" y2="26" stroke="#E8A849" stroke-width="1.5" stroke-dasharray="3 2"/><circle cx="36" cy="14" r="3" fill="#6B8F4E"/><text x="35" y="15.5" font-size="4" fill="white" text-anchor="middle" font-weight="bold">T</text></symbol>
+<symbol id="ico-thermometer" viewBox="0 0 48 48"><rect x="20" y="6" width="8" height="30" rx="4" fill="#F5EBE0" stroke="#D4A574" stroke-width="1.5"/><circle cx="24" cy="38" r="6" fill="#C94C30" opacity=".8"/><rect x="22" y="18" width="4" height="16" rx="2" fill="#C94C30" opacity=".6"/><line x1="28" y1="14" x2="32" y2="14" stroke="#D4A574" stroke-width="1"/><line x1="28" y1="20" x2="30" y2="20" stroke="#D4A574" stroke-width="1"/><line x1="28" y1="26" x2="32" y2="26" stroke="#D4A574" stroke-width="1"/></symbol>
+<symbol id="ico-oven" viewBox="0 0 48 48"><rect x="6" y="10" width="36" height="30" rx="4" fill="#E8D5B7" stroke="#8B5A2B" stroke-width="1.5"/><rect x="10" y="18" width="28" height="18" rx="2" fill="#FFF5E6" stroke="#D4A574" stroke-width="1"/><rect x="10" y="10" width="28" height="6" rx="2" fill="#D4A574"/><circle cx="16" cy="13" r="2" fill="#8B5A2B" opacity=".5"/><circle cx="24" cy="13" r="2" fill="#8B5A2B" opacity=".5"/><circle cx="32" cy="13" r="2" fill="#E8A849"/></symbol>
+<symbol id="ico-bookpro" viewBox="0 0 48 48"><rect x="10" y="6" width="24" height="36" rx="2" fill="#D4A574"/><rect x="12" y="8" width="20" height="32" rx="1" fill="#FFF5E6"/><line x1="16" y1="16" x2="28" y2="16" stroke="#8B5A2B" stroke-width="2" stroke-linecap="round"/><line x1="16" y1="22" x2="26" y2="22" stroke="#C4956A" stroke-width="1" stroke-linecap="round"/><line x1="16" y1="26" x2="24" y2="26" stroke="#C4956A" stroke-width="1" stroke-linecap="round"/><path d="M16 32L20 29L24 32L28 29L32 32" fill="none" stroke="#E8A849" stroke-width="1.5"/><rect x="10" y="6" width="4" height="36" rx="1" fill="#8B5A2B" opacity=".3"/></symbol>
 </svg>
 
 <!--NAV-->
@@ -329,12 +372,20 @@ img{max-width:100%;display:block}a{color:inherit;text-decoration:none}button{cur
 <!-- TOOLS -->
 <section class="tools" id="tools"><div class="ctn">
 <div class="tools__head reveal"><p class="sl">My baking essentials</p><h2 class="st">The tools I actually use (and love)</h2><p class="ss">Honest picks from years of home baking.</p></div>
-<div class="tools__grid">
-<div class="tc reveal rv1"><span class="tc__badge">Most Popular</span><div class="tc__ico"><svg><use href="#ico-dutch"/></svg></div><h3 class="tc__name">Cast Iron Dutch Oven</h3><p class="tc__brand">Lodge · 5 Quart</p><p class="tc__desc">Creates the steam your bread needs for that perfect crust.</p><p class="tc__price">~$35</p><a href="#" class="tc__link">View on Amazon →</a></div>
-<div class="tc reveal rv2"><div class="tc__ico"><svg><use href="#ico-scale"/></svg></div><h3 class="tc__name">Digital Kitchen Scale</h3><p class="tc__brand">Etekcity · 0.1g precision</p><p class="tc__desc">Baking by weight changed everything. Consistent results every single time.</p><p class="tc__price">~$12</p><a href="#" class="tc__link">View on Amazon →</a></div>
-<div class="tc reveal rv3"><span class="tc__badge">My Pick</span><div class="tc__ico"><svg><use href="#ico-banneton"/></svg></div><h3 class="tc__name">Banneton Proofing Basket</h3><p class="tc__brand">Handmade Rattan · 9 inch</p><p class="tc__desc">Gives your bread that beautiful spiral pattern.</p><p class="tc__price">~$14</p><a href="#" class="tc__link">View on Amazon →</a></div>
-<div class="tc reveal rv4"><div class="tc__ico"><svg><use href="#ico-lame"/></svg></div><h3 class="tc__name">Bread Lame</h3><p class="tc__brand">Premium Stainless Steel</p><p class="tc__desc">Score your bread like a pro.</p><p class="tc__price">~$9</p><a href="#" class="tc__link">View on Amazon →</a></div>
-</div>
+<div class="tools__tier"><h3 class="tools__tier-t">✨ Start Here — Essential Kit</h3><div class="tools__grid">
+<div class="tc reveal rv1"><span class="tc__badge">Most Popular</span><div class="tc__ico"><svg><use href="#ico-dutch"/></svg></div><h3 class="tc__name">Cast Iron Dutch Oven</h3><p class="tc__brand">Lodge · 5 Quart</p><p class="tc__desc">Creates the steam your bread needs for that perfect crust.</p><p class="tc__price">~$35</p><a href="/go/dutch-oven" class="tc__link" target="_blank" rel="noopener sponsored" data-aff="dutch-oven">View on Amazon →</a></div>
+<div class="tc reveal rv2"><div class="tc__ico"><svg><use href="#ico-scale"/></svg></div><h3 class="tc__name">Digital Kitchen Scale</h3><p class="tc__brand">Etekcity · 0.1g precision</p><p class="tc__desc">Baking by weight changed everything. Consistent results every single time.</p><p class="tc__price">~$12</p><a href="/go/scale" class="tc__link" target="_blank" rel="noopener sponsored" data-aff="scale">View on Amazon →</a></div>
+<div class="tc reveal rv3"><span class="tc__badge">My Pick</span><div class="tc__ico"><svg><use href="#ico-banneton"/></svg></div><h3 class="tc__name">Banneton Proofing Basket</h3><p class="tc__brand">Handmade Rattan · 9 inch</p><p class="tc__desc">Gives your bread that beautiful spiral pattern.</p><p class="tc__price">~$14</p><a href="/go/banneton" class="tc__link" target="_blank" rel="noopener sponsored" data-aff="banneton">View on Amazon →</a></div>
+<div class="tc reveal rv4"><div class="tc__ico"><svg><use href="#ico-lame"/></svg></div><h3 class="tc__name">Bread Lame</h3><p class="tc__brand">Premium Stainless Steel</p><p class="tc__desc">Score your bread like a pro.</p><p class="tc__price">~$9</p><a href="/go/lame" class="tc__link" target="_blank" rel="noopener sponsored" data-aff="lame">View on Amazon →</a></div>
+</div></div>
+<div class="tools__tier"><h3 class="tools__tier-t">🚀 Level Up — Premium Picks</h3><div class="tools__grid">
+<div class="tc reveal rv1"><span class="tc__badge">Best Investment</span><div class="tc__ico"><svg><use href="#ico-mixer"/></svg></div><h3 class="tc__name">KitchenAid Artisan Stand Mixer</h3><p class="tc__brand">KitchenAid · 5 Quart</p><p class="tc__desc">Once you go stand mixer, you never go back. Perfect dough kneading every time.</p><p class="tc__price">~$350</p><a href="/go/kitchenaid" class="tc__link" target="_blank" rel="noopener sponsored" data-aff="kitchenaid">View on Amazon →</a></div>
+<div class="tc reveal rv2"><span class="tc__badge">Premium</span><div class="tc__ico"><svg><use href="#ico-premium-dutch"/></svg></div><h3 class="tc__name">Le Creuset Dutch Oven</h3><p class="tc__brand">Le Creuset · 5.5 Quart</p><p class="tc__desc">The gold standard. Superior heat retention for bakery-quality crust at home.</p><p class="tc__price">~$360</p><a href="/go/le-creuset" class="tc__link" target="_blank" rel="noopener sponsored" data-aff="le-creuset">View on Amazon →</a></div>
+<div class="tc reveal rv3"><div class="tc__ico"><svg><use href="#ico-proofbox"/></svg></div><h3 class="tc__name">Brod & Taylor Proofing Box</h3><p class="tc__brand">Brod & Taylor · Folding</p><p class="tc__desc">Precise temperature control for perfect proofing. A game-changer for cold kitchens.</p><p class="tc__price">~$159</p><a href="/go/proofing-box" class="tc__link" target="_blank" rel="noopener sponsored" data-aff="proofing-box">View on Amazon →</a></div>
+<div class="tc reveal rv4"><div class="tc__ico"><svg><use href="#ico-thermometer"/></svg></div><h3 class="tc__name">ThermoWorks Thermapen ONE</h3><p class="tc__brand">ThermoWorks · 1 Second</p><p class="tc__desc">Know exactly when your bread is done. Internal temp of 205°F = perfection.</p><p class="tc__price">~$105</p><a href="/go/thermapen" class="tc__link" target="_blank" rel="noopener sponsored" data-aff="thermapen">View on Amazon →</a></div>
+<div class="tc reveal rv1"><div class="tc__ico"><svg><use href="#ico-oven"/></svg></div><h3 class="tc__name">Breville Smart Oven Pro</h3><p class="tc__brand">Breville · Convection</p><p class="tc__desc">No full-size oven needed. Bakes sourdough beautifully with precise temp control.</p><p class="tc__price">~$270</p><a href="/go/breville" class="tc__link" target="_blank" rel="noopener sponsored" data-aff="breville">View on Amazon →</a></div>
+<div class="tc reveal rv2"><span class="tc__badge">Must Read</span><div class="tc__ico"><svg><use href="#ico-bookpro"/></svg></div><h3 class="tc__name">Flour Water Salt Yeast</h3><p class="tc__brand">Ken Forkish · Hardcover</p><p class="tc__desc">The sourdough bible. Every serious baker has this on their shelf.</p><p class="tc__price">~$22</p><a href="/go/fwsy-book" class="tc__link" target="_blank" rel="noopener sponsored" data-aff="fwsy-book">View on Amazon →</a></div>
+</div></div>
 <p class="tools__disc reveal">* Some links are affiliate links. We earn a small commission at no extra cost to you.</p>
 </div></section>
 
@@ -342,7 +393,7 @@ img{max-width:100%;display:block}a{color:inherit;text-decoration:none}button{cur
 <section class="lead" id="guide"><div class="ctn"><div class="lead__card reveal">
 <div class="lead__text"><div class="lead__badge"><svg width="18" height="18"><use href="#ico-book"/></svg> Free Download</div><h2 class="lead__t">The 7-Day Sourdough<br>Starter Guide</h2><p class="lead__d">Everything you need to create your first sourdough starter — condensed into a beautiful, printable PDF.</p>
 <ul class="lead__inc"><li><svg width="18" height="18" style="color:var(--olive)"><use href="#ico-check"/></svg> Day-by-day instructions</li><li><svg width="18" height="18" style="color:var(--olive)"><use href="#ico-check"/></svg> Shopping list</li><li><svg width="18" height="18" style="color:var(--olive)"><use href="#ico-check"/></svg> Troubleshooting cheat sheet</li><li><svg width="18" height="18" style="color:var(--olive)"><use href="#ico-check"/></svg> Your first bread recipe</li><li><svg width="18" height="18" style="color:var(--olive)"><use href="#ico-check"/></svg> Printable feeding schedule</li></ul>
-<form class="lead__form" onsubmit="handleLead(event)"><input type="email" class="lead__input" placeholder="you@email.com" required><button type="submit" class="lead__sub">Get the Guide →</button></form><p class="lead__priv">No spam, ever. Unsubscribe anytime.</p><p class="lead__priv"><a class="lead__link" href="/7-day-sourdough-starter-guide.pdf" target="_blank" rel="noopener">Download instantly</a></p></div>
+<form class="lead__form" name="lead-magnet" method="POST" data-netlify="true" onsubmit="handleLead(event)"><input type="hidden" name="form-name" value="lead-magnet"><input type="email" name="email" class="lead__input" placeholder="you@email.com" required><button type="submit" class="lead__sub">Get the Guide →</button></form><p class="lead__priv">No spam, ever. Unsubscribe anytime.</p></div>
 <div class="lead__vis"><div class="pdf-mock"><div class="pdf-mock__h"><div class="pdf-mock__h-t">The 7-Day<br>Sourdough Starter<br>Guide</div><div class="pdf-mock__h-s">by Rise & Ferment</div></div><div class="pdf-mock__b"><div class="pdf-mock__line"></div><div class="pdf-mock__line"></div><div class="pdf-mock__line"></div><div class="pdf-mock__line"></div><div class="pdf-mock__line"></div><div class="pdf-mock__line"></div></div></div></div>
 </div></div></section>
 
@@ -359,7 +410,7 @@ img{max-width:100%;display:block}a{color:inherit;text-decoration:none}button{cur
 <section class="nl" id="newsletter"><div class="ctn"><div class="nl__card reveal">
 <h2 class="nl__t">Fresh tips, straight from the oven</h2>
 <p class="nl__d">Weekly recipes, baking tips, and Elena's best starter advice. Join the early list.</p>
-<form class="nl__form" onsubmit="handleNL(event)"><input type="email" class="nl__input" placeholder="Enter your email" required><button type="submit" class="nl__btn">Subscribe Free</button></form>
+<form class="nl__form" name="newsletter" method="POST" data-netlify="true" onsubmit="handleNL(event)"><input type="hidden" name="form-name" value="newsletter"><input type="email" name="email" class="nl__input" placeholder="Enter your email" required><button type="submit" class="nl__btn">Subscribe Free</button></form>
 <div class="nl__perks"><span class="nl__perk">✓ Weekly recipes</span><span class="nl__perk">✓ No spam</span><span class="nl__perk">✓ Unsubscribe anytime</span></div>
 </div></div></section>
 
@@ -926,8 +977,35 @@ function toggleLangDrop(e) {
   document.getElementById('langDrop').classList.toggle('open');
 }
 
-function handleLead(e){e.preventDefault();const b=e.target.querySelector('button');b.textContent='✓ Check your inbox!';b.style.background='#6B8F4E';e.target.querySelector('input').value='';window.open('/7-day-sourdough-starter-guide.pdf','_blank');setTimeout(()=>{b.textContent='Get the Guide →';b.style.background=''},3000)}
-function handleNL(e){e.preventDefault();const b=e.target.querySelector('button');b.textContent='✓ You are in!';b.style.background='#6B8F4E';e.target.querySelector('input').value='';setTimeout(()=>{b.textContent='Subscribe Free';b.style.background=''},3000)}
+function handleLead(e){
+  e.preventDefault();
+  const email=e.target.querySelector('input[type="email"]').value;
+  const b=e.target.querySelector('button');
+  // Submit to Netlify Forms
+  fetch('/',{method:'POST',headers:{'Content-Type':'application/x-www-form-urlencoded'},body:new URLSearchParams({'form-name':'lead-magnet',email:email}).toString()}).catch(()=>{});
+  // Submit to MailerLite (replace YOUR_MAILERLITE_API_KEY and YOUR_GROUP_ID)
+  // fetch('https://connect.mailerlite.com/api/subscribers',{method:'POST',headers:{'Content-Type':'application/json','Authorization':'Bearer YOUR_MAILERLITE_API_KEY'},body:JSON.stringify({email:email,groups:['YOUR_GUIDE_GROUP_ID']})}).catch(()=>{});
+  // Track with GA4
+  if(typeof gtag==='function')gtag('event','lead_magnet_download',{event_category:'engagement',event_label:'7day_guide'});
+  b.textContent='\u2713 Check your inbox!';b.style.background='#6B8F4E';
+  e.target.querySelector('input[type="email"]').value='';
+  window.open('/7-day-sourdough-starter-guide.pdf','_blank');
+  setTimeout(()=>{b.textContent='Get the Guide \u2192';b.style.background=''},3000);
+}
+function handleNL(e){
+  e.preventDefault();
+  const email=e.target.querySelector('input[type="email"]').value;
+  const b=e.target.querySelector('button');
+  // Submit to Netlify Forms
+  fetch('/',{method:'POST',headers:{'Content-Type':'application/x-www-form-urlencoded'},body:new URLSearchParams({'form-name':'newsletter',email:email}).toString()}).catch(()=>{});
+  // Submit to MailerLite (replace YOUR_MAILERLITE_API_KEY and YOUR_GROUP_ID)
+  // fetch('https://connect.mailerlite.com/api/subscribers',{method:'POST',headers:{'Content-Type':'application/json','Authorization':'Bearer YOUR_MAILERLITE_API_KEY'},body:JSON.stringify({email:email,groups:['YOUR_NEWSLETTER_GROUP_ID']})}).catch(()=>{});
+  // Track with GA4
+  if(typeof gtag==='function')gtag('event','newsletter_signup',{event_category:'engagement'});
+  b.textContent='\u2713 You are in!';b.style.background='#6B8F4E';
+  e.target.querySelector('input[type="email"]').value='';
+  setTimeout(()=>{b.textContent='Subscribe Free';b.style.background=''},3000);
+}
 // ═══ THEME ═══
 function readPersistedTheme() {
   try {
@@ -979,7 +1057,106 @@ document.querySelectorAll('.lang-sw__opt').forEach(o=>{o.addEventListener('click
 document.querySelectorAll('a[href^="#"]').forEach(a=>{a.addEventListener('click',function(e){const t=this.getAttribute('href');if(t.length>1){const el=document.querySelector(t);if(el){e.preventDefault();el.scrollIntoView({behavior:'smooth'})}}})});
 setLang(lang);
 
+// ═══ COOKIE CONSENT ═══
+(function(){
+  const CC_KEY='rf_cookie_consent';
+  const consent=localStorage.getItem(CC_KEY);
+  if(consent==='accepted'){loadGA4();return}
+  if(consent==='declined')return;
+  const cc=document.getElementById('cookieConsent');
+  if(!cc)return;
+  setTimeout(()=>cc.classList.add('vis'),1000);
+  document.getElementById('ccAccept').addEventListener('click',()=>{localStorage.setItem(CC_KEY,'accepted');cc.classList.remove('vis');loadGA4()});
+  document.getElementById('ccDecline').addEventListener('click',()=>{localStorage.setItem(CC_KEY,'declined');cc.classList.remove('vis')});
+})();
+
+// ═══ EXIT INTENT POPUP ═══
+(function(){
+  const EP_KEY='rf_exit_shown';
+  if(sessionStorage.getItem(EP_KEY))return;
+  const ep=document.getElementById('exitPopup');
+  if(!ep)return;
+  function showEP(){if(sessionStorage.getItem(EP_KEY))return;sessionStorage.setItem(EP_KEY,'1');ep.classList.add('vis')}
+  // Desktop: mouse leaves viewport top
+  document.addEventListener('mouseout',function(e){if(e.clientY<5&&e.relatedTarget===null)showEP()});
+  // Mobile: after 45 seconds
+  setTimeout(()=>{if(!sessionStorage.getItem(EP_KEY))showEP()},45000);
+  document.getElementById('epClose').addEventListener('click',()=>ep.classList.remove('vis'));
+  ep.addEventListener('click',(e)=>{if(e.target===ep)ep.classList.remove('vis')});
+  document.getElementById('epForm').addEventListener('submit',function(e){
+    e.preventDefault();
+    const email=this.querySelector('input[type="email"]').value;
+    fetch('/',{method:'POST',headers:{'Content-Type':'application/x-www-form-urlencoded'},body:new URLSearchParams({'form-name':'lead-magnet',email:email}).toString()}).catch(()=>{});
+    if(typeof gtag==='function')gtag('event','lead_magnet_download',{event_category:'exit_popup'});
+    this.querySelector('button').textContent='\u2713 Sent!';
+    this.querySelector('input[type="email"]').value='';
+    window.open('/7-day-sourdough-starter-guide.pdf','_blank');
+    setTimeout(()=>ep.classList.remove('vis'),2000);
+  });
+})();
+
+// ═══ STICKY CTA BAR ═══
+(function(){
+  const scta=document.getElementById('stickyCta');
+  const guide=document.getElementById('guide');
+  if(!scta||!guide)return;
+  let sctaDismissed=false;
+  window.addEventListener('scroll',function(){
+    if(sctaDismissed)return;
+    const cc=document.getElementById('cookieConsent');
+    const ccVisible=cc&&cc.classList.contains('vis');
+    if(ccVisible){scta.classList.remove('vis');return}
+    const heroBottom=document.getElementById('hero').getBoundingClientRect().bottom;
+    const guideTop=guide.getBoundingClientRect().top;
+    const inRange=heroBottom<0&&guideTop>window.innerHeight;
+    scta.classList.toggle('vis',inRange);
+  });
+  document.getElementById('sctaClose').addEventListener('click',()=>{sctaDismissed=true;scta.classList.remove('vis')});
+  document.getElementById('sctaForm').addEventListener('submit',function(e){
+    e.preventDefault();
+    const email=this.querySelector('input[type="email"]').value;
+    fetch('/',{method:'POST',headers:{'Content-Type':'application/x-www-form-urlencoded'},body:new URLSearchParams({'form-name':'lead-magnet',email:email}).toString()}).catch(()=>{});
+    if(typeof gtag==='function')gtag('event','lead_magnet_download',{event_category:'sticky_cta'});
+    this.querySelector('button').textContent='\u2713';
+    this.querySelector('input[type="email"]').value='';
+    window.open('/7-day-sourdough-starter-guide.pdf','_blank');
+    setTimeout(()=>{sctaDismissed=true;scta.classList.remove('vis')},2000);
+  });
+})();
+
+// ═══ AFFILIATE TRACKING ═══
+document.querySelectorAll('[data-aff]').forEach(function(a){
+  a.addEventListener('click',function(){
+    if(typeof gtag==='function')gtag('event','affiliate_click',{event_category:'monetization',event_label:this.dataset.aff});
+  });
+});
+
 </script>
+
+<!-- COOKIE CONSENT BANNER -->
+<div class="cc" id="cookieConsent">
+<span>We use cookies for analytics to improve your experience.</span>
+<div class="cc__btns"><button class="cc__btn cc__btn--a" id="ccAccept">Accept</button><button class="cc__btn cc__btn--d" id="ccDecline">Decline</button></div>
+</div>
+
+<!-- EXIT INTENT POPUP -->
+<div class="ep" id="exitPopup">
+<div class="ep__card">
+<button class="ep__close" id="epClose">&times;</button>
+<div class="ep__emoji">🍞</div>
+<h3 class="ep__t">Wait! Don't leave empty-handed</h3>
+<p class="ep__d">Get our free 7-Day Sourdough Starter Guide — everything you need to bake your first real loaf.</p>
+<form class="ep__form" id="epForm"><input type="email" class="ep__input" placeholder="you@email.com" required><button type="submit" class="ep__btn">Get Free Guide</button></form>
+</div>
+</div>
+
+<!-- STICKY CTA BAR -->
+<div class="scta" id="stickyCta">
+<span class="scta__t">Free 7-Day Starter Guide</span>
+<form class="scta__form" id="sctaForm"><input type="email" class="scta__input" placeholder="you@email.com" required><button type="submit" class="scta__btn">Get Free Guide →</button></form>
+<span class="scta__x" id="sctaClose">&times;</span>
+</div>
+
 </body>
 </html>
 

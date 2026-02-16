@@ -1,2 +1,15 @@
+# Affiliate redirect URLs (replace YOURTAG-20 with your Amazon Associates tag)
+/go/dutch-oven https://www.amazon.com/dp/B00063RWYI?tag=YOURTAG-20 301
+/go/scale https://www.amazon.com/dp/B0113UZJE2?tag=YOURTAG-20 301
+/go/banneton https://www.amazon.com/dp/B07H5LF3Z4?tag=YOURTAG-20 301
+/go/lame https://www.amazon.com/dp/B07TZ96ZFX?tag=YOURTAG-20 301
+/go/kitchenaid https://www.amazon.com/dp/B089QY7VPY?tag=YOURTAG-20 301
+/go/le-creuset https://www.amazon.com/dp/B0076NOJL4?tag=YOURTAG-20 301
+/go/proofing-box https://www.amazon.com/dp/B007TKMG7I?tag=YOURTAG-20 301
+/go/thermapen https://www.amazon.com/dp/B09R4GZR65?tag=YOURTAG-20 301
+/go/breville https://www.amazon.com/dp/B01N5KKUO2?tag=YOURTAG-20 301
+/go/fwsy-book https://www.amazon.com/dp/160774273X?tag=YOURTAG-20 301
+
+# App routing
 /app/* /app.html 200
 /* /index.html 200
