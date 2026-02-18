@@ -46,6 +46,8 @@
     "tempIdeal": "Ideal temperature: 23–25°C",
     "inFridge": "In the fridge?",
     "historyTitle": "Feeding history",
+    "historyTotalFeedings": "feedings total",
+    "historyShowMore": "Show {{count}} more",
     "learnTitle": "Complete guide",
     "calcTitle": "Bread calculator",
     "flourType": "Flour type:",

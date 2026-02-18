@@ -46,6 +46,8 @@
     "tempIdeal": "Temperatura ideală: 23-25°C",
     "inFridge": "La frigider?",
     "historyTitle": "Istoric hrăniri",
+    "historyTotalFeedings": "hrăniri total",
+    "historyShowMore": "Arată încă {{count}}",
     "learnTitle": "Ghid complet",
     "calcTitle": "Calculator pâine",
     "flourType": "Tip făină:",

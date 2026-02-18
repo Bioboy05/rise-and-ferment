@@ -2,6 +2,9 @@
   "translation": {
     "tabHome": "Start",
     "tabHistory": "Verlauf",
+    "historyTitle": "Fütterungshistorie",
+    "historyTotalFeedings": "Fütterungen gesamt",
+    "historyShowMore": "{{count}} weitere anzeigen",
     "tabRecipes": "Rezepte",
     "tabLearn": "Lernen",
     "tabStats": "Statistik",

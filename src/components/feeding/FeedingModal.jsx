@@ -45,6 +45,7 @@ function FeedingModal({ onClose }) {
       amount,
       withBran: useBran,
       temp: validTemp,
+      tempUnit,
       note: note.trim() || null,
       flourType: starter.flourType || "white",
       riseLevel,
