@@ -1,6 +1,7 @@
 import { useTranslation } from "react-i18next";
 import Icon from "../components/common/Icon";
 
+// affiliate: "bt" = Brod & Taylor EU, "sk" = Skillshare, "az" = Amazon
 const PRODUCTS = [
   {
     id: "scale",
@@ -8,7 +9,8 @@ const PRODUCTS = [
     tier: "starter",
     icon: "scale",
     badge: null,
-    priceRange: "$15–25",
+    priceRange: "€15–25",
+    affiliate: "az",
   },
   {
     id: "banneton",
@@ -16,7 +18,8 @@ const PRODUCTS = [
     tier: "starter",
     icon: "banneton",
     badge: null,
-    priceRange: "$20–35",
+    priceRange: "€20–35",
+    affiliate: "az",
   },
   {
     id: "lame",
@@ -24,7 +27,8 @@ const PRODUCTS = [
     tier: "starter",
     icon: "lame",
     badge: null,
-    priceRange: "$10–20",
+    priceRange: "€10–20",
+    affiliate: "az",
   },
   {
     id: "dutch-oven",
@@ -32,15 +36,17 @@ const PRODUCTS = [
     tier: "starter",
     icon: "dutch-oven",
     badge: "shopBadgePop",
-    priceRange: "$35–55",
+    priceRange: "€35–55",
+    affiliate: "az",
   },
   {
-    id: "fwsy-book",
-    slug: "fwsy-book",
+    id: "skillshare",
+    slug: "skillshare",
     tier: "starter",
     icon: "book",
-    badge: "shopBadgeRead",
-    priceRange: "$20–28",
+    badge: "shopBadgeFree",
+    priceRange: "shopSkillsharePriceRange",
+    affiliate: "sk",
   },
   {
     id: "thermapen",
@@ -48,23 +54,35 @@ const PRODUCTS = [
     tier: "upgrade",
     icon: "thermometer",
     badge: "shopBadgeBest",
-    priceRange: "$105",
+    priceRange: "€105",
+    affiliate: "az",
   },
   {
     id: "proofing-box",
     slug: "proofing-box",
     tier: "upgrade",
     icon: "proofbox",
+    badge: "shopBadgePop",
+    priceRange: "€159",
+    affiliate: "bt",
+  },
+  {
+    id: "bread-oven",
+    slug: "bread-oven",
+    tier: "upgrade",
+    icon: "oven",
     badge: null,
-    priceRange: "$159",
+    priceRange: "€399",
+    affiliate: "bt",
   },
   {
     id: "kitchenaid",
     slug: "kitchenaid",
     tier: "upgrade",
     icon: "mixer",
-    badge: "shopBadgePop",
-    priceRange: "$350–450",
+    badge: null,
+    priceRange: "€350–450",
+    affiliate: "az",
   },
   {
     id: "le-creuset",
@@ -72,15 +90,8 @@ const PRODUCTS = [
     tier: "upgrade",
     icon: "dutch-oven",
     badge: "shopBadgePrem",
-    priceRange: "$320–400",
-  },
-  {
-    id: "breville",
-    slug: "breville",
-    tier: "upgrade",
-    icon: "oven",
-    badge: null,
-    priceRange: "$250–300",
+    priceRange: "€320–400",
+    affiliate: "az",
   },
 ];
 
@@ -166,10 +177,20 @@ const PRODUCT_ICONS = {
   ),
 };
 
+const CTA_KEY = {
+  bt: "shopViewBrodTaylor",
+  sk: "shopViewSkillshare",
+  az: "shopViewAmazon",
+};
+
 function ProductCard({ product }) {
   const { t } = useTranslation();
 
   const icon = PRODUCT_ICONS[product.icon] || PRODUCT_ICONS.book;
+  const ctaKey = CTA_KEY[product.affiliate] || "shopViewAmazon";
+  const priceDisplay = product.priceRange.startsWith("shop")
+    ? t(product.priceRange)
+    : product.priceRange;
 
   return (
     <div className="shop-card">
@@ -181,15 +202,15 @@ function ProductCard({ product }) {
       </div>
       <div className="shop-card__name">{t(`shopProd_${product.id}_name`)}</div>
       <div className="shop-card__desc">{t(`shopProd_${product.id}_desc`)}</div>
-      <div className="shop-card__price">{product.priceRange}</div>
+      <div className="shop-card__price">{priceDisplay}</div>
       <a
         href={`/go/${product.slug}`}
         target="_blank"
         rel="noopener sponsored"
         className="shop-card__btn"
-        aria-label={`${t("shopViewAmazon")} — ${t(`shopProd_${product.id}_name`)}`}
+        aria-label={`${t(ctaKey)} — ${t(`shopProd_${product.id}_name`)}`}
       >
-        {t("shopViewAmazon")}
+        {t(ctaKey)}
         <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" aria-hidden="true" style={{ marginLeft: "6px" }}>
           <path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6" />
           <polyline points="15 3 21 3 21 9" />

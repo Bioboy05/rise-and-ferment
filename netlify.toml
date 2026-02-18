@@ -62,7 +62,27 @@
 # REDIRECT RULES — Affiliate + App routing
 # ============================================================
 
-# Affiliate links (override _redirects pentru claritate)
+# Skillshare (Impact.com) — TODO: replace with real tracking link after approval
+[[redirects]]
+  from = "/go/skillshare"
+  to = "https://skillshare.eqcm.net/SKILLSHARE_AFFILIATE_LINK"
+  status = 301
+  force = true
+
+# Brod & Taylor EU — TODO: replace with real links after approval
+[[redirects]]
+  from = "/go/proofing-box"
+  to = "https://brodandtaylor.eu/AWAITING_APPROVAL"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/go/bread-oven"
+  to = "https://brodandtaylor.eu/AWAITING_APPROVAL"
+  status = 301
+  force = true
+
+# Amazon Associates (tag: riseandfermen-20)
 [[redirects]]
   from = "/go/dutch-oven"
   to = "https://www.amazon.com/dp/B00063RWYI?tag=riseandfermen-20"
@@ -100,26 +120,8 @@
   force = true
 
 [[redirects]]
-  from = "/go/proofing-box"
-  to = "https://www.amazon.com/dp/B007TKMG7I?tag=riseandfermen-20"
-  status = 301
-  force = true
-
-[[redirects]]
   from = "/go/thermapen"
   to = "https://www.amazon.com/dp/B09R4GZR65?tag=riseandfermen-20"
-  status = 301
-  force = true
-
-[[redirects]]
-  from = "/go/breville"
-  to = "https://www.amazon.com/dp/B01N5KKUO2?tag=riseandfermen-20"
-  status = 301
-  force = true
-
-[[redirects]]
-  from = "/go/fwsy-book"
-  to = "https://www.amazon.com/dp/160774273X?tag=riseandfermen-20"
   status = 301
   force = true
 
