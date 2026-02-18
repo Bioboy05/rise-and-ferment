@@ -43,7 +43,10 @@ export default defineConfig({
       },
       output: {
         manualChunks(id) {
-          if (id.includes("src/i18n/locales")) return "i18n-locales";
+          // Each locale in its own chunk — lazy loaded per language
+          const localeMatch = id.match(/src\/i18n\/locales\/(\w+)\.json/);
+          if (localeMatch) return `locale-${localeMatch[1]}`;
+
           if (id.includes("node_modules/react") || id.includes("node_modules/react-dom") || id.includes("node_modules/react-router-dom")) {
             return "vendor-react";
           }
