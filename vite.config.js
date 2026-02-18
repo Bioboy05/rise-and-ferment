@@ -12,6 +12,8 @@ export default defineConfig({
       manifest: false, // We use our own public/manifest.json
       workbox: {
         globPatterns: ["**/*.{js,css,html,svg,png,woff2}"],
+        // Exclude /go/* affiliate redirects from SW navigation — let Netlify handle them
+        navigateFallbackDenylist: [/^\/go\//],
         runtimeCaching: [
           {
             urlPattern: /^https:\/\/fonts\.googleapis\.com\/.*/i,
