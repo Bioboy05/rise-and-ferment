@@ -15,6 +15,7 @@ import StatsPage from "./pages/StatsPage";
 import SettingsPage from "./pages/SettingsPage";
 import OnboardingPage from "./pages/OnboardingPage";
 import PlannerPage from "./pages/PlannerPage";
+import ShopPage from "./pages/ShopPage";
 import { checkMilestones } from "./data/celebrations";
 
 const CELEBRATION_STORAGE_KEY = "riseFermentCelebrations";
@@ -238,6 +239,7 @@ function App() {
                   <Route path="/learn" element={<LearnPage />} />
                   <Route path="/stats" element={<StatsPage />} />
                   <Route path="/settings" element={<SettingsPage />} />
+                  <Route path="/shop" element={<ShopPage />} />
                   <Route path="*" element={<Navigate to="/" replace />} />
                 </Routes>
               </main>

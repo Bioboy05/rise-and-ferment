@@ -8,9 +8,9 @@ function Navigation() {
   const tabs = [
     { to: "/", label: t("tabHome"), icon: "home" },
     { to: "/recipes", label: t("tabRecipes"), icon: "bread" },
-    { to: "/planner", label: t("tabPlanner"), icon: "planner" },
-    { to: "/history", label: t("tabHistory"), icon: "history" },
+    { to: "/shop", label: t("tabShop"), icon: "shop" },
     { to: "/learn", label: t("tabLearn"), icon: "book" },
+    { to: "/settings", label: t("tabSettings"), icon: "settings" },
   ];
 
   return (

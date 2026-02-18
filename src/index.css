@@ -2618,3 +2618,134 @@ body::after {
   font-size: 24px;
   margin-bottom: 8px;
 }
+
+/* ==========================================
+   SHOP PAGE — Affiliate Products
+   ========================================== */
+
+.shop-page {
+  padding-bottom: 24px;
+}
+
+.shop-header {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.shop-subtitle {
+  color: var(--text-muted);
+  font-size: 14px;
+  margin-top: -4px;
+  margin-bottom: 0;
+}
+
+.shop-tier {
+  margin-bottom: 24px;
+}
+
+.shop-tier__label {
+  font-family: var(--font-display);
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--accent);
+  margin-bottom: 12px;
+  padding: 0 4px;
+}
+
+.shop-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+}
+
+.shop-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  padding: 14px 12px 12px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  position: relative;
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
+
+.shop-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 16px rgba(0,0,0,0.12);
+}
+
+.shop-card__badge {
+  position: absolute;
+  top: -8px;
+  right: 10px;
+  background: var(--accent);
+  color: #fff;
+  font-size: 10px;
+  font-weight: 700;
+  padding: 2px 7px;
+  border-radius: 99px;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+.shop-card__icon {
+  color: var(--accent);
+  margin-bottom: 8px;
+  opacity: 0.9;
+}
+
+.shop-card__name {
+  font-weight: 700;
+  font-size: 13px;
+  color: var(--text-primary);
+  margin-bottom: 4px;
+  line-height: 1.3;
+}
+
+.shop-card__desc {
+  font-size: 11px;
+  color: var(--text-muted);
+  line-height: 1.4;
+  margin-bottom: 10px;
+  flex: 1;
+}
+
+.shop-card__price {
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--accent);
+  margin-bottom: 8px;
+}
+
+.shop-card__btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--accent);
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  padding: 7px 10px;
+  font-size: 11px;
+  font-weight: 700;
+  text-decoration: none;
+  cursor: pointer;
+  transition: opacity 0.15s;
+  width: 100%;
+}
+
+.shop-card__btn:hover {
+  opacity: 0.85;
+}
+
+.shop-disclaimer {
+  font-size: 10px;
+  color: var(--text-muted);
+  text-align: center;
+  margin-top: 16px;
+  padding: 0 8px;
+  line-height: 1.5;
+  opacity: 0.75;
+}
