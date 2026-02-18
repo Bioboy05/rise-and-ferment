@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:xhtml="http://www.w3.org/1999/xhtml">
+
+  <!-- Landing page — toate limbile -->
+  <url>
+    <loc>https://riseandferment.com/</loc>
+    <lastmod>2025-02-18</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>1.0</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://riseandferment.com/" />
+    <xhtml:link rel="alternate" hreflang="ro" href="https://riseandferment.com/?lang=ro" />
+    <xhtml:link rel="alternate" hreflang="de" href="https://riseandferment.com/?lang=de" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://riseandferment.com/?lang=fr" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://riseandferment.com/?lang=es" />
+    <xhtml:link rel="alternate" hreflang="it" href="https://riseandferment.com/?lang=it" />
+  </url>
+
+</urlset>

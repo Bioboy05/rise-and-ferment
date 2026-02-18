@@ -1,0 +1,9 @@
+User-agent: *
+Allow: /
+
+# Sitemap
+Sitemap: https://riseandferment.com/sitemap.xml
+
+# Don't index the app itself (PWA, no SEO value)
+Disallow: /app
+Disallow: /app/
