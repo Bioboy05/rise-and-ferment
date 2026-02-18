@@ -6,8 +6,6 @@
 <meta property="og:title" content="Rise & Ferment — Your Sourdough Journey Starts Here">
 <meta property="og:description" content="Beginner-friendly app + free 7‑day starter guide. Real tips, real science.">
 <title>Rise & Ferment — Your Sourdough Journey Starts Here</title>
-<!-- GA4: Replace G-XXXXXXXXXX with your real Measurement ID from analytics.google.com -->
-<script>window.GA_ID='G-XXXXXXXXXX';function loadGA4(){if(window._ga4Loaded)return;window._ga4Loaded=true;var s=document.createElement('script');s.async=true;s.src='https://www.googletagmanager.com/gtag/js?id='+window.GA_ID;document.head.appendChild(s);window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments)}window.gtag=gtag;gtag('js',new Date());gtag('config',window.GA_ID)}</script>
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@400;600;700&family=Nunito:wght@400;500;600;700;800&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,600&display=swap" rel="stylesheet">
 <style>
@@ -231,8 +229,8 @@ img{max-width:100%;display:block}a{color:inherit;text-decoration:none}button{cur
 .reveal{opacity:0;transform:translateY(30px);transition:all .8s cubic-bezier(.22,1,.36,1)}.reveal.vis{opacity:1;transform:translateY(0)}.rv1{transition-delay:.1s}.rv2{transition-delay:.2s}.rv3{transition-delay:.3s}.rv4{transition-delay:.4s}
 /* RESPONSIVE */
 @media(max-width:1024px){.hero__c{grid-template-columns:1fr;text-align:center}.hero__desc{margin:0 auto 36px}.hero__acts{justify-content:center}.hero__proof{justify-content:center}.hero__vis{margin-top:40px}.feat-row{grid-template-columns:1fr;text-align:center}.feat-row--rev{direction:ltr}.feat-row__bul{align-items:center}.starter-grid,.fmc-grid{margin:0 auto}.blog__grid{grid-template-columns:1fr 1fr}.bp__grid{grid-template-columns:1fr 1fr}.test__grid{grid-template-columns:1fr 1fr}.ft__top{grid-template-columns:1fr 1fr}}
-@media(max-width:768px){.nav__links{display:none}.nav__ham{display:flex}.nav__links.active{display:flex;flex-direction:column;position:fixed;top:var(--nav-h);left:0;right:0;bottom:0;background:var(--cream);padding:32px;gap:24px;animation:fadeIn .3s ease}[data-theme="dark"] .nav__links.active{background:var(--cream)}.hero{min-height:auto;padding-top:calc(var(--nav-h) + 20px)}.phone{transform:rotate(0deg)}.blog__grid,.bp__grid{grid-template-columns:1fr}.tools__grid{grid-template-columns:1fr}.lead__card{grid-template-columns:1fr;text-align:center}.lead__inc{align-items:center}.lead__form{justify-content:center}.lead__vis{order:-1}.test__grid{grid-template-columns:1fr}.nl__input{min-width:100%}.nl__perks{flex-direction:column;align-items:center}.ft__top{grid-template-columns:1fr;text-align:center}.ft__brand-txt{margin:12px auto 0}.ft__social{justify-content:center}.ft__links{align-items:center}.ft__btm{justify-content:center;text-align:center}.ft__btm-links{justify-content:center}}
-@media(max-width:480px){.hero__acts{flex-direction:column;width:100%}.hero__acts .btn{width:100%;justify-content:center}.hero__fl{display:none}.prob__grid{grid-template-columns:1fr}.starter-card:nth-child(2),.starter-card:nth-child(4),.fmc:nth-child(2),.fmc:nth-child(4){transform:none}.lead__card{padding:28px 20px}}
+@media(max-width:768px){.nav__links{display:none}.nav__ham{display:flex}.nav__links.active{display:flex;flex-direction:column;position:fixed;top:var(--nav-h);left:0;right:0;bottom:0;background:var(--cream);padding:32px;gap:24px;animation:fadeIn .3s ease}[data-theme="dark"] .nav__links.active{background:var(--cream)}.hero{min-height:auto;padding-top:calc(var(--nav-h) + 20px)}.phone{transform:rotate(0deg)}.blog__grid,.bp__grid{grid-template-columns:1fr}.tools__grid{grid-template-columns:1fr}.lead__card{grid-template-columns:1fr;text-align:center}.lead__inc{align-items:center}.lead__form{justify-content:center}.lead__vis{order:-1}.test__grid{grid-template-columns:1fr}.nl__input{min-width:100%}.nl__perks{flex-direction:column;align-items:center}.ft__top{grid-template-columns:1fr;text-align:center}.ft__brand-txt{margin:12px auto 0}.ft__social{justify-content:center}.ft__links{align-items:center}.ft__btm{justify-content:center;text-align:center}.ft__btm-links{justify-content:center}.tc{padding:20px}.tc__link{display:flex;width:100%;justify-content:center;padding:12px 20px}.tc__badge{top:12px;right:12px}.tools__tier-t{text-align:center}.bc__img{height:180px;contain:none;display:flex;align-items:center;justify-content:center}.scene__center{position:relative;top:auto;left:auto;transform:none}}
+@media(max-width:480px){.hero__acts{flex-direction:column;width:100%}.hero__acts .btn{width:100%;justify-content:center}.hero__fl{display:none}.prob__grid{grid-template-columns:1fr}.starter-card:nth-child(2),.starter-card:nth-child(4),.fmc:nth-child(2),.fmc:nth-child(4){transform:none}.lead__card{padding:28px 20px}.tc{padding:16px}.tc__badge{position:static;display:inline-block;margin-bottom:8px}}
 @media(max-width:768px){.nav__links.active{z-index:1100;overflow-y:auto;overscroll-behavior:contain;box-shadow:0 24px 46px rgba(93,58,26,.14)}}
 /* COOKIE CONSENT */
 .cc{position:fixed;bottom:0;left:0;right:0;z-index:9999;background:var(--flour);border-top:1px solid rgba(139,90,43,.1);padding:16px 24px;display:flex;align-items:center;justify-content:center;gap:16px;flex-wrap:wrap;font-size:.88rem;color:var(--rye);box-shadow:0 -4px 24px rgba(0,0,0,.08);transform:translateY(100%);transition:transform .4s ease}
@@ -627,7 +625,109 @@ const LANDING_I18N = {
     blogSub: "From the blog",
     blogTitle: "Learn, bake, repeat",
     blogText: "Practical guides and honest tips from someone who started just like you.",
-    blogCta: "View all articles →"
+    blogCta: "View all articles →",
+    probQ1: '"When do I feed my starter?"',
+    probA1: '<strong>Smart reminders</strong> that adapt to your schedule. Whether you\'re at the office, with the kids, or on a night shift.',
+    probQ2: '"Is my starter alive?"',
+    probA2: '<strong>Visual health indicators</strong> with temperature tracking. Know at a glance if your starter needs help.',
+    probQ3: '"Why isn\'t it rising?"',
+    probA3: '<strong>Built-in troubleshooting</strong> with step-by-step solutions. Diagnose problems and get back on track.',
+    probQ4: '"How do I fit this into my life?"',
+    probA4: '<strong>Baking planner</strong> that works around you. Tell us when you want bread and we\'ll plan backwards.',
+    featSub: 'Everything you need',
+    featTitle: 'Built for curious hands, not lab coats',
+    featText: 'Whether you\'re creating your first starter or your fifth — Rise & Ferment makes it feel natural.',
+    feat1Lab: 'Multi-Starter Management',
+    feat1Title: 'Track one starter or five — your choice',
+    feat1Desc: 'Give each starter a name, personality, and its own story.',
+    feat1B1: 'Individual feeding schedules and history',
+    feat1B2: 'Temperature and health tracking per starter',
+    feat1B3: 'Notes and personal observations',
+    feat2Lab: 'Beginner-Friendly Design',
+    feat2Title: 'Start with zero experience',
+    feat2Desc: 'Beginner Mode guides you day by day. When you\'re ready, unlock everything.',
+    feat2B1: 'Day-by-day guided instructions',
+    feat2B2: 'Motivational messages and celebrations',
+    feat2B3: 'Feeding streak tracker with milestones',
+    feat3Lab: 'Recipes & Baking Planner',
+    feat3Title: 'From starter to table, planned perfectly',
+    feat3Desc: 'Built-in recipes with an ingredient calculator. The planner works backward from when you want bread ready.',
+    feat3B1: 'Scalable ingredient calculator',
+    feat3B2: 'Reverse schedule from desired bake time',
+    feat3B3: 'Export schedule to your calendar',
+    toolsSub: 'My baking essentials',
+    toolsTitle: 'The tools I actually use (and love)',
+    toolsText: 'Honest picks from years of home baking.',
+    toolsTier1: '✨ Start Here — Essential Kit',
+    toolsTier2: '🚀 Level Up — Premium Picks',
+    toolsDisc: '* Some links are affiliate links. We earn a small commission at no extra cost to you.',
+    toolDesc1: 'Creates the steam your bread needs for that perfect crust.',
+    toolDesc2: 'Baking by weight changed everything. Consistent results every time.',
+    toolDesc3: 'Gives your bread that beautiful spiral pattern.',
+    toolDesc4: 'Score your bread like a pro.',
+    toolDesc5: 'Once you go stand mixer, you never go back. Perfect dough every time.',
+    toolDesc6: 'The gold standard. Superior heat retention for bakery-quality crust at home.',
+    toolDesc7: 'Precise temperature control for perfect proofing. A game-changer for cold kitchens.',
+    toolDesc8: 'Know exactly when your bread is done. Internal temp 205°F = perfection.',
+    toolDesc9: 'No full-size oven needed. Bakes sourdough beautifully with precise temp control.',
+    toolDesc10: 'The sourdough bible. Every serious baker has this on their shelf.',
+    toolBadgePop: 'Most Popular',
+    toolBadgePick: 'My Pick',
+    toolBadgeBest: 'Best Investment',
+    toolBadgePrem: 'Premium',
+    toolBadgeRead: 'Must Read',
+    toolLink: 'View on Amazon →',
+    leadBadge: 'Free Download',
+    leadTitle: 'The 7-Day Sourdough<br>Starter Guide',
+    leadDesc: 'Everything you need to create your first sourdough starter — condensed into a beautiful, printable PDF.',
+    leadInc1: 'Day-by-day instructions',
+    leadInc2: 'Shopping list',
+    leadInc3: 'Troubleshooting cheat sheet',
+    leadInc4: 'Your first bread recipe',
+    leadInc5: 'Printable feeding schedule',
+    leadPlaceholder: 'you@email.com',
+    leadBtn: 'Get the Guide →',
+    leadBtnSuccess: '✓ Check your inbox!',
+    leadPriv: 'No spam, ever. Unsubscribe anytime.',
+    testSub: 'Real bakers, real stories',
+    testTitle: 'What our community says',
+    testText: 'From "I\'ve never baked anything" to "I made sourdough!"',
+    test1Quote: '"I tried three times before this app. The reminders changed everything. My kids now ask for \'Mama\'s bread\' every weekend."',
+    test1Name: 'Sarah M.',
+    test1Role: 'Mom of 3 · Portland, USA',
+    test2Quote: '"Living alone, I wanted a hobby that felt meaningful. Now I bring loaves to my neighbors and we\'ve become actual friends."',
+    test2Name: 'Alex K.',
+    test2Role: 'Designer · Berlin, Germany',
+    test3Quote: '"As a nurse with unpredictable shifts, I thought sourdough was impossible. I\'ve made 12 loaves this month!"',
+    test3Name: 'Elena R.',
+    test3Role: 'Nurse & Baker · Bucharest',
+    nlTitle: 'Fresh tips, straight from the oven',
+    nlDesc: 'Weekly recipes, baking tips, and Elena\'s best starter advice. Join the early list.',
+    nlPlaceholder: 'Enter your email',
+    nlBtn: 'Subscribe Free',
+    nlBtnSuccess: '✓ You are in!',
+    nlPerk1: '✓ Weekly recipes',
+    nlPerk2: '✓ No spam',
+    nlPerk3: '✓ Unsubscribe anytime',
+    ftBrandText: 'The beginner-friendly sourdough companion. Making real bread accessible to everyone.',
+    ftColApp: 'App',
+    ftColLearn: 'Learn',
+    ftColConnect: 'Connect',
+    ftLinkFeatures: 'Features',
+    ftLinkOpenApp: 'Open App',
+    ftLinkBlog: 'Blog',
+    ftLinkGuide: 'Free Guide',
+    ftCopy: '© 2026 Rise & Ferment. Made with flour and love.',
+    ftPrivacy: 'Privacy',
+    ftTerms: 'Terms',
+    ftAffiliate: 'Affiliate Disclosure',
+    epTitle: 'Wait! Don\'t leave empty-handed',
+    epDesc: 'Get our free 7-Day Sourdough Starter Guide — everything you need to bake your first real loaf.',
+    epPlaceholder: 'you@email.com',
+    epBtn: 'Get Free Guide',
+    sctaTitle: 'Free 7-Day Starter Guide',
+    sctaPlaceholder: 'you@email.com',
+    sctaBtn: 'Get Free Guide →'
   },
   ro: {
     navFeatures: "Funcționalități",
@@ -657,7 +757,109 @@ const LANDING_I18N = {
     blogSub: "Din blog",
     blogTitle: "Citește, coace, repetă",
     blogText: "Ghiduri practice și sfaturi sincere de la cineva care a început exact ca tine.",
-    blogCta: "Vezi toate articolele →"
+    blogCta: "Vezi toate articolele →",
+    probQ1: '"Când trebuie să hrănesc maiaua?"',
+    probA1: '<strong>Notificări inteligente</strong> care se adaptează programului tău. La birou, cu copiii sau în tura de noapte.',
+    probQ2: '"Maiaua mea e vie?"',
+    probA2: '<strong>Indicatori vizuali de sănătate</strong> cu urmărirea temperaturii. Știi dintr-o privire dacă maiaua are nevoie de ajutor.',
+    probQ3: '"De ce nu crește?"',
+    probA3: '<strong>Depanare integrată</strong> cu soluții pas cu pas. Diagnostichează problemele și revino pe drumul cel bun.',
+    probQ4: '"Cum se potrivește în viața mea?"',
+    probA4: '<strong>Planificator de copt</strong> care se adaptează ție. Spune-ne când vrei pâine și planificăm invers.',
+    featSub: 'Tot ce ai nevoie',
+    featTitle: 'Creat pentru mâini curioase, nu pentru laboratoare',
+    featText: 'Fie că faci prima maia sau a cincea — Rise & Ferment face totul să pară natural.',
+    feat1Lab: 'Gestionare Multi-Starter',
+    feat1Title: 'Urmărește una sau cinci maiele — alegerea ta',
+    feat1Desc: 'Dă fiecărei maiele un nume, personalitate și povestea ei.',
+    feat1B1: 'Programe individuale de hrănire și istoric',
+    feat1B2: 'Urmărire temperatură și sănătate per starter',
+    feat1B3: 'Note și observații personale',
+    feat2Lab: 'Design prietenos pentru începători',
+    feat2Title: 'Începe fără experiență',
+    feat2Desc: 'Modul Începător te ghidează zi de zi. Când ești gata, deblochezi totul.',
+    feat2B1: 'Instrucțiuni ghidate zi cu zi',
+    feat2B2: 'Mesaje motivaționale și celebrări',
+    feat2B3: 'Streak de hrănire cu milestone-uri',
+    feat3Lab: 'Rețete & Planificator de copt',
+    feat3Title: 'De la maia la masă, planificat perfect',
+    feat3Desc: 'Rețete integrate cu calculator de ingrediente. Planificatorul lucrează invers de la momentul dorit.',
+    feat3B1: 'Calculator scalabil de ingrediente',
+    feat3B2: 'Program invers de la ora dorită de copt',
+    feat3B3: 'Export program în calendar',
+    toolsSub: 'Ustensilele mele esențiale',
+    toolsTitle: 'Uneltele pe care le folosesc (și le iubesc)',
+    toolsText: 'Alegeri sincere din ani de copt acasă.',
+    toolsTier1: '✨ Începe aici — Kit esențial',
+    toolsTier2: '🚀 Nivel următor — Alegeri premium',
+    toolsDisc: '* Unele linkuri sunt affiliate. Câștigăm un mic comision fără cost suplimentar pentru tine.',
+    toolDesc1: 'Creează aburul de care pâinea ta are nevoie pentru crusta perfectă.',
+    toolDesc2: 'Coptul pe greutate a schimbat totul. Rezultate constante de fiecare dată.',
+    toolDesc3: 'Dă pâinii tale acel model frumos spiral.',
+    toolDesc4: 'Taie pâinea ca un profesionist.',
+    toolDesc5: 'Odată ce folosești un mixer cu bol, nu te mai întorci. Aluat perfect de fiecare dată.',
+    toolDesc6: 'Standardul de aur. Retenție superioară a căldurii pentru crustă de brutărie acasă.',
+    toolDesc7: 'Control precis al temperaturii pentru dospire perfectă. Un game-changer pentru bucătăriile reci.',
+    toolDesc8: 'Știi exact când pâinea e gata. Temperatura internă 96°C = perfecțiune.',
+    toolDesc9: 'Nu ai nevoie de cuptor mare. Coace pâine cu maia frumos cu control precis al temperaturii.',
+    toolDesc10: 'Biblia maielelor. Fiecare brutar serios are asta pe raft.',
+    toolBadgePop: 'Cel mai popular',
+    toolBadgePick: 'Alegerea mea',
+    toolBadgeBest: 'Cea mai bună investiție',
+    toolBadgePrem: 'Premium',
+    toolBadgeRead: 'Lectură obligatorie',
+    toolLink: 'Vezi pe Amazon →',
+    leadBadge: 'Descărcare gratuită',
+    leadTitle: 'Ghidul de 7 zile pentru<br>maiaua de pâine',
+    leadDesc: 'Tot ce ai nevoie pentru a crea prima ta maia — condensat într-un PDF frumos, printabil.',
+    leadInc1: 'Instrucțiuni zi cu zi',
+    leadInc2: 'Lista de cumpărături',
+    leadInc3: 'Fișa de depanare',
+    leadInc4: 'Prima ta rețetă de pâine',
+    leadInc5: 'Program printabil de hrănire',
+    leadPlaceholder: 'tu@email.com',
+    leadBtn: 'Ia ghidul →',
+    leadBtnSuccess: '✓ Verifică inbox-ul!',
+    leadPriv: 'Fără spam, vreodată. Dezabonare oricând.',
+    testSub: 'Brutari reali, povești reale',
+    testTitle: 'Ce spune comunitatea noastră',
+    testText: 'De la "n-am copt niciodată" la "am făcut pâine cu maia!"',
+    test1Quote: '"Am încercat de trei ori înainte de aplicația asta. Notificările au schimbat totul. Copiii mei acum cer \'pâinea mamei\' în fiecare weekend."',
+    test1Name: 'Sarah M.',
+    test1Role: 'Mamă de 3 · Portland, SUA',
+    test2Quote: '"Locuind singur, voiam un hobby care să aibă sens. Acum duc pâini vecinilor și am devenit prieteni adevărați."',
+    test2Name: 'Alex K.',
+    test2Role: 'Designer · Berlin, Germania',
+    test3Quote: '"Ca asistentă cu ture imprevizibile, credeam că maiaua e imposibilă. Am făcut 12 pâini luna asta!"',
+    test3Name: 'Elena R.',
+    test3Role: 'Asistentă & Brutară · București',
+    nlTitle: 'Sfaturi proaspete, direct din cuptor',
+    nlDesc: 'Rețete săptămânale, sfaturi de copt și cele mai bune sfaturi ale Elenei. Alătură-te listei.',
+    nlPlaceholder: 'Introdu emailul tău',
+    nlBtn: 'Abonează-te gratuit',
+    nlBtnSuccess: '✓ Ești înăuntru!',
+    nlPerk1: '✓ Rețete săptămânale',
+    nlPerk2: '✓ Fără spam',
+    nlPerk3: '✓ Dezabonare oricând',
+    ftBrandText: 'Companionul prietenos pentru maia. Pâine adevărată accesibilă tuturor.',
+    ftColApp: 'Aplicație',
+    ftColLearn: 'Învață',
+    ftColConnect: 'Conectează-te',
+    ftLinkFeatures: 'Funcționalități',
+    ftLinkOpenApp: 'Deschide aplicația',
+    ftLinkBlog: 'Blog',
+    ftLinkGuide: 'Ghid gratuit',
+    ftCopy: '© 2026 Rise & Ferment. Făcut cu făină și dragoste.',
+    ftPrivacy: 'Confidențialitate',
+    ftTerms: 'Termeni',
+    ftAffiliate: 'Dezvăluire afiliere',
+    epTitle: 'Stai! Nu pleca cu mâna goală',
+    epDesc: 'Ia ghidul nostru gratuit de 7 zile — tot ce ai nevoie pentru a coace prima ta pâine adevărată.',
+    epPlaceholder: 'tu@email.com',
+    epBtn: 'Ia ghidul gratuit',
+    sctaTitle: 'Ghid gratuit de 7 zile',
+    sctaPlaceholder: 'tu@email.com',
+    sctaBtn: 'Ia ghidul gratuit →'
   },
   it: {
     navFeatures: "Funzionalità",
@@ -687,7 +889,109 @@ const LANDING_I18N = {
     blogSub: "Dal blog",
     blogTitle: "Leggi, cuoci, ripeti",
     blogText: "Guide pratiche e consigli sinceri da chi ha iniziato proprio come te.",
-    blogCta: "Vedi tutti gli articoli →"
+    blogCta: "Vedi tutti gli articoli →",
+    probQ1: '"Quando devo nutrire il mio lievito madre?"',
+    probA1: '<strong>Promemoria intelligenti</strong> che si adattano al tuo programma. In ufficio, coi bambini o in turno notturno.',
+    probQ2: '"Il mio lievito è vivo?"',
+    probA2: '<strong>Indicatori visivi di salute</strong> con monitoraggio della temperatura. Sai subito se il tuo lievito ha bisogno di aiuto.',
+    probQ3: '"Perché non lievita?"',
+    probA3: '<strong>Risoluzione integrata</strong> con soluzioni passo dopo passo. Diagnostica i problemi e torna in carreggiata.',
+    probQ4: '"Come si inserisce nella mia vita?"',
+    probA4: '<strong>Pianificatore di cottura</strong> che si adatta a te. Dicci quando vuoi il pane e pianificheremo al contrario.',
+    featSub: 'Tutto ciò che ti serve',
+    featTitle: 'Creato per mani curiose, non per laboratori',
+    featText: 'Che tu stia creando il primo lievito madre o il quinto — Rise & Ferment lo rende naturale.',
+    feat1Lab: 'Gestione Multi-Starter',
+    feat1Title: 'Tieni traccia di uno o cinque lieviti — a tua scelta',
+    feat1Desc: 'Dai a ogni lievito un nome, una personalità e la sua storia.',
+    feat1B1: 'Programmi di nutrimento individuali e cronologia',
+    feat1B2: 'Monitoraggio temperatura e salute per starter',
+    feat1B3: 'Note e osservazioni personali',
+    feat2Lab: 'Design per Principianti',
+    feat2Title: 'Inizia da zero',
+    feat2Desc: 'La Modalità Principiante ti guida giorno per giorno. Quando sei pronto, sblocchi tutto.',
+    feat2B1: 'Istruzioni guidate giorno per giorno',
+    feat2B2: 'Messaggi motivazionali e celebrazioni',
+    feat2B3: 'Tracker streak con traguardi',
+    feat3Lab: 'Ricette & Pianificatore',
+    feat3Title: 'Dal lievito alla tavola, pianificato perfettamente',
+    feat3Desc: 'Ricette integrate con calcolatore degli ingredienti. Il pianificatore lavora a ritroso.',
+    feat3B1: 'Calcolatore ingredienti scalabile',
+    feat3B2: 'Programma inverso dall\'orario di cottura desiderato',
+    feat3B3: 'Esporta il programma nel calendario',
+    toolsSub: 'I miei strumenti essenziali',
+    toolsTitle: 'Gli strumenti che uso davvero (e amo)',
+    toolsText: 'Scelte oneste da anni di panificazione casalinga.',
+    toolsTier1: '✨ Inizia qui — Kit essenziale',
+    toolsTier2: '🚀 Livello successivo — Scelte premium',
+    toolsDisc: '* Alcuni link sono affiliati. Guadagniamo una piccola commissione senza costi aggiuntivi per te.',
+    toolDesc1: 'Crea il vapore necessario per la crosta perfetta.',
+    toolDesc2: 'Cuocere in peso ha cambiato tutto. Risultati costanti ogni volta.',
+    toolDesc3: 'Dona al pane quel bellissimo motivo a spirale.',
+    toolDesc4: 'Incidi il pane come un professionista.',
+    toolDesc5: 'Una volta provato il robot da cucina, non torni più indietro.',
+    toolDesc6: 'Lo standard d\'oro. Ritenzione del calore superiore per una crosta da forno professionale.',
+    toolDesc7: 'Controllo preciso della temperatura per una lievitazione perfetta.',
+    toolDesc8: 'Sai esattamente quando il pane è pronto. 96°C interni = perfezione.',
+    toolDesc9: 'Non serve un forno grande. Cuoce il pane a lievitazione naturale perfettamente.',
+    toolDesc10: 'La bibbia del lievito madre. Ogni panettiere serio ce l\'ha sullo scaffale.',
+    toolBadgePop: 'Più popolare',
+    toolBadgePick: 'La mia scelta',
+    toolBadgeBest: 'Miglior investimento',
+    toolBadgePrem: 'Premium',
+    toolBadgeRead: 'Lettura obbligatoria',
+    toolLink: 'Vedi su Amazon →',
+    leadBadge: 'Download gratuito',
+    leadTitle: 'La Guida al Lievito Madre<br>in 7 Giorni',
+    leadDesc: 'Tutto ciò che ti serve per creare il tuo primo lievito madre — condensato in un bellissimo PDF stampabile.',
+    leadInc1: 'Istruzioni giorno per giorno',
+    leadInc2: 'Lista della spesa',
+    leadInc3: 'Scheda di risoluzione problemi',
+    leadInc4: 'La tua prima ricetta del pane',
+    leadInc5: 'Programma di nutrimento stampabile',
+    leadPlaceholder: 'tu@email.com',
+    leadBtn: 'Ottieni la guida →',
+    leadBtnSuccess: '✓ Controlla la tua casella!',
+    leadPriv: 'Niente spam, mai. Annulla l\'iscrizione in qualsiasi momento.',
+    testSub: 'Fornai reali, storie reali',
+    testTitle: 'Cosa dice la nostra comunità',
+    testText: 'Da "non ho mai cucinato nulla" a "ho fatto il pane con lievito madre!"',
+    test1Quote: '"Ho provato tre volte prima di questa app. I promemoria hanno cambiato tutto. I miei figli ora chiedono \'il pane della mamma\' ogni weekend."',
+    test1Name: 'Sarah M.',
+    test1Role: 'Mamma di 3 · Portland, USA',
+    test2Quote: '"Vivendo da solo, volevo un hobby che avesse senso. Ora porto pagnotte ai vicini e siamo diventati amici veri."',
+    test2Name: 'Alex K.',
+    test2Role: 'Designer · Berlino, Germania',
+    test3Quote: '"Come infermiera con turni imprevedibili, pensavo che il lievito madre fosse impossibile. Questo mese ho fatto 12 pagnotte!"',
+    test3Name: 'Elena R.',
+    test3Role: 'Infermiera & Fornaio · Bucarest',
+    nlTitle: 'Consigli freschi, dritti dal forno',
+    nlDesc: 'Ricette settimanali, consigli di panificazione e i migliori consigli di Elena. Unisciti alla lista.',
+    nlPlaceholder: 'Inserisci la tua email',
+    nlBtn: 'Iscriviti gratis',
+    nlBtnSuccess: '✓ Sei dentro!',
+    nlPerk1: '✓ Ricette settimanali',
+    nlPerk2: '✓ Niente spam',
+    nlPerk3: '✓ Annulla quando vuoi',
+    ftBrandText: 'Il compagno di lievito madre per principianti. Rendere il pane vero accessibile a tutti.',
+    ftColApp: 'App',
+    ftColLearn: 'Impara',
+    ftColConnect: 'Connettiti',
+    ftLinkFeatures: 'Funzionalità',
+    ftLinkOpenApp: 'Apri l\'App',
+    ftLinkBlog: 'Blog',
+    ftLinkGuide: 'Guida gratuita',
+    ftCopy: '© 2026 Rise & Ferment. Fatto con farina e amore.',
+    ftPrivacy: 'Privacy',
+    ftTerms: 'Termini',
+    ftAffiliate: 'Divulgazione affiliati',
+    epTitle: 'Aspetta! Non andare via a mani vuote',
+    epDesc: 'Ottieni la nostra guida gratuita di 7 giorni — tutto ciò che ti serve per cuocere il tuo primo pane vero.',
+    epPlaceholder: 'tu@email.com',
+    epBtn: 'Ottieni la guida gratuita',
+    sctaTitle: 'Guida gratuita di 7 giorni',
+    sctaPlaceholder: 'tu@email.com',
+    sctaBtn: 'Ottieni la guida →'
   },
   de: {
     navFeatures: "Funktionen",
@@ -717,7 +1021,109 @@ const LANDING_I18N = {
     blogSub: "Aus dem Blog",
     blogTitle: "Lernen, backen, wiederholen",
     blogText: "Praktische Guides und ehrliche Tipps von jemandem, der genauso angefangen hat wie du.",
-    blogCta: "Alle Artikel ansehen →"
+    blogCta: "Alle Artikel ansehen →",
+    probQ1: '"Wann muss ich meinen Starter füttern?"',
+    probA1: '<strong>Clevere Erinnerungen</strong>, die sich deinem Zeitplan anpassen. Ob im Büro, mit den Kindern oder in der Nachtschicht.',
+    probQ2: '"Ist mein Starter noch am Leben?"',
+    probA2: '<strong>Visuelle Gesundheitsindikatoren</strong> mit Temperaturüberwachung. Erkenne auf einen Blick, ob dein Starter Hilfe braucht.',
+    probQ3: '"Warum geht er nicht auf?"',
+    probA3: '<strong>Integrierte Fehlerbehebung</strong> mit Schritt-für-Schritt-Lösungen. Diagnose und Rückkehr auf Kurs.',
+    probQ4: '"Wie passt das in mein Leben?"',
+    probA4: '<strong>Backplaner</strong>, der sich nach dir richtet. Sag uns, wann du Brot willst, und wir planen rückwärts.',
+    featSub: 'Alles, was du brauchst',
+    featTitle: 'Für neugierige Hände, nicht für Labors',
+    featText: 'Ob du deinen ersten oder fünften Starter machst — Rise & Ferment lässt es natürlich anfühlen.',
+    feat1Lab: 'Multi-Starter-Verwaltung',
+    feat1Title: 'Einen oder fünf Starter verfolgen — deine Wahl',
+    feat1Desc: 'Gib jedem Starter einen Namen, eine Persönlichkeit und seine eigene Geschichte.',
+    feat1B1: 'Individuelle Fütterungspläne und Verlauf',
+    feat1B2: 'Temperatur- und Gesundheitsüberwachung pro Starter',
+    feat1B3: 'Notizen und persönliche Beobachtungen',
+    feat2Lab: 'Einsteiger-freundliches Design',
+    feat2Title: 'Mit null Erfahrung starten',
+    feat2Desc: 'Der Einsteiger-Modus begleitet dich Tag für Tag. Wenn du bereit bist, schaltest du alles frei.',
+    feat2B1: 'Tagesweise Anleitungen',
+    feat2B2: 'Motivationsnachrichten und Feiern',
+    feat2B3: 'Fütterungs-Streak mit Meilensteinen',
+    feat3Lab: 'Rezepte & Backplaner',
+    feat3Title: 'Vom Starter zum Tisch, perfekt geplant',
+    feat3Desc: 'Integrierte Rezepte mit Zutatenrechner. Der Planer arbeitet rückwärts vom Wunschzeitpunkt.',
+    feat3B1: 'Skalierbarer Zutatenrechner',
+    feat3B2: 'Rückwärtsplanung vom Wunschbackzeitpunkt',
+    feat3B3: 'Plan in Kalender exportieren',
+    toolsSub: 'Meine Backgrundausstattung',
+    toolsTitle: 'Die Werkzeuge, die ich wirklich nutze (und liebe)',
+    toolsText: 'Ehrliche Empfehlungen aus Jahren des Heimbackens.',
+    toolsTier1: '✨ Hier starten — Grundausstattung',
+    toolsTier2: '🚀 Level Up — Premium-Picks',
+    toolsDisc: '* Einige Links sind Affiliate-Links. Wir erhalten eine kleine Provision ohne Mehrkosten für dich.',
+    toolDesc1: 'Erzeugt den Dampf, den dein Brot für die perfekte Kruste braucht.',
+    toolDesc2: 'Backen nach Gewicht hat alles verändert. Jedes Mal gleichmäßige Ergebnisse.',
+    toolDesc3: 'Verleiht deinem Brot das schöne Spiralmuster.',
+    toolDesc4: 'Brot einschneiden wie ein Profi.',
+    toolDesc5: 'Einmal Küchenmaschine genutzt, nie mehr zurück. Perfekter Teig jedes Mal.',
+    toolDesc6: 'Der Goldstandard. Überlegene Wärmespeicherung für Bäckerei-Qualität zuhause.',
+    toolDesc7: 'Präzise Temperaturregelung für perfektes Gehen. Ein Game-Changer für kalte Küchen.',
+    toolDesc8: 'Weißt genau, wann dein Brot fertig ist. 96°C Innentemperatur = Perfektion.',
+    toolDesc9: 'Kein großer Ofen nötig. Bäckt Sauerteigbrot wunderbar mit präziser Temperaturkontrolle.',
+    toolDesc10: 'Die Sauerteig-Bibel. Jeder ernsthafte Bäcker hat dieses Buch im Regal.',
+    toolBadgePop: 'Beliebteste',
+    toolBadgePick: 'Mein Favorit',
+    toolBadgeBest: 'Beste Investition',
+    toolBadgePrem: 'Premium',
+    toolBadgeRead: 'Pflichtlektüre',
+    toolLink: 'Auf Amazon ansehen →',
+    leadBadge: 'Kostenloser Download',
+    leadTitle: 'Der 7-Tage-Sauerteig-<br>Starter-Guide',
+    leadDesc: 'Alles, was du brauchst, um deinen ersten Sauerteig-Starter zu erstellen — kompakt als schönes, druckbares PDF.',
+    leadInc1: 'Tagesweise Anleitungen',
+    leadInc2: 'Einkaufsliste',
+    leadInc3: 'Problemlösungs-Spickzettel',
+    leadInc4: 'Dein erstes Brotrezept',
+    leadInc5: 'Druckbarer Fütterungsplan',
+    leadPlaceholder: 'du@email.com',
+    leadBtn: 'Guide holen →',
+    leadBtnSuccess: '✓ Posteingang prüfen!',
+    leadPriv: 'Kein Spam, nie. Jederzeit abmelden.',
+    testSub: 'Echte Bäcker, echte Geschichten',
+    testTitle: 'Was unsere Community sagt',
+    testText: 'Von "Ich habe noch nie gebacken" zu "Ich habe Sauerteigbrot gemacht!"',
+    test1Quote: '"Ich habe es dreimal versucht bevor ich diese App hatte. Die Erinnerungen haben alles verändert. Meine Kinder bitten jetzt jedes Wochenende um \'Mamas Brot\'."',
+    test1Name: 'Sarah M.',
+    test1Role: 'Mutter von 3 · Portland, USA',
+    test2Quote: '"Allein lebend wollte ich ein sinnvolles Hobby. Jetzt bringe ich meinen Nachbarn Brote und wir sind echte Freunde geworden."',
+    test2Name: 'Alex K.',
+    test2Role: 'Designer · Berlin, Deutschland',
+    test3Quote: '"Als Krankenschwester mit unberechenbaren Schichten dachte ich, Sauerteig sei unmöglich. Diesen Monat habe ich 12 Brote gebacken!"',
+    test3Name: 'Elena R.',
+    test3Role: 'Krankenschwester & Bäckerin · Bukarest',
+    nlTitle: 'Frische Tipps, direkt aus dem Ofen',
+    nlDesc: 'Wöchentliche Rezepte, Backtipps und Elenas beste Starter-Ratschläge. Trag dich in die Liste ein.',
+    nlPlaceholder: 'E-Mail eingeben',
+    nlBtn: 'Kostenlos abonnieren',
+    nlBtnSuccess: '✓ Du bist dabei!',
+    nlPerk1: '✓ Wöchentliche Rezepte',
+    nlPerk2: '✓ Kein Spam',
+    nlPerk3: '✓ Jederzeit abmelden',
+    ftBrandText: 'Der einsteigerfreundliche Sauerteig-Begleiter. Echtes Brot für alle zugänglich machen.',
+    ftColApp: 'App',
+    ftColLearn: 'Lernen',
+    ftColConnect: 'Verbinden',
+    ftLinkFeatures: 'Funktionen',
+    ftLinkOpenApp: 'App öffnen',
+    ftLinkBlog: 'Blog',
+    ftLinkGuide: 'Kostenloser Guide',
+    ftCopy: '© 2026 Rise & Ferment. Mit Mehl und Liebe gemacht.',
+    ftPrivacy: 'Datenschutz',
+    ftTerms: 'AGB',
+    ftAffiliate: 'Affiliate-Offenlegung',
+    epTitle: 'Warte! Geh nicht mit leeren Händen',
+    epDesc: 'Hol dir unseren kostenlosen 7-Tage-Guide — alles, was du brauchst, um dein erstes echtes Brot zu backen.',
+    epPlaceholder: 'du@email.com',
+    epBtn: 'Kostenlosen Guide holen',
+    sctaTitle: 'Kostenloser 7-Tage-Guide',
+    sctaPlaceholder: 'du@email.com',
+    sctaBtn: 'Guide holen →'
   },
   fr: {
     navFeatures: "Fonctionnalités",
@@ -747,7 +1153,109 @@ const LANDING_I18N = {
     blogSub: "Du blog",
     blogTitle: "Lire, cuire, recommencer",
     blogText: "Des guides pratiques et des conseils sincères de quelqu'un qui a commencé comme toi.",
-    blogCta: "Voir tous les articles →"
+    blogCta: "Voir tous les articles →",
+    probQ1: '"Quand est-ce que je nourris mon levain ?"',
+    probA1: '<strong>Rappels intelligents</strong> qui s\'adaptent à ton emploi du temps. Au bureau, avec les enfants ou en nuit de travail.',
+    probQ2: '"Mon levain est-il vivant ?"',
+    probA2: '<strong>Indicateurs visuels de santé</strong> avec suivi de la température. Sache d\'un coup d\'œil si ton levain a besoin d\'aide.',
+    probQ3: '"Pourquoi ça ne monte pas ?"',
+    probA3: '<strong>Dépannage intégré</strong> avec des solutions étape par étape. Diagnostique les problèmes et reprends le bon chemin.',
+    probQ4: '"Comment l\'intégrer dans ma vie ?"',
+    probA4: '<strong>Planificateur de cuisson</strong> qui s\'adapte à toi. Dis-nous quand tu veux du pain et on planifie en sens inverse.',
+    featSub: 'Tout ce dont tu as besoin',
+    featTitle: 'Conçu pour des mains curieuses, pas pour des laboratoires',
+    featText: 'Que tu crées ton premier levain ou ton cinquième — Rise & Ferment rend tout naturel.',
+    feat1Lab: 'Gestion Multi-Levain',
+    feat1Title: 'Suis un levain ou cinq — ton choix',
+    feat1Desc: 'Donne à chaque levain un nom, une personnalité et sa propre histoire.',
+    feat1B1: 'Calendriers de nourrissage individuels et historique',
+    feat1B2: 'Suivi température et santé par levain',
+    feat1B3: 'Notes et observations personnelles',
+    feat2Lab: 'Design pour Débutants',
+    feat2Title: 'Commence sans expérience',
+    feat2Desc: 'Le Mode Débutant te guide jour après jour. Quand tu es prêt, tu déverrouilles tout.',
+    feat2B1: 'Instructions guidées jour par jour',
+    feat2B2: 'Messages motivants et célébrations',
+    feat2B3: 'Suivi de série avec jalons',
+    feat3Lab: 'Recettes & Planificateur',
+    feat3Title: 'Du levain à la table, planifié parfaitement',
+    feat3Desc: 'Recettes intégrées avec calculateur d\'ingrédients. Le planificateur travaille à rebours.',
+    feat3B1: 'Calculateur d\'ingrédients évolutif',
+    feat3B2: 'Planification inverse depuis l\'heure souhaitée',
+    feat3B3: 'Exporter le planning dans ton calendrier',
+    toolsSub: 'Mes essentiels de boulange',
+    toolsTitle: 'Les outils que j\'utilise vraiment (et que j\'adore)',
+    toolsText: 'Sélections honnêtes de plusieurs années de panification maison.',
+    toolsTier1: '✨ Commence ici — Kit essentiel',
+    toolsTier2: '🚀 Niveau supérieur — Choix premium',
+    toolsDisc: '* Certains liens sont des liens affiliés. Nous gagnons une petite commission sans frais supplémentaires pour toi.',
+    toolDesc1: 'Crée la vapeur dont ton pain a besoin pour une croûte parfaite.',
+    toolDesc2: 'Cuire en poids a tout changé. Des résultats cohérents à chaque fois.',
+    toolDesc3: 'Donne à ton pain ce beau motif en spirale.',
+    toolDesc4: 'Incise ton pain comme un pro.',
+    toolDesc5: 'Une fois qu\'on a un robot pâtissier, on ne revient jamais en arrière.',
+    toolDesc6: 'Le standard d\'or. Rétention de chaleur supérieure pour une croûte de boulangerie à la maison.',
+    toolDesc7: 'Contrôle précis de la température pour une levée parfaite.',
+    toolDesc8: 'Sache exactement quand ton pain est cuit. 96°C à cœur = perfection.',
+    toolDesc9: 'Pas besoin d\'un grand four. Cuit le pain au levain parfaitement avec un contrôle précis.',
+    toolDesc10: 'La bible du levain. Chaque boulanger sérieux l\'a sur son étagère.',
+    toolBadgePop: 'Le plus populaire',
+    toolBadgePick: 'Mon choix',
+    toolBadgeBest: 'Meilleur investissement',
+    toolBadgePrem: 'Premium',
+    toolBadgeRead: 'Lecture obligatoire',
+    toolLink: 'Voir sur Amazon →',
+    leadBadge: 'Téléchargement gratuit',
+    leadTitle: 'Le Guide Levain<br>en 7 Jours',
+    leadDesc: 'Tout ce qu\'il te faut pour créer ton premier levain — condensé dans un beau PDF imprimable.',
+    leadInc1: 'Instructions jour par jour',
+    leadInc2: 'Liste de courses',
+    leadInc3: 'Aide-mémoire de dépannage',
+    leadInc4: 'Ta première recette de pain',
+    leadInc5: 'Planning de nourrissage imprimable',
+    leadPlaceholder: 'toi@email.com',
+    leadBtn: 'Obtenir le guide →',
+    leadBtnSuccess: '✓ Vérifie ta boîte mail !',
+    leadPriv: 'Pas de spam, jamais. Se désabonner à tout moment.',
+    testSub: 'De vrais boulangers, de vraies histoires',
+    testTitle: 'Ce que dit notre communauté',
+    testText: 'De "Je n\'ai jamais rien cuisiné" à "J\'ai fait du pain au levain !"',
+    test1Quote: '"J\'ai essayé trois fois avant cette app. Les rappels ont tout changé. Mes enfants demandent maintenant \'le pain de maman\' chaque weekend."',
+    test1Name: 'Sarah M.',
+    test1Role: 'Maman de 3 · Portland, USA',
+    test2Quote: '"Vivant seul, je voulais un hobby qui ait du sens. Maintenant j\'apporte des pains à mes voisins et nous sommes devenus de vrais amis."',
+    test2Name: 'Alex K.',
+    test2Role: 'Designer · Berlin, Allemagne',
+    test3Quote: '"En tant qu\'infirmière avec des horaires imprévisibles, je pensais que le levain était impossible. J\'ai fait 12 pains ce mois-ci !"',
+    test3Name: 'Elena R.',
+    test3Role: 'Infirmière & Boulangère · Bucarest',
+    nlTitle: 'Des conseils frais, tout droit du four',
+    nlDesc: 'Recettes hebdomadaires, conseils de boulange et les meilleurs conseils d\'Elena. Rejoins la liste.',
+    nlPlaceholder: 'Entrer ton email',
+    nlBtn: 'S\'abonner gratuitement',
+    nlBtnSuccess: '✓ Tu es inscrit !',
+    nlPerk1: '✓ Recettes hebdomadaires',
+    nlPerk2: '✓ Pas de spam',
+    nlPerk3: '✓ Se désabonner quand tu veux',
+    ftBrandText: 'Le compagnon de levain pour débutants. Rendre le vrai pain accessible à tous.',
+    ftColApp: 'App',
+    ftColLearn: 'Apprendre',
+    ftColConnect: 'Se connecter',
+    ftLinkFeatures: 'Fonctionnalités',
+    ftLinkOpenApp: 'Ouvrir l\'App',
+    ftLinkBlog: 'Blog',
+    ftLinkGuide: 'Guide gratuit',
+    ftCopy: '© 2026 Rise & Ferment. Fait avec de la farine et de l\'amour.',
+    ftPrivacy: 'Confidentialité',
+    ftTerms: 'Conditions',
+    ftAffiliate: 'Divulgation d\'affiliation',
+    epTitle: 'Attends ! Ne pars pas les mains vides',
+    epDesc: 'Obtiens notre guide gratuit de 7 jours — tout ce dont tu as besoin pour cuire ton premier vrai pain.',
+    epPlaceholder: 'toi@email.com',
+    epBtn: 'Obtenir le guide gratuit',
+    sctaTitle: 'Guide gratuit 7 jours',
+    sctaPlaceholder: 'toi@email.com',
+    sctaBtn: 'Obtenir le guide →'
   },
   es: {
     navFeatures: "Funciones",
@@ -777,7 +1285,109 @@ const LANDING_I18N = {
     blogSub: "Del blog",
     blogTitle: "Aprender, hornear, repetir",
     blogText: "Guías prácticas y consejos honestos de alguien que empezó igual que tú.",
-    blogCta: "Ver todos los artículos →"
+    blogCta: "Ver todos los artículos →",
+    probQ1: '"¿Cuándo alimento mi masa madre?"',
+    probA1: '<strong>Recordatorios inteligentes</strong> que se adaptan a tu horario. En la oficina, con los niños o en turno de noche.',
+    probQ2: '"¿Mi masa madre está viva?"',
+    probA2: '<strong>Indicadores visuales de salud</strong> con seguimiento de temperatura. Sabe de un vistazo si tu masa madre necesita ayuda.',
+    probQ3: '"¿Por qué no sube?"',
+    probA3: '<strong>Resolución de problemas integrada</strong> con soluciones paso a paso. Diagnostica problemas y retoma el camino.',
+    probQ4: '"¿Cómo encaja en mi vida?"',
+    probA4: '<strong>Planificador de horneado</strong> que se adapta a ti. Dinos cuándo quieres pan y planificaremos hacia atrás.',
+    featSub: 'Todo lo que necesitas',
+    featTitle: 'Hecho para manos curiosas, no para laboratorios',
+    featText: 'Ya sea que estés creando tu primer cultivo o el quinto — Rise & Ferment lo hace sentir natural.',
+    feat1Lab: 'Gestión Multi-Cultivo',
+    feat1Title: 'Sigue uno o cinco cultivos — tu elección',
+    feat1Desc: 'Dale a cada cultivo un nombre, personalidad y su propia historia.',
+    feat1B1: 'Calendarios de alimentación individuales e historial',
+    feat1B2: 'Seguimiento de temperatura y salud por cultivo',
+    feat1B3: 'Notas y observaciones personales',
+    feat2Lab: 'Diseño para Principiantes',
+    feat2Title: 'Empieza sin experiencia',
+    feat2Desc: 'El Modo Principiante te guía día a día. Cuando estés listo, desbloqueas todo.',
+    feat2B1: 'Instrucciones guiadas día a día',
+    feat2B2: 'Mensajes motivadores y celebraciones',
+    feat2B3: 'Rastreador de racha con hitos',
+    feat3Lab: 'Recetas & Planificador',
+    feat3Title: 'Del cultivo a la mesa, planificado perfectamente',
+    feat3Desc: 'Recetas integradas con calculadora de ingredientes. El planificador trabaja hacia atrás.',
+    feat3B1: 'Calculadora de ingredientes escalable',
+    feat3B2: 'Programa inverso desde el tiempo de horneado deseado',
+    feat3B3: 'Exportar programa al calendario',
+    toolsSub: 'Mis esenciales de horneado',
+    toolsTitle: 'Las herramientas que realmente uso (y adoro)',
+    toolsText: 'Selecciones honestas de años de horneado en casa.',
+    toolsTier1: '✨ Empieza aquí — Kit esencial',
+    toolsTier2: '🚀 Siguiente nivel — Selecciones premium',
+    toolsDisc: '* Algunos enlaces son de afiliados. Ganamos una pequeña comisión sin coste adicional para ti.',
+    toolDesc1: 'Crea el vapor que tu pan necesita para esa corteza perfecta.',
+    toolDesc2: 'Hornear por peso lo cambió todo. Resultados consistentes cada vez.',
+    toolDesc3: 'Le da a tu pan ese hermoso patrón en espiral.',
+    toolDesc4: 'Corta tu pan como un profesional.',
+    toolDesc5: 'Una vez que usas una amasadora, nunca vuelves. Masa perfecta cada vez.',
+    toolDesc6: 'El estándar de oro. Retención de calor superior para corteza de panadería en casa.',
+    toolDesc7: 'Control preciso de temperatura para fermentación perfecta.',
+    toolDesc8: 'Sabe exactamente cuándo está listo tu pan. 96°C internos = perfección.',
+    toolDesc9: 'No se necesita horno grande. Hornea pan de masa madre perfectamente.',
+    toolDesc10: 'La biblia de la masa madre. Todo panadero serio la tiene en su estante.',
+    toolBadgePop: 'Más popular',
+    toolBadgePick: 'Mi elección',
+    toolBadgeBest: 'Mejor inversión',
+    toolBadgePrem: 'Premium',
+    toolBadgeRead: 'Lectura obligatoria',
+    toolLink: 'Ver en Amazon →',
+    leadBadge: 'Descarga gratuita',
+    leadTitle: 'La Guía de Masa Madre<br>en 7 Días',
+    leadDesc: 'Todo lo que necesitas para crear tu primer cultivo de masa madre — condensado en un hermoso PDF imprimible.',
+    leadInc1: 'Instrucciones día a día',
+    leadInc2: 'Lista de compras',
+    leadInc3: 'Hoja de trucos para problemas',
+    leadInc4: 'Tu primera receta de pan',
+    leadInc5: 'Calendario de alimentación imprimible',
+    leadPlaceholder: 'tu@email.com',
+    leadBtn: 'Obtener la guía →',
+    leadBtnSuccess: '✓ ¡Revisa tu bandeja!',
+    leadPriv: 'Sin spam, nunca. Cancela la suscripción en cualquier momento.',
+    testSub: 'Panaderos reales, historias reales',
+    testTitle: 'Lo que dice nuestra comunidad',
+    testText: 'De "Nunca he horneado nada" a "¡Hice pan de masa madre!"',
+    test1Quote: '"Lo intenté tres veces antes de esta app. Los recordatorios lo cambiaron todo. Mis hijos ahora piden \'el pan de mamá\' cada fin de semana."',
+    test1Name: 'Sarah M.',
+    test1Role: 'Mamá de 3 · Portland, EE.UU.',
+    test2Quote: '"Viviendo solo, quería un hobby significativo. Ahora llevo panes a mis vecinos y nos hemos convertido en amigos de verdad."',
+    test2Name: 'Alex K.',
+    test2Role: 'Diseñador · Berlín, Alemania',
+    test3Quote: '"Como enfermera con turnos impredecibles, pensé que la masa madre era imposible. ¡Este mes he hecho 12 panes!"',
+    test3Name: 'Elena R.',
+    test3Role: 'Enfermera & Panadera · Bucarest',
+    nlTitle: 'Consejos frescos, directos del horno',
+    nlDesc: 'Recetas semanales, consejos de horneado y los mejores consejos de Elena. Únete a la lista.',
+    nlPlaceholder: 'Introduce tu email',
+    nlBtn: 'Suscribirse gratis',
+    nlBtnSuccess: '✓ ¡Ya estás dentro!',
+    nlPerk1: '✓ Recetas semanales',
+    nlPerk2: '✓ Sin spam',
+    nlPerk3: '✓ Cancelar en cualquier momento',
+    ftBrandText: 'El compañero de masa madre para principiantes. Hacer el pan real accesible a todos.',
+    ftColApp: 'App',
+    ftColLearn: 'Aprender',
+    ftColConnect: 'Conectar',
+    ftLinkFeatures: 'Funciones',
+    ftLinkOpenApp: 'Abrir la App',
+    ftLinkBlog: 'Blog',
+    ftLinkGuide: 'Guía gratuita',
+    ftCopy: '© 2026 Rise & Ferment. Hecho con harina y amor.',
+    ftPrivacy: 'Privacidad',
+    ftTerms: 'Términos',
+    ftAffiliate: 'Divulgación de afiliados',
+    epTitle: '¡Espera! No te vayas con las manos vacías',
+    epDesc: 'Obtén nuestra guía gratuita de 7 días — todo lo que necesitas para hornear tu primer pan de verdad.',
+    epPlaceholder: 'tu@email.com',
+    epBtn: 'Obtener guía gratuita',
+    sctaTitle: 'Guía gratuita 7 días',
+    sctaPlaceholder: 'tu@email.com',
+    sctaBtn: 'Obtener la guía →'
   }
 };
 
@@ -826,6 +1436,122 @@ function applyLandingTranslations() {
   setText('.blog__head .st', L.blogTitle);
   setText('.blog__head .ss', L.blogText);
   setText('.blog__va', L.blogCta);
+
+  // Problems cards
+  const probCards = document.querySelectorAll('.prob-card');
+  const probQs = [L.probQ1, L.probQ2, L.probQ3, L.probQ4];
+  const probAs = [L.probA1, L.probA2, L.probA3, L.probA4];
+  probCards.forEach((c, i) => {
+    const q = c.querySelector('.prob-card__q'); if (q && probQs[i]) q.textContent = probQs[i];
+    const a = c.querySelector('.prob-card__a'); if (a && probAs[i]) a.innerHTML = probAs[i];
+  });
+
+  // Features section
+  setText('.feat__head .sl', L.featSub);
+  setText('.feat__head .st', L.featTitle);
+  setText('.feat__head .ss', L.featText);
+  const featRows = document.querySelectorAll('.feat-row');
+  const featData = [
+    {lab:L.feat1Lab,title:L.feat1Title,desc:L.feat1Desc,bs:[L.feat1B1,L.feat1B2,L.feat1B3]},
+    {lab:L.feat2Lab,title:L.feat2Title,desc:L.feat2Desc,bs:[L.feat2B1,L.feat2B2,L.feat2B3]},
+    {lab:L.feat3Lab,title:L.feat3Title,desc:L.feat3Desc,bs:[L.feat3B1,L.feat3B2,L.feat3B3]}
+  ];
+  featRows.forEach((row, i) => {
+    if (!featData[i]) return;
+    const fd = featData[i];
+    const lab = row.querySelector('.feat-row__lab'); if (lab) lab.textContent = fd.lab;
+    const t = row.querySelector('.feat-row__t'); if (t) t.textContent = fd.title;
+    const d = row.querySelector('.feat-row__d'); if (d) d.textContent = fd.desc;
+    const bullets = row.querySelectorAll('.feat-row__b');
+    bullets.forEach((b, j) => { if (fd.bs[j]) b.innerHTML = `<span class="feat-row__bi"><svg width="18" height="18"><use href="#ico-check"/></svg></span> ${fd.bs[j]}`; });
+  });
+
+  // Tools section
+  setText('.tools__head .sl', L.toolsSub);
+  setText('.tools__head .st', L.toolsTitle);
+  setText('.tools__head .ss', L.toolsText);
+  const tiers = document.querySelectorAll('.tools__tier');
+  if (tiers[0]) { const t = tiers[0].querySelector('.tools__tier-t'); if (t) t.textContent = L.toolsTier1; }
+  if (tiers[1]) { const t = tiers[1].querySelector('.tools__tier-t'); if (t) t.textContent = L.toolsTier2; }
+  setText('.tools__disc', L.toolsDisc);
+  const tcDescs = document.querySelectorAll('.tc__desc');
+  const descKeys = [L.toolDesc1,L.toolDesc2,L.toolDesc3,L.toolDesc4,L.toolDesc5,L.toolDesc6,L.toolDesc7,L.toolDesc8,L.toolDesc9,L.toolDesc10];
+  tcDescs.forEach((el, i) => { if (descKeys[i]) el.textContent = descKeys[i]; });
+  document.querySelectorAll('.tc__link').forEach(el => { el.textContent = L.toolLink; });
+  const t1Badges = tiers[0] ? tiers[0].querySelectorAll('.tc__badge') : [];
+  const t2Badges = tiers[1] ? tiers[1].querySelectorAll('.tc__badge') : [];
+  if (t1Badges[0]) t1Badges[0].textContent = L.toolBadgePop;
+  if (t1Badges[1]) t1Badges[1].textContent = L.toolBadgePick;
+  if (t2Badges[0]) t2Badges[0].textContent = L.toolBadgeBest;
+  if (t2Badges[1]) t2Badges[1].textContent = L.toolBadgePrem;
+  if (t2Badges[2]) t2Badges[2].textContent = L.toolBadgeRead;
+
+  // Lead magnet
+  setHtml('.lead__badge', `<svg width="18" height="18"><use href="#ico-book"/></svg> ${L.leadBadge}`);
+  setHtml('.lead__t', L.leadTitle);
+  setText('.lead__d', L.leadDesc);
+  const leadItems = document.querySelectorAll('.lead__inc li');
+  const incKeys = [L.leadInc1,L.leadInc2,L.leadInc3,L.leadInc4,L.leadInc5];
+  leadItems.forEach((li, i) => { if (incKeys[i]) li.innerHTML = `<svg width="18" height="18" style="color:var(--olive)"><use href="#ico-check"/></svg> ${incKeys[i]}`; });
+  const leadInput = document.querySelector('.lead__input'); if (leadInput) leadInput.placeholder = L.leadPlaceholder;
+  setText('.lead__sub', L.leadBtn);
+  setText('.lead__priv', L.leadPriv);
+
+  // Testimonials
+  setText('.test__head .sl', L.testSub);
+  setText('.test__head .st', L.testTitle);
+  setText('.test__head .ss', L.testText);
+  const tcards = document.querySelectorAll('.tcard');
+  const testData = [
+    {q:L.test1Quote,n:L.test1Name,r:L.test1Role},
+    {q:L.test2Quote,n:L.test2Name,r:L.test2Role},
+    {q:L.test3Quote,n:L.test3Name,r:L.test3Role}
+  ];
+  tcards.forEach((c, i) => {
+    if (!testData[i]) return;
+    const qt = c.querySelector('.tcard__text'); if (qt) qt.textContent = testData[i].q;
+    const nm = c.querySelector('.tcard__name'); if (nm) nm.textContent = testData[i].n;
+    const rl = c.querySelector('.tcard__role'); if (rl) rl.textContent = testData[i].r;
+  });
+
+  // Newsletter
+  setText('.nl__t', L.nlTitle);
+  setText('.nl__d', L.nlDesc);
+  const nlInput = document.querySelector('.nl__input'); if (nlInput) nlInput.placeholder = L.nlPlaceholder;
+  setText('.nl__btn', L.nlBtn);
+  const perks = document.querySelectorAll('.nl__perk');
+  if (perks[0]) perks[0].textContent = L.nlPerk1;
+  if (perks[1]) perks[1].textContent = L.nlPerk2;
+  if (perks[2]) perks[2].textContent = L.nlPerk3;
+
+  // Footer
+  setText('.ft__brand-txt', L.ftBrandText);
+  const ftCols = document.querySelectorAll('.ft__col-t');
+  if (ftCols[0]) ftCols[0].textContent = L.ftColApp;
+  if (ftCols[1]) ftCols[1].textContent = L.ftColLearn;
+  if (ftCols[2]) ftCols[2].textContent = L.ftColConnect;
+  const ftAppLinks = document.querySelectorAll('.ft__top > div:nth-child(2) .ft__link');
+  if (ftAppLinks[0]) ftAppLinks[0].textContent = L.ftLinkFeatures;
+  if (ftAppLinks[1]) ftAppLinks[1].textContent = L.ftLinkOpenApp;
+  const ftLearnLinks = document.querySelectorAll('.ft__top > div:nth-child(3) .ft__link');
+  if (ftLearnLinks[0]) ftLearnLinks[0].textContent = L.ftLinkBlog;
+  if (ftLearnLinks[1]) ftLearnLinks[1].textContent = L.ftLinkGuide;
+  setText('.ft__copy', L.ftCopy);
+  const btmLinks = document.querySelectorAll('.ft__btm-link');
+  if (btmLinks[0]) btmLinks[0].textContent = L.ftPrivacy;
+  if (btmLinks[1]) btmLinks[1].textContent = L.ftTerms;
+  if (btmLinks[2]) btmLinks[2].textContent = L.ftAffiliate;
+
+  // Exit popup
+  setText('.ep__t', L.epTitle);
+  setText('.ep__d', L.epDesc);
+  const epInput = document.querySelector('.ep__input'); if (epInput) epInput.placeholder = L.epPlaceholder;
+  setText('.ep__btn', L.epBtn);
+
+  // Sticky CTA
+  setText('.scta__t', L.sctaTitle);
+  const sctaInput = document.querySelector('.scta__input'); if (sctaInput) sctaInput.placeholder = L.sctaPlaceholder;
+  setText('.scta__btn', L.sctaBtn);
 
   document.documentElement.lang = lang;
   const label = document.getElementById('langLabel');
@@ -985,12 +1711,11 @@ function handleLead(e){
   fetch('/',{method:'POST',headers:{'Content-Type':'application/x-www-form-urlencoded'},body:new URLSearchParams({'form-name':'lead-magnet',email:email}).toString()}).catch(()=>{});
   // Submit to MailerLite (replace YOUR_MAILERLITE_API_KEY and YOUR_GROUP_ID)
   // fetch('https://connect.mailerlite.com/api/subscribers',{method:'POST',headers:{'Content-Type':'application/json','Authorization':'Bearer YOUR_MAILERLITE_API_KEY'},body:JSON.stringify({email:email,groups:['YOUR_GUIDE_GROUP_ID']})}).catch(()=>{});
-  // Track with GA4
-  if(typeof gtag==='function')gtag('event','lead_magnet_download',{event_category:'engagement',event_label:'7day_guide'});
-  b.textContent='\u2713 Check your inbox!';b.style.background='#6B8F4E';
+  const L=LANDING_I18N[lang]||LANDING_I18N.en;
+  b.textContent=L.leadBtnSuccess;b.style.background='#6B8F4E';
   e.target.querySelector('input[type="email"]').value='';
   window.open('/7-day-sourdough-starter-guide.pdf','_blank');
-  setTimeout(()=>{b.textContent='Get the Guide \u2192';b.style.background=''},3000);
+  setTimeout(()=>{b.textContent=L.leadBtn;b.style.background=''},3000);
 }
 function handleNL(e){
   e.preventDefault();
@@ -1000,11 +1725,10 @@ function handleNL(e){
   fetch('/',{method:'POST',headers:{'Content-Type':'application/x-www-form-urlencoded'},body:new URLSearchParams({'form-name':'newsletter',email:email}).toString()}).catch(()=>{});
   // Submit to MailerLite (replace YOUR_MAILERLITE_API_KEY and YOUR_GROUP_ID)
   // fetch('https://connect.mailerlite.com/api/subscribers',{method:'POST',headers:{'Content-Type':'application/json','Authorization':'Bearer YOUR_MAILERLITE_API_KEY'},body:JSON.stringify({email:email,groups:['YOUR_NEWSLETTER_GROUP_ID']})}).catch(()=>{});
-  // Track with GA4
-  if(typeof gtag==='function')gtag('event','newsletter_signup',{event_category:'engagement'});
-  b.textContent='\u2713 You are in!';b.style.background='#6B8F4E';
+  const L=LANDING_I18N[lang]||LANDING_I18N.en;
+  b.textContent=L.nlBtnSuccess;b.style.background='#6B8F4E';
   e.target.querySelector('input[type="email"]').value='';
-  setTimeout(()=>{b.textContent='Subscribe Free';b.style.background=''},3000);
+  setTimeout(()=>{b.textContent=L.nlBtn;b.style.background=''},3000);
 }
 // ═══ THEME ═══
 function readPersistedTheme() {
@@ -1057,18 +1781,6 @@ document.querySelectorAll('.lang-sw__opt').forEach(o=>{o.addEventListener('click
 document.querySelectorAll('a[href^="#"]').forEach(a=>{a.addEventListener('click',function(e){const t=this.getAttribute('href');if(t.length>1){const el=document.querySelector(t);if(el){e.preventDefault();el.scrollIntoView({behavior:'smooth'})}}})});
 setLang(lang);
 
-// ═══ COOKIE CONSENT ═══
-(function(){
-  const CC_KEY='rf_cookie_consent';
-  const consent=localStorage.getItem(CC_KEY);
-  if(consent==='accepted'){loadGA4();return}
-  if(consent==='declined')return;
-  const cc=document.getElementById('cookieConsent');
-  if(!cc)return;
-  setTimeout(()=>cc.classList.add('vis'),1000);
-  document.getElementById('ccAccept').addEventListener('click',()=>{localStorage.setItem(CC_KEY,'accepted');cc.classList.remove('vis');loadGA4()});
-  document.getElementById('ccDecline').addEventListener('click',()=>{localStorage.setItem(CC_KEY,'declined');cc.classList.remove('vis')});
-})();
 
 // ═══ EXIT INTENT POPUP ═══
 (function(){
@@ -1087,7 +1799,6 @@ setLang(lang);
     e.preventDefault();
     const email=this.querySelector('input[type="email"]').value;
     fetch('/',{method:'POST',headers:{'Content-Type':'application/x-www-form-urlencoded'},body:new URLSearchParams({'form-name':'lead-magnet',email:email}).toString()}).catch(()=>{});
-    if(typeof gtag==='function')gtag('event','lead_magnet_download',{event_category:'exit_popup'});
     this.querySelector('button').textContent='\u2713 Sent!';
     this.querySelector('input[type="email"]').value='';
     window.open('/7-day-sourdough-starter-guide.pdf','_blank');
@@ -1103,9 +1814,6 @@ setLang(lang);
   let sctaDismissed=false;
   window.addEventListener('scroll',function(){
     if(sctaDismissed)return;
-    const cc=document.getElementById('cookieConsent');
-    const ccVisible=cc&&cc.classList.contains('vis');
-    if(ccVisible){scta.classList.remove('vis');return}
     const heroBottom=document.getElementById('hero').getBoundingClientRect().bottom;
     const guideTop=guide.getBoundingClientRect().top;
     const inRange=heroBottom<0&&guideTop>window.innerHeight;
@@ -1116,7 +1824,6 @@ setLang(lang);
     e.preventDefault();
     const email=this.querySelector('input[type="email"]').value;
     fetch('/',{method:'POST',headers:{'Content-Type':'application/x-www-form-urlencoded'},body:new URLSearchParams({'form-name':'lead-magnet',email:email}).toString()}).catch(()=>{});
-    if(typeof gtag==='function')gtag('event','lead_magnet_download',{event_category:'sticky_cta'});
     this.querySelector('button').textContent='\u2713';
     this.querySelector('input[type="email"]').value='';
     window.open('/7-day-sourdough-starter-guide.pdf','_blank');
@@ -1124,20 +1831,8 @@ setLang(lang);
   });
 })();
 
-// ═══ AFFILIATE TRACKING ═══
-document.querySelectorAll('[data-aff]').forEach(function(a){
-  a.addEventListener('click',function(){
-    if(typeof gtag==='function')gtag('event','affiliate_click',{event_category:'monetization',event_label:this.dataset.aff});
-  });
-});
 
 </script>
-
-<!-- COOKIE CONSENT BANNER -->
-<div class="cc" id="cookieConsent">
-<span>We use cookies for analytics to improve your experience.</span>
-<div class="cc__btns"><button class="cc__btn cc__btn--a" id="ccAccept">Accept</button><button class="cc__btn cc__btn--d" id="ccDecline">Decline</button></div>
-</div>
 
 <!-- EXIT INTENT POPUP -->
 <div class="ep" id="exitPopup">
