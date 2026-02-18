@@ -31,3 +31,4 @@ rise-ferment-v4.1.html
 
 # Local Netlify folder
 .netlify
+.claude/worktrees/
