@@ -51,6 +51,7 @@ function StatsPage() {
 
   const totalFeedings = history.length;
   const tempsWithValue = history.filter((e) => e.temp != null);
+  const avgTempUnit = tempsWithValue.length > 0 ? (tempsWithValue[tempsWithValue.length - 1].tempUnit || "c") : "c";
   const avgTemp =
     tempsWithValue.length > 0
       ? (tempsWithValue.reduce((s, e) => s + e.temp, 0) / tempsWithValue.length).toFixed(1)
@@ -86,7 +87,7 @@ function StatsPage() {
           <div className="stat-mini-label">{t("currentStreak")}</div>
         </div>
         <div className="stat-mini">
-          <div className="stat-mini-value">{avgTemp ? `${avgTemp}°` : "--"}</div>
+          <div className="stat-mini-value">{avgTemp ? `${avgTemp}°${avgTempUnit.toUpperCase()}` : "--"}</div>
           <div className="stat-mini-label">{t("avgTemp")}</div>
         </div>
         <div className="stat-mini">
@@ -181,7 +182,7 @@ function StatsPage() {
                     }}
                   >
                     <span style={{ fontSize: "9px", color: "var(--accent)" }}>
-                      {d.temp}°
+                      {d.temp}°{(d.tempUnit || "c").toUpperCase()}
                     </span>
                     <div
                       style={{

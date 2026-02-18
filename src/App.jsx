@@ -16,6 +16,9 @@ import SettingsPage from "./pages/SettingsPage";
 import OnboardingPage from "./pages/OnboardingPage";
 import PlannerPage from "./pages/PlannerPage";
 import ShopPage from "./pages/ShopPage";
+import PrivacyPage from "./pages/PrivacyPage";
+import TermsPage from "./pages/TermsPage";
+import AffiliatePage from "./pages/AffiliatePage";
 import { checkMilestones } from "./data/celebrations";
 
 const CELEBRATION_STORAGE_KEY = "riseFermentCelebrations";
@@ -240,6 +243,9 @@ function App() {
                   <Route path="/stats" element={<StatsPage />} />
                   <Route path="/settings" element={<SettingsPage />} />
                   <Route path="/shop" element={<ShopPage />} />
+                  <Route path="/privacy" element={<PrivacyPage />} />
+                  <Route path="/terms" element={<TermsPage />} />
+                  <Route path="/affiliate" element={<AffiliatePage />} />
                   <Route path="*" element={<Navigate to="/" replace />} />
                 </Routes>
               </main>

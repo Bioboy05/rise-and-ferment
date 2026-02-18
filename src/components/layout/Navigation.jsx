@@ -7,8 +7,10 @@ function Navigation() {
 
   const tabs = [
     { to: "/", label: t("tabHome"), icon: "home" },
+    { to: "/history", label: t("tabHistory"), icon: "history" },
     { to: "/recipes", label: t("tabRecipes"), icon: "bread" },
     { to: "/shop", label: t("tabShop"), icon: "shop" },
+    { to: "/stats", label: t("tabStats"), icon: "stats" },
     { to: "/learn", label: t("tabLearn"), icon: "book" },
     { to: "/settings", label: t("tabSettings"), icon: "settings" },
   ];
@@ -26,7 +28,7 @@ function Navigation() {
             aria-label={tab.label}
           >
             <div className="nav-icon">
-              <Icon name={tab.icon} size={22} />
+              <Icon name={tab.icon} size={20} />
             </div>
             <div className="nav-label">{tab.label}</div>
           </NavLink>
