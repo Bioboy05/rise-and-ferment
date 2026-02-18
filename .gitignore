@@ -28,3 +28,6 @@ nul
 
 # Reference files
 rise-ferment-v4.1.html
+
+# Local Netlify folder
+.netlify
