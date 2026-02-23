@@ -18,6 +18,14 @@
 <title>Rise & Ferment — Your Sourdough Journey Starts Here</title>
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@400;600;700&family=Nunito:wght@400;500;600;700;800&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,600&display=swap" rel="stylesheet">
+<!-- MailerLite Universal -->
+<script>
+(function(w,d,e,u,f,l,n){w[f]=w[f]||function(){(w[f].q=w[f].q||[])
+.push(arguments);},l=d.createElement(e),l.async=1,l.src=u,
+n=d.getElementsByTagName(e)[0],n.parentNode.insertBefore(l,n);})
+(window,document,'script','https://assets.mailerlite.com/js/universal.js','ml');
+ml('account', '2125417');
+</script>
 <style>
 :root{--cream:#FFFBF5;--cream-warm:#FFF5E6;--parchment:#F5EBE0;--crust:#8B5A2B;--crust-deep:#5D3A1A;--crust-light:#D4A574;--flour:#FFFFFF;--crumb:#3D2914;--rye:#6B4C2F;--wheat:#C4956A;--honey:#E8A849;--olive:#6B8F4E;--olive-soft:#8FB06A;--rosemary:#4A7043;--tomato:#C94C30;--font-display:'Playfair Display',Georgia,serif;--font-hand:'Caveat',cursive;--font-body:'Nunito',-apple-system,sans-serif;--nav-h:72px;--gap:clamp(80px,12vw,140px);--max:1200px;--narrow:800px}
 [data-theme="dark"]{--cream:#1A1612;--cream-warm:#1E1A15;--parchment:#2A2420;--crust:#D4A574;--crust-deep:#E8C9A0;--crust-light:#8B6F4E;--flour:#252017;--crumb:#F5EBE0;--rye:#C4B098;--wheat:#9A8570;--honey:#E8A849;--olive:#8FB06A;--olive-soft:#6B8F4E;--rosemary:#6B8F4E;--tomato:#E06B50}
@@ -199,7 +207,29 @@ img{max-width:100%;display:block}a{color:inherit;text-decoration:none}button{cur
 .pdf-mock{width:clamp(200px,25vw,280px);background:var(--flour);border-radius:8px;box-shadow:0 20px 60px rgba(93,58,26,.2),8px 8px 0 var(--parchment);transform:rotate(-3deg);overflow:hidden;transition:transform .5s}.pdf-mock:hover{transform:rotate(0deg) scale(1.03)}
 .pdf-mock__h{background:linear-gradient(135deg,var(--crust),var(--crust-deep));padding:24px 20px;text-align:center}
 .pdf-mock__h-t{font-family:var(--font-display);color:var(--cream);font-size:1.05rem;font-weight:700;line-height:1.3}.pdf-mock__h-s{font-family:var(--font-hand);color:var(--crust-light);font-size:.9rem;margin-top:4px}
-.pdf-mock__b{padding:20px}.pdf-mock__line{height:8px;background:var(--parchment);border-radius:4px;margin-bottom:8px}.pdf-mock__line:nth-child(2){width:85%}.pdf-mock__line:nth-child(3){width:70%}.pdf-mock__line:nth-child(4){width:90%;margin-top:16px}.pdf-mock__line:nth-child(5){width:60%}.pdf-mock__line:nth-child(6){width:75%}
+.pdf-mock__b{padding:16px 20px 4px}.pdf-mock__line{height:8px;background:var(--parchment);border-radius:4px;margin-bottom:8px}.pdf-mock__line:nth-child(2){width:85%}.pdf-mock__line:nth-child(3){width:70%}.pdf-mock__line:nth-child(4){width:90%;margin-top:16px}.pdf-mock__line:nth-child(5){width:60%}.pdf-mock__line:nth-child(6){width:75%}
+.pdf-mock__icon{margin:10px auto 6px;display:flex;justify-content:center;opacity:.9}
+.pdf-mock__chapters{padding:0 16px 16px;display:flex;flex-direction:column;gap:5px}
+.pdf-mock__ch{display:flex;align-items:center;gap:7px;font-size:.72rem;font-weight:600;color:var(--rye);padding:5px 9px;background:var(--parchment);border-radius:7px}
+[data-theme="dark"] .pdf-mock__ch{background:rgba(42,36,32,.7);color:var(--rye)}
+.pdf-mock__footer{display:flex;justify-content:space-between;align-items:center;padding:8px 16px 14px;border-top:1px solid rgba(139,90,43,.08)}
+.pdf-mock__footer-dl{font-size:.68rem;color:var(--wheat);font-weight:600}
+.pdf-mock__footer-free{font-size:.7rem;font-weight:800;color:var(--olive);background:rgba(107,143,78,.1);padding:2px 8px;border-radius:100px}
+.lead__proof{display:flex;align-items:center;gap:8px;margin-bottom:20px}
+.lead__proof-avs{display:flex}
+.lead__proof-av{width:26px;height:26px;border-radius:50%;border:2px solid var(--flour);margin-left:-7px;display:flex;align-items:center;justify-content:center;font-size:.55rem;font-weight:700;color:var(--cream)}
+.lead__proof-av:first-child{margin-left:0}
+.lead__proof-av--1{background:linear-gradient(135deg,#E8D5B7,#D4A574)}
+.lead__proof-av--2{background:linear-gradient(135deg,#D4E8C7,#8FB06A)}
+.lead__proof-av--3{background:linear-gradient(135deg,#E8D5B7,#C4956A)}
+.lead__proof-av--4{background:linear-gradient(135deg,#FFF3DC,#E8A849)}
+.lead__proof-txt{font-size:.82rem;color:var(--rye)}.lead__proof-txt strong{color:var(--crust-deep);font-weight:800}
+.lead__name{width:100%;padding:13px 20px;border:2px solid rgba(139,90,43,.15);border-radius:14px;font-family:var(--font-body);font-size:.95rem;background:var(--flour);color:var(--crumb);outline:none;transition:border-color .3s;margin-bottom:10px}.lead__name:focus{border-color:var(--crust)}.lead__name::placeholder{color:var(--wheat)}
+.lead__row{display:flex;gap:12px;flex-wrap:wrap;width:100%}
+.lead__delivery{display:flex;align-items:center;gap:5px;font-size:.78rem;color:var(--olive);font-weight:600;margin-top:10px}
+.nl__meta{font-size:.82rem;color:rgba(212,165,116,.6);margin-bottom:24px;font-weight:600;letter-spacing:.02em;position:relative;z-index:1}
+.ep__name{width:100%;padding:12px 18px;border-radius:12px;border:1.5px solid rgba(139,90,43,.2);background:var(--flour);color:var(--crumb);font-family:var(--font-body);font-size:.95rem;margin-bottom:8px;outline:none;transition:border-color .3s}.ep__name:focus{border-color:var(--crust)}.ep__name::placeholder{color:var(--wheat)}
+[data-theme="dark"] .ep__name{background:rgba(37,32,23,.6);border-color:rgba(212,165,116,.2);color:var(--crumb)}
 /* TESTIMONIALS */
 .test{padding:var(--gap) 0;background:linear-gradient(180deg,var(--cream) 0%,var(--cream-warm) 100%)}
 .test__head{text-align:center;margin-bottom:56px}.test__head .ss{margin:0 auto}
@@ -221,6 +251,12 @@ img{max-width:100%;display:block}a{color:inherit;text-decoration:none}button{cur
 .nl__input{padding:16px 24px;border:2px solid rgba(212,165,116,.3);border-radius:14px;background:rgba(255,251,245,.08);color:var(--cream);font-family:var(--font-body);font-size:1rem;min-width:300px;outline:none;transition:all .3s}.nl__input:focus{border-color:var(--crust-light);background:rgba(255,251,245,.12)}.nl__input::placeholder{color:var(--crust-light);opacity:.6}
 .nl__btn{padding:16px 32px;background:var(--honey);color:var(--crust-deep);border-radius:14px;font-size:1rem;font-weight:800;border:none;cursor:pointer;transition:all .3s;box-shadow:0 4px 20px rgba(232,168,73,.3)}.nl__btn:hover{transform:translateY(-2px);box-shadow:0 8px 28px rgba(232,168,73,.45)}
 .nl__perks{display:flex;justify-content:center;gap:28px;margin-top:24px;flex-wrap:wrap;position:relative;z-index:1}.nl__perk{display:flex;align-items:center;gap:6px;font-size:.85rem;color:var(--parchment);opacity:.7}
+/* MailerLite embed overrides */
+.nl__card .ml-embedded{position:relative;z-index:1;max-width:480px;margin:0 auto}
+.nl__card .ml-embedded input[type="email"]{padding:16px 24px;border:2px solid rgba(212,165,116,.3);border-radius:14px;background:rgba(255,251,245,.08);color:var(--cream);font-family:var(--font-body);font-size:1rem;outline:none;transition:all .3s}.nl__card .ml-embedded input[type="email"]:focus{border-color:var(--crust-light);background:rgba(255,251,245,.12)}.nl__card .ml-embedded input[type="email"]::placeholder{color:var(--crust-light);opacity:.6}
+.nl__card .ml-embedded button[type="submit"],.nl__card .ml-embedded .ml-btn{padding:16px 32px;background:var(--honey);color:var(--crust-deep);border-radius:14px;font-size:1rem;font-weight:800;font-family:var(--font-body);border:none;cursor:pointer;transition:all .3s;box-shadow:0 4px 20px rgba(232,168,73,.3)}.nl__card .ml-embedded button[type="submit"]:hover,.nl__card .ml-embedded .ml-btn:hover{transform:translateY(-2px);box-shadow:0 8px 28px rgba(232,168,73,.45)}
+.nl__card .ml-embedded label{color:var(--parchment);font-family:var(--font-body)}
+.nl__card .ml-embedded .ml-form-embedBody,.nl__card .ml-embedded .ml-form-embedWrapper{background:transparent !important;border:none !important;padding:0 !important}
 /* FOOTER */
 .ft{background:var(--crust-deep);color:var(--parchment);padding:64px 0 32px}
 [data-theme="dark"] .ft{background:#12100D}
@@ -433,10 +469,44 @@ img{max-width:100%;display:block}a{color:inherit;text-decoration:none}button{cur
 
 <!-- LEAD MAGNET -->
 <section class="lead" id="guide"><div class="ctn"><div class="lead__card reveal">
-<div class="lead__text"><div class="lead__badge"><svg width="18" height="18"><use href="#ico-book"/></svg> Free Download</div><h2 class="lead__t">The 7-Day Sourdough<br>Starter Guide</h2><p class="lead__d">Everything you need to create your first sourdough starter — condensed into a beautiful, printable PDF.</p>
-<ul class="lead__inc"><li><svg width="18" height="18" style="color:var(--olive)"><use href="#ico-check"/></svg> Day-by-day instructions</li><li><svg width="18" height="18" style="color:var(--olive)"><use href="#ico-check"/></svg> Shopping list</li><li><svg width="18" height="18" style="color:var(--olive)"><use href="#ico-check"/></svg> Troubleshooting cheat sheet</li><li><svg width="18" height="18" style="color:var(--olive)"><use href="#ico-check"/></svg> Your first bread recipe</li><li><svg width="18" height="18" style="color:var(--olive)"><use href="#ico-check"/></svg> Printable feeding schedule</li></ul>
-<form class="lead__form" name="lead-magnet" method="POST" data-netlify="true" onsubmit="handleLead(event)"><input type="hidden" name="form-name" value="lead-magnet"><input type="email" name="email" class="lead__input" placeholder="you@email.com" required><button type="submit" class="lead__sub">Get the Guide →</button></form><p class="lead__priv">No spam, ever. Unsubscribe anytime.</p></div>
-<div class="lead__vis"><div class="pdf-mock"><div class="pdf-mock__h"><div class="pdf-mock__h-t">The 7-Day<br>Sourdough Starter<br>Guide</div><div class="pdf-mock__h-s">by Rise & Ferment</div></div><div class="pdf-mock__b"><div class="pdf-mock__line"></div><div class="pdf-mock__line"></div><div class="pdf-mock__line"></div><div class="pdf-mock__line"></div><div class="pdf-mock__line"></div><div class="pdf-mock__line"></div></div></div></div>
+<div class="lead__text">
+<div class="lead__badge"><svg width="18" height="18"><use href="#ico-book"/></svg> Free PDF Guide</div>
+<h2 class="lead__t">Bake Your First Sourdough Loaf in 7 Days</h2>
+<p class="lead__d">The complete beginner's playbook — from your very first starter to a perfect, crackling crust. 100% free.</p>
+<div class="lead__proof"><div class="lead__proof-avs"><div class="lead__proof-av lead__proof-av--1">S</div><div class="lead__proof-av lead__proof-av--2">A</div><div class="lead__proof-av lead__proof-av--3">E</div><div class="lead__proof-av lead__proof-av--4">M</div></div><p class="lead__proof-txt"><strong>2,400+</strong> bakers downloaded this</p></div>
+<ul class="lead__inc">
+<li><svg width="18" height="18" style="color:var(--olive)"><use href="#ico-check"/></svg> Day-by-day instructions (no guessing, ever)</li>
+<li><svg width="18" height="18" style="color:var(--olive)"><use href="#ico-check"/></svg> Minimal shopping list — flour, water, salt, jar</li>
+<li><svg width="18" height="18" style="color:var(--olive)"><use href="#ico-check"/></svg> Troubleshooting: fix starter problems in minutes</li>
+<li><svg width="18" height="18" style="color:var(--olive)"><use href="#ico-check"/></svg> Your first tested sourdough bread recipe</li>
+<li><svg width="18" height="18" style="color:var(--olive)"><use href="#ico-check"/></svg> Printable feeding schedule (fridge-ready)</li>
+</ul>
+<form class="lead__form" name="lead-magnet" method="POST" data-netlify="true" onsubmit="handleLead(event)">
+<input type="hidden" name="form-name" value="lead-magnet">
+<input type="text" name="name" class="lead__name" placeholder="Your first name (optional)">
+<div class="lead__row"><input type="email" name="email" class="lead__input" placeholder="you@email.com" required><button type="submit" class="lead__sub">Send Me the Free Guide →</button></div>
+</form>
+<p class="lead__delivery"><svg width="14" height="14" style="color:var(--olive)"><use href="#ico-check"/></svg> Arrives in your inbox in seconds</p>
+<p class="lead__priv">No spam, ever. Unsubscribe anytime.</p>
+</div>
+<div class="lead__vis"><div class="pdf-mock">
+<div class="pdf-mock__h">
+<div class="pdf-mock__icon"><svg width="36" height="36" viewBox="0 0 48 48" fill="none"><ellipse cx="24" cy="20" rx="4" ry="6" fill="rgba(255,251,245,.85)"/><ellipse cx="17" cy="26" rx="3.5" ry="5.5" fill="rgba(255,251,245,.7)" transform="rotate(-20 17 26)"/><ellipse cx="31" cy="26" rx="3.5" ry="5.5" fill="rgba(255,251,245,.7)" transform="rotate(20 31 26)"/><line x1="24" y1="36" x2="24" y2="44" stroke="rgba(255,251,245,.6)" stroke-width="2" stroke-linecap="round"/></svg></div>
+<div class="pdf-mock__h-t">The 7-Day<br>Sourdough Starter<br>Guide</div>
+<div class="pdf-mock__h-s">by Rise &amp; Ferment</div>
+</div>
+<div class="pdf-mock__chapters">
+<div class="pdf-mock__ch">📅 7-day plan — day by day</div>
+<div class="pdf-mock__ch">🛒 Minimal shopping list</div>
+<div class="pdf-mock__ch">🔧 Troubleshooting guide</div>
+<div class="pdf-mock__ch">🍞 First bread recipe</div>
+<div class="pdf-mock__ch">📋 Printable feeding schedule</div>
+</div>
+<div class="pdf-mock__footer">
+<span class="pdf-mock__footer-dl">2,400+ downloads</span>
+<span class="pdf-mock__footer-free">FREE</span>
+</div>
+</div></div>
 </div></div></section>
 
 <!-- TESTIMONIALS -->
@@ -448,12 +518,12 @@ img{max-width:100%;display:block}a{color:inherit;text-decoration:none}button{cur
 <div class="tcard reveal rv3"><div class="tcard__stars"><span class="tcard__star">★</span><span class="tcard__star">★</span><span class="tcard__star">★</span><span class="tcard__star">★</span><span class="tcard__star">★</span></div><p class="tcard__text">"As a nurse with unpredictable shifts, I thought sourdough was impossible. I've made 12 loaves this month!"</p><div class="tcard__auth"><div class="tcard__av tcard__av--3"><svg width="24" height="24" style="color:var(--crust)"><use href="#ico-person"/></svg></div><div><p class="tcard__name">Elena R.</p><p class="tcard__role">Nurse & Baker · Bucharest</p></div></div></div>
 </div></div></section>
 
-<!-- NEWSLETTER -->
+<!-- NEWSLETTER / MAILERLITE SIGNUP -->
 <section class="nl" id="newsletter"><div class="ctn"><div class="nl__card reveal">
-<h2 class="nl__t">Fresh tips, straight from the oven</h2>
-<p class="nl__d">Weekly recipes, baking tips, and Elena's best starter advice. Join the early list.</p>
-<form class="nl__form" name="newsletter" method="POST" data-netlify="true" onsubmit="handleNL(event)"><input type="hidden" name="form-name" value="newsletter"><input type="email" name="email" class="nl__input" placeholder="Enter your email" required><button type="submit" class="nl__btn">Subscribe Free</button></form>
-<div class="nl__perks"><span class="nl__perk">✓ Weekly recipes</span><span class="nl__perk">✓ No spam</span><span class="nl__perk">✓ Unsubscribe anytime</span></div>
+<h2 class="nl__t">Get Your Free Sourdough Starter Kit</h2>
+<p class="nl__d">Join thousands of bakers and get your complete 14-day guide — completely free.</p>
+<div class="ml-embedded" data-form="IXaAIT"></div>
+<div class="nl__perks"><span class="nl__perk">✓ 14-day starter guide</span><span class="nl__perk">✓ No spam, ever</span><span class="nl__perk">✓ Unsubscribe anytime</span></div>
 </div></div></section>
 
 </div><!-- end landingPage -->
@@ -721,17 +791,20 @@ const LANDING_I18N = {
     toolBadgePrem: 'Premium',
     toolBadgeRead: 'Must Read',
     toolLink: 'View on Amazon →',
-    leadBadge: 'Free Download',
-    leadTitle: 'The 7-Day Sourdough<br>Starter Guide',
-    leadDesc: 'Everything you need to create your first sourdough starter — condensed into a beautiful, printable PDF.',
-    leadInc1: 'Day-by-day instructions',
-    leadInc2: 'Shopping list',
-    leadInc3: 'Troubleshooting cheat sheet',
-    leadInc4: 'Your first bread recipe',
-    leadInc5: 'Printable feeding schedule',
+    leadBadge: 'Free PDF Guide',
+    leadTitle: 'Bake Your First Sourdough Loaf in 7 Days',
+    leadDesc: 'The complete beginner\'s playbook — from your very first starter to a perfect, crackling crust. 100% free.',
+    leadProofText: '<strong>2,400+</strong> bakers downloaded this',
+    leadInc1: 'Day-by-day instructions (no guessing, ever)',
+    leadInc2: 'Minimal shopping list — flour, water, salt, jar',
+    leadInc3: 'Troubleshooting: fix starter problems in minutes',
+    leadInc4: 'Your first tested sourdough bread recipe',
+    leadInc5: 'Printable feeding schedule (fridge-ready)',
+    leadNamePlaceholder: 'Your first name (optional)',
     leadPlaceholder: 'you@email.com',
-    leadBtn: 'Get the Guide →',
-    leadBtnSuccess: '✓ Check your inbox!',
+    leadBtn: 'Send Me the Free Guide →',
+    leadBtnSuccess: '✓ Check your inbox — on its way!',
+    leadDelivery: '✓ Arrives in your inbox in seconds',
     leadPriv: 'No spam, ever. Unsubscribe anytime.',
     testSub: 'Real bakers, real stories',
     testTitle: 'What our community says',
@@ -745,13 +818,14 @@ const LANDING_I18N = {
     test3Quote: '"As a nurse with unpredictable shifts, I thought sourdough was impossible. I\'ve made 12 loaves this month!"',
     test3Name: 'Elena R.',
     test3Role: 'Nurse & Baker · Bucharest',
-    nlTitle: 'Fresh tips, straight from the oven',
-    nlDesc: 'Weekly recipes, baking tips, and Elena\'s best starter advice. Join the early list.',
+    nlTitle: 'Get Your Free Sourdough Starter Kit',
+    nlDesc: 'Join thousands of bakers and get your complete 14-day guide — completely free.',
+    nlMeta: '',
     nlPlaceholder: 'Enter your email',
-    nlBtn: 'Subscribe Free',
+    nlBtn: 'Get Free Kit',
     nlBtnSuccess: '✓ You are in!',
-    nlPerk1: '✓ Weekly recipes',
-    nlPerk2: '✓ No spam',
+    nlPerk1: '✓ 14-day starter guide',
+    nlPerk2: '✓ No spam, ever',
     nlPerk3: '✓ Unsubscribe anytime',
     ftBrandText: 'The beginner-friendly sourdough companion. Making real bread accessible to everyone.',
     ftColApp: 'App',
@@ -765,13 +839,14 @@ const LANDING_I18N = {
     ftPrivacy: 'Privacy',
     ftTerms: 'Terms',
     ftAffiliate: 'Affiliate Disclosure',
-    epTitle: 'Wait! Don\'t leave empty-handed',
-    epDesc: 'Get our free 7-Day Sourdough Starter Guide — everything you need to bake your first real loaf.',
+    epTitle: 'Before you go — take this with you',
+    epDesc: 'Get the free 7-Day Sourdough Starter Guide. Downloaded by 2,400+ beginners. Arrives in your inbox instantly.',
+    epName: 'Your first name (optional)',
     epPlaceholder: 'you@email.com',
-    epBtn: 'Get Free Guide',
-    sctaTitle: 'Free 7-Day Starter Guide',
+    epBtn: 'Yes, Send Me the Guide →',
+    sctaTitle: 'Get the Free 7-Day Sourdough Guide',
     sctaPlaceholder: 'you@email.com',
-    sctaBtn: 'Get Free Guide →'
+    sctaBtn: 'Get It Free →'
   },
   ro: {
     navFeatures: "Funcționalități",
@@ -853,17 +928,20 @@ const LANDING_I18N = {
     toolBadgePrem: 'Premium',
     toolBadgeRead: 'Lectură obligatorie',
     toolLink: 'Vezi pe Amazon →',
-    leadBadge: 'Descărcare gratuită',
-    leadTitle: 'Ghidul de 7 zile pentru<br>maiaua de pâine',
-    leadDesc: 'Tot ce ai nevoie pentru a crea prima ta maia — condensat într-un PDF frumos, printabil.',
-    leadInc1: 'Instrucțiuni zi cu zi',
-    leadInc2: 'Lista de cumpărături',
-    leadInc3: 'Fișa de depanare',
-    leadInc4: 'Prima ta rețetă de pâine',
-    leadInc5: 'Program printabil de hrănire',
+    leadBadge: 'Ghid PDF gratuit',
+    leadTitle: 'Coace prima ta pâine cu maia în 7 zile',
+    leadDesc: 'Manualul complet pentru începători — de la prima ta maia până la o crustă perfectă. 100% gratuit.',
+    leadProofText: '<strong>2.400+</strong> brutari l-au descărcat',
+    leadInc1: 'Instrucțiuni zi cu zi (fără ghiceli)',
+    leadInc2: 'Listă minimală — făină, apă, sare, borcan',
+    leadInc3: 'Depanare: rezolvă problemele maielei în minute',
+    leadInc4: 'Prima ta rețetă de pâine cu maia testată',
+    leadInc5: 'Program printabil de hrănire (pentru frigider)',
+    leadNamePlaceholder: 'Prenumele tău (opțional)',
     leadPlaceholder: 'tu@email.com',
-    leadBtn: 'Ia ghidul →',
-    leadBtnSuccess: '✓ Verifică inbox-ul!',
+    leadBtn: 'Trimite-mi ghidul gratuit →',
+    leadBtnSuccess: '✓ Verifică inbox-ul — vine imediat!',
+    leadDelivery: '✓ Ajunge în inbox în câteva secunde',
     leadPriv: 'Fără spam, vreodată. Dezabonare oricând.',
     testSub: 'Brutari reali, povești reale',
     testTitle: 'Ce spune comunitatea noastră',
@@ -877,13 +955,14 @@ const LANDING_I18N = {
     test3Quote: '"Ca asistentă cu ture imprevizibile, credeam că maiaua e imposibilă. Am făcut 12 pâini luna asta!"',
     test3Name: 'Elena R.',
     test3Role: 'Asistentă & Brutară · București',
-    nlTitle: 'Sfaturi proaspete, direct din cuptor',
-    nlDesc: 'Rețete săptămânale, sfaturi de copt și cele mai bune sfaturi ale Elenei. Alătură-te listei.',
+    nlTitle: 'Primește gratuit kitul tău de maiaua',
+    nlDesc: 'Alătură-te miilor de brutari și primește ghidul complet de 14 zile — complet gratuit.',
+    nlMeta: '',
     nlPlaceholder: 'Introdu emailul tău',
-    nlBtn: 'Abonează-te gratuit',
+    nlBtn: 'Primește kitul gratuit',
     nlBtnSuccess: '✓ Ești înăuntru!',
-    nlPerk1: '✓ Rețete săptămânale',
-    nlPerk2: '✓ Fără spam',
+    nlPerk1: '✓ Ghid de 14 zile',
+    nlPerk2: '✓ Fără spam, niciodată',
     nlPerk3: '✓ Dezabonare oricând',
     ftBrandText: 'Companionul prietenos pentru maia. Pâine adevărată accesibilă tuturor.',
     ftColApp: 'Aplicație',
@@ -897,13 +976,14 @@ const LANDING_I18N = {
     ftPrivacy: 'Confidențialitate',
     ftTerms: 'Termeni',
     ftAffiliate: 'Dezvăluire afiliere',
-    epTitle: 'Stai! Nu pleca cu mâna goală',
-    epDesc: 'Ia ghidul nostru gratuit de 7 zile — tot ce ai nevoie pentru a coace prima ta pâine adevărată.',
+    epTitle: 'Înainte să pleci — ia asta cu tine',
+    epDesc: 'Ia ghidul gratuit de 7 zile. Descărcat de 2.400+ începători. Ajunge în inbox imediat.',
+    epName: 'Prenumele tău (opțional)',
     epPlaceholder: 'tu@email.com',
-    epBtn: 'Ia ghidul gratuit',
-    sctaTitle: 'Ghid gratuit de 7 zile',
+    epBtn: 'Da, trimite-mi ghidul →',
+    sctaTitle: 'Ia ghidul gratuit de maia în 7 zile',
     sctaPlaceholder: 'tu@email.com',
-    sctaBtn: 'Ia ghidul gratuit →'
+    sctaBtn: 'Ia-l gratuit →'
   },
   it: {
     navFeatures: "Funzionalità",
@@ -985,17 +1065,20 @@ const LANDING_I18N = {
     toolBadgePrem: 'Premium',
     toolBadgeRead: 'Lettura obbligatoria',
     toolLink: 'Vedi su Amazon →',
-    leadBadge: 'Download gratuito',
-    leadTitle: 'La Guida al Lievito Madre<br>in 7 Giorni',
-    leadDesc: 'Tutto ciò che ti serve per creare il tuo primo lievito madre — condensato in un bellissimo PDF stampabile.',
-    leadInc1: 'Istruzioni giorno per giorno',
-    leadInc2: 'Lista della spesa',
-    leadInc3: 'Scheda di risoluzione problemi',
-    leadInc4: 'La tua prima ricetta del pane',
-    leadInc5: 'Programma di nutrimento stampabile',
+    leadBadge: 'Guida PDF gratuita',
+    leadTitle: 'Cuoci il tuo primo pane con lievito madre in 7 giorni',
+    leadDesc: 'Il manuale completo per principianti — dal tuo primo lievito madre a una crosta perfetta. 100% gratuito.',
+    leadProofText: '<strong>2.400+</strong> panettieri lo hanno scaricato',
+    leadInc1: 'Istruzioni giorno per giorno (senza indovinare)',
+    leadInc2: 'Lista minima — farina, acqua, sale, barattolo',
+    leadInc3: 'Risoluzione problemi: ripara il lievito in minuti',
+    leadInc4: 'La tua prima ricetta di pane con lievito madre testata',
+    leadInc5: 'Programma di nutrimento stampabile (per il frigo)',
+    leadNamePlaceholder: 'Il tuo nome (opzionale)',
     leadPlaceholder: 'tu@email.com',
-    leadBtn: 'Ottieni la guida →',
-    leadBtnSuccess: '✓ Controlla la tua casella!',
+    leadBtn: 'Mandami la guida gratuita →',
+    leadBtnSuccess: '✓ Controlla la casella — in arrivo!',
+    leadDelivery: '✓ Arriva nella tua casella in pochi secondi',
     leadPriv: 'Niente spam, mai. Annulla l\'iscrizione in qualsiasi momento.',
     testSub: 'Fornai reali, storie reali',
     testTitle: 'Cosa dice la nostra comunità',
@@ -1009,13 +1092,14 @@ const LANDING_I18N = {
     test3Quote: '"Come infermiera con turni imprevedibili, pensavo che il lievito madre fosse impossibile. Questo mese ho fatto 12 pagnotte!"',
     test3Name: 'Elena R.',
     test3Role: 'Infermiera & Fornaio · Bucarest',
-    nlTitle: 'Consigli freschi, dritti dal forno',
-    nlDesc: 'Ricette settimanali, consigli di panificazione e i migliori consigli di Elena. Unisciti alla lista.',
+    nlTitle: 'Ottieni il tuo kit gratuito per il lievito madre',
+    nlDesc: 'Unisciti a migliaia di panettieri e ricevi la guida completa di 14 giorni — completamente gratis.',
+    nlMeta: '',
     nlPlaceholder: 'Inserisci la tua email',
-    nlBtn: 'Iscriviti gratis',
+    nlBtn: 'Ottieni il kit gratis',
     nlBtnSuccess: '✓ Sei dentro!',
-    nlPerk1: '✓ Ricette settimanali',
-    nlPerk2: '✓ Niente spam',
+    nlPerk1: '✓ Guida di 14 giorni',
+    nlPerk2: '✓ Niente spam, mai',
     nlPerk3: '✓ Annulla quando vuoi',
     ftBrandText: 'Il compagno di lievito madre per principianti. Rendere il pane vero accessibile a tutti.',
     ftColApp: 'App',
@@ -1029,13 +1113,14 @@ const LANDING_I18N = {
     ftPrivacy: 'Privacy',
     ftTerms: 'Termini',
     ftAffiliate: 'Divulgazione affiliati',
-    epTitle: 'Aspetta! Non andare via a mani vuote',
-    epDesc: 'Ottieni la nostra guida gratuita di 7 giorni — tutto ciò che ti serve per cuocere il tuo primo pane vero.',
+    epTitle: 'Prima di andare — porta questo con te',
+    epDesc: 'Ottieni la guida gratuita di 7 giorni. Scaricata da 2.400+ principianti. Arriva nella tua casella immediatamente.',
+    epName: 'Il tuo nome (opzionale)',
     epPlaceholder: 'tu@email.com',
-    epBtn: 'Ottieni la guida gratuita',
-    sctaTitle: 'Guida gratuita di 7 giorni',
+    epBtn: 'Sì, mandami la guida →',
+    sctaTitle: 'Ottieni la guida gratuita di 7 giorni sul lievito',
     sctaPlaceholder: 'tu@email.com',
-    sctaBtn: 'Ottieni la guida →'
+    sctaBtn: 'Ottienila gratis →'
   },
   de: {
     navFeatures: "Funktionen",
@@ -1117,17 +1202,20 @@ const LANDING_I18N = {
     toolBadgePrem: 'Premium',
     toolBadgeRead: 'Pflichtlektüre',
     toolLink: 'Auf Amazon ansehen →',
-    leadBadge: 'Kostenloser Download',
-    leadTitle: 'Der 7-Tage-Sauerteig-<br>Starter-Guide',
-    leadDesc: 'Alles, was du brauchst, um deinen ersten Sauerteig-Starter zu erstellen — kompakt als schönes, druckbares PDF.',
-    leadInc1: 'Tagesweise Anleitungen',
-    leadInc2: 'Einkaufsliste',
-    leadInc3: 'Problemlösungs-Spickzettel',
-    leadInc4: 'Dein erstes Brotrezept',
-    leadInc5: 'Druckbarer Fütterungsplan',
+    leadBadge: 'Kostenloses PDF-Guide',
+    leadTitle: 'Backe deinen ersten Sauerteig in 7 Tagen',
+    leadDesc: 'Das komplette Handbuch für Anfänger — von deinem ersten Starter bis zur perfekten Kruste. 100% kostenlos.',
+    leadProofText: '<strong>2.400+</strong> Bäcker haben es heruntergeladen',
+    leadInc1: 'Tagesweise Anleitungen (kein Raten)',
+    leadInc2: 'Minimale Einkaufsliste — Mehl, Wasser, Salz, Glas',
+    leadInc3: 'Fehlerbehebung: Starter-Probleme in Minuten lösen',
+    leadInc4: 'Dein erstes erprobtes Sauerteigbrot-Rezept',
+    leadInc5: 'Druckbarer Fütterungsplan (für den Kühlschrank)',
+    leadNamePlaceholder: 'Dein Vorname (optional)',
     leadPlaceholder: 'du@email.com',
-    leadBtn: 'Guide holen →',
-    leadBtnSuccess: '✓ Posteingang prüfen!',
+    leadBtn: 'Kostenlosen Guide senden →',
+    leadBtnSuccess: '✓ Posteingang prüfen — kommt gleich!',
+    leadDelivery: '✓ Kommt in Sekunden in deinen Posteingang',
     leadPriv: 'Kein Spam, nie. Jederzeit abmelden.',
     testSub: 'Echte Bäcker, echte Geschichten',
     testTitle: 'Was unsere Community sagt',
@@ -1141,13 +1229,14 @@ const LANDING_I18N = {
     test3Quote: '"Als Krankenschwester mit unberechenbaren Schichten dachte ich, Sauerteig sei unmöglich. Diesen Monat habe ich 12 Brote gebacken!"',
     test3Name: 'Elena R.',
     test3Role: 'Krankenschwester & Bäckerin · Bukarest',
-    nlTitle: 'Frische Tipps, direkt aus dem Ofen',
-    nlDesc: 'Wöchentliche Rezepte, Backtipps und Elenas beste Starter-Ratschläge. Trag dich in die Liste ein.',
+    nlTitle: 'Hol dir dein kostenloses Sauerteig-Starter-Kit',
+    nlDesc: 'Schließ dich Tausenden von Bäckern an und erhalte deinen vollständigen 14-Tage-Leitfaden — komplett kostenlos.',
+    nlMeta: '',
     nlPlaceholder: 'E-Mail eingeben',
-    nlBtn: 'Kostenlos abonnieren',
+    nlBtn: 'Kit kostenlos erhalten',
     nlBtnSuccess: '✓ Du bist dabei!',
-    nlPerk1: '✓ Wöchentliche Rezepte',
-    nlPerk2: '✓ Kein Spam',
+    nlPerk1: '✓ 14-Tage-Starter-Leitfaden',
+    nlPerk2: '✓ Kein Spam, niemals',
     nlPerk3: '✓ Jederzeit abmelden',
     ftBrandText: 'Der einsteigerfreundliche Sauerteig-Begleiter. Echtes Brot für alle zugänglich machen.',
     ftColApp: 'App',
@@ -1161,13 +1250,14 @@ const LANDING_I18N = {
     ftPrivacy: 'Datenschutz',
     ftTerms: 'AGB',
     ftAffiliate: 'Affiliate-Offenlegung',
-    epTitle: 'Warte! Geh nicht mit leeren Händen',
-    epDesc: 'Hol dir unseren kostenlosen 7-Tage-Guide — alles, was du brauchst, um dein erstes echtes Brot zu backen.',
+    epTitle: 'Bevor du gehst — nimm das mit',
+    epDesc: 'Hol dir den kostenlosen 7-Tage-Guide. Von 2.400+ Anfängern heruntergeladen. Kommt sofort in deinen Posteingang.',
+    epName: 'Dein Vorname (optional)',
     epPlaceholder: 'du@email.com',
-    epBtn: 'Kostenlosen Guide holen',
-    sctaTitle: 'Kostenloser 7-Tage-Guide',
+    epBtn: 'Ja, Guide schicken →',
+    sctaTitle: 'Kostenlosen 7-Tage-Sauerteig-Guide holen',
     sctaPlaceholder: 'du@email.com',
-    sctaBtn: 'Guide holen →'
+    sctaBtn: 'Kostenlos holen →'
   },
   fr: {
     navFeatures: "Fonctionnalités",
@@ -1249,17 +1339,20 @@ const LANDING_I18N = {
     toolBadgePrem: 'Premium',
     toolBadgeRead: 'Lecture obligatoire',
     toolLink: 'Voir sur Amazon →',
-    leadBadge: 'Téléchargement gratuit',
-    leadTitle: 'Le Guide Levain<br>en 7 Jours',
-    leadDesc: 'Tout ce qu\'il te faut pour créer ton premier levain — condensé dans un beau PDF imprimable.',
-    leadInc1: 'Instructions jour par jour',
-    leadInc2: 'Liste de courses',
-    leadInc3: 'Aide-mémoire de dépannage',
-    leadInc4: 'Ta première recette de pain',
-    leadInc5: 'Planning de nourrissage imprimable',
+    leadBadge: 'Guide PDF gratuit',
+    leadTitle: 'Cuisez votre premier pain au levain en 7 jours',
+    leadDesc: 'Le manuel complet pour débutants — de ton premier levain à une croûte parfaite. 100% gratuit.',
+    leadProofText: '<strong>2 400+</strong> boulangers l\'ont téléchargé',
+    leadInc1: 'Instructions jour par jour (sans devinettes)',
+    leadInc2: 'Liste minimale — farine, eau, sel, bocal',
+    leadInc3: 'Dépannage : répare le levain en quelques minutes',
+    leadInc4: 'Ta première recette de pain au levain testée',
+    leadInc5: 'Planning de nourrissage imprimable (pour le frigo)',
+    leadNamePlaceholder: 'Ton prénom (facultatif)',
     leadPlaceholder: 'toi@email.com',
-    leadBtn: 'Obtenir le guide →',
-    leadBtnSuccess: '✓ Vérifie ta boîte mail !',
+    leadBtn: 'M\'envoyer le guide gratuit →',
+    leadBtnSuccess: '✓ Vérifie ta boîte — il arrive !',
+    leadDelivery: '✓ Arrive dans ta boîte en quelques secondes',
     leadPriv: 'Pas de spam, jamais. Se désabonner à tout moment.',
     testSub: 'De vrais boulangers, de vraies histoires',
     testTitle: 'Ce que dit notre communauté',
@@ -1273,13 +1366,14 @@ const LANDING_I18N = {
     test3Quote: '"En tant qu\'infirmière avec des horaires imprévisibles, je pensais que le levain était impossible. J\'ai fait 12 pains ce mois-ci !"',
     test3Name: 'Elena R.',
     test3Role: 'Infirmière & Boulangère · Bucarest',
-    nlTitle: 'Des conseils frais, tout droit du four',
-    nlDesc: 'Recettes hebdomadaires, conseils de boulange et les meilleurs conseils d\'Elena. Rejoins la liste.',
+    nlTitle: 'Obtiens ton kit gratuit de levain',
+    nlDesc: 'Rejoins des milliers de boulangers et reçois ton guide complet de 14 jours — entièrement gratuit.',
+    nlMeta: '',
     nlPlaceholder: 'Entrer ton email',
-    nlBtn: 'S\'abonner gratuitement',
+    nlBtn: 'Obtenir le kit gratuit',
     nlBtnSuccess: '✓ Tu es inscrit !',
-    nlPerk1: '✓ Recettes hebdomadaires',
-    nlPerk2: '✓ Pas de spam',
+    nlPerk1: '✓ Guide de 14 jours',
+    nlPerk2: '✓ Jamais de spam',
     nlPerk3: '✓ Se désabonner quand tu veux',
     ftBrandText: 'Le compagnon de levain pour débutants. Rendre le vrai pain accessible à tous.',
     ftColApp: 'App',
@@ -1293,13 +1387,14 @@ const LANDING_I18N = {
     ftPrivacy: 'Confidentialité',
     ftTerms: 'Conditions',
     ftAffiliate: 'Divulgation d\'affiliation',
-    epTitle: 'Attends ! Ne pars pas les mains vides',
-    epDesc: 'Obtiens notre guide gratuit de 7 jours — tout ce dont tu as besoin pour cuire ton premier vrai pain.',
+    epTitle: 'Avant de partir — emporte ça avec toi',
+    epDesc: 'Obtiens le guide gratuit de 7 jours. Téléchargé par 2 400+ débutants. Arrive dans ta boîte instantanément.',
+    epName: 'Ton prénom (facultatif)',
     epPlaceholder: 'toi@email.com',
-    epBtn: 'Obtenir le guide gratuit',
-    sctaTitle: 'Guide gratuit 7 jours',
+    epBtn: 'Oui, envoie-moi le guide →',
+    sctaTitle: 'Obtenir le guide levain gratuit 7 jours',
     sctaPlaceholder: 'toi@email.com',
-    sctaBtn: 'Obtenir le guide →'
+    sctaBtn: 'L\'obtenir gratuitement →'
   },
   es: {
     navFeatures: "Funciones",
@@ -1381,17 +1476,20 @@ const LANDING_I18N = {
     toolBadgePrem: 'Premium',
     toolBadgeRead: 'Lectura obligatoria',
     toolLink: 'Ver en Amazon →',
-    leadBadge: 'Descarga gratuita',
-    leadTitle: 'La Guía de Masa Madre<br>en 7 Días',
-    leadDesc: 'Todo lo que necesitas para crear tu primer cultivo de masa madre — condensado en un hermoso PDF imprimible.',
-    leadInc1: 'Instrucciones día a día',
-    leadInc2: 'Lista de compras',
-    leadInc3: 'Hoja de trucos para problemas',
-    leadInc4: 'Tu primera receta de pan',
-    leadInc5: 'Calendario de alimentación imprimible',
+    leadBadge: 'Guía PDF gratuita',
+    leadTitle: 'Hornea tu primer pan de masa madre en 7 días',
+    leadDesc: 'El manual completo para principiantes — desde tu primer cultivo hasta una corteza perfecta. 100% gratis.',
+    leadProofText: '<strong>2.400+</strong> panaderos lo han descargado',
+    leadInc1: 'Instrucciones día a día (sin adivinar)',
+    leadInc2: 'Lista mínima — harina, agua, sal, tarro',
+    leadInc3: 'Solución de problemas: arregla el cultivo en minutos',
+    leadInc4: 'Tu primera receta de pan de masa madre probada',
+    leadInc5: 'Calendario de alimentación imprimible (para la nevera)',
+    leadNamePlaceholder: 'Tu nombre (opcional)',
     leadPlaceholder: 'tu@email.com',
-    leadBtn: 'Obtener la guía →',
-    leadBtnSuccess: '✓ ¡Revisa tu bandeja!',
+    leadBtn: 'Enviarme la guía gratis →',
+    leadBtnSuccess: '✓ ¡Revisa tu bandeja — en camino!',
+    leadDelivery: '✓ Llega a tu bandeja en segundos',
     leadPriv: 'Sin spam, nunca. Cancela la suscripción en cualquier momento.',
     testSub: 'Panaderos reales, historias reales',
     testTitle: 'Lo que dice nuestra comunidad',
@@ -1405,13 +1503,14 @@ const LANDING_I18N = {
     test3Quote: '"Como enfermera con turnos impredecibles, pensé que la masa madre era imposible. ¡Este mes he hecho 12 panes!"',
     test3Name: 'Elena R.',
     test3Role: 'Enfermera & Panadera · Bucarest',
-    nlTitle: 'Consejos frescos, directos del horno',
-    nlDesc: 'Recetas semanales, consejos de horneado y los mejores consejos de Elena. Únete a la lista.',
+    nlTitle: 'Obtén tu kit gratuito de masa madre',
+    nlDesc: 'Únete a miles de panaderos y obtén tu guía completa de 14 días — completamente gratis.',
+    nlMeta: '',
     nlPlaceholder: 'Introduce tu email',
-    nlBtn: 'Suscribirse gratis',
+    nlBtn: 'Obtener kit gratis',
     nlBtnSuccess: '✓ ¡Ya estás dentro!',
-    nlPerk1: '✓ Recetas semanales',
-    nlPerk2: '✓ Sin spam',
+    nlPerk1: '✓ Guía de 14 días',
+    nlPerk2: '✓ Sin spam, nunca',
     nlPerk3: '✓ Cancelar en cualquier momento',
     ftBrandText: 'El compañero de masa madre para principiantes. Hacer el pan real accesible a todos.',
     ftColApp: 'App',
@@ -1425,13 +1524,14 @@ const LANDING_I18N = {
     ftPrivacy: 'Privacidad',
     ftTerms: 'Términos',
     ftAffiliate: 'Divulgación de afiliados',
-    epTitle: '¡Espera! No te vayas con las manos vacías',
-    epDesc: 'Obtén nuestra guía gratuita de 7 días — todo lo que necesitas para hornear tu primer pan de verdad.',
+    epTitle: 'Antes de irte — llévate esto',
+    epDesc: 'Obtén la guía gratuita de 7 días. Descargada por 2.400+ principiantes. Llega a tu bandeja inmediatamente.',
+    epName: 'Tu nombre (opcional)',
     epPlaceholder: 'tu@email.com',
-    epBtn: 'Obtener guía gratuita',
-    sctaTitle: 'Guía gratuita 7 días',
+    epBtn: 'Sí, enviarme la guía →',
+    sctaTitle: 'Consigue la guía gratuita de masa madre en 7 días',
     sctaPlaceholder: 'tu@email.com',
-    sctaBtn: 'Obtener la guía →'
+    sctaBtn: 'Conseguirla gratis →'
   }
 };
 
@@ -1534,11 +1634,14 @@ function applyLandingTranslations() {
   setHtml('.lead__badge', `<svg width="18" height="18"><use href="#ico-book"/></svg> ${L.leadBadge}`);
   setHtml('.lead__t', L.leadTitle);
   setText('.lead__d', L.leadDesc);
+  const leadProofTxt = document.querySelector('.lead__proof-txt'); if (leadProofTxt && L.leadProofText) setHtml('.lead__proof-txt', L.leadProofText);
   const leadItems = document.querySelectorAll('.lead__inc li');
   const incKeys = [L.leadInc1,L.leadInc2,L.leadInc3,L.leadInc4,L.leadInc5];
   leadItems.forEach((li, i) => { if (incKeys[i]) li.innerHTML = `<svg width="18" height="18" style="color:var(--olive)"><use href="#ico-check"/></svg> ${incKeys[i]}`; });
+  const leadNameInput = document.querySelector('.lead__name'); if (leadNameInput && L.leadNamePlaceholder) leadNameInput.placeholder = L.leadNamePlaceholder;
   const leadInput = document.querySelector('.lead__input'); if (leadInput) leadInput.placeholder = L.leadPlaceholder;
   setText('.lead__sub', L.leadBtn);
+  if (L.leadDelivery) setText('.lead__delivery', L.leadDelivery);
   setText('.lead__priv', L.leadPriv);
 
   // Testimonials
@@ -1561,6 +1664,7 @@ function applyLandingTranslations() {
   // Newsletter
   setText('.nl__t', L.nlTitle);
   setText('.nl__d', L.nlDesc);
+  if (L.nlMeta) setText('.nl__meta', L.nlMeta);
   const nlInput = document.querySelector('.nl__input'); if (nlInput) nlInput.placeholder = L.nlPlaceholder;
   setText('.nl__btn', L.nlBtn);
   const perks = document.querySelectorAll('.nl__perk');
@@ -1589,6 +1693,7 @@ function applyLandingTranslations() {
   // Exit popup
   setText('.ep__t', L.epTitle);
   setText('.ep__d', L.epDesc);
+  const epNameInput = document.querySelector('.ep__name'); if (epNameInput && L.epName) epNameInput.placeholder = L.epName;
   const epInput = document.querySelector('.ep__input'); if (epInput) epInput.placeholder = L.epPlaceholder;
   setText('.ep__btn', L.epBtn);
 
@@ -1750,14 +1855,19 @@ function toggleLangDrop(e) {
 function handleLead(e){
   e.preventDefault();
   const email=e.target.querySelector('input[type="email"]').value;
+  const nameEl=e.target.querySelector('input[type="text"]');
+  const name=nameEl?nameEl.value.trim():'';
   const b=e.target.querySelector('button');
+  const params={'form-name':'lead-magnet',email:email};
+  if(name)params.name=name;
   // Submit to Netlify Forms
-  fetch('/',{method:'POST',headers:{'Content-Type':'application/x-www-form-urlencoded'},body:new URLSearchParams({'form-name':'lead-magnet',email:email}).toString()}).catch(()=>{});
+  fetch('/',{method:'POST',headers:{'Content-Type':'application/x-www-form-urlencoded'},body:new URLSearchParams(params).toString()}).catch(()=>{});
   // Submit to MailerLite (replace YOUR_MAILERLITE_API_KEY and YOUR_GROUP_ID)
-  // fetch('https://connect.mailerlite.com/api/subscribers',{method:'POST',headers:{'Content-Type':'application/json','Authorization':'Bearer YOUR_MAILERLITE_API_KEY'},body:JSON.stringify({email:email,groups:['YOUR_GUIDE_GROUP_ID']})}).catch(()=>{});
+  // fetch('https://connect.mailerlite.com/api/subscribers',{method:'POST',headers:{'Content-Type':'application/json','Authorization':'Bearer YOUR_MAILERLITE_API_KEY'},body:JSON.stringify({email:email,fields:{name:name},groups:['YOUR_GUIDE_GROUP_ID']})}).catch(()=>{});
   const L=LANDING_I18N[lang]||LANDING_I18N.en;
   b.textContent=L.leadBtnSuccess;b.style.background='#6B8F4E';
   e.target.querySelector('input[type="email"]').value='';
+  if(nameEl)nameEl.value='';
   window.open('/7-day-sourdough-starter-guide.pdf','_blank');
   setTimeout(()=>{b.textContent=L.leadBtn;b.style.background=''},3000);
 }
@@ -1842,9 +1952,14 @@ setLang(lang);
   document.getElementById('epForm').addEventListener('submit',function(e){
     e.preventDefault();
     const email=this.querySelector('input[type="email"]').value;
-    fetch('/',{method:'POST',headers:{'Content-Type':'application/x-www-form-urlencoded'},body:new URLSearchParams({'form-name':'lead-magnet',email:email}).toString()}).catch(()=>{});
-    this.querySelector('button').textContent='\u2713 Sent!';
+    const nameEl=this.querySelector('input[type="text"]');
+    const name=nameEl?nameEl.value.trim():'';
+    const params={'form-name':'lead-magnet',email:email};
+    if(name)params.name=name;
+    fetch('/',{method:'POST',headers:{'Content-Type':'application/x-www-form-urlencoded'},body:new URLSearchParams(params).toString()}).catch(()=>{});
+    this.querySelector('button').textContent='\u2713 On its way!';
     this.querySelector('input[type="email"]').value='';
+    if(nameEl)nameEl.value='';
     window.open('/7-day-sourdough-starter-guide.pdf','_blank');
     setTimeout(()=>ep.classList.remove('vis'),2000);
   });
@@ -1883,9 +1998,13 @@ setLang(lang);
 <div class="ep__card">
 <button class="ep__close" id="epClose">&times;</button>
 <div class="ep__emoji">🍞</div>
-<h3 class="ep__t">Wait! Don't leave empty-handed</h3>
-<p class="ep__d">Get our free 7-Day Sourdough Starter Guide — everything you need to bake your first real loaf.</p>
-<form class="ep__form" id="epForm"><input type="email" class="ep__input" placeholder="you@email.com" required><button type="submit" class="ep__btn">Get Free Guide</button></form>
+<h3 class="ep__t">Before you go — take this with you</h3>
+<p class="ep__d">Get the free 7-Day Sourdough Starter Guide. Downloaded by 2,400+ beginners. Arrives in your inbox instantly.</p>
+<form class="ep__form" id="epForm">
+<input type="text" class="ep__name" placeholder="Your first name (optional)">
+<input type="email" class="ep__input" placeholder="you@email.com" required>
+<button type="submit" class="ep__btn">Yes, Send Me the Guide →</button>
+</form>
 </div>
 </div>
 
