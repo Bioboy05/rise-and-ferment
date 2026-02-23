@@ -1868,7 +1868,7 @@ function handleLead(e){
   b.textContent=L.leadBtnSuccess;b.style.background='#6B8F4E';
   e.target.querySelector('input[type="email"]').value='';
   if(nameEl)nameEl.value='';
-  window.open('/7-day-sourdough-starter-guide.pdf','_blank');
+  window.open('/sourdough-starter-kit-premium.pdf','_blank');
   setTimeout(()=>{b.textContent=L.leadBtn;b.style.background=''},3000);
 }
 function handleNL(e){
@@ -1960,7 +1960,7 @@ setLang(lang);
     this.querySelector('button').textContent='\u2713 On its way!';
     this.querySelector('input[type="email"]').value='';
     if(nameEl)nameEl.value='';
-    window.open('/7-day-sourdough-starter-guide.pdf','_blank');
+    window.open('/sourdough-starter-kit-premium.pdf','_blank');
     setTimeout(()=>ep.classList.remove('vis'),2000);
   });
 })();
@@ -1985,7 +1985,7 @@ setLang(lang);
     fetch('/',{method:'POST',headers:{'Content-Type':'application/x-www-form-urlencoded'},body:new URLSearchParams({'form-name':'lead-magnet',email:email}).toString()}).catch(()=>{});
     this.querySelector('button').textContent='\u2713';
     this.querySelector('input[type="email"]').value='';
-    window.open('/7-day-sourdough-starter-guide.pdf','_blank');
+    window.open('/sourdough-starter-kit-premium.pdf','_blank');
     setTimeout(()=>{sctaDismissed=true;scta.classList.remove('vis')},2000);
   });
 })();
