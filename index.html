@@ -1892,10 +1892,10 @@ function handleLead(e){
   fetch('https://connect.mailerlite.com/api/subscribers',{method:'POST',headers:{'Content-Type':'application/json','Authorization':'Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiI0IiwianRpIjoiYmJjNzY4NzZlYTUwYzIzNWIwZDIxMDZkNjBkMmFkZGJjMTY1MjU3MTJmOTE2NDZjMTZmNWRkOWMxYjMzOGUxZTQyNTIzN2YxNGI4MGRmY2EiLCJpYXQiOjE3NzE4ODQ0MDYuNTYwMzc0LCJuYmYiOjE3NzE4ODQ0MDYuNTYwMzc5LCJleHAiOjQ5Mjc1NTgwMDYuNTUxNjg2LCJzdWIiOiIyMTQ0MzAxIiwic2NvcGVzIjpbXX0.MBy5XRTzCMFOoB77SGCg1vchgmnMR42ZHhot1b33JA6fqZuNuRRDTWmc2rDt7S4oZrw7hMiDAOatVtCOQhtm-A9X9DXGo9JsVzygv-CCUi0T92IXeuZZAGqQ_IS5XGEVppFloQbr6NwcEztnH2la00pu4tbR82zHVIJXyW7Q-HMSk9L4KKer1ORQ5jvKEPpBftDwHKhX_AFEfohLFFHmD8HJ9RQDWaYVj_a_zJ7iXmr5TqUXfyI3_nNie5YBg_CwVDZnCkl00Ld0E5YILOaZoY2BpLef6Pnc1aMSIt6erWYKFXl4Qz2BoXql8KGT86ylXx83IvPmWLR8ONUINMgGxQZbBbDpzSSOAHL5NtHo_5Ps2y-on27M3CtancuuVS8b-1gccF9EjN6266ay-iTr-YmCNLMVSkBL3ZWeVqTysJIcMVwSmgFijAb2cJ3CBTBG1yFmfyBCyQZ6KxYlYbfye3FmcsHLgLErOey0E1DIiuMz0EAmdzbkY4yb2myI5TlgSfv4dUlaXFsygMtIEMgxY9fapz402wvFkyyjzSjgAYrDoVszE-LNBaZ8ovIzeHLDKVo_1BWpC9fXLTqjQq619kRnaOtXiye1ZGFivxd8dNVYoXf_yTCnPO9o93sJ-JXnsn9bEewVR-vAAQ-ak1cr2z6d9lGwW3sW5ep69cG3Pao'},body:JSON.stringify({email:email,fields:{name:name},groups:['180187655996179636']})}).catch(()=>{});
   const L=LANDING_I18N[lang]||LANDING_I18N.en;
   b.textContent=L.leadBtnSuccess;b.style.background='#6B8F4E';
-  showToast('🎉 Guide sent!','Check your inbox — your free sourdough guide is on the way!');
   e.target.querySelector('input[type="email"]').value='';
   if(nameEl)nameEl.value='';
   window.open('/sourdough-starter-kit-premium.pdf','_blank');
+  showToast('🎉 Guide sent!','Check your inbox — your free sourdough guide is on the way!');
   setTimeout(()=>{b.textContent=L.leadBtn;b.style.background=''},3000);
 }
 function handleNL(e){
@@ -1989,6 +1989,7 @@ setLang(lang);
     this.querySelector('input[type="email"]').value='';
     if(nameEl)nameEl.value='';
     window.open('/sourdough-starter-kit-premium.pdf','_blank');
+    showToast('🎉 Guide sent!','Check your inbox — your free sourdough guide is on the way!');
     setTimeout(()=>ep.classList.remove('vis'),2000);
   });
 })();
@@ -2014,6 +2015,7 @@ setLang(lang);
     this.querySelector('button').textContent='\u2713';
     this.querySelector('input[type="email"]').value='';
     window.open('/sourdough-starter-kit-premium.pdf','_blank');
+    showToast('🎉 Guide sent!','Check your inbox — your free sourdough guide is on the way!');
     setTimeout(()=>{sctaDismissed=true;scta.classList.remove('vis')},2000);
   });
 })();
