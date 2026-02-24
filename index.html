@@ -255,12 +255,6 @@ img{max-width:100%;display:block}a{color:inherit;text-decoration:none}button{cur
 .nl__input{padding:16px 24px;border:2px solid rgba(212,165,116,.3);border-radius:14px;background:rgba(255,251,245,.08);color:var(--cream);font-family:var(--font-body);font-size:1rem;min-width:300px;outline:none;transition:all .3s}.nl__input:focus{border-color:var(--crust-light);background:rgba(255,251,245,.12)}.nl__input::placeholder{color:var(--crust-light);opacity:.6}
 .nl__btn{padding:16px 32px;background:var(--honey);color:var(--crust-deep);border-radius:14px;font-size:1rem;font-weight:800;border:none;cursor:pointer;transition:all .3s;box-shadow:0 4px 20px rgba(232,168,73,.3)}.nl__btn:hover{transform:translateY(-2px);box-shadow:0 8px 28px rgba(232,168,73,.45)}
 .nl__perks{display:flex;justify-content:center;gap:28px;margin-top:24px;flex-wrap:wrap;position:relative;z-index:1}.nl__perk{display:flex;align-items:center;gap:6px;font-size:.85rem;color:var(--parchment);opacity:.7}
-/* MailerLite embed overrides */
-.nl__card .ml-embedded{position:relative;z-index:1;max-width:480px;margin:0 auto}
-.nl__card .ml-embedded input[type="email"]{padding:16px 24px;border:2px solid rgba(212,165,116,.3);border-radius:14px;background:rgba(255,251,245,.08);color:var(--cream);font-family:var(--font-body);font-size:1rem;outline:none;transition:all .3s}.nl__card .ml-embedded input[type="email"]:focus{border-color:var(--crust-light);background:rgba(255,251,245,.12)}.nl__card .ml-embedded input[type="email"]::placeholder{color:var(--crust-light);opacity:.6}
-.nl__card .ml-embedded button[type="submit"],.nl__card .ml-embedded .ml-btn{padding:16px 32px;background:var(--honey);color:var(--crust-deep);border-radius:14px;font-size:1rem;font-weight:800;font-family:var(--font-body);border:none;cursor:pointer;transition:all .3s;box-shadow:0 4px 20px rgba(232,168,73,.3)}.nl__card .ml-embedded button[type="submit"]:hover,.nl__card .ml-embedded .ml-btn:hover{transform:translateY(-2px);box-shadow:0 8px 28px rgba(232,168,73,.45)}
-.nl__card .ml-embedded label{color:var(--parchment);font-family:var(--font-body)}
-.nl__card .ml-embedded .ml-form-embedBody,.nl__card .ml-embedded .ml-form-embedWrapper{background:transparent !important;border:none !important;padding:0 !important}
 /* FOOTER */
 .ft{background:var(--crust-deep);color:var(--parchment);padding:64px 0 32px}
 [data-theme="dark"] .ft{background:#12100D}
@@ -546,7 +540,11 @@ body{min-height:100dvh;-webkit-tap-highlight-color:transparent}
 <section class="nl" id="newsletter"><div class="ctn"><div class="nl__card reveal">
 <h2 class="nl__t">Get Your Free Sourdough Starter Kit</h2>
 <p class="nl__d">Join thousands of bakers and get your complete 14-day guide — completely free.</p>
-<div class="ml-embedded" data-form="IXaAIT"></div>
+<form class="nl__form" name="newsletter" method="POST" data-netlify="true" onsubmit="handleNL(event)">
+<input type="hidden" name="form-name" value="newsletter">
+<input type="email" name="email" class="nl__input" placeholder="you@email.com" required>
+<button type="submit" class="nl__btn">Join Free →</button>
+</form>
 <div class="nl__perks"><span class="nl__perk">✓ 14-day starter guide</span><span class="nl__perk">✓ No spam, ever</span><span class="nl__perk">✓ Unsubscribe anytime</span></div>
 </div></div></section>
 
@@ -1892,10 +1890,10 @@ function handleLead(e){
   fetch('https://connect.mailerlite.com/api/subscribers',{method:'POST',headers:{'Content-Type':'application/json','Authorization':'Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiI0IiwianRpIjoiYmJjNzY4NzZlYTUwYzIzNWIwZDIxMDZkNjBkMmFkZGJjMTY1MjU3MTJmOTE2NDZjMTZmNWRkOWMxYjMzOGUxZTQyNTIzN2YxNGI4MGRmY2EiLCJpYXQiOjE3NzE4ODQ0MDYuNTYwMzc0LCJuYmYiOjE3NzE4ODQ0MDYuNTYwMzc5LCJleHAiOjQ5Mjc1NTgwMDYuNTUxNjg2LCJzdWIiOiIyMTQ0MzAxIiwic2NvcGVzIjpbXX0.MBy5XRTzCMFOoB77SGCg1vchgmnMR42ZHhot1b33JA6fqZuNuRRDTWmc2rDt7S4oZrw7hMiDAOatVtCOQhtm-A9X9DXGo9JsVzygv-CCUi0T92IXeuZZAGqQ_IS5XGEVppFloQbr6NwcEztnH2la00pu4tbR82zHVIJXyW7Q-HMSk9L4KKer1ORQ5jvKEPpBftDwHKhX_AFEfohLFFHmD8HJ9RQDWaYVj_a_zJ7iXmr5TqUXfyI3_nNie5YBg_CwVDZnCkl00Ld0E5YILOaZoY2BpLef6Pnc1aMSIt6erWYKFXl4Qz2BoXql8KGT86ylXx83IvPmWLR8ONUINMgGxQZbBbDpzSSOAHL5NtHo_5Ps2y-on27M3CtancuuVS8b-1gccF9EjN6266ay-iTr-YmCNLMVSkBL3ZWeVqTysJIcMVwSmgFijAb2cJ3CBTBG1yFmfyBCyQZ6KxYlYbfye3FmcsHLgLErOey0E1DIiuMz0EAmdzbkY4yb2myI5TlgSfv4dUlaXFsygMtIEMgxY9fapz402wvFkyyjzSjgAYrDoVszE-LNBaZ8ovIzeHLDKVo_1BWpC9fXLTqjQq619kRnaOtXiye1ZGFivxd8dNVYoXf_yTCnPO9o93sJ-JXnsn9bEewVR-vAAQ-ak1cr2z6d9lGwW3sW5ep69cG3Pao'},body:JSON.stringify({email:email,fields:{name:name},groups:['180187655996179636']})}).catch(()=>{});
   const L=LANDING_I18N[lang]||LANDING_I18N.en;
   b.textContent=L.leadBtnSuccess;b.style.background='#6B8F4E';
-  showToast('🎉 Guide sent!','Check your inbox — your free sourdough guide is on the way!');
   e.target.querySelector('input[type="email"]').value='';
   if(nameEl)nameEl.value='';
   window.open('/sourdough-starter-kit-premium.pdf','_blank');
+  showToast('🎉 Guide sent!','Check your inbox — your free sourdough guide is on the way!');
   setTimeout(()=>{b.textContent=L.leadBtn;b.style.background=''},3000);
 }
 function handleNL(e){
@@ -1989,6 +1987,7 @@ setLang(lang);
     this.querySelector('input[type="email"]').value='';
     if(nameEl)nameEl.value='';
     window.open('/sourdough-starter-kit-premium.pdf','_blank');
+    showToast('🎉 Guide sent!','Check your inbox — your free sourdough guide is on the way!');
     setTimeout(()=>ep.classList.remove('vis'),2000);
   });
 })();
@@ -2014,6 +2013,7 @@ setLang(lang);
     this.querySelector('button').textContent='\u2713';
     this.querySelector('input[type="email"]').value='';
     window.open('/sourdough-starter-kit-premium.pdf','_blank');
+    showToast('🎉 Guide sent!','Check your inbox — your free sourdough guide is on the way!');
     setTimeout(()=>{sctaDismissed=true;scta.classList.remove('vis')},2000);
   });
 })();
