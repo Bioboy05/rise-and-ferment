@@ -8,6 +8,9 @@
   publish = "dist"
   node_bundler = "esbuild"
 
+[functions]
+  directory = "netlify/functions"
+
 [build.environment]
   NODE_VERSION = "20"
   NPM_FLAGS = "--prefer-offline"

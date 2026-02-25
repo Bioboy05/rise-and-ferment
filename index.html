@@ -564,6 +564,24 @@ body{min-height:100dvh;-webkit-tap-highlight-color:transparent}
 <div class="ft__btm"><p class="ft__copy">© 2026 Rise & Ferment. Made with flour and love.</p><div class="ft__btm-links"><a href="/app#/privacy" class="ft__btm-link">Privacy</a><a href="/app#/terms" class="ft__btm-link">Terms</a><a href="/app#/affiliate" class="ft__btm-link">Affiliate Disclosure</a></div></div>
 </div></footer>
 
+<!-- EXIT INTENT POPUP -->
+<div class="ep" id="exitPopup">
+<div class="ep__card">
+<button class="ep__close" id="epClose">&times;</button>
+<div class="ep__emoji">🍞</div>
+<h3 class="ep__t">Wait! Don't leave empty-handed</h3>
+<p class="ep__d">Get our free 7-Day Sourdough Starter Guide — everything you need to bake your first real loaf.</p>
+<form class="ep__form" id="epForm"><input type="email" class="ep__input" placeholder="you@email.com" required><button type="submit" class="ep__btn">Get Free Guide</button></form>
+</div>
+</div>
+
+<!-- STICKY CTA BAR -->
+<div class="scta" id="stickyCta">
+<span class="scta__t">Free 7-Day Starter Guide</span>
+<form class="scta__form" id="sctaForm"><input type="email" class="scta__input" placeholder="you@email.com" required><button type="submit" class="scta__btn">Get Free Guide →</button></form>
+<span class="scta__x" id="sctaClose">&times;</span>
+</div>
+
 <script>
 if ("serviceWorker" in navigator) {
   navigator.serviceWorker.getRegistrations().then((registrations) => {
@@ -1876,6 +1894,9 @@ function toggleLangDrop(e) {
 
 function showToast(t,m){document.getElementById('toastTitle').textContent=t;document.getElementById('toastMsg').textContent=m;document.getElementById('toast').classList.add('show');clearTimeout(window._tt);window._tt=setTimeout(hideToast,6000)}
 function hideToast(){document.getElementById('toast').classList.remove('show')}
+function subscribeMailerLite(email,form){
+  fetch('/.netlify/functions/subscribe',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({email,form})}).catch(()=>{});
+}
 function handleLead(e){
   e.preventDefault();
   const email=e.target.querySelector('input[type="email"]').value;
@@ -1884,10 +1905,8 @@ function handleLead(e){
   const b=e.target.querySelector('button');
   const params={'form-name':'lead-magnet',email:email};
   if(name)params.name=name;
-  // Submit to Netlify Forms
   fetch('/',{method:'POST',headers:{'Content-Type':'application/x-www-form-urlencoded'},body:new URLSearchParams(params).toString()}).catch(()=>{});
-  // Submit to MailerLite (replace eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiI0IiwianRpIjoiYmJjNzY4NzZlYTUwYzIzNWIwZDIxMDZkNjBkMmFkZGJjMTY1MjU3MTJmOTE2NDZjMTZmNWRkOWMxYjMzOGUxZTQyNTIzN2YxNGI4MGRmY2EiLCJpYXQiOjE3NzE4ODQ0MDYuNTYwMzc0LCJuYmYiOjE3NzE4ODQ0MDYuNTYwMzc5LCJleHAiOjQ5Mjc1NTgwMDYuNTUxNjg2LCJzdWIiOiIyMTQ0MzAxIiwic2NvcGVzIjpbXX0.MBy5XRTzCMFOoB77SGCg1vchgmnMR42ZHhot1b33JA6fqZuNuRRDTWmc2rDt7S4oZrw7hMiDAOatVtCOQhtm-A9X9DXGo9JsVzygv-CCUi0T92IXeuZZAGqQ_IS5XGEVppFloQbr6NwcEztnH2la00pu4tbR82zHVIJXyW7Q-HMSk9L4KKer1ORQ5jvKEPpBftDwHKhX_AFEfohLFFHmD8HJ9RQDWaYVj_a_zJ7iXmr5TqUXfyI3_nNie5YBg_CwVDZnCkl00Ld0E5YILOaZoY2BpLef6Pnc1aMSIt6erWYKFXl4Qz2BoXql8KGT86ylXx83IvPmWLR8ONUINMgGxQZbBbDpzSSOAHL5NtHo_5Ps2y-on27M3CtancuuVS8b-1gccF9EjN6266ay-iTr-YmCNLMVSkBL3ZWeVqTysJIcMVwSmgFijAb2cJ3CBTBG1yFmfyBCyQZ6KxYlYbfye3FmcsHLgLErOey0E1DIiuMz0EAmdzbkY4yb2myI5TlgSfv4dUlaXFsygMtIEMgxY9fapz402wvFkyyjzSjgAYrDoVszE-LNBaZ8ovIzeHLDKVo_1BWpC9fXLTqjQq619kRnaOtXiye1ZGFivxd8dNVYoXf_yTCnPO9o93sJ-JXnsn9bEewVR-vAAQ-ak1cr2z6d9lGwW3sW5ep69cG3Pao and YOUR_GROUP_ID)
-  fetch('https://connect.mailerlite.com/api/subscribers',{method:'POST',headers:{'Content-Type':'application/json','Authorization':'Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiI0IiwianRpIjoiYmJjNzY4NzZlYTUwYzIzNWIwZDIxMDZkNjBkMmFkZGJjMTY1MjU3MTJmOTE2NDZjMTZmNWRkOWMxYjMzOGUxZTQyNTIzN2YxNGI4MGRmY2EiLCJpYXQiOjE3NzE4ODQ0MDYuNTYwMzc0LCJuYmYiOjE3NzE4ODQ0MDYuNTYwMzc5LCJleHAiOjQ5Mjc1NTgwMDYuNTUxNjg2LCJzdWIiOiIyMTQ0MzAxIiwic2NvcGVzIjpbXX0.MBy5XRTzCMFOoB77SGCg1vchgmnMR42ZHhot1b33JA6fqZuNuRRDTWmc2rDt7S4oZrw7hMiDAOatVtCOQhtm-A9X9DXGo9JsVzygv-CCUi0T92IXeuZZAGqQ_IS5XGEVppFloQbr6NwcEztnH2la00pu4tbR82zHVIJXyW7Q-HMSk9L4KKer1ORQ5jvKEPpBftDwHKhX_AFEfohLFFHmD8HJ9RQDWaYVj_a_zJ7iXmr5TqUXfyI3_nNie5YBg_CwVDZnCkl00Ld0E5YILOaZoY2BpLef6Pnc1aMSIt6erWYKFXl4Qz2BoXql8KGT86ylXx83IvPmWLR8ONUINMgGxQZbBbDpzSSOAHL5NtHo_5Ps2y-on27M3CtancuuVS8b-1gccF9EjN6266ay-iTr-YmCNLMVSkBL3ZWeVqTysJIcMVwSmgFijAb2cJ3CBTBG1yFmfyBCyQZ6KxYlYbfye3FmcsHLgLErOey0E1DIiuMz0EAmdzbkY4yb2myI5TlgSfv4dUlaXFsygMtIEMgxY9fapz402wvFkyyjzSjgAYrDoVszE-LNBaZ8ovIzeHLDKVo_1BWpC9fXLTqjQq619kRnaOtXiye1ZGFivxd8dNVYoXf_yTCnPO9o93sJ-JXnsn9bEewVR-vAAQ-ak1cr2z6d9lGwW3sW5ep69cG3Pao'},body:JSON.stringify({email:email,fields:{name:name},groups:['180187655996179636']})}).catch(()=>{});
+  subscribeMailerLite(email,'guide');
   const L=LANDING_I18N[lang]||LANDING_I18N.en;
   b.textContent=L.leadBtnSuccess;b.style.background='#6B8F4E';
   e.target.querySelector('input[type="email"]').value='';
@@ -1900,10 +1919,8 @@ function handleNL(e){
   e.preventDefault();
   const email=e.target.querySelector('input[type="email"]').value;
   const b=e.target.querySelector('button');
-  // Submit to Netlify Forms
   fetch('/',{method:'POST',headers:{'Content-Type':'application/x-www-form-urlencoded'},body:new URLSearchParams({'form-name':'newsletter',email:email}).toString()}).catch(()=>{});
-  // Submit to MailerLite (replace eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiI0IiwianRpIjoiYmJjNzY4NzZlYTUwYzIzNWIwZDIxMDZkNjBkMmFkZGJjMTY1MjU3MTJmOTE2NDZjMTZmNWRkOWMxYjMzOGUxZTQyNTIzN2YxNGI4MGRmY2EiLCJpYXQiOjE3NzE4ODQ0MDYuNTYwMzc0LCJuYmYiOjE3NzE4ODQ0MDYuNTYwMzc5LCJleHAiOjQ5Mjc1NTgwMDYuNTUxNjg2LCJzdWIiOiIyMTQ0MzAxIiwic2NvcGVzIjpbXX0.MBy5XRTzCMFOoB77SGCg1vchgmnMR42ZHhot1b33JA6fqZuNuRRDTWmc2rDt7S4oZrw7hMiDAOatVtCOQhtm-A9X9DXGo9JsVzygv-CCUi0T92IXeuZZAGqQ_IS5XGEVppFloQbr6NwcEztnH2la00pu4tbR82zHVIJXyW7Q-HMSk9L4KKer1ORQ5jvKEPpBftDwHKhX_AFEfohLFFHmD8HJ9RQDWaYVj_a_zJ7iXmr5TqUXfyI3_nNie5YBg_CwVDZnCkl00Ld0E5YILOaZoY2BpLef6Pnc1aMSIt6erWYKFXl4Qz2BoXql8KGT86ylXx83IvPmWLR8ONUINMgGxQZbBbDpzSSOAHL5NtHo_5Ps2y-on27M3CtancuuVS8b-1gccF9EjN6266ay-iTr-YmCNLMVSkBL3ZWeVqTysJIcMVwSmgFijAb2cJ3CBTBG1yFmfyBCyQZ6KxYlYbfye3FmcsHLgLErOey0E1DIiuMz0EAmdzbkY4yb2myI5TlgSfv4dUlaXFsygMtIEMgxY9fapz402wvFkyyjzSjgAYrDoVszE-LNBaZ8ovIzeHLDKVo_1BWpC9fXLTqjQq619kRnaOtXiye1ZGFivxd8dNVYoXf_yTCnPO9o93sJ-JXnsn9bEewVR-vAAQ-ak1cr2z6d9lGwW3sW5ep69cG3Pao and YOUR_GROUP_ID)
-  fetch('https://connect.mailerlite.com/api/subscribers',{method:'POST',headers:{'Content-Type':'application/json','Authorization':'Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiI0IiwianRpIjoiYmJjNzY4NzZlYTUwYzIzNWIwZDIxMDZkNjBkMmFkZGJjMTY1MjU3MTJmOTE2NDZjMTZmNWRkOWMxYjMzOGUxZTQyNTIzN2YxNGI4MGRmY2EiLCJpYXQiOjE3NzE4ODQ0MDYuNTYwMzc0LCJuYmYiOjE3NzE4ODQ0MDYuNTYwMzc5LCJleHAiOjQ5Mjc1NTgwMDYuNTUxNjg2LCJzdWIiOiIyMTQ0MzAxIiwic2NvcGVzIjpbXX0.MBy5XRTzCMFOoB77SGCg1vchgmnMR42ZHhot1b33JA6fqZuNuRRDTWmc2rDt7S4oZrw7hMiDAOatVtCOQhtm-A9X9DXGo9JsVzygv-CCUi0T92IXeuZZAGqQ_IS5XGEVppFloQbr6NwcEztnH2la00pu4tbR82zHVIJXyW7Q-HMSk9L4KKer1ORQ5jvKEPpBftDwHKhX_AFEfohLFFHmD8HJ9RQDWaYVj_a_zJ7iXmr5TqUXfyI3_nNie5YBg_CwVDZnCkl00Ld0E5YILOaZoY2BpLef6Pnc1aMSIt6erWYKFXl4Qz2BoXql8KGT86ylXx83IvPmWLR8ONUINMgGxQZbBbDpzSSOAHL5NtHo_5Ps2y-on27M3CtancuuVS8b-1gccF9EjN6266ay-iTr-YmCNLMVSkBL3ZWeVqTysJIcMVwSmgFijAb2cJ3CBTBG1yFmfyBCyQZ6KxYlYbfye3FmcsHLgLErOey0E1DIiuMz0EAmdzbkY4yb2myI5TlgSfv4dUlaXFsygMtIEMgxY9fapz402wvFkyyjzSjgAYrDoVszE-LNBaZ8ovIzeHLDKVo_1BWpC9fXLTqjQq619kRnaOtXiye1ZGFivxd8dNVYoXf_yTCnPO9o93sJ-JXnsn9bEewVR-vAAQ-ak1cr2z6d9lGwW3sW5ep69cG3Pao'},body:JSON.stringify({email:email,groups:['YOUR_NEWSLETTER_GROUP_ID']})}).catch(()=>{});
+  subscribeMailerLite(email,'newsletter');
   const L=LANDING_I18N[lang]||LANDING_I18N.en;
   b.textContent=L.nlBtnSuccess;b.style.background='#6B8F4E';
   showToast('🍞 Welcome to the family!','Fresh baking tips every week. No spam, ever.');
@@ -1983,8 +2000,7 @@ setLang(lang);
     const params={'form-name':'lead-magnet',email:email};
     if(name)params.name=name;
     fetch('/',{method:'POST',headers:{'Content-Type':'application/x-www-form-urlencoded'},body:new URLSearchParams(params).toString()}).catch(()=>{});
-      // Submit to MailerLite (replace eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiI0IiwianRpIjoiYmJjNzY4NzZlYTUwYzIzNWIwZDIxMDZkNjBkMmFkZGJjMTY1MjU3MTJmOTE2NDZjMTZmNWRkOWMxYjMzOGUxZTQyNTIzN2YxNGI4MGRmY2EiLCJpYXQiOjE3NzE4ODQ0MDYuNTYwMzc0LCJuYmYiOjE3NzE4ODQ0MDYuNTYwMzc5LCJleHAiOjQ5Mjc1NTgwMDYuNTUxNjg2LCJzdWIiOiIyMTQ0MzAxIiwic2NvcGVzIjpbXX0.MBy5XRTzCMFOoB77SGCg1vchgmnMR42ZHhot1b33JA6fqZuNuRRDTWmc2rDt7S4oZrw7hMiDAOatVtCOQhtm-A9X9DXGo9JsVzygv-CCUi0T92IXeuZZAGqQ_IS5XGEVppFloQbr6NwcEztnH2la00pu4tbR82zHVIJXyW7Q-HMSk9L4KKer1ORQ5jvKEPpBftDwHKhX_AFEfohLFFHmD8HJ9RQDWaYVj_a_zJ7iXmr5TqUXfyI3_nNie5YBg_CwVDZnCkl00Ld0E5YILOaZoY2BpLef6Pnc1aMSIt6erWYKFXl4Qz2BoXql8KGT86ylXx83IvPmWLR8ONUINMgGxQZbBbDpzSSOAHL5NtHo_5Ps2y-on27M3CtancuuVS8b-1gccF9EjN6266ay-iTr-YmCNLMVSkBL3ZWeVqTysJIcMVwSmgFijAb2cJ3CBTBG1yFmfyBCyQZ6KxYlYbfye3FmcsHLgLErOey0E1DIiuMz0EAmdzbkY4yb2myI5TlgSfv4dUlaXFsygMtIEMgxY9fapz402wvFkyyjzSjgAYrDoVszE-LNBaZ8ovIzeHLDKVo_1BWpC9fXLTqjQq619kRnaOtXiye1ZGFivxd8dNVYoXf_yTCnPO9o93sJ-JXnsn9bEewVR-vAAQ-ak1cr2z6d9lGwW3sW5ep69cG3Pao and YOUR_GROUP_ID)
-  fetch('https://connect.mailerlite.com/api/subscribers',{method:'POST',headers:{'Content-Type':'application/json','Authorization':'Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiI0IiwianRpIjoiYmJjNzY4NzZlYTUwYzIzNWIwZDIxMDZkNjBkMmFkZGJjMTY1MjU3MTJmOTE2NDZjMTZmNWRkOWMxYjMzOGUxZTQyNTIzN2YxNGI4MGRmY2EiLCJpYXQiOjE3NzE4ODQ0MDYuNTYwMzc0LCJuYmYiOjE3NzE4ODQ0MDYuNTYwMzc5LCJleHAiOjQ5Mjc1NTgwMDYuNTUxNjg2LCJzdWIiOiIyMTQ0MzAxIiwic2NvcGVzIjpbXX0.MBy5XRTzCMFOoB77SGCg1vchgmnMR42ZHhot1b33JA6fqZuNuRRDTWmc2rDt7S4oZrw7hMiDAOatVtCOQhtm-A9X9DXGo9JsVzygv-CCUi0T92IXeuZZAGqQ_IS5XGEVppFloQbr6NwcEztnH2la00pu4tbR82zHVIJXyW7Q-HMSk9L4KKer1ORQ5jvKEPpBftDwHKhX_AFEfohLFFHmD8HJ9RQDWaYVj_a_zJ7iXmr5TqUXfyI3_nNie5YBg_CwVDZnCkl00Ld0E5YILOaZoY2BpLef6Pnc1aMSIt6erWYKFXl4Qz2BoXql8KGT86ylXx83IvPmWLR8ONUINMgGxQZbBbDpzSSOAHL5NtHo_5Ps2y-on27M3CtancuuVS8b-1gccF9EjN6266ay-iTr-YmCNLMVSkBL3ZWeVqTysJIcMVwSmgFijAb2cJ3CBTBG1yFmfyBCyQZ6KxYlYbfye3FmcsHLgLErOey0E1DIiuMz0EAmdzbkY4yb2myI5TlgSfv4dUlaXFsygMtIEMgxY9fapz402wvFkyyjzSjgAYrDoVszE-LNBaZ8ovIzeHLDKVo_1BWpC9fXLTqjQq619kRnaOtXiye1ZGFivxd8dNVYoXf_yTCnPO9o93sJ-JXnsn9bEewVR-vAAQ-ak1cr2z6d9lGwW3sW5ep69cG3Pao'},body:JSON.stringify({email:email,fields:{name:name},groups:['180187655996179636']})}).catch(()=>{});
+    subscribeMailerLite(email,'guide');
     this.querySelector('button').textContent='\u2713 On its way!';
     this.querySelector('input[type="email"]').value='';
     if(nameEl)nameEl.value='';
@@ -2012,8 +2028,7 @@ setLang(lang);
     e.preventDefault();
     const email=this.querySelector('input[type="email"]').value;
     fetch('/',{method:'POST',headers:{'Content-Type':'application/x-www-form-urlencoded'},body:new URLSearchParams({'form-name':'lead-magnet',email:email}).toString()}).catch(()=>{});
-      // Submit to MailerLite (replace eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiI0IiwianRpIjoiYmJjNzY4NzZlYTUwYzIzNWIwZDIxMDZkNjBkMmFkZGJjMTY1MjU3MTJmOTE2NDZjMTZmNWRkOWMxYjMzOGUxZTQyNTIzN2YxNGI4MGRmY2EiLCJpYXQiOjE3NzE4ODQ0MDYuNTYwMzc0LCJuYmYiOjE3NzE4ODQ0MDYuNTYwMzc5LCJleHAiOjQ5Mjc1NTgwMDYuNTUxNjg2LCJzdWIiOiIyMTQ0MzAxIiwic2NvcGVzIjpbXX0.MBy5XRTzCMFOoB77SGCg1vchgmnMR42ZHhot1b33JA6fqZuNuRRDTWmc2rDt7S4oZrw7hMiDAOatVtCOQhtm-A9X9DXGo9JsVzygv-CCUi0T92IXeuZZAGqQ_IS5XGEVppFloQbr6NwcEztnH2la00pu4tbR82zHVIJXyW7Q-HMSk9L4KKer1ORQ5jvKEPpBftDwHKhX_AFEfohLFFHmD8HJ9RQDWaYVj_a_zJ7iXmr5TqUXfyI3_nNie5YBg_CwVDZnCkl00Ld0E5YILOaZoY2BpLef6Pnc1aMSIt6erWYKFXl4Qz2BoXql8KGT86ylXx83IvPmWLR8ONUINMgGxQZbBbDpzSSOAHL5NtHo_5Ps2y-on27M3CtancuuVS8b-1gccF9EjN6266ay-iTr-YmCNLMVSkBL3ZWeVqTysJIcMVwSmgFijAb2cJ3CBTBG1yFmfyBCyQZ6KxYlYbfye3FmcsHLgLErOey0E1DIiuMz0EAmdzbkY4yb2myI5TlgSfv4dUlaXFsygMtIEMgxY9fapz402wvFkyyjzSjgAYrDoVszE-LNBaZ8ovIzeHLDKVo_1BWpC9fXLTqjQq619kRnaOtXiye1ZGFivxd8dNVYoXf_yTCnPO9o93sJ-JXnsn9bEewVR-vAAQ-ak1cr2z6d9lGwW3sW5ep69cG3Pao and YOUR_GROUP_ID)
-  fetch('https://connect.mailerlite.com/api/subscribers',{method:'POST',headers:{'Content-Type':'application/json','Authorization':'Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiI0IiwianRpIjoiYmJjNzY4NzZlYTUwYzIzNWIwZDIxMDZkNjBkMmFkZGJjMTY1MjU3MTJmOTE2NDZjMTZmNWRkOWMxYjMzOGUxZTQyNTIzN2YxNGI4MGRmY2EiLCJpYXQiOjE3NzE4ODQ0MDYuNTYwMzc0LCJuYmYiOjE3NzE4ODQ0MDYuNTYwMzc5LCJleHAiOjQ5Mjc1NTgwMDYuNTUxNjg2LCJzdWIiOiIyMTQ0MzAxIiwic2NvcGVzIjpbXX0.MBy5XRTzCMFOoB77SGCg1vchgmnMR42ZHhot1b33JA6fqZuNuRRDTWmc2rDt7S4oZrw7hMiDAOatVtCOQhtm-A9X9DXGo9JsVzygv-CCUi0T92IXeuZZAGqQ_IS5XGEVppFloQbr6NwcEztnH2la00pu4tbR82zHVIJXyW7Q-HMSk9L4KKer1ORQ5jvKEPpBftDwHKhX_AFEfohLFFHmD8HJ9RQDWaYVj_a_zJ7iXmr5TqUXfyI3_nNie5YBg_CwVDZnCkl00Ld0E5YILOaZoY2BpLef6Pnc1aMSIt6erWYKFXl4Qz2BoXql8KGT86ylXx83IvPmWLR8ONUINMgGxQZbBbDpzSSOAHL5NtHo_5Ps2y-on27M3CtancuuVS8b-1gccF9EjN6266ay-iTr-YmCNLMVSkBL3ZWeVqTysJIcMVwSmgFijAb2cJ3CBTBG1yFmfyBCyQZ6KxYlYbfye3FmcsHLgLErOey0E1DIiuMz0EAmdzbkY4yb2myI5TlgSfv4dUlaXFsygMtIEMgxY9fapz402wvFkyyjzSjgAYrDoVszE-LNBaZ8ovIzeHLDKVo_1BWpC9fXLTqjQq619kRnaOtXiye1ZGFivxd8dNVYoXf_yTCnPO9o93sJ-JXnsn9bEewVR-vAAQ-ak1cr2z6d9lGwW3sW5ep69cG3Pao'},body:JSON.stringify({email:email,groups:['YOUR_NEWSLETTER_GROUP_ID']})}).catch(()=>{});
+    subscribeMailerLite(email,'guide');
     this.querySelector('button').textContent='\u2713';
     this.querySelector('input[type="email"]').value='';
     window.open('/sourdough-starter-kit-premium.pdf','_blank');
@@ -2024,28 +2039,6 @@ setLang(lang);
 
 
 </script>
-
-<!-- EXIT INTENT POPUP -->
-<div class="ep" id="exitPopup">
-<div class="ep__card">
-<button class="ep__close" id="epClose">&times;</button>
-<div class="ep__emoji">🍞</div>
-<h3 class="ep__t">Before you go — take this with you</h3>
-<p class="ep__d">Get the free 14-Day Sourdough Starter Guide. Downloaded by 2,400+ beginners. Arrives in your inbox instantly.</p>
-<form class="ep__form" id="epForm">
-<input type="text" class="ep__name" placeholder="Your first name (optional)">
-<input type="email" class="ep__input" placeholder="you@email.com" required>
-<button type="submit" class="ep__btn">Yes, Send Me the Guide →</button>
-</form>
-</div>
-</div>
-
-<!-- STICKY CTA BAR -->
-<div class="scta" id="stickyCta">
-<span class="scta__t">Free 14-Day Starter Guide</span>
-<form class="scta__form" id="sctaForm"><input type="email" class="scta__input" placeholder="you@email.com" required><button type="submit" class="scta__btn">Get Free Guide →</button></form>
-<span class="scta__x" id="sctaClose">&times;</span>
-</div>
 
 </body>
 </html>

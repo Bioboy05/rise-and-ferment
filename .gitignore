@@ -29,6 +29,11 @@ nul
 # Reference files
 rise-ferment-v4.1.html
 
+# Environment variables
+.env
+.env.local
+.env.*
+
 # Local Netlify folder
 .netlify
 .claude/worktrees/
