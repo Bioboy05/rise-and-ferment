@@ -65,67 +65,59 @@
 # REDIRECT RULES — Affiliate + App routing
 # ============================================================
 
-# Skillshare (Impact.com) — TODO: replace with real tracking link after approval
-[[redirects]]
-  from = "/go/skillshare"
-  to = "https://skillshare.eqcm.net/SKILLSHARE_AFFILIATE_LINK"
-  status = 301
-  force = true
-
-# Brod & Taylor EU — TODO: replace with real links after approval
-[[redirects]]
-  from = "/go/proofing-box"
-  to = "https://brodandtaylor.eu/AWAITING_APPROVAL"
-  status = 301
-  force = true
-
-[[redirects]]
-  from = "/go/bread-oven"
-  to = "https://brodandtaylor.eu/AWAITING_APPROVAL"
-  status = 301
-  force = true
-
-# Amazon Associates (tag: riseandfermen-20)
+# Amazon Associates UK (tag: riseandfermen-21)
 [[redirects]]
   from = "/go/dutch-oven"
-  to = "https://www.amazon.com/dp/B00063RWYI?tag=riseandfermen-20"
-  status = 301
+  to = "https://www.amazon.co.uk/dp/B00063RWYI?tag=riseandfermen-21"
+  status = 302
   force = true
 
 [[redirects]]
   from = "/go/scale"
-  to = "https://www.amazon.com/dp/B0113UZJE2?tag=riseandfermen-20"
-  status = 301
+  to = "https://www.amazon.co.uk/dp/B0113UZJE2?tag=riseandfermen-21"
+  status = 302
   force = true
 
 [[redirects]]
   from = "/go/banneton"
-  to = "https://www.amazon.com/dp/B07H5LF3Z4?tag=riseandfermen-20"
-  status = 301
+  to = "https://www.amazon.co.uk/dp/B07H5LF3Z4?tag=riseandfermen-21"
+  status = 302
   force = true
 
 [[redirects]]
   from = "/go/lame"
-  to = "https://www.amazon.com/dp/B07TZ96ZFX?tag=riseandfermen-20"
-  status = 301
+  to = "https://www.amazon.co.uk/dp/B07TZ96ZFX?tag=riseandfermen-21"
+  status = 302
   force = true
 
 [[redirects]]
   from = "/go/kitchenaid"
-  to = "https://www.amazon.com/dp/B089QY7VPY?tag=riseandfermen-20"
-  status = 301
+  to = "https://www.amazon.co.uk/dp/B089QY7VPY?tag=riseandfermen-21"
+  status = 302
   force = true
 
 [[redirects]]
   from = "/go/le-creuset"
-  to = "https://www.amazon.com/dp/B0076NOJL4?tag=riseandfermen-20"
-  status = 301
+  to = "https://www.amazon.co.uk/dp/B0076NOJL4?tag=riseandfermen-21"
+  status = 302
   force = true
 
 [[redirects]]
   from = "/go/thermapen"
-  to = "https://www.amazon.com/dp/B09R4GZR65?tag=riseandfermen-20"
-  status = 301
+  to = "https://www.amazon.co.uk/dp/B09R4GZR65?tag=riseandfermen-21"
+  status = 302
+  force = true
+
+[[redirects]]
+  from = "/go/breville"
+  to = "https://www.amazon.co.uk/dp/B01M7S2TNN?tag=riseandfermen-21"
+  status = 302
+  force = true
+
+[[redirects]]
+  from = "/go/fwsy-book"
+  to = "https://www.amazon.co.uk/dp/B007SGLZH6?tag=riseandfermen-21"
+  status = 302
   force = true
 
 # App SPA routing

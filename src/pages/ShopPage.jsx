@@ -1,7 +1,7 @@
 import { useTranslation } from "react-i18next";
 import Icon from "../components/common/Icon";
 
-// affiliate: "bt" = Brod & Taylor EU, "sk" = Skillshare, "az" = Amazon
+// affiliate: "az" = Amazon Associates UK
 const PRODUCTS = [
   {
     id: "scale",
@@ -9,7 +9,7 @@ const PRODUCTS = [
     tier: "starter",
     icon: "scale",
     badge: null,
-    priceRange: "€15–25",
+    priceRange: "£12–20",
     affiliate: "az",
   },
   {
@@ -18,7 +18,7 @@ const PRODUCTS = [
     tier: "starter",
     icon: "banneton",
     badge: null,
-    priceRange: "€20–35",
+    priceRange: "£15–30",
     affiliate: "az",
   },
   {
@@ -27,7 +27,7 @@ const PRODUCTS = [
     tier: "starter",
     icon: "lame",
     badge: null,
-    priceRange: "€10–20",
+    priceRange: "£8–15",
     affiliate: "az",
   },
   {
@@ -36,17 +36,17 @@ const PRODUCTS = [
     tier: "starter",
     icon: "dutch-oven",
     badge: "shopBadgePop",
-    priceRange: "€35–55",
+    priceRange: "£30–50",
     affiliate: "az",
   },
   {
-    id: "skillshare",
-    slug: "skillshare",
+    id: "fwsy-book",
+    slug: "fwsy-book",
     tier: "starter",
     icon: "book",
-    badge: "shopBadgeFree",
-    priceRange: "shopSkillsharePriceRange",
-    affiliate: "sk",
+    badge: "shopBadgePop",
+    priceRange: "£18–25",
+    affiliate: "az",
   },
   {
     id: "thermapen",
@@ -54,26 +54,17 @@ const PRODUCTS = [
     tier: "upgrade",
     icon: "thermometer",
     badge: "shopBadgeBest",
-    priceRange: "€105",
+    priceRange: "£90",
     affiliate: "az",
   },
   {
-    id: "proofing-box",
-    slug: "proofing-box",
-    tier: "upgrade",
-    icon: "proofbox",
-    badge: "shopBadgePop",
-    priceRange: "€159",
-    affiliate: "bt",
-  },
-  {
-    id: "bread-oven",
-    slug: "bread-oven",
+    id: "breville",
+    slug: "breville",
     tier: "upgrade",
     icon: "oven",
     badge: null,
-    priceRange: "€399",
-    affiliate: "bt",
+    priceRange: "£230",
+    affiliate: "az",
   },
   {
     id: "kitchenaid",
@@ -81,7 +72,7 @@ const PRODUCTS = [
     tier: "upgrade",
     icon: "mixer",
     badge: null,
-    priceRange: "€350–450",
+    priceRange: "£300–400",
     affiliate: "az",
   },
   {
@@ -90,7 +81,7 @@ const PRODUCTS = [
     tier: "upgrade",
     icon: "dutch-oven",
     badge: "shopBadgePrem",
-    priceRange: "€320–400",
+    priceRange: "£280–350",
     affiliate: "az",
   },
 ];
@@ -147,15 +138,6 @@ const PRODUCT_ICONS = {
       <line x1="28" y1="24" x2="32" y2="24" />
     </svg>
   ),
-  proofbox: (
-    <svg viewBox="0 0 48 48" width="40" height="40" fill="none" stroke="currentColor" strokeWidth="2">
-      <rect x="6" y="14" width="36" height="26" rx="4" />
-      <path d="M6 20 L42 20" />
-      <path d="M18 8 L18 14 M30 8 L30 14" />
-      <path d="M16 30 Q24 26 32 30" />
-      <circle cx="36" cy="17" r="2" fill="currentColor" opacity="0.5" />
-    </svg>
-  ),
   mixer: (
     <svg viewBox="0 0 48 48" width="40" height="40" fill="none" stroke="currentColor" strokeWidth="2">
       <path d="M24 8 L24 28" />
@@ -178,8 +160,6 @@ const PRODUCT_ICONS = {
 };
 
 const CTA_KEY = {
-  bt: "shopViewBrodTaylor",
-  sk: "shopViewSkillshare",
   az: "shopViewAmazon",
 };
 

@@ -6,22 +6,10 @@ function AffiliatePage() {
 
   const programs = [
     {
-      name: "Amazon Associates",
-      commission: "4–8%",
+      name: "Amazon Associates UK",
+      commission: "3–10%",
       region: t("affiliateRegionGlobal", "Global"),
       note: t("affiliateAmazonNote", "Products in our Shop with \"View on Amazon\" links. Commission varies by category."),
-    },
-    {
-      name: "Brod & Taylor EU",
-      commission: "7%",
-      region: "Europe",
-      note: t("affiliateBTNote", "Proofing Box and Bread Oven. Brod & Taylor affiliate program, applied directly."),
-    },
-    {
-      name: "Skillshare",
-      commission: t("affiliateSKCommission", "$7 per free trial"),
-      region: t("affiliateRegionGlobal", "Global"),
-      note: t("affiliateSKNote", "Baking courses. Via Impact.com affiliate network."),
     },
   ];
 

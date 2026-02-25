@@ -83,7 +83,7 @@ function PrivacyPage() {
         <p>
           {t(
             "privacySec3Body",
-            "Our Shop section contains affiliate links to Amazon, Brod & Taylor, and Skillshare. When you click these links and make a purchase, we may earn a commission at no extra cost to you. These partners may set their own cookies after you arrive on their sites — please review their individual privacy policies."
+            "Our Shop section contains affiliate links to Amazon. When you click these links and make a purchase, we may earn a commission at no extra cost to you. Amazon may set their own cookies after you arrive on their site — please review their privacy policy."
           )}
         </p>
       </Section>

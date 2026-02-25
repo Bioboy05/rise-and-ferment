@@ -14,6 +14,7 @@ import {
   sanitizeString,
 } from "../constants/validation";
 import { FIRST_MILESTONE_ID } from "../data/milestones";
+import useSettingsStore from "./useSettingsStore";
 
 const isValidId = (id) => typeof id === "string" && id.length > 0 && id.length <= 100;
 
@@ -179,10 +180,13 @@ const useStarterStore = create(
           time: Number.isFinite(entry.time) ? Math.round(entry.time) : Date.now(),
           amount: Number.isFinite(entry.amount) ? Math.max(0, Math.min(500, Math.round(entry.amount))) : 50,
           withBran: entry.withBran === true,
-          temp:
-            Number.isFinite(entry.temp) && entry.temp >= 0 && entry.temp <= 60
+          temp: (() => {
+            if (!Number.isFinite(entry.temp)) return null;
+            const maxTemp = useSettingsStore.getState().tempUnit === "f" ? 140 : 60;
+            return entry.temp >= 0 && entry.temp <= maxTemp
               ? Math.round(entry.temp * 10) / 10
-              : null,
+              : null;
+          })(),
           note: entry.note ? sanitizeString(String(entry.note), MAX_NOTE_LENGTH) : null,
           flourType: sanitizeString(String(entry.flourType || "white"), 30) || "white",
           // Observation fields (optional)
