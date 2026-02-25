@@ -13,7 +13,13 @@
       "Bash(git push origin main)",
       "Bash(git pull --rebase origin main)",
       "Bash(git stash)",
-      "Bash(git stash pop)"
+      "Bash(git stash pop)",
+      "Bash(curl -s -X POST https://dreamy-cannoli-ca7108.netlify.app/.netlify/functions/subscribe -H \"Content-Type: application/json\" -d '{\"\"email\"\":\"\"test-audit@riseandfermen.com\"\",\"\"form\"\":\"\"guide\"\"}' -w \"\\\\nHTTP Status: %{http_code}\\\\n\")",
+      "Bash(curl -s -X POST https://dreamy-cannoli-ca7108.netlify.app/.netlify/functions/subscribe -H \"Content-Type: application/json\" -d '{\"\"email\"\":\"\"test-audit@riseandfermen.com\"\",\"\"form\"\":\"\"newsletter\"\"}' -w \"\\\\nHTTP Status: %{http_code}\\\\n\")",
+      "Bash(curl -s -X POST https://dreamy-cannoli-ca7108.netlify.app/.netlify/functions/subscribe -H \"Content-Type: application/json\" -d '{\"\"email\"\":\"\"test@test.com\"\",\"\"form\"\":\"\"invalid\"\"}' -w \"\\\\nHTTP Status: %{http_code}\\\\n\")",
+      "Bash(curl -s -X GET https://dreamy-cannoli-ca7108.netlify.app/.netlify/functions/subscribe -w \"\\\\nHTTP Status: %{http_code}\\\\n\")",
+      "Bash(test -f \"C:/Users/biosa/Proiecte/rise-and-ferment/public/_redirects\")",
+      "Bash(test -f \"C:/Users/biosa/Proiecte/rise-and-ferment/vercel.json\")"
     ]
   }
 }

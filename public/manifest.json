@@ -3,6 +3,7 @@
   "short_name": "Rise & Ferment",
   "description": "Track your sourdough starter's journey with daily feedings, recipes, and guided learning.",
   "start_url": "/app",
+  "scope": "/app",
   "display": "standalone",
   "orientation": "portrait",
   "theme_color": "#8B5A2B",
@@ -22,7 +23,13 @@
       "src": "/icons/icon-512.png",
       "sizes": "512x512",
       "type": "image/png",
-      "purpose": "any maskable"
+      "purpose": "any"
+    },
+    {
+      "src": "/icons/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "maskable"
     }
   ],
   "categories": ["food", "lifestyle", "education"]

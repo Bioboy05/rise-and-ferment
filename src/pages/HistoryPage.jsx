@@ -163,6 +163,7 @@ function HistoryPage() {
       </div>
       {hasMore && (
         <button
+          type="button"
           onClick={() => setVisibleCount((prev) => prev + PAGE_SIZE)}
           style={{
             width: "100%",

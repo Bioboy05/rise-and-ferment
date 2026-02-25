@@ -8,6 +8,7 @@ function ThemeToggle({ className = "", style = {} }) {
 
   return (
     <button
+      type="button"
       onClick={toggleTheme}
       className={className}
       style={{

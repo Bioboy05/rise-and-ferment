@@ -145,7 +145,7 @@ function OnboardingPage() {
   return (
     <div className="onboarding">
       <div style={{ display: "flex", justifyContent: "flex-end", width: "100%", marginBottom: "16px" }}>
-        <button type="button" className="theme-toggle-btn" onClick={toggleTheme} aria-label="Toggle theme">
+        <button type="button" className="theme-toggle-btn" onClick={toggleTheme} aria-label={theme === "dark" ? t("themeLight") : t("themeDark")}>
           <Icon name={theme === "dark" ? "sun" : "moon"} size={20} />
         </button>
       </div>

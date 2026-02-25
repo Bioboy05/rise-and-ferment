@@ -1,7 +1,9 @@
 import { useEffect } from "react";
+import { useTranslation } from "react-i18next";
 import Icon from "./Icon";
 
 function Modal({ onClose, title, children }) {
+  const { t } = useTranslation();
   useEffect(() => {
     const body = document.body;
     const currentLocks = Number.parseInt(body.dataset.modalLockCount || "0", 10);
@@ -55,7 +57,7 @@ function Modal({ onClose, title, children }) {
           <button
             type="button"
             onClick={onClose}
-            aria-label="Close"
+            aria-label={t("ariaClose")}
             className="close-btn"
           >
             <Icon name="close" size={18} />

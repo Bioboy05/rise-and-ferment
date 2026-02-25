@@ -52,6 +52,12 @@
   [headers.values]
     Cache-Control = "public, max-age=0, must-revalidate"
 
+# PDF — cache 1 day
+[[headers]]
+  for = "/*.pdf"
+  [headers.values]
+    Cache-Control = "public, max-age=86400"
+
 # Security headers — toate paginile
 [[headers]]
   for = "/*"
