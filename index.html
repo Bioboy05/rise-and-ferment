@@ -33,8 +33,8 @@ n=d.getElementsByTagName(e)[0],n.parentNode.insertBefore(l,n);})
 ml('account', '2125417');
 </script>
 <style>
-:root{--cream:#FFFBF5;--cream-warm:#FFF5E6;--parchment:#F5EBE0;--crust:#8B5A2B;--crust-deep:#5D3A1A;--crust-light:#D4A574;--flour:#FFFFFF;--crumb:#3D2914;--rye:#6B4C2F;--wheat:#C4956A;--honey:#E8A849;--olive:#6B8F4E;--olive-soft:#8FB06A;--rosemary:#4A7043;--tomato:#C94C30;--font-display:'Playfair Display',Georgia,serif;--font-hand:'Caveat',cursive;--font-body:'Nunito',-apple-system,sans-serif;--nav-h:72px;--gap:clamp(80px,12vw,140px);--max:1200px;--narrow:800px}
-[data-theme="dark"]{--cream:#1A1612;--cream-warm:#1E1A15;--parchment:#2A2420;--crust:#D4A574;--crust-deep:#E8C9A0;--crust-light:#8B6F4E;--flour:#252017;--crumb:#F5EBE0;--rye:#C4B098;--wheat:#9A8570;--honey:#E8A849;--olive:#8FB06A;--olive-soft:#6B8F4E;--rosemary:#6B8F4E;--tomato:#E06B50}
+:root{--cream:#FFFBF5;--cream-warm:#FFF5E6;--parchment:#F5EBE0;--crust:#8B5A2B;--crust-deep:#5D3A1A;--crust-light:#D4A574;--flour:#FFFFFF;--crumb:#3D2914;--rye:#6B4C2F;--wheat:#C4956A;--placeholder:#8B6F5A;--honey:#E8A849;--olive:#6B8F4E;--olive-soft:#8FB06A;--rosemary:#4A7043;--tomato:#C94C30;--font-display:'Playfair Display',Georgia,serif;--font-hand:'Caveat',cursive;--font-body:'Nunito',-apple-system,sans-serif;--nav-h:72px;--gap:clamp(80px,12vw,140px);--max:1200px;--narrow:800px}
+[data-theme="dark"]{--cream:#1A1612;--cream-warm:#1E1A15;--parchment:#2A2420;--crust:#D4A574;--crust-deep:#E8C9A0;--crust-light:#8B6F4E;--flour:#252017;--crumb:#F5EBE0;--rye:#C4B098;--wheat:#9A8570;--placeholder:#B09A82;--honey:#E8A849;--olive:#8FB06A;--olive-soft:#6B8F4E;--rosemary:#6B8F4E;--tomato:#E06B50}
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}html{scroll-behavior:smooth;scroll-padding-top:var(--nav-h)}
 body{font-family:var(--font-body);color:var(--crumb);background:var(--cream);line-height:1.7;overflow-x:hidden;-webkit-font-smoothing:antialiased}
 body.menu-open{overflow:hidden}
@@ -210,7 +210,7 @@ button:focus-visible,.btn:focus-visible{outline:2px solid var(--crust);outline-o
 .lead__inc{list-style:none;display:flex;flex-direction:column;gap:10px;margin-bottom:32px}
 .lead__inc li{display:flex;align-items:center;gap:10px;font-size:.92rem;color:var(--rye);font-weight:600}
 .lead__form{display:flex;gap:12px;flex-wrap:wrap}
-.lead__input{flex:1;min-width:200px;padding:14px 20px;border:2px solid rgba(139,90,43,.15);border-radius:14px;font-family:var(--font-body);font-size:.95rem;background:var(--flour);color:var(--crumb);outline:none;transition:border-color .3s}.lead__input:focus{border-color:var(--crust)}.lead__input::placeholder{color:var(--wheat)}
+.lead__input{flex:1;min-width:200px;padding:14px 20px;border:2px solid rgba(139,90,43,.15);border-radius:14px;font-family:var(--font-body);font-size:.95rem;background:var(--flour);color:var(--crumb);outline:none;transition:border-color .3s}.lead__input:focus{border-color:var(--crust)}.lead__input::placeholder{color:var(--placeholder)}
 .lead__sub{padding:14px 28px;background:var(--crust);color:var(--cream);border-radius:14px;font-size:.95rem;font-weight:700;border:none;cursor:pointer;transition:all .3s;box-shadow:0 4px 16px rgba(139,90,43,.25)}.lead__sub:hover{background:var(--crust-deep);transform:translateY(-1px)}
 .lead__priv{font-size:.78rem;color:var(--wheat);margin-top:12px}
 .lead__link{color:var(--crust);font-weight:700;text-decoration:underline;text-decoration-thickness:2px;text-underline-offset:3px}
@@ -235,11 +235,11 @@ button:focus-visible,.btn:focus-visible{outline:2px solid var(--crust);outline-o
 .lead__proof-av--3{background:linear-gradient(135deg,#E8D5B7,#C4956A)}
 .lead__proof-av--4{background:linear-gradient(135deg,#FFF3DC,#E8A849)}
 .lead__proof-txt{font-size:.82rem;color:var(--rye)}.lead__proof-txt strong{color:var(--crust-deep);font-weight:800}
-.lead__name{width:100%;padding:13px 20px;border:2px solid rgba(139,90,43,.15);border-radius:14px;font-family:var(--font-body);font-size:.95rem;background:var(--flour);color:var(--crumb);outline:none;transition:border-color .3s;margin-bottom:10px}.lead__name:focus{border-color:var(--crust)}.lead__name::placeholder{color:var(--wheat)}
+.lead__name{width:100%;padding:13px 20px;border:2px solid rgba(139,90,43,.15);border-radius:14px;font-family:var(--font-body);font-size:.95rem;background:var(--flour);color:var(--crumb);outline:none;transition:border-color .3s;margin-bottom:10px}.lead__name:focus{border-color:var(--crust)}.lead__name::placeholder{color:var(--placeholder)}
 .lead__row{display:flex;gap:12px;flex-wrap:wrap;width:100%}
 .lead__delivery{display:flex;align-items:center;gap:5px;font-size:.78rem;color:var(--olive);font-weight:600;margin-top:10px}
 .nl__meta{font-size:.82rem;color:rgba(212,165,116,.6);margin-bottom:24px;font-weight:600;letter-spacing:.02em;position:relative;z-index:1}
-.ep__name{width:100%;padding:12px 18px;border-radius:12px;border:1.5px solid rgba(139,90,43,.2);background:var(--flour);color:var(--crumb);font-family:var(--font-body);font-size:.95rem;margin-bottom:8px;outline:none;transition:border-color .3s}.ep__name:focus{border-color:var(--crust)}.ep__name::placeholder{color:var(--wheat)}
+.ep__name{width:100%;padding:12px 18px;border-radius:12px;border:1.5px solid rgba(139,90,43,.2);background:var(--flour);color:var(--crumb);font-family:var(--font-body);font-size:.95rem;margin-bottom:8px;outline:none;transition:border-color .3s}.ep__name:focus{border-color:var(--crust)}.ep__name::placeholder{color:var(--placeholder)}
 [data-theme="dark"] .ep__name{background:rgba(37,32,23,.6);border-color:rgba(212,165,116,.2);color:var(--crumb)}
 /* TESTIMONIALS */
 .test{padding:var(--gap) 0;background:linear-gradient(180deg,var(--cream) 0%,var(--cream-warm) 100%)}
@@ -280,17 +280,9 @@ button:focus-visible,.btn:focus-visible{outline:2px solid var(--crust);outline-o
 .reveal{opacity:0;transform:translateY(30px);transition:all .8s cubic-bezier(.22,1,.36,1)}.reveal.vis{opacity:1;transform:translateY(0)}.rv1{transition-delay:.1s}.rv2{transition-delay:.2s}.rv3{transition-delay:.3s}.rv4{transition-delay:.4s}
 /* RESPONSIVE */
 @media(max-width:1024px){.hero__c{grid-template-columns:1fr;text-align:center}.hero__desc{margin:0 auto 36px}.hero__acts{justify-content:center}.hero__proof{justify-content:center}.hero__vis{margin-top:40px}.feat-row{grid-template-columns:1fr;text-align:center}.feat-row--rev{direction:ltr}.feat-row__bul{align-items:center}.starter-grid,.fmc-grid{margin:0 auto}.blog__grid{grid-template-columns:1fr 1fr}.bp__grid{grid-template-columns:1fr 1fr}.test__grid{grid-template-columns:1fr 1fr}.ft__top{grid-template-columns:1fr 1fr}}
-@media(max-width:768px){.nav__links{display:none}.nav__ham{display:flex}.nav__links.active{display:flex;flex-direction:column;position:fixed;top:var(--nav-h);left:0;right:0;bottom:0;background:var(--cream);padding:32px;gap:24px;animation:fadeIn .3s ease}[data-theme="dark"] .nav__links.active{background:var(--cream)}.hero{min-height:auto;padding-top:calc(var(--nav-h) + 20px)}.phone{transform:rotate(0deg)}.blog__grid,.bp__grid{grid-template-columns:1fr}.tools__grid{grid-template-columns:1fr}.lead__card{grid-template-columns:1fr;text-align:center}.lead__inc{align-items:center}.lead__form{justify-content:center}.lead__vis{order:-1}.test__grid{grid-template-columns:1fr}.nl__input{min-width:100%}.nl__perks{flex-direction:column;align-items:center}.ft__top{grid-template-columns:1fr;text-align:center}.ft__brand-txt{margin:12px auto 0}.ft__social{justify-content:center}.ft__links{align-items:center}.ft__btm{justify-content:center;text-align:center}.ft__btm-links{justify-content:center}.tc{padding:20px}.tc__link{display:flex;width:100%;justify-content:center;padding:12px 20px}.tc__badge{top:12px;right:12px}.tools__tier-t{text-align:center}.bc__img{height:180px;contain:none;display:flex;align-items:center;justify-content:center}.scene__center{position:relative;top:auto;left:auto;transform:none}.hero__c{grid-template-columns:1fr;text-align:center}.hero__desc{margin:0 auto 36px}.hero__proof{justify-content:center}.hero__vis{margin-top:32px}.feat-row,.feat-row--rev{grid-template-columns:1fr}}
+@media(max-width:768px){.nav__links{display:none}.nav__ham{display:flex}.nav__links.active{display:flex;flex-direction:column;position:fixed;top:var(--nav-h);left:0;right:0;bottom:0;background:var(--cream);padding:32px;gap:24px;animation:fadeIn .3s ease;z-index:1100;overflow-y:auto;overscroll-behavior:contain;box-shadow:0 24px 46px rgba(93,58,26,.14)}[data-theme="dark"] .nav__links.active{background:var(--cream)}.hero{min-height:auto;padding-top:calc(var(--nav-h) + 20px)}.phone{transform:rotate(0deg)}.blog__grid,.bp__grid{grid-template-columns:1fr}.tools__grid{grid-template-columns:1fr}.lead__card{grid-template-columns:1fr;text-align:center}.lead__inc{align-items:center}.lead__form{justify-content:center}.lead__vis{order:-1}.test__grid{grid-template-columns:1fr}.nl__input{min-width:100%}.nl__perks{flex-direction:column;align-items:center}.ft__top{grid-template-columns:1fr;text-align:center}.ft__brand-txt{margin:12px auto 0}.ft__social{justify-content:center}.ft__links{align-items:center}.ft__btm{justify-content:center;text-align:center}.ft__btm-links{justify-content:center}.tc{padding:20px}.tc__link{display:flex;width:100%;justify-content:center;padding:12px 20px}.tc__badge{top:12px;right:12px}.tools__tier-t{text-align:center}.bc__img{height:180px;contain:none;display:flex;align-items:center;justify-content:center}.scene__center{position:relative;top:auto;left:auto;transform:none}.hero__c{grid-template-columns:1fr;text-align:center}.hero__desc{margin:0 auto 36px}.hero__proof{justify-content:center}.hero__vis{margin-top:32px}.feat-row,.feat-row--rev{grid-template-columns:1fr}}
+@media(min-width:481px) and (max-width:768px){.hero__fl--1{right:5px}.hero__fl--2{left:5px}.hero__fl--3{right:5px}}
 @media(max-width:480px){.hero__acts{flex-direction:column;width:100%;align-items:stretch}.hero__acts .btn{width:100%;justify-content:center;padding:14px 24px;white-space:nowrap}.hero__fl{display:none}.prob__grid{grid-template-columns:1fr}.starter-card:nth-child(2),.starter-card:nth-child(4),.fmc:nth-child(2),.fmc:nth-child(4){transform:none}.lead__card{padding:28px 20px}.tc{padding:16px}.tc__badge{position:static;display:inline-block;margin-bottom:8px}}
-@media(max-width:768px){.nav__links.active{z-index:1100;overflow-y:auto;overscroll-behavior:contain;box-shadow:0 24px 46px rgba(93,58,26,.14)}}
-/* COOKIE CONSENT */
-.cc{position:fixed;bottom:0;left:0;right:0;z-index:9999;background:var(--flour);border-top:1px solid rgba(139,90,43,.1);padding:16px 24px;display:flex;align-items:center;justify-content:center;gap:16px;flex-wrap:wrap;font-size:.88rem;color:var(--rye);box-shadow:0 -4px 24px rgba(0,0,0,.08);transform:translateY(100%);transition:transform .4s ease}
-.cc.vis{transform:translateY(0)}
-[data-theme="dark"] .cc{background:rgba(26,22,18,.95);border-color:rgba(212,165,116,.1);box-shadow:0 -4px 24px rgba(0,0,0,.2)}
-.cc__btns{display:flex;gap:8px}
-.cc__btn{padding:8px 20px;border-radius:100px;font-size:.85rem;font-weight:700;cursor:pointer;transition:all .3s}
-.cc__btn--a{background:var(--crust);color:var(--cream)}.cc__btn--a:hover{opacity:.9}
-.cc__btn--d{background:transparent;color:var(--rye);border:1.5px solid rgba(139,90,43,.2)}.cc__btn--d:hover{border-color:var(--crust)}
 /* EXIT POPUP */
 .ep{position:fixed;inset:0;z-index:10000;display:none;align-items:center;justify-content:center;background:rgba(0,0,0,.5);backdrop-filter:blur(4px);animation:fadeIn .3s ease}
 .ep.vis{display:flex}
@@ -301,7 +293,7 @@ button:focus-visible,.btn:focus-visible{outline:2px solid var(--crust);outline-o
 .ep__t{font-family:var(--font-display);font-size:1.4rem;font-weight:700;color:var(--crust-deep);margin-bottom:8px}
 .ep__d{font-size:.95rem;color:var(--rye);margin-bottom:20px;line-height:1.6}
 .ep__form{display:flex;gap:10px;flex-wrap:wrap;justify-content:center}
-.ep__input{flex:1;min-width:200px;padding:12px 16px;border-radius:100px;border:1.5px solid rgba(139,90,43,.15);background:var(--cream);color:var(--crumb);font-size:.95rem}
+.ep__input{flex:1;min-width:200px;padding:12px 16px;border-radius:100px;border:1.5px solid rgba(139,90,43,.15);background:var(--cream);color:var(--crumb);font-size:.95rem}.ep__input::placeholder{color:var(--placeholder)}
 [data-theme="dark"] .ep__input{background:rgba(26,22,18,.8);border-color:rgba(212,165,116,.15)}
 .ep__btn{padding:12px 24px;border-radius:100px;background:var(--crust);color:var(--cream);font-weight:700;font-size:.95rem;cursor:pointer;transition:all .3s}.ep__btn:hover{opacity:.9}
 /* STICKY CTA */
@@ -310,7 +302,7 @@ button:focus-visible,.btn:focus-visible{outline:2px solid var(--crust);outline-o
 [data-theme="dark"] .scta{background:rgba(26,22,18,.95);border-color:rgba(212,165,116,.08);box-shadow:0 -4px 20px rgba(0,0,0,.15)}
 .scta__t{font-size:.88rem;font-weight:700;color:var(--crust-deep);white-space:nowrap}
 .scta__form{display:flex;gap:8px}
-.scta__input{padding:8px 14px;border-radius:100px;border:1.5px solid rgba(139,90,43,.15);background:var(--cream);color:var(--crumb);font-size:.85rem;width:200px}
+.scta__input{padding:8px 14px;border-radius:100px;border:1.5px solid rgba(139,90,43,.15);background:var(--cream);color:var(--crumb);font-size:.85rem;width:200px}.scta__input::placeholder{color:var(--placeholder)}
 [data-theme="dark"] .scta__input{background:rgba(26,22,18,.8);border-color:rgba(212,165,116,.15)}
 .scta__btn{padding:8px 18px;border-radius:100px;background:var(--crust);color:var(--cream);font-weight:700;font-size:.85rem;cursor:pointer;transition:all .3s}.scta__btn:hover{opacity:.9}
 .scta__x{padding:4px 8px;color:var(--rye);cursor:pointer;font-size:1.2rem;opacity:.5;transition:opacity .2s}.scta__x:hover{opacity:1}
@@ -415,7 +407,7 @@ body{min-height:100dvh;-webkit-tap-highlight-color:transparent}
 <li><button class="nav__link" onclick="showBlogPage()">Blog</button></li>
 <li><a href="#tools" class="nav__link" onclick="showLanding()">Baking Tools</a></li>
 <li><a href="#guide" class="nav__link" onclick="showLanding()">Free Guide</a></li>
-<li><div class="lang-sw" id="langSw"><button class="lang-sw__btn" onclick="toggleLangDrop(event)"><svg><use href="#ico-globe"/></svg> <span id="langLabel">EN</span></button><div class="lang-sw__drop" id="langDrop"><div class="lang-sw__opt active" data-lang="en">🇬🇧 English</div><div class="lang-sw__opt" data-lang="ro">🇷🇴 Română</div><div class="lang-sw__opt" data-lang="it">🇮🇹 Italiano</div><div class="lang-sw__opt" data-lang="de">🇩🇪 Deutsch</div><div class="lang-sw__opt" data-lang="fr">🇫🇷 Français</div><div class="lang-sw__opt" data-lang="es">🇪🇸 Español</div></div></div></li>
+<li><div class="lang-sw" id="langSw"><button class="lang-sw__btn" onclick="toggleLangDrop(event)" aria-label="Select language" aria-haspopup="listbox" aria-expanded="false"><svg><use href="#ico-globe"/></svg> <span id="langLabel">EN</span></button><div class="lang-sw__drop" id="langDrop" role="listbox" aria-label="Available languages"><div class="lang-sw__opt active" data-lang="en" role="option" aria-selected="true" tabindex="0">🇬🇧 English</div><div class="lang-sw__opt" data-lang="ro" role="option" aria-selected="false" tabindex="0">🇷🇴 Română</div><div class="lang-sw__opt" data-lang="it" role="option" aria-selected="false" tabindex="0">🇮🇹 Italiano</div><div class="lang-sw__opt" data-lang="de" role="option" aria-selected="false" tabindex="0">🇩🇪 Deutsch</div><div class="lang-sw__opt" data-lang="fr" role="option" aria-selected="false" tabindex="0">🇫🇷 Français</div><div class="lang-sw__opt" data-lang="es" role="option" aria-selected="false" tabindex="0">🇪🇸 Español</div></div></div></li>
 </ul>
 <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path class="sun-icon" d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/><circle class="sun-icon" cx="12" cy="12" r="5"/><path class="moon-icon" d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg></button>
 <a href="/app" class="btn nav__cta">Try the App — Free</a>
@@ -538,9 +530,9 @@ body{min-height:100dvh;-webkit-tap-highlight-color:transparent}
 <section class="test" id="testimonials"><div class="ctn">
 <div class="test__head reveal"><p class="sl">Real bakers, real stories</p><h2 class="st">What our community says</h2><p class="ss">From "I've never baked anything" to "I made sourdough!"</p></div>
 <div class="test__grid">
-<div class="tcard reveal rv1"><div class="tcard__stars"><span class="tcard__star">★</span><span class="tcard__star">★</span><span class="tcard__star">★</span><span class="tcard__star">★</span><span class="tcard__star">★</span></div><p class="tcard__text">"I tried three times before this app. The reminders changed everything. My kids now ask for 'Mama's bread' every weekend."</p><div class="tcard__auth"><div class="tcard__av tcard__av--1"><svg width="24" height="24" style="color:var(--crust)"><use href="#ico-person"/></svg></div><div><p class="tcard__name">Sarah M.</p><p class="tcard__role">Mom of 3 · Portland, USA</p></div></div></div>
-<div class="tcard reveal rv2"><div class="tcard__stars"><span class="tcard__star">★</span><span class="tcard__star">★</span><span class="tcard__star">★</span><span class="tcard__star">★</span><span class="tcard__star">★</span></div><p class="tcard__text">"Living alone, I wanted a hobby that felt meaningful. Now I bring loaves to my neighbors and we've become actual friends."</p><div class="tcard__auth"><div class="tcard__av tcard__av--2"><svg width="24" height="24" style="color:var(--crust-deep)"><use href="#ico-person"/></svg></div><div><p class="tcard__name">Alex K.</p><p class="tcard__role">Designer · Berlin, Germany</p></div></div></div>
-<div class="tcard reveal rv3"><div class="tcard__stars"><span class="tcard__star">★</span><span class="tcard__star">★</span><span class="tcard__star">★</span><span class="tcard__star">★</span><span class="tcard__star">★</span></div><p class="tcard__text">"As a nurse with unpredictable shifts, I thought sourdough was impossible. I've made 12 loaves this month!"</p><div class="tcard__auth"><div class="tcard__av tcard__av--3"><svg width="24" height="24" style="color:var(--crust)"><use href="#ico-person"/></svg></div><div><p class="tcard__name">Elena R.</p><p class="tcard__role">Nurse & Baker · Bucharest</p></div></div></div>
+<div class="tcard reveal rv1"><div class="tcard__stars" role="img" aria-label="5 out of 5 stars"><span class="tcard__star" aria-hidden="true">★</span><span class="tcard__star" aria-hidden="true">★</span><span class="tcard__star" aria-hidden="true">★</span><span class="tcard__star" aria-hidden="true">★</span><span class="tcard__star" aria-hidden="true">★</span></div><p class="tcard__text">"I tried three times before this app. The reminders changed everything. My kids now ask for 'Mama's bread' every weekend."</p><div class="tcard__auth"><div class="tcard__av tcard__av--1"><svg width="24" height="24" style="color:var(--crust)"><use href="#ico-person"/></svg></div><div><p class="tcard__name">Sarah M.</p><p class="tcard__role">Mom of 3 · Portland, USA</p></div></div></div>
+<div class="tcard reveal rv2"><div class="tcard__stars" role="img" aria-label="5 out of 5 stars"><span class="tcard__star" aria-hidden="true">★</span><span class="tcard__star" aria-hidden="true">★</span><span class="tcard__star" aria-hidden="true">★</span><span class="tcard__star" aria-hidden="true">★</span><span class="tcard__star" aria-hidden="true">★</span></div><p class="tcard__text">"Living alone, I wanted a hobby that felt meaningful. Now I bring loaves to my neighbors and we've become actual friends."</p><div class="tcard__auth"><div class="tcard__av tcard__av--2"><svg width="24" height="24" style="color:var(--crust-deep)"><use href="#ico-person"/></svg></div><div><p class="tcard__name">Alex K.</p><p class="tcard__role">Designer · Berlin, Germany</p></div></div></div>
+<div class="tcard reveal rv3"><div class="tcard__stars" role="img" aria-label="5 out of 5 stars"><span class="tcard__star" aria-hidden="true">★</span><span class="tcard__star" aria-hidden="true">★</span><span class="tcard__star" aria-hidden="true">★</span><span class="tcard__star" aria-hidden="true">★</span><span class="tcard__star" aria-hidden="true">★</span></div><p class="tcard__text">"As a nurse with unpredictable shifts, I thought sourdough was impossible. I've made 12 loaves this month!"</p><div class="tcard__auth"><div class="tcard__av tcard__av--3"><svg width="24" height="24" style="color:var(--crust)"><use href="#ico-person"/></svg></div><div><p class="tcard__name">Elena R.</p><p class="tcard__role">Nurse & Baker · Bucharest</p></div></div></div>
 </div></div></section>
 
 <!-- NEWSLETTER / MAILERLITE SIGNUP -->
@@ -1865,11 +1857,15 @@ function setLang(l) {
   }
 
   document.querySelectorAll('.lang-sw__opt').forEach((o) => {
-    o.classList.toggle('active', o.dataset.lang === lang);
+    const isActive = o.dataset.lang === lang;
+    o.classList.toggle('active', isActive);
+    o.setAttribute('aria-selected', isActive);
   });
 
   const drop = document.getElementById('langDrop');
   if (drop) drop.classList.remove('open');
+  const langBtn = document.querySelector('.lang-sw__btn');
+  if (langBtn) langBtn.setAttribute('aria-expanded', 'false');
 }
 
 function initObs() {
@@ -1887,7 +1883,10 @@ function initObs() {
 
 function toggleLangDrop(e) {
   e.stopPropagation();
-  document.getElementById('langDrop').classList.toggle('open');
+  const drop = document.getElementById('langDrop');
+  drop.classList.toggle('open');
+  const btn = document.querySelector('.lang-sw__btn');
+  if (btn) btn.setAttribute('aria-expanded', drop.classList.contains('open'));
 }
 
 function showToast(t,m){document.getElementById('toastTitle').textContent=t;document.getElementById('toastMsg').textContent=m;document.getElementById('toast').classList.add('show');clearTimeout(window._tt);window._tt=setTimeout(hideToast,6000)}
@@ -1971,8 +1970,8 @@ applyTheme(savedTheme);
 window.addEventListener('scroll',()=>{document.getElementById('nav').classList.toggle('scrolled',window.scrollY>50)});
 document.getElementById('ham').addEventListener('click',()=>{const open=!document.getElementById('navLinks').classList.contains('active');setMenuOpen(open)});
 document.getElementById('themeToggle').addEventListener('click', toggleTheme);
-document.addEventListener('click',()=>document.getElementById('langDrop').classList.remove('open'));
-document.querySelectorAll('.lang-sw__opt').forEach(o=>{o.addEventListener('click',(e)=>{e.stopPropagation();setLang(o.dataset.lang)})});
+document.addEventListener('click',()=>{document.getElementById('langDrop').classList.remove('open');const lb=document.querySelector('.lang-sw__btn');if(lb)lb.setAttribute('aria-expanded','false')});
+document.querySelectorAll('.lang-sw__opt').forEach(o=>{o.addEventListener('click',(e)=>{e.stopPropagation();setLang(o.dataset.lang)});o.addEventListener('keydown',(e)=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();e.stopPropagation();setLang(o.dataset.lang)}const opts=[...document.querySelectorAll('.lang-sw__opt')];const idx=opts.indexOf(o);if(e.key==='ArrowDown'&&idx<opts.length-1){e.preventDefault();opts[idx+1].focus()}if(e.key==='ArrowUp'&&idx>0){e.preventDefault();opts[idx-1].focus()}if(e.key==='Escape'){document.getElementById('langDrop').classList.remove('open');const lb=document.querySelector('.lang-sw__btn');if(lb){lb.setAttribute('aria-expanded','false');lb.focus()}}})});
 document.querySelectorAll('a[href^="#"]').forEach(a=>{a.addEventListener('click',function(e){const t=this.getAttribute('href');if(t.length>1){const el=document.querySelector(t);if(el){e.preventDefault();el.scrollIntoView({behavior:'smooth'})}}})});
 setLang(lang);
 

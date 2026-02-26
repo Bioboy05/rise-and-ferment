@@ -44,21 +44,6 @@ export function formatTimeAgo(date, t) {
 }
 
 /**
- * Check if a date is today.
- * @param {number|string|Date} date - Date to check
- * @returns {boolean}
- */
-export function isToday(date) {
-  const d = new Date(date);
-  const now = new Date();
-  return (
-    d.getFullYear() === now.getFullYear() &&
-    d.getMonth() === now.getMonth() &&
-    d.getDate() === now.getDate()
-  );
-}
-
-/**
  * Format a Date as an ICS-compatible datetime string (UTC).
  * Format: YYYYMMDDTHHmmSSZ
  * @param {Date} date
