@@ -1,0 +1,29 @@
+FORMAT: Carousel (5 slides)
+
+SLIDE 1 (Cover): Elena sniffing the jar (elena-starter.png)
+  Text overlay: "Why Your Starter Smells TERRIBLE on Day 3"
+  Subtitle: "(and why that's actually good)"
+
+SLIDE 2: "Day 3 hits and your starter smells like..."
+  - Nail polish remover
+  - Gym socks
+  - Something that died
+  "Sound familiar? Don't throw it away."
+
+SLIDE 3: "Here's what's actually happening:"
+  "Bad bacteria are dying off. Good bacteria (lactobacillus) are taking over.
+  That smell? It's a WAR being won inside your jar."
+  "Think of it as growing pains."
+
+SLIDE 4: "What to do:"
+  1. Keep feeding (same time, every day)
+  2. Don't seal the lid tight (loose cover)
+  3. Keep it warm (24-28C is ideal)
+  4. Mark the level with a rubber band
+  "By Day 5-7, the smell shifts to yogurt-tangy. That's your sign."
+
+SLIDE 5 (CTA): "Starting your sourdough journey?"
+  "I made a free 14-day guide that walks you through every single day
+  — including the smelly ones."
+  "Link in bio"
+  Rise & Ferment logo

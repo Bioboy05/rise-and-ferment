@@ -1,0 +1,22 @@
+FORMAT: Reel / Screen recording (15-30 sec)
+
+RECORD FROM: riseandferment.com/app
+
+SEQUENCE:
+1. Opening the app (2 sec)
+2. Starter profile with "Luna" name and health indicator (3 sec)
+3. Feeding timer counting down (2 sec)
+4. Day guide section (3 sec)
+5. Recipe card (2 sec)
+6. Zoom out to full app (2 sec)
+
+TEXT OVERLAY SEQUENCE:
+- "Meet your sourdough companion"
+- "Track your starter's health"
+- "Never miss a feeding"
+- "Day-by-day guided instructions"
+- "Built-in recipes"
+- "Try it free — link in bio"
+
+BACKGROUND MUSIC:
+Warm acoustic/lo-fi (use Instagram's built-in music library)
