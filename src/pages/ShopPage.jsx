@@ -84,6 +84,42 @@ const PRODUCTS = [
     priceRange: "£280–350",
     affiliate: "az",
   },
+  {
+    id: "bread-slicer",
+    slug: "bread-slicer",
+    tier: "artisan",
+    icon: "bread-slicer",
+    badge: "shopBadgeHeirloom",
+    priceRange: "£100–130",
+    affiliate: "az",
+  },
+  {
+    id: "proofer",
+    slug: "proofer",
+    tier: "artisan",
+    icon: "proofer",
+    badge: "shopBadgePro",
+    priceRange: "£170–200",
+    affiliate: "az",
+  },
+  {
+    id: "dough-whisk",
+    slug: "dough-whisk",
+    tier: "artisan",
+    icon: "dough-whisk",
+    badge: null,
+    priceRange: "£8–12",
+    affiliate: "az",
+  },
+  {
+    id: "oval-banneton",
+    slug: "oval-banneton",
+    tier: "artisan",
+    icon: "oval-banneton",
+    badge: null,
+    priceRange: "£15–20",
+    affiliate: "az",
+  },
 ];
 
 const PRODUCT_ICONS = {
@@ -157,6 +193,43 @@ const PRODUCT_ICONS = {
       <line x1="14" y1="27" x2="34" y2="27" strokeDasharray="3,3" />
     </svg>
   ),
+  "bread-slicer": (
+    <svg viewBox="0 0 48 48" width="40" height="40" fill="none" stroke="currentColor" strokeWidth="2">
+      <rect x="6" y="24" width="36" height="18" rx="3" />
+      <path d="M12 24 L12 14 Q12 10 16 10 L32 10 Q36 10 36 14 L36 24" />
+      <circle cx="36" cy="18" r="4" />
+      <line x1="36" y1="14" x2="36" y2="18" />
+      <line x1="18" y1="10" x2="18" y2="42" strokeDasharray="2,2" opacity="0.5" />
+    </svg>
+  ),
+  proofer: (
+    <svg viewBox="0 0 48 48" width="40" height="40" fill="none" stroke="currentColor" strokeWidth="2">
+      <rect x="6" y="12" width="36" height="28" rx="4" />
+      <rect x="10" y="16" width="28" height="20" rx="2" />
+      <circle cx="24" cy="26" r="6" strokeDasharray="3,2" />
+      <path d="M22 24 L24 28 L26 24" />
+      <line x1="12" y1="8" x2="12" y2="12" />
+      <line x1="36" y1="8" x2="36" y2="12" />
+    </svg>
+  ),
+  "dough-whisk": (
+    <svg viewBox="0 0 48 48" width="40" height="40" fill="none" stroke="currentColor" strokeWidth="2">
+      <line x1="24" y1="6" x2="24" y2="20" strokeWidth="3" strokeLinecap="round" />
+      <path d="M18 20 Q14 28 16 36 Q18 42 24 42 Q30 42 32 36 Q34 28 30 20" />
+      <path d="M20 24 Q22 30 24 24 Q26 30 28 24" />
+    </svg>
+  ),
+  "oval-banneton": (
+    <svg viewBox="0 0 48 48" width="40" height="40" fill="none" stroke="currentColor" strokeWidth="2">
+      <ellipse cx="24" cy="30" rx="18" ry="10" />
+      <ellipse cx="24" cy="28" rx="14" ry="7" />
+      <line x1="12" y1="28" x2="12" y2="34" />
+      <line x1="18" y1="24" x2="18" y2="36" />
+      <line x1="24" y1="22" x2="24" y2="38" />
+      <line x1="30" y1="24" x2="30" y2="36" />
+      <line x1="36" y1="28" x2="36" y2="34" />
+    </svg>
+  ),
 };
 
 const CTA_KEY = {
@@ -206,6 +279,7 @@ function ShopPage() {
 
   const starterKit = PRODUCTS.filter((p) => p.tier === "starter");
   const upgradeKit = PRODUCTS.filter((p) => p.tier === "upgrade");
+  const artisanKit = PRODUCTS.filter((p) => p.tier === "artisan");
 
   return (
     <div className="section shop-page">
@@ -227,6 +301,15 @@ function ShopPage() {
         <div className="shop-tier__label">{t("shopTier2")}</div>
         <div className="shop-grid">
           {upgradeKit.map((p) => (
+            <ProductCard key={p.id} product={p} />
+          ))}
+        </div>
+      </div>
+
+      <div className="shop-tier">
+        <div className="shop-tier__label">{t("shopTier3")}</div>
+        <div className="shop-grid">
+          {artisanKit.map((p) => (
             <ProductCard key={p.id} product={p} />
           ))}
         </div>

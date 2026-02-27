@@ -130,6 +130,31 @@
   status = 302
   force = true
 
+# Artisan Collection (Tier 3)
+[[redirects]]
+  from = "/go/bread-slicer"
+  to = "https://www.amazon.co.uk/dp/B07PBC64W1?tag=riseandfermen-21"
+  status = 302
+  force = true
+
+[[redirects]]
+  from = "/go/proofer"
+  to = "https://www.amazon.co.uk/dp/B01MQK1204?tag=riseandfermen-21"
+  status = 302
+  force = true
+
+[[redirects]]
+  from = "/go/dough-whisk"
+  to = "https://www.amazon.co.uk/dp/B06ZXWR7VW?tag=riseandfermen-21"
+  status = 302
+  force = true
+
+[[redirects]]
+  from = "/go/oval-banneton"
+  to = "https://www.amazon.co.uk/dp/B0B14RZNLG?tag=riseandfermen-21"
+  status = 302
+  force = true
+
 # App SPA routing
 [[redirects]]
   from = "/app/*"
