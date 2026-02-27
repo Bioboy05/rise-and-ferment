@@ -880,7 +880,9 @@ const LANDING_I18N = {
     toastGuideTitle: '🎉 Guide sent!',
     toastGuideMsg: 'Check your inbox — your free sourdough guide is on the way!',
     toastNlTitle: '🍞 Welcome to the family!',
-    toastNlMsg: 'Fresh baking tips every week. No spam, ever.'
+    toastNlMsg: 'Fresh baking tips every week. No spam, ever.',
+    toastErrTitle: 'Something went wrong',
+    toastErrMsg: 'Please try again. If the problem persists, refresh the page.'
   },
   ro: {
     navFeatures: "Funcționalități",
@@ -1022,7 +1024,9 @@ const LANDING_I18N = {
     toastGuideTitle: '🎉 Ghidul a fost trimis!',
     toastGuideMsg: 'Verifică inbox-ul — ghidul gratuit e pe drum!',
     toastNlTitle: '🍞 Bine ai venit în familie!',
-    toastNlMsg: 'Sfaturi proaspete de copt în fiecare săptămână. Fără spam.'
+    toastNlMsg: 'Sfaturi proaspete de copt în fiecare săptămână. Fără spam.',
+    toastErrTitle: 'Ceva nu a mers bine',
+    toastErrMsg: 'Te rugăm să încerci din nou. Dacă problema persistă, reîncarcă pagina.'
   },
   it: {
     navFeatures: "Funzionalità",
@@ -1164,7 +1168,9 @@ const LANDING_I18N = {
     toastGuideTitle: '🎉 Guida inviata!',
     toastGuideMsg: 'Controlla la tua inbox — la guida gratuita sta arrivando!',
     toastNlTitle: '🍞 Benvenuto in famiglia!',
-    toastNlMsg: 'Consigli freschi di panificazione ogni settimana. Niente spam.'
+    toastNlMsg: 'Consigli freschi di panificazione ogni settimana. Niente spam.',
+    toastErrTitle: 'Qualcosa è andato storto',
+    toastErrMsg: 'Per favore riprova. Se il problema persiste, ricarica la pagina.'
   },
   de: {
     navFeatures: "Funktionen",
@@ -1306,7 +1312,9 @@ const LANDING_I18N = {
     toastGuideTitle: '🎉 Guide gesendet!',
     toastGuideMsg: 'Schau in dein Postfach — dein kostenloser Guide ist unterwegs!',
     toastNlTitle: '🍞 Willkommen in der Familie!',
-    toastNlMsg: 'Frische Backtipps jede Woche. Kein Spam.'
+    toastNlMsg: 'Frische Backtipps jede Woche. Kein Spam.',
+    toastErrTitle: 'Etwas ist schiefgelaufen',
+    toastErrMsg: 'Bitte versuche es erneut. Wenn das Problem bestehen bleibt, lade die Seite neu.'
   },
   fr: {
     navFeatures: "Fonctionnalités",
@@ -1448,7 +1456,9 @@ const LANDING_I18N = {
     toastGuideTitle: '🎉 Guide envoyé !',
     toastGuideMsg: 'Vérifie ta boîte mail — ton guide gratuit arrive !',
     toastNlTitle: '🍞 Bienvenue dans la famille !',
-    toastNlMsg: 'Astuces fraîches de boulangerie chaque semaine. Jamais de spam.'
+    toastNlMsg: 'Astuces fraîches de boulangerie chaque semaine. Jamais de spam.',
+    toastErrTitle: 'Quelque chose a mal tourné',
+    toastErrMsg: 'Veuillez réessayer. Si le problème persiste, rechargez la page.'
   },
   es: {
     navFeatures: "Funciones",
@@ -1590,7 +1600,9 @@ const LANDING_I18N = {
     toastGuideTitle: '🎉 ¡Guía enviada!',
     toastGuideMsg: 'Revisa tu bandeja de entrada — ¡tu guía gratuita está en camino!',
     toastNlTitle: '🍞 ¡Bienvenido a la familia!',
-    toastNlMsg: 'Consejos frescos de panadería cada semana. Sin spam.'
+    toastNlMsg: 'Consejos frescos de panadería cada semana. Sin spam.',
+    toastErrTitle: 'Algo salió mal',
+    toastErrMsg: 'Por favor, inténtalo de nuevo. Si el problema persiste, recarga la página.'
   }
 };
 
@@ -1923,32 +1935,50 @@ function toggleLangDrop(e) {
 function showToast(t,m){document.getElementById('toastTitle').textContent=t;document.getElementById('toastMsg').textContent=m;document.getElementById('toast').classList.add('show');clearTimeout(window._tt);window._tt=setTimeout(hideToast,6000)}
 function hideToast(){document.getElementById('toast').classList.remove('show')}
 function subscribeMailerLite(email,form){
-  fetch('/.netlify/functions/subscribe',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({email,form})}).catch(()=>{});
+  return fetch('/.netlify/functions/subscribe',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({email,form})}).then(r=>{if(!r.ok)throw new Error(r.status);return r});
+}
+function saveEmailAndDeliver(email,formEl,btn,onSuccess){
+  const L=LANDING_I18N[lang]||LANDING_I18N.en;
+  const origText=btn.textContent;
+  btn.textContent='⏳';btn.disabled=true;
+  const netlify=fetch('/',{method:'POST',headers:{'Content-Type':'application/x-www-form-urlencoded'},body:new URLSearchParams({'form-name':'lead-magnet',email:email}).toString()}).then(r=>{if(!r.ok)throw new Error(r.status);return r});
+  const ml=subscribeMailerLite(email,'guide');
+  Promise.any([netlify,ml]).then(()=>{
+    btn.textContent=L.leadBtnSuccess;btn.style.background='#6B8F4E';btn.disabled=false;
+    if(formEl)formEl.querySelector('input[type="email"]').value='';
+    window.open('/7-day-sourdough-starter-guide.pdf','_blank');
+    showToast(L.toastGuideTitle,L.toastGuideMsg);
+    if(onSuccess)onSuccess();
+    setTimeout(()=>{btn.textContent=origText;btn.style.background=''},3000);
+  }).catch(()=>{
+    btn.textContent=origText;btn.disabled=false;
+    showToast(L.toastErrTitle,L.toastErrMsg);
+  });
 }
 function handleLead(e){
   e.preventDefault();
   const email=e.target.querySelector('input[type="email"]').value;
   const b=e.target.querySelector('button');
-  fetch('/',{method:'POST',headers:{'Content-Type':'application/x-www-form-urlencoded'},body:new URLSearchParams({'form-name':'lead-magnet',email:email}).toString()}).catch(()=>{});
-  subscribeMailerLite(email,'guide');
-  const L=LANDING_I18N[lang]||LANDING_I18N.en;
-  b.textContent=L.leadBtnSuccess;b.style.background='#6B8F4E';
-  e.target.querySelector('input[type="email"]').value='';
-  window.open('/7-day-sourdough-starter-guide.pdf','_blank');
-  showToast(L.toastGuideTitle,L.toastGuideMsg);
-  setTimeout(()=>{b.textContent=L.leadBtn;b.style.background=''},3000);
+  saveEmailAndDeliver(email,e.target,b);
 }
 function handleNL(e){
   e.preventDefault();
   const email=e.target.querySelector('input[type="email"]').value;
   const b=e.target.querySelector('button');
-  fetch('/',{method:'POST',headers:{'Content-Type':'application/x-www-form-urlencoded'},body:new URLSearchParams({'form-name':'newsletter',email:email}).toString()}).catch(()=>{});
-  subscribeMailerLite(email,'newsletter');
   const L=LANDING_I18N[lang]||LANDING_I18N.en;
-  b.textContent=L.nlBtnSuccess;b.style.background='#6B8F4E';
-  showToast(L.toastNlTitle,L.toastNlMsg);
-  e.target.querySelector('input[type="email"]').value='';
-  setTimeout(()=>{b.textContent=L.nlBtn;b.style.background=''},3000);
+  const origText=b.textContent;
+  b.textContent='⏳';b.disabled=true;
+  const netlify=fetch('/',{method:'POST',headers:{'Content-Type':'application/x-www-form-urlencoded'},body:new URLSearchParams({'form-name':'newsletter',email:email}).toString()}).then(r=>{if(!r.ok)throw new Error(r.status);return r});
+  const ml=subscribeMailerLite(email,'newsletter');
+  Promise.any([netlify,ml]).then(()=>{
+    b.textContent=L.nlBtnSuccess;b.style.background='#6B8F4E';b.disabled=false;
+    e.target.querySelector('input[type="email"]').value='';
+    showToast(L.toastNlTitle,L.toastNlMsg);
+    setTimeout(()=>{b.textContent=origText;b.style.background=''},3000);
+  }).catch(()=>{
+    b.textContent=origText;b.disabled=false;
+    showToast(L.toastErrTitle,L.toastErrMsg);
+  });
 }
 // ═══ THEME ═══
 function readPersistedTheme() {
@@ -2018,13 +2048,8 @@ setLang(lang);
   document.getElementById('epForm').addEventListener('submit',function(e){
     e.preventDefault();
     const email=this.querySelector('input[type="email"]').value;
-    fetch('/',{method:'POST',headers:{'Content-Type':'application/x-www-form-urlencoded'},body:new URLSearchParams({'form-name':'lead-magnet',email:email}).toString()}).catch(()=>{});
-    subscribeMailerLite(email,'guide');
-    this.querySelector('button').textContent='\u2713 On its way!';
-    this.querySelector('input[type="email"]').value='';
-    window.open('/7-day-sourdough-starter-guide.pdf','_blank');
-    const L=LANDING_I18N[lang]||LANDING_I18N.en;showToast(L.toastGuideTitle,L.toastGuideMsg);
-    setTimeout(()=>ep.classList.remove('vis'),2000);
+    const b=this.querySelector('button');
+    saveEmailAndDeliver(email,this,b,()=>setTimeout(()=>ep.classList.remove('vis'),2000));
   });
 })();
 
@@ -2045,13 +2070,8 @@ setLang(lang);
   document.getElementById('sctaForm').addEventListener('submit',function(e){
     e.preventDefault();
     const email=this.querySelector('input[type="email"]').value;
-    fetch('/',{method:'POST',headers:{'Content-Type':'application/x-www-form-urlencoded'},body:new URLSearchParams({'form-name':'lead-magnet',email:email}).toString()}).catch(()=>{});
-    subscribeMailerLite(email,'guide');
-    this.querySelector('button').textContent='\u2713';
-    this.querySelector('input[type="email"]').value='';
-    window.open('/7-day-sourdough-starter-guide.pdf','_blank');
-    const L=LANDING_I18N[lang]||LANDING_I18N.en;showToast(L.toastGuideTitle,L.toastGuideMsg);
-    setTimeout(()=>{sctaDismissed=true;scta.classList.remove('vis')},2000);
+    const b=this.querySelector('button');
+    saveEmailAndDeliver(email,this,b,()=>setTimeout(()=>{sctaDismissed=true;scta.classList.remove('vis')},2000));
   });
 })();
 
