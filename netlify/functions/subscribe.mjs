@@ -1,4 +1,4 @@
-// Netlify serverless function — MailerLite subscriber proxy
+// Netlify serverless function (v1 format) — MailerLite subscriber proxy
 // Keeps API key server-side, never exposed to frontend
 
 const MAILERLITE_API = 'https://connect.mailerlite.com/api/subscribers';
@@ -8,55 +8,49 @@ const GROUPS = {
   newsletter: process.env.MAILERLITE_GROUP_NEWSLETTER,
 };
 
-export default async (request) => {
-  // Only POST allowed
-  if (request.method !== 'POST') {
-    return new Response(JSON.stringify({ error: 'Method not allowed' }), {
-      status: 405,
-      headers: { 'Content-Type': 'application/json' },
-    });
+const corsHeaders = {
+  'Access-Control-Allow-Origin': '*',
+  'Access-Control-Allow-Methods': 'POST, OPTIONS',
+  'Access-Control-Allow-Headers': 'Content-Type',
+};
+
+function respond(statusCode, body) {
+  return {
+    statusCode,
+    headers: { 'Content-Type': 'application/json', ...corsHeaders },
+    body: JSON.stringify(body),
+  };
+}
+
+export const handler = async (event) => {
+  // Handle CORS preflight
+  if (event.httpMethod === 'OPTIONS') {
+    return { statusCode: 204, headers: corsHeaders, body: '' };
   }
 
-  // CORS headers for the landing page
-  const headers = {
-    'Content-Type': 'application/json',
-    'Access-Control-Allow-Origin': '*',
-    'Access-Control-Allow-Methods': 'POST, OPTIONS',
-    'Access-Control-Allow-Headers': 'Content-Type',
-  };
-
-  // Handle preflight
-  if (request.method === 'OPTIONS') {
-    return new Response(null, { status: 204, headers });
+  // Only POST allowed
+  if (event.httpMethod !== 'POST') {
+    return respond(405, { error: 'Method not allowed' });
   }
 
   try {
-    const { email, form } = await request.json();
+    const { email, form } = JSON.parse(event.body);
 
     // Validate email
     if (!email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
-      return new Response(JSON.stringify({ error: 'Invalid email' }), {
-        status: 400,
-        headers,
-      });
+      return respond(400, { error: 'Invalid email' });
     }
 
     // Validate form type
     const groupId = GROUPS[form];
     if (!groupId) {
-      return new Response(JSON.stringify({ error: 'Invalid form type' }), {
-        status: 400,
-        headers,
-      });
+      return respond(400, { error: 'Invalid form type' });
     }
 
     const apiKey = process.env.MAILERLITE_API_KEY;
     if (!apiKey) {
       console.error('MAILERLITE_API_KEY not configured');
-      return new Response(JSON.stringify({ error: 'Server configuration error' }), {
-        status: 500,
-        headers,
-      });
+      return respond(500, { error: 'Server configuration error' });
     }
 
     // Call MailerLite API
@@ -76,25 +70,12 @@ export default async (request) => {
 
     if (!response.ok) {
       console.error('MailerLite error:', response.status, data);
-      return new Response(JSON.stringify({ error: 'Subscription failed' }), {
-        status: response.status >= 500 ? 502 : 400,
-        headers,
-      });
+      return respond(response.status >= 500 ? 502 : 400, { error: 'Subscription failed' });
     }
 
-    return new Response(JSON.stringify({ success: true }), {
-      status: 200,
-      headers,
-    });
+    return respond(200, { success: true });
   } catch (err) {
     console.error('Subscribe function error:', err);
-    return new Response(JSON.stringify({ error: 'Internal error' }), {
-      status: 500,
-      headers,
-    });
+    return respond(500, { error: 'Internal error' });
   }
-};
-
-export const config = {
-  path: '/.netlify/functions/subscribe',
 };
