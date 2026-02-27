@@ -2063,18 +2063,127 @@ body::after {
   margin-top: 2px;
 }
 
+/* Lesson content — premium structured layout */
 .lesson-content {
   font-size: 15px;
-  line-height: 1.8;
+  line-height: 1.7;
   color: var(--text-primary);
-  white-space: pre-line;
 }
 
-.lesson-content h4 {
-  font-family: "Caveat", cursive;
-  font-size: 22px;
+.lesson-content__hero {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 16px 20px;
+  margin: 0 -20px 24px;
+  background: linear-gradient(135deg, var(--accent-light) 0%, var(--bg-secondary) 100%);
+  border-radius: 16px;
+}
+
+.lesson-content__hero-icon {
+  width: 48px;
+  height: 48px;
+  border-radius: 14px;
+  background: var(--bg-card);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
   color: var(--accent);
-  margin: 20px 0 10px;
+  box-shadow: 0 2px 8px var(--shadow);
+}
+
+.lesson-content__hero-icon svg {
+  stroke: var(--accent);
+}
+
+.lesson-content__subtitle {
+  font-size: 14px;
+  color: var(--text-secondary);
+  line-height: 1.5;
+  margin: 0;
+}
+
+.lesson-content__body {
+  padding: 0 2px;
+}
+
+.lesson-section-title {
+  font-family: var(--font-display), cursive;
+  font-size: 20px;
+  font-weight: 600;
+  color: var(--accent);
+  margin: 28px 0 12px;
+  padding-bottom: 6px;
+  border-bottom: 2px solid var(--accent-light);
+}
+
+.lesson-content__body > *:first-child.lesson-section-title {
+  margin-top: 0;
+}
+
+.lesson-paragraph {
+  margin: 0 0 14px;
+  line-height: 1.75;
+  color: var(--text-primary);
+}
+
+.lesson-list {
+  margin: 0 0 16px;
+  padding: 0;
+  list-style: none;
+}
+
+ol.lesson-list {
+  counter-reset: lesson-step;
+}
+
+.lesson-list__item {
+  position: relative;
+  padding: 8px 12px 8px 36px;
+  margin-bottom: 6px;
+  background: var(--bg-secondary);
+  border-radius: 12px;
+  line-height: 1.6;
+  font-size: 14px;
+  color: var(--text-primary);
+}
+
+ul.lesson-list > .lesson-list__item::before {
+  content: "";
+  position: absolute;
+  left: 14px;
+  top: 16px;
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: var(--accent);
+}
+
+ol.lesson-list > .lesson-list__item {
+  counter-increment: lesson-step;
+}
+
+ol.lesson-list > .lesson-list__item::before {
+  content: counter(lesson-step);
+  position: absolute;
+  left: 10px;
+  top: 7px;
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  background: var(--accent);
+  color: var(--bg-card);
+  font-size: 12px;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.lesson-list__item strong {
+  color: var(--accent);
+  font-weight: 600;
 }
 
 /* ========================================
