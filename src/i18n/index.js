@@ -34,6 +34,9 @@ i18n.use(initReactI18next).init({
   lng: savedLanguage,
   fallbackLng: 'en',
   supportedLngs: SUPPORTED_LANGUAGES,
+  react: {
+    useSuspense: false,
+  },
   interpolation: {
     escapeValue: false,
     prefix: '{',
@@ -48,9 +51,13 @@ if (savedLanguage !== 'en') {
   loadLocale(savedLanguage)
 }
 
-// Hook into language change — load new locale on switch
-i18n.on('languageChanged', (lang) => {
-  loadLocale(lang)
+// Hook into language change — load new locale on switch, then re-render
+i18n.on('languageChanged', async (lang) => {
+  if (lang !== 'en' && !i18n.hasResourceBundle(lang, 'translation')) {
+    await loadLocale(lang)
+    // Resources are now loaded — re-trigger so components re-render
+    i18n.changeLanguage(lang)
+  }
 })
 
 export default i18n
