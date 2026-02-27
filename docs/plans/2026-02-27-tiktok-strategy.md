@@ -210,10 +210,10 @@ content/tiktok/
 
 ## Profile Optimization Checklist
 
-- [ ] Update bio text (as specified above)
-- [ ] Add profile photo (same as Instagram — sourdough jar)
-- [ ] Add website link: riseandferment.com
-- [ ] Enable business/creator account for analytics
-- [ ] Pin first 3 best-performing videos
-- [ ] Follow top sourdough creators for engagement
+- [x] Update bio text: "Sourdough made simple 🍞 / Tips · Science · Real talk / Free 14-day guide ↓" (71/80 chars)
+- [x] Profile photo — sourdough loaf (already set)
+- [ ] Add website link: riseandferment.com ⚠️ **Mobile app only** — open TikTok app → Profile → Edit Profile → Website
+- [x] Enable business account for analytics (Food & Beverage category, trial until 2026-03-29)
+- [ ] Pin first 3 best-performing videos (after producing more content)
+- [x] Follow top sourdough creators for engagement (26 following)
 - [ ] Set up Linktree or use riseandferment.com as link hub
