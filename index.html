@@ -1946,7 +1946,7 @@ function saveEmailAndDeliver(email,formEl,btn,onSuccess){
   Promise.any([netlify,ml]).then(()=>{
     btn.textContent=L.leadBtnSuccess;btn.style.background='#6B8F4E';btn.disabled=false;
     if(formEl)formEl.querySelector('input[type="email"]').value='';
-    window.open('/7-day-sourdough-starter-guide.pdf','_blank');
+    window.open('/sourdough-starter-kit.pdf','_blank');
     showToast(L.toastGuideTitle,L.toastGuideMsg);
     if(onSuccess)onSuccess();
     setTimeout(()=>{btn.textContent=origText;btn.style.background=''},3000);
