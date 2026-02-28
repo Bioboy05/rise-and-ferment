@@ -155,6 +155,13 @@
   status = 302
   force = true
 
+# Ebook — Gumroad
+[[redirects]]
+  from = "/go/ebook"
+  to = "https://riseferment.gumroad.com/l/handbook"
+  status = 302
+  force = true
+
 # App SPA routing
 [[redirects]]
   from = "/app/*"

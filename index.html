@@ -198,6 +198,29 @@ button:focus-visible,.btn:focus-visible{outline:2px solid var(--crust);outline-o
 .tc__price{font-family:var(--font-display);font-size:1.3rem;font-weight:700;color:var(--honey);margin-bottom:14px}
 .tc__link{display:inline-flex;align-items:center;gap:6px;font-size:.88rem;font-weight:700;color:var(--crust-light);padding:10px 20px;border:1.5px solid rgba(212,165,116,.3);border-radius:100px;transition:all .3s}.tc__link:hover{background:var(--crust-light);color:var(--crust-deep)}
 .tools__disc{text-align:center;margin-top:40px;font-size:.8rem;color:var(--crust-light);opacity:.5}
+/* EBOOK */
+.ebook{padding:var(--gap) 0;background:linear-gradient(180deg,var(--cream) 0%,var(--cream-warm) 100%)}
+.ebook__c{display:grid;grid-template-columns:1fr auto;gap:clamp(40px,6vw,80px);align-items:center}
+.ebook__text .sl{margin-bottom:8px}.ebook__text .st{margin-bottom:16px}.ebook__text .ss{margin-bottom:28px;max-width:500px}
+.ebook__inc{list-style:none;display:flex;flex-direction:column;gap:12px;margin-bottom:32px}
+.ebook__inc li{display:flex;align-items:center;gap:10px;font-size:.95rem;font-weight:600;color:var(--rye)}
+.ebook__inc svg{color:var(--crust);flex-shrink:0}
+.ebook__book{width:220px;height:300px;perspective:800px}
+.ebook__cover{width:100%;height:100%;background:linear-gradient(135deg,var(--crust),var(--crust-deep));border-radius:4px 16px 16px 4px;padding:32px 24px;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;position:relative;box-shadow:8px 8px 30px rgba(61,41,20,.3);transform:rotateY(-8deg);transition:transform .4s}
+.ebook__cover:hover{transform:rotateY(0deg)}
+.ebook__spine{position:absolute;left:0;top:0;bottom:0;width:16px;background:linear-gradient(90deg,var(--crust-deep),var(--crust));border-radius:4px 0 0 4px;box-shadow:inset -2px 0 4px rgba(0,0,0,.2)}
+.ebook__cover-badge{background:var(--honey);color:var(--crust-deep);font-size:.65rem;font-weight:800;padding:3px 10px;border-radius:100px;text-transform:uppercase;letter-spacing:.08em;margin-bottom:16px}
+.ebook__cover-sub{font-size:.8rem;color:var(--cream);opacity:.7;margin-bottom:8px}
+.ebook__cover-t{font-family:var(--font-display);font-size:1.3rem;color:var(--cream);line-height:1.2;margin-bottom:16px}
+.ebook__cover-ed{font-size:.75rem;color:var(--cream);opacity:.5}
+[data-theme="dark"] .ebook{background:linear-gradient(180deg,var(--bg-dark) 0%,#1E1A15 100%)}
+/* EBOOK BLOG CTA */
+.a-ebook{text-align:center;padding:32px;background:linear-gradient(135deg,var(--cream-warm),var(--parchment));border-radius:20px;margin-top:40px;border:1.5px solid rgba(139,90,43,.1)}
+.a-ebook__t{font-family:var(--font-display);font-size:1.2rem;color:var(--crust-deep);margin-bottom:8px}
+.a-ebook__d{font-size:.9rem;color:var(--rye);margin-bottom:16px}
+.a-ebook .btn--p{font-size:.9rem;padding:12px 24px}
+[data-theme="dark"] .a-ebook{background:linear-gradient(135deg,rgba(37,32,23,.8),rgba(45,38,28,.6));border-color:rgba(212,165,116,.1)}
+@media(max-width:768px){.ebook__c{grid-template-columns:1fr;text-align:center}.ebook__inc{align-items:center}.ebook__vis{display:flex;justify-content:center}.ebook__book{width:180px;height:250px}}
 /* LEAD */
 .lead{padding:var(--gap) 0}
 .lead__card{background:linear-gradient(135deg,var(--cream-warm),var(--parchment));border-radius:32px;padding:clamp(40px,6vw,72px);display:grid;grid-template-columns:1fr 1fr;gap:clamp(32px,5vw,64px);align-items:center;border:1px solid rgba(139,90,43,.08);position:relative;overflow:hidden}
@@ -482,6 +505,34 @@ body{min-height:100dvh;-webkit-tap-highlight-color:transparent}
 <p class="tools__disc reveal">* Some links are affiliate links. We earn a small commission at no extra cost to you.</p>
 </div></section>
 
+<!-- EBOOK -->
+<section class="ebook" id="ebook"><div class="ctn">
+<div class="ebook__c reveal">
+<div class="ebook__text">
+<p class="sl">Go deeper</p>
+<h2 class="st">The Complete Sourdough Handbook</h2>
+<p class="ss">Everything you need to master sourdough — from first feed to perfect loaf. 14 chapters, 5 exclusive recipes, printable tools.</p>
+<ul class="ebook__inc">
+<li><svg width="20" height="20"><use href="#ico-book"/></svg> 14 in-depth chapters on starter science</li>
+<li><svg width="20" height="20"><use href="#ico-bread"/></svg> 5 exclusive recipes (focaccia, pizza, brioche...)</li>
+<li><svg width="20" height="20"><use href="#ico-fire"/></svg> 3 printable tools & cheat sheets</li>
+</ul>
+<a href="/go/ebook" class="btn btn--hero" target="_blank" rel="noopener">Get the Handbook — 9.99€ <span class="btn__ar">→</span></a>
+</div>
+<div class="ebook__vis">
+<div class="ebook__book">
+<div class="ebook__spine"></div>
+<div class="ebook__cover">
+<div class="ebook__cover-badge">PDF</div>
+<p class="ebook__cover-sub">Rise & Ferment</p>
+<h3 class="ebook__cover-t">The Complete Sourdough Handbook</h3>
+<p class="ebook__cover-ed">60+ pages</p>
+</div>
+</div>
+</div>
+</div>
+</div></section>
+
 <!-- LEAD MAGNET -->
 <section class="lead" id="guide"><div class="ctn"><div class="lead__card reveal">
 <div class="lead__text">
@@ -664,7 +715,10 @@ const LANGS = {
     bio: "A busy human, sourdough enthusiast, and the person behind Rise & Ferment. I believe baking bread is a small act of love.",
     shareCta: "Did this help?",
     shareText: "Share it with a friend thinking about starting their sourdough journey.",
-    tryApp: "Try Rise & Ferment — Free"
+    tryApp: "Try Rise & Ferment — Free",
+    ebookTitle: "Want the complete guide?",
+    ebookDesc: "This article is a preview from The Complete Sourdough Handbook — 14 chapters, 5 exclusive recipes, and printable tools.",
+    ebookCta: "Get the Handbook — 9.99€"
   },
   ro: {
     back: "← Înapoi acasă",
@@ -678,7 +732,10 @@ const LANGS = {
     bio: "O persoană ocupată, pasionată de maia și creatorul Rise & Ferment.",
     shareCta: "Ți-a fost de folos?",
     shareText: "Împărtășește cu cineva care se gândește să înceapă.",
-    tryApp: "Încearcă Rise & Ferment — Gratis"
+    tryApp: "Încearcă Rise & Ferment — Gratis",
+    ebookTitle: "Vrei ghidul complet?",
+    ebookDesc: "Acest articol e un preview din Manualul Complet de Maia — 14 capitole, 5 rețete exclusive și instrumente printabile.",
+    ebookCta: "Ia Manualul — 9.99€"
   },
   it: {
     back: "← Torna alla home",
@@ -692,7 +749,10 @@ const LANGS = {
     bio: "Una persona impegnata, appassionata di lievito madre e la persona dietro Rise & Ferment.",
     shareCta: "Ti è stato utile?",
     shareText: "Condividilo con qualcuno che sta pensando di iniziare.",
-    tryApp: "Prova Rise & Ferment — Gratis"
+    tryApp: "Prova Rise & Ferment — Gratis",
+    ebookTitle: "Vuoi la guida completa?",
+    ebookDesc: "Questo articolo è un'anteprima dal Manuale Completo del Lievito Madre — 14 capitoli, 5 ricette esclusive e strumenti stampabili.",
+    ebookCta: "Ottieni il Manuale — 9,99€"
   },
   de: {
     back: "← Zurück zur Startseite",
@@ -706,7 +766,10 @@ const LANGS = {
     bio: "Ein vielbeschäftigter Mensch, Sauerteig-Fan und die Person hinter Rise & Ferment.",
     shareCta: "Hat dir das geholfen?",
     shareText: "Teile es mit jemandem, der mit Sauerteig starten möchte.",
-    tryApp: "Rise & Ferment gratis testen"
+    tryApp: "Rise & Ferment gratis testen",
+    ebookTitle: "Willst du den kompletten Guide?",
+    ebookDesc: "Dieser Artikel ist eine Vorschau aus dem kompletten Sauerteig-Handbuch — 14 Kapitel, 5 exklusive Rezepte und druckbare Tools.",
+    ebookCta: "Handbuch holen — 9,99€"
   },
   fr: {
     back: "← Retour à l'accueil",
@@ -720,7 +783,10 @@ const LANGS = {
     bio: "Une personne occupée, passionnée de levain, derrière Rise & Ferment.",
     shareCta: "Ça t'a aidé ?",
     shareText: "Partage avec quelqu'un qui veut commencer le levain.",
-    tryApp: "Essayer Rise & Ferment — Gratuit"
+    tryApp: "Essayer Rise & Ferment — Gratuit",
+    ebookTitle: "Vous voulez le guide complet ?",
+    ebookDesc: "Cet article est un aperçu du Manuel Complet du Levain — 14 chapitres, 5 recettes exclusives et outils imprimables.",
+    ebookCta: "Obtenir le Manuel — 9,99€"
   },
   es: {
     back: "← Volver al inicio",
@@ -734,7 +800,10 @@ const LANGS = {
     bio: "Una persona ocupada, apasionada por la masa madre y creadora de Rise & Ferment.",
     shareCta: "¿Te ayudó?",
     shareText: "Compártelo con alguien que quiera empezar.",
-    tryApp: "Probar Rise & Ferment — Gratis"
+    tryApp: "Probar Rise & Ferment — Gratis",
+    ebookTitle: "¿Quieres la guía completa?",
+    ebookDesc: "Este artículo es un adelanto del Manual Completo de Masa Madre — 14 capítulos, 5 recetas exclusivas y herramientas imprimibles.",
+    ebookCta: "Obtener el Manual — 9,99€"
   }
 };
 
@@ -881,7 +950,17 @@ const LANDING_I18N = {
     toastNlTitle: '🍞 Welcome to the family!',
     toastNlMsg: 'Fresh baking tips every week. No spam, ever.',
     toastErrTitle: 'Something went wrong',
-    toastErrMsg: 'Please try again. If the problem persists, refresh the page.'
+    toastErrMsg: 'Please try again. If the problem persists, refresh the page.',
+    ebookSub: 'Go deeper',
+    ebookTitle: 'The Complete Sourdough Handbook',
+    ebookDesc: 'Everything you need to master sourdough — from first feed to perfect loaf. 14 chapters, 5 exclusive recipes, printable tools.',
+    ebookInc1: '14 in-depth chapters on starter science',
+    ebookInc2: '5 exclusive recipes (focaccia, pizza, brioche...)',
+    ebookInc3: '3 printable tools & cheat sheets',
+    ebookCta: 'Get the Handbook — 9.99€',
+    blogEbookTitle: 'Want the complete guide?',
+    blogEbookDesc: 'This article is a preview from The Complete Sourdough Handbook — 14 chapters, 5 exclusive recipes, and printable tools.',
+    blogEbookCta: 'Get the Handbook — 9.99€'
   },
   ro: {
     navFeatures: "Funcționalități",
@@ -1025,7 +1104,17 @@ const LANDING_I18N = {
     toastNlTitle: '🍞 Bine ai venit în familie!',
     toastNlMsg: 'Sfaturi proaspete de copt în fiecare săptămână. Fără spam.',
     toastErrTitle: 'Ceva nu a mers bine',
-    toastErrMsg: 'Te rugăm să încerci din nou. Dacă problema persistă, reîncarcă pagina.'
+    toastErrMsg: 'Te rugăm să încerci din nou. Dacă problema persistă, reîncarcă pagina.',
+    ebookSub: 'Mergi mai departe',
+    ebookTitle: 'Manualul Complet de Maia',
+    ebookDesc: 'Tot ce ai nevoie pentru a stăpâni pâinea cu maia — de la prima hrănire la pâinea perfectă. 14 capitole, 5 rețete exclusive, instrumente printabile.',
+    ebookInc1: '14 capitole detaliate despre știința maielei',
+    ebookInc2: '5 rețete exclusive (focaccia, pizza, brioche...)',
+    ebookInc3: '3 instrumente printabile și fișe de referință',
+    ebookCta: 'Ia Manualul — 9.99€',
+    blogEbookTitle: 'Vrei ghidul complet?',
+    blogEbookDesc: 'Acest articol e un preview din Manualul Complet de Maia — 14 capitole, 5 rețete exclusive și instrumente printabile.',
+    blogEbookCta: 'Ia Manualul — 9.99€'
   },
   it: {
     navFeatures: "Funzionalità",
@@ -1169,7 +1258,17 @@ const LANDING_I18N = {
     toastNlTitle: '🍞 Benvenuto in famiglia!',
     toastNlMsg: 'Consigli freschi di panificazione ogni settimana. Niente spam.',
     toastErrTitle: 'Qualcosa è andato storto',
-    toastErrMsg: 'Per favore riprova. Se il problema persiste, ricarica la pagina.'
+    toastErrMsg: 'Per favore riprova. Se il problema persiste, ricarica la pagina.',
+    ebookSub: 'Vai più a fondo',
+    ebookTitle: 'Il Manuale Completo del Lievito Madre',
+    ebookDesc: 'Tutto ciò che serve per padroneggiare il pane con lievito madre — dal primo rinfresco alla pagnotta perfetta. 14 capitoli, 5 ricette esclusive, strumenti stampabili.',
+    ebookInc1: '14 capitoli approfonditi sulla scienza del lievito',
+    ebookInc2: '5 ricette esclusive (focaccia, pizza, brioche...)',
+    ebookInc3: '3 strumenti stampabili e schede di riferimento',
+    ebookCta: 'Ottieni il Manuale — 9,99€',
+    blogEbookTitle: 'Vuoi la guida completa?',
+    blogEbookDesc: 'Questo articolo è un\'anteprima dal Manuale Completo del Lievito Madre — 14 capitoli, 5 ricette esclusive e strumenti stampabili.',
+    blogEbookCta: 'Ottieni il Manuale — 9,99€'
   },
   de: {
     navFeatures: "Funktionen",
@@ -1313,7 +1412,17 @@ const LANDING_I18N = {
     toastNlTitle: '🍞 Willkommen in der Familie!',
     toastNlMsg: 'Frische Backtipps jede Woche. Kein Spam.',
     toastErrTitle: 'Etwas ist schiefgelaufen',
-    toastErrMsg: 'Bitte versuche es erneut. Wenn das Problem bestehen bleibt, lade die Seite neu.'
+    toastErrMsg: 'Bitte versuche es erneut. Wenn das Problem bestehen bleibt, lade die Seite neu.',
+    ebookSub: 'Tiefer eintauchen',
+    ebookTitle: 'Das komplette Sauerteig-Handbuch',
+    ebookDesc: 'Alles, was du brauchst, um Sauerteig zu meistern — vom ersten Füttern bis zum perfekten Laib. 14 Kapitel, 5 exklusive Rezepte, druckbare Tools.',
+    ebookInc1: '14 ausführliche Kapitel über Sauerteig-Wissenschaft',
+    ebookInc2: '5 exklusive Rezepte (Focaccia, Pizza, Brioche...)',
+    ebookInc3: '3 druckbare Tools & Spickzettel',
+    ebookCta: 'Handbuch holen — 9,99€',
+    blogEbookTitle: 'Willst du den kompletten Guide?',
+    blogEbookDesc: 'Dieser Artikel ist eine Vorschau aus dem kompletten Sauerteig-Handbuch — 14 Kapitel, 5 exklusive Rezepte und druckbare Tools.',
+    blogEbookCta: 'Handbuch holen — 9,99€'
   },
   fr: {
     navFeatures: "Fonctionnalités",
@@ -1457,7 +1566,17 @@ const LANDING_I18N = {
     toastNlTitle: '🍞 Bienvenue dans la famille !',
     toastNlMsg: 'Astuces fraîches de boulangerie chaque semaine. Jamais de spam.',
     toastErrTitle: 'Quelque chose a mal tourné',
-    toastErrMsg: 'Veuillez réessayer. Si le problème persiste, rechargez la page.'
+    toastErrMsg: 'Veuillez réessayer. Si le problème persiste, rechargez la page.',
+    ebookSub: 'Aller plus loin',
+    ebookTitle: 'Le Manuel Complet du Levain',
+    ebookDesc: 'Tout ce qu\'il faut pour maîtriser le pain au levain — du premier nourrissage au pain parfait. 14 chapitres, 5 recettes exclusives, outils imprimables.',
+    ebookInc1: '14 chapitres approfondis sur la science du levain',
+    ebookInc2: '5 recettes exclusives (focaccia, pizza, brioche...)',
+    ebookInc3: '3 outils imprimables et fiches de référence',
+    ebookCta: 'Obtenir le Manuel — 9,99€',
+    blogEbookTitle: 'Vous voulez le guide complet ?',
+    blogEbookDesc: 'Cet article est un aperçu du Manuel Complet du Levain — 14 chapitres, 5 recettes exclusives et outils imprimables.',
+    blogEbookCta: 'Obtenir le Manuel — 9,99€'
   },
   es: {
     navFeatures: "Funciones",
@@ -1601,7 +1720,17 @@ const LANDING_I18N = {
     toastNlTitle: '🍞 ¡Bienvenido a la familia!',
     toastNlMsg: 'Consejos frescos de panadería cada semana. Sin spam.',
     toastErrTitle: 'Algo salió mal',
-    toastErrMsg: 'Por favor, inténtalo de nuevo. Si el problema persiste, recarga la página.'
+    toastErrMsg: 'Por favor, inténtalo de nuevo. Si el problema persiste, recarga la página.',
+    ebookSub: 'Profundiza más',
+    ebookTitle: 'El Manual Completo de Masa Madre',
+    ebookDesc: 'Todo lo que necesitas para dominar el pan de masa madre — desde la primera alimentación hasta la hogaza perfecta. 14 capítulos, 5 recetas exclusivas, herramientas imprimibles.',
+    ebookInc1: '14 capítulos detallados sobre la ciencia de la masa madre',
+    ebookInc2: '5 recetas exclusivas (focaccia, pizza, brioche...)',
+    ebookInc3: '3 herramientas imprimibles y hojas de referencia',
+    ebookCta: 'Obtener el Manual — 9,99€',
+    blogEbookTitle: '¿Quieres la guía completa?',
+    blogEbookDesc: 'Este artículo es un adelanto del Manual Completo de Masa Madre — 14 capítulos, 5 recetas exclusivas y herramientas imprimibles.',
+    blogEbookCta: 'Obtener el Manual — 9,99€'
   }
 };
 
@@ -1700,6 +1829,17 @@ function applyLandingTranslations() {
   if (t2Badges[1]) t2Badges[1].textContent = L.toolBadgePrem;
   if (t2Badges[2]) t2Badges[2].textContent = L.toolBadgeRead;
   if (t2Badges[3]) t2Badges[3].textContent = L.toolBadgePro;
+
+  // Ebook section
+  setText('.ebook__text .sl', L.ebookSub);
+  setText('.ebook__text .st', L.ebookTitle);
+  setText('.ebook__text .ss', L.ebookDesc);
+  const ebookInc = document.querySelectorAll('.ebook__inc li');
+  if (ebookInc[0]) ebookInc[0].innerHTML = `<svg width="20" height="20"><use href="#ico-book"/></svg> ${L.ebookInc1}`;
+  if (ebookInc[1]) ebookInc[1].innerHTML = `<svg width="20" height="20"><use href="#ico-bread"/></svg> ${L.ebookInc2}`;
+  if (ebookInc[2]) ebookInc[2].innerHTML = `<svg width="20" height="20"><use href="#ico-fire"/></svg> ${L.ebookInc3}`;
+  const ebookBtn = document.querySelector('.ebook .btn--hero');
+  if (ebookBtn) ebookBtn.innerHTML = `${L.ebookCta} <span class="btn__ar">→</span>`;
 
   // Lead magnet
   setHtml('.lead__badge', `<svg width="18" height="18"><use href="#ico-book"/></svg> ${L.leadBadge}`);
@@ -1880,7 +2020,7 @@ function renderArticle(id) {
   const l = lang;
   const L = LANGS[l] || LANGS.en;
 
-  document.getElementById('articlePage').innerHTML = `<button class="ap__back" onclick="showBlogPage()">${L.backBlog}</button><div class="a-lang">${langBtns()}</div><div class="a-head"><span class="a-cat">${a.cat[l] || a.cat.en}</span><h1 class="a-title">${a.title[l] || a.title.en}</h1><div class="a-meta"><span>${L.by} Rise & Ferment</span><span>${fmtDate(a.date, l)}</span><span>${a.rt[l] || a.rt.en}</span></div></div><div class="a-hero ${a.scene}"><div class="scene__center"><svg class="scene__svg" width="120" height="120" viewBox="0 0 48 48"><use href="#${a.svgId}"/></svg></div></div><div class="a-content">${a.content[l] || a.content.en}<div class="a-author"><div class="a-author__av" style="width:56px;height:56px;border-radius:50%;background:linear-gradient(135deg,var(--parchment),var(--crust-light));display:flex;align-items:center;justify-content:center"><svg style="color:var(--crust)" width="32" height="32"><use href="#ico-person"/></svg></div><div><p class="a-author__name">${L.writtenBy} Rise & Ferment</p><p class="a-author__bio">${L.bio}</p></div></div><div class="a-share"><h3>${L.shareCta}</h3><p>${L.shareText}</p><a href="/app" class="btn btn--p btn--sm">${L.tryApp} →</a></div></div>`;
+  document.getElementById('articlePage').innerHTML = `<button class="ap__back" onclick="showBlogPage()">${L.backBlog}</button><div class="a-lang">${langBtns()}</div><div class="a-head"><span class="a-cat">${a.cat[l] || a.cat.en}</span><h1 class="a-title">${a.title[l] || a.title.en}</h1><div class="a-meta"><span>${L.by} Rise & Ferment</span><span>${fmtDate(a.date, l)}</span><span>${a.rt[l] || a.rt.en}</span></div></div><div class="a-hero ${a.scene}"><div class="scene__center"><svg class="scene__svg" width="120" height="120" viewBox="0 0 48 48"><use href="#${a.svgId}"/></svg></div></div><div class="a-content">${a.content[l] || a.content.en}<div class="a-ebook"><h3 class="a-ebook__t">${L.ebookTitle}</h3><p class="a-ebook__d">${L.ebookDesc}</p><a href="/go/ebook" class="btn btn--p btn--sm" target="_blank" rel="noopener">${L.ebookCta} →</a></div><div class="a-author"><div class="a-author__av" style="width:56px;height:56px;border-radius:50%;background:linear-gradient(135deg,var(--parchment),var(--crust-light));display:flex;align-items:center;justify-content:center"><svg style="color:var(--crust)" width="32" height="32"><use href="#ico-person"/></svg></div><div><p class="a-author__name">${L.writtenBy} Rise & Ferment</p><p class="a-author__bio">${L.bio}</p></div></div><div class="a-share"><h3>${L.shareCta}</h3><p>${L.shareText}</p><a href="/app" class="btn btn--p btn--sm">${L.tryApp} →</a></div></div>`;
 }
 
 function setLang(l) {

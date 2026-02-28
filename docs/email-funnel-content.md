@@ -192,6 +192,12 @@ Thank you for trusting us with your sourdough journey. Welcome to the club.
 
 — Rise & Ferment
 
+**Ready to take your baking to the next level?**
+
+I've put everything I know into The Complete Sourdough Handbook — 14 chapters of science-backed techniques, 5 exclusive recipes you won't find in the app (including my favourite focaccia), and printable cheat sheets you can stick on your fridge.
+
+It's the guide I wish existed when I started: https://riseandferment.com/go/ebook
+
 P.S. Want to go deeper? "Flour Water Salt Yeast" by Ken Forkish is the book that changed everything for me. Every serious baker I know has a copy: https://riseandferment.com/go/fwsy-book
 
 ---
