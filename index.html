@@ -216,13 +216,36 @@ button:focus-visible,.btn:focus-visible{outline:2px solid var(--crust);outline-o
 .ebook__cover-t{font-family:var(--font-display);font-size:1.3rem;color:var(--cream);line-height:1.2;margin-bottom:16px}
 .ebook__cover-ed{font-size:.75rem;color:var(--cream);opacity:.5}
 [data-theme="dark"] .ebook{background:linear-gradient(180deg,var(--bg-dark) 0%,#1E1A15 100%)}
+.ebook__upgrade-badge{display:inline-block;background:linear-gradient(135deg,#D4A04A,#C4892E);color:#fff;font-size:.7rem;font-weight:800;letter-spacing:.08em;text-transform:uppercase;padding:5px 14px;border-radius:100px;margin-bottom:14px}
+.ebook__compare{display:grid;grid-template-columns:1fr 1fr;gap:0;border-radius:14px;overflow:hidden;margin-bottom:28px;border:1.5px solid rgba(139,90,43,.1)}
+.ebook__compare-col{padding:20px;background:rgba(255,251,245,.5)}
+.ebook__compare-col--paid{background:rgba(139,90,43,.06)}
+.ebook__compare-h{font-family:var(--font-display);font-size:.95rem;margin-bottom:12px;padding-bottom:8px;border-bottom:1.5px solid rgba(139,90,43,.1)}
+.ebook__compare-h--free{color:var(--rye)}.ebook__compare-h--paid{color:var(--crust)}
+.ebook__compare-col ul{list-style:none;display:flex;flex-direction:column;gap:8px}
+.ebook__compare-col li{display:flex;align-items:center;gap:6px;font-size:.82rem;color:var(--rye)}
+.ebook__compare-col li.included svg{color:var(--olive);flex-shrink:0}
+.ebook__compare-col li.missing{color:var(--wheat);opacity:.6}
+.ebook__compare-col--paid li.included{font-weight:600;color:var(--crust-deep)}
+.ebook__buy{display:flex;align-items:center;gap:18px;margin-bottom:12px;flex-wrap:wrap}
+.ebook__price{font-family:var(--font-display);font-size:2rem;color:var(--crust-deep);font-weight:700;line-height:1}
+.ebook__pages{font-size:.82rem;color:var(--rye);opacity:.7;margin-bottom:4px}
+.ebook__proof{font-size:.82rem;color:var(--crust);font-weight:600}
+[data-theme="dark"] .ebook__upgrade-badge{background:linear-gradient(135deg,#D4A574,#B8864F)}
+[data-theme="dark"] .ebook__compare{border-color:rgba(212,165,116,.12)}
+[data-theme="dark"] .ebook__compare-col{background:rgba(26,22,18,.4)}
+[data-theme="dark"] .ebook__compare-col--paid{background:rgba(212,165,116,.08)}
+[data-theme="dark"] .ebook__compare-h{border-color:rgba(212,165,116,.12)}
+[data-theme="dark"] .ebook__compare-h--paid{color:var(--crust-light)}
+[data-theme="dark"] .ebook__compare-col--paid li.included{color:var(--cream)}
+[data-theme="dark"] .ebook__price{color:var(--crust-light)}
 /* EBOOK BLOG CTA */
 .a-ebook{text-align:center;padding:32px;background:linear-gradient(135deg,var(--cream-warm),var(--parchment));border-radius:20px;margin-top:40px;border:1.5px solid rgba(139,90,43,.1)}
 .a-ebook__t{font-family:var(--font-display);font-size:1.2rem;color:var(--crust-deep);margin-bottom:8px}
 .a-ebook__d{font-size:.9rem;color:var(--rye);margin-bottom:16px}
 .a-ebook .btn--p{font-size:.9rem;padding:12px 24px}
 [data-theme="dark"] .a-ebook{background:linear-gradient(135deg,rgba(37,32,23,.8),rgba(45,38,28,.6));border-color:rgba(212,165,116,.1)}
-@media(max-width:768px){.ebook__c{grid-template-columns:1fr;text-align:center}.ebook__inc{align-items:center}.ebook__vis{display:flex;justify-content:center}.ebook__book{width:180px;height:250px}}
+@media(max-width:768px){.ebook__c{grid-template-columns:1fr;text-align:center}.ebook__inc{align-items:center}.ebook__vis{display:flex;justify-content:center}.ebook__book{width:180px;height:250px}.ebook__buy{justify-content:center}.ebook__compare{grid-template-columns:1fr 1fr;font-size:.85rem}.ebook__compare-col{padding:14px 12px}}
 /* LEAD */
 .lead{padding:var(--gap) 0}
 .lead__card{background:linear-gradient(135deg,var(--cream-warm),var(--parchment));border-radius:32px;padding:clamp(40px,6vw,72px);display:grid;grid-template-columns:1fr 1fr;gap:clamp(32px,5vw,64px);align-items:center;border:1px solid rgba(139,90,43,.08);position:relative;overflow:hidden}
@@ -421,6 +444,9 @@ body{min-height:100dvh;-webkit-tap-highlight-color:transparent}
 <symbol id="ico-thermometer" viewBox="0 0 48 48"><rect x="20" y="6" width="8" height="30" rx="4" fill="#F5EBE0" stroke="#D4A574" stroke-width="1.5"/><circle cx="24" cy="38" r="6" fill="#C94C30" opacity=".8"/><rect x="22" y="18" width="4" height="16" rx="2" fill="#C94C30" opacity=".6"/><line x1="28" y1="14" x2="32" y2="14" stroke="#D4A574" stroke-width="1"/><line x1="28" y1="20" x2="30" y2="20" stroke="#D4A574" stroke-width="1"/><line x1="28" y1="26" x2="32" y2="26" stroke="#D4A574" stroke-width="1"/></symbol>
 <symbol id="ico-oven" viewBox="0 0 48 48"><rect x="6" y="10" width="36" height="30" rx="4" fill="#E8D5B7" stroke="#8B5A2B" stroke-width="1.5"/><rect x="10" y="18" width="28" height="18" rx="2" fill="#FFF5E6" stroke="#D4A574" stroke-width="1"/><rect x="10" y="10" width="28" height="6" rx="2" fill="#D4A574"/><circle cx="16" cy="13" r="2" fill="#8B5A2B" opacity=".5"/><circle cx="24" cy="13" r="2" fill="#8B5A2B" opacity=".5"/><circle cx="32" cy="13" r="2" fill="#E8A849"/></symbol>
 <symbol id="ico-bookpro" viewBox="0 0 48 48"><rect x="10" y="6" width="24" height="36" rx="2" fill="#D4A574"/><rect x="12" y="8" width="20" height="32" rx="1" fill="#FFF5E6"/><line x1="16" y1="16" x2="28" y2="16" stroke="#8B5A2B" stroke-width="2" stroke-linecap="round"/><line x1="16" y1="22" x2="26" y2="22" stroke="#C4956A" stroke-width="1" stroke-linecap="round"/><line x1="16" y1="26" x2="24" y2="26" stroke="#C4956A" stroke-width="1" stroke-linecap="round"/><path d="M16 32L20 29L24 32L28 29L32 32" fill="none" stroke="#E8A849" stroke-width="1.5"/><rect x="10" y="6" width="4" height="36" rx="1" fill="#8B5A2B" opacity=".3"/></symbol>
+<symbol id="ico-photo" viewBox="0 0 48 48"><rect x="6" y="10" width="36" height="28" rx="4" fill="#F5EBE0" stroke="#D4A574" stroke-width="1.5"/><circle cx="18" cy="22" r="5" fill="#E8A849" opacity=".5"/><path d="M8 34L18 24L26 32L32 26L40 34" fill="#6B8F4E" opacity=".3"/></symbol>
+<symbol id="ico-flour" viewBox="0 0 48 48"><path d="M14 40L12 20C12 20 16 12 24 12C32 12 36 20 36 20L34 40Z" fill="#FFF5E6" stroke="#D4A574" stroke-width="1.5"/><ellipse cx="24" cy="20" rx="12" ry="3" fill="#E8D5B7"/><path d="M20 28C20 28 22 24 24 24C26 24 28 28 28 28" fill="none" stroke="#D4A574" stroke-width="1.5" stroke-linecap="round"/></symbol>
+<symbol id="ico-star" viewBox="0 0 48 48"><path d="M24 6L29 18L42 20L33 29L35 42L24 36L13 42L15 29L6 20L19 18Z" fill="#E8A849" stroke="#D4A574" stroke-width="1"/></symbol>
 </svg>
 
 <!--NAV-->
@@ -492,48 +518,20 @@ body{min-height:100dvh;-webkit-tap-highlight-color:transparent}
 <section class="tools" id="tools"><div class="ctn">
 <div class="tools__head reveal"><p class="sl">My baking essentials</p><h2 class="st">The tools I actually use (and love)</h2><p class="ss">Honest picks from years of home baking.</p></div>
 <div class="tools__tier"><h3 class="tools__tier-t">✨ Start Here — Essential Kit</h3><div class="tools__grid">
-<div class="tc reveal rv1"><span class="tc__badge">Most Popular</span><div class="tc__ico"><svg><use href="#ico-dutch"/></svg></div><h3 class="tc__name">Cast Iron Dutch Oven</h3><p class="tc__brand">Lodge · 5 Quart</p><p class="tc__desc">Creates the steam your bread needs for that perfect crust.</p><p class="tc__price">~$35</p><a href="/go/dutch-oven" class="tc__link" target="_blank" rel="noopener sponsored" data-aff="dutch-oven">View on Amazon →</a></div>
-<div class="tc reveal rv2"><div class="tc__ico"><svg><use href="#ico-scale"/></svg></div><h3 class="tc__name">Digital Kitchen Scale</h3><p class="tc__brand">Etekcity · 0.1g precision</p><p class="tc__desc">Baking by weight changed everything. Consistent results every single time.</p><p class="tc__price">~$12</p><a href="/go/scale" class="tc__link" target="_blank" rel="noopener sponsored" data-aff="scale">View on Amazon →</a></div>
-<div class="tc reveal rv3"><span class="tc__badge">My Pick</span><div class="tc__ico"><svg><use href="#ico-banneton"/></svg></div><h3 class="tc__name">Banneton Proofing Basket</h3><p class="tc__brand">Handmade Rattan · 9 inch</p><p class="tc__desc">Gives your bread that beautiful spiral pattern.</p><p class="tc__price">~$14</p><a href="/go/banneton" class="tc__link" target="_blank" rel="noopener sponsored" data-aff="banneton">View on Amazon →</a></div>
-<div class="tc reveal rv4"><div class="tc__ico"><svg><use href="#ico-lame"/></svg></div><h3 class="tc__name">Bread Lame</h3><p class="tc__brand">Premium Stainless Steel</p><p class="tc__desc">Score your bread like a pro.</p><p class="tc__price">~$9</p><a href="/go/lame" class="tc__link" target="_blank" rel="noopener sponsored" data-aff="lame">View on Amazon →</a></div>
+<div class="tc reveal rv1"><span class="tc__badge">Most Popular</span><div class="tc__ico"><svg><use href="#ico-dutch"/></svg></div><h3 class="tc__name">Cast Iron Dutch Oven</h3><p class="tc__brand">Lodge · 5 Quart</p><p class="tc__desc">Creates the steam your bread needs for that perfect crust.</p><p class="tc__price">~35&nbsp;&euro;</p><a href="/go/dutch-oven" class="tc__link" target="_blank" rel="noopener sponsored" data-aff="dutch-oven">View on Amazon →</a></div>
+<div class="tc reveal rv2"><div class="tc__ico"><svg><use href="#ico-scale"/></svg></div><h3 class="tc__name">Digital Kitchen Scale</h3><p class="tc__brand">Etekcity · 0.1g precision</p><p class="tc__desc">Baking by weight changed everything. Consistent results every single time.</p><p class="tc__price">~12&nbsp;&euro;</p><a href="/go/scale" class="tc__link" target="_blank" rel="noopener sponsored" data-aff="scale">View on Amazon →</a></div>
+<div class="tc reveal rv3"><span class="tc__badge">My Pick</span><div class="tc__ico"><svg><use href="#ico-banneton"/></svg></div><h3 class="tc__name">Banneton Proofing Basket</h3><p class="tc__brand">Handmade Rattan · 9 inch</p><p class="tc__desc">Gives your bread that beautiful spiral pattern.</p><p class="tc__price">~14&nbsp;&euro;</p><a href="/go/banneton" class="tc__link" target="_blank" rel="noopener sponsored" data-aff="banneton">View on Amazon →</a></div>
+<div class="tc reveal rv4"><div class="tc__ico"><svg><use href="#ico-lame"/></svg></div><h3 class="tc__name">Bread Lame</h3><p class="tc__brand">Premium Stainless Steel</p><p class="tc__desc">Score your bread like a pro.</p><p class="tc__price">~9&nbsp;&euro;</p><a href="/go/lame" class="tc__link" target="_blank" rel="noopener sponsored" data-aff="lame">View on Amazon →</a></div>
 </div></div>
 <div class="tools__tier"><h3 class="tools__tier-t">🚀 Level Up — Premium Picks</h3><div class="tools__grid">
-<div class="tc reveal rv1"><span class="tc__badge">Best Investment</span><div class="tc__ico"><svg><use href="#ico-mixer"/></svg></div><h3 class="tc__name">KitchenAid Artisan Stand Mixer</h3><p class="tc__brand">KitchenAid · 5 Quart</p><p class="tc__desc">Once you go stand mixer, you never go back. Perfect dough kneading every time.</p><p class="tc__price">~$350</p><a href="/go/kitchenaid" class="tc__link" target="_blank" rel="noopener sponsored" data-aff="kitchenaid">View on Amazon →</a></div>
-<div class="tc reveal rv2"><span class="tc__badge">Premium</span><div class="tc__ico"><svg><use href="#ico-premium-dutch"/></svg></div><h3 class="tc__name">Le Creuset Dutch Oven</h3><p class="tc__brand">Le Creuset · 5.5 Quart</p><p class="tc__desc">The gold standard. Superior heat retention for bakery-quality crust at home.</p><p class="tc__price">~$360</p><a href="/go/le-creuset" class="tc__link" target="_blank" rel="noopener sponsored" data-aff="le-creuset">View on Amazon →</a></div>
-<div class="tc reveal rv3"><div class="tc__ico"><svg><use href="#ico-thermometer"/></svg></div><h3 class="tc__name">ThermoWorks Thermapen ONE</h3><p class="tc__brand">ThermoWorks · 1 Second</p><p class="tc__desc">Know exactly when your bread is done. Internal temp of 205°F = perfection.</p><p class="tc__price">~$105</p><a href="/go/thermapen" class="tc__link" target="_blank" rel="noopener sponsored" data-aff="thermapen">View on Amazon →</a></div>
-<div class="tc reveal rv1"><div class="tc__ico"><svg><use href="#ico-oven"/></svg></div><h3 class="tc__name">Breville Smart Oven Pro</h3><p class="tc__brand">Breville · Convection</p><p class="tc__desc">No full-size oven needed. Bakes sourdough beautifully with precise temp control.</p><p class="tc__price">~$270</p><a href="/go/breville" class="tc__link" target="_blank" rel="noopener sponsored" data-aff="breville">View on Amazon →</a></div>
-<div class="tc reveal rv2"><span class="tc__badge">Must Read</span><div class="tc__ico"><svg><use href="#ico-bookpro"/></svg></div><h3 class="tc__name">Flour Water Salt Yeast</h3><p class="tc__brand">Ken Forkish · Hardcover</p><p class="tc__desc">The sourdough bible. Every serious baker has this on their shelf.</p><p class="tc__price">~$22</p><a href="/go/fwsy-book" class="tc__link" target="_blank" rel="noopener sponsored" data-aff="fwsy-book">View on Amazon →</a></div>
-<div class="tc reveal rv3"><span class="tc__badge">Pro Pick</span><div class="tc__ico"><svg><use href="#ico-thermometer"/></svg></div><h3 class="tc__name">Brod &amp; Taylor Sourdough Home</h3><p class="tc__brand">Brod &amp; Taylor · Proofing Box</p><p class="tc__desc">The temperature-controlled proofing box that takes the guesswork out of fermentation. Set it and forget it.</p><p class="tc__price">~€169</p><a href="https://brodandtaylor.eu/?breu=43" class="tc__link" target="_blank" rel="noopener sponsored" data-aff="brod-taylor">View on Brod &amp; Taylor →</a></div>
+<div class="tc reveal rv1"><span class="tc__badge">Best Investment</span><div class="tc__ico"><svg><use href="#ico-mixer"/></svg></div><h3 class="tc__name">KitchenAid Artisan Stand Mixer</h3><p class="tc__brand">KitchenAid · 5 Quart</p><p class="tc__desc">Once you go stand mixer, you never go back. Perfect dough kneading every time.</p><p class="tc__price">~350&nbsp;&euro;</p><a href="/go/kitchenaid" class="tc__link" target="_blank" rel="noopener sponsored" data-aff="kitchenaid">View on Amazon →</a></div>
+<div class="tc reveal rv2"><span class="tc__badge">Premium</span><div class="tc__ico"><svg><use href="#ico-premium-dutch"/></svg></div><h3 class="tc__name">Le Creuset Dutch Oven</h3><p class="tc__brand">Le Creuset · 5.5 Quart</p><p class="tc__desc">The gold standard. Superior heat retention for bakery-quality crust at home.</p><p class="tc__price">~360&nbsp;&euro;</p><a href="/go/le-creuset" class="tc__link" target="_blank" rel="noopener sponsored" data-aff="le-creuset">View on Amazon →</a></div>
+<div class="tc reveal rv3"><div class="tc__ico"><svg><use href="#ico-thermometer"/></svg></div><h3 class="tc__name">ThermoWorks Thermapen ONE</h3><p class="tc__brand">ThermoWorks · 1 Second</p><p class="tc__desc">Know exactly when your bread is done. Internal temp of 205°F = perfection.</p><p class="tc__price">~105&nbsp;&euro;</p><a href="/go/thermapen" class="tc__link" target="_blank" rel="noopener sponsored" data-aff="thermapen">View on Amazon →</a></div>
+<div class="tc reveal rv1"><div class="tc__ico"><svg><use href="#ico-oven"/></svg></div><h3 class="tc__name">Breville Smart Oven Pro</h3><p class="tc__brand">Breville · Convection</p><p class="tc__desc">No full-size oven needed. Bakes sourdough beautifully with precise temp control.</p><p class="tc__price">~270&nbsp;&euro;</p><a href="/go/breville" class="tc__link" target="_blank" rel="noopener sponsored" data-aff="breville">View on Amazon →</a></div>
+<div class="tc reveal rv2"><span class="tc__badge">Must Read</span><div class="tc__ico"><svg><use href="#ico-bookpro"/></svg></div><h3 class="tc__name">Flour Water Salt Yeast</h3><p class="tc__brand">Ken Forkish · Hardcover</p><p class="tc__desc">The sourdough bible. Every serious baker has this on their shelf.</p><p class="tc__price">~22&nbsp;&euro;</p><a href="/go/fwsy-book" class="tc__link" target="_blank" rel="noopener sponsored" data-aff="fwsy-book">View on Amazon →</a></div>
+<div class="tc reveal rv3"><span class="tc__badge">Pro Pick</span><div class="tc__ico"><svg><use href="#ico-thermometer"/></svg></div><h3 class="tc__name">Brod &amp; Taylor Sourdough Home</h3><p class="tc__brand">Brod &amp; Taylor · Proofing Box</p><p class="tc__desc">The temperature-controlled proofing box that takes the guesswork out of fermentation. Set it and forget it.</p><p class="tc__price">~169&nbsp;&euro;</p><a href="https://brodandtaylor.eu/?breu=43" class="tc__link" target="_blank" rel="noopener sponsored" data-aff="brod-taylor">View on Brod &amp; Taylor →</a></div>
 </div></div>
 <p class="tools__disc reveal">* Some links are affiliate links. We earn a small commission at no extra cost to you.</p>
-</div></section>
-
-<!-- EBOOK -->
-<section class="ebook" id="ebook"><div class="ctn">
-<div class="ebook__c reveal">
-<div class="ebook__text">
-<p class="sl">Go deeper</p>
-<h2 class="st">The Complete Sourdough Handbook</h2>
-<p class="ss">Everything you need to master sourdough — from first feed to perfect loaf. 14 chapters, 5 exclusive recipes, printable tools.</p>
-<ul class="ebook__inc">
-<li><svg width="20" height="20"><use href="#ico-book"/></svg> 14 in-depth chapters on starter science</li>
-<li><svg width="20" height="20"><use href="#ico-bread"/></svg> 5 exclusive recipes (focaccia, pizza, brioche...)</li>
-<li><svg width="20" height="20"><use href="#ico-fire"/></svg> 3 printable tools & cheat sheets</li>
-</ul>
-<a href="/go/ebook" class="btn btn--hero" target="_blank" rel="noopener">Get the Handbook — 9.99€ <span class="btn__ar">→</span></a>
-</div>
-<div class="ebook__vis">
-<div class="ebook__book">
-<div class="ebook__spine"></div>
-<div class="ebook__cover">
-<div class="ebook__cover-badge">PDF</div>
-<p class="ebook__cover-sub">Rise & Ferment</p>
-<h3 class="ebook__cover-t">The Complete Sourdough Handbook</h3>
-<p class="ebook__cover-ed">60+ pages</p>
-</div>
-</div>
-</div>
-</div>
 </div></section>
 
 <!-- LEAD MAGNET -->
@@ -577,6 +575,65 @@ body{min-height:100dvh;-webkit-tap-highlight-color:transparent}
 </div>
 </div></div>
 </div></div></section>
+
+<!-- EBOOK -->
+<section class="ebook" id="ebook"><div class="ctn">
+<div class="ebook__c reveal">
+<div class="ebook__text">
+<div class="ebook__upgrade-badge">&#9733; Upgrade</div>
+<p class="sl">Ready to go further?</p>
+<h2 class="st">The Complete Sourdough Handbook</h2>
+<p class="ss">The free guide gets you started. The handbook takes you all the way &mdash; from confident beginner to skilled baker.</p>
+<div class="ebook__compare">
+<div class="ebook__compare-col">
+<h4 class="ebook__compare-h ebook__compare-h--free">Free Guide</h4>
+<ul>
+<li class="included"><svg width="16" height="16"><use href="#ico-check"/></svg> <span>14-day starter plan</span></li>
+<li class="included"><svg width="16" height="16"><use href="#ico-check"/></svg> <span>Basic troubleshooting</span></li>
+<li class="included"><svg width="16" height="16"><use href="#ico-check"/></svg> <span>1 bread recipe</span></li>
+<li class="missing">&mdash; <span>Advanced techniques</span></li>
+<li class="missing">&mdash; <span>Flour &amp; hydration guide</span></li>
+</ul>
+</div>
+<div class="ebook__compare-col ebook__compare-col--paid">
+<h4 class="ebook__compare-h ebook__compare-h--paid">Complete Handbook</h4>
+<ul>
+<li class="included"><svg width="16" height="16"><use href="#ico-check"/></svg> <span>Everything in the free guide</span></li>
+<li class="included"><svg width="16" height="16"><use href="#ico-check"/></svg> <span>14 in-depth chapters</span></li>
+<li class="included"><svg width="16" height="16"><use href="#ico-check"/></svg> <span>5 exclusive recipes</span></li>
+<li class="included"><svg width="16" height="16"><use href="#ico-check"/></svg> <span>Advanced techniques</span></li>
+<li class="included"><svg width="16" height="16"><use href="#ico-check"/></svg> <span>Complete flour &amp; hydration guide</span></li>
+</ul>
+</div>
+</div>
+<ul class="ebook__inc">
+<li><svg width="20" height="20"><use href="#ico-book"/></svg> 14 in-depth chapters on starter science</li>
+<li><svg width="20" height="20"><use href="#ico-bread"/></svg> 5 exclusive recipes (focaccia, pizza, brioche...)</li>
+<li><svg width="20" height="20"><use href="#ico-fire"/></svg> 3 printable tools &amp; cheat sheets</li>
+<li><svg width="20" height="20"><use href="#ico-photo"/></svg> Troubleshooting with photos</li>
+<li><svg width="20" height="20"><use href="#ico-flour"/></svg> Complete flour &amp; hydration guide</li>
+<li><svg width="20" height="20"><use href="#ico-star"/></svg> Advanced shaping &amp; scoring techniques</li>
+</ul>
+<div class="ebook__buy">
+<span class="ebook__price">9,99&nbsp;&euro;</span>
+<a href="/go/ebook" class="btn btn--hero ebook__cta" target="_blank" rel="noopener">Get the Complete Handbook &mdash; 9,99&nbsp;&euro; <span class="btn__ar">&rarr;</span></a>
+</div>
+<p class="ebook__pages">60+ pages of expert knowledge</p>
+<p class="ebook__proof">&#9733; Loved by bakers in 12+ countries</p>
+</div>
+<div class="ebook__vis">
+<div class="ebook__book">
+<div class="ebook__spine"></div>
+<div class="ebook__cover">
+<div class="ebook__cover-badge">Premium</div>
+<p class="ebook__cover-sub">Rise &amp; Ferment</p>
+<h3 class="ebook__cover-t">The Complete Sourdough Handbook</h3>
+<p class="ebook__cover-ed">60+ pages</p>
+</div>
+</div>
+</div>
+</div>
+</div></section>
 
 <!-- TESTIMONIALS -->
 <section class="test" id="testimonials"><div class="ctn">
@@ -702,6 +759,69 @@ function persistLang(langCode) {
 }
 
 let lang = readPersistedLang() || detectBrowserLang() || "en";
+
+// ═══ CURRENCY DETECTION ═══
+function detectCurrency() {
+  const tags = [];
+  if (Array.isArray(navigator.languages)) tags.push(...navigator.languages);
+  if (typeof navigator.language === "string") tags.push(navigator.language);
+  if (typeof Intl !== "undefined" && typeof Intl.DateTimeFormat === "function") {
+    const locale = Intl.DateTimeFormat().resolvedOptions().locale;
+    if (typeof locale === "string") tags.push(locale);
+  }
+  for (const tag of tags) {
+    const clean = tag.trim().toLowerCase().replace(/_/g, "-");
+    if (clean === "en-us") return "USD";
+    if (clean === "en-gb") return "GBP";
+  }
+  return "EUR";
+}
+
+let currency = detectCurrency();
+
+const PRICES = {
+  ebook: { EUR: "9,99\u00a0\u20ac", USD: "$10.99", GBP: "\u00a38.99" },
+  tools: {
+    "dutch-oven":   { EUR: "~35\u00a0\u20ac",  USD: "~$35",  GBP: "~\u00a330" },
+    "scale":        { EUR: "~12\u00a0\u20ac",  USD: "~$12",  GBP: "~\u00a310" },
+    "banneton":     { EUR: "~14\u00a0\u20ac",  USD: "~$14",  GBP: "~\u00a312" },
+    "lame":         { EUR: "~9\u00a0\u20ac",   USD: "~$9",   GBP: "~\u00a38" },
+    "kitchenaid":   { EUR: "~350\u00a0\u20ac", USD: "~$350", GBP: "~\u00a3300" },
+    "le-creuset":   { EUR: "~360\u00a0\u20ac", USD: "~$360", GBP: "~\u00a3310" },
+    "thermapen":    { EUR: "~105\u00a0\u20ac", USD: "~$105", GBP: "~\u00a390" },
+    "breville":     { EUR: "~270\u00a0\u20ac", USD: "~$270", GBP: "~\u00a3230" },
+    "fwsy-book":    { EUR: "~22\u00a0\u20ac",  USD: "~$22",  GBP: "~\u00a318" },
+    "brod-taylor":  { EUR: "~169\u00a0\u20ac", USD: "~$179", GBP: "~\u00a3149" },
+    "bread-slicer": { EUR: "~18\u00a0\u20ac",  USD: "~$18",  GBP: "~\u00a315" },
+    "proofer":      { EUR: "~45\u00a0\u20ac",  USD: "~$45",  GBP: "~\u00a338" },
+    "dough-whisk":  { EUR: "~10\u00a0\u20ac",  USD: "~$10",  GBP: "~\u00a39" },
+    "oval-banneton":{ EUR: "~16\u00a0\u20ac",  USD: "~$16",  GBP: "~\u00a313" }
+  }
+};
+
+function applyCurrency() {
+  // Ebook price display
+  const priceEl = document.querySelector(".ebook__price");
+  if (priceEl) priceEl.textContent = PRICES.ebook[currency];
+
+  // Ebook CTA button
+  const ebookCta = document.querySelector(".ebook__cta");
+  if (ebookCta) {
+    const L = LANDING_I18N[lang] || LANDING_I18N.en;
+    ebookCta.textContent = (L.ebookCtaLabel || "Get the Complete Handbook") + " \u2014 " + PRICES.ebook[currency];
+  }
+
+  // Tool prices
+  document.querySelectorAll(".tc").forEach(card => {
+    const link = card.querySelector("a[data-aff]");
+    const priceSpan = card.querySelector(".tc__price");
+    if (link && priceSpan) {
+      const aff = link.getAttribute("data-aff");
+      if (PRICES.tools[aff]) priceSpan.textContent = PRICES.tools[aff][currency];
+    }
+  });
+}
+
 let currentView = "landing";
 let currentArticleId = null;
 
@@ -721,7 +841,7 @@ const LANGS = {
     tryApp: "Try Rise & Ferment — Free",
     ebookTitle: "Want the complete guide?",
     ebookDesc: "This article is a preview from The Complete Sourdough Handbook — 14 chapters, 5 exclusive recipes, and printable tools.",
-    ebookCta: "Get the Handbook — 9.99€"
+    ebookCtaLabel: "Get the Handbook"
   },
   ro: {
     back: "← Înapoi acasă",
@@ -738,7 +858,7 @@ const LANGS = {
     tryApp: "Încearcă Rise & Ferment — Gratis",
     ebookTitle: "Vrei ghidul complet?",
     ebookDesc: "Acest articol e un preview din Manualul Complet de Maia — 14 capitole, 5 rețete exclusive și instrumente printabile.",
-    ebookCta: "Ia Manualul — 9.99€"
+    ebookCtaLabel: "Ia Manualul"
   },
   it: {
     back: "← Torna alla home",
@@ -755,7 +875,7 @@ const LANGS = {
     tryApp: "Prova Rise & Ferment — Gratis",
     ebookTitle: "Vuoi la guida completa?",
     ebookDesc: "Questo articolo è un'anteprima dal Manuale Completo del Lievito Madre — 14 capitoli, 5 ricette esclusive e strumenti stampabili.",
-    ebookCta: "Ottieni il Manuale — 9,99€"
+    ebookCtaLabel: "Ottieni il Manuale"
   },
   de: {
     back: "← Zurück zur Startseite",
@@ -772,7 +892,7 @@ const LANGS = {
     tryApp: "Rise & Ferment gratis testen",
     ebookTitle: "Willst du den kompletten Guide?",
     ebookDesc: "Dieser Artikel ist eine Vorschau aus dem kompletten Sauerteig-Handbuch — 14 Kapitel, 5 exklusive Rezepte und druckbare Tools.",
-    ebookCta: "Handbuch holen — 9,99€"
+    ebookCtaLabel: "Handbuch holen"
   },
   fr: {
     back: "← Retour à l'accueil",
@@ -789,7 +909,7 @@ const LANGS = {
     tryApp: "Essayer Rise & Ferment — Gratuit",
     ebookTitle: "Vous voulez le guide complet ?",
     ebookDesc: "Cet article est un aperçu du Manuel Complet du Levain — 14 chapitres, 5 recettes exclusives et outils imprimables.",
-    ebookCta: "Obtenir le Manuel — 9,99€"
+    ebookCtaLabel: "Obtenir le Manuel"
   },
   es: {
     back: "← Volver al inicio",
@@ -806,7 +926,7 @@ const LANGS = {
     tryApp: "Probar Rise & Ferment — Gratis",
     ebookTitle: "¿Quieres la guía completa?",
     ebookDesc: "Este artículo es un adelanto del Manual Completo de Masa Madre — 14 capítulos, 5 recetas exclusivas y herramientas imprimibles.",
-    ebookCta: "Obtener el Manual — 9,99€"
+    ebookCtaLabel: "Obtener el Manual"
   }
 };
 
@@ -954,16 +1074,29 @@ const LANDING_I18N = {
     toastNlMsg: 'Fresh baking tips every week. No spam, ever.',
     toastErrTitle: 'Something went wrong',
     toastErrMsg: 'Please try again. If the problem persists, refresh the page.',
-    ebookSub: 'Go deeper',
+    ebookBadge: '\u2605 Upgrade',
+    ebookSub: 'Ready to go further?',
     ebookTitle: 'The Complete Sourdough Handbook',
-    ebookDesc: 'Everything you need to master sourdough — from first feed to perfect loaf. 14 chapters, 5 exclusive recipes, printable tools.',
+    ebookDesc: 'The free guide gets you started. The handbook takes you all the way \u2014 from confident beginner to skilled baker.',
+    ebookCompFree: 'Free Guide',
+    ebookCompPaid: 'Complete Handbook',
+    ebookCR1Free: '14-day starter plan', ebookCR1Paid: 'Everything in the free guide',
+    ebookCR2Free: 'Basic troubleshooting', ebookCR2Paid: '14 in-depth chapters',
+    ebookCR3Free: '1 bread recipe', ebookCR3Paid: '5 exclusive recipes',
+    ebookCR4Free: 'Advanced techniques', ebookCR4Paid: 'Advanced techniques',
+    ebookCR5Free: 'Flour & hydration guide', ebookCR5Paid: 'Complete flour & hydration guide',
     ebookInc1: '14 in-depth chapters on starter science',
     ebookInc2: '5 exclusive recipes (focaccia, pizza, brioche...)',
     ebookInc3: '3 printable tools & cheat sheets',
-    ebookCta: 'Get the Handbook — 9.99€',
+    ebookInc4: 'Troubleshooting with photos',
+    ebookInc5: 'Complete flour & hydration guide',
+    ebookInc6: 'Advanced shaping & scoring techniques',
+    ebookPages: '60+ pages of expert knowledge',
+    ebookGuarantee: '\u2605 Loved by bakers in 12+ countries',
+    ebookCtaLabel: 'Get the Handbook',
     blogEbookTitle: 'Want the complete guide?',
     blogEbookDesc: 'This article is a preview from The Complete Sourdough Handbook — 14 chapters, 5 exclusive recipes, and printable tools.',
-    blogEbookCta: 'Get the Handbook — 9.99€'
+    blogEbookCtaLabel: 'Get the Handbook'
   },
   ro: {
     navFeatures: "Funcționalități",
@@ -1108,16 +1241,29 @@ const LANDING_I18N = {
     toastNlMsg: 'Sfaturi proaspete de copt în fiecare săptămână. Fără spam.',
     toastErrTitle: 'Ceva nu a mers bine',
     toastErrMsg: 'Te rugăm să încerci din nou. Dacă problema persistă, reîncarcă pagina.',
-    ebookSub: 'Mergi mai departe',
+    ebookBadge: '\u2605 Upgrade',
+    ebookSub: 'Vrei s\u0103 mergi mai departe?',
     ebookTitle: 'Manualul Complet de Maia',
-    ebookDesc: 'Tot ce ai nevoie pentru a stăpâni pâinea cu maia — de la prima hrănire la pâinea perfectă. 14 capitole, 5 rețete exclusive, instrumente printabile.',
-    ebookInc1: '14 capitole detaliate despre știința maielei',
-    ebookInc2: '5 rețete exclusive (focaccia, pizza, brioche...)',
-    ebookInc3: '3 instrumente printabile și fișe de referință',
-    ebookCta: 'Ia Manualul — 9.99€',
+    ebookDesc: 'Ghidul gratuit te pune pe drumul cel bun. Manualul te duce p\u00e2n\u0103 la cap\u0103t \u2014 de la \u00eencep\u0103tor la brutar cu experien\u021b\u0103.',
+    ebookCompFree: 'Ghid Gratuit',
+    ebookCompPaid: 'Manual Complet',
+    ebookCR1Free: 'Plan de 14 zile', ebookCR1Paid: 'Tot din ghidul gratuit',
+    ebookCR2Free: 'Depanare de baz\u0103', ebookCR2Paid: '14 capitole detaliate',
+    ebookCR3Free: '1 re\u021bet\u0103 de p\u00e2ine', ebookCR3Paid: '5 re\u021bete exclusive',
+    ebookCR4Free: 'Tehnici avansate', ebookCR4Paid: 'Tehnici avansate',
+    ebookCR5Free: 'Ghid f\u0103inuri & hidratare', ebookCR5Paid: 'Ghid complet f\u0103inuri & hidratare',
+    ebookInc1: '14 capitole detaliate despre \u0219tiin\u021ba maielei',
+    ebookInc2: '5 re\u021bete exclusive (focaccia, pizza, brioche...)',
+    ebookInc3: '3 instrumente printabile \u0219i fi\u0219e de referin\u021b\u0103',
+    ebookInc4: 'Depanare cu fotografii',
+    ebookInc5: 'Ghid complet de f\u0103inuri \u0219i hidratare',
+    ebookInc6: 'Tehnici avansate de modelare \u0219i crestare',
+    ebookPages: '60+ pagini de cuno\u0219tin\u021be de expert',
+    ebookGuarantee: '\u2605 \u00cendragit de brutari din 12+ \u021b\u0103ri',
+    ebookCtaLabel: 'Ia Manualul',
     blogEbookTitle: 'Vrei ghidul complet?',
     blogEbookDesc: 'Acest articol e un preview din Manualul Complet de Maia — 14 capitole, 5 rețete exclusive și instrumente printabile.',
-    blogEbookCta: 'Ia Manualul — 9.99€'
+    blogEbookCtaLabel: 'Ia Manualul'
   },
   it: {
     navFeatures: "Funzionalità",
@@ -1262,16 +1408,29 @@ const LANDING_I18N = {
     toastNlMsg: 'Consigli freschi di panificazione ogni settimana. Niente spam.',
     toastErrTitle: 'Qualcosa è andato storto',
     toastErrMsg: 'Per favore riprova. Se il problema persiste, ricarica la pagina.',
-    ebookSub: 'Vai più a fondo',
+    ebookBadge: '\u2605 Upgrade',
+    ebookSub: 'Vuoi andare oltre?',
     ebookTitle: 'Il Manuale Completo del Lievito Madre',
-    ebookDesc: 'Tutto ciò che serve per padroneggiare il pane con lievito madre — dal primo rinfresco alla pagnotta perfetta. 14 capitoli, 5 ricette esclusive, strumenti stampabili.',
+    ebookDesc: 'La guida gratuita ti fa iniziare. Il manuale ti porta fino in fondo \u2014 da principiante sicuro a panificatore esperto.',
+    ebookCompFree: 'Guida Gratuita',
+    ebookCompPaid: 'Manuale Completo',
+    ebookCR1Free: 'Piano di 14 giorni', ebookCR1Paid: 'Tutto dalla guida gratuita',
+    ebookCR2Free: 'Risoluzione problemi base', ebookCR2Paid: '14 capitoli approfonditi',
+    ebookCR3Free: '1 ricetta del pane', ebookCR3Paid: '5 ricette esclusive',
+    ebookCR4Free: 'Tecniche avanzate', ebookCR4Paid: 'Tecniche avanzate',
+    ebookCR5Free: 'Guida farine e idratazione', ebookCR5Paid: 'Guida completa farine e idratazione',
     ebookInc1: '14 capitoli approfonditi sulla scienza del lievito',
     ebookInc2: '5 ricette esclusive (focaccia, pizza, brioche...)',
     ebookInc3: '3 strumenti stampabili e schede di riferimento',
-    ebookCta: 'Ottieni il Manuale — 9,99€',
+    ebookInc4: 'Risoluzione problemi con foto',
+    ebookInc5: 'Guida completa farine e idratazione',
+    ebookInc6: 'Tecniche avanzate di formatura e incisione',
+    ebookPages: '60+ pagine di conoscenza esperta',
+    ebookGuarantee: '\u2605 Amato da panificatori in 12+ paesi',
+    ebookCtaLabel: 'Ottieni il Manuale',
     blogEbookTitle: 'Vuoi la guida completa?',
     blogEbookDesc: 'Questo articolo è un\'anteprima dal Manuale Completo del Lievito Madre — 14 capitoli, 5 ricette esclusive e strumenti stampabili.',
-    blogEbookCta: 'Ottieni il Manuale — 9,99€'
+    blogEbookCtaLabel: 'Ottieni il Manuale'
   },
   de: {
     navFeatures: "Funktionen",
@@ -1416,16 +1575,29 @@ const LANDING_I18N = {
     toastNlMsg: 'Frische Backtipps jede Woche. Kein Spam.',
     toastErrTitle: 'Etwas ist schiefgelaufen',
     toastErrMsg: 'Bitte versuche es erneut. Wenn das Problem bestehen bleibt, lade die Seite neu.',
-    ebookSub: 'Tiefer eintauchen',
+    ebookBadge: '\u2605 Upgrade',
+    ebookSub: 'Bereit f\u00fcr mehr?',
     ebookTitle: 'Das komplette Sauerteig-Handbuch',
-    ebookDesc: 'Alles, was du brauchst, um Sauerteig zu meistern — vom ersten Füttern bis zum perfekten Laib. 14 Kapitel, 5 exklusive Rezepte, druckbare Tools.',
-    ebookInc1: '14 ausführliche Kapitel über Sauerteig-Wissenschaft',
+    ebookDesc: 'Der kostenlose Guide bringt dich auf den Weg. Das Handbuch bringt dich ans Ziel \u2014 vom sicheren Anf\u00e4nger zum erfahrenen B\u00e4cker.',
+    ebookCompFree: 'Kostenloser Guide',
+    ebookCompPaid: 'Komplettes Handbuch',
+    ebookCR1Free: '14-Tage-Starterplan', ebookCR1Paid: 'Alles aus dem kostenlosen Guide',
+    ebookCR2Free: 'Basis-Fehlerbehebung', ebookCR2Paid: '14 ausf\u00fchrliche Kapitel',
+    ebookCR3Free: '1 Brotrezept', ebookCR3Paid: '5 exklusive Rezepte',
+    ebookCR4Free: 'Fortgeschrittene Techniken', ebookCR4Paid: 'Fortgeschrittene Techniken',
+    ebookCR5Free: 'Mehl- & Hydrations-Guide', ebookCR5Paid: 'Kompletter Mehl- & Hydrations-Guide',
+    ebookInc1: '14 ausf\u00fchrliche Kapitel \u00fcber Sauerteig-Wissenschaft',
     ebookInc2: '5 exklusive Rezepte (Focaccia, Pizza, Brioche...)',
     ebookInc3: '3 druckbare Tools & Spickzettel',
-    ebookCta: 'Handbuch holen — 9,99€',
+    ebookInc4: 'Fehlerbehebung mit Fotos',
+    ebookInc5: 'Kompletter Mehl- & Hydrations-Guide',
+    ebookInc6: 'Fortgeschrittene Form- & Einschnitttechniken',
+    ebookPages: '60+ Seiten Expertenwissen',
+    ebookGuarantee: '\u2605 Beliebt bei B\u00e4ckern in 12+ L\u00e4ndern',
+    ebookCtaLabel: 'Handbuch holen',
     blogEbookTitle: 'Willst du den kompletten Guide?',
     blogEbookDesc: 'Dieser Artikel ist eine Vorschau aus dem kompletten Sauerteig-Handbuch — 14 Kapitel, 5 exklusive Rezepte und druckbare Tools.',
-    blogEbookCta: 'Handbuch holen — 9,99€'
+    blogEbookCtaLabel: 'Handbuch holen'
   },
   fr: {
     navFeatures: "Fonctionnalités",
@@ -1570,16 +1742,29 @@ const LANDING_I18N = {
     toastNlMsg: 'Astuces fraîches de boulangerie chaque semaine. Jamais de spam.',
     toastErrTitle: 'Quelque chose a mal tourné',
     toastErrMsg: 'Veuillez réessayer. Si le problème persiste, rechargez la page.',
-    ebookSub: 'Aller plus loin',
+    ebookBadge: '\u2605 Upgrade',
+    ebookSub: 'Pr\u00eat \u00e0 aller plus loin\u00a0?',
     ebookTitle: 'Le Manuel Complet du Levain',
-    ebookDesc: 'Tout ce qu\'il faut pour maîtriser le pain au levain — du premier nourrissage au pain parfait. 14 chapitres, 5 recettes exclusives, outils imprimables.',
+    ebookDesc: 'Le guide gratuit vous lance. Le manuel vous emm\u00e8ne jusqu\u2019au bout \u2014 de d\u00e9butant confiant \u00e0 boulanger exp\u00e9riment\u00e9.',
+    ebookCompFree: 'Guide Gratuit',
+    ebookCompPaid: 'Manuel Complet',
+    ebookCR1Free: 'Plan de 14 jours', ebookCR1Paid: 'Tout du guide gratuit',
+    ebookCR2Free: 'D\u00e9pannage de base', ebookCR2Paid: '14 chapitres approfondis',
+    ebookCR3Free: '1 recette de pain', ebookCR3Paid: '5 recettes exclusives',
+    ebookCR4Free: 'Techniques avanc\u00e9es', ebookCR4Paid: 'Techniques avanc\u00e9es',
+    ebookCR5Free: 'Guide farines & hydratation', ebookCR5Paid: 'Guide complet farines & hydratation',
     ebookInc1: '14 chapitres approfondis sur la science du levain',
     ebookInc2: '5 recettes exclusives (focaccia, pizza, brioche...)',
-    ebookInc3: '3 outils imprimables et fiches de référence',
-    ebookCta: 'Obtenir le Manuel — 9,99€',
+    ebookInc3: '3 outils imprimables et fiches de r\u00e9f\u00e9rence',
+    ebookInc4: 'D\u00e9pannage avec photos',
+    ebookInc5: 'Guide complet des farines et de l\u2019hydratation',
+    ebookInc6: 'Techniques avanc\u00e9es de fa\u00e7onnage et grignes',
+    ebookPages: '60+ pages de savoir-faire expert',
+    ebookGuarantee: '\u2605 Appr\u00e9ci\u00e9 par les boulangers de 12+ pays',
+    ebookCtaLabel: 'Obtenir le Manuel',
     blogEbookTitle: 'Vous voulez le guide complet ?',
     blogEbookDesc: 'Cet article est un aperçu du Manuel Complet du Levain — 14 chapitres, 5 recettes exclusives et outils imprimables.',
-    blogEbookCta: 'Obtenir le Manuel — 9,99€'
+    blogEbookCtaLabel: 'Obtenir le Manuel'
   },
   es: {
     navFeatures: "Funciones",
@@ -1724,16 +1909,29 @@ const LANDING_I18N = {
     toastNlMsg: 'Consejos frescos de panadería cada semana. Sin spam.',
     toastErrTitle: 'Algo salió mal',
     toastErrMsg: 'Por favor, inténtalo de nuevo. Si el problema persiste, recarga la página.',
-    ebookSub: 'Profundiza más',
+    ebookBadge: '\u2605 Upgrade',
+    ebookSub: '\u00bfListo para ir m\u00e1s lejos?',
     ebookTitle: 'El Manual Completo de Masa Madre',
-    ebookDesc: 'Todo lo que necesitas para dominar el pan de masa madre — desde la primera alimentación hasta la hogaza perfecta. 14 capítulos, 5 recetas exclusivas, herramientas imprimibles.',
-    ebookInc1: '14 capítulos detallados sobre la ciencia de la masa madre',
+    ebookDesc: 'La gu\u00eda gratuita te pone en marcha. El manual te lleva hasta el final \u2014 de principiante seguro a panadero experto.',
+    ebookCompFree: 'Gu\u00eda Gratuita',
+    ebookCompPaid: 'Manual Completo',
+    ebookCR1Free: 'Plan de 14 d\u00edas', ebookCR1Paid: 'Todo de la gu\u00eda gratuita',
+    ebookCR2Free: 'Soluci\u00f3n de problemas b\u00e1sica', ebookCR2Paid: '14 cap\u00edtulos detallados',
+    ebookCR3Free: '1 receta de pan', ebookCR3Paid: '5 recetas exclusivas',
+    ebookCR4Free: 'T\u00e9cnicas avanzadas', ebookCR4Paid: 'T\u00e9cnicas avanzadas',
+    ebookCR5Free: 'Gu\u00eda de harinas e hidrataci\u00f3n', ebookCR5Paid: 'Gu\u00eda completa de harinas e hidrataci\u00f3n',
+    ebookInc1: '14 cap\u00edtulos detallados sobre la ciencia de la masa madre',
     ebookInc2: '5 recetas exclusivas (focaccia, pizza, brioche...)',
     ebookInc3: '3 herramientas imprimibles y hojas de referencia',
-    ebookCta: 'Obtener el Manual — 9,99€',
+    ebookInc4: 'Soluci\u00f3n de problemas con fotos',
+    ebookInc5: 'Gu\u00eda completa de harinas e hidrataci\u00f3n',
+    ebookInc6: 'T\u00e9cnicas avanzadas de formado y gre\u00f1ado',
+    ebookPages: '60+ p\u00e1ginas de conocimiento experto',
+    ebookGuarantee: '\u2605 Querido por panaderos en 12+ pa\u00edses',
+    ebookCtaLabel: 'Obtener el Manual',
     blogEbookTitle: '¿Quieres la guía completa?',
     blogEbookDesc: 'Este artículo es un adelanto del Manual Completo de Masa Madre — 14 capítulos, 5 recetas exclusivas y herramientas imprimibles.',
-    blogEbookCta: 'Obtener el Manual — 9,99€'
+    blogEbookCtaLabel: 'Obtener el Manual'
   }
 };
 
@@ -1834,15 +2032,33 @@ function applyLandingTranslations() {
   if (t2Badges[3]) t2Badges[3].textContent = L.toolBadgePro;
 
   // Ebook section
+  setText('.ebook__upgrade-badge', L.ebookBadge || '\u2605 Upgrade');
   setText('.ebook__text .sl', L.ebookSub);
   setText('.ebook__text .st', L.ebookTitle);
   setText('.ebook__text .ss', L.ebookDesc);
+  // Comparison strip
+  const compCols = document.querySelectorAll('.ebook__compare-col');
+  if (compCols[0]) { const h = compCols[0].querySelector('.ebook__compare-h'); if (h) h.textContent = L.ebookCompFree || 'Free Guide'; }
+  if (compCols[1]) { const h = compCols[1].querySelector('.ebook__compare-h'); if (h) h.textContent = L.ebookCompPaid || 'Complete Handbook'; }
+  const freeRows = compCols[0] ? compCols[0].querySelectorAll('li') : [];
+  const paidRows = compCols[1] ? compCols[1].querySelectorAll('li') : [];
+  const freeTexts = [L.ebookCR1Free, L.ebookCR2Free, L.ebookCR3Free, L.ebookCR4Free, L.ebookCR5Free];
+  const paidTexts = [L.ebookCR1Paid, L.ebookCR2Paid, L.ebookCR3Paid, L.ebookCR4Paid, L.ebookCR5Paid];
+  freeRows.forEach((li, i) => { if (freeTexts[i]) { const s = li.querySelector('span'); if (s) s.textContent = freeTexts[i]; } });
+  paidRows.forEach((li, i) => { if (paidTexts[i]) { const s = li.querySelector('span'); if (s) s.textContent = paidTexts[i]; } });
+  // 6 bullet points
   const ebookInc = document.querySelectorAll('.ebook__inc li');
   if (ebookInc[0]) ebookInc[0].innerHTML = `<svg width="20" height="20"><use href="#ico-book"/></svg> ${L.ebookInc1}`;
   if (ebookInc[1]) ebookInc[1].innerHTML = `<svg width="20" height="20"><use href="#ico-bread"/></svg> ${L.ebookInc2}`;
   if (ebookInc[2]) ebookInc[2].innerHTML = `<svg width="20" height="20"><use href="#ico-fire"/></svg> ${L.ebookInc3}`;
-  const ebookBtn = document.querySelector('.ebook .btn--hero');
-  if (ebookBtn) ebookBtn.innerHTML = `${L.ebookCta} <span class="btn__ar">→</span>`;
+  if (ebookInc[3]) ebookInc[3].innerHTML = `<svg width="20" height="20"><use href="#ico-photo"/></svg> ${L.ebookInc4 || 'Troubleshooting with photos'}`;
+  if (ebookInc[4]) ebookInc[4].innerHTML = `<svg width="20" height="20"><use href="#ico-flour"/></svg> ${L.ebookInc5 || 'Complete flour & hydration guide'}`;
+  if (ebookInc[5]) ebookInc[5].innerHTML = `<svg width="20" height="20"><use href="#ico-star"/></svg> ${L.ebookInc6 || 'Advanced shaping & scoring techniques'}`;
+  // CTA + price
+  const ebookBtn = document.querySelector('.ebook__cta');
+  if (ebookBtn) ebookBtn.innerHTML = `${L.ebookCtaLabel} \u2014 ${PRICES.ebook[currency]} <span class="btn__ar">\u2192</span>`;
+  setText('.ebook__pages', L.ebookPages || '60+ pages of expert knowledge');
+  setText('.ebook__proof', L.ebookGuarantee || '\u2605 Loved by bakers in 12+ countries');
 
   // Lead magnet
   setHtml('.lead__badge', `<svg width="18" height="18"><use href="#ico-book"/></svg> ${L.leadBadge}`);
@@ -2023,7 +2239,7 @@ function renderArticle(id) {
   const l = lang;
   const L = LANGS[l] || LANGS.en;
 
-  document.getElementById('articlePage').innerHTML = `<button class="ap__back" onclick="showBlogPage()">${L.backBlog}</button><div class="a-lang">${langBtns()}</div><div class="a-head"><span class="a-cat">${a.cat[l] || a.cat.en}</span><h1 class="a-title">${a.title[l] || a.title.en}</h1><div class="a-meta"><span>${L.by} Rise & Ferment</span><span>${fmtDate(a.date, l)}</span><span>${a.rt[l] || a.rt.en}</span></div></div><div class="a-hero ${a.scene}"><div class="scene__center"><svg class="scene__svg" width="120" height="120" viewBox="0 0 48 48"><use href="#${a.svgId}"/></svg></div></div><div class="a-content">${a.content[l] || a.content.en}<div class="a-ebook"><h3 class="a-ebook__t">${L.ebookTitle}</h3><p class="a-ebook__d">${L.ebookDesc}</p><a href="/go/ebook" class="btn btn--p btn--sm" target="_blank" rel="noopener">${L.ebookCta} →</a></div><div class="a-author"><div class="a-author__av" style="width:56px;height:56px;border-radius:50%;background:linear-gradient(135deg,var(--parchment),var(--crust-light));display:flex;align-items:center;justify-content:center"><svg style="color:var(--crust)" width="32" height="32"><use href="#ico-person"/></svg></div><div><p class="a-author__name">${L.writtenBy} Rise & Ferment</p><p class="a-author__bio">${L.bio}</p></div></div><div class="a-share"><h3>${L.shareCta}</h3><p>${L.shareText}</p><a href="/app" class="btn btn--p btn--sm">${L.tryApp} →</a></div></div>`;
+  document.getElementById('articlePage').innerHTML = `<button class="ap__back" onclick="showBlogPage()">${L.backBlog}</button><div class="a-lang">${langBtns()}</div><div class="a-head"><span class="a-cat">${a.cat[l] || a.cat.en}</span><h1 class="a-title">${a.title[l] || a.title.en}</h1><div class="a-meta"><span>${L.by} Rise & Ferment</span><span>${fmtDate(a.date, l)}</span><span>${a.rt[l] || a.rt.en}</span></div></div><div class="a-hero ${a.scene}"><div class="scene__center"><svg class="scene__svg" width="120" height="120" viewBox="0 0 48 48"><use href="#${a.svgId}"/></svg></div></div><div class="a-content">${a.content[l] || a.content.en}<div class="a-ebook"><h3 class="a-ebook__t">${L.ebookTitle}</h3><p class="a-ebook__d">${L.ebookDesc}</p><a href="/go/ebook" class="btn btn--p btn--sm" target="_blank" rel="noopener">${L.ebookCtaLabel} \u2014 ${PRICES.ebook[currency]} \u2192</a></div><div class="a-author"><div class="a-author__av" style="width:56px;height:56px;border-radius:50%;background:linear-gradient(135deg,var(--parchment),var(--crust-light));display:flex;align-items:center;justify-content:center"><svg style="color:var(--crust)" width="32" height="32"><use href="#ico-person"/></svg></div><div><p class="a-author__name">${L.writtenBy} Rise & Ferment</p><p class="a-author__bio">${L.bio}</p></div></div><div class="a-share"><h3>${L.shareCta}</h3><p>${L.shareText}</p><a href="/app" class="btn btn--p btn--sm">${L.tryApp} →</a></div></div>`;
 }
 
 function setLang(l) {
@@ -2031,6 +2247,7 @@ function setLang(l) {
   persistLang(lang);
 
   applyLandingTranslations();
+  applyCurrency();
 
   if (currentView === 'article' && currentArticleId) {
     renderArticle(currentArticleId);
