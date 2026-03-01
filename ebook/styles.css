@@ -715,6 +715,184 @@ tbody tr:nth-child(even) td {
 }
 
 /* ============================================================
+   DEEP DIVE BOXES
+   ============================================================ */
+.deep-dive {
+  background: var(--cream);
+  border-left: 4px solid var(--brown);
+  border-radius: 0 8px 8px 0;
+  padding: 5mm 6mm;
+  margin: 6mm 0;
+  page-break-inside: avoid;
+  position: relative;
+}
+
+.deep-dive::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 30mm;
+  height: 3px;
+  background: linear-gradient(90deg, transparent, var(--amber));
+}
+
+.deep-dive h4 {
+  font-family: var(--font-body);
+  font-size: 13pt;
+  font-weight: 800;
+  color: var(--brown);
+  margin-bottom: 3mm;
+  padding-bottom: 2mm;
+  border-bottom: 1px solid var(--amber);
+  letter-spacing: 0.02em;
+}
+
+.deep-dive p {
+  font-size: 10.5pt;
+  line-height: 1.65;
+  margin-bottom: 3mm;
+}
+
+.deep-dive strong {
+  color: var(--brown);
+}
+
+.deep-dive ul,
+.deep-dive ol {
+  margin-bottom: 3mm;
+  padding-left: 5mm;
+}
+
+.deep-dive li {
+  font-size: 10.5pt;
+  margin-bottom: 1.5mm;
+}
+
+.deep-dive table {
+  margin: 3mm 0;
+  font-size: 9.5pt;
+}
+
+/* ============================================================
+   APPENDIX SECTIONS
+   ============================================================ */
+.appendix {
+  page-break-before: always;
+}
+
+.appendix-title {
+  font-family: var(--font-body);
+  font-size: 22pt;
+  color: var(--brown);
+  font-weight: 800;
+  margin-bottom: 6mm;
+  padding-bottom: 3mm;
+  border-bottom: 2px solid var(--amber);
+  text-align: center;
+}
+
+.appendix-content h2 {
+  font-size: 16pt;
+  margin-top: 6mm;
+  margin-bottom: 3mm;
+  color: var(--brown);
+  border-bottom: 1px solid var(--border-light);
+  padding-bottom: 2mm;
+}
+
+.appendix-content h3 {
+  font-size: 12pt;
+  margin-top: 4mm;
+  margin-bottom: 2mm;
+}
+
+/* --- Glossary --- */
+.glossary p {
+  margin-bottom: 2.5mm;
+  font-size: 10.5pt;
+  line-height: 1.6;
+  padding-left: 3mm;
+  text-indent: -3mm;
+}
+
+.glossary p strong:first-child {
+  color: var(--brown);
+  font-size: 11pt;
+}
+
+/* --- FAQ --- */
+.faq h2 {
+  font-size: 14pt;
+  color: var(--brown);
+  margin-top: 6mm;
+  margin-bottom: 3mm;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  font-size: 11pt;
+}
+
+.faq h3 {
+  font-size: 11.5pt;
+  color: var(--dark);
+  font-weight: 700;
+  margin-top: 4mm;
+  margin-bottom: 2mm;
+  line-height: 1.4;
+}
+
+.faq p {
+  font-size: 10.5pt;
+  line-height: 1.65;
+  margin-bottom: 3mm;
+}
+
+/* --- Quick-Start --- */
+.quick-start .appendix-content h2 {
+  font-size: 16pt;
+  color: var(--brown);
+  margin-top: 6mm;
+}
+
+.quick-start ul {
+  list-style: none;
+  padding-left: 0;
+}
+
+.quick-start ul li {
+  position: relative;
+  padding-left: 7mm;
+  margin-bottom: 2.5mm;
+  font-size: 10.5pt;
+}
+
+.quick-start ul li::before {
+  content: '\2713';
+  color: var(--brown);
+  font-weight: 700;
+  font-size: 12pt;
+  position: absolute;
+  left: 0;
+  top: 0;
+}
+
+/* --- Seasonal Calendar --- */
+.seasonal-calendar h2 {
+  font-size: 16pt;
+  color: var(--brown);
+  margin-top: 8mm;
+}
+
+.seasonal-calendar table {
+  margin: 4mm 0;
+}
+
+.seasonal-calendar blockquote {
+  font-size: 10pt;
+}
+
+/* ============================================================
    IMAGES
    ============================================================ */
 img {
@@ -937,6 +1115,7 @@ hr {
   .info-box,
   .warning-box,
   .highlight-box,
+  .deep-dive,
   .back-cover-links,
   th,
   tbody tr:nth-child(even) td,
@@ -962,7 +1141,8 @@ hr {
 
   .chapter,
   .recipe,
-  .printable {
+  .printable,
+  .appendix {
     page-break-before: always;
   }
 
@@ -987,6 +1167,7 @@ hr {
   .chapter,
   .recipe,
   .printable,
+  .appendix,
   .back-cover {
     background: white;
     padding: 25mm 20mm 30mm 20mm;
