@@ -16,6 +16,17 @@ const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
 
 // ---------------------------------------------------------------------------
+// CLI flags (parsed early — LANG is needed before template loading)
+// ---------------------------------------------------------------------------
+
+const args = process.argv.slice(2);
+const FLAG_COVER = args.includes('--cover');
+const FLAG_PREVIEW = args.includes('--preview');
+const FLAG_THUMBNAIL = args.includes('--thumbnail');
+const langIdx = args.indexOf('--lang');
+const LANG = langIdx !== -1 && args[langIdx + 1] ? args[langIdx + 1] : 'en';
+
+// ---------------------------------------------------------------------------
 // 1. Markdown → HTML Parser
 // ---------------------------------------------------------------------------
 
@@ -238,11 +249,17 @@ function parseMarkdown(text) {
 // 2. Load template
 // ---------------------------------------------------------------------------
 
-const templatePath = join(__dirname, 'template.html');
-const chaptersDir = join(__dirname, 'content', 'chapters');
-const contentDir = join(__dirname, 'content');
+const templateFile = LANG === 'en' ? 'template.html' : `template-${LANG}.html`;
+const templatePath = join(__dirname, templateFile);
+const chaptersDir = LANG === 'en'
+  ? join(__dirname, 'content', 'chapters')
+  : join(__dirname, 'content', LANG, 'chapters');
+const contentDir = LANG === 'en'
+  ? join(__dirname, 'content')
+  : join(__dirname, 'content', LANG);
 
-console.log('Reading template...');
+console.log(`Building ${LANG.toUpperCase()} edition...`);
+console.log(`Reading template: ${templateFile}`);
 let html = readFileSync(templatePath, 'utf-8');
 
 // ---------------------------------------------------------------------------
@@ -306,16 +323,7 @@ for (const [placeholder, filename] of Object.entries(appendixMap)) {
 console.log(`${appendixCount}/4 appendix placeholders replaced.`);
 
 // ---------------------------------------------------------------------------
-// 5. CLI flags
-// ---------------------------------------------------------------------------
-
-const args = process.argv.slice(2);
-const FLAG_COVER = args.includes('--cover');
-const FLAG_PREVIEW = args.includes('--preview');
-const FLAG_THUMBNAIL = args.includes('--thumbnail');
-
-// ---------------------------------------------------------------------------
-// 6. Launch Puppeteer & generate outputs
+// 5. Launch Puppeteer & generate outputs
 // ---------------------------------------------------------------------------
 
 async function loadPuppeteer() {
@@ -513,8 +521,12 @@ async function generatePreview(puppeteer) {
 
 // --- Full PDF ---
 async function generatePDF(puppeteer) {
-  const outputPath = join(__dirname, 'The-Complete-Sourdough-Handbook.pdf');
-  console.log('Generating full PDF...');
+  const pdfNames = {
+    en: 'The-Complete-Sourdough-Handbook.pdf',
+    ro: 'Ghidul-Complet-al-Maielei.pdf',
+  };
+  const outputPath = join(__dirname, pdfNames[LANG] || pdfNames.en);
+  console.log(`Generating full PDF (${LANG})...`);
 
   const { browser, page, tempPath } = await launchPage(puppeteer, html);
 

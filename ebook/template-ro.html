@@ -1,0 +1,909 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ghidul Complet al Maielei — Maiaua Mea</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@400;700&family=Nunito:ital,wght@0,400;0,600;0,700;0,800;1,400;1,600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body class="ebook">
+
+  <!-- ===================================================================
+       COVER PAGE
+       =================================================================== -->
+  <section class="cover page-break" aria-label="Cover">
+    <div class="cover-decoration cover-decoration--top"></div>
+    <div class="cover-content">
+      <p class="cover-brand">Maiaua Mea</p>
+      <h1 class="cover-title">Ghidul Complet<br>al Maielei</h1>
+      <div class="cover-separator"></div>
+      <p class="cover-subtitle">De la Prima Hrănire la Pâinea Perfectă</p>
+      <div class="cover-wheat">
+        <div class="wheat-stalk wheat-stalk--left"></div>
+        <div class="wheat-stalk wheat-stalk--right"></div>
+      </div>
+    </div>
+    <div class="cover-decoration cover-decoration--bottom"></div>
+    <p class="cover-edition">Ediția a Doua</p>
+  </section>
+
+  <!-- ===================================================================
+       COPYRIGHT / COLOPHON
+       =================================================================== -->
+  <section class="colophon page-break" aria-label="Copyright">
+    <div class="colophon-content">
+      <p class="colophon-title">Ghidul Complet al Maielei</p>
+      <p>De la Prima Hrănire la Pâinea Perfectă</p>
+      <br>
+      <p>Publicat de Maiaua Mea</p>
+      <p><a href="https://maiauamea.ro">maiauamea.ro</a></p>
+      <br>
+      <p>Copyright &copy; 2026 Maiaua Mea. Toate drepturile rezervate.</p>
+      <p>Nicio parte a acestei publicații nu poate fi reprodusă, distribuită sau transmisă sub nicio formă sau prin niciun mijloc fără permisiunea scrisă prealabilă a editorului.</p>
+      <br>
+      <p>Rețetele, tehnicile și sfaturile din această carte se bazează pe experiența personală și cercetarea autorului. S-au depus toate eforturile pentru a asigura acuratețea, dar rezultatele la copt pot varia în funcție de ingrediente, echipamente și condiții.</p>
+      <br>
+      <p>Ediția a doua, 2026</p>
+    </div>
+  </section>
+
+  <!-- ===================================================================
+       TABLE OF CONTENTS
+       =================================================================== -->
+  <section class="toc page-break" aria-label="Table of Contents">
+    <h2 class="toc-heading">Cuprins</h2>
+
+    <div class="toc-section">
+      <h3 class="toc-section-title">Introducere</h3>
+      <ul class="toc-list">
+        <li><a href="#introduction">Bine ai venit în lumea maielei</a><span class="toc-page"></span></li>
+        <li><a href="#quick-start">Lista de verificare rapidă</a><span class="toc-page"></span></li>
+      </ul>
+    </div>
+
+    <div class="toc-section">
+      <h3 class="toc-section-title">Partea I &mdash; Fundamentele</h3>
+      <ul class="toc-list">
+        <li><a href="#chapter-1">Capitolul 1: Făină și Apă: Bazele</a><span class="toc-page"></span></li>
+        <li><a href="#chapter-2">Capitolul 2: Temperatura: Controlul Principal</a><span class="toc-page"></span></li>
+        <li><a href="#chapter-3">Capitolul 3: Hidratarea Explicată</a><span class="toc-page"></span></li>
+        <li><a href="#chapter-4">Capitolul 4: Găsirea Vârfului de Activitate</a><span class="toc-page"></span></li>
+        <li><a href="#chapter-5">Capitolul 5: Știința Fermentației</a><span class="toc-page"></span></li>
+        <li><a href="#chapter-6">Capitolul 6: Prima Ta Pâine</a><span class="toc-page"></span></li>
+        <li><a href="#chapter-7">Capitolul 7: Întreținere și Depozitare</a><span class="toc-page"></span></li>
+        <li><a href="#chapter-8">Capitolul 8: Ghid de Depanare</a><span class="toc-page"></span></li>
+      </ul>
+    </div>
+
+    <div class="toc-section">
+      <h3 class="toc-section-title">Partea II &mdash; Tehnici Avansate</h3>
+      <ul class="toc-list">
+        <li><a href="#chapter-9">Capitolul 9: Calitatea Apei și Timing</a><span class="toc-page"></span></li>
+        <li><a href="#chapter-10">Capitolul 10: Înțelegerea Tipurilor de Făină</a><span class="toc-page"></span></li>
+        <li><a href="#chapter-11">Capitolul 11: Dezvoltarea Aromei</a><span class="toc-page"></span></li>
+        <li><a href="#chapter-12">Capitolul 12: Modelare și Crestare</a><span class="toc-page"></span></li>
+        <li><a href="#chapter-13">Capitolul 13: Programe de Coacere</a><span class="toc-page"></span></li>
+        <li><a href="#chapter-14">Capitolul 14: Dincolo de Bazele</a><span class="toc-page"></span></li>
+      </ul>
+    </div>
+
+    <div class="toc-section">
+      <h3 class="toc-section-title">Partea III &mdash; Rețete Exclusive</h3>
+      <ul class="toc-list">
+        <li><a href="#recipe-1">Focaccia Clasică</a><span class="toc-page"></span></li>
+        <li><a href="#recipe-2">Aluat de Pizza cu Maia</a><span class="toc-page"></span></li>
+        <li><a href="#recipe-3">Clătite și Gofre din Maia Rămasă</a><span class="toc-page"></span></li>
+        <li><a href="#recipe-4">Crackers cu Maia</a><span class="toc-page"></span></li>
+        <li><a href="#recipe-5">Brioche cu Maia</a><span class="toc-page"></span></li>
+      </ul>
+    </div>
+
+    <div class="toc-section">
+      <h3 class="toc-section-title">Partea IV &mdash; Materiale de Referință Printabile</h3>
+      <ul class="toc-list">
+        <li><a href="#printable-1">Referință Rapidă pentru Hrănire</a><span class="toc-page"></span></li>
+        <li><a href="#printable-2">Ghid Comparativ al Făinurilor</a><span class="toc-page"></span></li>
+        <li><a href="#printable-3">Săptămâna Mea de Copt &mdash; Planificator Săptămânal</a><span class="toc-page"></span></li>
+      </ul>
+    </div>
+
+    <div class="toc-section">
+      <h3 class="toc-section-title">Partea V &mdash; Anexe</h3>
+      <ul class="toc-list">
+        <li><a href="#glossary">Glosar de Termeni pentru Maia</a><span class="toc-page"></span></li>
+        <li><a href="#faq">Întrebări Frecvente</a><span class="toc-page"></span></li>
+        <li><a href="#seasonal-calendar">Calendar Sezonier de Coacere</a><span class="toc-page"></span></li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- ===================================================================
+       INTRODUCTION
+       =================================================================== -->
+  <article id="introduction" class="introduction page-break" aria-label="Introduction">
+    <h2 class="part-title">Introducere</h2>
+    <h3 class="intro-heading">Bine ai venit în lumea maielei</h3>
+
+    <p>Bine ai venit la <em>Ghidul Complet al Maielei</em> de la Maiaua Mea. Fie că ești pe punctul de a amesteca pentru prima dată făină cu apă, fie că ai grijă de o maia de ani de zile, această carte a fost scrisă pentru tine.</p>
+
+    <p>Coacerea cu maia naturală este una dintre cele mai vechi și mai gratificante tradiții culinare din lume. Te conectează la mii de ani de istorie umană, la ecosistemul invizibil de drojdii sălbatice și bacterii care trăiesc în bucătăria ta și la procesul profund satisfăcător de a transforma două ingrediente simple în ceva extraordinar.</p>
+
+    <h4>Ce acoperă această carte</h4>
+
+    <p>Acest ghid este organizat în cinci părți, cu peste 100 de pagini de conținut aprofundat:</p>
+
+    <ul>
+      <li><strong>Partea I: Fundamentele</strong> te ghidează prin tot ce trebuie să știi pentru a crea, hrăni și întreține o maia de la zero. De la înțelegerea proporțiilor de făină și apă până la diagnosticarea problemelor comune, aceste opt capitole îți oferă o bază solidă. Fiecare capitol include o secțiune exclusivă <em>Aprofundare</em> cu conținut care nu se găsește în altă parte.</li>
+      <li><strong>Partea II: Tehnici Avansate</strong> aprofundează știința și meșteșugul maielei. Vei învăța cum calitatea apei, selecția făinii, timing-ul fermentației și tehnicile de modelare influențează aroma și structura pâinii tale.</li>
+      <li><strong>Partea III: Rețete Exclusive</strong> prezintă cinci rețete dezvoltate cu grijă care demonstrează versatilitatea maielei, de la focaccia aerisită la brioche bogată. Fiecare rețetă include instrucțiuni detaliate, tabele cu ingrediente și sfaturi profesionale.</li>
+      <li><strong>Partea IV: Materiale de Referință Printabile</strong> oferă trei materiale practice concepute pentru peretele bucătăriei sau pentru dosar: un card de referință pentru hrănire, un ghid comparativ al făinurilor și un planificator săptămânal de coacere.</li>
+      <li><strong>Partea V: Anexe</strong> include un glosar cuprinzător cu 45 de termeni specifici maielei, cele mai frecvente 20 de întrebări cu răspunsuri clare și un calendar sezonier de coacere care te ghidează pe parcursul anului.</li>
+    </ul>
+
+    <h4>Cum să folosești această carte</h4>
+
+    <p>Dacă ești începător, începe cu Partea I și citește capitolele în ordine. Fiecare se construiește pe baza celui anterior. Dacă ai deja experiență, folosește cuprinsul pentru a sări la subiectele care te interesează cel mai mult.</p>
+
+    <p>Rețetele din Partea III sunt exclusive acestui ebook și nu sunt disponibile în aplicația gratuită Maiaua Mea. Au fost testate extensiv și scrise cu un nivel de detaliu care nu lasă nimic la voia întâmplării.</p>
+
+    <div class="intro-callout">
+      <h4>Urmărește-ți progresul cu aplicația Maiaua Mea</h4>
+      <p>Această carte se completează perfect cu aplicația Maiaua Mea, companionul tău zilnic pentru urmărirea maielei. Aplicația include cronometre pentru hrănire, urmărirea progresului, un ghid zi cu zi pentru primele 14 zile ale maielei tale, înregistrarea temperaturii și urmărirea seriei de hrăniri consecutive pentru a te menține motivat.</p>
+      <p>Descărcare gratuită la <strong>maiauamea.ro</strong></p>
+    </div>
+
+    <p>Acum, să începem. Maiaua ta te așteaptă.</p>
+  </article>
+
+  <!-- ===================================================================
+       QUICK-START CHECKLIST
+       =================================================================== -->
+  <article id="quick-start" class="appendix quick-start page-break" aria-label="Quick-Start Checklist">
+    <h2 class="part-title">Lista de Verificare Rapidă</h2>
+    <div class="appendix-content">
+      {{quickStartContent}}
+    </div>
+  </article>
+
+  <!-- ===================================================================
+       PART I — THE FUNDAMENTALS (Chapters 1-8)
+       =================================================================== -->
+  <section class="part-divider page-break" aria-label="Part I">
+    <p class="part-number">Partea I</p>
+    <h2 class="part-divider-title">Fundamentele</h2>
+    <p class="part-divider-subtitle">Capitolele 1 &ndash; 8</p>
+  </section>
+
+  <article id="chapter-1" class="chapter page-break" aria-label="Chapter 1">
+    <header class="chapter-header">
+      <span class="chapter-number">Capitolul 1</span>
+      <h2 class="chapter-title">Făină și Apă: Bazele</h2>
+    </header>
+    <div class="chapter-content">
+      {{chapterContent_1}}
+    </div>
+  </article>
+
+  <article id="chapter-2" class="chapter page-break" aria-label="Chapter 2">
+    <header class="chapter-header">
+      <span class="chapter-number">Capitolul 2</span>
+      <h2 class="chapter-title">Temperatura: Controlul Principal</h2>
+    </header>
+    <div class="chapter-content">
+      {{chapterContent_2}}
+    </div>
+  </article>
+
+  <article id="chapter-3" class="chapter page-break" aria-label="Chapter 3">
+    <header class="chapter-header">
+      <span class="chapter-number">Capitolul 3</span>
+      <h2 class="chapter-title">Hidratarea Explicată</h2>
+    </header>
+    <div class="chapter-content">
+      {{chapterContent_3}}
+    </div>
+  </article>
+
+  <article id="chapter-4" class="chapter page-break" aria-label="Chapter 4">
+    <header class="chapter-header">
+      <span class="chapter-number">Capitolul 4</span>
+      <h2 class="chapter-title">Găsirea Vârfului de Activitate</h2>
+    </header>
+    <div class="chapter-content">
+      {{chapterContent_4}}
+    </div>
+  </article>
+
+  <article id="chapter-5" class="chapter page-break" aria-label="Chapter 5">
+    <header class="chapter-header">
+      <span class="chapter-number">Capitolul 5</span>
+      <h2 class="chapter-title">Știința Fermentației</h2>
+    </header>
+    <div class="chapter-content">
+      {{chapterContent_5}}
+    </div>
+  </article>
+
+  <article id="chapter-6" class="chapter page-break" aria-label="Chapter 6">
+    <header class="chapter-header">
+      <span class="chapter-number">Capitolul 6</span>
+      <h2 class="chapter-title">Prima Ta Pâine</h2>
+    </header>
+    <div class="chapter-content">
+      {{chapterContent_6}}
+    </div>
+  </article>
+
+  <article id="chapter-7" class="chapter page-break" aria-label="Chapter 7">
+    <header class="chapter-header">
+      <span class="chapter-number">Capitolul 7</span>
+      <h2 class="chapter-title">Întreținere și Depozitare</h2>
+    </header>
+    <div class="chapter-content">
+      {{chapterContent_7}}
+    </div>
+  </article>
+
+  <article id="chapter-8" class="chapter page-break" aria-label="Chapter 8">
+    <header class="chapter-header">
+      <span class="chapter-number">Capitolul 8</span>
+      <h2 class="chapter-title">Ghid de Depanare</h2>
+    </header>
+    <div class="chapter-content">
+      {{chapterContent_8}}
+    </div>
+  </article>
+
+  <!-- ===================================================================
+       PART II — ADVANCED TECHNIQUES (Chapters 9-14)
+       =================================================================== -->
+  <section class="part-divider page-break" aria-label="Part II">
+    <p class="part-number">Partea II</p>
+    <h2 class="part-divider-title">Tehnici Avansate</h2>
+    <p class="part-divider-subtitle">Capitolele 9 &ndash; 14</p>
+  </section>
+
+  <article id="chapter-9" class="chapter page-break" aria-label="Chapter 9">
+    <header class="chapter-header">
+      <span class="chapter-number">Capitolul 9</span>
+      <h2 class="chapter-title">Calitatea Apei și Timing</h2>
+    </header>
+    <div class="chapter-content">
+      {{chapterContent_9}}
+    </div>
+  </article>
+
+  <article id="chapter-10" class="chapter page-break" aria-label="Chapter 10">
+    <header class="chapter-header">
+      <span class="chapter-number">Capitolul 10</span>
+      <h2 class="chapter-title">Înțelegerea Tipurilor de Făină</h2>
+    </header>
+    <div class="chapter-content">
+      {{chapterContent_10}}
+    </div>
+  </article>
+
+  <article id="chapter-11" class="chapter page-break" aria-label="Chapter 11">
+    <header class="chapter-header">
+      <span class="chapter-number">Capitolul 11</span>
+      <h2 class="chapter-title">Dezvoltarea Aromei</h2>
+    </header>
+    <div class="chapter-content">
+      {{chapterContent_11}}
+    </div>
+  </article>
+
+  <article id="chapter-12" class="chapter page-break" aria-label="Chapter 12">
+    <header class="chapter-header">
+      <span class="chapter-number">Capitolul 12</span>
+      <h2 class="chapter-title">Modelare și Crestare</h2>
+    </header>
+    <div class="chapter-content">
+      {{chapterContent_12}}
+    </div>
+  </article>
+
+  <article id="chapter-13" class="chapter page-break" aria-label="Chapter 13">
+    <header class="chapter-header">
+      <span class="chapter-number">Capitolul 13</span>
+      <h2 class="chapter-title">Programe de Coacere</h2>
+    </header>
+    <div class="chapter-content">
+      {{chapterContent_13}}
+    </div>
+  </article>
+
+  <article id="chapter-14" class="chapter page-break" aria-label="Chapter 14">
+    <header class="chapter-header">
+      <span class="chapter-number">Capitolul 14</span>
+      <h2 class="chapter-title">Dincolo de Bazele</h2>
+    </header>
+    <div class="chapter-content">
+      {{chapterContent_14}}
+    </div>
+  </article>
+
+  <!-- ===================================================================
+       PART III — EXCLUSIVE RECIPES
+       =================================================================== -->
+  <section class="part-divider page-break" aria-label="Part III">
+    <p class="part-number">Partea III</p>
+    <h2 class="part-divider-title">Rețete Exclusive</h2>
+    <p class="part-divider-subtitle">5 Rețete Originale</p>
+  </section>
+
+  <!-- RECIPE 1: Focaccia Clasică -->
+  <article id="recipe-1" class="recipe page-break" aria-label="Recipe: Classic Focaccia">
+    <header class="recipe-header">
+      <h2 class="recipe-title">Focaccia Clasică</h2>
+      <div class="recipe-meta">
+        <span class="recipe-meta-item"><strong>Cantitate:</strong> 1 tavă (aprox. 30 x 40 cm)</span>
+        <span class="recipe-meta-item"><strong>Preparare:</strong> 30 min (+ 12-14h fermentare)</span>
+        <span class="recipe-meta-item"><strong>Total:</strong> ~15 ore</span>
+      </div>
+    </header>
+
+    <h3>Ingrediente</h3>
+    <table class="recipe-table">
+      <thead>
+        <tr><th>Ingredient</th><th>Cantitate</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>Făină de pâine (tip forte)</td><td>500 g</td></tr>
+        <tr><td>Apă (caldă, ~30 &deg;C)</td><td>500 g</td></tr>
+        <tr><td>Maia activă (hidratare 100%)</td><td>100 g</td></tr>
+        <tr><td>Sare fină de mare</td><td>10 g</td></tr>
+        <tr><td>Ulei de măsline extravirgin</td><td>60 ml + extra pentru tavă și finisare</td></tr>
+        <tr><td>Sare de mare în fulgi</td><td>pentru topping</td></tr>
+        <tr><td>Ramuri de rozmarin proaspăt</td><td>4-5</td></tr>
+      </tbody>
+    </table>
+
+    <h4>Varianta cu Rozmarin și Usturoi (adițional)</h4>
+    <table class="recipe-table">
+      <thead>
+        <tr><th>Ingredient</th><th>Cantitate</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>Căței de usturoi, tăiați subțire</td><td>6</td></tr>
+        <tr><td>Rozmarin proaspăt, tocat</td><td>2 linguri</td></tr>
+        <tr><td>Ulei de măsline (pentru infuzie de usturoi)</td><td>30 ml</td></tr>
+      </tbody>
+    </table>
+
+    <h3>Instrucțiuni</h3>
+    <ol class="recipe-steps">
+      <li><strong>Amestecă aluatul.</strong> Într-un bol mare, combină făina, apa și maiaua activă. Amestecă până nu mai rămâne făină uscată. Acoperă și lasă să se odihnească 30 de minute (autoliză).</li>
+      <li><strong>Adaugă sarea și uleiul.</strong> Presară sarea peste aluat și toarnă 30 ml de ulei de măsline deasupra. Ciupește și pliază sarea și uleiul în aluat până sunt complet incorporate, aproximativ 2 minute.</li>
+      <li><strong>Întinde și pliază.</strong> Pe parcursul următoarelor 2 ore, efectuează 4 serii de întinderi și plieri la interval de 30 de minute. Udă-ți mâinile, apucă o parte a aluatului, întinde-o în sus și pliaz-o peste centru. Rotește bolul la 90 de grade și repetă de 4 ori per serie.</li>
+      <li><strong>Fermentare principală.</strong> După ultima pliere, acoperă bolul ermetic și refrigerează 12-14 ore (peste noapte).</li>
+      <li><strong>Pregătește tava.</strong> Unge generos o tavă cu margini cu 30 ml ulei de măsline, distribuindu-l pe toată suprafața și pe margini.</li>
+      <li><strong>Modelează.</strong> Răstoarnă aluatul rece pe tava unsă. Toarnă puțin ulei deasupra și întinde aluatul delicat spre margini. Dacă opune rezistență, lasă-l să se odihnească 15 minute și întinde din nou. Repetă până când aluatul umple tava.</li>
+      <li><strong>Dospit final.</strong> Acoperă lejer și lasă să crească la temperatura camerei 1,5-2 ore, până devine pufos și se mișcă tremurător când atingi ușor tava.</li>
+      <li><strong>Fă gropițe și decorează.</strong> Preîncălzește cuptorul la 230 &deg;C. Unge-ți degetele generos cu ulei și apasă-le drept în jos în aluat pentru a crea gropițe adânci pe toată suprafața. Apasă până la fundul tăvii. Presară ramurile de rozmarin și apasă-le ușor în gropițe. Toarnă mai mult ulei de măsline și presară sare de mare în fulgi.</li>
+      <li><strong>Coace.</strong> Coace 22-28 de minute până devine auriu intens deasupra și marginile sunt crocante și caramelizate. Fundul trebuie să fie auriu-maroniu.</li>
+      <li><strong>Răcește.</strong> Transferă imediat pe un grătar pentru a preveni înmuierea fundului. Lasă să se răcească cel puțin 10 minute înainte de tăiere.</li>
+    </ol>
+
+    <p class="recipe-variant"><strong>Pentru Varianta cu Rozmarin și Usturoi:</strong> Încălzește ușor usturoiul tăiat în 30 ml ulei de măsline la foc mic 3-4 minute până devine parfumat, dar nu rumenit. Presară feliile de usturoi și rozmarinul tocat peste aluatul cu gropițe înainte de coacere.</p>
+
+    <h3>Sfaturi Profesionale</h3>
+    <ul class="recipe-tips">
+      <li><strong>Hidratarea este esențială.</strong> Hidratarea de 100% creează acele bule mari și aerisite caracteristice. Nu reduce cantitatea de apă.</li>
+      <li><strong>Unge tava generos.</strong> Uleiul de măsline prăjește fundul și marginile, creând o crustă aurie irezistibilă. Mai mult ulei este mai bine aici.</li>
+      <li><strong>Fă gropițele cu convingere.</strong> Apasă degetele până la fundul tăvii. Gropițele timide dispar în timpul coacerii. Apasă adânc.</li>
+      <li><strong>Aluat rece, cuptor fierbinte.</strong> Contrastul dintre aluatul fermentat la rece și un cuptor foarte fierbinte oferă cea mai bună creștere în cuptor și structură a bulelor.</li>
+      <li><strong>Idei de topping dincolo de rozmarin:</strong> roșii cherry tăiate în jumătate, ceapă roșie feliată subțire, măsline fără sâmbure, capere, za'atar, sau un fir de miere și sare de mare în fulgi după coacere.</li>
+    </ul>
+  </article>
+
+  <!-- RECIPE 2: Aluat de Pizza cu Maia -->
+  <article id="recipe-2" class="recipe page-break" aria-label="Recipe: Sourdough Pizza Dough">
+    <header class="recipe-header">
+      <h2 class="recipe-title">Aluat de Pizza cu Maia</h2>
+      <div class="recipe-meta">
+        <span class="recipe-meta-item"><strong>Cantitate:</strong> 4 pizza individuale (aprox. 250 g fiecare)</span>
+        <span class="recipe-meta-item"><strong>Preparare:</strong> 20 min (+ 24h fermentare)</span>
+        <span class="recipe-meta-item"><strong>Total:</strong> ~26 ore</span>
+      </div>
+    </header>
+
+    <h3>Ingrediente</h3>
+    <table class="recipe-table">
+      <thead>
+        <tr><th>Ingredient</th><th>Cantitate</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>Făină Tipo 00 (sau făină de pâine tip forte)</td><td>600 g</td></tr>
+        <tr><td>Apă (rece, ~18 &deg;C)</td><td>420 g (hidratare 70%)</td></tr>
+        <tr><td>Maia activă (hidratare 100%)</td><td>120 g</td></tr>
+        <tr><td>Sare fină de mare</td><td>12 g</td></tr>
+        <tr><td>Ulei de măsline extravirgin</td><td>15 ml</td></tr>
+      </tbody>
+    </table>
+
+    <h3>Instrucțiuni</h3>
+    <ol class="recipe-steps">
+      <li><strong>Combină apa și maiaua.</strong> Într-un bol mare, dizolvă maiaua în apa rece, amestecând până devine lăptoasă și bine omogenizată.</li>
+      <li><strong>Adaugă făina.</strong> Toarnă făina și amestecă cu mâna sau cu o racletă până se formează o masă zdrențuită. Nu trebuie să rămână făină uscată. Acoperă și lasă în autoliză 45 de minute.</li>
+      <li><strong>Încorporează sarea și uleiul.</strong> Presară sarea peste aluat și toarnă uleiul de măsline. Ciupește și pliază repetat 2-3 minute până sunt complet incorporate.</li>
+      <li><strong>Construiește structura.</strong> Efectuează 3 serii de întinderi și plieri la intervale de 30 de minute. Aluatul ar trebui să devină vizibil mai neted și mai elastic cu fiecare serie.</li>
+      <li><strong>Împarte și formează bile.</strong> După ultima pliere, răstoarnă aluatul pe o suprafață nefăinată. Împarte în 4 bucăți egale (~260 g fiecare). Modelează fiecare bucată într-o bilă strânsă, cuprinzând aluatul cu mâinile și trăgându-l în cercuri mici pe blat, construind tensiunea de suprafață.</li>
+      <li><strong>Fermentare la rece.</strong> Pune fiecare bilă de aluat într-un recipient individual ușor uns sau pe o tavă unsă, acoperită ermetic cu folie alimentară. Refrigerează 24 de ore (se poate prelungi la 48 de ore pentru o aromă mai complexă).</li>
+      <li><strong>Încălzire.</strong> Scoate bilele de aluat din frigider cu 2 ore înainte de coacere. Lasă-le să ajungă la temperatura camerei, acoperite.</li>
+      <li><strong>Modelează.</strong> Făinează generos suprafața de lucru cu griș sau făină. Pune o bilă de aluat pe suprafață. Cu vârful degetelor, apasă din centru spre exterior, lăsând un chenar de 2 cm neatins pentru cornicione (marginea pufoasă). Ridică aluatul și lasă gravitația să ajute la întindere, rotind și trăgând ușor până ajunge la 28-30 cm diametru. Nu folosi sucitorul.</li>
+      <li><strong>Coace.</strong> Preîncălzește cuptorul la temperatura maximă (250-300 &deg;C) cu o placă de coacere din oțel sau o tavă de copt întoarsă în interior, timp de cel puțin 45 de minute. Pune toppingul rapid pe pizza și glisează-o pe suprafața fierbinte. Coace 6-10 minute până când crusta are bășici și urme de carbonizare, iar fundul este auriu intens.</li>
+    </ol>
+
+    <h3>Sfaturi Profesionale</h3>
+    <ul class="recipe-tips">
+      <li><strong>Apă rece, fermentare lungă.</strong> Folosirea apei reci și a fermentării la rece dezvoltă arome complexe fără suprafermentare. Aluatul ar trebui să crească cu aproximativ 50% în volum în 24 de ore.</li>
+      <li><strong>Făina Tipo 00</strong> face o diferență notabilă. Măcinarea fină și conținutul moderat de proteine produc un aluat fragil și extensibil care se întinde ușor și face bășici frumoase. Făina de pâine funcționează, dar textura va fi mai gumată.</li>
+      <li><strong>Nu folosi niciodată sucitorul.</strong> Întinderea cu mâinile păstrează bulele de gaz care creează acele bășici carbonizate râvnite pe crustă.</li>
+      <li><strong>Placa de oțel este upgrade-ul suprem.</strong> O placă de oțel conduce căldura mult mai eficient decât o piatră, crocantind fundul în câteva minute. Este cea mai bună investiție pentru pizza făcută acasă.</li>
+      <li><strong>Testul ferestrei</strong> ajută la verificarea dezvoltării glutenului. După plieri, ciupește o bucată mică și întinde-o subțire. Dacă se întinde translucidă fără să se rupă, ai suficientă structură.</li>
+    </ul>
+  </article>
+
+  <!-- RECIPE 3: Clătite și Gofre din Maia Rămasă -->
+  <article id="recipe-3" class="recipe page-break" aria-label="Recipe: Discard Pancakes and Waffles">
+    <header class="recipe-header">
+      <h2 class="recipe-title">Clătite și Gofre din Maia Rămasă</h2>
+      <div class="recipe-meta">
+        <span class="recipe-meta-item"><strong>Cantitate:</strong> 8-10 clătite sau 4 gofre belgiene</span>
+        <span class="recipe-meta-item"><strong>Preparare:</strong> 10 min</span>
+        <span class="recipe-meta-item"><strong>Total:</strong> 25 minute</span>
+      </div>
+    </header>
+
+    <h3>Ingrediente</h3>
+    <table class="recipe-table">
+      <thead>
+        <tr><th>Ingredient</th><th>Cantitate</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>Maia rămasă (nehrănită, direct din frigider)</td><td>200 g</td></tr>
+        <tr><td>Făină albă universală</td><td>150 g</td></tr>
+        <tr><td>Lapte (orice fel)</td><td>180 ml</td></tr>
+        <tr><td>Ouă</td><td>2</td></tr>
+        <tr><td>Zahăr granulat</td><td>25 g</td></tr>
+        <tr><td>Unt topit (+ extra pentru gătit)</td><td>40 g</td></tr>
+        <tr><td>Praf de copt</td><td>6 g (1,5 linguriță)</td></tr>
+        <tr><td>Bicarbonat de sodiu</td><td>3 g (0,5 linguriță)</td></tr>
+        <tr><td>Extract de vanilie</td><td>5 ml (1 linguriță)</td></tr>
+        <tr><td>Sare fină de mare</td><td>3 g (0,5 linguriță)</td></tr>
+      </tbody>
+    </table>
+
+    <h3>Instrucțiuni &mdash; Clătite</h3>
+    <ol class="recipe-steps">
+      <li><strong>Bate ingredientele umede.</strong> Într-un bol mare, combină maiaua rămasă, laptele, ouăle, untul topit, zahărul și vanilia. Bate cu telul până devine neted și omogen.</li>
+      <li><strong>Adaugă ingredientele uscate.</strong> Cerne făina, praful de copt, bicarbonatul de sodiu și sarea peste amestecul umed. Amestecă delicat cu o spatulă până se omogenizează. Câteva cocoloașe mici sunt în regulă. Nu amesteca excesiv, altfel clătitele vor fi tari.</li>
+      <li><strong>Odihnește compoziția.</strong> Lasă compoziția să se odihnească 5 minute. Se va umfla ușor pe măsură ce bicarbonatul reacționează cu aciditatea maielei.</li>
+      <li><strong>Gătește.</strong> Încinge o tigaie antiaderentă sau o plită la foc mediu. Adaugă un nuc de unt. Toarnă aproximativ 60 ml de compoziție per clătită. Gătește până se formează bule pe suprafață și marginile par setate (aproximativ 2-3 minute). Întoarce și gătește încă 1-2 minute până devine auriu.</li>
+      <li><strong>Servește imediat</strong> cu unt, sirop de arțar, fructe de pădure proaspete sau toppingurile preferate.</li>
+    </ol>
+
+    <h4>Varianta Gofre</h4>
+    <p>Folosește aceeași compoziție, dar mărește untul topit la 60 g pentru margini mai crocante. Preîncălzește aparatul de gofre la temperatura medie-mare. Pune compoziția în centru și gătește conform instrucțiunilor aparatului (de obicei 4-5 minute până oprirea aburului și gofra este auriu intens). Pentru gofre extra-crocante, lasă-le să se răcească pe un grătar în loc să le stivuiești.</p>
+
+    <h4>Varianta Sărată</h4>
+    <p>Omite zahărul și vanilia. Adaugă 40 g de Parmezan ras, 2 linguri de arpagic tocat și piper negru măcinat generos în compoziție. Servește cu un ou prăjit, somon afumat sau legume la cuptor.</p>
+
+    <h3>Sfaturi Profesionale</h3>
+    <ul class="recipe-tips">
+      <li><strong>Orice maia rămasă funcționează.</strong> Maia proaspătă, maia veche de o săptămână din fundul frigiderului, chiar și maia ușor supra-fermentată. Cu cât maiaua este mai acră, cu atât aroma este mai complexă. Agenții de dospire se ocupă de creștere.</li>
+      <li><strong>Bicarbonatul de sodiu este secretul.</strong> Neutralizează aciditatea excesivă din maia, creând în același timp extra creștere. Combinat cu praful de copt, obții clătite pufoase, fragede, cu o aciditate subtilă.</li>
+      <li><strong>Nu amesteca excesiv.</strong> Amestecă până făina abia dispare. Amestecarea excesivă dezvoltă glutenul și face clătitele cauciucoase. Cocoloașele sunt prietenii tăi aici.</li>
+      <li><strong>Congelează surplusul.</strong> Răcește clătitele complet, stivuiește-le cu hârtie de copt între ele și congelează într-o pungă cu fermoar. Reîncălzește în toaster pentru un mic dejun de 2 minute.</li>
+    </ul>
+  </article>
+
+  <!-- RECIPE 4: Crackers cu Maia -->
+  <article id="recipe-4" class="recipe page-break" aria-label="Recipe: Sourdough Crackers">
+    <header class="recipe-header">
+      <h2 class="recipe-title">Crackers cu Maia</h2>
+      <div class="recipe-meta">
+        <span class="recipe-meta-item"><strong>Cantitate:</strong> aproximativ 40 de crackers</span>
+        <span class="recipe-meta-item"><strong>Preparare:</strong> 15 min</span>
+        <span class="recipe-meta-item"><strong>Total:</strong> 40 minute</span>
+      </div>
+    </header>
+
+    <h3>Ingrediente &mdash; Aluat de Bază</h3>
+    <table class="recipe-table">
+      <thead>
+        <tr><th>Ingredient</th><th>Cantitate</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>Maia rămasă (nehrănită)</td><td>200 g</td></tr>
+        <tr><td>Făină albă universală</td><td>120 g</td></tr>
+        <tr><td>Ulei de măsline extravirgin</td><td>30 ml</td></tr>
+        <tr><td>Sare fină de mare</td><td>4 g (0,75 linguriță)</td></tr>
+        <tr><td>Sare de mare în fulgi</td><td>pentru topping</td></tr>
+      </tbody>
+    </table>
+
+    <h4>Varianta: Unt cu Ierburi</h4>
+    <table class="recipe-table recipe-table--small">
+      <thead>
+        <tr><th>Ingredient</th><th>Cantitate</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>Unt topit</td><td>30 g (înlocuiește uleiul de măsline)</td></tr>
+        <tr><td>Ierburi italiene uscate</td><td>2 lingurițe</td></tr>
+        <tr><td>Usturoi pudră</td><td>0,5 linguriță</td></tr>
+      </tbody>
+    </table>
+
+    <h4>Varianta: Everything Bagel</h4>
+    <table class="recipe-table recipe-table--small">
+      <thead>
+        <tr><th>Ingredient</th><th>Cantitate</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>Semințe de susan</td><td>1 lingură</td></tr>
+        <tr><td>Semințe de mac</td><td>1 lingură</td></tr>
+        <tr><td>Usturoi uscat mărunțit</td><td>1 lingură</td></tr>
+        <tr><td>Ceapă uscată mărunțită</td><td>1 lingură</td></tr>
+        <tr><td>Sare de mare în fulgi</td><td>1 linguriță</td></tr>
+      </tbody>
+    </table>
+
+    <h4>Varianta: Rozmarin cu Sare de Mare</h4>
+    <table class="recipe-table recipe-table--small">
+      <thead>
+        <tr><th>Ingredient</th><th>Cantitate</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>Rozmarin proaspăt, tocat fin</td><td>1 lingură</td></tr>
+        <tr><td>Sare de mare în fulgi</td><td>1 linguriță</td></tr>
+        <tr><td>Piper negru spart</td><td>0,5 linguriță</td></tr>
+      </tbody>
+    </table>
+
+    <h3>Instrucțiuni</h3>
+    <ol class="recipe-steps">
+      <li><strong>Fă aluatul.</strong> Într-un bol, combină maiaua rămasă, făina, uleiul de măsline (sau untul topit pentru varianta cu unt cu ierburi) și sarea fină de mare. Dacă folosești o variantă, adaugă ierburile și condimentele acum (cu excepția toppingurilor precum semințele și sarea în fulgi). Amestecă până se formează un aluat coerent. Trebuie să fie neted și ușor lipicios, dar nu cleios.</li>
+      <li><strong>Odihnește.</strong> Învelește aluatul în folie sau acoperă și lasă-l să se odihnească 10 minute. Aceasta relaxează glutenul și face întinderea mai ușoară.</li>
+      <li><strong>Preîncălzește.</strong> Setează cuptorul la 190 &deg;C. Tapetează două tăvi de copt cu hârtie de copt.</li>
+      <li><strong>Întinde subțire.</strong> Împarte aluatul în două. Pe o suprafață ușor făinată (sau între două foi de hârtie de copt), întinde fiecare jumătate cât de subțire posibil, aproximativ 1-2 mm. Cu cât este mai subțire, cu atât va fi mai crocant. Aluatul ar trebui să fie aproape translucid pe alocuri.</li>
+      <li><strong>Decorează și taie.</strong> Pensulează suprafața ușor cu ulei de măsline sau apă. Presară toppingurile alese (amestecul everything bagel, rozmarin și sare, sau sare de mare în fulgi pentru varianta de bază) și apasă-le ușor cu sucitorul. Taie în dreptunghiuri, pătrate sau bucăți neregulate cu o roată de pizza sau un cuțit ascuțit. Nu trebuie să le separi; se vor rupe ușor după coacere.</li>
+      <li><strong>Coace.</strong> Transferă hârtia de copt cu aluatul tăiat pe tăvile de copt. Coace 12-18 minute, verificând frecvent după 12 minute. Crackersii sunt gata când sunt auriu-maronii și fermi. Marginile se rumenesc primele; scoate bucățile gata mai devreme și pune-le pe restul înapoi.</li>
+      <li><strong>Răcește complet</strong> pe tavă. Se vor crocănți și mai mult pe măsură ce se răcesc.</li>
+    </ol>
+
+    <h3>Sfaturi Profesionale</h3>
+    <ul class="recipe-tips">
+      <li><strong>Grosimea contează mai mult decât orice.</strong> Greșeala numărul unu este întinderea prea groasă. Dacă crackersii sunt gumați în loc de crocanți, întinde mai subțire data viitoare. Țintește grosimea unui card bancar.</li>
+      <li><strong>Rotește tava</strong> la jumătatea coacerii pentru o rumenire uniformă. Cuptoarele au zone mai calde, iar crackersii subțiri nu iartă.</li>
+      <li><strong>Tehnica întinderii pe hârtie de copt.</strong> Întinde aluatul între două foi de hârtie de copt pentru a preveni lipirea fără a adăuga făină în exces, care estompează aroma.</li>
+      <li><strong>Depozitare.</strong> Păstrează într-un recipient etanș la temperatura camerei până la 10 zile. Dacă se înmoaie, re-crocantează-i într-un cuptor la 150 &deg;C timp de 5 minute.</li>
+      <li><strong>Asociază-i.</strong> Acești crackers strălucesc alături de hummus, brânză moale, dip de somon afumat sau un bol simplu de ulei de măsline bun cu za'atar pentru înmuiere.</li>
+    </ul>
+  </article>
+
+  <!-- RECIPE 5: Brioche cu Maia -->
+  <article id="recipe-5" class="recipe page-break" aria-label="Recipe: Sourdough Brioche">
+    <header class="recipe-header">
+      <h2 class="recipe-title">Brioche cu Maia</h2>
+      <div class="recipe-meta">
+        <span class="recipe-meta-item"><strong>Cantitate:</strong> 1 pâine (tavă de 23 x 13 cm) sau 12 chiflute</span>
+        <span class="recipe-meta-item"><strong>Preparare:</strong> 45 min (+ 14-16h fermentare)</span>
+        <span class="recipe-meta-item"><strong>Total:</strong> ~17 ore</span>
+      </div>
+    </header>
+
+    <h3>Ingrediente</h3>
+    <table class="recipe-table">
+      <thead>
+        <tr><th>Ingredient</th><th>Cantitate</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>Făină de pâine (tip forte)</td><td>400 g</td></tr>
+        <tr><td>Zahăr granulat</td><td>50 g</td></tr>
+        <tr><td>Sare fină de mare</td><td>8 g</td></tr>
+        <tr><td>Maia activă (hidratare 100%)</td><td>80 g</td></tr>
+        <tr><td>Ouă la temperatura camerei</td><td>4 mari</td></tr>
+        <tr><td>Lapte cald (~30 &deg;C)</td><td>60 ml</td></tr>
+        <tr><td>Unt nesărat, moale (nu topit)</td><td>170 g</td></tr>
+        <tr><td>Ou bătut pentru glazură (1 ou + 15 ml lapte)</td><td>pentru pensulare</td></tr>
+      </tbody>
+    </table>
+
+    <h3>Instrucțiuni</h3>
+    <ol class="recipe-steps">
+      <li><strong>Combină aluatul de bază.</strong> Într-un bol mare (sau la robotul de bucătărie cu cârligul de aluat), combină făina, zahărul și sarea. Adaugă maiaua, ouăle și laptele cald. Amestecă la viteză mică 3 minute până se formează un aluat zdrențuit, apoi crește la viteză medie și frământă 8-10 minute până aluatul devine neted, elastic și se desprinde de pereții bolului. Aluatul va fi destul de lipicios în această etapă; rezistă tentației de a adăuga mai multă făină.</li>
+      <li><strong>Încorporează untul.</strong> Cu mixerul la viteză medie-mică, adaugă untul moale câte o lingură. Așteaptă ca fiecare porție să fie complet absorbită înainte de a adăuga următoarea. Acest proces durează aproximativ 10-12 minute în total. După ce tot untul este încorporat, frământă la viteză medie încă 3-4 minute. Aluatul finit trebuie să fie lucios, foarte moale și elastic. Se va lovi de pereții bolului curat.</li>
+      <li><strong>Fermentare principală la temperatura camerei.</strong> Transferă aluatul într-un bol ușor uns cu unt. Acoperă ermetic și lasă să fermenteze la temperatura camerei (21-24 &deg;C) 3-4 ore, efectuând o pliere delicată după 1,5 ore. Aluatul ar trebui să arate ușor umflat, dar nu va dubla.</li>
+      <li><strong>Fermentare la rece.</strong> Acoperă ermetic și refrigerează 10-12 ore (peste noapte). Frigul solidifică untul din aluat, făcându-l modelabil, și dezvoltă o aromă complexă și profundă.</li>
+      <li>
+        <strong>Modelează.</strong> Scoate aluatul refrigerat din frigider. Va fi ferm și ușor de manevrat.
+        <ul>
+          <li><strong>Pentru pâine:</strong> Împarte în 4 bucăți egale. Modelează fiecare într-o bilă și pune-le una lângă alta într-o tavă de chec unsă cu unt de 23 x 13 cm.</li>
+          <li><strong>Pentru chiflute:</strong> Împarte în 12 bucăți egale (aprox. 70 g fiecare). Modelează fiecare într-o bilă strânsă și aranjează-le pe o tavă unsă cu unt sau tapetată cu hârtie de copt, la 3 cm distanță.</li>
+          <li><strong>Pentru pull-apart:</strong> Împarte în 8-10 bucăți, modelează-le în bile și aranjează-le strâns într-o formă de tort rotundă sau o tigaie din fontă.</li>
+        </ul>
+      </li>
+      <li><strong>Dospit final.</strong> Acoperă lejer și lasă să crească la temperatura camerei 3-4 ore (brioche dospește lent din cauza untului). Aluatul este gata când a crescut vizibil cu aproximativ 75%, se simte pufos și ușor când atingi ușor tava și revine lent când îl apeși cu un deget făinat.</li>
+      <li><strong>Glazurează și coace.</strong> Preîncălzește cuptorul la 175 &deg;C. Pensulează delicat vârfurile cu ou bătut, având grijă să nu desumfli aluatul. Coace 30-35 de minute pentru pâine, 18-22 de minute pentru chiflute. Brioche este gata când este auriu intens deasupra și temperatura internă atinge 88-90 &deg;C.</li>
+      <li><strong>Răcește.</strong> Lasă să se odihnească în tavă 10 minute, apoi răstoarnă pe un grătar. Crusta va fi subțire și aurie; miezul va fi moale ca bumbacul, bogat și se va desface în straturi plumoase.</li>
+    </ol>
+
+    <h3>Sfaturi Profesionale</h3>
+    <ul class="recipe-tips">
+      <li><strong>Temperatura untului este critică.</strong> Untul trebuie să fie moale (maleabil, nu gras), dar niciodată topit. Untul rece nu se va încorpora; untul topit rupe emulsia. Țintește consistența unui frosting gros.</li>
+      <li><strong>Răbdare la încorporarea untului.</strong> Adăugarea untului într-un aluat îmbogățit este un test de răbdare. Aluatul va arăta ca un dezastru gras și rupt la jumătatea procesului. Continuă să amesteci. Se va aduna într-un aluat lucios și neted care se lovește curat de bol.</li>
+      <li><strong>Nu sări peste fermentarea la rece.</strong> Răcirea peste noapte este non-negociabilă. Solidifică untul pentru a putea modela aluatul, iar fermentarea lentă la rece oferă brioche-ului cu maia acea profunzime distinctivă de aromă pe care versiunile cu drojdie nu o pot egala.</li>
+      <li><strong>Temperatură scăzută de coacere.</strong> Brioche se arde ușor din cauza conținutului ridicat de zahăr și unt. Coace la 175 &deg;C, nu mai mult. Dacă suprafața se rumenește prea repede, acoperă cu folie de aluminiu pentru ultimele 10 minute.</li>
+      <li><strong>Brioche de a doua zi</strong> face cele mai bune french toast și budincă de pâine. Textura ușor uscată absoarbe perfect crema de ouă fără a se dezintegra.</li>
+    </ul>
+  </article>
+
+  <!-- ===================================================================
+       PART IV — PRINTABLE REFERENCE TOOLS
+       =================================================================== -->
+  <section class="part-divider page-break" aria-label="Part IV">
+    <p class="part-number">Partea IV</p>
+    <h2 class="part-divider-title">Materiale de Referință Printabile</h2>
+    <p class="part-divider-subtitle">3 Referințe pentru Bucătărie</p>
+  </section>
+
+  <!-- PRINTABLE 1: Referință Rapidă pentru Hrănire -->
+  <article id="printable-1" class="printable page-break" aria-label="Printable: Feeding Quick Reference">
+    <h2 class="printable-title">Referință Rapidă pentru Hrănire</h2>
+    <p class="printable-subtitle">O pagină-fișă pentru fiecare scenariu de hrănire pe care îl vei întâlni.</p>
+
+    <table class="printable-table">
+      <thead>
+        <tr>
+          <th>Scop</th>
+          <th>Raport<br>(maia : făină : apă)</th>
+          <th>Temp. Apă</th>
+          <th>Timp până la Vârf</th>
+          <th>Note</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>Întreținere zilnică</strong></td>
+          <td>1 : 5 : 5</td>
+          <td>25-28 &deg;C</td>
+          <td>8-12 ore</td>
+          <td>O dată pe zi la temperatura camerei. Folosește maiaua rămasă în rețete. Un program consecvent construiește un comportament previzibil.</td>
+        </tr>
+        <tr>
+          <td><strong>Hrănire pre-coacere</strong></td>
+          <td>1 : 2 : 2</td>
+          <td>28-30 &deg;C</td>
+          <td>4-6 ore</td>
+          <td>Hrănește dimineața zilei de coacere. Folosește la vârf (vârf bombat, trece testul de plutire). Un raport mai mic înseamnă vârf mai rapid, deci poți coace mai devreme.</td>
+        </tr>
+        <tr>
+          <td><strong>Reactivare din frigider</strong></td>
+          <td>1 : 2 : 2 apoi 1 : 5 : 5</td>
+          <td>28-30 &deg;C</td>
+          <td>Hrănire 1: 6-8 h<br>Hrănire 2: 8-12 h</td>
+          <td>Prima hrănire trezește cultura. A doua hrănire la raportul normal restabilește echilibrul. Așteaptă-te la vigoare completă la a doua sau a treia hrănire.</td>
+        </tr>
+        <tr>
+          <td><strong>Construire volum</strong></td>
+          <td>1 : 1 : 1</td>
+          <td>25-28 &deg;C</td>
+          <td>3-4 ore</td>
+          <td>Când ai nevoie de mai multă maia decât de obicei (ex. pentru mai multe pâini). Raport mic, vârf rapid. Hrănește de mai multe ori pentru a acumula cantitate fără risipă.</td>
+        </tr>
+        <tr>
+          <td><strong>Maia densă<br>(hidratare 60%)</strong></td>
+          <td>1 : 5 : 3</td>
+          <td>25-28 &deg;C</td>
+          <td>10-16 ore</td>
+          <td>Fermentare mai lentă, mai acetică (oțetată). Excelentă pentru coacere cu retardare la rece și pâine cu aciditate complexă. Consistență de aluat, nu lichidă.</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <h3>Amintiri Esențiale</h3>
+    <ul class="printable-reminders">
+      <li><strong>Testul de plutire:</strong> Pune o lingură de maia în apă. Dacă plutește, este la sau aproape de vârful de activitate și gata de utilizare.</li>
+      <li><strong>Când ai dubii, hrănește din nou.</strong> O maia sub-activă nu va da rezultate bune. O maia sănătoasă își dublează volumul în 4-8 ore la temperatura camerei.</li>
+      <li><strong>Depozitare la frigider:</strong> Hrănește, lasă să crească 1-2 ore la temperatura camerei, apoi refrigerează. Hrănește cel puțin o dată pe săptămână pentru a menține cultura sănătoasă.</li>
+      <li><strong>Temperatura controlează viteza.</strong> Mai cald = fermentare mai rapidă. Mai rece = mai lentă, dezvoltare mai complexă a aromei. Folosește acest lucru pentru a potrivi coacerea cu programul tău.</li>
+      <li><strong>Raporturile sunt în greutate.</strong> Cântărește întotdeauna ingredientele. „1:5:5" înseamnă că pentru fiecare 10 g de maia, adaugi 50 g făină și 50 g apă.</li>
+    </ul>
+  </article>
+
+  <!-- PRINTABLE 2: Ghid Comparativ al Făinurilor -->
+  <article id="printable-2" class="printable page-break" aria-label="Printable: Flour Comparison Guide">
+    <h2 class="printable-title">Ghid Comparativ al Făinurilor</h2>
+    <p class="printable-subtitle">Înțelegerea comportamentului diferitelor tipuri de făină în coacerea cu maia.</p>
+
+    <table class="printable-table">
+      <thead>
+        <tr>
+          <th>Tip de Făină</th>
+          <th>Proteine %</th>
+          <th>Profil de Aromă</th>
+          <th>Ideală Pentru</th>
+          <th>Viteza Fermentării</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>Făină albă de pâine</strong></td>
+          <td>11,5-13%</td>
+          <td>Curată, blândă, de grâu</td>
+          <td>Pâine toast, pizza, focaccia, covrigi</td>
+          <td>Medie. Previzibilă și constantă. Făina de referință pentru majoritatea coacerilor cu maia.</td>
+        </tr>
+        <tr>
+          <td><strong>Făină integrală de grâu</strong></td>
+          <td>13-14%</td>
+          <td>Nucată, pământoasă, robustă</td>
+          <td>Pâini rustice consistente, amestecată cu făină albă pentru profunzime de aromă</td>
+          <td>Rapidă. Tărâțele și germenul hrănesc agresiv drojdiile sălbatice. Începe cu amestec de 20-30%; făina integrală 100% fermentează foarte rapid și necesită timing atent.</td>
+        </tr>
+        <tr>
+          <td><strong>Făină de secară</strong></td>
+          <td>8-10%</td>
+          <td>Profundă, de malț, acrișoară</td>
+          <td>Pâine de secară, rugbrod danez, pumpernickel, adăugiri de aromă</td>
+          <td>Foarte rapidă. Extrem de activă enzimatic. Fermentează rapid și se descompune repede. Cel mai bine folosită ca 10-20% din făina totală pentru a adăuga complexitate fără a pierde structura.</td>
+        </tr>
+        <tr>
+          <td><strong>Făină albă universală</strong></td>
+          <td>9,5-11,5%</td>
+          <td>Neutră, moale</td>
+          <td>Rețete din maia rămasă (clătite, crackers, brioșe), produse de patiserie fragede</td>
+          <td>Medie-lentă. Conținutul mai mic de proteine înseamnă mai puțină dezvoltare a glutenului. Funcționează pentru hrănirea maielei, dar oferă mai puțină creștere în cuptor decât făina de pâine.</td>
+        </tr>
+        <tr>
+          <td><strong>Făină de alac (spelt)</strong></td>
+          <td>12-15%</td>
+          <td>Dulce, ușor nucată, delicată</td>
+          <td>Pâini artizanale, chiflute, aluaturi îmbogățite</td>
+          <td>Rapidă. Bogată în zaharuri pe care drojdia le adoră. Glutenul este fragil; manevrează delicat, reduce hidratarea cu 5-10% și scurtează fermentarea principală pentru a evita supra-fermentarea.</td>
+        </tr>
+        <tr>
+          <td><strong>Făină einkorn</strong></td>
+          <td>12-15% (gluten slab)</td>
+          <td>Bogată, untoasă, aproape dulce</td>
+          <td>Lipii, paste, pâini artizanale joase, coacere în amestec</td>
+          <td>Medie-rapidă. Cereală antică cu aromă frumoasă, dar gluten foarte slab și extensibil. Nu este potrivită pentru pâini înalte de una singură. Amestecă 20-30% cu făină de pâine pentru aromă fără a sacrifica structura.</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <h3>Sfaturi pentru Selecția Făinii</h3>
+    <ul class="printable-reminders">
+      <li><strong>Procentul de proteine nu spune totul.</strong> Calitatea glutenului contează la fel de mult ca și cantitatea. Alacul și einkorn au proteine ridicate, dar gluten fragil. Făina de pâine are gluten puternic, elastic, ideal pentru captarea gazelor.</li>
+      <li><strong>Făina proaspăt măcinată</strong> fermentează semnificativ mai rapid decât cea din magazin, deoarece tărâțele și germenul sunt încă activi enzimatic. Reduce timpul de fermentare principală cu 20-30% când folosești făină proaspăt măcinată.</li>
+      <li><strong>Începe cu făina de pâine</strong> ca făină principală. Odată ce înțelegi comportamentul maielei tale, experimentează înlocuind 10-20% cu făină integrală, de secară sau de alac pentru complexitate de aromă.</li>
+      <li><strong>Depozitează făina corect.</strong> Făina albă se păstrează 6-12 luni într-un loc răcoros și uscat. Făinurile integrale se râncezesc mai repede; refrigerează-le sau congelează-le și adu-le la temperatura camerei înainte de utilizare.</li>
+    </ul>
+  </article>
+
+  <!-- PRINTABLE 3: Săptămâna Mea de Copt — Planificator Săptămânal -->
+  <article id="printable-3" class="printable page-break" aria-label="Printable: My Baking Week">
+    <h2 class="printable-title">Săptămâna Mea de Copt</h2>
+    <p class="printable-subtitle">Printează o copie pe săptămână. Planifică-ți hrănirile în jurul programului tău, astfel încât maiaua să ajungă la vârf exact când ai nevoie.</p>
+
+    <h3>Săptămâna din: _________________________</h3>
+
+    <table class="planner-table">
+      <thead>
+        <tr>
+          <th>Ziua</th>
+          <th>Ora Hrănirii</th>
+          <th>Vârf Estimat</th>
+          <th>Coacere?</th>
+          <th>Rețetă / Plan</th>
+          <th>Note</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr><td><strong>Luni</strong></td><td class="planner-cell"></td><td class="planner-cell"></td><td class="planner-cell">Da / Nu</td><td class="planner-cell"></td><td class="planner-cell"></td></tr>
+        <tr><td><strong>Marți</strong></td><td class="planner-cell"></td><td class="planner-cell"></td><td class="planner-cell">Da / Nu</td><td class="planner-cell"></td><td class="planner-cell"></td></tr>
+        <tr><td><strong>Miercuri</strong></td><td class="planner-cell"></td><td class="planner-cell"></td><td class="planner-cell">Da / Nu</td><td class="planner-cell"></td><td class="planner-cell"></td></tr>
+        <tr><td><strong>Joi</strong></td><td class="planner-cell"></td><td class="planner-cell"></td><td class="planner-cell">Da / Nu</td><td class="planner-cell"></td><td class="planner-cell"></td></tr>
+        <tr><td><strong>Vineri</strong></td><td class="planner-cell"></td><td class="planner-cell"></td><td class="planner-cell">Da / Nu</td><td class="planner-cell"></td><td class="planner-cell"></td></tr>
+        <tr><td><strong>Sâmbătă</strong></td><td class="planner-cell"></td><td class="planner-cell"></td><td class="planner-cell">Da / Nu</td><td class="planner-cell"></td><td class="planner-cell"></td></tr>
+        <tr><td><strong>Duminică</strong></td><td class="planner-cell"></td><td class="planner-cell"></td><td class="planner-cell">Da / Nu</td><td class="planner-cell"></td><td class="planner-cell"></td></tr>
+      </tbody>
+    </table>
+
+    <h3>Obiectivele Săptămânii</h3>
+    <ul class="planner-goals">
+      <li class="planner-goal-line">________________________________________________________</li>
+      <li class="planner-goal-line">________________________________________________________</li>
+      <li class="planner-goal-line">________________________________________________________</li>
+      <li class="planner-goal-line">________________________________________________________</li>
+    </ul>
+
+    <h3>Urmărirea Maielei Rămase</h3>
+    <table class="planner-table planner-table--compact">
+      <thead>
+        <tr>
+          <th>Ziua</th>
+          <th>Cantitate Rămasă (g)</th>
+          <th>Folosită Pentru</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr><td>Lun</td><td class="planner-cell"></td><td class="planner-cell"></td></tr>
+        <tr><td>Mar</td><td class="planner-cell"></td><td class="planner-cell"></td></tr>
+        <tr><td>Mie</td><td class="planner-cell"></td><td class="planner-cell"></td></tr>
+        <tr><td>Joi</td><td class="planner-cell"></td><td class="planner-cell"></td></tr>
+        <tr><td>Vin</td><td class="planner-cell"></td><td class="planner-cell"></td></tr>
+        <tr><td>Sâm</td><td class="planner-cell"></td><td class="planner-cell"></td></tr>
+        <tr><td>Dum</td><td class="planner-cell"></td><td class="planner-cell"></td></tr>
+      </tbody>
+    </table>
+
+    <p><strong>Total maia rămasă în această săptămână:</strong> ______________ g &nbsp; &nbsp; <strong>Rețete făcute din maia rămasă:</strong> ______________</p>
+
+    <h3>Reflecția Săptămânii</h3>
+    <p class="planner-reflection"><strong>Ce a mers bine:</strong> ____________________________________________________________</p>
+    <p class="planner-reflection"><strong>Ce trebuie ajustat săptămâna viitoare:</strong> ____________________________________________________________</p>
+    <p class="planner-reflection"><strong>Observații despre maia:</strong> ____________________________________________________________</p>
+  </article>
+
+  <!-- ===================================================================
+       PART V — APPENDICES
+       =================================================================== -->
+  <section class="part-divider page-break" aria-label="Part V">
+    <p class="part-number">Partea V</p>
+    <h2 class="part-divider-title">Anexe</h2>
+    <p class="part-divider-subtitle">Glosar, Întrebări Frecvente și Calendar Sezonier</p>
+  </section>
+
+  <article id="glossary" class="appendix page-break" aria-label="Glossary">
+    <h2 class="appendix-title">Glosar de Termeni pentru Maia</h2>
+    <div class="appendix-content glossary">
+      {{glossaryContent}}
+    </div>
+  </article>
+
+  <article id="faq" class="appendix page-break" aria-label="FAQ">
+    <h2 class="appendix-title">Întrebări Frecvente</h2>
+    <div class="appendix-content faq">
+      {{faqContent}}
+    </div>
+  </article>
+
+  <article id="seasonal-calendar" class="appendix page-break" aria-label="Seasonal Calendar">
+    <h2 class="appendix-title">Calendar Sezonier de Coacere</h2>
+    <div class="appendix-content seasonal-calendar">
+      {{seasonalCalendarContent}}
+    </div>
+  </article>
+
+  <!-- ===================================================================
+       BACK COVER
+       =================================================================== -->
+  <section class="back-cover page-break" aria-label="Back Cover">
+    <div class="back-cover-content">
+      <h2 class="back-cover-thanks">Mulțumim pentru Lectură</h2>
+
+      <p class="back-cover-message">Sperăm că acest ghid va deveni un companion de încredere în bucătăria ta. Coacerea cu maia este o practică a răbdării, observației și învățării continue. Fiecare pâine te învață ceva nou.</p>
+
+      <div class="back-cover-separator"></div>
+
+      <div class="back-cover-links">
+        <p><strong>Maiaua Mea</strong></p>
+        <p><a href="https://maiauamea.ro">maiauamea.ro</a></p>
+        <p>Descarcă gratuit aplicația de urmărire a maielei</p>
+      </div>
+
+      <div class="back-cover-separator"></div>
+
+      <p class="back-cover-copyright">Copyright &copy; 2026 Maiaua Mea. Toate drepturile rezervate.</p>
+      <p class="back-cover-legal">Nicio parte a acestei publicații nu poate fi reprodusă, distribuită sau transmisă sub nicio formă sau prin niciun mijloc fără permisiunea scrisă prealabilă.</p>
+    </div>
+  </section>
+
+</body>
+</html>
