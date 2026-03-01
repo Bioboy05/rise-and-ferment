@@ -169,7 +169,7 @@ button:focus-visible,.btn:focus-visible{outline:2px solid var(--crust);outline-o
 .a-lang{display:flex;gap:8px;margin-bottom:32px;flex-wrap:wrap}
 .a-lang__btn{padding:8px 18px;border-radius:100px;font-size:.85rem;font-weight:700;border:2px solid rgba(139,90,43,.15);color:var(--rye);background:transparent;cursor:pointer;transition:all .3s}
 .a-lang__btn.active{background:var(--crust);color:var(--cream);border-color:var(--crust)}.a-lang__btn:hover:not(.active){border-color:var(--crust);color:var(--crust)}
-.a-lang__code{display:none}.a-lang__name{display:inline}@media(max-width:480px){.a-lang__code{display:inline}.a-lang__name{display:none}.a-lang__btn{padding:8px 14px}}
+.a-lang__flag,.a-lang__code{display:none}.a-lang__name{display:inline}@media(max-width:480px){.a-lang__flag,.a-lang__name{display:none}.a-lang__code{display:inline}.a-lang__btn{padding:8px 14px}}
 .a-head{margin-bottom:40px}.a-cat{display:inline-block;background:rgba(139,90,43,.08);padding:5px 14px;border-radius:100px;font-size:.78rem;font-weight:700;color:var(--crust);text-transform:uppercase;letter-spacing:.05em;margin-bottom:16px}
 .a-title{font-family:var(--font-display);font-size:clamp(2rem,4vw,3rem);font-weight:700;color:var(--crust-deep);line-height:1.15;margin-bottom:16px}
 .a-meta{font-size:.9rem;color:var(--wheat);display:flex;align-items:center;gap:16px;flex-wrap:wrap}
@@ -2002,7 +2002,7 @@ function langBtns() {
   };
 
   return Object.entries(langs)
-    .map(([k, v]) => `<button class="a-lang__btn ${lang === k ? 'active' : ''}" onclick="setLang('${k}')">${v.flag} <span class="a-lang__code">${v.code}</span><span class="a-lang__name">${v.name}</span></button>`)
+    .map(([k, v]) => `<button class="a-lang__btn ${lang === k ? 'active' : ''}" onclick="setLang('${k}')"><span class="a-lang__flag">${v.flag} </span><span class="a-lang__code">${v.code}</span><span class="a-lang__name">${v.name}</span></button>`)
     .join('');
 }
 
