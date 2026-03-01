@@ -170,6 +170,7 @@ button:focus-visible,.btn:focus-visible{outline:2px solid var(--crust);outline-o
 .a-lang__btn{padding:8px 18px;border-radius:100px;font-size:.85rem;font-weight:700;border:2px solid rgba(139,90,43,.15);color:var(--rye);background:transparent;cursor:pointer;transition:all .3s}
 .a-lang__btn.active{background:var(--crust);color:var(--cream);border-color:var(--crust)}.a-lang__btn:hover:not(.active){border-color:var(--crust);color:var(--crust)}
 .a-lang__flag,.a-lang__code{display:none}.a-lang__name{display:inline}@media(max-width:480px){.a-lang__flag,.a-lang__name{display:none}.a-lang__code{display:inline}.a-lang__btn{padding:8px 14px}}
+.mob-lang{display:none}@media(max-width:768px){.mob-lang{display:flex;justify-content:center;gap:6px;margin-bottom:24px;position:relative;z-index:2}.mob-lang__btn{padding:6px 14px;border-radius:100px;font-size:.72rem;font-weight:700;letter-spacing:.04em;border:1.5px solid rgba(139,90,43,.12);color:var(--rye);background:rgba(255,251,245,.5);cursor:pointer;transition:all .3s;min-height:36px}.mob-lang__btn.active{background:var(--crust);color:var(--cream);border-color:var(--crust)}.mob-lang__btn:hover:not(.active){border-color:var(--crust);color:var(--crust)}}[data-theme="dark"] .mob-lang__btn{border-color:rgba(212,165,116,.15);color:var(--wheat);background:rgba(26,22,18,.5)}[data-theme="dark"] .mob-lang__btn.active{background:var(--crust-light);color:var(--crumb);border-color:var(--crust-light)}
 .a-head{margin-bottom:40px}.a-cat{display:inline-block;background:rgba(139,90,43,.08);padding:5px 14px;border-radius:100px;font-size:.78rem;font-weight:700;color:var(--crust);text-transform:uppercase;letter-spacing:.05em;margin-bottom:16px}
 .a-title{font-family:var(--font-display);font-size:clamp(2rem,4vw,3rem);font-weight:700;color:var(--crust-deep);line-height:1.15;margin-bottom:16px}
 .a-meta{font-size:.9rem;color:var(--wheat);display:flex;align-items:center;gap:16px;flex-wrap:wrap}
@@ -443,6 +444,7 @@ body{min-height:100dvh;-webkit-tap-highlight-color:transparent}
 <!-- HERO -->
 <section class="hero" id="hero"><div class="hero__bg hero__bg--1"></div><div class="hero__bg hero__bg--2"></div><div class="ctn"><div class="hero__c">
 <div class="hero__text">
+<div class="mob-lang" id="mobLang"></div>
 <h1 class="hero__title">Your First Loaf<br>Starts <em>Here</em></h1>
 <p class="hero__desc">The beginner-friendly app that guides real people through sourdough baking — from your first starter to your first perfect loaf. Real tips, real science, zero gatekeeping.</p>
 <div class="hero__acts"><a href="/app" class="btn btn--hero">Start Baking Today <span class="btn__ar">→</span></a><a href="#guide" class="btn btn--s"><svg width="20" height="20"><use href="#ico-book"/></svg> Get Free Guide</a></div>
@@ -2043,6 +2045,14 @@ function setLang(l) {
     o.classList.toggle('active', isActive);
     o.setAttribute('aria-selected', isActive);
   });
+
+  const mobLang = document.getElementById('mobLang');
+  if (mobLang) {
+    const codes = {en:'EN',ro:'RO',it:'IT',de:'DE',fr:'FR',es:'ES'};
+    mobLang.innerHTML = Object.entries(codes).map(([k,v]) =>
+      `<button class="mob-lang__btn${lang===k?' active':''}" onclick="setLang('${k}')">${v}</button>`
+    ).join('');
+  }
 
   const drop = document.getElementById('langDrop');
   if (drop) drop.classList.remove('open');
