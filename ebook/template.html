@@ -1,0 +1,858 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>The Complete Sourdough Handbook — Rise &amp; Ferment</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@400;700&family=Nunito:ital,wght@0,400;0,600;0,700;0,800;1,400;1,600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body class="ebook">
+
+  <!-- ===================================================================
+       COVER PAGE
+       =================================================================== -->
+  <section class="cover page-break" aria-label="Cover">
+    <div class="cover-decoration cover-decoration--top"></div>
+    <div class="cover-content">
+      <p class="cover-brand">Rise &amp; Ferment</p>
+      <h1 class="cover-title">The Complete<br>Sourdough Handbook</h1>
+      <div class="cover-separator"></div>
+      <p class="cover-subtitle">From First Feed to Perfect Loaf</p>
+      <div class="cover-wheat">
+        <div class="wheat-stalk wheat-stalk--left"></div>
+        <div class="wheat-stalk wheat-stalk--right"></div>
+      </div>
+    </div>
+    <div class="cover-decoration cover-decoration--bottom"></div>
+    <p class="cover-edition">First Edition</p>
+  </section>
+
+  <!-- ===================================================================
+       COPYRIGHT / COLOPHON
+       =================================================================== -->
+  <section class="colophon page-break" aria-label="Copyright">
+    <div class="colophon-content">
+      <p class="colophon-title">The Complete Sourdough Handbook</p>
+      <p>From First Feed to Perfect Loaf</p>
+      <br>
+      <p>Published by Rise &amp; Ferment</p>
+      <p><a href="https://riseandferment.com">riseandferment.com</a></p>
+      <br>
+      <p>Copyright &copy; 2025 Rise &amp; Ferment. All rights reserved.</p>
+      <p>No part of this publication may be reproduced, distributed, or transmitted in any form or by any means without the prior written permission of the publisher.</p>
+      <br>
+      <p>The recipes, techniques, and advice in this book are based on the personal experience and research of the author. Every effort has been made to ensure accuracy, but baking results may vary based on ingredients, equipment, and conditions.</p>
+      <br>
+      <p>First edition, 2025</p>
+    </div>
+  </section>
+
+  <!-- ===================================================================
+       TABLE OF CONTENTS
+       =================================================================== -->
+  <section class="toc page-break" aria-label="Table of Contents">
+    <h2 class="toc-heading">Contents</h2>
+
+    <div class="toc-section">
+      <h3 class="toc-section-title">Introduction</h3>
+      <ul class="toc-list">
+        <li><a href="#introduction">Welcome to Sourdough</a><span class="toc-page"></span></li>
+      </ul>
+    </div>
+
+    <div class="toc-section">
+      <h3 class="toc-section-title">Part I &mdash; The Fundamentals</h3>
+      <ul class="toc-list">
+        <li><a href="#chapter-1">Chapter 1: Flour &amp; Water: The Basics</a><span class="toc-page"></span></li>
+        <li><a href="#chapter-2">Chapter 2: Temperature: Your Main Control</a><span class="toc-page"></span></li>
+        <li><a href="#chapter-3">Chapter 3: Hydration Explained</a><span class="toc-page"></span></li>
+        <li><a href="#chapter-4">Chapter 4: Finding the Peak</a><span class="toc-page"></span></li>
+        <li><a href="#chapter-5">Chapter 5: The Science of Fermentation</a><span class="toc-page"></span></li>
+        <li><a href="#chapter-6">Chapter 6: Your First Bread</a><span class="toc-page"></span></li>
+        <li><a href="#chapter-7">Chapter 7: Maintenance &amp; Storage</a><span class="toc-page"></span></li>
+        <li><a href="#chapter-8">Chapter 8: Troubleshooting Guide</a><span class="toc-page"></span></li>
+      </ul>
+    </div>
+
+    <div class="toc-section">
+      <h3 class="toc-section-title">Part II &mdash; Advanced Techniques</h3>
+      <ul class="toc-list">
+        <li><a href="#chapter-9">Chapter 9: Water Quality &amp; Timing</a><span class="toc-page"></span></li>
+        <li><a href="#chapter-10">Chapter 10: Understanding Flour Types</a><span class="toc-page"></span></li>
+        <li><a href="#chapter-11">Chapter 11: Flavor Development</a><span class="toc-page"></span></li>
+        <li><a href="#chapter-12">Chapter 12: Shaping &amp; Scoring</a><span class="toc-page"></span></li>
+        <li><a href="#chapter-13">Chapter 13: Baking Schedules</a><span class="toc-page"></span></li>
+        <li><a href="#chapter-14">Chapter 14: Beyond the Basics</a><span class="toc-page"></span></li>
+      </ul>
+    </div>
+
+    <div class="toc-section">
+      <h3 class="toc-section-title">Part III &mdash; Exclusive Recipes</h3>
+      <ul class="toc-list">
+        <li><a href="#recipe-1">Classic Focaccia</a><span class="toc-page"></span></li>
+        <li><a href="#recipe-2">Sourdough Pizza Dough</a><span class="toc-page"></span></li>
+        <li><a href="#recipe-3">Discard Pancakes &amp; Waffles</a><span class="toc-page"></span></li>
+        <li><a href="#recipe-4">Sourdough Crackers</a><span class="toc-page"></span></li>
+        <li><a href="#recipe-5">Sourdough Brioche</a><span class="toc-page"></span></li>
+      </ul>
+    </div>
+
+    <div class="toc-section">
+      <h3 class="toc-section-title">Part IV &mdash; Printable Reference Tools</h3>
+      <ul class="toc-list">
+        <li><a href="#printable-1">Feeding Quick Reference</a><span class="toc-page"></span></li>
+        <li><a href="#printable-2">Flour Comparison Guide</a><span class="toc-page"></span></li>
+        <li><a href="#printable-3">My Baking Week &mdash; Weekly Planner</a><span class="toc-page"></span></li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- ===================================================================
+       INTRODUCTION
+       =================================================================== -->
+  <article id="introduction" class="introduction page-break" aria-label="Introduction">
+    <h2 class="part-title">Introduction</h2>
+    <h3 class="intro-heading">Welcome to Sourdough</h3>
+
+    <p>Welcome to <em>The Complete Sourdough Handbook</em> by Rise &amp; Ferment. Whether you are about to mix your very first culture of flour and water or you have been tending a starter for years, this book was written for you.</p>
+
+    <p>Sourdough baking is one of the oldest and most rewarding culinary traditions in the world. It connects you to thousands of years of human history, to the invisible ecosystem of wild yeasts and bacteria living in your kitchen, and to the deeply satisfying process of turning two simple ingredients into something extraordinary.</p>
+
+    <h4>What This Book Covers</h4>
+
+    <p>This handbook is organized into four parts:</p>
+
+    <ul>
+      <li><strong>Part I: The Fundamentals</strong> takes you through everything you need to know to create, feed, and maintain a sourdough starter from scratch. From understanding flour and water ratios to diagnosing common problems, these eight chapters give you a rock-solid foundation.</li>
+      <li><strong>Part II: Advanced Techniques</strong> goes deeper into the science and craft of sourdough. You will learn how water quality, flour selection, fermentation timing, and shaping techniques affect the flavor and structure of your bread.</li>
+      <li><strong>Part III: Exclusive Recipes</strong> presents five carefully developed recipes that showcase the versatility of sourdough, from airy focaccia to rich brioche. Each recipe includes detailed instructions, ingredient tables, and professional tips.</li>
+      <li><strong>Part IV: Printable Reference Tools</strong> provides three practical printables designed for your kitchen wall or binder: a feeding reference card, a flour comparison guide, and a weekly baking planner.</li>
+    </ul>
+
+    <h4>How to Use This Book</h4>
+
+    <p>If you are a beginner, start with Part I and read the chapters in order. Each one builds on the previous. If you already have experience, use the table of contents to jump to the topics that interest you most.</p>
+
+    <p>The recipes in Part III are exclusive to this ebook and are not available in the free Rise &amp; Ferment app. They have been tested extensively and written with the kind of detail that leaves nothing to guesswork.</p>
+
+    <div class="intro-callout">
+      <h4>Track Your Progress with the Rise &amp; Ferment App</h4>
+      <p>This book pairs perfectly with the Rise &amp; Ferment app, your daily companion for sourdough starter tracking. The app features feeding timers, progress tracking, a day-by-day guide for your starter's first 14 days, temperature logging, and streak tracking to keep you motivated.</p>
+      <p>Download it free at <strong>riseandferment.com</strong></p>
+    </div>
+
+    <p>Now, let us begin. Your starter is waiting.</p>
+  </article>
+
+  <!-- ===================================================================
+       PART I — THE FUNDAMENTALS (Chapters 1-8)
+       =================================================================== -->
+  <section class="part-divider page-break" aria-label="Part I">
+    <p class="part-number">Part I</p>
+    <h2 class="part-divider-title">The Fundamentals</h2>
+    <p class="part-divider-subtitle">Chapters 1 &ndash; 8</p>
+  </section>
+
+  <article id="chapter-1" class="chapter page-break" aria-label="Chapter 1">
+    <header class="chapter-header">
+      <span class="chapter-number">Chapter 1</span>
+      <h2 class="chapter-title">Flour &amp; Water: The Basics</h2>
+    </header>
+    <div class="chapter-content">
+      {{lessonContent_1}}
+    </div>
+  </article>
+
+  <article id="chapter-2" class="chapter page-break" aria-label="Chapter 2">
+    <header class="chapter-header">
+      <span class="chapter-number">Chapter 2</span>
+      <h2 class="chapter-title">Temperature: Your Main Control</h2>
+    </header>
+    <div class="chapter-content">
+      {{lessonContent_2}}
+    </div>
+  </article>
+
+  <article id="chapter-3" class="chapter page-break" aria-label="Chapter 3">
+    <header class="chapter-header">
+      <span class="chapter-number">Chapter 3</span>
+      <h2 class="chapter-title">Hydration Explained</h2>
+    </header>
+    <div class="chapter-content">
+      {{lessonContent_3}}
+    </div>
+  </article>
+
+  <article id="chapter-4" class="chapter page-break" aria-label="Chapter 4">
+    <header class="chapter-header">
+      <span class="chapter-number">Chapter 4</span>
+      <h2 class="chapter-title">Finding the Peak</h2>
+    </header>
+    <div class="chapter-content">
+      {{lessonContent_4}}
+    </div>
+  </article>
+
+  <article id="chapter-5" class="chapter page-break" aria-label="Chapter 5">
+    <header class="chapter-header">
+      <span class="chapter-number">Chapter 5</span>
+      <h2 class="chapter-title">The Science of Fermentation</h2>
+    </header>
+    <div class="chapter-content">
+      {{lessonContent_5}}
+    </div>
+  </article>
+
+  <article id="chapter-6" class="chapter page-break" aria-label="Chapter 6">
+    <header class="chapter-header">
+      <span class="chapter-number">Chapter 6</span>
+      <h2 class="chapter-title">Your First Bread</h2>
+    </header>
+    <div class="chapter-content">
+      {{lessonContent_6}}
+    </div>
+  </article>
+
+  <article id="chapter-7" class="chapter page-break" aria-label="Chapter 7">
+    <header class="chapter-header">
+      <span class="chapter-number">Chapter 7</span>
+      <h2 class="chapter-title">Maintenance &amp; Storage</h2>
+    </header>
+    <div class="chapter-content">
+      {{lessonContent_7}}
+    </div>
+  </article>
+
+  <article id="chapter-8" class="chapter page-break" aria-label="Chapter 8">
+    <header class="chapter-header">
+      <span class="chapter-number">Chapter 8</span>
+      <h2 class="chapter-title">Troubleshooting Guide</h2>
+    </header>
+    <div class="chapter-content">
+      {{lessonContent_8}}
+    </div>
+  </article>
+
+  <!-- ===================================================================
+       PART II — ADVANCED TECHNIQUES (Chapters 9-14)
+       =================================================================== -->
+  <section class="part-divider page-break" aria-label="Part II">
+    <p class="part-number">Part II</p>
+    <h2 class="part-divider-title">Advanced Techniques</h2>
+    <p class="part-divider-subtitle">Chapters 9 &ndash; 14</p>
+  </section>
+
+  <article id="chapter-9" class="chapter page-break" aria-label="Chapter 9">
+    <header class="chapter-header">
+      <span class="chapter-number">Chapter 9</span>
+      <h2 class="chapter-title">Water Quality &amp; Timing</h2>
+    </header>
+    <div class="chapter-content">
+      {{lessonContent_9}}
+    </div>
+  </article>
+
+  <article id="chapter-10" class="chapter page-break" aria-label="Chapter 10">
+    <header class="chapter-header">
+      <span class="chapter-number">Chapter 10</span>
+      <h2 class="chapter-title">Understanding Flour Types</h2>
+    </header>
+    <div class="chapter-content">
+      {{lessonContent_10}}
+    </div>
+  </article>
+
+  <article id="chapter-11" class="chapter page-break" aria-label="Chapter 11">
+    <header class="chapter-header">
+      <span class="chapter-number">Chapter 11</span>
+      <h2 class="chapter-title">Flavor Development</h2>
+    </header>
+    <div class="chapter-content">
+      {{lessonContent_11}}
+    </div>
+  </article>
+
+  <article id="chapter-12" class="chapter page-break" aria-label="Chapter 12">
+    <header class="chapter-header">
+      <span class="chapter-number">Chapter 12</span>
+      <h2 class="chapter-title">Shaping &amp; Scoring</h2>
+    </header>
+    <div class="chapter-content">
+      {{lessonContent_12}}
+    </div>
+  </article>
+
+  <article id="chapter-13" class="chapter page-break" aria-label="Chapter 13">
+    <header class="chapter-header">
+      <span class="chapter-number">Chapter 13</span>
+      <h2 class="chapter-title">Baking Schedules</h2>
+    </header>
+    <div class="chapter-content">
+      {{lessonContent_13}}
+    </div>
+  </article>
+
+  <article id="chapter-14" class="chapter page-break" aria-label="Chapter 14">
+    <header class="chapter-header">
+      <span class="chapter-number">Chapter 14</span>
+      <h2 class="chapter-title">Beyond the Basics</h2>
+    </header>
+    <div class="chapter-content">
+      {{lessonContent_14}}
+    </div>
+  </article>
+
+  <!-- ===================================================================
+       PART III — EXCLUSIVE RECIPES
+       =================================================================== -->
+  <section class="part-divider page-break" aria-label="Part III">
+    <p class="part-number">Part III</p>
+    <h2 class="part-divider-title">Exclusive Recipes</h2>
+    <p class="part-divider-subtitle">5 Original Recipes</p>
+  </section>
+
+  <!-- RECIPE 1: Classic Focaccia -->
+  <article id="recipe-1" class="recipe page-break" aria-label="Recipe: Classic Focaccia">
+    <header class="recipe-header">
+      <h2 class="recipe-title">Classic Focaccia</h2>
+      <div class="recipe-meta">
+        <span class="recipe-meta-item"><strong>Yield:</strong> 1 sheet pan (approx. 30 x 40 cm)</span>
+        <span class="recipe-meta-item"><strong>Prep:</strong> 30 min (+ 12-14h fermentation)</span>
+        <span class="recipe-meta-item"><strong>Total:</strong> ~15 hours</span>
+      </div>
+    </header>
+
+    <h3>Ingredients</h3>
+    <table class="recipe-table">
+      <thead>
+        <tr><th>Ingredient</th><th>Amount</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>Strong bread flour</td><td>500 g</td></tr>
+        <tr><td>Water (warm, ~30 &deg;C)</td><td>500 g</td></tr>
+        <tr><td>Active sourdough starter (100% hydration)</td><td>100 g</td></tr>
+        <tr><td>Fine sea salt</td><td>10 g</td></tr>
+        <tr><td>Extra-virgin olive oil</td><td>60 ml + more for pan and finishing</td></tr>
+        <tr><td>Flaky sea salt</td><td>for topping</td></tr>
+        <tr><td>Fresh rosemary sprigs</td><td>4-5</td></tr>
+      </tbody>
+    </table>
+
+    <h4>Rosemary &amp; Garlic Variant (additional)</h4>
+    <table class="recipe-table">
+      <thead>
+        <tr><th>Ingredient</th><th>Amount</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>Garlic cloves, thinly sliced</td><td>6</td></tr>
+        <tr><td>Fresh rosemary, chopped</td><td>2 tbsp</td></tr>
+        <tr><td>Olive oil (for garlic infusion)</td><td>30 ml</td></tr>
+      </tbody>
+    </table>
+
+    <h3>Instructions</h3>
+    <ol class="recipe-steps">
+      <li><strong>Mix the dough.</strong> In a large bowl, combine the flour, water, and active starter. Stir until no dry flour remains. Cover and rest 30 minutes (autolyse).</li>
+      <li><strong>Add salt and oil.</strong> Sprinkle the salt over the dough and drizzle 30 ml of olive oil on top. Pinch and fold the salt and oil into the dough until fully incorporated, about 2 minutes.</li>
+      <li><strong>Stretch and fold.</strong> Over the next 2 hours, perform 4 sets of stretch and folds spaced 30 minutes apart. Wet your hands, grab one side of the dough, stretch it upward, and fold it over the center. Rotate the bowl 90 degrees and repeat 4 times per set.</li>
+      <li><strong>Bulk ferment.</strong> After the final fold, cover the bowl tightly and refrigerate for 12-14 hours (overnight).</li>
+      <li><strong>Prepare the pan.</strong> Generously coat a rimmed sheet pan with 30 ml olive oil, spreading it across the entire surface and up the sides.</li>
+      <li><strong>Shape.</strong> Turn the cold dough out onto the oiled pan. Drizzle a little oil on top and gently stretch the dough toward the edges. If it resists, let it rest 15 minutes and stretch again. Repeat until the dough fills the pan.</li>
+      <li><strong>Final proof.</strong> Cover loosely and let rise at room temperature for 1.5-2 hours until puffy and jiggly when the pan is nudged.</li>
+      <li><strong>Dimple and top.</strong> Preheat oven to 230 &deg;C. Oil your fingertips generously and press them straight down into the dough to create deep dimples across the entire surface. Press all the way to the bottom of the pan. Scatter rosemary sprigs and press them gently into the dimples. Drizzle with more olive oil and sprinkle flaky sea salt.</li>
+      <li><strong>Bake.</strong> Bake for 22-28 minutes until deeply golden on top and the edges are crisp and caramelized. The bottom should be golden brown.</li>
+      <li><strong>Cool.</strong> Transfer to a wire rack immediately to prevent the bottom from becoming soggy. Let cool at least 10 minutes before slicing.</li>
+    </ol>
+
+    <p class="recipe-variant"><strong>For the Rosemary &amp; Garlic Variant:</strong> Gently warm the sliced garlic in 30 ml olive oil over low heat for 3-4 minutes until fragrant but not browned. Scatter the garlic slices and chopped rosemary over the dimpled dough before baking.</p>
+
+    <h3>Pro Tips</h3>
+    <ul class="recipe-tips">
+      <li><strong>Hydration is key.</strong> The 100% hydration creates those signature open, airy bubbles. Do not reduce the water.</li>
+      <li><strong>Oil the pan generously.</strong> The olive oil fries the bottom and edges, creating an irresistible golden crust. More oil is better here.</li>
+      <li><strong>Dimple with conviction.</strong> Press your fingertips all the way down to the pan. Timid dimples disappear during baking. Go deep.</li>
+      <li><strong>Cold dough, hot oven.</strong> The contrast between the cold-fermented dough and a screaming hot oven gives the best oven spring and bubble structure.</li>
+      <li><strong>Topping ideas beyond rosemary:</strong> halved cherry tomatoes, thinly sliced red onion, pitted olives, capers, za'atar, or a drizzle of honey and flaky salt after baking.</li>
+    </ul>
+  </article>
+
+  <!-- RECIPE 2: Sourdough Pizza Dough -->
+  <article id="recipe-2" class="recipe page-break" aria-label="Recipe: Sourdough Pizza Dough">
+    <header class="recipe-header">
+      <h2 class="recipe-title">Sourdough Pizza Dough</h2>
+      <div class="recipe-meta">
+        <span class="recipe-meta-item"><strong>Yield:</strong> 4 individual pizzas (approx. 250 g each)</span>
+        <span class="recipe-meta-item"><strong>Prep:</strong> 20 min (+ 24h fermentation)</span>
+        <span class="recipe-meta-item"><strong>Total:</strong> ~26 hours</span>
+      </div>
+    </header>
+
+    <h3>Ingredients</h3>
+    <table class="recipe-table">
+      <thead>
+        <tr><th>Ingredient</th><th>Amount</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>Tipo 00 flour (or strong bread flour)</td><td>600 g</td></tr>
+        <tr><td>Water (cool, ~18 &deg;C)</td><td>420 g (70% hydration)</td></tr>
+        <tr><td>Active sourdough starter (100% hydration)</td><td>120 g</td></tr>
+        <tr><td>Fine sea salt</td><td>12 g</td></tr>
+        <tr><td>Extra-virgin olive oil</td><td>15 ml</td></tr>
+      </tbody>
+    </table>
+
+    <h3>Instructions</h3>
+    <ol class="recipe-steps">
+      <li><strong>Combine water and starter.</strong> In a large bowl, dissolve the starter in the cool water, stirring until milky and well combined.</li>
+      <li><strong>Add flour.</strong> Pour in the flour and mix with your hand or a dough scraper until a shaggy mass forms. No dry flour should remain. Cover and autolyse for 45 minutes.</li>
+      <li><strong>Incorporate salt and oil.</strong> Sprinkle the salt over the dough and drizzle the olive oil. Pinch and fold repeatedly for 2-3 minutes until fully incorporated.</li>
+      <li><strong>Build strength.</strong> Perform 3 sets of stretch and folds at 30-minute intervals. The dough should become noticeably smoother and more elastic with each set.</li>
+      <li><strong>Divide and ball.</strong> After the final fold, turn the dough onto an unfloured surface. Divide into 4 equal pieces (~260 g each). Shape each piece into a tight ball by cupping your hands around the dough and dragging it in small circles on the counter, building surface tension.</li>
+      <li><strong>Cold ferment.</strong> Place each dough ball in an individual lightly oiled container or on an oiled tray covered tightly with plastic wrap. Refrigerate for 24 hours (can extend to 48 hours for deeper flavor).</li>
+      <li><strong>Warm up.</strong> Remove dough balls from the fridge 2 hours before baking. Let them come to room temperature, covered.</li>
+      <li><strong>Shape.</strong> Generously flour your work surface with semolina or flour. Place one dough ball on the surface. Using your fingertips, press from the center outward, leaving a 2 cm border untouched for the cornicione (puffy rim). Pick up the dough and let gravity help stretch it, rotating and gently pulling until it reaches 28-30 cm diameter. Do not use a rolling pin.</li>
+      <li><strong>Bake.</strong> Preheat your oven as high as it goes (250-300 &deg;C) with a baking steel or inverted baking sheet inside for at least 45 minutes. Top the pizza quickly and slide it onto the hot surface. Bake 6-10 minutes until the crust is blistered and charred in spots and the bottom is deeply golden.</li>
+    </ol>
+
+    <h3>Pro Tips</h3>
+    <ul class="recipe-tips">
+      <li><strong>Cool water, long ferment.</strong> Using cool water and cold fermentation develops complex flavors without over-fermenting. The dough should grow about 50% in volume over 24 hours.</li>
+      <li><strong>Tipo 00 flour</strong> makes a noticeable difference. Its fine grind and moderate protein produce a tender, extensible dough that stretches easily and blisters beautifully. Bread flour works, but the texture will be chewier.</li>
+      <li><strong>Never use a rolling pin.</strong> Hand-stretching preserves the gas bubbles that create those coveted charred blisters on the crust.</li>
+      <li><strong>Baking steel is the upgrade.</strong> A baking steel conducts heat far more efficiently than a stone, crisping the bottom in minutes. It is the single best investment for home pizza.</li>
+      <li><strong>The windowpane test</strong> helps verify gluten development. After your folds, pinch off a small piece and stretch it thin. If it stretches translucent without tearing, you have enough strength.</li>
+    </ul>
+  </article>
+
+  <!-- RECIPE 3: Discard Pancakes & Waffles -->
+  <article id="recipe-3" class="recipe page-break" aria-label="Recipe: Discard Pancakes and Waffles">
+    <header class="recipe-header">
+      <h2 class="recipe-title">Discard Pancakes &amp; Waffles</h2>
+      <div class="recipe-meta">
+        <span class="recipe-meta-item"><strong>Yield:</strong> 8-10 pancakes or 4 Belgian waffles</span>
+        <span class="recipe-meta-item"><strong>Prep:</strong> 10 min</span>
+        <span class="recipe-meta-item"><strong>Total:</strong> 25 minutes</span>
+      </div>
+    </header>
+
+    <h3>Ingredients</h3>
+    <table class="recipe-table">
+      <thead>
+        <tr><th>Ingredient</th><th>Amount</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>Sourdough discard (unfed, straight from fridge)</td><td>200 g</td></tr>
+        <tr><td>All-purpose flour</td><td>150 g</td></tr>
+        <tr><td>Milk (any kind)</td><td>180 ml</td></tr>
+        <tr><td>Eggs</td><td>2</td></tr>
+        <tr><td>Granulated sugar</td><td>25 g</td></tr>
+        <tr><td>Butter, melted (+ more for cooking)</td><td>40 g</td></tr>
+        <tr><td>Baking powder</td><td>6 g (1.5 tsp)</td></tr>
+        <tr><td>Baking soda</td><td>3 g (0.5 tsp)</td></tr>
+        <tr><td>Vanilla extract</td><td>5 ml (1 tsp)</td></tr>
+        <tr><td>Fine sea salt</td><td>3 g (0.5 tsp)</td></tr>
+      </tbody>
+    </table>
+
+    <h3>Instructions &mdash; Pancakes</h3>
+    <ol class="recipe-steps">
+      <li><strong>Whisk wet ingredients.</strong> In a large bowl, combine the sourdough discard, milk, eggs, melted butter, sugar, and vanilla. Whisk until smooth and uniform.</li>
+      <li><strong>Add dry ingredients.</strong> Sift the flour, baking powder, baking soda, and salt over the wet mixture. Fold gently with a spatula until just combined. A few small lumps are fine. Do not overmix or the pancakes will be tough.</li>
+      <li><strong>Rest the batter.</strong> Let the batter sit for 5 minutes. It will puff up slightly as the baking soda reacts with the sourdough's acidity.</li>
+      <li><strong>Cook.</strong> Heat a non-stick pan or griddle over medium heat. Add a small knob of butter. Pour approximately 60 ml of batter per pancake. Cook until bubbles form across the surface and the edges look set (about 2-3 minutes). Flip and cook 1-2 minutes more until golden brown.</li>
+      <li><strong>Serve immediately</strong> with butter, maple syrup, fresh berries, or your preferred toppings.</li>
+    </ol>
+
+    <h4>Waffle Variation</h4>
+    <p>Use the same batter, but increase the melted butter to 60 g for crispier edges. Preheat your waffle iron to medium-high. Ladle batter into the center and cook according to your machine (typically 4-5 minutes until steam stops and the waffle is deeply golden). For extra-crispy waffles, let them cool on a wire rack rather than stacking.</p>
+
+    <h4>Savory Variation</h4>
+    <p>Omit the sugar and vanilla. Add 40 g of grated Parmesan, 2 tbsp chopped chives, and a generous grind of black pepper to the batter. Serve topped with a fried egg, smoked salmon, or roasted vegetables.</p>
+
+    <h3>Pro Tips</h3>
+    <ul class="recipe-tips">
+      <li><strong>Any discard works.</strong> Fresh discard, week-old discard from the back of the fridge, even slightly over-fermented discard. The tangier the discard, the more complex the flavor. The leavening agents handle the rise.</li>
+      <li><strong>Baking soda is the secret.</strong> It neutralizes excess acidity in the discard while creating extra lift. Combined with baking powder, you get fluffy, tender pancakes with a subtle tang.</li>
+      <li><strong>Do not overmix.</strong> Stir until the flour just disappears. Overmixing develops gluten and makes pancakes rubbery. Lumps are your friends here.</li>
+      <li><strong>Freeze extras.</strong> Cool pancakes completely, stack with parchment between them, and freeze in a zip-lock bag. Reheat in a toaster for a 2-minute breakfast.</li>
+    </ul>
+  </article>
+
+  <!-- RECIPE 4: Sourdough Crackers -->
+  <article id="recipe-4" class="recipe page-break" aria-label="Recipe: Sourdough Crackers">
+    <header class="recipe-header">
+      <h2 class="recipe-title">Sourdough Crackers</h2>
+      <div class="recipe-meta">
+        <span class="recipe-meta-item"><strong>Yield:</strong> approximately 40 crackers</span>
+        <span class="recipe-meta-item"><strong>Prep:</strong> 15 min</span>
+        <span class="recipe-meta-item"><strong>Total:</strong> 40 minutes</span>
+      </div>
+    </header>
+
+    <h3>Ingredients &mdash; Base Dough</h3>
+    <table class="recipe-table">
+      <thead>
+        <tr><th>Ingredient</th><th>Amount</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>Sourdough discard (unfed)</td><td>200 g</td></tr>
+        <tr><td>All-purpose flour</td><td>120 g</td></tr>
+        <tr><td>Extra-virgin olive oil</td><td>30 ml</td></tr>
+        <tr><td>Fine sea salt</td><td>4 g (0.75 tsp)</td></tr>
+        <tr><td>Flaky sea salt</td><td>for topping</td></tr>
+      </tbody>
+    </table>
+
+    <h4>Variation: Herb Butter</h4>
+    <table class="recipe-table recipe-table--small">
+      <thead>
+        <tr><th>Ingredient</th><th>Amount</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>Butter, melted</td><td>30 g (replace olive oil)</td></tr>
+        <tr><td>Dried Italian herbs</td><td>2 tsp</td></tr>
+        <tr><td>Garlic powder</td><td>0.5 tsp</td></tr>
+      </tbody>
+    </table>
+
+    <h4>Variation: Everything Bagel</h4>
+    <table class="recipe-table recipe-table--small">
+      <thead>
+        <tr><th>Ingredient</th><th>Amount</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>Sesame seeds</td><td>1 tbsp</td></tr>
+        <tr><td>Poppy seeds</td><td>1 tbsp</td></tr>
+        <tr><td>Dried minced garlic</td><td>1 tbsp</td></tr>
+        <tr><td>Dried minced onion</td><td>1 tbsp</td></tr>
+        <tr><td>Flaky sea salt</td><td>1 tsp</td></tr>
+      </tbody>
+    </table>
+
+    <h4>Variation: Rosemary Sea Salt</h4>
+    <table class="recipe-table recipe-table--small">
+      <thead>
+        <tr><th>Ingredient</th><th>Amount</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>Fresh rosemary, finely chopped</td><td>1 tbsp</td></tr>
+        <tr><td>Flaky sea salt</td><td>1 tsp</td></tr>
+        <tr><td>Cracked black pepper</td><td>0.5 tsp</td></tr>
+      </tbody>
+    </table>
+
+    <h3>Instructions</h3>
+    <ol class="recipe-steps">
+      <li><strong>Make the dough.</strong> In a bowl, combine the discard, flour, olive oil (or melted butter for the herb butter variation), and fine sea salt. If using a variation, add the herbs and spices now (except toppings like seeds and flaky salt). Mix until a cohesive dough forms. It should be smooth and slightly tacky but not sticky.</li>
+      <li><strong>Rest.</strong> Wrap the dough in plastic or cover and let it rest for 10 minutes. This relaxes the gluten and makes rolling easier.</li>
+      <li><strong>Preheat.</strong> Set your oven to 190 &deg;C. Line two baking sheets with parchment paper.</li>
+      <li><strong>Roll thin.</strong> Divide the dough in half. On a lightly floured surface (or between two sheets of parchment), roll each half as thin as possible, approximately 1-2 mm. The thinner, the crispier. The dough should be nearly translucent in spots.</li>
+      <li><strong>Top and cut.</strong> Brush the surface lightly with olive oil or water. Sprinkle your chosen toppings (everything bagel mix, rosemary and salt, or flaky salt for the base version) and gently press them in with the rolling pin. Cut into rectangles, squares, or irregular shards with a pizza cutter or sharp knife. No need to separate them; they will break apart easily after baking.</li>
+      <li><strong>Bake.</strong> Transfer the parchment with cut dough onto the baking sheets. Bake 12-18 minutes, checking frequently after 12 minutes. The crackers are done when golden brown and firm. Edges will brown first; remove any pieces that are done early and return the rest.</li>
+      <li><strong>Cool completely</strong> on the pan. They will crisp further as they cool.</li>
+    </ol>
+
+    <h3>Pro Tips</h3>
+    <ul class="recipe-tips">
+      <li><strong>Thickness matters more than anything.</strong> The number one mistake is rolling too thick. If your crackers are chewy instead of crispy, roll thinner next time. Aim for the thickness of a credit card.</li>
+      <li><strong>Rotate the pan</strong> halfway through baking for even browning. Ovens have hot spots, and thin crackers are unforgiving.</li>
+      <li><strong>Parchment rolling technique.</strong> Roll the dough between two sheets of parchment to prevent sticking without adding excess flour, which dulls the flavor.</li>
+      <li><strong>Storage.</strong> Keep in an airtight container at room temperature for up to 10 days. If they soften, re-crisp in a 150 &deg;C oven for 5 minutes.</li>
+      <li><strong>Pair them.</strong> These crackers shine alongside hummus, soft cheese, smoked salmon dip, or a simple bowl of good olive oil with za'atar for dipping.</li>
+    </ul>
+  </article>
+
+  <!-- RECIPE 5: Sourdough Brioche -->
+  <article id="recipe-5" class="recipe page-break" aria-label="Recipe: Sourdough Brioche">
+    <header class="recipe-header">
+      <h2 class="recipe-title">Sourdough Brioche</h2>
+      <div class="recipe-meta">
+        <span class="recipe-meta-item"><strong>Yield:</strong> 1 loaf (23 x 13 cm pan) or 12 rolls</span>
+        <span class="recipe-meta-item"><strong>Prep:</strong> 45 min (+ 14-16h fermentation)</span>
+        <span class="recipe-meta-item"><strong>Total:</strong> ~17 hours</span>
+      </div>
+    </header>
+
+    <h3>Ingredients</h3>
+    <table class="recipe-table">
+      <thead>
+        <tr><th>Ingredient</th><th>Amount</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>Strong bread flour</td><td>400 g</td></tr>
+        <tr><td>Granulated sugar</td><td>50 g</td></tr>
+        <tr><td>Fine sea salt</td><td>8 g</td></tr>
+        <tr><td>Active sourdough starter (100% hydration)</td><td>80 g</td></tr>
+        <tr><td>Eggs, room temperature</td><td>4 large</td></tr>
+        <tr><td>Milk, warm (~30 &deg;C)</td><td>60 ml</td></tr>
+        <tr><td>Unsalted butter, softened (not melted)</td><td>170 g</td></tr>
+        <tr><td>Egg wash (1 egg + 15 ml milk)</td><td>for brushing</td></tr>
+      </tbody>
+    </table>
+
+    <h3>Instructions</h3>
+    <ol class="recipe-steps">
+      <li><strong>Combine base dough.</strong> In a large bowl (or stand mixer fitted with the dough hook), combine the flour, sugar, and salt. Add the starter, eggs, and warm milk. Mix on low speed for 3 minutes until a shaggy dough forms, then increase to medium speed and knead for 8-10 minutes until the dough is smooth, elastic, and pulls away from the sides of the bowl. The dough will be quite sticky at this stage; resist adding more flour.</li>
+      <li><strong>Incorporate butter.</strong> With the mixer on medium-low, add the softened butter one tablespoon at a time. Wait until each addition is fully absorbed before adding the next. This takes about 10-12 minutes total. After all butter is incorporated, knead on medium speed for 3-4 more minutes. The finished dough should be glossy, very soft, and stretchy. It will slap against the bowl sides cleanly.</li>
+      <li><strong>Bulk ferment at room temperature.</strong> Transfer the dough to a lightly buttered bowl. Cover tightly and let ferment at room temperature (21-24 &deg;C) for 3-4 hours, performing one gentle fold after 1.5 hours. The dough should look slightly puffy but will not double.</li>
+      <li><strong>Cold ferment.</strong> Cover tightly and refrigerate for 10-12 hours (overnight). The cold firms the butter in the dough, making it shapeable, and develops deep, complex flavor.</li>
+      <li>
+        <strong>Shape.</strong> Remove the chilled dough from the fridge. It will be firm and easy to handle.
+        <ul>
+          <li><strong>For a loaf:</strong> Divide into 4 equal pieces. Roll each into a ball and place side by side in a buttered 23 x 13 cm loaf pan.</li>
+          <li><strong>For rolls:</strong> Divide into 12 equal pieces (approx. 70 g each). Roll each into a tight ball and arrange on a buttered or parchment-lined baking sheet, spacing 3 cm apart.</li>
+          <li><strong>For pull-apart:</strong> Divide into 8-10 pieces, roll into balls, and arrange snugly in a round cake pan or cast iron skillet.</li>
+        </ul>
+      </li>
+      <li><strong>Final proof.</strong> Cover loosely and let rise at room temperature for 3-4 hours (brioche proofs slowly due to the butter). The dough is ready when it has visibly grown by about 75%, feels pillowy and light when the pan is gently jiggled, and springs back slowly when poked with a floured finger.</li>
+      <li><strong>Egg wash and bake.</strong> Preheat oven to 175 &deg;C. Gently brush the tops with egg wash, taking care not to deflate the dough. Bake 30-35 minutes for a loaf, 18-22 minutes for rolls. The brioche is done when deeply golden brown on top and the internal temperature reaches 88-90 &deg;C.</li>
+      <li><strong>Cool.</strong> Let rest in the pan for 10 minutes, then unmold onto a wire rack. The crust will be thin and golden; the crumb will be cotton-soft, rich, and pull apart in feathery layers.</li>
+    </ol>
+
+    <h3>Pro Tips</h3>
+    <ul class="recipe-tips">
+      <li><strong>Butter temperature is critical.</strong> The butter must be softened (pliable, not greasy) but never melted. Cold butter won't incorporate; melted butter breaks the emulsion. Aim for the consistency of thick frosting.</li>
+      <li><strong>Patience with butter incorporation.</strong> Adding butter to an enriched dough is a test of patience. The dough will look like a broken, greasy mess around the halfway point. Keep mixing. It will come together into a glossy, smooth dough that cleanly slaps the bowl.</li>
+      <li><strong>Do not skip cold fermentation.</strong> The overnight chill is non-negotiable. It firms the butter so you can shape the dough, and the slow cold ferment gives sourdough brioche its distinctive depth of flavor that yeast versions cannot match.</li>
+      <li><strong>Low baking temperature.</strong> Brioche burns easily due to the high sugar and butter content. Bake at 175 &deg;C, not higher. If the top browns too quickly, tent with aluminum foil for the last 10 minutes.</li>
+      <li><strong>Day-old brioche</strong> makes the best French toast and bread pudding. The slightly stale texture absorbs custard perfectly without falling apart.</li>
+    </ul>
+  </article>
+
+  <!-- ===================================================================
+       PART IV — PRINTABLE REFERENCE TOOLS
+       =================================================================== -->
+  <section class="part-divider page-break" aria-label="Part IV">
+    <p class="part-number">Part IV</p>
+    <h2 class="part-divider-title">Printable Reference Tools</h2>
+    <p class="part-divider-subtitle">3 Kitchen References</p>
+  </section>
+
+  <!-- PRINTABLE 1: Feeding Quick Reference -->
+  <article id="printable-1" class="printable page-break" aria-label="Printable: Feeding Quick Reference">
+    <h2 class="printable-title">Feeding Quick Reference</h2>
+    <p class="printable-subtitle">A one-page cheat sheet for every feeding scenario you will encounter.</p>
+
+    <table class="printable-table">
+      <thead>
+        <tr>
+          <th>Goal</th>
+          <th>Ratio<br>(starter : flour : water)</th>
+          <th>Water Temp</th>
+          <th>Timing to Peak</th>
+          <th>Notes</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>Daily maintenance</strong></td>
+          <td>1 : 5 : 5</td>
+          <td>25-28 &deg;C</td>
+          <td>8-12 hours</td>
+          <td>Once daily at room temp. Use discard in recipes. Consistent schedule builds predictable behavior.</td>
+        </tr>
+        <tr>
+          <td><strong>Pre-bake feed</strong></td>
+          <td>1 : 2 : 2</td>
+          <td>28-30 &deg;C</td>
+          <td>4-6 hours</td>
+          <td>Feed the morning of your bake. Use at peak (domed top, passes float test). A lower ratio means faster peak so you can bake sooner.</td>
+        </tr>
+        <tr>
+          <td><strong>Reviving from fridge</strong></td>
+          <td>1 : 2 : 2 then 1 : 5 : 5</td>
+          <td>28-30 &deg;C</td>
+          <td>Feed 1: 6-8 h<br>Feed 2: 8-12 h</td>
+          <td>First feed wakes up the culture. Second feed at normal ratio re-establishes balance. Expect full vigor by the second or third feed.</td>
+        </tr>
+        <tr>
+          <td><strong>Building volume</strong></td>
+          <td>1 : 1 : 1</td>
+          <td>25-28 &deg;C</td>
+          <td>3-4 hours</td>
+          <td>When you need more starter than usual (e.g., for multiple loaves). Low ratio, fast peak. Feed multiple times to build up quantity without wasting.</td>
+        </tr>
+        <tr>
+          <td><strong>Stiff starter<br>(60% hydration)</strong></td>
+          <td>1 : 5 : 3</td>
+          <td>25-28 &deg;C</td>
+          <td>10-16 hours</td>
+          <td>Slower, more acetic (vinegary) fermentation. Great for cold-retard bakes and bread with complex tang. Dough-like consistency, not pourable.</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <h3>Key Reminders</h3>
+    <ul class="printable-reminders">
+      <li><strong>Float test:</strong> Drop a spoonful of starter into water. If it floats, it is at or near peak activity and ready to use.</li>
+      <li><strong>When in doubt, feed again.</strong> An underactive starter will not give good results. A healthy starter doubles in 4-8 hours at room temperature.</li>
+      <li><strong>Fridge storage:</strong> Feed, let it rise 1-2 hours at room temp, then refrigerate. Feed at least once per week to keep the culture healthy.</li>
+      <li><strong>Temperature controls speed.</strong> Warmer = faster fermentation. Cooler = slower, more complex flavor development. Use this to fit baking into your schedule.</li>
+      <li><strong>Ratios by weight.</strong> Always weigh ingredients. "1:5:5" means for every 10 g of starter, add 50 g flour and 50 g water.</li>
+    </ul>
+  </article>
+
+  <!-- PRINTABLE 2: Flour Comparison Guide -->
+  <article id="printable-2" class="printable page-break" aria-label="Printable: Flour Comparison Guide">
+    <h2 class="printable-title">Flour Comparison Guide</h2>
+    <p class="printable-subtitle">Understanding how different flours behave in sourdough baking.</p>
+
+    <table class="printable-table">
+      <thead>
+        <tr>
+          <th>Flour Type</th>
+          <th>Protein %</th>
+          <th>Flavor Profile</th>
+          <th>Best For</th>
+          <th>Fermentation Speed</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>White bread flour</strong></td>
+          <td>11.5-13%</td>
+          <td>Clean, mild, wheaty</td>
+          <td>Sandwich loaves, pizza, focaccia, bagels</td>
+          <td>Medium. Predictable and consistent. The baseline flour for most sourdough baking.</td>
+        </tr>
+        <tr>
+          <td><strong>Whole wheat flour</strong></td>
+          <td>13-14%</td>
+          <td>Nutty, earthy, robust</td>
+          <td>Hearty country loaves, blended with white for flavor depth</td>
+          <td>Fast. The bran and germ feed wild yeast aggressively. Use 20-30% blend to start; 100% whole wheat ferments very quickly and requires careful timing.</td>
+        </tr>
+        <tr>
+          <td><strong>Rye flour</strong></td>
+          <td>8-10%</td>
+          <td>Deep, malty, sour</td>
+          <td>Rye bread, Danish rugbrod, pumpernickel, flavor boosts</td>
+          <td>Very fast. Extremely enzyme-active. Ferments rapidly and breaks down quickly. Best used as 10-20% of total flour to add complexity without losing structure.</td>
+        </tr>
+        <tr>
+          <td><strong>All-purpose flour</strong></td>
+          <td>9.5-11.5%</td>
+          <td>Neutral, soft</td>
+          <td>Discard recipes (pancakes, crackers, muffins), tender baked goods</td>
+          <td>Medium-slow. Lower protein means less gluten development. Works for feeding starter but gives less oven spring in bread than bread flour.</td>
+        </tr>
+        <tr>
+          <td><strong>Spelt flour</strong></td>
+          <td>12-15%</td>
+          <td>Sweet, slightly nutty, delicate</td>
+          <td>Artisan loaves, rolls, enriched doughs</td>
+          <td>Fast. High in sugars that yeast loves. Gluten is fragile; handle gently, reduce hydration by 5-10%, and shorten bulk ferment to avoid over-fermentation.</td>
+        </tr>
+        <tr>
+          <td><strong>Einkorn flour</strong></td>
+          <td>12-15% (weak gluten)</td>
+          <td>Rich, buttery, almost sweet</td>
+          <td>Flatbreads, pasta, low-rise artisan loaves, blended bakes</td>
+          <td>Medium-fast. Ancient grain with beautiful flavor but very weak, extensible gluten. Not suitable for tall loaves on its own. Blend 20-30% with bread flour for flavor without sacrificing structure.</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <h3>Flour Selection Tips</h3>
+    <ul class="printable-reminders">
+      <li><strong>Protein percentage is not the full story.</strong> Gluten quality matters as much as quantity. Spelt and einkorn have high protein but fragile gluten. Bread flour has strong, elastic gluten ideal for trapping gas.</li>
+      <li><strong>Fresh-milled flour</strong> ferments significantly faster than store-bought because the bran and germ are still enzyme-active. Reduce bulk ferment time by 20-30% when using freshly milled.</li>
+      <li><strong>Start with bread flour</strong> as your primary flour. Once you understand your starter's behavior, experiment by replacing 10-20% with whole wheat, rye, or spelt for flavor complexity.</li>
+      <li><strong>Store flour properly.</strong> White flour keeps 6-12 months in a cool, dry place. Whole grain flours go rancid faster; refrigerate or freeze them and bring to room temperature before use.</li>
+    </ul>
+  </article>
+
+  <!-- PRINTABLE 3: My Baking Week — Weekly Planner -->
+  <article id="printable-3" class="printable page-break" aria-label="Printable: My Baking Week">
+    <h2 class="printable-title">My Baking Week</h2>
+    <p class="printable-subtitle">Print one copy per week. Plan your feeds around your schedule so your starter peaks exactly when you need it.</p>
+
+    <h3>Week of: _________________________</h3>
+
+    <table class="planner-table">
+      <thead>
+        <tr>
+          <th>Day</th>
+          <th>Feed Time</th>
+          <th>Expected Peak</th>
+          <th>Bake?</th>
+          <th>Recipe / Plan</th>
+          <th>Notes</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr><td><strong>Monday</strong></td><td class="planner-cell"></td><td class="planner-cell"></td><td class="planner-cell">Yes / No</td><td class="planner-cell"></td><td class="planner-cell"></td></tr>
+        <tr><td><strong>Tuesday</strong></td><td class="planner-cell"></td><td class="planner-cell"></td><td class="planner-cell">Yes / No</td><td class="planner-cell"></td><td class="planner-cell"></td></tr>
+        <tr><td><strong>Wednesday</strong></td><td class="planner-cell"></td><td class="planner-cell"></td><td class="planner-cell">Yes / No</td><td class="planner-cell"></td><td class="planner-cell"></td></tr>
+        <tr><td><strong>Thursday</strong></td><td class="planner-cell"></td><td class="planner-cell"></td><td class="planner-cell">Yes / No</td><td class="planner-cell"></td><td class="planner-cell"></td></tr>
+        <tr><td><strong>Friday</strong></td><td class="planner-cell"></td><td class="planner-cell"></td><td class="planner-cell">Yes / No</td><td class="planner-cell"></td><td class="planner-cell"></td></tr>
+        <tr><td><strong>Saturday</strong></td><td class="planner-cell"></td><td class="planner-cell"></td><td class="planner-cell">Yes / No</td><td class="planner-cell"></td><td class="planner-cell"></td></tr>
+        <tr><td><strong>Sunday</strong></td><td class="planner-cell"></td><td class="planner-cell"></td><td class="planner-cell">Yes / No</td><td class="planner-cell"></td><td class="planner-cell"></td></tr>
+      </tbody>
+    </table>
+
+    <h3>This Week's Goals</h3>
+    <ul class="planner-goals">
+      <li class="planner-goal-line">________________________________________________________</li>
+      <li class="planner-goal-line">________________________________________________________</li>
+      <li class="planner-goal-line">________________________________________________________</li>
+      <li class="planner-goal-line">________________________________________________________</li>
+    </ul>
+
+    <h3>Discard Tracker</h3>
+    <table class="planner-table planner-table--compact">
+      <thead>
+        <tr>
+          <th>Day</th>
+          <th>Discard Amount (g)</th>
+          <th>Used For</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr><td>Mon</td><td class="planner-cell"></td><td class="planner-cell"></td></tr>
+        <tr><td>Tue</td><td class="planner-cell"></td><td class="planner-cell"></td></tr>
+        <tr><td>Wed</td><td class="planner-cell"></td><td class="planner-cell"></td></tr>
+        <tr><td>Thu</td><td class="planner-cell"></td><td class="planner-cell"></td></tr>
+        <tr><td>Fri</td><td class="planner-cell"></td><td class="planner-cell"></td></tr>
+        <tr><td>Sat</td><td class="planner-cell"></td><td class="planner-cell"></td></tr>
+        <tr><td>Sun</td><td class="planner-cell"></td><td class="planner-cell"></td></tr>
+      </tbody>
+    </table>
+
+    <p><strong>Total discard this week:</strong> ______________ g &nbsp; &nbsp; <strong>Discard recipes made:</strong> ______________</p>
+
+    <h3>Weekly Reflection</h3>
+    <p class="planner-reflection"><strong>What went well:</strong> ____________________________________________________________</p>
+    <p class="planner-reflection"><strong>What to adjust next week:</strong> ____________________________________________________________</p>
+    <p class="planner-reflection"><strong>Starter observations:</strong> ____________________________________________________________</p>
+  </article>
+
+  <!-- ===================================================================
+       BACK COVER
+       =================================================================== -->
+  <section class="back-cover page-break" aria-label="Back Cover">
+    <div class="back-cover-content">
+      <h2 class="back-cover-thanks">Thank You for Reading</h2>
+
+      <p class="back-cover-message">We hope this handbook becomes a trusted companion in your kitchen. Sourdough baking is a practice of patience, observation, and continuous learning. Every loaf teaches you something new.</p>
+
+      <div class="back-cover-separator"></div>
+
+      <div class="back-cover-links">
+        <p><strong>Rise &amp; Ferment</strong></p>
+        <p><a href="https://riseandferment.com">riseandferment.com</a></p>
+        <p>Download the free starter tracking app</p>
+      </div>
+
+      <div class="back-cover-separator"></div>
+
+      <p class="back-cover-copyright">Copyright &copy; 2025 Rise &amp; Ferment. All rights reserved.</p>
+      <p class="back-cover-legal">No part of this publication may be reproduced, distributed, or transmitted in any form or by any means without prior written permission.</p>
+    </div>
+  </section>
+
+</body>
+</html>

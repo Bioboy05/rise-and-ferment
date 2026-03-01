@@ -1,0 +1,1000 @@
+/* ============================================================
+   Rise & Ferment — Premium Ebook Print Stylesheet
+   A4 format, optimized for PDF generation
+   ============================================================ */
+
+/* --- Brand Tokens --- */
+:root {
+  --cream: #FFFBF5;
+  --brown: #8B5A2B;
+  --dark: #3D2914;
+  --amber: #D4A574;
+  --warm-bg: #FFF8F0;
+  --border-light: #e8e0d8;
+  --font-display: 'Caveat', cursive;
+  --font-body: 'Nunito', sans-serif;
+}
+
+/* ============================================================
+   PAGE SETUP
+   ============================================================ */
+@page {
+  size: A4;
+  margin: 25mm 20mm 30mm 20mm;
+}
+
+@page :first {
+  margin: 0;
+}
+
+/* ============================================================
+   BASE RESET & TYPOGRAPHY
+   ============================================================ */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  font-size: 11pt;
+  -webkit-print-color-adjust: exact;
+  print-color-adjust: exact;
+}
+
+body {
+  font-family: var(--font-body);
+  font-size: 11pt;
+  line-height: 1.7;
+  color: var(--dark);
+  background: white;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  page-break-after: avoid;
+  orphans: 3;
+  widows: 3;
+}
+
+h1 {
+  font-family: var(--font-display);
+  font-size: 36pt;
+  color: var(--brown);
+  margin-bottom: 8mm;
+  line-height: 1.2;
+  letter-spacing: 0.02em;
+}
+
+h2 {
+  font-family: var(--font-body);
+  font-size: 18pt;
+  color: var(--brown);
+  font-weight: 800;
+  margin-top: 8mm;
+  margin-bottom: 4mm;
+  line-height: 1.3;
+}
+
+h3 {
+  font-family: var(--font-body);
+  font-size: 14pt;
+  color: var(--dark);
+  font-weight: 700;
+  margin-top: 6mm;
+  margin-bottom: 3mm;
+  line-height: 1.4;
+}
+
+h4 {
+  font-family: var(--font-body);
+  font-size: 12pt;
+  color: var(--brown);
+  font-weight: 700;
+  margin-top: 4mm;
+  margin-bottom: 2mm;
+}
+
+p {
+  margin-bottom: 4mm;
+  orphans: 3;
+  widows: 3;
+}
+
+strong {
+  font-weight: 700;
+  color: var(--dark);
+}
+
+em {
+  font-style: italic;
+}
+
+/* ============================================================
+   COVER PAGE
+   ============================================================ */
+.cover {
+  page-break-after: always;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  background: var(--cream);
+  text-align: center;
+  padding: 20mm;
+  position: relative;
+}
+
+.cover::before {
+  content: '';
+  position: absolute;
+  inset: 12mm;
+  border: 3px double var(--amber);
+  border-radius: 2px;
+  pointer-events: none;
+}
+
+.cover-content {
+  max-width: 130mm;
+}
+
+.cover-icon {
+  font-size: 64pt;
+  margin-bottom: 10mm;
+  display: block;
+}
+
+.cover-title {
+  font-family: var(--font-display);
+  font-size: 48pt;
+  color: var(--brown);
+  line-height: 1.15;
+  margin-bottom: 6mm;
+  letter-spacing: 0.02em;
+}
+
+.cover-subtitle {
+  font-family: var(--font-body);
+  font-size: 16pt;
+  color: var(--amber);
+  font-weight: 600;
+  margin-bottom: 10mm;
+  line-height: 1.4;
+}
+
+.cover-author {
+  font-family: var(--font-body);
+  font-size: 14pt;
+  color: var(--dark);
+  font-weight: 400;
+  letter-spacing: 0.04em;
+}
+
+.cover-edition {
+  font-family: var(--font-body);
+  font-size: 10pt;
+  color: var(--amber);
+  margin-top: 8mm;
+  font-weight: 300;
+}
+
+.cover-divider {
+  width: 40mm;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--amber), transparent);
+  margin: 6mm auto;
+  border: none;
+}
+
+/* ============================================================
+   TABLE OF CONTENTS
+   ============================================================ */
+.toc {
+  page-break-after: always;
+}
+
+.toc h1 {
+  text-align: center;
+  margin-bottom: 12mm;
+}
+
+.toc-part {
+  font-family: var(--font-body);
+  font-size: 13pt;
+  font-weight: 800;
+  color: var(--brown);
+  margin-top: 6mm;
+  margin-bottom: 2mm;
+  padding-bottom: 1mm;
+  border-bottom: 2px solid var(--amber);
+  display: block;
+}
+
+.toc-entry {
+  display: flex;
+  align-items: baseline;
+  padding: 1.5mm 0;
+  padding-left: 6mm;
+  text-decoration: none;
+  color: var(--dark);
+  font-size: 11pt;
+}
+
+.toc-entry:hover {
+  color: var(--brown);
+}
+
+.toc-title {
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
+.toc-dots {
+  flex: 1;
+  border-bottom: 1px dotted var(--amber);
+  margin: 0 2mm;
+  min-width: 10mm;
+  position: relative;
+  top: -2px;
+}
+
+.toc-page {
+  white-space: nowrap;
+  flex-shrink: 0;
+  font-weight: 600;
+  color: var(--brown);
+  font-variant-numeric: tabular-nums;
+  min-width: 8mm;
+  text-align: right;
+}
+
+/* Nested chapter entries under parts */
+.toc-entry.toc-chapter {
+  padding-left: 12mm;
+  font-size: 10.5pt;
+}
+
+.toc-entry.toc-subchapter {
+  padding-left: 18mm;
+  font-size: 10pt;
+  color: #6b5b4f;
+}
+
+/* ============================================================
+   CHAPTERS
+   ============================================================ */
+.chapter {
+  page-break-before: always;
+}
+
+.chapter-number {
+  font-family: var(--font-body);
+  font-size: 12pt;
+  font-variant: small-caps;
+  letter-spacing: 0.15em;
+  color: var(--amber);
+  display: block;
+  margin-bottom: 2mm;
+  font-weight: 600;
+}
+
+.chapter > h1 {
+  margin-top: 0;
+  padding-bottom: 4mm;
+  border-bottom: 2px solid var(--amber);
+  margin-bottom: 8mm;
+}
+
+/* Chapter intro / lead paragraph */
+.chapter-intro {
+  font-size: 12pt;
+  line-height: 1.8;
+  color: var(--brown);
+  margin-bottom: 6mm;
+  font-weight: 400;
+}
+
+/* --- Lists --- */
+.chapter ul,
+.chapter ol {
+  margin-bottom: 4mm;
+  padding-left: 6mm;
+}
+
+.chapter ul {
+  list-style: none;
+}
+
+.chapter ul li {
+  position: relative;
+  padding-left: 5mm;
+  margin-bottom: 2mm;
+}
+
+.chapter ul li::before {
+  content: '\2022';
+  color: var(--amber);
+  font-size: 14pt;
+  font-weight: 700;
+  position: absolute;
+  left: 0;
+  top: -0.5mm;
+  line-height: 1.7;
+}
+
+.chapter ol {
+  counter-reset: chapter-list;
+  list-style: none;
+  padding-left: 0;
+}
+
+.chapter ol li {
+  counter-increment: chapter-list;
+  position: relative;
+  padding-left: 10mm;
+  margin-bottom: 2.5mm;
+}
+
+.chapter ol li::before {
+  content: counter(chapter-list) '.';
+  color: var(--amber);
+  font-weight: 700;
+  font-size: 12pt;
+  position: absolute;
+  left: 0;
+  top: 0;
+}
+
+/* --- Blockquotes --- */
+blockquote {
+  border-left: 3px solid var(--amber);
+  padding: 3mm 5mm;
+  margin: 4mm 0;
+  background: var(--warm-bg);
+  font-style: italic;
+  color: var(--brown);
+  page-break-inside: avoid;
+  border-radius: 0 4px 4px 0;
+}
+
+blockquote p {
+  margin-bottom: 0;
+}
+
+blockquote cite,
+blockquote footer {
+  display: block;
+  margin-top: 2mm;
+  font-style: normal;
+  font-size: 9pt;
+  color: var(--amber);
+  font-weight: 600;
+}
+
+/* ============================================================
+   RECIPE PAGES
+   ============================================================ */
+.recipe {
+  page-break-before: always;
+  page-break-inside: avoid;
+}
+
+.recipe-header {
+  margin-bottom: 6mm;
+}
+
+.recipe-title {
+  font-family: var(--font-body);
+  font-size: 20pt;
+  color: var(--brown);
+  font-weight: 800;
+  margin-bottom: 2mm;
+  padding-bottom: 2mm;
+  border-bottom: 2px solid var(--amber);
+  position: relative;
+}
+
+.recipe-title::after {
+  content: '';
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  width: 30mm;
+  height: 2px;
+  background: var(--brown);
+}
+
+.recipe-description {
+  font-size: 10.5pt;
+  color: #6b5b4f;
+  line-height: 1.6;
+  margin-bottom: 4mm;
+  font-style: italic;
+}
+
+/* Recipe metadata pills */
+.recipe-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2mm;
+  margin-bottom: 6mm;
+}
+
+.badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 1.5mm;
+  background: var(--warm-bg);
+  color: var(--brown);
+  font-size: 9pt;
+  font-weight: 600;
+  padding: 1.5mm 4mm;
+  border-radius: 20px;
+  border: 1px solid var(--border-light);
+  white-space: nowrap;
+}
+
+.badge-icon {
+  font-size: 10pt;
+}
+
+/* Recipe two-column layout */
+.recipe-body {
+  display: grid;
+  grid-template-columns: 1fr 1.5fr;
+  gap: 6mm;
+}
+
+.recipe-body.single-column {
+  grid-template-columns: 1fr;
+}
+
+/* Ingredients */
+.recipe-ingredients {
+  page-break-inside: avoid;
+}
+
+.recipe-ingredients h3 {
+  font-size: 12pt;
+  margin-bottom: 3mm;
+  color: var(--brown);
+}
+
+.recipe-ingredients table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.recipe-ingredients th {
+  background: var(--brown);
+  color: white;
+  padding: 2mm 3mm;
+  text-align: left;
+  font-size: 9pt;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.recipe-ingredients td {
+  padding: 2mm 3mm;
+  font-size: 10pt;
+  border-bottom: 1px solid var(--border-light);
+}
+
+.recipe-ingredients tr:nth-child(even) td {
+  background: var(--warm-bg);
+}
+
+/* Instructions */
+.recipe-instructions {
+  page-break-inside: avoid;
+}
+
+.recipe-instructions h3 {
+  font-size: 12pt;
+  margin-bottom: 3mm;
+  color: var(--brown);
+}
+
+.recipe-steps {
+  counter-reset: recipe-step;
+  list-style: none;
+  padding-left: 0;
+}
+
+.recipe-steps li {
+  counter-increment: recipe-step;
+  position: relative;
+  padding-left: 12mm;
+  margin-bottom: 3mm;
+  min-height: 8mm;
+  font-size: 10.5pt;
+  line-height: 1.6;
+}
+
+.recipe-steps li::before {
+  content: counter(recipe-step);
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 8mm;
+  height: 8mm;
+  background: var(--amber);
+  color: white;
+  font-size: 11pt;
+  font-weight: 700;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  line-height: 8mm;
+}
+
+/* Pro tips box */
+.recipe-tip,
+.pro-tip {
+  background: var(--warm-bg);
+  border-left: 3px solid var(--amber);
+  border-radius: 0 6px 6px 0;
+  padding: 4mm 5mm;
+  margin: 4mm 0;
+  page-break-inside: avoid;
+}
+
+.recipe-tip h4,
+.pro-tip h4 {
+  font-size: 10pt;
+  color: var(--brown);
+  font-weight: 800;
+  margin-bottom: 1.5mm;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+}
+
+.recipe-tip p,
+.pro-tip p {
+  font-size: 10pt;
+  margin-bottom: 0;
+  line-height: 1.6;
+}
+
+/* Variation boxes */
+.recipe-variation,
+.variation {
+  background: #faf5ee;
+  border: 1px dashed var(--amber);
+  border-radius: 6px;
+  padding: 4mm 5mm;
+  margin: 4mm 0;
+  page-break-inside: avoid;
+}
+
+.recipe-variation h4,
+.variation h4 {
+  font-size: 10pt;
+  color: var(--amber);
+  font-weight: 700;
+  margin-bottom: 1.5mm;
+}
+
+.recipe-variation p,
+.variation p {
+  font-size: 10pt;
+  margin-bottom: 0;
+}
+
+/* ============================================================
+   PRINTABLE PAGES (Planners, Logs, Trackers)
+   ============================================================ */
+.printable {
+  page-break-before: always;
+}
+
+.printable h2 {
+  text-align: center;
+  margin-bottom: 6mm;
+}
+
+.printable table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-bottom: 6mm;
+}
+
+.printable th {
+  background: var(--brown);
+  color: white;
+  padding: 3mm 4mm;
+  text-align: left;
+  font-size: 9.5pt;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+.printable td {
+  padding: 4mm 4mm;
+  border-bottom: 1px solid var(--border-light);
+  font-size: 10pt;
+  min-height: 10mm;
+  vertical-align: top;
+}
+
+.printable tr:nth-child(even) td {
+  background: var(--warm-bg);
+}
+
+/* Writable rows — taller for handwriting */
+.printable .writable td {
+  min-height: 14mm;
+  height: 14mm;
+}
+
+.printable .notes-area {
+  min-height: 30mm;
+  border: 1px solid var(--border-light);
+  border-radius: 4px;
+  padding: 3mm;
+  margin-top: 4mm;
+}
+
+/* ============================================================
+   TABLES (General)
+   ============================================================ */
+table {
+  border-collapse: collapse;
+  width: 100%;
+  margin-bottom: 4mm;
+  page-break-inside: avoid;
+}
+
+th {
+  background: var(--brown);
+  color: white;
+  padding: 2.5mm 3.5mm;
+  text-align: left;
+  font-size: 9.5pt;
+  font-weight: 700;
+}
+
+td {
+  padding: 2.5mm 3.5mm;
+  border-bottom: 1px solid var(--border-light);
+  font-size: 10pt;
+  vertical-align: top;
+}
+
+tbody tr:nth-child(even) td {
+  background: var(--warm-bg);
+}
+
+/* ============================================================
+   INFO BOXES & CALLOUTS
+   ============================================================ */
+.info-box {
+  background: var(--warm-bg);
+  border: 1px solid var(--border-light);
+  border-radius: 6px;
+  padding: 4mm 5mm;
+  margin: 4mm 0;
+  page-break-inside: avoid;
+}
+
+.info-box h4 {
+  color: var(--brown);
+  margin-bottom: 2mm;
+}
+
+.warning-box {
+  background: #fff5e6;
+  border: 1px solid var(--amber);
+  border-left: 3px solid var(--amber);
+  border-radius: 0 6px 6px 0;
+  padding: 4mm 5mm;
+  margin: 4mm 0;
+  page-break-inside: avoid;
+}
+
+.highlight-box {
+  background: var(--cream);
+  border: 2px solid var(--amber);
+  border-radius: 8px;
+  padding: 5mm 6mm;
+  margin: 5mm 0;
+  text-align: center;
+  page-break-inside: avoid;
+}
+
+.highlight-box p {
+  font-size: 12pt;
+  font-weight: 600;
+  color: var(--brown);
+  margin-bottom: 0;
+}
+
+/* ============================================================
+   IMAGES
+   ============================================================ */
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+  margin: 4mm auto;
+  page-break-inside: avoid;
+}
+
+figure {
+  margin: 4mm 0;
+  page-break-inside: avoid;
+  text-align: center;
+}
+
+figcaption {
+  font-size: 9pt;
+  color: var(--amber);
+  font-style: italic;
+  margin-top: 2mm;
+  text-align: center;
+}
+
+/* ============================================================
+   BACK COVER
+   ============================================================ */
+.back-cover {
+  page-break-before: always;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  text-align: center;
+  background: var(--cream);
+  padding: 20mm;
+}
+
+.back-cover-message {
+  font-family: var(--font-display);
+  font-size: 28pt;
+  color: var(--brown);
+  margin-bottom: 8mm;
+  line-height: 1.3;
+}
+
+.back-cover-text {
+  font-size: 11pt;
+  color: var(--dark);
+  max-width: 120mm;
+  margin-bottom: 8mm;
+  line-height: 1.7;
+}
+
+.back-cover-links {
+  background: var(--warm-bg);
+  border: 2px solid var(--amber);
+  border-radius: 8px;
+  padding: 6mm 10mm;
+  margin-top: 4mm;
+  display: inline-block;
+}
+
+.back-cover-links p {
+  font-size: 10pt;
+  color: var(--dark);
+  margin-bottom: 1.5mm;
+}
+
+.back-cover-links a {
+  color: var(--brown);
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.back-cover-divider {
+  width: 30mm;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--amber), transparent);
+  margin: 6mm auto;
+  border: none;
+}
+
+.back-cover-copyright {
+  font-size: 8pt;
+  color: var(--amber);
+  margin-top: 6mm;
+}
+
+/* ============================================================
+   UTILITY CLASSES
+   ============================================================ */
+.page-break {
+  page-break-before: always;
+}
+
+.no-break {
+  page-break-inside: avoid;
+}
+
+.text-center {
+  text-align: center;
+}
+
+.text-right {
+  text-align: right;
+}
+
+.text-muted {
+  color: var(--amber);
+}
+
+.text-small {
+  font-size: 9pt;
+}
+
+.text-large {
+  font-size: 13pt;
+}
+
+.mt-2 { margin-top: 2mm; }
+.mt-4 { margin-top: 4mm; }
+.mt-6 { margin-top: 6mm; }
+.mt-8 { margin-top: 8mm; }
+.mb-2 { margin-bottom: 2mm; }
+.mb-4 { margin-bottom: 4mm; }
+.mb-6 { margin-bottom: 6mm; }
+.mb-8 { margin-bottom: 8mm; }
+
+.flex {
+  display: flex;
+}
+
+.flex-center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.gap-2 { gap: 2mm; }
+.gap-4 { gap: 4mm; }
+
+/* ============================================================
+   LINKS & REFERENCES
+   ============================================================ */
+a {
+  color: var(--brown);
+  text-decoration: underline;
+  text-decoration-color: var(--amber);
+  text-underline-offset: 1.5px;
+}
+
+/* ============================================================
+   HORIZONTAL RULES & DECORATIVE DIVIDERS
+   ============================================================ */
+hr {
+  border: none;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--amber), transparent);
+  margin: 6mm 0;
+}
+
+.divider-ornament {
+  text-align: center;
+  margin: 6mm 0;
+  color: var(--amber);
+  font-size: 14pt;
+  letter-spacing: 4mm;
+}
+
+/* ============================================================
+   PAGE FOOTER (via @page or manual)
+   ============================================================ */
+.page-footer {
+  font-size: 8pt;
+  color: var(--amber);
+  text-align: center;
+  padding-top: 3mm;
+  border-top: 1px solid var(--border-light);
+  margin-top: auto;
+}
+
+/* ============================================================
+   PRINT-SPECIFIC OVERRIDES
+   ============================================================ */
+@media print {
+  body {
+    background: white;
+  }
+
+  * {
+    box-shadow: none !important;
+    text-shadow: none !important;
+    animation: none !important;
+    transition: none !important;
+  }
+
+  /* Show URLs after links for printed copy */
+  a[href^="http"]::after {
+    content: ' (' attr(href) ')';
+    font-size: 8pt;
+    color: var(--amber);
+    font-weight: 400;
+    word-break: break-all;
+  }
+
+  /* Don't show URL for anchors or internal links */
+  a[href^="#"]::after,
+  a[href^="mailto"]::after {
+    content: none;
+  }
+
+  /* Ensure backgrounds print */
+  .badge,
+  .recipe-tip,
+  .pro-tip,
+  .recipe-variation,
+  .variation,
+  .info-box,
+  .warning-box,
+  .highlight-box,
+  .back-cover-links,
+  th,
+  tbody tr:nth-child(even) td,
+  blockquote,
+  .cover {
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
+
+  img {
+    max-width: 100% !important;
+    page-break-inside: avoid;
+  }
+
+  h1, h2, h3 {
+    page-break-after: avoid;
+  }
+
+  p, li, blockquote {
+    orphans: 3;
+    widows: 3;
+  }
+
+  .chapter,
+  .recipe,
+  .printable {
+    page-break-before: always;
+  }
+
+  .no-break {
+    page-break-inside: avoid;
+  }
+}
+
+/* ============================================================
+   SCREEN PREVIEW (for development/review only)
+   ============================================================ */
+@media screen {
+  body {
+    max-width: 210mm;
+    margin: 0 auto;
+    padding: 20mm;
+    background: #e8e0d8;
+  }
+
+  .cover,
+  .toc,
+  .chapter,
+  .recipe,
+  .printable,
+  .back-cover {
+    background: white;
+    padding: 25mm 20mm 30mm 20mm;
+    margin-bottom: 5mm;
+    box-shadow: 0 1px 6px rgba(61, 41, 20, 0.12);
+  }
+
+  .page-break {
+    margin-top: 5mm;
+  }
+}

@@ -10,7 +10,8 @@
     "preview": "vite preview",
     "qa:personas": "node tasks/persona-qa.mjs",
     "qa:encoding": "node tasks/fix-mojibake.mjs",
-    "qa": "npm run lint && npm run build && npm run qa:personas"
+    "qa": "npm run lint && npm run build && npm run qa:personas",
+    "build:ebook": "node ebook/build.mjs"
   },
   "dependencies": {
     "i18next": "^25.8.4",
@@ -30,6 +31,7 @@
     "eslint-plugin-react-hooks": "^7.0.1",
     "eslint-plugin-react-refresh": "^0.4.24",
     "globals": "^16.5.0",
+    "puppeteer": "^24.37.5",
     "tailwindcss": "^4.1.18",
     "vite": "^7.2.4",
     "vite-plugin-pwa": "^1.2.0"
