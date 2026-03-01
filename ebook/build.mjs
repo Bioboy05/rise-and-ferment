@@ -306,52 +306,183 @@ for (const [placeholder, filename] of Object.entries(appendixMap)) {
 console.log(`${appendixCount}/4 appendix placeholders replaced.`);
 
 // ---------------------------------------------------------------------------
-// 5. Generate PDF with Puppeteer
+// 5. CLI flags
 // ---------------------------------------------------------------------------
 
-async function generatePDF() {
-  let puppeteer;
+const args = process.argv.slice(2);
+const FLAG_COVER = args.includes('--cover');
+const FLAG_PREVIEW = args.includes('--preview');
+
+// ---------------------------------------------------------------------------
+// 6. Launch Puppeteer & generate outputs
+// ---------------------------------------------------------------------------
+
+async function loadPuppeteer() {
   try {
-    puppeteer = await import('puppeteer');
+    return await import('puppeteer');
   } catch {
     console.error(
       'Puppeteer is not installed. Run:\n  npm install --save-dev puppeteer'
     );
     process.exit(1);
   }
+}
 
-  const outputPath = join(__dirname, 'The-Complete-Sourdough-Handbook.pdf');
-
-  console.log('Launching browser...');
+async function launchPage(puppeteer, htmlContent) {
   const browser = await puppeteer.default.launch({
     headless: true,
     args: ['--no-sandbox', '--disable-setuid-sandbox'],
   });
-
   const page = await browser.newPage();
-
-  // Write processed HTML to temp file so CSS relative paths work
   const tempPath = join(__dirname, '_build_temp.html');
-  writeFileSync(tempPath, html, 'utf-8');
-
+  writeFileSync(tempPath, htmlContent, 'utf-8');
   const tempUrl = `file:///${tempPath.replace(/\\/g, '/')}`;
-  console.log('Loading HTML...');
   await page.goto(tempUrl, { waitUntil: 'networkidle0', timeout: 30000 });
-
-  // Wait for fonts
   await page.evaluateHandle('document.fonts.ready');
+  return { browser, page, tempPath };
+}
 
-  console.log('Generating PDF...');
+function cleanup(tempPath) {
+  try { const { unlinkSync } = require('fs'); unlinkSync(tempPath); } catch { /* ignore */ }
+}
+
+// --- Cover image (1600x2560 PNG) ---
+async function generateCover(puppeteer) {
+  console.log('Generating cover image...');
+  const { browser, page, tempPath } = await launchPage(puppeteer, html);
+
+  // Set viewport to cover aspect ratio (1600x2560 = 5:8)
+  await page.setViewport({ width: 1600, height: 2560, deviceScaleFactor: 1 });
+
+  // Screenshot just the cover section
+  const coverEl = await page.$('.cover');
+  if (!coverEl) {
+    console.error('Cover section not found in template');
+    await browser.close();
+    cleanup(tempPath);
+    return;
+  }
+
+  const coverPath = join(__dirname, 'cover-gumroad.png');
+  await coverEl.screenshot({ path: coverPath, type: 'png' });
+
+  cleanup(tempPath);
+  await browser.close();
+  console.log(`Cover image generated: ${coverPath}`);
+}
+
+// --- Preview PDF (subset: cover + TOC + ch1 partial + "get full handbook" page) ---
+async function generatePreview(puppeteer) {
+  console.log('Generating preview PDF...');
+
+  // Inject a "Get the full handbook" page at the end and hide most content
+  const previewStyle = `
+    <style>
+      /* Hide everything after chapter 1 */
+      article[id]:not(#cover-wrapper):not(#toc-wrapper):not(#introduction):not(#quick-start):not(#chapter-1) { display: none !important; }
+      .part-divider:not(:first-of-type) { display: none !important; }
+      section.back-cover { display: none !important; }
+
+      /* Add "preview" watermark */
+      body::before {
+        content: 'PREVIEW';
+        position: fixed;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%) rotate(-45deg);
+        font-size: 120pt;
+        color: rgba(139, 90, 43, 0.06);
+        font-weight: 900;
+        pointer-events: none;
+        z-index: 9999;
+      }
+
+      /* "Get the full handbook" CTA page */
+      .preview-cta {
+        page-break-before: always;
+        min-height: 80vh;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+        padding: 40mm 20mm;
+      }
+      .preview-cta h2 {
+        font-family: 'Playfair Display', serif;
+        font-size: 28pt;
+        color: #3D2914;
+        margin-bottom: 16pt;
+      }
+      .preview-cta p {
+        font-size: 13pt;
+        color: #6B4F3A;
+        line-height: 1.7;
+        max-width: 400px;
+        margin-bottom: 12pt;
+      }
+      .preview-cta .cta-link {
+        display: inline-block;
+        margin-top: 20pt;
+        padding: 14pt 36pt;
+        background: #8B5A2B;
+        color: #FFFBF5;
+        font-size: 14pt;
+        font-weight: 700;
+        border-radius: 8pt;
+        text-decoration: none;
+      }
+    </style>
+  `;
+
+  const ctaPage = `
+    <div class="preview-cta">
+      <h2>Enjoying the preview?</h2>
+      <p>This is just the beginning. The full handbook contains 14 in-depth chapters, 14 exclusive Deep Dive sections, 5 tested recipes, printable tools, a complete glossary, FAQ, and seasonal baking guide.</p>
+      <p><strong>100+ pages of expert knowledge for just &euro;9.99</strong></p>
+      <a class="cta-link" href="https://riseandferment.gumroad.com/l/sourdough-handbook">Get the Complete Handbook</a>
+    </div>
+  `;
+
+  // Insert preview style before </head> and CTA before </body>
+  let previewHtml = html
+    .replace('</head>', `${previewStyle}\n</head>`)
+    .replace('</body>', `${ctaPage}\n</body>`);
+
+  const { browser, page, tempPath } = await launchPage(puppeteer, previewHtml);
+
+  const previewPath = join(__dirname, 'Sourdough-Handbook-Preview.pdf');
+  await page.pdf({
+    path: previewPath,
+    format: 'A4',
+    printBackground: true,
+    margin: { top: '25mm', right: '20mm', bottom: '30mm', left: '20mm' },
+    displayHeaderFooter: true,
+    headerTemplate: '<span></span>',
+    footerTemplate: `
+      <div style="width:100%;text-align:center;font-size:9px;color:#8B5A2B;font-family:sans-serif;">
+        <span class="pageNumber"></span> &mdash; PREVIEW
+      </div>
+    `,
+  });
+
+  cleanup(tempPath);
+  await browser.close();
+  console.log(`Preview PDF generated: ${previewPath}`);
+}
+
+// --- Full PDF ---
+async function generatePDF(puppeteer) {
+  const outputPath = join(__dirname, 'The-Complete-Sourdough-Handbook.pdf');
+  console.log('Generating full PDF...');
+
+  const { browser, page, tempPath } = await launchPage(puppeteer, html);
+
   await page.pdf({
     path: outputPath,
     format: 'A4',
     printBackground: true,
-    margin: {
-      top: '25mm',
-      right: '20mm',
-      bottom: '30mm',
-      left: '20mm',
-    },
+    margin: { top: '25mm', right: '20mm', bottom: '30mm', left: '20mm' },
     displayHeaderFooter: true,
     headerTemplate: '<span></span>',
     footerTemplate: `
@@ -361,16 +492,30 @@ async function generatePDF() {
     `,
   });
 
-  // Clean up temp file
-  const { unlinkSync } = await import('fs');
-  try { unlinkSync(tempPath); } catch { /* ignore */ }
-
+  cleanup(tempPath);
   await browser.close();
-
-  console.log(`\nPDF generated: ${outputPath}`);
+  console.log(`PDF generated: ${outputPath}`);
 }
 
-generatePDF().catch((err) => {
-  console.error('PDF generation failed:', err);
+// --- Main ---
+async function main() {
+  console.log('Launching browser...');
+  const puppeteer = await loadPuppeteer();
+
+  if (FLAG_COVER) {
+    await generateCover(puppeteer);
+  }
+
+  if (FLAG_PREVIEW) {
+    await generatePreview(puppeteer);
+  }
+
+  if (!FLAG_COVER && !FLAG_PREVIEW) {
+    await generatePDF(puppeteer);
+  }
+}
+
+main().catch((err) => {
+  console.error('Build failed:', err);
   process.exit(1);
 });

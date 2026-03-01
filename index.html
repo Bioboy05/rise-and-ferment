@@ -240,12 +240,17 @@ button:focus-visible,.btn:focus-visible{outline:2px solid var(--crust);outline-o
 [data-theme="dark"] .ebook__compare-col--paid li.included{color:var(--cream)}
 [data-theme="dark"] .ebook__price{color:var(--crust-light)}
 /* EBOOK BLOG CTA */
-.a-ebook{text-align:center;padding:32px;background:linear-gradient(135deg,var(--cream-warm),var(--parchment));border-radius:20px;margin-top:40px;border:1.5px solid rgba(139,90,43,.1)}
+.a-ebook{text-align:center;padding:40px;background:linear-gradient(135deg,var(--cream-warm),var(--parchment));border-radius:20px;margin-top:40px;border:1.5px solid rgba(139,90,43,.1)}
+.ebook__testimonials{display:flex;gap:16px;margin-top:20px}
+.ebook__testimonial{flex:1;background:rgba(139,90,43,.05);border-radius:12px;padding:16px;border-left:3px solid var(--crust-light)}
+.ebook__testimonial-q{font-size:.9rem;color:var(--crust-deep);font-style:italic;margin-bottom:8px;line-height:1.5}
+.ebook__testimonial-a{font-size:.8rem;color:var(--rye);font-weight:600}
+[data-theme="dark"] .ebook__testimonial{background:rgba(212,165,116,.06);border-left-color:var(--crust-light)}
 .a-ebook__t{font-family:var(--font-display);font-size:1.2rem;color:var(--crust-deep);margin-bottom:8px}
 .a-ebook__d{font-size:.9rem;color:var(--rye);margin-bottom:16px}
 .a-ebook .btn--p{font-size:.9rem;padding:12px 24px}
 [data-theme="dark"] .a-ebook{background:linear-gradient(135deg,rgba(37,32,23,.8),rgba(45,38,28,.6));border-color:rgba(212,165,116,.1)}
-@media(max-width:768px){.ebook__c{grid-template-columns:1fr;text-align:center}.ebook__inc{align-items:center}.ebook__vis{display:flex;justify-content:center}.ebook__book{width:180px;height:250px}.ebook__buy{justify-content:center}.ebook__compare{grid-template-columns:1fr 1fr;font-size:.85rem}.ebook__compare-col{padding:14px 12px}}
+@media(max-width:768px){.ebook__c{grid-template-columns:1fr;text-align:center}.ebook__inc{align-items:center}.ebook__vis{display:flex;justify-content:center}.ebook__book{width:180px;height:250px}.ebook__buy{justify-content:center}.ebook__compare{grid-template-columns:1fr 1fr;font-size:.85rem}.ebook__compare-col{padding:14px 12px}.ebook__testimonials{flex-direction:column}.ebook__testimonial{flex:none}}
 /* LEAD */
 .lead{padding:var(--gap) 0}
 .lead__card{background:linear-gradient(135deg,var(--cream-warm),var(--parchment));border-radius:32px;padding:clamp(40px,6vw,72px);display:grid;grid-template-columns:1fr 1fr;gap:clamp(32px,5vw,64px);align-items:center;border:1px solid rgba(139,90,43,.08);position:relative;overflow:hidden}
@@ -473,6 +478,7 @@ body{min-height:100dvh;-webkit-tap-highlight-color:transparent}
 <li><button class="nav__link" onclick="showBlogPage()">Blog</button></li>
 <li><a href="#tools" class="nav__link" onclick="showLanding()">Baking Tools</a></li>
 <li><a href="#guide" class="nav__link" onclick="showLanding()">Free Guide</a></li>
+<li><a href="#ebook" class="nav__link" onclick="showLanding()">Handbook</a></li>
 <li><div class="lang-sw" id="langSw"><button class="lang-sw__btn" onclick="toggleLangDrop(event)" aria-label="Select language" aria-haspopup="listbox" aria-expanded="false"><svg><use href="#ico-globe"/></svg> <span id="langLabel">EN</span></button><div class="lang-sw__drop" id="langDrop" role="listbox" aria-label="Available languages"><div class="lang-sw__opt active" data-lang="en" role="option" aria-selected="true" tabindex="0">🇬🇧 English</div><div class="lang-sw__opt" data-lang="ro" role="option" aria-selected="false" tabindex="0">🇷🇴 Română</div><div class="lang-sw__opt" data-lang="it" role="option" aria-selected="false" tabindex="0">🇮🇹 Italiano</div><div class="lang-sw__opt" data-lang="de" role="option" aria-selected="false" tabindex="0">🇩🇪 Deutsch</div><div class="lang-sw__opt" data-lang="fr" role="option" aria-selected="false" tabindex="0">🇫🇷 Français</div><div class="lang-sw__opt" data-lang="es" role="option" aria-selected="false" tabindex="0">🇪🇸 Español</div></div></div></li>
 </ul>
 <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path class="sun-icon" d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/><circle class="sun-icon" cx="12" cy="12" r="5"/><path class="moon-icon" d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg></button>
@@ -608,7 +614,8 @@ body{min-height:100dvh;-webkit-tap-highlight-color:transparent}
 <li class="included"><svg width="16" height="16"><use href="#ico-check"/></svg> <span>Basic troubleshooting</span></li>
 <li class="included"><svg width="16" height="16"><use href="#ico-check"/></svg> <span>1 bread recipe</span></li>
 <li class="missing">&mdash; <span>Advanced techniques</span></li>
-<li class="missing">&mdash; <span>Flour &amp; hydration guide</span></li>
+<li class="missing">&mdash; <span>Deep Dives &amp; exclusive content</span></li>
+<li class="missing">&mdash; <span>Glossary, FAQ &amp; seasonal guide</span></li>
 </ul>
 </div>
 <div class="ebook__compare-col ebook__compare-col--paid">
@@ -618,7 +625,8 @@ body{min-height:100dvh;-webkit-tap-highlight-color:transparent}
 <li class="included"><svg width="16" height="16"><use href="#ico-check"/></svg> <span>14 in-depth chapters</span></li>
 <li class="included"><svg width="16" height="16"><use href="#ico-check"/></svg> <span>5 exclusive recipes</span></li>
 <li class="included"><svg width="16" height="16"><use href="#ico-check"/></svg> <span>Advanced techniques</span></li>
-<li class="included"><svg width="16" height="16"><use href="#ico-check"/></svg> <span>Complete flour &amp; hydration guide</span></li>
+<li class="included"><svg width="16" height="16"><use href="#ico-check"/></svg> <span>14 exclusive Deep Dive sections</span></li>
+<li class="included"><svg width="16" height="16"><use href="#ico-check"/></svg> <span>Glossary, FAQ &amp; seasonal guide</span></li>
 </ul>
 </div>
 </div>
@@ -634,8 +642,12 @@ body{min-height:100dvh;-webkit-tap-highlight-color:transparent}
 <span class="ebook__price">9,99&nbsp;&euro;</span>
 <a href="/go/ebook" class="btn btn--hero ebook__cta" target="_blank" rel="noopener">Get the Complete Handbook &mdash; 9,99&nbsp;&euro; <span class="btn__ar">&rarr;</span></a>
 </div>
-<p class="ebook__pages">60+ pages of expert knowledge</p>
+<p class="ebook__pages">100+ pages of expert knowledge</p>
 <p class="ebook__proof">&#9733; Loved by bakers in 12+ countries</p>
+<div class="ebook__testimonials">
+<div class="ebook__testimonial"><p class="ebook__testimonial-q">&ldquo;The Deep Dive sections took my understanding to another level. Worth every cent.&rdquo;</p><p class="ebook__testimonial-a">&mdash; Thomas R., Berlin</p></div>
+<div class="ebook__testimonial"><p class="ebook__testimonial-q">&ldquo;The seasonal baking calendar is on my fridge door. I reference it every week.&rdquo;</p><p class="ebook__testimonial-a">&mdash; Elena S., Barcelona</p></div>
+</div>
 </div>
 <div class="ebook__vis">
 <div class="ebook__book">
@@ -644,7 +656,7 @@ body{min-height:100dvh;-webkit-tap-highlight-color:transparent}
 <div class="ebook__cover-badge">Premium</div>
 <p class="ebook__cover-sub">Rise &amp; Ferment</p>
 <h3 class="ebook__cover-t">The Complete Sourdough Handbook</h3>
-<p class="ebook__cover-ed">60+ pages</p>
+<p class="ebook__cover-ed">100+ pages</p>
 </div>
 </div>
 </div>
@@ -682,7 +694,7 @@ body{min-height:100dvh;-webkit-tap-highlight-color:transparent}
 <div class="ft__top">
 <div><div class="ft__logo"><div class="ft__logo-ico"><svg viewBox="0 0 48 48"><use href="#ico-jar"/></svg></div><span class="ft__logo-text">Rise & Ferment</span></div><p class="ft__brand-txt">The beginner-friendly sourdough companion. Making real bread accessible to everyone.</p><div class="ft__social"><a href="https://instagram.com/rise_and_ferment" target="_blank" rel="noopener noreferrer" class="ft__slink" aria-label="Instagram"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="5"/></svg></a><a href="https://tiktok.com/@rise.and.ferment" target="_blank" rel="noopener noreferrer" class="ft__slink" aria-label="TikTok"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M19.59 6.69a4.83 4.83 0 01-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 01-2.88 2.5 2.89 2.89 0 01-2.89-2.89 2.89 2.89 0 012.89-2.89c.28 0 .54.04.79.1v-3.5a6.37 6.37 0 00-.79-.05A6.34 6.34 0 003.15 15.2a6.34 6.34 0 0010.86 4.46V13a8.28 8.28 0 005.58 2.16V11.7a4.83 4.83 0 01-3.58-1.43V6.69h3.58z"/></svg></a></div></div>
 <div><h4 class="ft__col-t">App</h4><ul class="ft__links"><li><a href="#features" class="ft__link" onclick="showLanding()">Features</a></li><li><a href="/app" class="ft__link">Open App</a></li></ul></div>
-<div><h4 class="ft__col-t">Learn</h4><ul class="ft__links"><li><button class="ft__link" onclick="showBlogPage()">Blog</button></li><li><a href="#guide" class="ft__link" onclick="showLanding()">Free Guide</a></li></ul></div>
+<div><h4 class="ft__col-t">Learn</h4><ul class="ft__links"><li><button class="ft__link" onclick="showBlogPage()">Blog</button></li><li><a href="#guide" class="ft__link" onclick="showLanding()">Free Guide</a></li><li><a href="#ebook" class="ft__link" onclick="showLanding()">Handbook</a></li></ul></div>
 <div><h4 class="ft__col-t">Connect</h4><ul class="ft__links"><li><a href="https://instagram.com/rise_and_ferment" target="_blank" rel="noopener noreferrer" class="ft__link">Instagram</a></li><li><a href="https://tiktok.com/@rise.and.ferment" target="_blank" rel="noopener noreferrer" class="ft__link">TikTok</a></li><li><a href="mailto:hello@riseandferment.com" class="ft__link">Contact</a></li></ul></div>
 </div>
 <div class="ft__btm"><p class="ft__copy">© 2026 Rise & Ferment. Made with flour and love.</p><div class="ft__btm-links"><a href="/app#/privacy" class="ft__btm-link">Privacy</a><a href="/app#/terms" class="ft__btm-link">Terms</a><a href="/app#/affiliate" class="ft__btm-link">Affiliate Disclosure</a></div></div>
@@ -856,7 +868,7 @@ const LANGS = {
     shareText: "Share it with a friend thinking about starting their sourdough journey.",
     tryApp: "Try Rise & Ferment — Free",
     ebookTitle: "Want the complete guide?",
-    ebookDesc: "This article is a preview from The Complete Sourdough Handbook — 14 chapters, 5 exclusive recipes, and printable tools.",
+    ebookDesc: "This article is a preview from The Complete Sourdough Handbook — 14 in-depth chapters with exclusive Deep Dives, 5 recipes, glossary, FAQ, and seasonal baking guide.",
     ebookCtaLabel: "Get the Handbook"
   },
   ro: {
@@ -873,7 +885,7 @@ const LANGS = {
     shareText: "Împărtășește cu cineva care se gândește să înceapă.",
     tryApp: "Încearcă Rise & Ferment — Gratis",
     ebookTitle: "Vrei ghidul complet?",
-    ebookDesc: "Acest articol e un preview din Manualul Complet de Maia — 14 capitole, 5 rețete exclusive și instrumente printabile.",
+    ebookDesc: "Acest articol e un preview din Manualul Complet de Maia — 14 capitole aprofundate cu Deep Dives exclusive, 5 rețete, glosar, FAQ și ghid de copt pe sezoane.",
     ebookCtaLabel: "Ia Manualul"
   },
   it: {
@@ -890,7 +902,7 @@ const LANGS = {
     shareText: "Condividilo con qualcuno che sta pensando di iniziare.",
     tryApp: "Prova Rise & Ferment — Gratis",
     ebookTitle: "Vuoi la guida completa?",
-    ebookDesc: "Questo articolo è un'anteprima dal Manuale Completo del Lievito Madre — 14 capitoli, 5 ricette esclusive e strumenti stampabili.",
+    ebookDesc: "Questo articolo è un'anteprima dal Manuale Completo del Lievito Madre — 14 capitoli approfonditi con Deep Dive esclusivi, 5 ricette, glossario, FAQ e guida stagionale.",
     ebookCtaLabel: "Ottieni il Manuale"
   },
   de: {
@@ -907,7 +919,7 @@ const LANGS = {
     shareText: "Teile es mit jemandem, der mit Sauerteig starten möchte.",
     tryApp: "Rise & Ferment gratis testen",
     ebookTitle: "Willst du den kompletten Guide?",
-    ebookDesc: "Dieser Artikel ist eine Vorschau aus dem kompletten Sauerteig-Handbuch — 14 Kapitel, 5 exklusive Rezepte und druckbare Tools.",
+    ebookDesc: "Dieser Artikel ist eine Vorschau aus dem kompletten Sauerteig-Handbuch — 14 vertiefte Kapitel mit exklusiven Deep Dives, 5 Rezepte, Glossar, FAQ und saisonaler Backguide.",
     ebookCtaLabel: "Handbuch holen"
   },
   fr: {
@@ -924,7 +936,7 @@ const LANGS = {
     shareText: "Partage avec quelqu'un qui veut commencer le levain.",
     tryApp: "Essayer Rise & Ferment — Gratuit",
     ebookTitle: "Vous voulez le guide complet ?",
-    ebookDesc: "Cet article est un aperçu du Manuel Complet du Levain — 14 chapitres, 5 recettes exclusives et outils imprimables.",
+    ebookDesc: "Cet article est un aperçu du Manuel Complet du Levain — 14 chapitres approfondis avec Deep Dives exclusifs, 5 recettes, glossaire, FAQ et guide saisonnier.",
     ebookCtaLabel: "Obtenir le Manuel"
   },
   es: {
@@ -941,7 +953,7 @@ const LANGS = {
     shareText: "Compártelo con alguien que quiera empezar.",
     tryApp: "Probar Rise & Ferment — Gratis",
     ebookTitle: "¿Quieres la guía completa?",
-    ebookDesc: "Este artículo es un adelanto del Manual Completo de Masa Madre — 14 capítulos, 5 recetas exclusivas y herramientas imprimibles.",
+    ebookDesc: "Este artículo es un adelanto del Manual Completo de Masa Madre — 14 capítulos en profundidad con Deep Dives exclusivos, 5 recetas, glosario, FAQ y guía de horneado estacional.",
     ebookCtaLabel: "Obtener el Manual"
   }
 };
@@ -952,6 +964,7 @@ const LANDING_I18N = {
     navBlog: "Blog",
     navTools: "Baking Tools",
     navGuide: "Free Guide",
+    navHandbook: "Handbook",
     navCta: "Try the App — Free",
     heroBadge: "AI-illustrated • Real sourdough science",
     heroTitle: "Your First Loaf<br>Starts <em>Here</em>",
@@ -1072,6 +1085,7 @@ const LANDING_I18N = {
     ftLinkOpenApp: 'Open App',
     ftLinkBlog: 'Blog',
     ftLinkGuide: 'Free Guide',
+    ftLinkHandbook: 'Handbook',
     ftCopy: '© 2026 Rise & Ferment. Made with flour and love.',
     ftPrivacy: 'Privacy',
     ftTerms: 'Terms',
@@ -1101,15 +1115,20 @@ const LANDING_I18N = {
     ebookCR2Free: 'Basic troubleshooting', ebookCR2Paid: '14 in-depth chapters',
     ebookCR3Free: '1 bread recipe', ebookCR3Paid: '5 exclusive recipes',
     ebookCR4Free: 'Advanced techniques', ebookCR4Paid: 'Advanced techniques',
-    ebookCR5Free: 'Flour & hydration guide', ebookCR5Paid: 'Complete flour & hydration guide',
+    ebookCR5Free: 'Deep Dives & exclusive content', ebookCR5Paid: '14 exclusive Deep Dive sections',
+    ebookCR6Free: 'Glossary, FAQ & seasonal guide', ebookCR6Paid: 'Glossary, FAQ & seasonal guide',
     ebookInc1: '14 in-depth chapters on starter science',
     ebookInc2: '5 exclusive recipes (focaccia, pizza, brioche...)',
     ebookInc3: '3 printable tools & cheat sheets',
     ebookInc4: 'Troubleshooting with photos',
     ebookInc5: 'Complete flour & hydration guide',
     ebookInc6: 'Advanced shaping & scoring techniques',
-    ebookPages: '60+ pages of expert knowledge',
+    ebookPages: '100+ pages of expert knowledge',
     ebookGuarantee: '\u2605 Loved by bakers in 12+ countries',
+    ebookTest1Q: '\u201CThe Deep Dive sections took my understanding to another level. Worth every cent.\u201D',
+    ebookTest1A: '\u2014 Thomas R., Berlin',
+    ebookTest2Q: '\u201CThe seasonal baking calendar is on my fridge door. I reference it every week.\u201D',
+    ebookTest2A: '\u2014 Elena S., Barcelona',
     ebookCtaLabel: 'Get the Handbook',
     blogEbookTitle: 'Want the complete guide?',
     blogEbookDesc: 'This article is a preview from The Complete Sourdough Handbook — 14 chapters, 5 exclusive recipes, and printable tools.',
@@ -1120,6 +1139,7 @@ const LANDING_I18N = {
     navBlog: "Blog",
     navTools: "Unelte de copt",
     navGuide: "Ghid gratuit",
+    navHandbook: "Manual",
     navCta: "Încearcă aplicația — Gratis",
     heroBadge: "Ilustrat AI • Știință reală pentru maia",
     heroTitle: "Prima ta pâine<br>începe <em>aici</em>",
@@ -1240,6 +1260,7 @@ const LANDING_I18N = {
     ftLinkOpenApp: 'Deschide aplicația',
     ftLinkBlog: 'Blog',
     ftLinkGuide: 'Ghid gratuit',
+    ftLinkHandbook: 'Manual',
     ftCopy: '© 2026 Rise & Ferment. Făcut cu făină și dragoste.',
     ftPrivacy: 'Confidențialitate',
     ftTerms: 'Termeni',
@@ -1269,15 +1290,20 @@ const LANDING_I18N = {
     ebookCR2Free: 'Depanare de baz\u0103', ebookCR2Paid: '14 capitole detaliate',
     ebookCR3Free: '1 re\u021bet\u0103 de p\u00e2ine', ebookCR3Paid: '5 re\u021bete exclusive',
     ebookCR4Free: 'Tehnici avansate', ebookCR4Paid: 'Tehnici avansate',
-    ebookCR5Free: 'Ghid f\u0103inuri & hidratare', ebookCR5Paid: 'Ghid complet f\u0103inuri & hidratare',
+    ebookCR5Free: 'Deep Dives \u0219i con\u021binut exclusiv', ebookCR5Paid: '14 sec\u021biuni Deep Dive exclusive',
+    ebookCR6Free: 'Glosar, FAQ \u0219i ghid sezonier', ebookCR6Paid: 'Glosar, FAQ \u0219i ghid sezonier',
     ebookInc1: '14 capitole detaliate despre \u0219tiin\u021ba maielei',
     ebookInc2: '5 re\u021bete exclusive (focaccia, pizza, brioche...)',
     ebookInc3: '3 instrumente printabile \u0219i fi\u0219e de referin\u021b\u0103',
     ebookInc4: 'Depanare cu fotografii',
     ebookInc5: 'Ghid complet de f\u0103inuri \u0219i hidratare',
     ebookInc6: 'Tehnici avansate de modelare \u0219i crestare',
-    ebookPages: '60+ pagini de cuno\u0219tin\u021be de expert',
+    ebookPages: '100+ pagini de cuno\u0219tin\u021be de expert',
     ebookGuarantee: '\u2605 \u00cendragit de brutari din 12+ \u021b\u0103ri',
+    ebookTest1Q: '\u201CSec\u021biunile Deep Dive mi-au dus \u00een\u021belegerea la alt nivel. Merit\u0103 fiecare b\u0103nu\u021b.\u201D',
+    ebookTest1A: '\u2014 Thomas R., Berlin',
+    ebookTest2Q: '\u201CCalendarul de copt pe sezoane e pe u\u0219a frigiderului meu. \u00cel consult \u00een fiecare s\u0103pt\u0103m\u00e2n\u0103.\u201D',
+    ebookTest2A: '\u2014 Elena S., Barcelona',
     ebookCtaLabel: 'Ia Manualul',
     blogEbookTitle: 'Vrei ghidul complet?',
     blogEbookDesc: 'Acest articol e un preview din Manualul Complet de Maia — 14 capitole, 5 rețete exclusive și instrumente printabile.',
@@ -1288,6 +1314,7 @@ const LANDING_I18N = {
     navBlog: "Blog",
     navTools: "Strumenti da forno",
     navGuide: "Guida gratuita",
+    navHandbook: "Manuale",
     navCta: "Prova l'app — Gratis",
     heroBadge: "Illustrato con AI • Scienza reale del lievito madre",
     heroTitle: "La tua prima pagnotta<br>inizia <em>qui</em>",
@@ -1408,6 +1435,7 @@ const LANDING_I18N = {
     ftLinkOpenApp: 'Apri l\'App',
     ftLinkBlog: 'Blog',
     ftLinkGuide: 'Guida gratuita',
+    ftLinkHandbook: 'Manuale',
     ftCopy: '© 2026 Rise & Ferment. Fatto con farina e amore.',
     ftPrivacy: 'Privacy',
     ftTerms: 'Termini',
@@ -1437,15 +1465,20 @@ const LANDING_I18N = {
     ebookCR2Free: 'Risoluzione problemi base', ebookCR2Paid: '14 capitoli approfonditi',
     ebookCR3Free: '1 ricetta del pane', ebookCR3Paid: '5 ricette esclusive',
     ebookCR4Free: 'Tecniche avanzate', ebookCR4Paid: 'Tecniche avanzate',
-    ebookCR5Free: 'Guida farine e idratazione', ebookCR5Paid: 'Guida completa farine e idratazione',
+    ebookCR5Free: 'Deep Dive e contenuti esclusivi', ebookCR5Paid: '14 sezioni Deep Dive esclusive',
+    ebookCR6Free: 'Glossario, FAQ e guida stagionale', ebookCR6Paid: 'Glossario, FAQ e guida stagionale',
     ebookInc1: '14 capitoli approfonditi sulla scienza del lievito',
     ebookInc2: '5 ricette esclusive (focaccia, pizza, brioche...)',
     ebookInc3: '3 strumenti stampabili e schede di riferimento',
     ebookInc4: 'Risoluzione problemi con foto',
     ebookInc5: 'Guida completa farine e idratazione',
     ebookInc6: 'Tecniche avanzate di formatura e incisione',
-    ebookPages: '60+ pagine di conoscenza esperta',
+    ebookPages: '100+ pagine di conoscenza esperta',
     ebookGuarantee: '\u2605 Amato da panificatori in 12+ paesi',
+    ebookTest1Q: '\u201CLe sezioni Deep Dive hanno portato la mia comprensione a un altro livello. Vale ogni centesimo.\u201D',
+    ebookTest1A: '\u2014 Thomas R., Berlino',
+    ebookTest2Q: '\u201CIl calendario stagionale \u00e8 sulla porta del mio frigorifero. Lo consulto ogni settimana.\u201D',
+    ebookTest2A: '\u2014 Elena S., Barcellona',
     ebookCtaLabel: 'Ottieni il Manuale',
     blogEbookTitle: 'Vuoi la guida completa?',
     blogEbookDesc: 'Questo articolo è un\'anteprima dal Manuale Completo del Lievito Madre — 14 capitoli, 5 ricette esclusive e strumenti stampabili.',
@@ -1456,6 +1489,7 @@ const LANDING_I18N = {
     navBlog: "Blog",
     navTools: "Backwerkzeuge",
     navGuide: "Kostenloser Guide",
+    navHandbook: "Handbuch",
     navCta: "App testen — kostenlos",
     heroBadge: "KI-illustriert • Echte Sauerteig-Wissenschaft",
     heroTitle: "Dein erstes Brot<br>beginnt <em>hier</em>",
@@ -1576,6 +1610,7 @@ const LANDING_I18N = {
     ftLinkOpenApp: 'App öffnen',
     ftLinkBlog: 'Blog',
     ftLinkGuide: 'Kostenloser Guide',
+    ftLinkHandbook: 'Handbuch',
     ftCopy: '© 2026 Rise & Ferment. Mit Mehl und Liebe gemacht.',
     ftPrivacy: 'Datenschutz',
     ftTerms: 'AGB',
@@ -1605,15 +1640,20 @@ const LANDING_I18N = {
     ebookCR2Free: 'Basis-Fehlerbehebung', ebookCR2Paid: '14 ausf\u00fchrliche Kapitel',
     ebookCR3Free: '1 Brotrezept', ebookCR3Paid: '5 exklusive Rezepte',
     ebookCR4Free: 'Fortgeschrittene Techniken', ebookCR4Paid: 'Fortgeschrittene Techniken',
-    ebookCR5Free: 'Mehl- & Hydrations-Guide', ebookCR5Paid: 'Kompletter Mehl- & Hydrations-Guide',
+    ebookCR5Free: 'Deep Dives & exklusive Inhalte', ebookCR5Paid: '14 exklusive Deep-Dive-Abschnitte',
+    ebookCR6Free: 'Glossar, FAQ & saisonaler Guide', ebookCR6Paid: 'Glossar, FAQ & saisonaler Guide',
     ebookInc1: '14 ausf\u00fchrliche Kapitel \u00fcber Sauerteig-Wissenschaft',
     ebookInc2: '5 exklusive Rezepte (Focaccia, Pizza, Brioche...)',
     ebookInc3: '3 druckbare Tools & Spickzettel',
     ebookInc4: 'Fehlerbehebung mit Fotos',
     ebookInc5: 'Kompletter Mehl- & Hydrations-Guide',
     ebookInc6: 'Fortgeschrittene Form- & Einschnitttechniken',
-    ebookPages: '60+ Seiten Expertenwissen',
+    ebookPages: '100+ Seiten Expertenwissen',
     ebookGuarantee: '\u2605 Beliebt bei B\u00e4ckern in 12+ L\u00e4ndern',
+    ebookTest1Q: '\u201CDie Deep-Dive-Abschnitte haben mein Verst\u00e4ndnis auf ein neues Level gebracht. Jeden Cent wert.\u201D',
+    ebookTest1A: '\u2014 Thomas R., Berlin',
+    ebookTest2Q: '\u201CDer saisonale Backkalender h\u00e4ngt an meiner K\u00fchlschrankt\u00fcr. Ich schaue jede Woche rein.\u201D',
+    ebookTest2A: '\u2014 Elena S., Barcelona',
     ebookCtaLabel: 'Handbuch holen',
     blogEbookTitle: 'Willst du den kompletten Guide?',
     blogEbookDesc: 'Dieser Artikel ist eine Vorschau aus dem kompletten Sauerteig-Handbuch — 14 Kapitel, 5 exklusive Rezepte und druckbare Tools.',
@@ -1624,6 +1664,7 @@ const LANDING_I18N = {
     navBlog: "Blog",
     navTools: "Outils de boulange",
     navGuide: "Guide gratuit",
+    navHandbook: "Manuel",
     navCta: "Essayer l'application — Gratuit",
     heroBadge: "Illustré par IA • Vraie science du levain",
     heroTitle: "Ton premier pain<br>commence <em>ici</em>",
@@ -1744,6 +1785,7 @@ const LANDING_I18N = {
     ftLinkOpenApp: 'Ouvrir l\'App',
     ftLinkBlog: 'Blog',
     ftLinkGuide: 'Guide gratuit',
+    ftLinkHandbook: 'Manuel',
     ftCopy: '© 2026 Rise & Ferment. Fait avec de la farine et de l\'amour.',
     ftPrivacy: 'Confidentialité',
     ftTerms: 'Conditions',
@@ -1773,15 +1815,20 @@ const LANDING_I18N = {
     ebookCR2Free: 'D\u00e9pannage de base', ebookCR2Paid: '14 chapitres approfondis',
     ebookCR3Free: '1 recette de pain', ebookCR3Paid: '5 recettes exclusives',
     ebookCR4Free: 'Techniques avanc\u00e9es', ebookCR4Paid: 'Techniques avanc\u00e9es',
-    ebookCR5Free: 'Guide farines & hydratation', ebookCR5Paid: 'Guide complet farines & hydratation',
+    ebookCR5Free: 'Deep Dives & contenu exclusif', ebookCR5Paid: '14 sections Deep Dive exclusives',
+    ebookCR6Free: 'Glossaire, FAQ & guide saisonnier', ebookCR6Paid: 'Glossaire, FAQ & guide saisonnier',
     ebookInc1: '14 chapitres approfondis sur la science du levain',
     ebookInc2: '5 recettes exclusives (focaccia, pizza, brioche...)',
     ebookInc3: '3 outils imprimables et fiches de r\u00e9f\u00e9rence',
     ebookInc4: 'D\u00e9pannage avec photos',
     ebookInc5: 'Guide complet des farines et de l\u2019hydratation',
     ebookInc6: 'Techniques avanc\u00e9es de fa\u00e7onnage et grignes',
-    ebookPages: '60+ pages de savoir-faire expert',
+    ebookPages: '100+ pages de savoir-faire expert',
     ebookGuarantee: '\u2605 Appr\u00e9ci\u00e9 par les boulangers de 12+ pays',
+    ebookTest1Q: '\u201CLes sections Deep Dive ont port\u00e9 ma compr\u00e9hension \u00e0 un autre niveau. Chaque centime en vaut la peine.\u201D',
+    ebookTest1A: '\u2014 Thomas R., Berlin',
+    ebookTest2Q: '\u201CLe calendrier saisonnier est sur la porte de mon frigo. Je le consulte chaque semaine.\u201D',
+    ebookTest2A: '\u2014 Elena S., Barcelone',
     ebookCtaLabel: 'Obtenir le Manuel',
     blogEbookTitle: 'Vous voulez le guide complet ?',
     blogEbookDesc: 'Cet article est un aperçu du Manuel Complet du Levain — 14 chapitres, 5 recettes exclusives et outils imprimables.',
@@ -1792,6 +1839,7 @@ const LANDING_I18N = {
     navBlog: "Blog",
     navTools: "Herramientas de horneado",
     navGuide: "Guía gratuita",
+    navHandbook: "Manual",
     navCta: "Probar la app — Gratis",
     heroBadge: "Ilustrado con IA • Ciencia real de masa madre",
     heroTitle: "Tu primer pan<br>empieza <em>aquí</em>",
@@ -1912,6 +1960,7 @@ const LANDING_I18N = {
     ftLinkOpenApp: 'Abrir la App',
     ftLinkBlog: 'Blog',
     ftLinkGuide: 'Guía gratuita',
+    ftLinkHandbook: 'Manual',
     ftCopy: '© 2026 Rise & Ferment. Hecho con harina y amor.',
     ftPrivacy: 'Privacidad',
     ftTerms: 'Términos',
@@ -1941,15 +1990,20 @@ const LANDING_I18N = {
     ebookCR2Free: 'Soluci\u00f3n de problemas b\u00e1sica', ebookCR2Paid: '14 cap\u00edtulos detallados',
     ebookCR3Free: '1 receta de pan', ebookCR3Paid: '5 recetas exclusivas',
     ebookCR4Free: 'T\u00e9cnicas avanzadas', ebookCR4Paid: 'T\u00e9cnicas avanzadas',
-    ebookCR5Free: 'Gu\u00eda de harinas e hidrataci\u00f3n', ebookCR5Paid: 'Gu\u00eda completa de harinas e hidrataci\u00f3n',
+    ebookCR5Free: 'Deep Dives y contenido exclusivo', ebookCR5Paid: '14 secciones Deep Dive exclusivas',
+    ebookCR6Free: 'Glosario, FAQ y gu\u00eda estacional', ebookCR6Paid: 'Glosario, FAQ y gu\u00eda estacional',
     ebookInc1: '14 cap\u00edtulos detallados sobre la ciencia de la masa madre',
     ebookInc2: '5 recetas exclusivas (focaccia, pizza, brioche...)',
     ebookInc3: '3 herramientas imprimibles y hojas de referencia',
     ebookInc4: 'Soluci\u00f3n de problemas con fotos',
     ebookInc5: 'Gu\u00eda completa de harinas e hidrataci\u00f3n',
     ebookInc6: 'T\u00e9cnicas avanzadas de formado y gre\u00f1ado',
-    ebookPages: '60+ p\u00e1ginas de conocimiento experto',
+    ebookPages: '100+ p\u00e1ginas de conocimiento experto',
     ebookGuarantee: '\u2605 Querido por panaderos en 12+ pa\u00edses',
+    ebookTest1Q: '\u201CLas secciones Deep Dive llevaron mi comprensi\u00f3n a otro nivel. Vale cada c\u00e9ntimo.\u201D',
+    ebookTest1A: '\u2014 Thomas R., Berl\u00edn',
+    ebookTest2Q: '\u201CEl calendario estacional est\u00e1 en la puerta de mi nevera. Lo consulto cada semana.\u201D',
+    ebookTest2A: '\u2014 Elena S., Barcelona',
     ebookCtaLabel: 'Obtener el Manual',
     blogEbookTitle: '¿Quieres la guía completa?',
     blogEbookDesc: 'Este artículo es un adelanto del Manual Completo de Masa Madre — 14 capítulos, 5 recetas exclusivas y herramientas imprimibles.',
@@ -1974,6 +2028,7 @@ function applyLandingTranslations() {
   setText('#navLinks li:nth-child(2) .nav__link', L.navBlog);
   setText('#navLinks li:nth-child(3) .nav__link', L.navTools);
   setText('#navLinks li:nth-child(4) .nav__link', L.navGuide);
+  setText('#navLinks li:nth-child(5) .nav__link', L.navHandbook);
   setText('.nav__cta', L.navCta);
 
   setHtml('.hero__title', L.heroTitle);
@@ -2064,8 +2119,8 @@ function applyLandingTranslations() {
   if (compCols[1]) { const h = compCols[1].querySelector('.ebook__compare-h'); if (h) h.textContent = L.ebookCompPaid || 'Complete Handbook'; }
   const freeRows = compCols[0] ? compCols[0].querySelectorAll('li') : [];
   const paidRows = compCols[1] ? compCols[1].querySelectorAll('li') : [];
-  const freeTexts = [L.ebookCR1Free, L.ebookCR2Free, L.ebookCR3Free, L.ebookCR4Free, L.ebookCR5Free];
-  const paidTexts = [L.ebookCR1Paid, L.ebookCR2Paid, L.ebookCR3Paid, L.ebookCR4Paid, L.ebookCR5Paid];
+  const freeTexts = [L.ebookCR1Free, L.ebookCR2Free, L.ebookCR3Free, L.ebookCR4Free, L.ebookCR5Free, L.ebookCR6Free];
+  const paidTexts = [L.ebookCR1Paid, L.ebookCR2Paid, L.ebookCR3Paid, L.ebookCR4Paid, L.ebookCR5Paid, L.ebookCR6Paid];
   freeRows.forEach((li, i) => { if (freeTexts[i]) { const s = li.querySelector('span'); if (s) s.textContent = freeTexts[i]; } });
   paidRows.forEach((li, i) => { if (paidTexts[i]) { const s = li.querySelector('span'); if (s) s.textContent = paidTexts[i]; } });
   // 6 bullet points
@@ -2079,8 +2134,12 @@ function applyLandingTranslations() {
   // CTA + price
   const ebookBtn = document.querySelector('.ebook__cta');
   if (ebookBtn) ebookBtn.innerHTML = `${L.ebookCtaLabel} \u2014 ${PRICES.ebook[currency]} <span class="btn__ar">\u2192</span>`;
-  setText('.ebook__pages', L.ebookPages || '60+ pages of expert knowledge');
+  setText('.ebook__pages', L.ebookPages || '100+ pages of expert knowledge');
   setText('.ebook__proof', L.ebookGuarantee || '\u2605 Loved by bakers in 12+ countries');
+  // Ebook testimonials
+  const ebookTests = document.querySelectorAll('.ebook__testimonial');
+  if (ebookTests[0]) { const q = ebookTests[0].querySelector('.ebook__testimonial-q'); if (q) q.textContent = L.ebookTest1Q; const a = ebookTests[0].querySelector('.ebook__testimonial-a'); if (a) a.textContent = L.ebookTest1A; }
+  if (ebookTests[1]) { const q = ebookTests[1].querySelector('.ebook__testimonial-q'); if (q) q.textContent = L.ebookTest2Q; const a = ebookTests[1].querySelector('.ebook__testimonial-a'); if (a) a.textContent = L.ebookTest2A; }
 
   // Lead magnet
   setHtml('.lead__badge', `<svg width="18" height="18"><use href="#ico-book"/></svg> ${L.leadBadge}`);
@@ -2136,6 +2195,7 @@ function applyLandingTranslations() {
   const ftLearnLinks = document.querySelectorAll('.ft__top > div:nth-child(3) .ft__link');
   if (ftLearnLinks[0]) ftLearnLinks[0].textContent = L.ftLinkBlog;
   if (ftLearnLinks[1]) ftLearnLinks[1].textContent = L.ftLinkGuide;
+  if (ftLearnLinks[2]) ftLearnLinks[2].textContent = L.ftLinkHandbook;
   setText('.ft__copy', L.ftCopy);
   const btmLinks = document.querySelectorAll('.ft__btm-link');
   if (btmLinks[0]) btmLinks[0].textContent = L.ftPrivacy;
@@ -2261,7 +2321,7 @@ function renderArticle(id) {
   const l = lang;
   const L = LANGS[l] || LANGS.en;
 
-  document.getElementById('articlePage').innerHTML = `<button class="ap__back" onclick="showBlogPage()">${L.backBlog}</button><div class="a-lang">${langBtns()}</div><div class="a-head"><span class="a-cat">${a.cat[l] || a.cat.en}</span><h1 class="a-title">${a.title[l] || a.title.en}</h1><div class="a-meta"><span>${L.by} Rise & Ferment</span><span>${fmtDate(a.date, l)}</span><span>${a.rt[l] || a.rt.en}</span></div></div><div class="a-hero ${a.scene}"><div class="scene__center"><svg class="scene__svg" width="120" height="120" viewBox="0 0 48 48"><use href="#${a.svgId}"/></svg></div></div><div class="a-content">${a.content[l] || a.content.en}<div class="a-ebook"><h3 class="a-ebook__t">${L.ebookTitle}</h3><p class="a-ebook__d">${L.ebookDesc}</p><a href="/go/ebook" class="btn btn--p btn--sm" target="_blank" rel="noopener">${L.ebookCtaLabel} \u2014 ${PRICES.ebook[currency]} \u2192</a></div><div class="a-author"><div class="a-author__av" style="width:56px;height:56px;border-radius:50%;background:linear-gradient(135deg,var(--parchment),var(--crust-light));display:flex;align-items:center;justify-content:center"><svg style="color:var(--crust)" width="32" height="32"><use href="#ico-person"/></svg></div><div><p class="a-author__name">${L.writtenBy} Rise & Ferment</p><p class="a-author__bio">${L.bio}</p></div></div><div class="a-share"><h3>${L.shareCta}</h3><p>${L.shareText}</p><a href="/app" class="btn btn--p btn--sm">${L.tryApp} →</a></div></div>`;
+  document.getElementById('articlePage').innerHTML = `<button class="ap__back" onclick="showBlogPage()">${L.backBlog}</button><div class="a-lang">${langBtns()}</div><div class="a-head"><span class="a-cat">${a.cat[l] || a.cat.en}</span><h1 class="a-title">${a.title[l] || a.title.en}</h1><div class="a-meta"><span>${L.by} Rise & Ferment</span><span>${fmtDate(a.date, l)}</span><span>${a.rt[l] || a.rt.en}</span></div></div><div class="a-hero ${a.scene}"><div class="scene__center"><svg class="scene__svg" width="120" height="120" viewBox="0 0 48 48"><use href="#${a.svgId}"/></svg></div></div><div class="a-content">${a.content[l] || a.content.en}<div class="a-ebook"><h3 class="a-ebook__t">${L.ebookTitle}</h3><p class="a-ebook__d">${L.ebookDesc}</p><a href="/go/ebook" class="btn btn--p" target="_blank" rel="noopener">${L.ebookCtaLabel} \u2014 ${PRICES.ebook[currency]} \u2192</a></div><div class="a-author"><div class="a-author__av" style="width:56px;height:56px;border-radius:50%;background:linear-gradient(135deg,var(--parchment),var(--crust-light));display:flex;align-items:center;justify-content:center"><svg style="color:var(--crust)" width="32" height="32"><use href="#ico-person"/></svg></div><div><p class="a-author__name">${L.writtenBy} Rise & Ferment</p><p class="a-author__bio">${L.bio}</p></div></div><div class="a-share"><h3>${L.shareCta}</h3><p>${L.shareText}</p><a href="/app" class="btn btn--p btn--sm">${L.tryApp} →</a></div></div>`;
 }
 
 function setLang(l) {
