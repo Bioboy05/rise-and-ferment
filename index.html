@@ -401,11 +401,27 @@ body{min-height:100dvh;-webkit-tap-highlight-color:transparent}
       "url": "https://riseandferment.com/",
       "name": "Rise & Ferment — Your Sourdough Journey Starts Here",
       "description": "Free 14-day sourdough starter guide + beginner-friendly app. Real tips, real science, no gatekeeping.",
-      "publisher": {
-        "@type": "Organization",
-        "name": "Rise & Ferment",
-        "url": "https://riseandferment.com",
-        "logo": "https://riseandferment.com/icons/icon.svg"
+      "publisher": { "@id": "#organization" }
+    },
+    {
+      "@type": "Organization",
+      "@id": "#organization",
+      "name": "Rise & Ferment",
+      "url": "https://riseandferment.com",
+      "logo": "https://riseandferment.com/icons/icon.svg"
+    },
+    {
+      "@type": "Product",
+      "name": "The Complete Sourdough Handbook",
+      "description": "60+ pages of expert sourdough knowledge — troubleshooting, flour guide, advanced techniques, and seasonal recipes.",
+      "url": "https://riseandferment.com/go/ebook",
+      "brand": { "@id": "#organization" },
+      "offers": {
+        "@type": "Offer",
+        "price": "9.99",
+        "priceCurrency": "EUR",
+        "availability": "https://schema.org/InStock",
+        "url": "https://riseandferment.com/go/ebook"
       }
     }
   ]
@@ -1074,6 +1090,7 @@ const LANDING_I18N = {
     toastNlMsg: 'Fresh baking tips every week. No spam, ever.',
     toastErrTitle: 'Something went wrong',
     toastErrMsg: 'Please try again. If the problem persists, refresh the page.',
+    toastInvalidEmail: 'Please enter a valid email address.',
     ebookBadge: '\u2605 Upgrade',
     ebookSub: 'Ready to go further?',
     ebookTitle: 'The Complete Sourdough Handbook',
@@ -1241,6 +1258,7 @@ const LANDING_I18N = {
     toastNlMsg: 'Sfaturi proaspete de copt în fiecare săptămână. Fără spam.',
     toastErrTitle: 'Ceva nu a mers bine',
     toastErrMsg: 'Te rugăm să încerci din nou. Dacă problema persistă, reîncarcă pagina.',
+    toastInvalidEmail: 'Te rugăm să introduci o adresă de email validă.',
     ebookBadge: '\u2605 Upgrade',
     ebookSub: 'Vrei s\u0103 mergi mai departe?',
     ebookTitle: 'Manualul Complet de Maia',
@@ -1408,6 +1426,7 @@ const LANDING_I18N = {
     toastNlMsg: 'Consigli freschi di panificazione ogni settimana. Niente spam.',
     toastErrTitle: 'Qualcosa è andato storto',
     toastErrMsg: 'Per favore riprova. Se il problema persiste, ricarica la pagina.',
+    toastInvalidEmail: 'Inserisci un indirizzo email valido.',
     ebookBadge: '\u2605 Upgrade',
     ebookSub: 'Vuoi andare oltre?',
     ebookTitle: 'Il Manuale Completo del Lievito Madre',
@@ -1575,6 +1594,7 @@ const LANDING_I18N = {
     toastNlMsg: 'Frische Backtipps jede Woche. Kein Spam.',
     toastErrTitle: 'Etwas ist schiefgelaufen',
     toastErrMsg: 'Bitte versuche es erneut. Wenn das Problem bestehen bleibt, lade die Seite neu.',
+    toastInvalidEmail: 'Bitte gib eine gültige E-Mail-Adresse ein.',
     ebookBadge: '\u2605 Upgrade',
     ebookSub: 'Bereit f\u00fcr mehr?',
     ebookTitle: 'Das komplette Sauerteig-Handbuch',
@@ -1742,6 +1762,7 @@ const LANDING_I18N = {
     toastNlMsg: 'Astuces fraîches de boulangerie chaque semaine. Jamais de spam.',
     toastErrTitle: 'Quelque chose a mal tourné',
     toastErrMsg: 'Veuillez réessayer. Si le problème persiste, rechargez la page.',
+    toastInvalidEmail: 'Veuillez entrer une adresse e-mail valide.',
     ebookBadge: '\u2605 Upgrade',
     ebookSub: 'Pr\u00eat \u00e0 aller plus loin\u00a0?',
     ebookTitle: 'Le Manuel Complet du Levain',
@@ -1909,6 +1930,7 @@ const LANDING_I18N = {
     toastNlMsg: 'Consejos frescos de panadería cada semana. Sin spam.',
     toastErrTitle: 'Algo salió mal',
     toastErrMsg: 'Por favor, inténtalo de nuevo. Si el problema persiste, recarga la página.',
+    toastInvalidEmail: 'Por favor, introduce una dirección de correo válida.',
     ebookBadge: '\u2605 Upgrade',
     ebookSub: '\u00bfListo para ir m\u00e1s lejos?',
     ebookTitle: 'El Manual Completo de Masa Madre',
@@ -2300,17 +2322,19 @@ function toggleLangDrop(e) {
 
 function showToast(t,m){document.getElementById('toastTitle').textContent=t;document.getElementById('toastMsg').textContent=m;document.getElementById('toast').classList.add('show');clearTimeout(window._tt);window._tt=setTimeout(hideToast,6000)}
 function hideToast(){document.getElementById('toast').classList.remove('show')}
+function isValidEmail(e){return typeof e==='string'&&/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(e.trim())}
 function subscribeMailerLite(email,form){
   return fetch('/.netlify/functions/subscribe',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({email,form})}).then(r=>{if(!r.ok)throw new Error(r.status);return r});
 }
 function saveEmailAndDeliver(email,formEl,btn,onSuccess){
   const L=LANDING_I18N[lang]||LANDING_I18N.en;
+  if(!isValidEmail(email)){showToast(L.toastErrTitle,L.toastInvalidEmail);return}
   const origText=btn.textContent;
   btn.textContent='⏳';btn.disabled=true;
   const netlify=fetch('/',{method:'POST',headers:{'Content-Type':'application/x-www-form-urlencoded'},body:new URLSearchParams({'form-name':'lead-magnet',email:email}).toString()}).then(r=>{if(!r.ok)throw new Error(r.status);return r});
   const ml=subscribeMailerLite(email,'guide');
   Promise.any([netlify,ml]).then(()=>{
-    btn.textContent=L.leadBtnSuccess;btn.style.background='#6B8F4E';btn.disabled=false;
+    btn.textContent=L.leadBtnSuccess;btn.style.background='var(--olive)';btn.disabled=false;
     if(formEl)formEl.querySelector('input[type="email"]').value='';
     window.open('/sourdough-starter-kit.pdf','_blank');
     showToast(L.toastGuideTitle,L.toastGuideMsg);
@@ -2332,12 +2356,13 @@ function handleNL(e){
   const email=e.target.querySelector('input[type="email"]').value;
   const b=e.target.querySelector('button');
   const L=LANDING_I18N[lang]||LANDING_I18N.en;
+  if(!isValidEmail(email)){showToast(L.toastErrTitle,L.toastInvalidEmail);return}
   const origText=b.textContent;
   b.textContent='⏳';b.disabled=true;
   const netlify=fetch('/',{method:'POST',headers:{'Content-Type':'application/x-www-form-urlencoded'},body:new URLSearchParams({'form-name':'newsletter',email:email}).toString()}).then(r=>{if(!r.ok)throw new Error(r.status);return r});
   const ml=subscribeMailerLite(email,'newsletter');
   Promise.any([netlify,ml]).then(()=>{
-    b.textContent=L.nlBtnSuccess;b.style.background='#6B8F4E';b.disabled=false;
+    b.textContent=L.nlBtnSuccess;b.style.background='var(--olive)';b.disabled=false;
     e.target.querySelector('input[type="email"]').value='';
     showToast(L.toastNlTitle,L.toastNlMsg);
     setTimeout(()=>{b.textContent=origText;b.style.background=''},3000);
