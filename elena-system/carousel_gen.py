@@ -183,15 +183,24 @@ def create_cover_slide(title, fonts):
     # Accent line
     draw_accent_line(draw, title_y + 40, width=150)
 
-    # "Swipe to learn →"
-    swipe_text = "Swipe to learn  \u2192"
+    # "Swipe to learn" + drawn arrow
+    swipe_text = "Swipe to learn"
     font = fonts["swipe"]
     bbox = draw.textbbox((0, 0), swipe_text, font=font)
-    tw = bbox[2] - bbox[0]
-    draw.text(
-        ((WIDTH - tw) // 2, title_y + 80),
-        swipe_text, fill=ACCENT, font=font
-    )
+    text_w = bbox[2] - bbox[0]
+    text_h = bbox[3] - bbox[1]
+    arrow_w = 30
+    gap = 14
+    total_w = text_w + gap + arrow_w
+    text_x = (WIDTH - total_w) // 2
+    text_y = title_y + 80
+    draw.text((text_x, text_y), swipe_text, fill=ACCENT, font=font)
+    # Draw arrow: horizontal line + chevron
+    arrow_x = text_x + text_w + gap
+    arrow_cy = text_y + text_h // 2 + 4
+    draw.line([(arrow_x, arrow_cy), (arrow_x + arrow_w, arrow_cy)], fill=ACCENT, width=2)
+    draw.line([(arrow_x + arrow_w - 8, arrow_cy - 8), (arrow_x + arrow_w, arrow_cy)], fill=ACCENT, width=2)
+    draw.line([(arrow_x + arrow_w - 8, arrow_cy + 8), (arrow_x + arrow_w, arrow_cy)], fill=ACCENT, width=2)
 
     draw_watermark(draw, fonts)
     return img
