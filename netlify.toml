@@ -159,7 +159,7 @@
 # Ebook — Gumroad
 [[redirects]]
   from = "/go/ebook"
-  to = "https://riseferment.gumroad.com/l/handbook"
+  to = "https://fermenter26.gumroad.com/l/handbook"
   status = 302
   force = true
 

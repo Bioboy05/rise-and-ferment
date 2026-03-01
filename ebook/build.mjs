@@ -312,6 +312,7 @@ console.log(`${appendixCount}/4 appendix placeholders replaced.`);
 const args = process.argv.slice(2);
 const FLAG_COVER = args.includes('--cover');
 const FLAG_PREVIEW = args.includes('--preview');
+const FLAG_THUMBNAIL = args.includes('--thumbnail');
 
 // ---------------------------------------------------------------------------
 // 6. Launch Puppeteer & generate outputs
@@ -369,6 +370,45 @@ async function generateCover(puppeteer) {
   cleanup(tempPath);
   await browser.close();
   console.log(`Cover image generated: ${coverPath}`);
+}
+
+// --- Thumbnail image (600x600 square PNG for Gumroad Discover/Library) ---
+async function generateThumbnail(puppeteer) {
+  console.log('Generating thumbnail image...');
+  const { browser, page, tempPath } = await launchPage(puppeteer, html);
+
+  // 600x600 square viewport
+  await page.setViewport({ width: 600, height: 600, deviceScaleFactor: 2 });
+
+  // Inject CSS to make cover fill the square format
+  await page.evaluate(() => {
+    document.body.innerHTML = '';
+    const div = document.createElement('div');
+    div.style.cssText = `
+      width: 600px; height: 600px;
+      background: linear-gradient(135deg, #FFFBF5 0%, #F5E6D3 50%, #E8D5C0 100%);
+      display: flex; flex-direction: column;
+      align-items: center; justify-content: center;
+      text-align: center; padding: 40px;
+      box-sizing: border-box; font-family: 'Caveat', cursive;
+    `;
+    div.innerHTML = `
+      <div style="font-size: 16px; color: #8B5A2B; letter-spacing: 3px; text-transform: uppercase; margin-bottom: 12px; font-family: 'Nunito', sans-serif;">Rise & Ferment</div>
+      <div style="font-size: 42px; color: #3D2914; line-height: 1.15; margin-bottom: 16px; font-weight: bold;">The Complete<br>Sourdough<br>Handbook</div>
+      <div style="width: 60px; height: 2px; background: #D4A574; margin: 0 auto 16px;"></div>
+      <div style="font-size: 15px; color: #8B5A2B; font-family: 'Nunito', sans-serif;">From First Feed to Perfect Loaf</div>
+      <div style="margin-top: 24px; font-size: 13px; color: #A0845C; font-family: 'Nunito', sans-serif;">100+ Pages · 14 Deep Dives · 5 Recipes</div>
+    `;
+    document.body.appendChild(div);
+    document.body.style.margin = '0';
+  });
+
+  const thumbPath = join(__dirname, 'thumbnail-gumroad.png');
+  await page.screenshot({ path: thumbPath, type: 'png', clip: { x: 0, y: 0, width: 600, height: 600 } });
+
+  cleanup(tempPath);
+  await browser.close();
+  console.log(`Thumbnail generated: ${thumbPath}`);
 }
 
 // --- Preview PDF (subset: cover + TOC + ch1 partial + "get full handbook" page) ---
@@ -506,11 +546,15 @@ async function main() {
     await generateCover(puppeteer);
   }
 
+  if (FLAG_THUMBNAIL) {
+    await generateThumbnail(puppeteer);
+  }
+
   if (FLAG_PREVIEW) {
     await generatePreview(puppeteer);
   }
 
-  if (!FLAG_COVER && !FLAG_PREVIEW) {
+  if (!FLAG_COVER && !FLAG_PREVIEW && !FLAG_THUMBNAIL) {
     await generatePDF(puppeteer);
   }
 }
