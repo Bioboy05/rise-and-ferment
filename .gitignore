@@ -41,3 +41,9 @@ rise-ferment-v4.1.html
 # Ebook build artifacts
 ebook/*.pdf
 ebook/_build_temp.html
+
+# Playwright MCP temp data
+.playwright-mcp/
+
+# Elena system generated prompts
+elena-system/prompts/

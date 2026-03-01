@@ -1,0 +1,222 @@
+{
+  "character": {
+    "name": "The Sourdough Jar",
+    "description": "A friendly glass jar with kawaii-style eyes and expressions. The main mascot of Rise & Ferment. Teaches sourdough through emotions — sleepy when inactive, excited when bubbly, proud when doubled.",
+    "visual": {
+      "type": "Transparent glass jar with rounded edges",
+      "eyes": "Large, expressive kawaii-style eyes with simple black pupils",
+      "mouth": "Simple line mouth — curves for emotions (smile, frown, surprise O)",
+      "contents": "Creamy/beige sourdough starter with visible bubbles",
+      "accessories": ["Red rubber band level marker", "Optional small wooden spoon"],
+      "no_arms_legs": true,
+      "expressions_convey_all_emotion": true
+    }
+  },
+  "style": {
+    "aesthetic": "Warm, rustic kitchen with hand-drawn feel",
+    "background": "Beige/cream parchment texture",
+    "accent_color": "Red — Eastern European folk art inspired",
+    "motifs": "Red folk art patterns (decorative borders, arrows, dividers)",
+    "text_style": "Bold red headings, dark brown body text, text boxes with red borders",
+    "feel": "Educational but warm and approachable, like a grandmother teaching you"
+  },
+  "expressions": {
+    "happy": "Wide smile, big open eyes, maybe slight blush marks — used when starter is healthy/ready",
+    "sleepy": "Half-closed eyes, neutral/slight frown — used when starter is inactive/underfed",
+    "excited": "Very wide eyes, big grin, visible energy lines — used when starter is at peak",
+    "confused": "One eyebrow up, tilted, small 'o' mouth — used for common mistakes",
+    "proud": "Closed-eye smile, slight upward tilt — used for achievements/milestones",
+    "worried": "Wide eyes, wavy mouth, sweat drop — used for troubleshooting/problems",
+    "angry": "Furrowed brows, gritted teeth — used for what NOT to do",
+    "sick": "Green tint, x-eyes or spiral eyes — used for mold/hooch/neglect",
+    "teacher": "Glasses, pointer stick nearby, confident smile — used for educational tips",
+    "surprised": "Very wide eyes, small 'O' mouth — used for myth-busting/unexpected facts"
+  },
+  "post_formats": {
+    "two_panel_comparison": {
+      "description": "Side-by-side comparison: wrong vs right, before vs after, not ready vs ready",
+      "layout": "Two panels with title at top, jar character in each panel with different expression, text boxes below each",
+      "best_for": ["Comparisons", "Readiness checks", "Common mistakes vs correct approach"],
+      "example_titles": [
+        "How Do You Know When Your Starter Is READY?",
+        "Healthy Starter vs. Sick Starter",
+        "Are You Feeding Your Starter RIGHT?"
+      ]
+    },
+    "step_by_step": {
+      "description": "Sequential steps showing a process, jar character progresses through stages",
+      "layout": "3-4 numbered panels flowing left-to-right or top-to-bottom, arrows between them",
+      "best_for": ["Feeding process", "First week guide", "Baking schedule"],
+      "example_titles": [
+        "4 Steps to Your First Feeding",
+        "How to Create a Starter from Scratch"
+      ]
+    },
+    "single_tip": {
+      "description": "One big illustration with a key tip or fact",
+      "layout": "Large jar character illustration with text overlay or speech bubble",
+      "best_for": ["Quick tips", "Motivational posts", "Fun facts"],
+      "example_titles": [
+        "Did You Know...?",
+        "Today's Tip from the Jar"
+      ]
+    },
+    "myth_vs_fact": {
+      "description": "Myth-busting format with X (myth) and checkmark (fact)",
+      "layout": "Red X section with myth + worried jar, Green checkmark section with fact + happy jar",
+      "best_for": ["Debunking myths", "Clarifying confusion", "Float test truth"],
+      "example_titles": [
+        "The Float Test Is LYING to You!",
+        "3 Sourdough Myths BUSTED"
+      ]
+    },
+    "checklist": {
+      "description": "Visual checklist with jar character checking items",
+      "layout": "List items with checkboxes, jar character at side giving thumbs-up/teaching",
+      "best_for": ["Equipment lists", "Signs of readiness", "Daily routine"],
+      "example_titles": [
+        "Checklist: Is Your Starter Ready?",
+        "What You Need for Your First Loaf"
+      ]
+    },
+    "timeline": {
+      "description": "Progression over time showing jar character changing",
+      "layout": "Horizontal timeline with jar at different stages, each with different expression/fill level",
+      "best_for": ["First 7 days", "Feeding schedule", "Seasonal changes"],
+      "example_titles": [
+        "Your First 7 Days with a Starter",
+        "What Happens in 24h After Feeding"
+      ]
+    }
+  },
+  "prompt_template": {
+    "base_style": "A {format_description} rendered in a warm, rustic kitchen aesthetic with red folk art motifs on a beige/cream parchment background. The illustration features a friendly glass jar character with kawaii-style eyes as the sourdough starter mascot.",
+    "character_insert": "The friendly glass jar character has {expression_description}. Inside, the creamy sourdough starter {contents_description}.",
+    "text_rules": [
+      "All text in English",
+      "Title in bold red at the top",
+      "Body text in dark brown",
+      "Key terms in red bold",
+      "Text boxes have red folk-art borders",
+      "Use X and checkmark symbols for wrong/right"
+    ],
+    "consistency_notes": [
+      "MUST reference: same warm rustic kitchen aesthetic as previous images",
+      "Red folk art motifs are REQUIRED on all posts",
+      "Jar character must have the SAME proportions every time",
+      "Beige/cream background is NON-NEGOTIABLE",
+      "Educational tone — never preachy, always friendly"
+    ]
+  },
+  "content_topics": [
+    {
+      "id": "ready-check",
+      "title": "How Do You Know When Your Starter Is READY?",
+      "format": "two_panel_comparison",
+      "panels": {
+        "left": {"label": "NOT READY YET (Keep waiting)", "jar_expression": "sleepy", "contents": "low level, flat surface, few bubbles"},
+        "right": {"label": "READY TO BAKE! (Active)", "jar_expression": "excited", "contents": "doubled volume, domed surface, lots of bubbles"}
+      },
+      "status": "posted"
+    },
+    {
+      "id": "healthy-vs-sick",
+      "title": "Healthy Starter vs. Sick Starter",
+      "format": "two_panel_comparison",
+      "panels": {
+        "left": {"label": "HEALTHY", "jar_expression": "happy", "contents": "even bubbles throughout, pleasant color, slightly domed"},
+        "right": {"label": "NEEDS HELP", "jar_expression": "sick", "contents": "dark liquid on top (hooch), grey/pink discoloration, no bubbles, bad smell indicator"}
+      }
+    },
+    {
+      "id": "feeding-right-wrong",
+      "title": "Are You Feeding Your Starter RIGHT? Or Making Mistakes?",
+      "format": "two_panel_comparison",
+      "panels": {
+        "left": {"label": "WRONG", "jar_expression": "worried", "contents": "overflowing jar, wrong ratios shown, clock showing irregular times"},
+        "right": {"label": "RIGHT", "jar_expression": "proud", "contents": "neat jar with proper level, 1:1:1 ratio shown, clock showing consistent schedule"}
+      }
+    },
+    {
+      "id": "first-7-days",
+      "title": "Your First 7 Days with a Starter — What to Expect",
+      "format": "timeline",
+      "stages": [
+        {"day": "Day 1-2", "jar_expression": "sleepy", "contents": "minimal activity, few bubbles", "note": "Be patient!"},
+        {"day": "Day 3-4", "jar_expression": "surprised", "contents": "sudden rise then fall, bad smell", "note": "This is normal! Don't panic"},
+        {"day": "Day 5-6", "jar_expression": "happy", "contents": "consistent small bubbles, pleasant smell", "note": "Stabilizing..."},
+        {"day": "Day 7", "jar_expression": "excited", "contents": "doubled, domed, bubbly", "note": "READY!"}
+      ]
+    },
+    {
+      "id": "float-test-myth",
+      "title": "The Float Test Is LYING to You!",
+      "format": "myth_vs_fact",
+      "myth": {
+        "text": "If your starter floats, it's ready to bake",
+        "jar_expression": "confused",
+        "visual": "jar looking at a spoonful of starter floating in water with question marks"
+      },
+      "fact": {
+        "text": "The float test isn't always reliable. Doubled volume and consistent bubbles are MUCH better signs!",
+        "jar_expression": "teacher",
+        "visual": "jar with glasses pointing to a chart showing volume increase + bubble patterns"
+      }
+    },
+    {
+      "id": "temperature-zones",
+      "title": "Temperature MATTERS! The Starter Guide",
+      "format": "step_by_step",
+      "steps": [
+        {"temp": "Below 65°F / 18°C", "jar_expression": "sleepy", "note": "Slow fermentation. Great for flavor, bad for speed."},
+        {"temp": "68-75°F / 20-24°C", "jar_expression": "happy", "note": "The sweet spot! Steady rise in 4-6 hours."},
+        {"temp": "77-82°F / 25-28°C", "jar_expression": "excited", "note": "Turbo mode! Doubles in 3-4 hours. Watch for over-fermentation."},
+        {"temp": "Above 86°F / 30°C", "jar_expression": "sick", "note": "Too hot! Bad bacteria win. Acetone smell."}
+      ]
+    },
+    {
+      "id": "hooch-explained",
+      "title": "What Is That LIQUID on My Starter?!",
+      "format": "single_tip",
+      "jar_expression": "worried",
+      "visual": "Jar with dark liquid layer on top, looking concerned but with a speech bubble saying 'Don't worry, I'm just hungry!'",
+      "explanation": "Hooch = alcoholic liquid. It means your starter is hungry. Pour it off, feed it, and it'll be good as new!"
+    },
+    {
+      "id": "discard-uses",
+      "title": "DON'T Throw Away Your Discard! 5 Quick Recipes",
+      "format": "checklist",
+      "items": [
+        {"item": "Sourdough Pancakes", "jar_expression": "excited"},
+        {"item": "Sourdough Pizza Dough", "jar_expression": "happy"},
+        {"item": "Crunchy Crackers", "jar_expression": "proud"},
+        {"item": "Fluffy Waffles", "jar_expression": "excited"},
+        {"item": "Pie Crust", "jar_expression": "happy"}
+      ]
+    },
+    {
+      "id": "water-quality",
+      "title": "Does Tap Water KILL Your Starter?",
+      "format": "myth_vs_fact",
+      "myth": {
+        "text": "You MUST use filtered or bottled water",
+        "jar_expression": "confused"
+      },
+      "fact": {
+        "text": "Tap water works 90% of the time. Let it sit for 30 min so the chlorine evaporates. Only heavily chlorinated water needs a filter.",
+        "jar_expression": "teacher"
+      }
+    },
+    {
+      "id": "flour-types",
+      "title": "Which Flour Is BEST for Your Starter?",
+      "format": "step_by_step",
+      "steps": [
+        {"flour": "All-Purpose / White", "jar_expression": "sleepy", "note": "Works, but slowest. Fewer nutrients."},
+        {"flour": "Whole Wheat", "jar_expression": "excited", "note": "PERFECT for beginners! Rich in nutrients, fast activity."},
+        {"flour": "Rye Flour", "jar_expression": "happy", "note": "Superstar! Ferments fastest. Ideal for a boost."},
+        {"flour": "50/50 Mix", "jar_expression": "proud", "note": "Best strategy: half white + half whole wheat."}
+      ]
+    }
+  ]
+}
