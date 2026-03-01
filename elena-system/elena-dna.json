@@ -1,0 +1,62 @@
+{
+  "character": {
+    "name": "Elena",
+    "role": "Brand ambassador for Rise & Ferment / Maiaua Mea",
+    "seed_prompt": "Editorial food photography. Woman in her early 30s, warm brown eyes, shoulder-length wavy ombre hair (dark brown roots to warm caramel tips), side-swept bangs, olive skin with subtle freckles, natural genuine wide smile. Wearing a white cotton t-shirt under a cream linen apron. Standing in a bright kitchen with white cabinets and wooden countertops. Warm natural morning window light, shot on Canon 85mm f/1.4, shallow depth of field, warm color palette. Photorealistic, natural flaws of the face, forehead wrinkles, 1 pimple, editorial quality",
+    "oref_url": "https://cdn.midjourney.com/dea9bbd8-8fe3-4056-b4af-554b908cf4e6/0_3.png",
+    "traits": {
+      "age": "early 30s",
+      "eyes": "warm brown",
+      "hair": "shoulder-length wavy ombre (dark brown roots to warm caramel tips), side-swept bangs",
+      "skin": "olive with subtle freckles",
+      "expression": "natural genuine wide smile",
+      "outfit": "white cotton t-shirt under cream linen apron",
+      "setting": "bright kitchen, white cabinets, wooden countertops",
+      "photography": "Canon 85mm f/1.4, shallow DOF, warm natural morning window light"
+    }
+  },
+  "midjourney": {
+    "model": "V7 (default din iunie 2025)",
+    "web_ui": "Drag imagine in 'Omni Reference', lock icon pentru sesiune",
+    "discord": "--oref [url] --ow 100",
+    "NOTE": "--cref era V6. V7 foloseste --oref sau drag&drop in web UI"
+  },
+  "scenarios": {
+    "feeding_ritual": {
+      "description": "Elena feeding her sourdough starter",
+      "mood": "concentrated but relaxed, morning calm",
+      "setting": "kitchen, morning light, starter jar visible",
+      "expression": "focused, gentle, meditative"
+    },
+    "troubleshooting": {
+      "description": "Elena examining a problem with her bread/starter",
+      "mood": "empathetic, curious, not panicked",
+      "setting": "kitchen, examining closely",
+      "expression": "puzzled but warm, investigative"
+    },
+    "teaching": {
+      "description": "Elena explaining something directly to camera",
+      "mood": "warm, direct, not condescending",
+      "setting": "kitchen, facing camera, hands gesturing",
+      "expression": "open, encouraging, knowledgeable"
+    },
+    "triumph": {
+      "description": "Elena holding a finished sourdough loaf",
+      "mood": "quiet pride, satisfaction",
+      "setting": "kitchen, golden loaf, warm light",
+      "expression": "subtle smile, proud but humble"
+    },
+    "real_life": {
+      "description": "Elena baking while normal life happens around her",
+      "mood": "authentic, lived-in, relatable",
+      "setting": "messy-ish kitchen, life happening",
+      "expression": "natural, unposed, genuine"
+    }
+  },
+  "veo_defaults": {
+    "duration": "5-8 seconds",
+    "style": "cinematic, handheld, natural light",
+    "motion": "subtle, realistic movements",
+    "audio_note": "add ambient kitchen sounds in post"
+  }
+}
