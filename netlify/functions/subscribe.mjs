@@ -34,7 +34,7 @@ export const handler = async (event) => {
   }
 
   try {
-    const { email, form } = JSON.parse(event.body);
+    const { email, form, source } = JSON.parse(event.body);
 
     // Validate email
     if (!email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
@@ -46,6 +46,10 @@ export const handler = async (event) => {
     if (!groupId) {
       return respond(400, { error: 'Invalid form type' });
     }
+
+    // Validate source (whitelist, default to 'unknown')
+    const VALID_SOURCES = ['lead-form', 'exit-popup', 'sticky-cta', 'newsletter-form'];
+    const safeSource = VALID_SOURCES.includes(source) ? source : 'unknown';
 
     const apiKey = process.env.MAILERLITE_API_KEY;
     if (!apiKey) {
@@ -63,6 +67,7 @@ export const handler = async (event) => {
       body: JSON.stringify({
         email,
         groups: [groupId],
+        fields: { signup_source: safeSource },
       }),
     });
 

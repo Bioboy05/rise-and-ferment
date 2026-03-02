@@ -2383,16 +2383,16 @@ function toggleLangDrop(e) {
 function showToast(t,m){document.getElementById('toastTitle').textContent=t;document.getElementById('toastMsg').textContent=m;document.getElementById('toast').classList.add('show');clearTimeout(window._tt);window._tt=setTimeout(hideToast,6000)}
 function hideToast(){document.getElementById('toast').classList.remove('show')}
 function isValidEmail(e){return typeof e==='string'&&/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(e.trim())}
-function subscribeMailerLite(email,form){
-  return fetch('/.netlify/functions/subscribe',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({email,form})}).then(r=>{if(!r.ok)throw new Error(r.status);return r});
+function subscribeMailerLite(email,form,source){
+  return fetch('/.netlify/functions/subscribe',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({email,form,source})}).then(r=>{if(!r.ok)throw new Error(r.status);return r});
 }
-function saveEmailAndDeliver(email,formEl,btn,onSuccess){
+function saveEmailAndDeliver(email,formEl,btn,onSuccess,source){
   const L=LANDING_I18N[lang]||LANDING_I18N.en;
   if(!isValidEmail(email)){showToast(L.toastErrTitle,L.toastInvalidEmail);return}
   const origText=btn.textContent;
   btn.textContent='⏳';btn.disabled=true;
   const netlify=fetch('/',{method:'POST',headers:{'Content-Type':'application/x-www-form-urlencoded'},body:new URLSearchParams({'form-name':'lead-magnet',email:email}).toString()}).then(r=>{if(!r.ok)throw new Error(r.status);return r});
-  const ml=subscribeMailerLite(email,'guide');
+  const ml=subscribeMailerLite(email,'guide',source||'lead-form');
   Promise.any([netlify,ml]).then(()=>{
     btn.textContent=L.leadBtnSuccess;btn.style.background='var(--olive)';btn.disabled=false;
     if(formEl)formEl.querySelector('input[type="email"]').value='';
@@ -2420,7 +2420,7 @@ function handleNL(e){
   const origText=b.textContent;
   b.textContent='⏳';b.disabled=true;
   const netlify=fetch('/',{method:'POST',headers:{'Content-Type':'application/x-www-form-urlencoded'},body:new URLSearchParams({'form-name':'newsletter',email:email}).toString()}).then(r=>{if(!r.ok)throw new Error(r.status);return r});
-  const ml=subscribeMailerLite(email,'newsletter');
+  const ml=subscribeMailerLite(email,'newsletter','newsletter-form');
   Promise.any([netlify,ml]).then(()=>{
     b.textContent=L.nlBtnSuccess;b.style.background='var(--olive)';b.disabled=false;
     e.target.querySelector('input[type="email"]').value='';
@@ -2493,14 +2493,14 @@ setLang(lang);
   // Desktop: mouse leaves viewport top
   document.addEventListener('mouseout',function(e){if(e.clientY<5&&e.relatedTarget===null)showEP()});
   // Mobile: after 45 seconds
-  setTimeout(()=>{if(!sessionStorage.getItem(EP_KEY))showEP()},75000);
+  setTimeout(()=>{if(!sessionStorage.getItem(EP_KEY))showEP()},45000);
   document.getElementById('epClose').addEventListener('click',()=>ep.classList.remove('vis'));
   ep.addEventListener('click',(e)=>{if(e.target===ep)ep.classList.remove('vis')});
   document.getElementById('epForm').addEventListener('submit',function(e){
     e.preventDefault();
     const email=this.querySelector('input[type="email"]').value;
     const b=this.querySelector('button');
-    saveEmailAndDeliver(email,this,b,()=>setTimeout(()=>ep.classList.remove('vis'),2000));
+    saveEmailAndDeliver(email,this,b,()=>setTimeout(()=>ep.classList.remove('vis'),2000),'exit-popup');
   });
 })();
 
@@ -2522,7 +2522,7 @@ setLang(lang);
     e.preventDefault();
     const email=this.querySelector('input[type="email"]').value;
     const b=this.querySelector('button');
-    saveEmailAndDeliver(email,this,b,()=>setTimeout(()=>{sctaDismissed=true;scta.classList.remove('vis')},2000));
+    saveEmailAndDeliver(email,this,b,()=>setTimeout(()=>{sctaDismissed=true;scta.classList.remove('vis')},2000),'sticky-cta');
   });
 })();
 
