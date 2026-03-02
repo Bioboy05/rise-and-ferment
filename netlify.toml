@@ -163,6 +163,13 @@
   status = 302
   force = true
 
+# Children's Book — Gumroad
+[[redirects]]
+  from = "/go/milo"
+  to = "https://fermenter26.gumroad.com/l/milo-and-maia"
+  status = 302
+  force = true
+
 # App SPA routing
 [[redirects]]
   from = "/app/*"
