@@ -2734,6 +2734,205 @@ ol.lesson-list > .lesson-list__item::before {
 }
 
 /* ==========================================
+   SHOP PAGE — Our Books (premium section)
+   ========================================== */
+
+.shop-books {
+  margin-bottom: 28px;
+}
+
+.shop-books__header {
+  text-align: center;
+  margin-bottom: 16px;
+}
+
+.shop-books__heading {
+  font-family: var(--font-display);
+  font-size: 24px;
+  font-weight: 700;
+  color: var(--text-primary);
+  margin: 0 0 4px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+}
+
+.shop-books__subheading {
+  font-size: 12px;
+  color: var(--text-muted);
+  margin: 0;
+}
+
+.shop-books__grid {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.shop-book {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  overflow: hidden;
+  position: relative;
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
+
+.shop-book:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 24px var(--shadow);
+}
+
+.shop-book__badge {
+  position: absolute;
+  top: 12px;
+  left: 12px;
+  background: var(--warning);
+  color: #fff;
+  font-size: 10px;
+  font-weight: 800;
+  padding: 3px 10px;
+  border-radius: 99px;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  z-index: 2;
+}
+
+.shop-book__badge--bestseller {
+  background: var(--accent);
+}
+
+.shop-book__cover {
+  width: 100%;
+  aspect-ratio: 3 / 4;
+  object-fit: cover;
+  display: block;
+  background: var(--bg-tertiary);
+}
+
+.shop-book__cover-placeholder {
+  width: 100%;
+  aspect-ratio: 3 / 4;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(135deg, var(--bg-secondary), var(--bg-tertiary));
+  color: var(--accent);
+  gap: 8px;
+}
+
+.shop-book__cover-placeholder span {
+  font-family: var(--font-display);
+  font-size: 14px;
+  font-weight: 700;
+  text-align: center;
+  padding: 0 12px;
+  color: var(--text-secondary);
+}
+
+.shop-book__body {
+  padding: 14px 16px 16px;
+}
+
+.shop-book__name {
+  font-weight: 800;
+  font-size: 15px;
+  color: var(--text-primary);
+  margin-bottom: 4px;
+  line-height: 1.3;
+}
+
+.shop-book__tagline {
+  font-family: var(--font-display);
+  font-size: 16px;
+  color: var(--accent);
+  margin-bottom: 8px;
+  line-height: 1.3;
+}
+
+.shop-book__desc {
+  font-size: 12px;
+  color: var(--text-muted);
+  line-height: 1.6;
+  margin-bottom: 12px;
+}
+
+.shop-book__chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-bottom: 12px;
+}
+
+.shop-book__chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  font-size: 10px;
+  font-weight: 700;
+  color: var(--accent);
+  background: var(--accent-light);
+  padding: 3px 8px;
+  border-radius: 99px;
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+}
+
+.shop-book__footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.shop-book__price {
+  font-size: 18px;
+  font-weight: 800;
+  color: var(--accent);
+}
+
+.shop-book__cta {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  background: var(--accent);
+  color: #fff;
+  border: none;
+  border-radius: 10px;
+  padding: 10px 20px;
+  font-size: 13px;
+  font-weight: 700;
+  text-decoration: none;
+  cursor: pointer;
+  transition: opacity 0.15s, transform 0.15s;
+  flex-shrink: 0;
+}
+
+.shop-book__cta:hover {
+  opacity: 0.9;
+  transform: scale(1.02);
+}
+
+.shop-book__coming-soon {
+  font-size: 11px;
+  color: var(--accent);
+  font-style: italic;
+  margin-top: 8px;
+  text-align: center;
+}
+
+.shop-books__brand-line {
+  text-align: center;
+  font-size: 11px;
+  color: var(--text-muted);
+  margin-top: 12px;
+  font-style: italic;
+}
+
+/* ==========================================
    SHOP PAGE — Affiliate Products
    ========================================== */
 

@@ -232,6 +232,27 @@ const PRODUCT_ICONS = {
   ),
 };
 
+const BOOKS = [
+  {
+    id: "handbook",
+    gumroadUrl: "https://fermenter26.gumroad.com/l/handbook",
+    badgeKey: "shopBadgeBestseller",
+    badgeClass: "shop-book__badge--bestseller",
+    coverSrc: null,
+    coverAlt: "The Complete Sourdough Handbook cover",
+  },
+  {
+    id: "milo",
+    gumroadUrl: "https://fermenter26.gumroad.com/l/milo-and-maia",
+    badgeKey: "shopBadgeNew",
+    badgeClass: "",
+    coverSrc: "/assets/book-milo-cover.webp",
+    coverFallback: "/assets/book-milo-cover.jpg",
+    coverAlt: "Milo & Maia — A Sourdough Adventure for Kids cover",
+    showComingSoonRo: true,
+  },
+];
+
 const CTA_KEY = {
   az: "shopViewAmazon",
 };
@@ -274,6 +295,93 @@ function ProductCard({ product }) {
   );
 }
 
+function BookCard({ book }) {
+  const { t, i18n } = useTranslation();
+  const isRomanian = i18n.language === "ro";
+
+  return (
+    <div className="shop-book">
+      {book.badgeKey && (
+        <div className={`shop-book__badge ${book.badgeClass || ""}`}>
+          {t(book.badgeKey)}
+        </div>
+      )}
+
+      {book.coverSrc ? (
+        <picture>
+          <source srcSet={book.coverSrc} type="image/webp" />
+          {book.coverFallback && (
+            <source srcSet={book.coverFallback} type="image/jpeg" />
+          )}
+          <img
+            className="shop-book__cover"
+            src={book.coverFallback || book.coverSrc}
+            alt={book.coverAlt}
+            loading="lazy"
+            width="600"
+            height="803"
+          />
+        </picture>
+      ) : (
+        <div className="shop-book__cover-placeholder">
+          <Icon name="book" size={48} />
+          <span>{t(`shopBook_${book.id}_name`)}</span>
+        </div>
+      )}
+
+      <div className="shop-book__body">
+        <div className="shop-book__name">{t(`shopBook_${book.id}_name`)}</div>
+        <div className="shop-book__tagline">
+          {t(`shopBook_${book.id}_tagline`)}
+        </div>
+        <div className="shop-book__desc">{t(`shopBook_${book.id}_desc`)}</div>
+
+        <div className="shop-book__chips">
+          {[1, 2, 3].map((n) => (
+            <span key={n} className="shop-book__chip">
+              {t(`shopBook_${book.id}_chip${n}`)}
+            </span>
+          ))}
+        </div>
+
+        <div className="shop-book__footer">
+          <div className="shop-book__price">
+            {t(`shopBook_${book.id}_price`)}
+          </div>
+          <a
+            href={book.gumroadUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="shop-book__cta"
+            aria-label={`${t(`shopBook_${book.id}_cta`)} — ${t(`shopBook_${book.id}_name`)}`}
+          >
+            {t(`shopBook_${book.id}_cta`)}
+            <svg
+              width="14"
+              height="14"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              strokeWidth="2"
+              aria-hidden="true"
+            >
+              <path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6" />
+              <polyline points="15 3 21 3 21 9" />
+              <line x1="10" y1="14" x2="21" y2="3" />
+            </svg>
+          </a>
+        </div>
+
+        {book.showComingSoonRo && isRomanian && (
+          <div className="shop-book__coming-soon">
+            {t("shopBook_milo_coming_soon_ro")}
+          </div>
+        )}
+      </div>
+    </div>
+  );
+}
+
 function ShopPage() {
   const { t } = useTranslation();
 
@@ -283,6 +391,23 @@ function ShopPage() {
 
   return (
     <div className="section shop-page">
+      {/* Our Books — premium section */}
+      <div className="shop-books">
+        <div className="shop-books__header">
+          <h2 className="shop-books__heading">
+            <Icon name="heart" size={20} style={{ color: "var(--accent)" }} />
+            {t("shopBooksHeading")}
+          </h2>
+          <p className="shop-books__subheading">{t("shopBooksSubheading")}</p>
+        </div>
+        <div className="shop-books__grid">
+          {BOOKS.map((book) => (
+            <BookCard key={book.id} book={book} />
+          ))}
+        </div>
+        <p className="shop-books__brand-line">{t("shopBooksBrandLine")}</p>
+      </div>
+
       <div className="shop-header">
         <h2 className="section-title">{t("shopTitle")}</h2>
         <p className="shop-subtitle">{t("shopSubtitle")}</p>
