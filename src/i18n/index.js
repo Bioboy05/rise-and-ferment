@@ -15,6 +15,7 @@ const LOCALE_LOADERS = {
   fr: () => import('./locales/fr.json'),
   es: () => import('./locales/es.json'),
   it: () => import('./locales/it.json'),
+  hu: () => import('./locales/hu.json'),
 }
 
 async function loadLocale(lang) {

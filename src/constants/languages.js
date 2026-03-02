@@ -1,4 +1,4 @@
-export const SUPPORTED_LANGUAGES = ["ro", "en", "de", "fr", "es", "it"];
+export const SUPPORTED_LANGUAGES = ["ro", "en", "de", "fr", "es", "it", "hu"];
 
 export const LANGUAGES = [
   { code: "ro", flag: "\u{1F1F7}\u{1F1F4}" },
@@ -7,6 +7,7 @@ export const LANGUAGES = [
   { code: "fr", flag: "\u{1F1EB}\u{1F1F7}" },
   { code: "es", flag: "\u{1F1EA}\u{1F1F8}" },
   { code: "it", flag: "\u{1F1EE}\u{1F1F9}" },
+  { code: "hu", flag: "\u{1F1ED}\u{1F1FA}" },
 ];
 
 export function isSupportedLanguage(code) {
