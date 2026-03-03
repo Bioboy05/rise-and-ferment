@@ -138,6 +138,22 @@ button:focus-visible,.btn:focus-visible{outline:2px solid var(--crust);outline-o
 .prob-card__ico--1{background:rgba(232,168,73,.1)}.prob-card__ico--2{background:rgba(107,143,78,.1)}.prob-card__ico--3{background:rgba(201,76,48,.1)}.prob-card__ico--4{background:rgba(139,90,43,.08)}
 .prob-card__q{font-family:var(--font-display);font-size:1.15rem;font-weight:700;color:var(--crust-deep);margin-bottom:10px;font-style:italic}
 .prob-card__a{font-size:.92rem;color:var(--rye);line-height:1.65}.prob-card__a strong{color:var(--crust);font-weight:700}
+/* ELENA */
+.elena{padding:var(--gap) 0}
+.elena__head{text-align:center;margin-bottom:48px}.elena__head .ss{margin:0 auto;max-width:520px}
+.elena__by{font-family:var(--font-display);font-size:1.1rem;color:var(--crust);margin-bottom:4px;font-style:italic}
+.elena__grid{display:grid;grid-template-columns:repeat(3,1fr);gap:28px}
+.elena__card{background:var(--flour);border-radius:24px;padding:32px 28px;border:1px solid rgba(139,90,43,.08);transition:all .4s}
+.elena__card:hover{transform:translateY(-4px);box-shadow:0 16px 48px rgba(93,58,26,.1)}
+[data-theme="dark"] .elena__card{background:rgba(37,32,23,.7);border-color:rgba(212,165,116,.1)}[data-theme="dark"] .elena__card:hover{box-shadow:0 16px 48px rgba(0,0,0,.25)}
+.elena__ico{width:52px;height:52px;border-radius:16px;display:flex;align-items:center;justify-content:center;margin-bottom:18px;background:rgba(232,168,73,.1)}
+.elena__ico svg{width:26px;height:26px;color:var(--crust)}
+.elena__ico--2{background:rgba(107,143,78,.1)}.elena__ico--2 svg{color:var(--olive)}
+.elena__ico--3{background:rgba(201,76,48,.08)}.elena__ico--3 svg{color:var(--terracotta)}
+.elena__quote{font-family:var(--font-display);font-size:1.08rem;color:var(--crust-deep);line-height:1.55;margin-bottom:14px;font-style:italic}
+.elena__sci{font-size:.82rem;color:var(--wheat);line-height:1.5;padding-top:12px;border-top:1px solid rgba(139,90,43,.08)}
+[data-theme="dark"] .elena__sci{color:var(--accent);border-color:rgba(212,165,116,.1)}
+@media(max-width:768px){.elena__grid{grid-template-columns:1fr;gap:20px}}
 /* FEATURES */
 .feat{padding:var(--gap) 0;background:linear-gradient(180deg,var(--cream) 0%,var(--cream-warm) 50%,var(--cream) 100%)}
 .feat__head{text-align:center;margin-bottom:64px}.feat__head .ss{margin:0 auto}
@@ -244,6 +260,8 @@ button:focus-visible,.btn:focus-visible{outline:2px solid var(--crust);outline-o
 [data-theme="dark"] .books__card-price{color:var(--crust-light)}
 .books__card-ro{font-size:.82rem;color:var(--olive);font-weight:600;margin-top:12px;font-style:italic}
 .books__brand{text-align:center;font-family:var(--font-hand);font-size:1.1rem;color:var(--crust);opacity:.7}
+.books__card-urgency{font-size:.82rem;color:var(--crust);font-weight:600;margin-top:8px;font-style:italic}
+[data-theme="dark"] .books__card-urgency{color:var(--accent)}
 @media(max-width:768px){.books__grid{grid-template-columns:1fr;gap:24px}.books__card{padding:24px}.books__card-img{width:160px}.books__card-book{width:150px;height:210px}}
 @media(max-width:480px){.books__card-buy{flex-direction:column;width:100%}.books__card-buy .btn{width:100%;justify-content:center}}
 /* EBOOK BLOG CTA (still used in blog articles) */
@@ -538,38 +556,30 @@ body{min-height:100dvh;-webkit-tap-highlight-color:transparent}
 </div>
 </div></div></section>
 
-<!-- PROBLEMS -->
-<section class="prob" id="problems"><div class="ctn">
-<div class="prob__head reveal"><p class="sl">Sound familiar?</p><h2 class="st">We know the struggle</h2><p class="ss">Every sourdough journey starts with the same questions.</p></div>
-<div class="prob__grid">
-<div class="prob-card reveal rv1"><div class="prob-card__ico prob-card__ico--1"><svg width="28" height="28"><use href="#ico-clock"/></svg></div><p class="prob-card__q">"When do I feed my starter?"</p><p class="prob-card__a"><strong>Feeding reminders</strong> to keep your starter on track. Never miss a feeding again — whether you're at the office or on the go.</p></div>
-<div class="prob-card reveal rv2"><div class="prob-card__ico prob-card__ico--2"><svg width="28" height="28"><use href="#ico-health"/></svg></div><p class="prob-card__q">"Is my starter alive?"</p><p class="prob-card__a"><strong>Visual health indicators</strong> with temperature tracking. Know at a glance if your starter needs help.</p></div>
-<div class="prob-card reveal rv3"><div class="prob-card__ico prob-card__ico--3"><svg width="28" height="28"><use href="#ico-rise"/></svg></div><p class="prob-card__q">"Why isn't it rising?"</p><p class="prob-card__a"><strong>Built-in troubleshooting</strong> with step-by-step solutions. Diagnose problems and get back on track.</p></div>
-<div class="prob-card reveal rv4"><div class="prob-card__ico prob-card__ico--4"><svg width="28" height="28"><use href="#ico-cal"/></svg></div><p class="prob-card__q">"How do I fit this into my life?"</p><p class="prob-card__a"><strong>Baking planner</strong> that works around you. Tell us when you want bread and we'll plan backwards.</p></div>
-</div></div></section>
-
-<!-- FEATURES -->
-<section class="feat" id="features"><div class="ctn">
-<div class="feat__head reveal"><p class="sl">Everything you need</p><h2 class="st">Built for curious hands, not lab coats</h2><p class="ss">Whether you're creating your first starter or your fifth — Rise & Ferment makes it feel natural.</p></div>
-<div class="feat__rows">
-<div class="feat-row reveal"><div><p class="feat-row__lab">Multi-Starter Management</p><h3 class="feat-row__t">Track one starter or five — your choice</h3><p class="feat-row__d">Give each starter a name, personality, and its own story.</p><ul class="feat-row__bul"><li class="feat-row__b"><span class="feat-row__bi"><svg><use href="#ico-check"/></svg></span> Individual feeding schedules and history</li><li class="feat-row__b"><span class="feat-row__bi"><svg><use href="#ico-check"/></svg></span> Temperature and health tracking per starter</li><li class="feat-row__b"><span class="feat-row__bi"><svg><use href="#ico-check"/></svg></span> Notes and personal observations</li></ul></div><div class="feat-row__vis"><div class="starter-grid"><div class="starter-card"><div class="starter-card__ico"><svg viewBox="0 0 48 48"><use href="#ico-jar"/></svg></div><div class="starter-card__name">Luna</div><div class="starter-card__type">White wheat · 30 days</div></div><div class="starter-card"><div class="starter-card__ico"><svg viewBox="0 0 48 48"><use href="#ico-bread"/></svg></div><div class="starter-card__name">Rye Boy</div><div class="starter-card__type">Dark rye · 14 days</div></div><div class="starter-card"><div class="starter-card__ico"><svg viewBox="0 0 48 48"><use href="#ico-wheat"/></svg></div><div class="starter-card__name">Goldie</div><div class="starter-card__type">Honey wheat · 7 days</div></div><div class="starter-card"><div class="starter-card__ico"><svg viewBox="0 0 48 48"><use href="#ico-plus"/></svg></div><div class="starter-card__name">Add New</div><div class="starter-card__type">Start fresh</div></div></div></div></div>
-<div class="feat-row feat-row--rev reveal"><div><p class="feat-row__lab">Beginner-Friendly Design</p><h3 class="feat-row__t">Start with zero experience</h3><p class="feat-row__d">Beginner Mode guides you day by day. When you're ready, unlock everything.</p><ul class="feat-row__bul"><li class="feat-row__b"><span class="feat-row__bi"><svg><use href="#ico-check"/></svg></span> Day-by-day guided instructions</li><li class="feat-row__b"><span class="feat-row__bi"><svg><use href="#ico-check"/></svg></span> Motivational messages and celebrations</li><li class="feat-row__b"><span class="feat-row__bi"><svg><use href="#ico-check"/></svg></span> Feeding streak tracker with milestones</li></ul></div><div class="feat-row__vis"><div class="fmc-grid"><div class="fmc"><div class="fmc__ico"><svg viewBox="0 0 48 48"><use href="#ico-book"/></svg></div><div class="fmc__label">Day Guides</div></div><div class="fmc"><div class="fmc__ico"><svg viewBox="0 0 48 48"><use href="#ico-party"/></svg></div><div class="fmc__label">Celebrations</div></div><div class="fmc"><div class="fmc__ico"><svg viewBox="0 0 48 48"><use href="#ico-fire"/></svg></div><div class="fmc__label">Streaks</div></div><div class="fmc"><div class="fmc__ico"><svg viewBox="0 0 48 48"><use href="#ico-chat"/></svg></div><div class="fmc__label">Tips & Help</div></div></div></div></div>
-<div class="feat-row reveal"><div><p class="feat-row__lab">Recipes & Baking Planner</p><h3 class="feat-row__t">From starter to table, planned perfectly</h3><p class="feat-row__d">Built-in recipes with an ingredient calculator. The planner works backward from when you want bread ready.</p><ul class="feat-row__bul"><li class="feat-row__b"><span class="feat-row__bi"><svg><use href="#ico-check"/></svg></span> Scalable ingredient calculator</li><li class="feat-row__b"><span class="feat-row__bi"><svg><use href="#ico-check"/></svg></span> Reverse schedule from desired bake time</li><li class="feat-row__b"><span class="feat-row__bi"><svg><use href="#ico-check"/></svg></span> Export schedule to your calendar</li></ul></div><div class="feat-row__vis"><div class="fmc-grid"><div class="fmc"><div class="fmc__ico"><svg viewBox="0 0 48 48"><use href="#ico-bread"/></svg></div><div class="fmc__label">Classic Loaf</div></div><div class="fmc"><div class="fmc__ico"><svg viewBox="0 0 48 48"><use href="#ico-recipe"/></svg></div><div class="fmc__label">Pancakes</div></div><div class="fmc"><div class="fmc__ico"><svg viewBox="0 0 48 48"><use href="#ico-plan"/></svg></div><div class="fmc__label">Planner</div></div><div class="fmc"><div class="fmc__ico"><svg viewBox="0 0 48 48"><use href="#ico-cal"/></svg></div><div class="fmc__label">Calendar</div></div></div></div></div>
-</div></div></section>
+<!-- ELENA'S CORNER -->
+<section class="elena" id="elena"><div class="ctn">
+<div class="elena__head reveal"><p class="elena__by" id="elenaBy">— Elena</p><p class="sl" id="elenaSub">Elena's corner</p><h2 class="st" id="elenaTitle">More than bread — it's how we care</h2><p class="ss" id="elenaDesc">I bake for my family every week. Here's what sourdough taught us.</p></div>
+<div class="elena__grid">
+<div class="elena__card reveal rv1"><div class="elena__ico"><svg width="26" height="26"><use href="#ico-health"/></svg></div><p class="elena__quote" id="elenaStory1">"My little one watches the bubbles rise every morning. At 4, he already knows: good things take time."</p><p class="elena__sci" id="elenaSci1">Studies show children who participate in baking develop patience and fine motor skills earlier.</p></div>
+<div class="elena__card reveal rv2"><div class="elena__ico elena__ico--2"><svg width="26" height="26"><use href="#ico-wheat"/></svg></div><p class="elena__quote" id="elenaStory2">"When bunica switched to real sourdough, her digestion changed in weeks. She says it reminds her of childhood bread."</p><p class="elena__sci" id="elenaSci2">Long fermentation breaks down gluten and phytic acid, making nutrients more bioavailable.</p></div>
+<div class="elena__card reveal rv3"><div class="elena__ico elena__ico--3"><svg width="26" height="26"><use href="#ico-fire"/></svg></div><p class="elena__quote" id="elenaStory3">"There's something holy about baking bread with your own hands. The house smells like home. Time slows down."</p><p class="elena__sci" id="elenaSci3"></p></div>
+</div>
+</div></section>
 
 <!-- OUR BOOKS -->
 <section class="books" id="books"><div class="ctn">
 <div class="books__head reveal"><p class="sl" id="booksSub">From our kitchen</p><h2 class="st" id="booksTitle">Books We Made for You</h2><p class="ss" id="booksText">Real knowledge, beautifully crafted — by the people behind Rise & Ferment.</p></div>
 <div class="books__grid">
 <div class="books__card reveal rv1">
-<div class="books__card-badge books__card-badge--new" id="bookMiloBadge">New!</div>
+<div class="books__card-badge books__card-badge--new" id="bookMiloBadge">Perfect Gift</div>
 <picture><source srcset="/assets/book-milo-cover.webp" type="image/webp"><img src="/assets/book-milo-cover.jpg" alt="Milo & Maia — A Sourdough Adventure for Kids" class="books__card-img" width="200" height="267" loading="lazy"></picture>
 <div class="books__card-body">
 <h3 id="bookMiloName">Milo & Maia</h3>
 <p class="books__card-sub" id="bookMiloSub">A Sourdough Adventure for Kids</p>
-<p class="books__card-desc" id="bookMiloDesc">Share the magic of sourdough with your little ones. A beautifully illustrated story about patience, bubbles, and the joy of making real bread together.</p>
-<div class="books__card-chips"><span class="books__card-chip" id="bookMiloChip1">Ages 3–8</span><span class="books__card-chip" id="bookMiloChip2">Illustrated</span><span class="books__card-chip" id="bookMiloChip3">Learn Through Story</span></div>
+<p class="books__card-desc" id="bookMiloDesc">The book that brings families together. Watch your child's eyes light up as Milo discovers that magic happens when you wait. For parents, grandparents, and aunts who believe kids deserve real experiences — not just screens.</p>
+<div class="books__card-chips"><span class="books__card-chip" id="bookMiloChip1">Ages 3–8</span><span class="books__card-chip" id="bookMiloChip2">Gift-Ready</span><span class="books__card-chip" id="bookMiloChip3">Family Bonding</span></div>
 <div class="books__card-buy"><span class="books__card-price" id="priceMilo">6,99&nbsp;&euro;</span><a href="/go/milo" class="btn btn--p btn--sm" id="bookMiloCta" target="_blank" rel="noopener">Get the Book <span class="btn__ar">&rarr;</span></a></div>
+<p class="books__card-urgency" id="bookMiloUrgency">The gift they'll remember</p>
 <p class="books__card-ro" id="bookMiloRo"></p>
 </div>
 </div>
@@ -579,20 +589,24 @@ body{min-height:100dvh;-webkit-tap-highlight-color:transparent}
 <div class="books__card-body">
 <h3 id="bookHandbookName">The Complete Sourdough Handbook</h3>
 <p class="books__card-sub" id="bookHandbookSub">100+ pages of expert knowledge</p>
-<p class="books__card-desc" id="bookHandbookDesc">Master every technique — from your first starter to artisan loaves. 14 chapters, 5 exclusive recipes, troubleshooting with photos, and printable tools.</p>
-<div class="books__card-chips"><span class="books__card-chip" id="bookHandbookChip1">14 Chapters</span><span class="books__card-chip" id="bookHandbookChip2">5 Recipes</span><span class="books__card-chip" id="bookHandbookChip3">Troubleshooting</span></div>
+<p class="books__card-desc" id="bookHandbookDesc">Everything you need in one place. No expensive courses, no conflicting YouTube advice, no guessing. 14 chapters of tested knowledge — from first starter to artisan scoring techniques. The only sourdough resource you'll ever need.</p>
+<div class="books__card-chips"><span class="books__card-chip" id="bookHandbookChip1">Replaces €200+ courses</span><span class="books__card-chip" id="bookHandbookChip2">5 Recipes</span><span class="books__card-chip" id="bookHandbookChip3">Printable Tools</span></div>
 <div class="books__card-buy"><span class="books__card-price" id="priceHandbook">9,99&nbsp;&euro;</span><a href="/go/ebook" class="btn btn--p btn--sm" id="bookHandbookCta" target="_blank" rel="noopener">Get the Handbook <span class="btn__ar">&rarr;</span></a></div>
+<p class="books__card-urgency" id="bookHandbookUrgency">2,400+ bakers chose this</p>
 </div>
 </div>
 </div>
 <p class="books__brand reveal" id="booksBrand">Handcrafted by Rise & Ferment — with love for real bread</p>
 </div></section>
 
-<!-- BLOG PREVIEW -->
-<section class="blog" id="blog"><div class="ctn">
-<div class="blog__head"><div class="reveal"><p class="sl">From the blog</p><h2 class="st">Learn, bake, repeat</h2><p class="ss">Practical guides and honest tips from someone who started just like you.</p></div><button class="blog__va reveal" onclick="showBlogPage()">View all articles →</button></div>
-<div class="blog__grid" id="blogGrid"></div>
-</div></section>
+<!-- FEATURES -->
+<section class="feat" id="features"><div class="ctn">
+<div class="feat__head reveal"><p class="sl">Everything you need</p><h2 class="st">Built for curious hands, not lab coats</h2><p class="ss">Whether you're creating your first starter or your fifth — Rise & Ferment makes it feel natural.</p></div>
+<div class="feat__rows">
+<div class="feat-row reveal"><div><p class="feat-row__lab">Multi-Starter Management</p><h3 class="feat-row__t">Track one starter or five — your choice</h3><p class="feat-row__d">Give each starter a name, personality, and its own story.</p><ul class="feat-row__bul"><li class="feat-row__b"><span class="feat-row__bi"><svg><use href="#ico-check"/></svg></span> Individual feeding schedules and history</li><li class="feat-row__b"><span class="feat-row__bi"><svg><use href="#ico-check"/></svg></span> Temperature and health tracking per starter</li><li class="feat-row__b"><span class="feat-row__bi"><svg><use href="#ico-check"/></svg></span> Notes and personal observations</li></ul></div><div class="feat-row__vis"><div class="starter-grid"><div class="starter-card"><div class="starter-card__ico"><svg viewBox="0 0 48 48"><use href="#ico-jar"/></svg></div><div class="starter-card__name">Luna</div><div class="starter-card__type">White wheat · 30 days</div></div><div class="starter-card"><div class="starter-card__ico"><svg viewBox="0 0 48 48"><use href="#ico-bread"/></svg></div><div class="starter-card__name">Rye Boy</div><div class="starter-card__type">Dark rye · 14 days</div></div><div class="starter-card"><div class="starter-card__ico"><svg viewBox="0 0 48 48"><use href="#ico-wheat"/></svg></div><div class="starter-card__name">Goldie</div><div class="starter-card__type">Honey wheat · 7 days</div></div><div class="starter-card"><div class="starter-card__ico"><svg viewBox="0 0 48 48"><use href="#ico-plus"/></svg></div><div class="starter-card__name">Add New</div><div class="starter-card__type">Start fresh</div></div></div></div></div>
+<div class="feat-row feat-row--rev reveal"><div><p class="feat-row__lab">Beginner-Friendly Design</p><h3 class="feat-row__t">Start with zero experience</h3><p class="feat-row__d">Beginner Mode guides you day by day. When you're ready, unlock everything.</p><ul class="feat-row__bul"><li class="feat-row__b"><span class="feat-row__bi"><svg><use href="#ico-check"/></svg></span> Day-by-day guided instructions</li><li class="feat-row__b"><span class="feat-row__bi"><svg><use href="#ico-check"/></svg></span> Motivational messages and celebrations</li><li class="feat-row__b"><span class="feat-row__bi"><svg><use href="#ico-check"/></svg></span> Feeding streak tracker with milestones</li></ul></div><div class="feat-row__vis"><div class="fmc-grid"><div class="fmc"><div class="fmc__ico"><svg viewBox="0 0 48 48"><use href="#ico-book"/></svg></div><div class="fmc__label">Day Guides</div></div><div class="fmc"><div class="fmc__ico"><svg viewBox="0 0 48 48"><use href="#ico-party"/></svg></div><div class="fmc__label">Celebrations</div></div><div class="fmc"><div class="fmc__ico"><svg viewBox="0 0 48 48"><use href="#ico-fire"/></svg></div><div class="fmc__label">Streaks</div></div><div class="fmc"><div class="fmc__ico"><svg viewBox="0 0 48 48"><use href="#ico-chat"/></svg></div><div class="fmc__label">Tips & Help</div></div></div></div></div>
+<div class="feat-row reveal"><div><p class="feat-row__lab">Recipes & Baking Planner</p><h3 class="feat-row__t">From starter to table, planned perfectly</h3><p class="feat-row__d">Built-in recipes with an ingredient calculator. The planner works backward from when you want bread ready.</p><ul class="feat-row__bul"><li class="feat-row__b"><span class="feat-row__bi"><svg><use href="#ico-check"/></svg></span> Scalable ingredient calculator</li><li class="feat-row__b"><span class="feat-row__bi"><svg><use href="#ico-check"/></svg></span> Reverse schedule from desired bake time</li><li class="feat-row__b"><span class="feat-row__bi"><svg><use href="#ico-check"/></svg></span> Export schedule to your calendar</li></ul></div><div class="feat-row__vis"><div class="fmc-grid"><div class="fmc"><div class="fmc__ico"><svg viewBox="0 0 48 48"><use href="#ico-bread"/></svg></div><div class="fmc__label">Classic Loaf</div></div><div class="fmc"><div class="fmc__ico"><svg viewBox="0 0 48 48"><use href="#ico-recipe"/></svg></div><div class="fmc__label">Pancakes</div></div><div class="fmc"><div class="fmc__ico"><svg viewBox="0 0 48 48"><use href="#ico-plan"/></svg></div><div class="fmc__label">Planner</div></div><div class="fmc"><div class="fmc__ico"><svg viewBox="0 0 48 48"><use href="#ico-cal"/></svg></div><div class="fmc__label">Calendar</div></div></div></div></div>
+</div></div></section>
 
 <!-- LEAD MAGNET -->
 <section class="lead" id="guide"><div class="ctn"><div class="lead__card reveal">
@@ -636,6 +650,29 @@ body{min-height:100dvh;-webkit-tap-highlight-color:transparent}
 </div></div>
 </div></div></section>
 
+<!-- BLOG PREVIEW -->
+<section class="blog" id="blog"><div class="ctn">
+<div class="blog__head"><div class="reveal"><p class="sl">From the blog</p><h2 class="st">Learn, bake, repeat</h2><p class="ss">Practical guides and honest tips from someone who started just like you.</p></div><button class="blog__va reveal" onclick="showBlogPage()">View all articles →</button></div>
+<div class="blog__grid" id="blogGrid"></div>
+</div></section>
+
+<!-- TESTIMONIALS -->
+<section class="test" id="testimonials"><div class="ctn">
+<div class="test__head reveal"><p class="sl">Real bakers, real stories</p><h2 class="st">What our community says</h2><p class="ss">From "I've never baked anything" to "I made sourdough!"</p></div>
+<div class="test__grid">
+<div class="tcard reveal rv1"><div class="tcard__stars" role="img" aria-label="5 out of 5 stars"><span class="tcard__star" aria-hidden="true">★</span><span class="tcard__star" aria-hidden="true">★</span><span class="tcard__star" aria-hidden="true">★</span><span class="tcard__star" aria-hidden="true">★</span><span class="tcard__star" aria-hidden="true">★</span></div><p class="tcard__text">"I tried three times before this app. The reminders changed everything. My kids now ask for 'Mama's bread' every weekend."</p><div class="tcard__auth"><div class="tcard__av tcard__av--1"><svg width="24" height="24" style="color:var(--crust)"><use href="#ico-person"/></svg></div><div><p class="tcard__name">Sarah M.</p><p class="tcard__role">Mom of 3 · Portland, USA</p></div></div></div>
+<div class="tcard reveal rv2"><div class="tcard__stars" role="img" aria-label="5 out of 5 stars"><span class="tcard__star" aria-hidden="true">★</span><span class="tcard__star" aria-hidden="true">★</span><span class="tcard__star" aria-hidden="true">★</span><span class="tcard__star" aria-hidden="true">★</span><span class="tcard__star" aria-hidden="true">★</span></div><p class="tcard__text">"Living alone, I wanted a hobby that felt meaningful. Now I bring loaves to my neighbors and we've become actual friends."</p><div class="tcard__auth"><div class="tcard__av tcard__av--2"><svg width="24" height="24" style="color:var(--crust-deep)"><use href="#ico-person"/></svg></div><div><p class="tcard__name">Alex K.</p><p class="tcard__role">Designer · Berlin, Germany</p></div></div></div>
+<div class="tcard reveal rv3"><div class="tcard__stars" role="img" aria-label="5 out of 5 stars"><span class="tcard__star" aria-hidden="true">★</span><span class="tcard__star" aria-hidden="true">★</span><span class="tcard__star" aria-hidden="true">★</span><span class="tcard__star" aria-hidden="true">★</span><span class="tcard__star" aria-hidden="true">★</span></div><p class="tcard__text">"As a nurse with unpredictable shifts, I thought sourdough was impossible. I've made 12 loaves this month!"</p><div class="tcard__auth"><div class="tcard__av tcard__av--3"><svg width="24" height="24" style="color:var(--crust)"><use href="#ico-person"/></svg></div><div><p class="tcard__name">Ioana R.</p><p class="tcard__role">Nurse & Baker · Bucharest</p></div></div></div>
+</div></div></section>
+
+<!-- STILL NOT SURE? -->
+<section class="prob" id="problems"><div class="ctn">
+<div class="prob__head reveal"><p class="sl" id="probSub">Still not sure?</p><h2 class="st" id="probTitle">We've been there too</h2><p class="ss" id="probText">These are the two questions every beginner asks.</p></div>
+<div class="prob__grid">
+<div class="prob-card reveal rv1"><div class="prob-card__ico prob-card__ico--1"><svg width="28" height="28"><use href="#ico-clock"/></svg></div><p class="prob-card__q">"When do I feed my starter?"</p><p class="prob-card__a"><strong>Feeding reminders</strong> to keep your starter on track. Never miss a feeding again.</p></div>
+<div class="prob-card reveal rv2"><div class="prob-card__ico prob-card__ico--2"><svg width="28" height="28"><use href="#ico-health"/></svg></div><p class="prob-card__q">"Is my starter alive?"</p><p class="prob-card__a"><strong>Visual health indicators</strong> with temperature tracking. Know at a glance if your starter needs help.</p></div>
+</div></div></section>
+
 <!-- TOOLS -->
 <section class="tools" id="tools"><div class="ctn">
 <div class="tools__head reveal"><p class="sl">My baking essentials</p><h2 class="st">The tools I actually use (and love)</h2><p class="ss">Honest picks from years of home baking.</p></div>
@@ -655,27 +692,6 @@ body{min-height:100dvh;-webkit-tap-highlight-color:transparent}
 </div></div>
 <p class="tools__disc reveal">* Some links are affiliate links. We earn a small commission at no extra cost to you.</p>
 </div></section>
-
-<!-- TESTIMONIALS -->
-<section class="test" id="testimonials"><div class="ctn">
-<div class="test__head reveal"><p class="sl">Real bakers, real stories</p><h2 class="st">What our community says</h2><p class="ss">From "I've never baked anything" to "I made sourdough!"</p></div>
-<div class="test__grid">
-<div class="tcard reveal rv1"><div class="tcard__stars" role="img" aria-label="5 out of 5 stars"><span class="tcard__star" aria-hidden="true">★</span><span class="tcard__star" aria-hidden="true">★</span><span class="tcard__star" aria-hidden="true">★</span><span class="tcard__star" aria-hidden="true">★</span><span class="tcard__star" aria-hidden="true">★</span></div><p class="tcard__text">"I tried three times before this app. The reminders changed everything. My kids now ask for 'Mama's bread' every weekend."</p><div class="tcard__auth"><div class="tcard__av tcard__av--1"><svg width="24" height="24" style="color:var(--crust)"><use href="#ico-person"/></svg></div><div><p class="tcard__name">Sarah M.</p><p class="tcard__role">Mom of 3 · Portland, USA</p></div></div></div>
-<div class="tcard reveal rv2"><div class="tcard__stars" role="img" aria-label="5 out of 5 stars"><span class="tcard__star" aria-hidden="true">★</span><span class="tcard__star" aria-hidden="true">★</span><span class="tcard__star" aria-hidden="true">★</span><span class="tcard__star" aria-hidden="true">★</span><span class="tcard__star" aria-hidden="true">★</span></div><p class="tcard__text">"Living alone, I wanted a hobby that felt meaningful. Now I bring loaves to my neighbors and we've become actual friends."</p><div class="tcard__auth"><div class="tcard__av tcard__av--2"><svg width="24" height="24" style="color:var(--crust-deep)"><use href="#ico-person"/></svg></div><div><p class="tcard__name">Alex K.</p><p class="tcard__role">Designer · Berlin, Germany</p></div></div></div>
-<div class="tcard reveal rv3"><div class="tcard__stars" role="img" aria-label="5 out of 5 stars"><span class="tcard__star" aria-hidden="true">★</span><span class="tcard__star" aria-hidden="true">★</span><span class="tcard__star" aria-hidden="true">★</span><span class="tcard__star" aria-hidden="true">★</span><span class="tcard__star" aria-hidden="true">★</span></div><p class="tcard__text">"As a nurse with unpredictable shifts, I thought sourdough was impossible. I've made 12 loaves this month!"</p><div class="tcard__auth"><div class="tcard__av tcard__av--3"><svg width="24" height="24" style="color:var(--crust)"><use href="#ico-person"/></svg></div><div><p class="tcard__name">Ioana R.</p><p class="tcard__role">Nurse & Baker · Bucharest</p></div></div></div>
-</div></div></section>
-
-<!-- NEWSLETTER / MAILERLITE SIGNUP -->
-<section class="nl" id="newsletter"><div class="ctn"><div class="nl__card reveal">
-<h2 class="nl__t">Get Your Free Sourdough Starter Kit</h2>
-<p class="nl__d">Join thousands of bakers and get your complete 14-day guide — completely free.</p>
-<form class="nl__form" name="newsletter" method="POST" data-netlify="true" onsubmit="handleNL(event)">
-<input type="hidden" name="form-name" value="newsletter">
-<input type="email" name="email" class="nl__input" placeholder="you@email.com" required aria-label="Your email address">
-<button type="submit" class="nl__btn">Join Free →</button>
-</form>
-<div class="nl__perks"><span class="nl__perk">✓ 14-day starter guide</span><span class="nl__perk">✓ No spam, ever</span><span class="nl__perk">✓ Unsubscribe anytime</span></div>
-</div></div></section>
 
 </div><!-- end landingPage -->
 
@@ -984,9 +1000,9 @@ const LANDING_I18N = {
     mockDay: "Day Streak",
     mockTemp: "Temperature",
     mockBtn: "Time to Feed",
-    probSub: "Sound familiar?",
-    probTitle: "We know the struggle",
-    probText: "Every sourdough journey starts with the same questions.",
+    probSub: "Still not sure?",
+    probTitle: "We've been there too",
+    probText: "These are the two questions every beginner asks.",
     blogSub: "From the blog",
     blogTitle: "Learn, bake, repeat",
     blogText: "Practical guides and honest tips from someone who started just like you.",
@@ -1112,22 +1128,34 @@ const LANDING_I18N = {
     booksTitle: 'Books We Made for You',
     booksText: 'Real knowledge, beautifully crafted — by the people behind Rise & Ferment.',
     booksBrand: 'Handcrafted by Rise & Ferment — with love for real bread',
-    bookMiloBadge: 'New!',
+    bookMiloBadge: 'Perfect Gift',
     bookMiloName: 'Milo & Maia',
     bookMiloSub: 'A Sourdough Adventure for Kids',
-    bookMiloDesc: 'Share the magic of sourdough with your little ones. A beautifully illustrated story about patience, bubbles, and the joy of making real bread together.',
+    bookMiloDesc: 'The book that brings families together. Watch your child\'s eyes light up as Milo discovers that magic happens when you wait. For parents, grandparents, and aunts who believe kids deserve real experiences — not just screens.',
     bookMiloChip1: 'Ages 3–8',
-    bookMiloChip2: 'Illustrated',
-    bookMiloChip3: 'Learn Through Story',
+    bookMiloChip2: 'Gift-Ready',
+    bookMiloChip3: 'Family Bonding',
     bookMiloCta: 'Get the Book',
     bookMiloRo: '',
     bookHandbookBadge: 'Bestseller',
     bookHandbookName: 'The Complete Sourdough Handbook',
     bookHandbookSub: '100+ pages of expert knowledge',
-    bookHandbookDesc: 'Master every technique — from your first starter to artisan loaves. 14 chapters, 5 exclusive recipes, troubleshooting with photos, and printable tools.',
-    bookHandbookChip1: '14 Chapters',
+    bookHandbookDesc: 'Everything you need in one place. No expensive courses, no conflicting YouTube advice, no guessing. 14 chapters of tested knowledge — from first starter to artisan scoring techniques. The only sourdough resource you\'ll ever need.',
+    bookHandbookChip1: 'Replaces €200+ courses',
     bookHandbookChip2: '5 Recipes',
-    bookHandbookChip3: 'Troubleshooting',
+    bookHandbookChip3: 'Printable Tools',
+    bookMiloUrgency: 'The gift they\'ll remember',
+    bookHandbookUrgency: '2,400+ bakers chose this',
+    elenaSub: 'Elena\'s corner',
+    elenaTitle: 'More than bread — it\'s how we care',
+    elenaDesc: 'I bake for my family every week. Here\'s what sourdough taught us.',
+    elenaBy: '— Elena',
+    elenaStory1: '"My little one watches the bubbles rise every morning. At 4, he already knows: good things take time."',
+    elenaSci1: 'Studies show children who participate in baking develop patience and fine motor skills earlier.',
+    elenaStory2: '"When bunica switched to real sourdough, her digestion changed in weeks. She says it reminds her of childhood bread."',
+    elenaSci2: 'Long fermentation breaks down gluten and phytic acid, making nutrients more bioavailable.',
+    elenaStory3: '"There\'s something holy about baking bread with your own hands. The house smells like home. Time slows down."',
+    elenaSci3: '',
     bookHandbookCta: 'Get the Handbook'
   },
   ro: {
@@ -1152,9 +1180,9 @@ const LANDING_I18N = {
     mockDay: "Zile la rând",
     mockTemp: "Temperatură",
     mockBtn: "E timpul de hrănire",
-    probSub: "Sună cunoscut?",
-    probTitle: "Știm perfect cum e",
-    probText: "Fiecare călătorie cu maia începe cu aceleași întrebări.",
+    probSub: "Încă nu ești sigur?",
+    probTitle: "Am trecut și noi prin asta",
+    probText: "Acestea sunt cele două întrebări pe care le pune fiecare începător.",
     blogSub: "Din blog",
     blogTitle: "Citește, coace, repetă",
     blogText: "Ghiduri practice și sfaturi sincere de la cineva care a început exact ca tine.",
@@ -1280,22 +1308,34 @@ const LANDING_I18N = {
     booksTitle: 'Cărți făcute pentru tine',
     booksText: 'Cunoștințe reale, frumos meșteșugite — de echipa Rise & Ferment.',
     booksBrand: 'Meșteșugit de Rise & Ferment — cu dragoste pentru pâine adevărată',
-    bookMiloBadge: 'Nou!',
+    bookMiloBadge: 'Cadoul perfect',
     bookMiloName: 'Milo & Maia',
     bookMiloSub: 'O aventură cu maia pentru copii',
-    bookMiloDesc: 'Împărtășește magia maielei cu cei mici. O poveste frumos ilustrată despre răbdare, bule și bucuria de a face pâine adevărată împreună.',
+    bookMiloDesc: 'Cartea care aduce familiile împreună. Privește cum ochii copilului tău se luminează când Milo descoperă că magia se întâmplă atunci când aștepți. Pentru părinți, bunici și mătușe care cred că cei mici merită experiențe reale — nu doar ecrane.',
     bookMiloChip1: 'Vârsta 3–8',
-    bookMiloChip2: 'Ilustrată',
-    bookMiloChip3: 'Învață prin poveste',
+    bookMiloChip2: 'Gata de cadou',
+    bookMiloChip3: 'Timp în familie',
     bookMiloCta: 'Ia cartea',
     bookMiloRo: '🇷🇴 Ediția în română vine curând!',
     bookHandbookBadge: 'Bestseller',
     bookHandbookName: 'Manualul Complet de Maia',
     bookHandbookSub: '100+ pagini de cunoștințe de expert',
-    bookHandbookDesc: 'Stăpânește fiecare tehnică — de la prima maia la pâini artizanale. 14 capitole, 5 rețete exclusive, depanare cu fotografii și instrumente printabile.',
-    bookHandbookChip1: '14 Capitole',
+    bookHandbookDesc: 'Tot ce ai nevoie într-un singur loc. Fără cursuri scumpe, fără sfaturi contradictorii de pe YouTube, fără ghiceli. 14 capitole de cunoștințe testate — de la prima maia la tehnici avansate de scoring. Singura resursă de maia de care vei avea vreodată nevoie.',
+    bookHandbookChip1: 'Înlocuiește cursuri de €200+',
     bookHandbookChip2: '5 Rețete',
-    bookHandbookChip3: 'Depanare',
+    bookHandbookChip3: 'Instrumente printabile',
+    bookMiloUrgency: 'Cadoul pe care îl vor ține minte',
+    bookHandbookUrgency: '2.400+ brutari au ales asta',
+    elenaSub: 'Colțul Elenei',
+    elenaTitle: 'Mai mult decât pâine — e felul nostru de a avea grijă',
+    elenaDesc: 'Coc pentru familia mea în fiecare săptămână. Iată ce ne-a învățat maiaua.',
+    elenaBy: '— Elena',
+    elenaStory1: '"Cel mic se uită cum cresc bulele în fiecare dimineață. La 4 ani, deja știe: lucrurile bune au nevoie de timp."',
+    elenaSci1: 'Studiile arată că copiii care participă la copt dezvoltă răbdarea și motricitatea fină mai devreme.',
+    elenaStory2: '"Când bunica a trecut la maia adevărată, digestia ei s-a schimbat în câteva săptămâni. Spune că îi amintește de pâinea din copilărie."',
+    elenaSci2: 'Fermentația lungă descompune glutenul și acidul fitic, făcând nutrienții mai biodisponibili.',
+    elenaStory3: '"E ceva sfânt în a coace pâine cu propriile mâini. Casa miroase a acasă. Timpul încetinește."',
+    elenaSci3: '',
     bookHandbookCta: 'Ia Manualul'
   },
   it: {
@@ -1320,9 +1360,9 @@ const LANDING_I18N = {
     mockDay: "Giorni consecutivi",
     mockTemp: "Temperatura",
     mockBtn: "È ora di nutrire",
-    probSub: "Ti suona familiare?",
-    probTitle: "Conosciamo bene questa fatica",
-    probText: "Ogni percorso con il lievito madre inizia con le stesse domande.",
+    probSub: "Ancora indeciso?",
+    probTitle: "Ci siamo passati anche noi",
+    probText: "Queste sono le due domande che ogni principiante si pone.",
     blogSub: "Dal blog",
     blogTitle: "Leggi, cuoci, ripeti",
     blogText: "Guide pratiche e consigli sinceri da chi ha iniziato proprio come te.",
@@ -1448,22 +1488,34 @@ const LANDING_I18N = {
     booksTitle: 'Libri fatti per te',
     booksText: 'Conoscenza reale, splendidamente realizzata — dal team di Rise & Ferment.',
     booksBrand: 'Realizzato da Rise & Ferment — con amore per il vero pane',
-    bookMiloBadge: 'Nuovo!',
+    bookMiloBadge: 'Regalo perfetto',
     bookMiloName: 'Milo & Maia',
     bookMiloSub: 'Un\'avventura con il lievito madre per bambini',
-    bookMiloDesc: 'Condividi la magia del lievito madre con i tuoi piccoli. Una storia splendidamente illustrata su pazienza, bolle e la gioia di fare il vero pane insieme.',
+    bookMiloDesc: 'Il libro che unisce le famiglie. Guarda gli occhi del tuo bambino illuminarsi quando Milo scopre che la magia accade quando aspetti. Per genitori, nonni e zie che credono che i bambini meritino esperienze vere — non solo schermi.',
     bookMiloChip1: 'Età 3–8',
-    bookMiloChip2: 'Illustrato',
-    bookMiloChip3: 'Impara con la storia',
+    bookMiloChip2: 'Pronto regalo',
+    bookMiloChip3: 'Tempo in famiglia',
     bookMiloCta: 'Prendi il libro',
     bookMiloRo: '',
     bookHandbookBadge: 'Bestseller',
     bookHandbookName: 'Il Manuale Completo del Lievito Madre',
     bookHandbookSub: '100+ pagine di conoscenze esperte',
-    bookHandbookDesc: 'Padroneggia ogni tecnica — dal primo lievito madre ai pani artigianali. 14 capitoli, 5 ricette esclusive, risoluzione problemi con foto e strumenti stampabili.',
-    bookHandbookChip1: '14 Capitoli',
+    bookHandbookDesc: 'Tutto ciò che ti serve in un unico posto. Niente corsi costosi, niente consigli contraddittori su YouTube, niente supposizioni. 14 capitoli di conoscenze testate — dal primo lievito madre alle tecniche di incisione artigianali. L\'unica risorsa sul lievito madre di cui avrai mai bisogno.',
+    bookHandbookChip1: 'Sostituisce corsi da €200+',
     bookHandbookChip2: '5 Ricette',
-    bookHandbookChip3: 'Risoluzione problemi',
+    bookHandbookChip3: 'Strumenti stampabili',
+    bookMiloUrgency: 'Il regalo che ricorderanno',
+    bookHandbookUrgency: '2.400+ panettieri hanno scelto questo',
+    elenaSub: 'L\'angolo di Elena',
+    elenaTitle: 'Più del pane — è il nostro modo di prenderci cura',
+    elenaDesc: 'Cuocio per la mia famiglia ogni settimana. Ecco cosa ci ha insegnato il lievito madre.',
+    elenaBy: '— Elena',
+    elenaStory1: '"Il mio piccolo guarda le bolle salire ogni mattina. A 4 anni, sa già: le cose buone richiedono tempo."',
+    elenaSci1: 'Gli studi dimostrano che i bambini che partecipano alla panificazione sviluppano pazienza e motricità fine prima.',
+    elenaStory2: '"Quando la nonna è passata al vero lievito madre, la sua digestione è cambiata in poche settimane. Dice che le ricorda il pane della sua infanzia."',
+    elenaSci2: 'La fermentazione lunga scompone il glutine e l\'acido fitico, rendendo i nutrienti più biodisponibili.',
+    elenaStory3: '"C\'è qualcosa di sacro nel fare il pane con le proprie mani. La casa profuma di casa. Il tempo rallenta."',
+    elenaSci3: '',
     bookHandbookCta: 'Prendi il Manuale'
   },
   de: {
@@ -1488,9 +1540,9 @@ const LANDING_I18N = {
     mockDay: "Tagesserie",
     mockTemp: "Temperatur",
     mockBtn: "Zeit zum Füttern",
-    probSub: "Kommt dir das bekannt vor?",
-    probTitle: "Wir kennen den Kampf",
-    probText: "Jede Sauerteig-Reise startet mit denselben Fragen.",
+    probSub: "Noch unsicher?",
+    probTitle: "Das kennen wir auch",
+    probText: "Das sind die zwei Fragen, die jeder Anfänger stellt.",
     blogSub: "Aus dem Blog",
     blogTitle: "Lernen, backen, wiederholen",
     blogText: "Praktische Guides und ehrliche Tipps von jemandem, der genauso angefangen hat wie du.",
@@ -1616,22 +1668,34 @@ const LANDING_I18N = {
     booksTitle: 'B\u00fccher, die wir f\u00fcr dich gemacht haben',
     booksText: 'Echtes Wissen, wundersch\u00f6n gestaltet — vom Rise & Ferment Team.',
     booksBrand: 'Handgefertigt von Rise & Ferment — mit Liebe f\u00fcr echtes Brot',
-    bookMiloBadge: 'Neu!',
+    bookMiloBadge: 'Perfektes Geschenk',
     bookMiloName: 'Milo & Maia',
     bookMiloSub: 'Ein Sauerteig-Abenteuer f\u00fcr Kinder',
-    bookMiloDesc: 'Teile die Magie des Sauerteigs mit deinen Kleinen. Eine wundersch\u00f6n illustrierte Geschichte \u00fcber Geduld, Bl\u00e4schen und die Freude, echtes Brot zusammen zu backen.',
+    bookMiloDesc: 'Das Buch, das Familien zusammenbringt. Sieh, wie die Augen deines Kindes leuchten, wenn Milo entdeckt, dass Magie passiert, wenn man wartet. F\u00fcr Eltern, Gro\u00dfeltern und Tanten, die glauben, dass Kinder echte Erlebnisse verdienen — nicht nur Bildschirme.',
     bookMiloChip1: 'Alter 3\u20138',
-    bookMiloChip2: 'Illustriert',
-    bookMiloChip3: 'Lernen durch Geschichte',
+    bookMiloChip2: 'Geschenkfertig',
+    bookMiloChip3: 'Familienzeit',
     bookMiloCta: 'Buch holen',
     bookMiloRo: '',
     bookHandbookBadge: 'Bestseller',
     bookHandbookName: 'Das komplette Sauerteig-Handbuch',
     bookHandbookSub: '100+ Seiten Expertenwissen',
-    bookHandbookDesc: 'Meistere jede Technik — vom ersten Starter bis zu handwerklichen Broten. 14 Kapitel, 5 exklusive Rezepte, Fehlerbehebung mit Fotos und druckbare Tools.',
-    bookHandbookChip1: '14 Kapitel',
+    bookHandbookDesc: 'Alles, was du brauchst, an einem Ort. Keine teuren Kurse, keine widerspr\u00fcchlichen YouTube-Tipps, kein Raten. 14 Kapitel mit gepr\u00fcftem Wissen — vom ersten Starter bis zu handwerklichen Einschnitttechniken. Die einzige Sauerteig-Ressource, die du jemals brauchen wirst.',
+    bookHandbookChip1: 'Ersetzt Kurse \u00fcber \u20ac200',
     bookHandbookChip2: '5 Rezepte',
-    bookHandbookChip3: 'Fehlerbehebung',
+    bookHandbookChip3: 'Druckbare Tools',
+    bookMiloUrgency: 'Das Geschenk, an das sie sich erinnern',
+    bookHandbookUrgency: '2.400+ B\u00e4cker haben das gew\u00e4hlt',
+    elenaSub: 'Elenas Ecke',
+    elenaTitle: 'Mehr als Brot — so zeigen wir, dass wir uns k\u00fcmmern',
+    elenaDesc: 'Ich backe jede Woche f\u00fcr meine Familie. Das hat uns der Sauerteig beigebracht.',
+    elenaBy: '\u2014 Elena',
+    elenaStory1: '"Mein Kleiner schaut jeden Morgen zu, wie die Bl\u00e4schen aufsteigen. Mit 4 wei\u00df er schon: Gute Dinge brauchen Zeit."',
+    elenaSci1: 'Studien zeigen, dass Kinder, die beim Backen mitmachen, Geduld und Feinmotorik fr\u00fcher entwickeln.',
+    elenaStory2: '"Als Oma auf echten Sauerteig umgestiegen ist, hat sich ihre Verdauung in Wochen ver\u00e4ndert. Sie sagt, es erinnert sie an das Brot ihrer Kindheit."',
+    elenaSci2: 'Lange Fermentation baut Gluten und Phytins\u00e4ure ab und macht N\u00e4hrstoffe bioverf\u00fcgbarer.',
+    elenaStory3: '"Es hat etwas Heiliges, Brot mit den eigenen H\u00e4nden zu backen. Das Haus riecht nach Zuhause. Die Zeit verlangsamt sich."',
+    elenaSci3: '',
     bookHandbookCta: 'Handbuch holen'
   },
   fr: {
@@ -1656,9 +1720,9 @@ const LANDING_I18N = {
     mockDay: "Jours d'affilée",
     mockTemp: "Température",
     mockBtn: "C'est l'heure de nourrir",
-    probSub: "Ça te parle ?",
-    probTitle: "On connaît bien cette galère",
-    probText: "Chaque parcours au levain commence avec les mêmes questions.",
+    probSub: "Encore hésitant ?",
+    probTitle: "On est passés par là aussi",
+    probText: "Ce sont les deux questions que chaque débutant se pose.",
     blogSub: "Du blog",
     blogTitle: "Lire, cuire, recommencer",
     blogText: "Des guides pratiques et des conseils sincères de quelqu'un qui a commencé comme toi.",
@@ -1784,22 +1848,34 @@ const LANDING_I18N = {
     booksTitle: 'Des livres faits pour vous',
     booksText: 'De vraies connaissances, magnifiquement r\u00e9alis\u00e9es — par l\u2019\u00e9quipe Rise & Ferment.',
     booksBrand: 'Fait main par Rise & Ferment — avec amour pour le vrai pain',
-    bookMiloBadge: 'Nouveau !',
+    bookMiloBadge: 'Cadeau parfait',
     bookMiloName: 'Milo & Maia',
     bookMiloSub: 'Une aventure au levain pour les enfants',
-    bookMiloDesc: 'Partagez la magie du levain avec vos petits. Une histoire magnifiquement illustr\u00e9e sur la patience, les bulles et la joie de faire du vrai pain ensemble.',
+    bookMiloDesc: 'Le livre qui r\u00e9unit les familles. Regarde les yeux de ton enfant s\u2019illuminer quand Milo d\u00e9couvre que la magie arrive quand on attend. Pour les parents, grands-parents et tantes qui croient que les enfants m\u00e9ritent de vraies exp\u00e9riences \u2014 pas seulement des \u00e9crans.',
     bookMiloChip1: '\u00c2ges 3\u20138',
-    bookMiloChip2: 'Illustr\u00e9',
-    bookMiloChip3: 'Apprendre par l\u2019histoire',
+    bookMiloChip2: 'Pr\u00eat \u00e0 offrir',
+    bookMiloChip3: 'Moment en famille',
     bookMiloCta: 'Obtenir le livre',
     bookMiloRo: '',
     bookHandbookBadge: 'Bestseller',
     bookHandbookName: 'Le Manuel Complet du Levain',
     bookHandbookSub: '100+ pages de connaissances expertes',
-    bookHandbookDesc: 'Ma\u00eetrisez chaque technique — de votre premier levain aux pains artisanaux. 14 chapitres, 5 recettes exclusives, d\u00e9pannage avec photos et outils imprimables.',
-    bookHandbookChip1: '14 Chapitres',
+    bookHandbookDesc: 'Tout ce dont tu as besoin en un seul endroit. Pas de cours co\u00fbteux, pas de conseils contradictoires sur YouTube, pas de devinettes. 14 chapitres de connaissances test\u00e9es \u2014 du premier levain aux techniques de grignage artisanales. La seule ressource sur le levain dont tu auras jamais besoin.',
+    bookHandbookChip1: 'Remplace des cours \u00e0 200\u20ac+',
     bookHandbookChip2: '5 Recettes',
-    bookHandbookChip3: 'D\u00e9pannage',
+    bookHandbookChip3: 'Outils imprimables',
+    bookMiloUrgency: 'Le cadeau dont ils se souviendront',
+    bookHandbookUrgency: '2 400+ boulangers ont choisi ceci',
+    elenaSub: 'Le coin d\u2019Elena',
+    elenaTitle: 'Plus que du pain \u2014 c\u2019est notre fa\u00e7on de prendre soin',
+    elenaDesc: 'Je cuis pour ma famille chaque semaine. Voici ce que le levain nous a appris.',
+    elenaBy: '\u2014 Elena',
+    elenaStory1: '"Mon petit regarde les bulles monter chaque matin. \u00c0 4 ans, il sait d\u00e9j\u00e0 : les bonnes choses prennent du temps."',
+    elenaSci1: 'Les \u00e9tudes montrent que les enfants qui participent \u00e0 la boulangerie d\u00e9veloppent patience et motricit\u00e9 fine plus t\u00f4t.',
+    elenaStory2: '"Quand grand-m\u00e8re est pass\u00e9e au vrai levain, sa digestion a chang\u00e9 en quelques semaines. Elle dit que \u00e7a lui rappelle le pain de son enfance."',
+    elenaSci2: 'La fermentation longue d\u00e9compose le gluten et l\u2019acide phytique, rendant les nutriments plus biodisponibles.',
+    elenaStory3: '"Il y a quelque chose de sacr\u00e9 dans le fait de faire du pain de ses propres mains. La maison sent le chez-soi. Le temps ralentit."',
+    elenaSci3: '',
     bookHandbookCta: 'Obtenir le Manuel'
   },
   es: {
@@ -1824,9 +1900,9 @@ const LANDING_I18N = {
     mockDay: "Días seguidos",
     mockTemp: "Temperatura",
     mockBtn: "Hora de alimentar",
-    probSub: "¿Te suena familiar?",
-    probTitle: "Conocemos bien esa lucha",
-    probText: "Cada viaje con masa madre empieza con las mismas preguntas.",
+    probSub: "¿Aún no estás seguro?",
+    probTitle: "Nosotros también pasamos por eso",
+    probText: "Estas son las dos preguntas que todo principiante se hace.",
     blogSub: "Del blog",
     blogTitle: "Aprender, hornear, repetir",
     blogText: "Guías prácticas y consejos honestos de alguien que empezó igual que tú.",
@@ -1952,22 +2028,34 @@ const LANDING_I18N = {
     booksTitle: 'Libros hechos para ti',
     booksText: 'Conocimiento real, bellamente elaborado — por el equipo de Rise & Ferment.',
     booksBrand: 'Hecho a mano por Rise & Ferment — con amor por el pan de verdad',
-    bookMiloBadge: '\u00a1Nuevo!',
+    bookMiloBadge: 'Regalo perfecto',
     bookMiloName: 'Milo & Maia',
     bookMiloSub: 'Una aventura de masa madre para ni\u00f1os',
-    bookMiloDesc: 'Comparte la magia de la masa madre con tus peque\u00f1os. Una historia bellamente ilustrada sobre paciencia, burbujas y la alegr\u00eda de hacer pan de verdad juntos.',
+    bookMiloDesc: 'El libro que une a las familias. Mira c\u00f3mo los ojos de tu hijo se iluminan cuando Milo descubre que la magia sucede cuando esperas. Para padres, abuelos y t\u00edas que creen que los ni\u00f1os merecen experiencias reales \u2014 no solo pantallas.',
     bookMiloChip1: 'Edades 3\u20138',
-    bookMiloChip2: 'Ilustrado',
-    bookMiloChip3: 'Aprender con historias',
+    bookMiloChip2: 'Listo para regalar',
+    bookMiloChip3: 'Tiempo en familia',
     bookMiloCta: 'Obtener el libro',
     bookMiloRo: '',
     bookHandbookBadge: 'Bestseller',
     bookHandbookName: 'El Manual Completo de Masa Madre',
     bookHandbookSub: '100+ p\u00e1ginas de conocimiento experto',
-    bookHandbookDesc: 'Domina cada t\u00e9cnica — desde tu primer starter hasta panes artesanales. 14 cap\u00edtulos, 5 recetas exclusivas, soluci\u00f3n de problemas con fotos y herramientas imprimibles.',
-    bookHandbookChip1: '14 Cap\u00edtulos',
+    bookHandbookDesc: 'Todo lo que necesitas en un solo lugar. Sin cursos caros, sin consejos contradictorios de YouTube, sin adivinanzas. 14 cap\u00edtulos de conocimiento probado \u2014 desde tu primer cultivo hasta t\u00e9cnicas artesanales de gre\u00f1ado. El \u00fanico recurso de masa madre que necesitar\u00e1s.',
+    bookHandbookChip1: 'Sustituye cursos de \u20ac200+',
     bookHandbookChip2: '5 Recetas',
-    bookHandbookChip3: 'Soluci\u00f3n de problemas',
+    bookHandbookChip3: 'Herramientas imprimibles',
+    bookMiloUrgency: 'El regalo que recordar\u00e1n',
+    bookHandbookUrgency: '2.400+ panaderos eligieron esto',
+    elenaSub: 'El rinc\u00f3n de Elena',
+    elenaTitle: 'M\u00e1s que pan \u2014 es nuestra forma de cuidar',
+    elenaDesc: 'Horneo para mi familia cada semana. Esto es lo que la masa madre nos ense\u00f1\u00f3.',
+    elenaBy: '\u2014 Elena',
+    elenaStory1: '"Mi peque\u00f1o mira c\u00f3mo suben las burbujas cada ma\u00f1ana. Con 4 a\u00f1os, ya sabe: las cosas buenas llevan tiempo."',
+    elenaSci1: 'Los estudios muestran que los ni\u00f1os que participan en la panader\u00eda desarrollan paciencia y motricidad fina m\u00e1s temprano.',
+    elenaStory2: '"Cuando la abuela cambi\u00f3 a masa madre de verdad, su digesti\u00f3n cambi\u00f3 en semanas. Dice que le recuerda al pan de su infancia."',
+    elenaSci2: 'La fermentaci\u00f3n larga descompone el gluten y el \u00e1cido f\u00edtico, haciendo los nutrientes m\u00e1s biodisponibles.',
+    elenaStory3: '"Hay algo sagrado en hacer pan con tus propias manos. La casa huele a hogar. El tiempo se detiene."',
+    elenaSci3: '',
     bookHandbookCta: 'Obtener el Manual'
   },
   hu: {
@@ -1992,9 +2080,9 @@ const LANDING_I18N = {
     mockDay: "Napi sorozat",
     mockTemp: "Hőmérséklet",
     mockBtn: "Ideje etetni",
-    probSub: "Ismerős?",
-    probTitle: "Ismerjük a küzdelmet",
-    probText: "Minden kovászos kaland ugyanazokkal a kérdésekkel kezdődik.",
+    probSub: "Még bizonytalan?",
+    probTitle: "Mi is átmentünk ezen",
+    probText: "Ez a két kérdés, amit minden kezdő feltesz.",
     blogSub: "A blogról",
     blogTitle: "Tanulj, süss, ismételd",
     blogText: "Gyakorlati útmutatók és őszinte tippek valakitől, aki ugyanúgy kezdte, mint te.",
@@ -2119,22 +2207,34 @@ const LANDING_I18N = {
     booksTitle: 'Könyvek, amiket neked készítettünk',
     booksText: 'Valódi tudás, gyönyörűen megalkotva — a Rise & Ferment csapatától.',
     booksBrand: 'A Rise & Ferment kézműves alkotása — szeretettel a valódi kenyérért',
-    bookMiloBadge: 'Új!',
+    bookMiloBadge: 'Tökéletes ajándék',
     bookMiloName: 'Milo & Maia',
     bookMiloSub: 'Kovászos kaland gyerekeknek',
-    bookMiloDesc: 'Oszd meg a kovász varázsát a kicsikkel. Egy gyönyörűen illusztrált történet a türelemről, a buborékokról és az igazi kenyérsütés közös öröméről.',
+    bookMiloDesc: 'A könyv, ami összhozza a családot. Nézd, ahogy a gyermeked szeme felragyog, amikor Milo felfedezi, hogy a varázslat akkor történik, ha vársz. Szülőknek, nagyszülőknek és nagynéniknek, akik hisznek benne, hogy a gyerekek valódi élményeket érdemelnek — nem csak képernyőket.',
     bookMiloChip1: '3–8 éves korig',
-    bookMiloChip2: 'Illusztrált',
-    bookMiloChip3: 'Tanulás mesével',
+    bookMiloChip2: 'Ajándékkész',
+    bookMiloChip3: 'Családi idő',
     bookMiloCta: 'Könyv beszerzése',
     bookMiloRo: '',
     bookHandbookBadge: 'Bestseller',
     bookHandbookName: 'A teljes kovász-kézikönyv',
     bookHandbookSub: '100+ oldal szakértői tudás',
-    bookHandbookDesc: 'Sajátíts el minden technikát — az első kovászkultúrától a mesterszintű kenyerekig. 14 fejezet, 5 exkluzív recept, hibaelhárítás fotókkal és nyomtatható eszközök.',
-    bookHandbookChip1: '14 fejezet',
+    bookHandbookDesc: 'Minden, amire szükséged van, egy helyen. Nincsenek drága tanfolyamok, nincsenek egymásnak ellentmondó YouTube-tippek, nincs találgatás. 14 fejezet tesztelt tudással — az első kovászkultúrától a mesterszintű bevágási technikákig. Az egyetlen kovász-forrás, amire valaha szükséged lesz.',
+    bookHandbookChip1: '€200+ tanfolyamot helyettesít',
     bookHandbookChip2: '5 recept',
-    bookHandbookChip3: 'Hibaelhárítás',
+    bookHandbookChip3: 'Nyomtatható eszközök',
+    bookMiloUrgency: 'Az ajándék, amire emlékezni fognak',
+    bookHandbookUrgency: '2 400+ pék választotta ezt',
+    elenaSub: 'Elena sarka',
+    elenaTitle: 'Több mint kenyér — így törődünk egymással',
+    elenaDesc: 'Minden héten sütök a családomnak. Ezt tanította nekünk a kovász.',
+    elenaBy: '— Elena',
+    elenaStory1: '"A kicsim minden reggel nézi, ahogy a buborékok emelkednek. 4 évesen már tudja: a jó dolgoknak idő kell."',
+    elenaSci1: 'Tanulmányok kimutatták, hogy a sütésben részt vevő gyerekek korábban fejlesztik ki a türelmet és a finommotorikát.',
+    elenaStory2: '"Amikor nagymama átállt az igazi kovászra, az emésztése heteken belül megváltozott. Azt mondja, a gyerekkori kenyérre emlékezteti."',
+    elenaSci2: 'A hosszú erjesztés lebontja a glutént és a fitinsavat, így a tápanyagok könnyebben felszívódnak.',
+    elenaStory3: '"Van valami szent abban, hogy a saját kezeddel sütsz kenyeret. A ház otthon illatú lesz. Az idő lelassul."',
+    elenaSci3: '',
     bookHandbookCta: 'Kézikönyv beszerzése'
   }
 };
@@ -2175,22 +2275,18 @@ function applyLandingTranslations() {
   setText('.mock__stats .mock__stat:nth-child(2) .mock__stat-l', L.mockTemp);
   setHtml('.mock__btn', `<svg width="20" height="20"><use href="#ico-bread"/></svg> ${L.mockBtn}`);
 
-  setText('.prob__head .sl', L.probSub);
-  setText('.prob__head .st', L.probTitle);
-  setText('.prob__head .ss', L.probText);
-
   setText('.blog__head .sl', L.blogSub);
   setText('.blog__head .st', L.blogTitle);
   setText('.blog__head .ss', L.blogText);
   setText('.blog__va', L.blogCta);
 
-  // Problems cards
+  // Problems cards (2 cards only)
   const probCards = document.querySelectorAll('.prob-card');
-  const probQs = [L.probQ1, L.probQ2, L.probQ3, L.probQ4];
-  const probAs = [L.probA1, L.probA2, L.probA3, L.probA4];
+  const probQs = [L.probQ1, L.probQ2];
+  const probAs = [L.probA1, L.probA2];
   probCards.forEach((c, i) => {
     const q = c.querySelector('.prob-card__q'); if (q && probQs[i]) q.textContent = probQs[i];
-    const a = c.querySelector('.prob-card__a'); if (a && probAs[i]) a.innerHTML = probAs[i];
+    const a = c.querySelector('.prob-card__a'); if (a && probAs[i]) a.textContent = probAs[i];
   });
 
   // Features section
@@ -2261,6 +2357,25 @@ function applyLandingTranslations() {
   setText('#bookHandbookChip2', L.bookHandbookChip2);
   setText('#bookHandbookChip3', L.bookHandbookChip3);
   setHtml('#bookHandbookCta', `${L.bookHandbookCta} <span class="btn__ar">\u2192</span>`);
+  setText('#bookMiloUrgency', L.bookMiloUrgency);
+  setText('#bookHandbookUrgency', L.bookHandbookUrgency);
+
+  // Elena section
+  setText('#elenaSub', L.elenaSub);
+  setText('#elenaTitle', L.elenaTitle);
+  setText('#elenaDesc', L.elenaDesc);
+  setText('#elenaBy', L.elenaBy);
+  setText('#elenaStory1', L.elenaStory1);
+  setText('#elenaSci1', L.elenaSci1);
+  setText('#elenaStory2', L.elenaStory2);
+  setText('#elenaSci2', L.elenaSci2);
+  setText('#elenaStory3', L.elenaStory3);
+  setText('#elenaSci3', L.elenaSci3);
+
+  // Problems section
+  setText('#probSub', L.probSub);
+  setText('#probTitle', L.probTitle);
+  setText('#probText', L.probText);
 
   // Lead magnet
   setHtml('.lead__badge', `<svg width="18" height="18"><use href="#ico-book"/></svg> ${L.leadBadge}`);
