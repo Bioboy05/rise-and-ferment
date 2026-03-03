@@ -1995,6 +1995,36 @@ body::after {
   cursor: not-allowed;
 }
 
+.task-actions {
+  display: flex;
+  gap: 8px;
+  margin-top: 20px;
+}
+
+.task-actions .task-action-btn {
+  margin-top: 0;
+}
+
+.micro-step-dots {
+  display: flex;
+  gap: 6px;
+  margin-bottom: 16px;
+}
+
+.micro-step-dot {
+  flex: 1;
+  height: 6px;
+  border-radius: 3px;
+  transition: all 0.3s ease;
+}
+
+.micro-step-title {
+  font-family: var(--font-display);
+  font-size: 20px;
+  color: var(--accent);
+  margin-bottom: 8px;
+}
+
 /* ========================================
    LESSON CARDS + MODAL
    ======================================== */

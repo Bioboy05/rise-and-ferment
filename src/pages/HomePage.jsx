@@ -7,7 +7,7 @@ import useActiveStarter from "../hooks/useActiveStarter";
 import useStarterStatus from "../hooks/useStarterStatus";
 import FeedingModal from "../components/feeding/FeedingModal";
 import Icon from "../components/common/Icon";
-import { MILESTONES, getMilestoneById } from "../data/milestones";
+import { MILESTONES, getMilestoneById, getMicroStep, getMicroStepCount } from "../data/milestones";
 import { getDailyQuote, getStreakQuote } from "../data/dailyQuotes";
 import troubleshooting from "../data/troubleshooting";
 import Modal from "../components/common/Modal";
@@ -19,6 +19,7 @@ function HomePage() {
   const { t } = useTranslation();
   const updateStarter = useStarterStore((state) => state.updateStarter);
   const completeMilestone = useStarterStore((state) => state.completeMilestone);
+  const advanceMicroStep = useStarterStore((state) => state.advanceMicroStep);
   const starter = useActiveStarter();
   const streak = useStreak();
   const beginnerMode = useSettingsStore((s) => s.beginnerMode);
@@ -39,6 +40,12 @@ function HomePage() {
 
   const currentMilestone = getMilestoneById(displayMilestoneId) || MILESTONES[0];
   const currentMilestoneIndex = MILESTONES.findIndex((m) => m.id === starter.currentMilestoneId);
+
+  const microStepIndex = starter.currentMicroStepIndex ?? 0;
+  const currentMicroStep = isPreview
+    ? getMicroStep(displayMilestoneId, 0)
+    : getMicroStep(starter.currentMilestoneId, microStepIndex);
+  const totalMicroSteps = getMicroStepCount(displayMilestoneId);
 
   const motivationalKey = useMemo(() => {
     if (isPreview) return null;
@@ -173,26 +180,75 @@ function HomePage() {
               <Icon name="clipboard" size={16} className="task-icon" />
               {" "}{t("todayTask")}
             </div>
+
+            {/* Micro-step progress indicator */}
+            {currentMilestone?.microSteps && totalMicroSteps > 1 && (
+              <div className="micro-step-dots">
+                {currentMilestone.microSteps.map((step, idx) => {
+                  const isStepCurrent = isPreview ? idx === 0 : idx === microStepIndex;
+                  const isDone = !isPreview && idx < microStepIndex;
+                  return (
+                    <div
+                      key={step.id}
+                      className="micro-step-dot"
+                      style={{
+                        background: isDone || isStepCurrent ? 'var(--accent)' : 'var(--bg-tertiary)',
+                        opacity: isDone ? 0.5 : isStepCurrent ? 1 : 0.3,
+                      }}
+                    />
+                  );
+                })}
+              </div>
+            )}
+
+            {/* Micro-step title */}
+            {currentMicroStep && (
+              <div className="micro-step-title">
+                <Icon name={currentMicroStep.icon} size={16} className="task-icon" />
+                {" "}{t(currentMicroStep.titleKey)}
+              </div>
+            )}
+
+            {/* Micro-step content (replaces milestone taskKey when available) */}
             <div className="task-content">
-              {t(currentMilestone.taskKey)}
+              {currentMicroStep ? t(currentMicroStep.contentKey) : t(currentMilestone.taskKey)}
             </div>
+
+            {/* Milestone tip as extra context */}
             <div className="task-content" style={{ marginTop: "8px", opacity: 0.8, fontStyle: "italic" }}>
               <Icon name="lightbulb" size={14} className="task-icon" />
               {" "}{t(currentMilestone.tipKey)}
             </div>
+
             {!isPreview && (
-              <button
-                type="button"
-                className={`task-action-btn ${isMilestoneAlreadyDone ? "success" : ""}`}
-                onClick={handleMilestoneComplete}
-                disabled={isMilestoneAlreadyDone}
-              >
-                {isMilestoneAlreadyDone ? (
-                  <><Icon name="check" size={16} className="task-icon" /> {t("doneForToday")}</>
-                ) : (
-                  t("milestoneCompleteBtn")
+              <div className="task-actions">
+                {/* "Next Step" button — advances micro-step within milestone */}
+                {currentMicroStep && microStepIndex < totalMicroSteps - 1 && (
+                  <button
+                    type="button"
+                    className="task-action-btn"
+                    onClick={() => advanceMicroStep(starter.id)}
+                  >
+                    {t("microStepNext")} →
+                  </button>
                 )}
-              </button>
+
+                {/* "Complete Milestone" button — only at last micro-step or when no micro-steps */}
+                {(!currentMicroStep || microStepIndex >= totalMicroSteps - 1) && (
+                  <button
+                    type="button"
+                    className={`task-action-btn ${isMilestoneAlreadyDone ? "success" : ""}`}
+                    onClick={handleMilestoneComplete}
+                    disabled={isMilestoneAlreadyDone}
+                  >
+                    {isMilestoneAlreadyDone ? (
+                      <><Icon name="check" size={16} className="task-icon" /> {t("doneForToday")}</>
+                    ) : (
+                      t("milestoneCompleteBtn")
+                    )}
+                  </button>
+                )}
+              </div>
             )}
           </div>
 
