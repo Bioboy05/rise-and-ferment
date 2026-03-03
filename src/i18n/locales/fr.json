@@ -722,6 +722,8 @@
     "milestoneBakeReadyTip": "Utilisez votre levain à son pic (4-6h après nourrissage). Marquez le niveau et apprenez son rythme !",
     "milestoneTypicalDays": "En général : {days} jours",
     "milestoneCompleteBtn": "J'ai atteint cette étape !",
+    "microStepNext": "Étape suivante",
+    "microStepProgress": "Étape {{current}} sur {{total}}",
     "milestonePreview": "Aperçu",
     "milestoneBackToCurrent": "Retour à l'étape actuelle",
     "milestoneTimeline": "Votre Parcours",

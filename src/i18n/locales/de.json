@@ -687,6 +687,8 @@
     "milestoneBakeReadyTip": "Verwende deinen Starter am Höhepunkt (4-6h nach Fütterung). Markiere den Stand und lerne seinen Rhythmus!",
     "milestoneTypicalDays": "Typisch: {days} Tage",
     "milestoneCompleteBtn": "Ich habe diesen Meilenstein erreicht!",
+    "microStepNext": "Nächster Schritt",
+    "microStepProgress": "Schritt {{current}} von {{total}}",
     "milestonePreview": "Vorschau",
     "milestoneBackToCurrent": "Zurück zum aktuellen Meilenstein",
     "milestoneTimeline": "Deine Reise",

@@ -687,6 +687,8 @@
     "milestoneBakeReadyTip": "Használd a kovászt a csúcsponton (4-6 órával etetés után). Jelöld meg a szintet és tanuld meg az időzítését!",
     "milestoneTypicalDays": "Jellemzően: {days} nap",
     "milestoneCompleteBtn": "Elértem ezt a mérföldkövet!",
+    "microStepNext": "Következő lépés",
+    "microStepProgress": "{{current}}. lépés a {{total}}-ból",
     "milestonePreview": "Előnézet",
     "milestoneBackToCurrent": "Vissza a jelenlegi mérföldkőhöz",
     "milestoneTimeline": "Az utazásod",

@@ -687,6 +687,8 @@
     "milestoneBakeReadyTip": "Usa tu masa madre en su punto máximo (4-6h después de alimentar). ¡Marca el nivel y aprende su ritmo!",
     "milestoneTypicalDays": "Normalmente: {days} días",
     "milestoneCompleteBtn": "¡He alcanzado este hito!",
+    "microStepNext": "Siguiente paso",
+    "microStepProgress": "Paso {{current}} de {{total}}",
     "milestonePreview": "Vista previa",
     "milestoneBackToCurrent": "Volver al hito actual",
     "milestoneTimeline": "Tu Viaje",

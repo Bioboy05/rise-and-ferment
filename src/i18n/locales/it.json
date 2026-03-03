@@ -722,6 +722,8 @@
     "milestoneBakeReadyTip": "Usa il tuo lievito madre al picco (4-6h dopo il rinfresco). Segna il livello e impara il suo ritmo!",
     "milestoneTypicalDays": "Di solito: {days} giorni",
     "milestoneCompleteBtn": "Ho raggiunto questa tappa!",
+    "microStepNext": "Passo successivo",
+    "microStepProgress": "Passo {{current}} di {{total}}",
     "milestonePreview": "Anteprima",
     "milestoneBackToCurrent": "Torna alla tappa attuale",
     "milestoneTimeline": "Il Tuo Viaggio",

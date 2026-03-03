@@ -687,6 +687,8 @@
     "milestoneBakeReadyTip": "Use your starter at peak (4-6h after feeding). Mark the level and learn its timing!",
     "milestoneTypicalDays": "Typically: {days} days",
     "milestoneCompleteBtn": "I've reached this milestone!",
+    "microStepNext": "Next Step",
+    "microStepProgress": "Step {{current}} of {{total}}",
     "milestonePreview": "Preview",
     "milestoneBackToCurrent": "Back to current milestone",
     "milestoneTimeline": "Your Journey",
