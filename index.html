@@ -2583,7 +2583,7 @@ function setLang(l) {
 
   const mobLang = document.getElementById('mobLang');
   if (mobLang) {
-    const codes = {en:'EN',ro:'RO',it:'IT',de:'DE',fr:'FR',es:'ES'};
+    const codes = {en:'EN',ro:'RO',it:'IT',de:'DE',fr:'FR',es:'ES',hu:'HU'};
     mobLang.innerHTML = Object.entries(codes).map(([k,v]) =>
       `<button class="mob-lang__btn${lang===k?' active':''}" onclick="setLang('${k}')">${v}</button>`
     ).join('');

@@ -208,7 +208,7 @@ function SettingsPage() {
             >
               {LANGUAGES.map((lang) => (
                 <option key={lang.code} value={lang.code}>
-                  {lang.flag} {lang.code.toUpperCase()}
+                  {lang.flag}
                 </option>
               ))}
             </select>
