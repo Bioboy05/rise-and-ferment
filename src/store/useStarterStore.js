@@ -11,10 +11,11 @@ import {
   MAX_NOTE_LENGTH,
   MAX_STARTERS,
   MAX_HISTORY_ENTRIES,
+  MAX_TEMP_C,
+  MAX_TEMP_F,
   sanitizeString,
 } from "../constants/validation";
 import { FIRST_MILESTONE_ID } from "../data/milestones";
-import useSettingsStore from "./useSettingsStore";
 
 const isValidId = (id) => typeof id === "string" && id.length > 0 && id.length <= 100;
 
@@ -96,7 +97,7 @@ const useStarterStore = create(
         const { starters } = get();
         if (starters.length >= MAX_STARTERS) return;
 
-        const id = `starter_${Date.now()}_${Math.floor(Math.random() * 1000)}`;
+        const id = `starter_${crypto.randomUUID()}`;
         set({
           starters: [...starters, createStarter(id, safeName)],
           activeStarterId: id,
@@ -176,20 +177,22 @@ const useStarterStore = create(
       addFeeding: (id, entry) => {
         if (!isValidId(id) || typeof entry !== "object" || entry === null) return;
 
+        const entryTempUnit = entry.tempUnit === "f" ? "f" : "c";
         const safeEntry = {
+          id: typeof entry.id === "string" && entry.id.length > 0 ? entry.id : crypto.randomUUID(),
           time: Number.isFinite(entry.time) ? Math.round(entry.time) : Date.now(),
-          amount: Number.isFinite(entry.amount) ? Math.max(0, Math.min(500, Math.round(entry.amount))) : 50,
+          amount: Number.isFinite(entry.amount) ? Math.max(1, Math.min(500, Math.round(entry.amount))) : 50,
           withBran: entry.withBran === true,
           temp: (() => {
             if (!Number.isFinite(entry.temp)) return null;
-            const maxTemp = useSettingsStore.getState().tempUnit === "f" ? 140 : 60;
+            const maxTemp = entryTempUnit === "f" ? MAX_TEMP_F : MAX_TEMP_C;
             return entry.temp >= 0 && entry.temp <= maxTemp
               ? Math.round(entry.temp * 10) / 10
               : null;
           })(),
+          tempUnit: entryTempUnit,
           note: entry.note ? sanitizeString(String(entry.note), MAX_NOTE_LENGTH) : null,
           flourType: sanitizeString(String(entry.flourType || "white"), 30) || "white",
-          // Observation fields (optional)
           riseLevel: VALID_RISE_LEVELS.includes(entry.riseLevel) ? entry.riseLevel : null,
           bubbleActivity: VALID_BUBBLE_ACTIVITIES.includes(entry.bubbleActivity) ? entry.bubbleActivity : null,
           aroma: VALID_AROMAS.includes(entry.aroma) ? entry.aroma : null,

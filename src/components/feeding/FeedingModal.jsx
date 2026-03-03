@@ -3,6 +3,7 @@ import { useTranslation } from "react-i18next";
 import useStarterStore from "../../store/useStarterStore";
 import useSettingsStore from "../../store/useSettingsStore";
 import useActiveStarter from "../../hooks/useActiveStarter";
+import { MAX_TEMP_C, MAX_TEMP_F } from "../../constants/validation";
 import Modal from "../common/Modal";
 import Toggle from "../common/Toggle";
 import Icon from "../common/Icon";
@@ -34,7 +35,7 @@ function FeedingModal({ onClose }) {
     let validTemp = null;
     if (temperature) {
       const parsed = parseFloat(temperature);
-      const maxTemp = tempUnit === "f" ? 122 : 50;
+      const maxTemp = tempUnit === "f" ? MAX_TEMP_F : MAX_TEMP_C;
       if (!isNaN(parsed) && parsed >= 0 && parsed <= maxTemp) {
         validTemp = parsed;
       }

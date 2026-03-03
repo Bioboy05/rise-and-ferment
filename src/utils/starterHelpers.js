@@ -6,6 +6,8 @@ import {
   MAX_NAME_LENGTH,
   MAX_NOTE_LENGTH,
   MAX_HISTORY_ENTRIES,
+  MAX_TEMP_C,
+  MAX_TEMP_F,
   STARTER_PROGRAM_DAYS,
   sanitizeString,
 } from "../constants/validation";
@@ -19,14 +21,17 @@ import {
   migrateFromDay,
 } from "../data/milestones";
 
+import {
+  VALID_RISE_LEVELS,
+  VALID_BUBBLE_ACTIVITIES,
+  VALID_AROMAS,
+} from "./feedingInsights";
+
 const VALID_HYDRATION = new Set(["100", "80", "60"]);
 
 const MAX_MILESTONE_HISTORY = 60;
 
 const VALID_TEMP_UNITS = new Set(["c", "f"]);
-const VALID_RISE_LEVELS = new Set(["none", "slight", "doubled", "tripled"]);
-const VALID_BUBBLE_ACTIVITY = new Set(["none", "few", "many", "honeycomb"]);
-const VALID_AROMAS = new Set(["none", "floury", "mild", "tangy", "sour", "unpleasant"]);
 
 function sanitizeHistory(history) {
   if (!Array.isArray(history)) return [];
@@ -35,18 +40,19 @@ function sanitizeHistory(history) {
     .slice(-MAX_HISTORY_ENTRIES)
     .map((entry) => {
       const tempUnit = VALID_TEMP_UNITS.has(entry?.tempUnit) ? entry.tempUnit : "c";
-      const maxTemp = tempUnit === "f" ? 122 : 50;
+      const maxTemp = tempUnit === "f" ? MAX_TEMP_F : MAX_TEMP_C;
       return {
+        id: typeof entry?.id === "string" && entry.id.length > 0 ? entry.id : crypto.randomUUID(),
         time: typeof entry?.time === "number" ? entry.time : Date.now(),
-        amount: typeof entry?.amount === "number" ? Math.max(0, Math.min(500, entry.amount)) : 50,
+        amount: typeof entry?.amount === "number" ? Math.max(1, Math.min(500, entry.amount)) : 50,
         withBran: entry?.withBran === true,
         temp: typeof entry?.temp === "number" && entry.temp >= 0 && entry.temp <= maxTemp ? entry.temp : null,
         tempUnit,
         note: entry?.note ? sanitizeString(String(entry.note), MAX_NOTE_LENGTH) : null,
         flourType: sanitizeString(String(entry?.flourType || "white"), 30) || "white",
-        riseLevel: VALID_RISE_LEVELS.has(entry?.riseLevel) ? entry.riseLevel : null,
-        bubbleActivity: VALID_BUBBLE_ACTIVITY.has(entry?.bubbleActivity) ? entry.bubbleActivity : null,
-        aroma: VALID_AROMAS.has(entry?.aroma) ? entry.aroma : null,
+        riseLevel: VALID_RISE_LEVELS.includes(entry?.riseLevel) ? entry.riseLevel : null,
+        bubbleActivity: VALID_BUBBLE_ACTIVITIES.includes(entry?.bubbleActivity) ? entry.bubbleActivity : null,
+        aroma: VALID_AROMAS.includes(entry?.aroma) ? entry.aroma : null,
       };
     })
     .filter((entry) => Number.isFinite(entry.time));

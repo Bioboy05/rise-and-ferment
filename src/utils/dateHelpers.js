@@ -12,6 +12,7 @@
 export function getTimeSince(timestamp, now) {
   if (!timestamp) return null;
   const diff = now - timestamp;
+  if (diff < 0) return "0m";
   const hours = Math.floor(diff / (1000 * 60 * 60));
   const minutes = Math.floor(diff / (1000 * 60)) % 60;
   if (hours >= 24) {

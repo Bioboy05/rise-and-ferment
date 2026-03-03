@@ -4,6 +4,8 @@
 
 import { formatICSDate } from "./dateHelpers";
 
+const CURRENT_BACKUP_VERSION = "2.0";
+
 /**
  * Export app state to a downloadable JSON file.
  * @param {{ starters: Array, activeStarterId: string }} starterState
@@ -16,11 +18,18 @@ export function exportData(starterState, settingsState) {
     starters: starterState.starters,
     activeStarterId: starterState.activeStarterId,
     settings: {
+      onboardingComplete: settingsState.onboardingComplete,
       theme: settingsState.theme,
       language: settingsState.language,
       beginnerMode: settingsState.beginnerMode,
       soundEnabled: settingsState.soundEnabled,
       tempUnit: settingsState.tempUnit,
+      weightUnit: settingsState.weightUnit,
+      sessions: settingsState.sessions,
+      notifications: settingsState.notifications,
+      scheduledBakes: settingsState.scheduledBakes,
+      calcLoaves: settingsState.calcLoaves,
+      bakeNotes: settingsState.bakeNotes,
     },
   };
 
@@ -29,7 +38,8 @@ export function exportData(starterState, settingsState) {
   });
   const url = URL.createObjectURL(blob);
   const date = new Date().toISOString().slice(0, 10);
-  const name = starterState.starters[0]?.name || "starter";
+  const active = starterState.starters.find((s) => s.id === starterState.activeStarterId);
+  const name = active?.name || starterState.starters[0]?.name || "starter";
 
   const a = document.createElement("a");
   a.href = url;
@@ -70,6 +80,11 @@ export async function importData(file) {
 
   if (!Array.isArray(data.starters) || data.starters.length === 0) {
     throw new Error("No starters found in backup");
+  }
+
+  // Version check (non-blocking -- normalizeStarter handles missing fields)
+  if (data.version && data.version !== CURRENT_BACKUP_VERSION) {
+    console.warn(`Backup version ${data.version} differs from current ${CURRENT_BACKUP_VERSION}`);
   }
 
   // Validate each starter has required fields

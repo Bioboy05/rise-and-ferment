@@ -4,6 +4,7 @@ import { BrowserRouter } from 'react-router-dom'
 import './index.css'
 import './i18n'
 import App from './App.jsx'
+import ErrorBoundary from './components/common/ErrorBoundary'
 
 // Apply theme/glass attributes before first render to avoid layout/theme flash.
 try {
@@ -30,8 +31,10 @@ const routerBase = isAppHtmlRoute ? '/app.html' : '/app'
 
 createRoot(document.getElementById('root')).render(
   <StrictMode>
-    <BrowserRouter basename={routerBase}>
-      <App />
-    </BrowserRouter>
+    <ErrorBoundary>
+      <BrowserRouter basename={routerBase}>
+        <App />
+      </BrowserRouter>
+    </ErrorBoundary>
   </StrictMode>,
 )

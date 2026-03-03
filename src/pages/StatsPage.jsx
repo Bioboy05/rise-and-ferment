@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { useTranslation } from "react-i18next";
 import useActiveStarter from "../hooks/useActiveStarter";
+import useSettingsStore from "../store/useSettingsStore";
 import useStreak from "../hooks/useStreak";
 import Icon from "../components/common/Icon";
 
@@ -50,11 +51,18 @@ function StatsPage() {
   }, []);
 
   const totalFeedings = history.length;
-  const tempsWithValue = history.filter((e) => e.temp != null);
-  const avgTempUnit = tempsWithValue.length > 0 ? (tempsWithValue[tempsWithValue.length - 1].tempUnit || "c") : "c";
+  const currentTempUnit = useSettingsStore((s) => s.tempUnit);
+  const tempsWithValue = history.filter((e) => Number.isFinite(e?.temp));
   const avgTemp =
     tempsWithValue.length > 0
-      ? (tempsWithValue.reduce((s, e) => s + e.temp, 0) / tempsWithValue.length).toFixed(1)
+      ? (() => {
+          const converted = tempsWithValue.map((e) => {
+            const unit = e.tempUnit || "c";
+            if (unit === currentTempUnit) return e.temp;
+            return unit === "c" ? (e.temp * 9) / 5 + 32 : ((e.temp - 32) * 5) / 9;
+          });
+          return (converted.reduce((s, t) => s + t, 0) / converted.length).toFixed(1);
+        })()
       : null;
   const ageDays = starter.createdAt
     ? Math.floor((nowMs - new Date(starter.createdAt).getTime()) / (1000 * 60 * 60 * 24))
@@ -87,7 +95,7 @@ function StatsPage() {
           <div className="stat-mini-label">{t("currentStreak")}</div>
         </div>
         <div className="stat-mini">
-          <div className="stat-mini-value">{avgTemp ? `${avgTemp}°${avgTempUnit.toUpperCase()}` : "--"}</div>
+          <div className="stat-mini-value">{avgTemp ? `${avgTemp}°${currentTempUnit.toUpperCase()}` : "--"}</div>
           <div className="stat-mini-label">{t("avgTemp")}</div>
         </div>
         <div className="stat-mini">
