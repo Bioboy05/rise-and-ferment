@@ -193,6 +193,9 @@ export function normalizeStarter(s) {
     lastMilestoneCompletedAt: Number.isFinite(source.lastMilestoneCompletedAt)
       ? source.lastMilestoneCompletedAt
       : null,
+    currentMicroStepIndex: typeof source.currentMicroStepIndex === "number"
+      ? Math.max(0, Math.min(20, Math.round(source.currentMicroStepIndex)))
+      : 0,
 
     // Legacy fields (kept for display/migration compatibility)
     isNewStarter: guidedMode !== "self-paced",
@@ -243,6 +246,7 @@ export function advanceMilestone(starter, milestoneId, evidence = null) {
     milestoneCompleted: true,
     lastMilestoneCompletedAt: now,
     previewingMilestoneId: null,
+    currentMicroStepIndex: 0,
     // Graduate to self-paced when the final milestone is completed
     guidedMode: isFinalMilestone ? "self-paced" : starter.guidedMode,
     isNewStarter: isFinalMilestone ? false : starter.guidedMode !== "self-paced",

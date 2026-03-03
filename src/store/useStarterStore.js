@@ -15,7 +15,7 @@ import {
   MAX_TEMP_F,
   sanitizeString,
 } from "../constants/validation";
-import { FIRST_MILESTONE_ID } from "../data/milestones";
+import { FIRST_MILESTONE_ID, getMilestoneById } from "../data/milestones";
 
 const isValidId = (id) => typeof id === "string" && id.length > 0 && id.length <= 100;
 
@@ -38,6 +38,7 @@ const createStarter = (id, name = "Pufi", guidedMode = "new") => ({
   previewingMilestoneId: null,
   milestoneCompleted: false,
   lastMilestoneCompletedAt: null,
+  currentMicroStepIndex: 0,
   // Legacy fields (kept for compat)
   isNewStarter: guidedMode !== "self-paced",
   currentDay: 1,
@@ -138,6 +139,7 @@ const useStarterStore = create(
           "previewingMilestoneId",
           "milestoneCompleted",
           "lastMilestoneCompletedAt",
+          "currentMicroStepIndex",
           // Legacy fields
           "isNewStarter",
           "currentDay",
@@ -160,6 +162,12 @@ const useStarterStore = create(
           }
           if (key === "flourType") {
             safeUpdates.flourType = sanitizeString(String(updates.flourType), 30) || "white";
+            continue;
+          }
+          if (key === "currentMicroStepIndex") {
+            const val = Number(updates[key]);
+            if (!Number.isInteger(val) || val < 0 || val > 20) continue;
+            safeUpdates[key] = val;
             continue;
           }
           safeUpdates[key] = updates[key];
@@ -225,6 +233,24 @@ const useStarterStore = create(
           starters: state.starters.map((starter) => {
             if (starter.id !== id) return starter;
             return advanceMilestone(starter, milestoneId, evidence);
+          }),
+        }));
+      },
+
+      advanceMicroStep: (id) => {
+        if (!isValidId(id)) return;
+
+        set((state) => ({
+          starters: state.starters.map((starter) => {
+            if (starter.id !== id) return starter;
+            const milestone = getMilestoneById(starter.currentMilestoneId);
+            if (!milestone?.microSteps) return starter;
+
+            const nextIndex = (starter.currentMicroStepIndex ?? 0) + 1;
+            if (nextIndex >= milestone.microSteps.length) {
+              return { ...starter, currentMicroStepIndex: milestone.microSteps.length - 1 };
+            }
+            return { ...starter, currentMicroStepIndex: nextIndex };
           }),
         }));
       },
