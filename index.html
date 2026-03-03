@@ -2286,7 +2286,7 @@ function applyLandingTranslations() {
   const probAs = [L.probA1, L.probA2];
   probCards.forEach((c, i) => {
     const q = c.querySelector('.prob-card__q'); if (q && probQs[i]) q.textContent = probQs[i];
-    const a = c.querySelector('.prob-card__a'); if (a && probAs[i]) a.textContent = probAs[i];
+    const a = c.querySelector('.prob-card__a'); if (a && probAs[i]) a.innerHTML = probAs[i];
   });
 
   // Features section
