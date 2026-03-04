@@ -100,20 +100,64 @@ function SettingsPage() {
     }
   };
 
+  const starterAgeDays = starter.createdAt
+    ? Math.floor((Date.now() - starter.createdAt) / 86400000)
+    : null;
+
   return (
     <div className="section" style={{ paddingTop: "10px" }}>
       <div className="settings-section">
         <div className="settings-section-title">
-          <Icon name="note" size={16} style={{ display: "inline", verticalAlign: "middle", marginRight: "6px" }} />
-          <span>{t("personalNotes")}</span>
+          <Icon name={theme === "dark" ? "moon" : "sun"} size={16} style={{ display: "inline", verticalAlign: "middle", marginRight: "6px" }} />
+          <span>{t("appearance")}</span>
         </div>
         <div className="settings-card">
-          <textarea
-            className="notes-textarea"
-            value={starter.personalNotes || ""}
-            placeholder={t("personalNotesPlaceholder")}
-            onChange={(e) => updateStarter(starter.id, { personalNotes: e.target.value })}
-          />
+          <div className="settings-row">
+            <div>
+              <div className="settings-label">{t("theme")}</div>
+              <div className="settings-sublabel">{t("themeDesc")}</div>
+            </div>
+            <select
+              className="settings-select"
+              value={theme}
+              onChange={(e) => {
+                if (e.target.value !== theme) toggleTheme();
+              }}
+            >
+              <option value="light">{t("themeLight")}</option>
+              <option value="dark">{t("themeDark")}</option>
+            </select>
+          </div>
+          <div className="settings-row">
+            <div>
+              <div className="settings-label">{t("language")}</div>
+            </div>
+            <select
+              className="settings-select"
+              value={language}
+              onChange={(e) => handleLanguageChange(e.target.value)}
+            >
+              {LANGUAGES.map((lang) => (
+                <option key={lang.code} value={lang.code}>
+                  {lang.code.toUpperCase()}
+                </option>
+              ))}
+            </select>
+          </div>
+          <div className="settings-row">
+            <div>
+              <div className="settings-label">{t("beginnerMode")}</div>
+              <div className="settings-sublabel">{t("beginnerModeDesc")}</div>
+            </div>
+            <button
+              className={`toggle-switch ${beginnerMode ? "on" : ""}`}
+              type="button"
+              onClick={toggleBeginnerMode}
+              aria-label={t("beginnerMode")}
+            >
+              <div className="toggle-knob" />
+            </button>
+          </div>
         </div>
       </div>
 
@@ -149,70 +193,16 @@ function SettingsPage() {
               <option value="60">{t("hydration60")}</option>
             </select>
           </div>
-        </div>
-      </div>
-
-      <div className="settings-section">
-        <div className="settings-section-title">
-          <Icon name="star" size={16} style={{ display: "inline", verticalAlign: "middle", marginRight: "6px" }} />
-          <span>{t("beginnerMode")}</span>
-        </div>
-        <div className="settings-card">
-          <div className="settings-row">
-            <div>
-              <div className="settings-label">{t("beginnerMode")}</div>
-              <div className="settings-sublabel">{t("beginnerModeDesc")}</div>
+          {starterAgeDays !== null && (
+            <div className="settings-row">
+              <div>
+                <div className="settings-label">{t("starterAge")}</div>
+              </div>
+              <span style={{ color: "var(--text-muted)", fontSize: "14px" }}>
+                {starterAgeDays} {t("daysOld")}
+              </span>
             </div>
-            <button
-              className={`toggle-switch ${beginnerMode ? "on" : ""}`}
-              type="button"
-              onClick={toggleBeginnerMode}
-              aria-label={t("beginnerMode")}
-            >
-              <div className="toggle-knob" />
-            </button>
-          </div>
-        </div>
-      </div>
-
-      <div className="settings-section">
-        <div className="settings-section-title">
-          <Icon name={theme === "dark" ? "moon" : "sun"} size={16} style={{ display: "inline", verticalAlign: "middle", marginRight: "6px" }} />
-          <span>{t("appearance")}</span>
-        </div>
-        <div className="settings-card">
-          <div className="settings-row">
-            <div>
-              <div className="settings-label">{t("theme")}</div>
-              <div className="settings-sublabel">{t("themeDesc")}</div>
-            </div>
-            <select
-              className="settings-select"
-              value={theme}
-              onChange={(e) => {
-                if (e.target.value !== theme) toggleTheme();
-              }}
-            >
-              <option value="light">{t("themeLight")}</option>
-              <option value="dark">{t("themeDark")}</option>
-            </select>
-          </div>
-          <div className="settings-row">
-            <div>
-              <div className="settings-label">{t("language")}</div>
-            </div>
-            <select
-              className="settings-select"
-              value={language}
-              onChange={(e) => handleLanguageChange(e.target.value)}
-            >
-              {LANGUAGES.map((lang) => (
-                <option key={lang.code} value={lang.code}>
-                  {lang.flag}
-                </option>
-              ))}
-            </select>
-          </div>
+          )}
         </div>
       </div>
 
@@ -285,6 +275,21 @@ function SettingsPage() {
               <option value="f">{t("unitFahrenheit")}</option>
             </select>
           </div>
+        </div>
+      </div>
+
+      <div className="settings-section">
+        <div className="settings-section-title">
+          <Icon name="note" size={16} style={{ display: "inline", verticalAlign: "middle", marginRight: "6px" }} />
+          <span>{t("personalNotes")}</span>
+        </div>
+        <div className="settings-card">
+          <textarea
+            className="notes-textarea"
+            value={starter.personalNotes || ""}
+            placeholder={t("personalNotesPlaceholder")}
+            onChange={(e) => updateStarter(starter.id, { personalNotes: e.target.value })}
+          />
         </div>
       </div>
 
