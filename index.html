@@ -570,6 +570,18 @@ body{min-height:100dvh;-webkit-tap-highlight-color:transparent}
 <section class="books" id="books"><div class="ctn">
 <div class="books__head reveal"><p class="sl" id="booksSub">From our kitchen</p><h2 class="st" id="booksTitle">Books We Made for You</h2><p class="ss" id="booksText">Real knowledge, beautifully crafted — by the people behind Rise & Ferment.</p></div>
 <div class="books__grid">
+<div class="books__card reveal rv1" id="bookTudorCard" style="display:none">
+<div class="books__card-badge books__card-badge--new" id="bookTudorBadge">Nou!</div>
+<picture><source srcset="/assets/book-tudor-cover.webp" type="image/webp"><img src="/assets/book-tudor-cover.jpg" alt="Tudor și Maia — Povestea Borcanului Viu" class="books__card-img" width="200" height="267" loading="lazy"></picture>
+<div class="books__card-body">
+<h3 id="bookTudorName">Tudor și Maia</h3>
+<p class="books__card-sub" id="bookTudorSub">Povestea Borcanului Viu</p>
+<p class="books__card-desc" id="bookTudorDesc">O poveste calduroasă despre un băiat și maiaua lui, Maia. Descoperă împreună cu Tudor că magia se întâmplă atunci când ai răbdare — prin ilustrații colorate și o poveste pe care copiii vor dori să o citească iar și iar.</p>
+<div class="books__card-chips"><span class="books__card-chip" id="bookTudorChip1">Vârsta 3–5</span><span class="books__card-chip" id="bookTudorChip2">Ilustrații Superbe</span><span class="books__card-chip" id="bookTudorChip3">În Limba Română</span></div>
+<div class="books__card-buy"><span class="books__card-price" id="priceTudor">3,99&nbsp;&euro;</span><a href="/go/tudor-maia" class="btn btn--p btn--sm" id="bookTudorCta" target="_blank" rel="noopener">Cumpără Cartea <span class="btn__ar">&rarr;</span></a></div>
+<p class="books__card-urgency" id="bookTudorUrgency">Prima carte despre maia pentru copii</p>
+</div>
+</div>
 <div class="books__card reveal rv1">
 <div class="books__card-badge books__card-badge--new" id="bookMiloBadge">Perfect Gift</div>
 <picture><source srcset="/assets/book-milo-cover.webp" type="image/webp"><img src="/assets/book-milo-cover.jpg" alt="Milo & Maia — A Sourdough Adventure for Kids" class="books__card-img" width="200" height="267" loading="lazy"></picture>
@@ -1316,7 +1328,17 @@ const LANDING_I18N = {
     bookMiloChip2: 'Gata de cadou',
     bookMiloChip3: 'Timp în familie',
     bookMiloCta: 'Ia cartea',
-    bookMiloRo: '🇷🇴 Ediția în română vine curând!',
+    bookMiloRo: '',
+    bookTudorBadge: 'Nou!',
+    bookTudorName: 'Tudor și Maia',
+    bookTudorSub: 'Povestea Borcanului Viu',
+    bookTudorDesc: 'O poveste calduroasă despre un băiat și maiaua lui, Maia. Descoperă împreună cu Tudor că magia se întâmplă atunci când ai răbdare — prin ilustrații colorate și o poveste pe care copiii vor dori să o citească iar și iar.',
+    bookTudorChip1: 'Vârsta 3–5',
+    bookTudorChip2: 'Ilustrații Superbe',
+    bookTudorChip3: 'În Limba Română',
+    bookTudorCta: 'Cumpără Cartea',
+    bookTudorUrgency: 'Prima carte despre maia pentru copii',
+    priceTudor: '3,99\u00a0\u20ac',
     bookHandbookBadge: 'Bestseller',
     bookHandbookName: 'Manualul Complet de Maia',
     bookHandbookSub: '100+ pagini de cunoștințe de expert',
@@ -2337,6 +2359,19 @@ function applyLandingTranslations() {
   setText('#booksTitle', L.booksTitle);
   setText('#booksText', L.booksText);
   setText('#booksBrand', L.booksBrand);
+  // Tudor card (RO only)
+  const tudorCard = document.getElementById('bookTudorCard');
+  if (tudorCard) { tudorCard.style.display = lang === 'ro' ? '' : 'none'; }
+  setText('#bookTudorBadge', L.bookTudorBadge || '');
+  setText('#bookTudorName', L.bookTudorName || '');
+  setText('#bookTudorSub', L.bookTudorSub || '');
+  setText('#bookTudorDesc', L.bookTudorDesc || '');
+  setText('#bookTudorChip1', L.bookTudorChip1 || '');
+  setText('#bookTudorChip2', L.bookTudorChip2 || '');
+  setText('#bookTudorChip3', L.bookTudorChip3 || '');
+  setHtml('#bookTudorCta', L.bookTudorCta ? `${L.bookTudorCta} <span class="btn__ar">\u2192</span>` : '');
+  setText('#bookTudorUrgency', L.bookTudorUrgency || '');
+  if (L.priceTudor) setText('#priceTudor', L.priceTudor);
   // Milo card
   setText('#bookMiloBadge', L.bookMiloBadge);
   setText('#bookMiloName', L.bookMiloName);

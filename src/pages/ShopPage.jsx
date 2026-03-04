@@ -234,6 +234,16 @@ const PRODUCT_ICONS = {
 
 const BOOKS = [
   {
+    id: "tudor",
+    gumroadUrl: "https://fermenter26.gumroad.com/l/tudor-si-maia",
+    badgeKey: "shopBadgeNew",
+    badgeClass: "",
+    coverSrc: "/assets/book-tudor-cover.webp",
+    coverFallback: "/assets/book-tudor-cover.jpg",
+    coverAlt: "Tudor și Maia — Povestea Borcanului Viu cover",
+    roOnly: true,
+  },
+  {
     id: "handbook",
     gumroadUrl: "https://fermenter26.gumroad.com/l/handbook",
     badgeKey: "shopBadgeBestseller",
@@ -249,7 +259,6 @@ const BOOKS = [
     coverSrc: "/assets/book-milo-cover.webp",
     coverFallback: "/assets/book-milo-cover.jpg",
     coverAlt: "Milo & Maia — A Sourdough Adventure for Kids cover",
-    showComingSoonRo: true,
   },
 ];
 
@@ -298,6 +307,8 @@ function ProductCard({ product }) {
 function BookCard({ book }) {
   const { t, i18n } = useTranslation();
   const isRomanian = i18n.language === "ro";
+
+  if (book.roOnly && !isRomanian) return null;
 
   return (
     <div className="shop-book">
@@ -371,12 +382,6 @@ function BookCard({ book }) {
             </svg>
           </a>
         </div>
-
-        {book.showComingSoonRo && isRomanian && (
-          <div className="shop-book__coming-soon">
-            {t("shopBook_milo_coming_soon_ro")}
-          </div>
-        )}
       </div>
     </div>
   );

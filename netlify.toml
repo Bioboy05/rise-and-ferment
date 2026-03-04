@@ -163,10 +163,17 @@
   status = 302
   force = true
 
-# Children's Book — Gumroad
+# Children's Book — Gumroad (EN)
 [[redirects]]
   from = "/go/milo"
   to = "https://fermenter26.gumroad.com/l/milo-and-maia"
+  status = 302
+  force = true
+
+# Children's Book — Gumroad (RO)
+[[redirects]]
+  from = "/go/tudor-maia"
+  to = "https://fermenter26.gumroad.com/l/tudor-si-maia"
   status = 302
   force = true
 
