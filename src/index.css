@@ -2665,14 +2665,7 @@ ol.lesson-list > .lesson-list__item::before {
 }
 
 .tip-box::before {
-  content: "💡";
-  position: absolute;
-  top: -10px;
-  left: 16px;
-  background: var(--bg-card);
-  padding: 2px 6px;
-  border-radius: 8px;
-  font-size: 14px;
+  content: none;
 }
 
 .tip-box.warning {
@@ -2682,7 +2675,7 @@ ol.lesson-list > .lesson-list__item::before {
 }
 
 .tip-box.warning::before {
-  content: "⚠️";
+  content: none;
 }
 
 .tip-box.success {
@@ -2692,7 +2685,7 @@ ol.lesson-list > .lesson-list__item::before {
 }
 
 .tip-box.success::before {
-  content: "✅";
+  content: none;
 }
 
 .tip-box.info {
@@ -2702,7 +2695,7 @@ ol.lesson-list > .lesson-list__item::before {
 }
 
 .tip-box.info::before {
-  content: "ℹ️";
+  content: none;
 }
 
 .tip-box-normal {

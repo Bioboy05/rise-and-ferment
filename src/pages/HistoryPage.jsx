@@ -6,9 +6,9 @@ import Icon from "../components/common/Icon";
 
 const PAGE_SIZE = 20;
 
-const RISE_EMOJI = { none: "😴", slight: "📈", doubled: "⬆️⬆️", tripled: "🚀" };
-const BUBBLE_EMOJI = { none: "😶", few: "🫧", many: "💫", honeycomb: "🍯" };
-const AROMA_EMOJI = { none: "—", floury: "🌾", mild: "😊", tangy: "😏", sour: "😬", unpleasant: "🤢" };
+const RISE_ICON = "stats";
+const BUBBLE_ICON = "droplet";
+const AROMA_ICON = "leaf";
 
 function HistoryPage() {
   const { t } = useTranslation();
@@ -119,6 +119,9 @@ function HistoryPage() {
                   {entry.riseLevel ? (
                     <span
                       style={{
+                        display: "inline-flex",
+                        alignItems: "center",
+                        gap: "3px",
                         fontSize: "11px",
                         background: "var(--bg-secondary)",
                         borderRadius: "8px",
@@ -126,12 +129,15 @@ function HistoryPage() {
                         color: "var(--text-secondary)",
                       }}
                     >
-                      {RISE_EMOJI[entry.riseLevel] || ""} {t(`rise_${entry.riseLevel}`)}
+                      <Icon name={RISE_ICON} size={11} /> {t(`rise_${entry.riseLevel}`)}
                     </span>
                   ) : null}
                   {entry.bubbleActivity ? (
                     <span
                       style={{
+                        display: "inline-flex",
+                        alignItems: "center",
+                        gap: "3px",
                         fontSize: "11px",
                         background: "var(--bg-secondary)",
                         borderRadius: "8px",
@@ -139,12 +145,15 @@ function HistoryPage() {
                         color: "var(--text-secondary)",
                       }}
                     >
-                      {BUBBLE_EMOJI[entry.bubbleActivity] || ""} {t(`bubble_${entry.bubbleActivity}`)}
+                      <Icon name={BUBBLE_ICON} size={11} /> {t(`bubble_${entry.bubbleActivity}`)}
                     </span>
                   ) : null}
                   {entry.aroma ? (
                     <span
                       style={{
+                        display: "inline-flex",
+                        alignItems: "center",
+                        gap: "3px",
                         fontSize: "11px",
                         background: "var(--bg-secondary)",
                         borderRadius: "8px",
@@ -152,7 +161,7 @@ function HistoryPage() {
                         color: "var(--text-secondary)",
                       }}
                     >
-                      {AROMA_EMOJI[entry.aroma] || ""} {t(`aroma_${entry.aroma}`)}
+                      <Icon name={AROMA_ICON} size={11} /> {t(`aroma_${entry.aroma}`)}
                     </span>
                   ) : null}
                 </div>
