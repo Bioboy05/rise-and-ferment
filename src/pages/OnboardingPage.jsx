@@ -18,8 +18,9 @@ function OnboardingPage() {
   const updateStarter = useStarterStore((s) => s.updateStarter);
 
   const [path, setPath] = useState(null); // "create" | "adopt" | "existing"
-  const [step, setStep] = useState("start"); // start | shopping | adopt | existing | name
+  const [step, setStep] = useState("start"); // start | shopping | adopt | adoptHealth | existing | name
   const [existingHealth, setExistingHealth] = useState(null); // active | hungry | neglected | fridge
+  const [adoptHealth, setAdoptHealth] = useState(null); // bubbly | sluggish | dormant
   const [name, setName] = useState("");
 
   const advice = useMemo(() => {
@@ -83,11 +84,29 @@ function OnboardingPage() {
       currentMilestoneId = FIRST_MILESTONE_ID;
       isNewStarter = true;
     } else if (path === "adopt") {
-      // Adopted starters are already alive — start at visible-expansion
-      guidedMode = "new";
-      currentMilestoneId = "visible-expansion";
-      milestoneHistory = [{ id: "seed-activation", reachedAt: Date.now(), evidence: "adopted" }];
-      isNewStarter = true;
+      // Map adopted starter health to appropriate milestone
+      if (adoptHealth === "bubbly") {
+        // Active, bubbly starter — skip ahead to strengthening
+        guidedMode = "new";
+        currentMilestoneId = "strengthening";
+        milestoneHistory = [
+          { id: "seed-activation", reachedAt: Date.now(), evidence: "adopted" },
+          { id: "visible-expansion", reachedAt: Date.now(), evidence: "adopted" },
+        ];
+        isNewStarter = true;
+      } else if (adoptHealth === "dormant") {
+        // Dried or inactive starter — start from the beginning
+        guidedMode = "new";
+        currentMilestoneId = FIRST_MILESTONE_ID;
+        milestoneHistory = [];
+        isNewStarter = true;
+      } else {
+        // sluggish (default) — some activity, start at visible-expansion
+        guidedMode = "new";
+        currentMilestoneId = "visible-expansion";
+        milestoneHistory = [{ id: "seed-activation", reachedAt: Date.now(), evidence: "adopted" }];
+        isNewStarter = true;
+      }
     } else if (path === "existing") {
       // Map health quiz result to milestone
       if (existingHealth === "active") {
@@ -473,10 +492,61 @@ function OnboardingPage() {
               </div>
             </div>
           </div>
-          <button type="button" className="btn btn-primary" onClick={goToName}>
+          <button type="button" className="btn btn-primary" onClick={() => setStep("adoptHealth")}>
             {t("gotStarter")}
           </button>
           <button type="button" className="btn btn-secondary" onClick={goBackToStart}>
+            {t("goBack")}
+          </button>
+        </div>
+      )}
+
+      {step === "adoptHealth" && (
+        <div id="onboard-step-adopt-health" style={{ width: "100%" }}>
+          <p className="onboarding-question">{t("adoptHealthTitle")}</p>
+          <div style={{ display: "flex", flexDirection: "column", gap: "10px", marginBottom: "20px" }}>
+            {[
+              { id: "bubbly", iconName: "fire", title: t("adoptHealthBubblyTitle"), desc: t("adoptHealthBubblyDesc") },
+              { id: "sluggish", iconName: "hourglass", title: t("adoptHealthSluggishTitle"), desc: t("adoptHealthSluggishDesc") },
+              { id: "dormant", iconName: "snowflake", title: t("adoptHealthDormantTitle"), desc: t("adoptHealthDormantDesc") },
+            ].map((opt) => {
+              const isActive = adoptHealth === opt.id;
+              return (
+                <button
+                  key={opt.id}
+                  type="button"
+                  className="health-option"
+                  onClick={() => setAdoptHealth(opt.id)}
+                  style={{
+                    padding: "14px 16px",
+                    background: isActive ? "var(--accent-light)" : "var(--bg-card)",
+                    borderRadius: "14px",
+                    border: `2px solid ${isActive ? "var(--accent)" : "var(--border)"}`,
+                    cursor: "pointer",
+                    transition: "all 0.2s",
+                    display: "flex",
+                    alignItems: "center",
+                    gap: "12px",
+                  }}
+                >
+                  <span style={{ fontSize: "20px" }}><Icon name={opt.iconName} size={20} /></span>
+                  <div>
+                    <div style={{ fontWeight: 600, color: "var(--text-secondary)" }}>{opt.title}</div>
+                    <div style={{ fontSize: "12px", color: "var(--text-muted)" }}>{opt.desc}</div>
+                  </div>
+                </button>
+              );
+            })}
+          </div>
+          <button
+            type="button"
+            className="btn btn-primary"
+            disabled={!adoptHealth}
+            onClick={goToName}
+          >
+            {t("continueSetup")}
+          </button>
+          <button type="button" className="btn btn-secondary" onClick={() => setStep("adopt")}>
             {t("goBack")}
           </button>
         </div>
