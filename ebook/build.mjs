@@ -11,6 +11,9 @@
 import { readFileSync, writeFileSync, existsSync } from 'fs';
 import { fileURLToPath } from 'url';
 import { dirname, join } from 'path';
+import { createRequire } from 'module';
+
+const require = createRequire(import.meta.url);
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
@@ -487,9 +490,9 @@ async function generatePreview(puppeteer) {
   const ctaPage = `
     <div class="preview-cta">
       <h2>Enjoying the preview?</h2>
-      <p>This is just the beginning. The full handbook contains 14 in-depth chapters, 14 exclusive Deep Dive sections, 5 tested recipes, printable tools, a complete glossary, FAQ, and seasonal baking guide.</p>
-      <p><strong>100+ pages of expert knowledge for just &euro;9.99</strong></p>
-      <a class="cta-link" href="https://riseandferment.gumroad.com/l/sourdough-handbook">Get the Complete Handbook</a>
+      <p>This is just the beginning. The full handbook contains 15 in-depth chapters, 15 exclusive Deep Dive sections, 5 tested recipes, 5 printable tools, a complete glossary, FAQ, and seasonal baking guide.</p>
+      <p><strong>150+ pages of expert knowledge for just &euro;9.99</strong></p>
+      <a class="cta-link" href="https://fermenter26.gumroad.com/l/handbook">Get the Complete Handbook</a>
     </div>
   `;
 
@@ -520,7 +523,92 @@ async function generatePreview(puppeteer) {
   console.log(`Preview PDF generated: ${previewPath}`);
 }
 
-// --- Full PDF ---
+// --- Extract page numbers from a PDF buffer by matching TOC titles ---
+async function extractPageNumbers(pdfBuffer, page) {
+  const { PDFParse } = require('pdf-parse');
+
+  // Get TOC anchor targets from the loaded page DOM
+  const tocTargets = await page.evaluate(() => {
+    const entries = [];
+    document.querySelectorAll('.toc-list a[href^="#"]').forEach(link => {
+      entries.push({
+        id: link.getAttribute('href').substring(1),
+        text: link.textContent.trim(),
+      });
+    });
+    return entries;
+  });
+
+  // Extract text per page using PDFParse class
+  const parser = new PDFParse({ data: new Uint8Array(pdfBuffer) });
+  const result = await parser.getText();
+  await parser.destroy();
+
+  // Find the TOC pages to skip (they list all titles as text)
+  // The TOC heading is "Contents" (EN) or "Cuprins" (RO)
+  let tocEndPage = 0;
+  for (const pg of result.pages) {
+    const trimmed = pg.text.trim();
+    if (trimmed.startsWith('Contents') || trimmed.startsWith('Cuprins')) {
+      // TOC spans this page + the next (continuation)
+      tocEndPage = Math.max(tocEndPage, pg.num + 1);
+    }
+  }
+
+  // Build search keys for each TOC target
+  const entries = tocTargets.map(({ id, text }) => {
+    const shortKey = text
+      .replace(/\s+/g, ' ')
+      .replace(/^(Chapter|Capitolul)\s+\d+:\s*/i, '')
+      .replace(/^(Recipe|Rețeta|Reteta)\s+\d+:\s*/i, '')
+      .replace(/^(Appendix|Anexă|Anexa)\s+\w+:\s*/i, '')
+      .replace(/^(Printable|Imprimabil)\s+\d+:\s*/i, '')
+      .trim();
+    return { id, shortKey };
+  });
+
+  // Also skip part divider pages (they mention section titles in subtitles)
+  const contentPages = result.pages.filter(pg => {
+    if (pg.num <= tocEndPage) return false;
+    const start = pg.text.trim().slice(0, 30);
+    // Part dividers start with spaced "P A R T" (EN/RO)
+    if (/^P\s+A\s+R\s+T/.test(start)) return false;
+    return true;
+  });
+  const pageMap = {};
+
+  // Pass 1: exact substring match (most reliable)
+  for (const { id, shortKey } of entries) {
+    for (const pg of contentPages) {
+      if (pg.text.replace(/\s+/g, ' ').includes(shortKey)) {
+        pageMap[id] = pg.num;
+        break;
+      }
+    }
+  }
+
+  // Pass 2: fallbacks for entries not found in pass 1
+  for (const { id, shortKey } of entries) {
+    if (pageMap[id]) continue;
+    // Try first part before em-dash (e.g. "My Baking Week" from "My Baking Week — Weekly Planner")
+    const beforeDash = shortKey.split(/\s*[—–]\s*/)[0].trim();
+    // Try collapsed matching (handles spaced-out headings like "Q U I C K-S T A R T")
+    const collapsed = shortKey.replace(/[\s\-—–]/g, '').toLowerCase();
+
+    for (const pg of contentPages) {
+      const norm = pg.text.replace(/\s+/g, ' ');
+      if ((beforeDash !== shortKey && norm.includes(beforeDash))
+        || pg.text.replace(/[\s\-—–]/g, '').toLowerCase().includes(collapsed)) {
+        pageMap[id] = pg.num;
+        break;
+      }
+    }
+  }
+
+  return pageMap;
+}
+
+// --- Full PDF (two-pass: discover page numbers, then inject into TOC) ---
 async function generatePDF(puppeteer) {
   const pdfNames = {
     en: 'The-Complete-Sourdough-Handbook.pdf',
@@ -531,8 +619,7 @@ async function generatePDF(puppeteer) {
 
   const { browser, page, tempPath } = await launchPage(puppeteer, html);
 
-  await page.pdf({
-    path: outputPath,
+  const pdfOptions = {
     format: 'A4',
     printBackground: true,
     margin: { top: '25mm', right: '20mm', bottom: '25mm', left: '20mm' },
@@ -543,7 +630,34 @@ async function generatePDF(puppeteer) {
         <span class="pageNumber"></span>
       </div>
     `,
-  });
+  };
+
+  // --- Pass 1: generate PDF buffer to discover page numbers ---
+  console.log('  Pass 1: discovering page numbers...');
+  const firstPassBuffer = await page.pdf(pdfOptions);
+
+  // --- Extract page numbers from first-pass PDF ---
+  const pageMap = await extractPageNumbers(firstPassBuffer, page);
+  const found = Object.keys(pageMap).length;
+  console.log(`  Found ${found} TOC page numbers`);
+  for (const [id, num] of Object.entries(pageMap)) {
+    console.log(`    ${id} → p.${num}`);
+  }
+
+  // --- Inject page numbers into .toc-page spans ---
+  await page.evaluate((map) => {
+    document.querySelectorAll('.toc-list a[href^="#"]').forEach(link => {
+      const id = link.getAttribute('href').substring(1);
+      const span = link.closest('.toc-entry')?.querySelector('.toc-page');
+      if (span && map[id]) {
+        span.textContent = map[id];
+      }
+    });
+  }, pageMap);
+
+  // --- Pass 2: generate final PDF with page numbers ---
+  console.log('  Pass 2: generating final PDF with page numbers...');
+  await page.pdf({ ...pdfOptions, path: outputPath });
 
   cleanup(tempPath);
   await browser.close();

@@ -414,6 +414,25 @@ em {
   margin: 0;
 }
 
+.toc-list .toc-entry {
+  display: flex;
+  align-items: baseline;
+  padding: 1.5mm 0;
+  padding-left: 6mm;
+}
+
+.toc-list .toc-entry .toc-title {
+  white-space: nowrap;
+  flex-shrink: 0;
+  text-decoration: none;
+  color: var(--dark);
+  font-size: 10.5pt;
+}
+
+.toc-list .toc-entry .toc-title:hover {
+  color: var(--brown);
+}
+
 /* ============================================================
    PART DIVIDERS
    ============================================================ */
