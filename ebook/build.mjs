@@ -376,7 +376,8 @@ async function generateCover(puppeteer) {
     return;
   }
 
-  const coverPath = join(__dirname, 'cover-gumroad.png');
+  const suffix = LANG === 'en' ? '' : `-${LANG}`;
+  const coverPath = join(__dirname, `cover-gumroad${suffix}.png`);
   await coverEl.screenshot({ path: coverPath, type: 'png' });
 
   cleanup(tempPath);
@@ -392,9 +393,22 @@ async function generateThumbnail(puppeteer) {
   // 600x600 square viewport
   await page.setViewport({ width: 600, height: 600, deviceScaleFactor: 2 });
 
-  // Inject CSS to make cover fill the square format
-  await page.evaluate(() => {
-    document.body.innerHTML = '';
+  // Build square thumbnail content (language-aware, all hardcoded build-time strings)
+  const thumbText = LANG === 'ro' ? {
+    brand: 'Maiaua Mea',
+    title: 'Ghidul Complet al Maielei',
+    subtitle: 'De la Prima Hrănire la Pâinea Perfectă',
+    stats: '160+ Pagini · 15 Aprofundări · 5 Rețete',
+  } : {
+    brand: 'Rise & Ferment',
+    title: 'The Complete Sourdough Handbook',
+    subtitle: 'From First Feed to Perfect Loaf',
+    stats: '150+ Pages · 15 Deep Dives · 5 Recipes',
+  };
+
+  await page.evaluate((t) => {
+    // Build-time only: Puppeteer thumbnail generation with hardcoded strings
+    document.body.textContent = '';
     const div = document.createElement('div');
     div.style.cssText = `
       width: 600px; height: 600px;
@@ -404,18 +418,27 @@ async function generateThumbnail(puppeteer) {
       text-align: center; padding: 40px;
       box-sizing: border-box; font-family: 'Caveat', cursive;
     `;
-    div.innerHTML = `
-      <div style="font-size: 16px; color: #8B5A2B; letter-spacing: 3px; text-transform: uppercase; margin-bottom: 12px; font-family: 'Nunito', sans-serif;">Rise & Ferment</div>
-      <div style="font-size: 42px; color: #3D2914; line-height: 1.15; margin-bottom: 16px; font-weight: bold;">The Complete<br>Sourdough<br>Handbook</div>
-      <div style="width: 60px; height: 2px; background: #D4A574; margin: 0 auto 16px;"></div>
-      <div style="font-size: 15px; color: #8B5A2B; font-family: 'Nunito', sans-serif;">From First Feed to Perfect Loaf</div>
-      <div style="margin-top: 24px; font-size: 13px; color: #A0845C; font-family: 'Nunito', sans-serif;">150+ Pages · 15 Deep Dives · 5 Recipes</div>
-    `;
+
+    const els = [
+      { tag: 'div', text: t.brand, style: 'font-size:16px;color:#8B5A2B;letter-spacing:3px;text-transform:uppercase;margin-bottom:12px;font-family:Nunito,sans-serif' },
+      { tag: 'div', text: t.title, style: 'font-size:42px;color:#3D2914;line-height:1.15;margin-bottom:16px;font-weight:bold' },
+      { tag: 'div', text: '', style: 'width:60px;height:2px;background:#D4A574;margin:0 auto 16px' },
+      { tag: 'div', text: t.subtitle, style: 'font-size:15px;color:#8B5A2B;font-family:Nunito,sans-serif' },
+      { tag: 'div', text: t.stats, style: 'margin-top:24px;font-size:13px;color:#A0845C;font-family:Nunito,sans-serif' },
+    ];
+    for (const { tag, text, style } of els) {
+      const el = document.createElement(tag);
+      el.textContent = text;
+      el.style.cssText = style;
+      div.appendChild(el);
+    }
+
     document.body.appendChild(div);
     document.body.style.margin = '0';
-  });
+  }, thumbText);
 
-  const thumbPath = join(__dirname, 'thumbnail-gumroad.png');
+  const suffix = LANG === 'en' ? '' : `-${LANG}`;
+  const thumbPath = join(__dirname, `thumbnail-gumroad${suffix}.png`);
   await page.screenshot({ path: thumbPath, type: 'png', clip: { x: 0, y: 0, width: 600, height: 600 } });
 
   cleanup(tempPath);
@@ -487,12 +510,26 @@ async function generatePreview(puppeteer) {
     </style>
   `;
 
+  const ctaText = LANG === 'ro' ? {
+    heading: 'Îți place previzualizarea?',
+    body: 'Aceasta este doar începutul. Ghidul complet conține 15 capitole detaliate, 15 secțiuni exclusive de Aprofundare, 5 rețete testate, 5 instrumente printabile, un glosar complet, FAQ și calendar sezonier.',
+    price: '160+ pagini de cunoștințe experte pentru doar &euro;7,99',
+    cta: 'Obține Ghidul Complet',
+    link: 'https://fermenter26.gumroad.com/l/ghid-maia',
+  } : {
+    heading: 'Enjoying the preview?',
+    body: 'This is just the beginning. The full handbook contains 15 in-depth chapters, 15 exclusive Deep Dive sections, 5 tested recipes, 5 printable tools, a complete glossary, FAQ, and seasonal baking guide.',
+    price: '150+ pages of expert knowledge for just &euro;9.99',
+    cta: 'Get the Complete Handbook',
+    link: 'https://fermenter26.gumroad.com/l/handbook',
+  };
+
   const ctaPage = `
     <div class="preview-cta">
-      <h2>Enjoying the preview?</h2>
-      <p>This is just the beginning. The full handbook contains 15 in-depth chapters, 15 exclusive Deep Dive sections, 5 tested recipes, 5 printable tools, a complete glossary, FAQ, and seasonal baking guide.</p>
-      <p><strong>150+ pages of expert knowledge for just &euro;9.99</strong></p>
-      <a class="cta-link" href="https://fermenter26.gumroad.com/l/handbook">Get the Complete Handbook</a>
+      <h2>${ctaText.heading}</h2>
+      <p>${ctaText.body}</p>
+      <p><strong>${ctaText.price}</strong></p>
+      <a class="cta-link" href="${ctaText.link}">${ctaText.cta}</a>
     </div>
   `;
 
@@ -503,7 +540,8 @@ async function generatePreview(puppeteer) {
 
   const { browser, page, tempPath } = await launchPage(puppeteer, previewHtml);
 
-  const previewPath = join(__dirname, 'Sourdough-Handbook-Preview.pdf');
+  const previewNames = { en: 'Sourdough-Handbook-Preview.pdf', ro: 'Ghid-Maia-Previzualizare.pdf' };
+  const previewPath = join(__dirname, previewNames[LANG] || previewNames.en);
   await page.pdf({
     path: previewPath,
     format: 'A4',

@@ -597,7 +597,7 @@ body{min-height:100dvh;-webkit-tap-highlight-color:transparent}
 </div>
 <div class="books__card reveal rv2">
 <div class="books__card-badge" id="bookHandbookBadge">Bestseller</div>
-<div class="books__card-book"><div class="books__card-spine"></div><div class="books__card-cover"><div class="books__card-cover-badge">Premium</div><p class="books__card-cover-sub">Rise &amp; Ferment</p><h3 class="books__card-cover-t">The Complete Sourdough Handbook</h3><p class="books__card-cover-ed">100+ pages</p></div></div>
+<div class="books__card-book"><div class="books__card-spine"></div><div class="books__card-cover"><div class="books__card-cover-badge">Premium</div><p class="books__card-cover-sub">Rise &amp; Ferment</p><h3 class="books__card-cover-t">The Complete Sourdough Handbook</h3><p class="books__card-cover-ed">Third Edition</p></div></div>
 <div class="books__card-body">
 <h3 id="bookHandbookName">The Complete Sourdough Handbook</h3>
 <p class="books__card-sub" id="bookHandbookSub">100+ pages of expert knowledge</p>
@@ -831,6 +831,7 @@ let currency = detectCurrency();
 
 const PRICES = {
   ebook: { EUR: "9,99\u00a0\u20ac", USD: "$10.99", GBP: "\u00a38.99" },
+  ghid:  { EUR: "7,99\u00a0\u20ac", USD: "$8.99",  GBP: "\u00a36.99" },
   milo:  { EUR: "6,99\u00a0\u20ac", USD: "$7.99",  GBP: "\u00a35.99" },
   tools: {
     "dutch-oven":   { EUR: "~35\u00a0\u20ac",  USD: "~$35",  GBP: "~\u00a330" },
@@ -851,7 +852,7 @@ function applyCurrency() {
   const pMilo = document.getElementById("priceMilo");
   if (pMilo) pMilo.textContent = PRICES.milo[currency];
   const pHandbook = document.getElementById("priceHandbook");
-  if (pHandbook) pHandbook.textContent = PRICES.ebook[currency];
+  if (pHandbook) pHandbook.textContent = (lang === 'ro' ? PRICES.ghid : PRICES.ebook)[currency];
 
   // Tool prices
   document.querySelectorAll(".tc").forEach(card => {
@@ -1149,13 +1150,14 @@ const LANDING_I18N = {
     bookMiloChip3: 'Family Bonding',
     bookMiloCta: 'Get the Book',
     bookMiloRo: '',
-    bookHandbookBadge: 'Bestseller',
+    bookHandbookBadge: 'Third Edition',
     bookHandbookName: 'The Complete Sourdough Handbook',
-    bookHandbookSub: '100+ pages of expert knowledge',
-    bookHandbookDesc: 'Everything you need in one place. No expensive courses, no conflicting YouTube advice, no guessing. 14 chapters of tested knowledge — from first starter to artisan scoring techniques. The only sourdough resource you\'ll ever need.',
-    bookHandbookChip1: 'Replaces €200+ courses',
+    bookHandbookSub: 'Third Edition — 150+ pages, from first feed to perfect loaf',
+    bookHandbookDesc: '15 in-depth chapters, 15 exclusive Deep Dives, 5 tested recipes, 5 printable tools, glossary, FAQ & seasonal calendar. The complete system for sourdough mastery.',
+    bookHandbookChip1: '15 Deep Dives',
     bookHandbookChip2: '5 Recipes',
-    bookHandbookChip3: 'Printable Tools',
+    bookHandbookChip3: '150+ Pages',
+    priceHandbook: '9,99\u00a0\u20ac',
     bookMiloUrgency: 'The gift they\'ll remember',
     bookHandbookUrgency: '2,400+ bakers chose this',
     elenaSub: 'Elena\'s corner',
@@ -1339,15 +1341,16 @@ const LANDING_I18N = {
     bookTudorCta: 'Cumpără Cartea',
     bookTudorUrgency: 'Prima carte despre maia pentru copii',
     priceTudor: '3,99\u00a0\u20ac',
-    bookHandbookBadge: 'Bestseller',
-    bookHandbookName: 'Manualul Complet de Maia',
-    bookHandbookSub: '100+ pagini de cunoștințe de expert',
-    bookHandbookDesc: 'Tot ce ai nevoie într-un singur loc. Fără cursuri scumpe, fără sfaturi contradictorii de pe YouTube, fără ghiceli. 14 capitole de cunoștințe testate — de la prima maia la tehnici avansate de scoring. Singura resursă de maia de care vei avea vreodată nevoie.',
-    bookHandbookChip1: 'Înlocuiește cursuri de €200+',
+    bookHandbookBadge: 'Ediția a Treia',
+    bookHandbookName: 'Ghidul Complet al Maielei',
+    bookHandbookSub: 'Ediția a Treia — 160+ pagini, de la prima hrănire la pâinea perfectă',
+    bookHandbookDesc: '15 capitole detaliate, 15 Aprofundări exclusive, 5 rețete testate, 5 materiale printabile, glosar, FAQ și calendar sezonier. BONUS: primești și versiunea în engleză!',
+    bookHandbookChip1: '15 Aprofundări',
     bookHandbookChip2: '5 Rețete',
-    bookHandbookChip3: 'Instrumente printabile',
+    bookHandbookChip3: '160+ Pagini',
+    priceHandbook: '7,99\u00a0\u20ac',
     bookMiloUrgency: 'Cadoul pe care îl vor ține minte',
-    bookHandbookUrgency: '2.400+ brutari au ales asta',
+    bookHandbookUrgency: 'Include și versiunea în engleză!',
     elenaSub: 'Colțul Elenei',
     elenaTitle: 'Mai mult decât pâine — e felul nostru de a avea grijă',
     elenaDesc: 'Coc pentru familia mea în fiecare săptămână. Iată ce ne-a învățat maiaua.',
@@ -1358,7 +1361,7 @@ const LANDING_I18N = {
     elenaSci2: 'Fermentația lungă descompune glutenul și acidul fitic, făcând nutrienții mai biodisponibili.',
     elenaStory3: '"E ceva sfânt în a coace pâine cu propriile mâini. Casa miroase a acasă. Timpul încetinește."',
     elenaSci3: '',
-    bookHandbookCta: 'Ia Manualul'
+    bookHandbookCta: 'Ia-ți Ghidul'
   },
   it: {
     navFeatures: "Funzionalità",
@@ -1519,13 +1522,14 @@ const LANDING_I18N = {
     bookMiloChip3: 'Tempo in famiglia',
     bookMiloCta: 'Prendi il libro',
     bookMiloRo: '',
-    bookHandbookBadge: 'Bestseller',
+    bookHandbookBadge: 'Terza Edizione',
     bookHandbookName: 'Il Manuale Completo del Lievito Madre',
-    bookHandbookSub: '100+ pagine di conoscenze esperte',
-    bookHandbookDesc: 'Tutto ciò che ti serve in un unico posto. Niente corsi costosi, niente consigli contraddittori su YouTube, niente supposizioni. 14 capitoli di conoscenze testate — dal primo lievito madre alle tecniche di incisione artigianali. L\'unica risorsa sul lievito madre di cui avrai mai bisogno.',
-    bookHandbookChip1: 'Sostituisce corsi da €200+',
+    bookHandbookSub: 'Terza Edizione — 150+ pagine, dal primo lievito alla pagnotta perfetta',
+    bookHandbookDesc: '15 capitoli approfonditi, 15 Approfondimenti esclusivi, 5 ricette testate, 5 strumenti stampabili, glossario, FAQ e calendario stagionale. Il sistema completo per la maestria del lievito madre.',
+    bookHandbookChip1: '15 Approfondimenti',
     bookHandbookChip2: '5 Ricette',
-    bookHandbookChip3: 'Strumenti stampabili',
+    bookHandbookChip3: '150+ Pagine',
+    priceHandbook: '9,99\u00a0\u20ac',
     bookMiloUrgency: 'Il regalo che ricorderanno',
     bookHandbookUrgency: '2.400+ panettieri hanno scelto questo',
     elenaSub: 'L\'angolo di Elena',
@@ -1699,13 +1703,14 @@ const LANDING_I18N = {
     bookMiloChip3: 'Familienzeit',
     bookMiloCta: 'Buch holen',
     bookMiloRo: '',
-    bookHandbookBadge: 'Bestseller',
+    bookHandbookBadge: 'Dritte Ausgabe',
     bookHandbookName: 'Das komplette Sauerteig-Handbuch',
-    bookHandbookSub: '100+ Seiten Expertenwissen',
-    bookHandbookDesc: 'Alles, was du brauchst, an einem Ort. Keine teuren Kurse, keine widerspr\u00fcchlichen YouTube-Tipps, kein Raten. 14 Kapitel mit gepr\u00fcftem Wissen — vom ersten Starter bis zu handwerklichen Einschnitttechniken. Die einzige Sauerteig-Ressource, die du jemals brauchen wirst.',
-    bookHandbookChip1: 'Ersetzt Kurse \u00fcber \u20ac200',
+    bookHandbookSub: 'Dritte Ausgabe — 150+ Seiten, von der ersten Fütterung bis zum perfekten Laib',
+    bookHandbookDesc: '15 ausführliche Kapitel, 15 exklusive Vertiefungen, 5 getestete Rezepte, 5 druckbare Werkzeuge, Glossar, FAQ & saisonaler Kalender. Das komplette System zur Sauerteig-Meisterschaft.',
+    bookHandbookChip1: '15 Vertiefungen',
     bookHandbookChip2: '5 Rezepte',
-    bookHandbookChip3: 'Druckbare Tools',
+    bookHandbookChip3: '150+ Seiten',
+    priceHandbook: '9,99\u00a0\u20ac',
     bookMiloUrgency: 'Das Geschenk, an das sie sich erinnern',
     bookHandbookUrgency: '2.400+ B\u00e4cker haben das gew\u00e4hlt',
     elenaSub: 'Elenas Ecke',
@@ -1879,13 +1884,14 @@ const LANDING_I18N = {
     bookMiloChip3: 'Moment en famille',
     bookMiloCta: 'Obtenir le livre',
     bookMiloRo: '',
-    bookHandbookBadge: 'Bestseller',
+    bookHandbookBadge: 'Troisi\u00e8me \u00c9dition',
     bookHandbookName: 'Le Manuel Complet du Levain',
-    bookHandbookSub: '100+ pages de connaissances expertes',
-    bookHandbookDesc: 'Tout ce dont tu as besoin en un seul endroit. Pas de cours co\u00fbteux, pas de conseils contradictoires sur YouTube, pas de devinettes. 14 chapitres de connaissances test\u00e9es \u2014 du premier levain aux techniques de grignage artisanales. La seule ressource sur le levain dont tu auras jamais besoin.',
-    bookHandbookChip1: 'Remplace des cours \u00e0 200\u20ac+',
+    bookHandbookSub: 'Troisi\u00e8me \u00c9dition — 150+ pages, du premier levain \u00e0 la miche parfaite',
+    bookHandbookDesc: '15 chapitres d\u00e9taill\u00e9s, 15 Approfondissements exclusifs, 5 recettes test\u00e9es, 5 outils imprimables, glossaire, FAQ & calendrier saisonnier. Le syst\u00e8me complet pour ma\u00eetriser le levain.',
+    bookHandbookChip1: '15 Approfondissements',
     bookHandbookChip2: '5 Recettes',
-    bookHandbookChip3: 'Outils imprimables',
+    bookHandbookChip3: '150+ Pages',
+    priceHandbook: '9,99\u00a0\u20ac',
     bookMiloUrgency: 'Le cadeau dont ils se souviendront',
     bookHandbookUrgency: '2 400+ boulangers ont choisi ceci',
     elenaSub: 'Le coin d\u2019Elena',
@@ -2059,13 +2065,14 @@ const LANDING_I18N = {
     bookMiloChip3: 'Tiempo en familia',
     bookMiloCta: 'Obtener el libro',
     bookMiloRo: '',
-    bookHandbookBadge: 'Bestseller',
+    bookHandbookBadge: 'Tercera Edici\u00f3n',
     bookHandbookName: 'El Manual Completo de Masa Madre',
-    bookHandbookSub: '100+ p\u00e1ginas de conocimiento experto',
-    bookHandbookDesc: 'Todo lo que necesitas en un solo lugar. Sin cursos caros, sin consejos contradictorios de YouTube, sin adivinanzas. 14 cap\u00edtulos de conocimiento probado \u2014 desde tu primer cultivo hasta t\u00e9cnicas artesanales de gre\u00f1ado. El \u00fanico recurso de masa madre que necesitar\u00e1s.',
-    bookHandbookChip1: 'Sustituye cursos de \u20ac200+',
+    bookHandbookSub: 'Tercera Edici\u00f3n — 150+ p\u00e1ginas, desde la primera alimentaci\u00f3n hasta el pan perfecto',
+    bookHandbookDesc: '15 cap\u00edtulos detallados, 15 Inmersiones Profundas exclusivas, 5 recetas probadas, 5 herramientas imprimibles, glosario, FAQ y calendario estacional. El sistema completo para dominar la masa madre.',
+    bookHandbookChip1: '15 Inmersiones Profundas',
     bookHandbookChip2: '5 Recetas',
-    bookHandbookChip3: 'Herramientas imprimibles',
+    bookHandbookChip3: '150+ P\u00e1ginas',
+    priceHandbook: '9,99\u00a0\u20ac',
     bookMiloUrgency: 'El regalo que recordar\u00e1n',
     bookHandbookUrgency: '2.400+ panaderos eligieron esto',
     elenaSub: 'El rinc\u00f3n de Elena',
@@ -2238,13 +2245,14 @@ const LANDING_I18N = {
     bookMiloChip3: 'Családi idő',
     bookMiloCta: 'Könyv beszerzése',
     bookMiloRo: '',
-    bookHandbookBadge: 'Bestseller',
+    bookHandbookBadge: 'Harmadik Kiad\u00e1s',
     bookHandbookName: 'A teljes kovász-kézikönyv',
-    bookHandbookSub: '100+ oldal szakértői tudás',
-    bookHandbookDesc: 'Minden, amire szükséged van, egy helyen. Nincsenek drága tanfolyamok, nincsenek egymásnak ellentmondó YouTube-tippek, nincs találgatás. 14 fejezet tesztelt tudással — az első kovászkultúrától a mesterszintű bevágási technikákig. Az egyetlen kovász-forrás, amire valaha szükséged lesz.',
-    bookHandbookChip1: '€200+ tanfolyamot helyettesít',
-    bookHandbookChip2: '5 recept',
-    bookHandbookChip3: 'Nyomtatható eszközök',
+    bookHandbookSub: 'Harmadik Kiad\u00e1s — 150+ oldal, az els\u0151 etet\u00e9st\u0151l a t\u00f6k\u00e9letes cip\u00f3ig',
+    bookHandbookDesc: '15 r\u00e9szletes fejezet, 15 exkluz\u00edv M\u00e9lymer\u00fcl\u00e9s, 5 tesztelt recept, 5 nyomtathat\u00f3 eszk\u00f6z, sz\u00f3jegyz\u00e9k, GYIK \u00e9s szezon\u00e1lis napt\u00e1r. A teljes rendszer a kov\u00e1sz mesters\u00e9g\u00e9hez.',
+    bookHandbookChip1: '15 M\u00e9lymer\u00fcl\u00e9s',
+    bookHandbookChip2: '5 Recept',
+    bookHandbookChip3: '150+ Oldal',
+    priceHandbook: '9,99\u00a0\u20ac',
     bookMiloUrgency: 'Az ajándék, amire emlékezni fognak',
     bookHandbookUrgency: '2 400+ pék választotta ezt',
     elenaSub: 'Elena sarka',
@@ -2394,6 +2402,9 @@ function applyLandingTranslations() {
   setHtml('#bookHandbookCta', `${L.bookHandbookCta} <span class="btn__ar">\u2192</span>`);
   setText('#bookMiloUrgency', L.bookMiloUrgency);
   setText('#bookHandbookUrgency', L.bookHandbookUrgency);
+  if (L.priceHandbook) setText('#priceHandbook', L.priceHandbook);
+  const handbookLink = document.querySelector('#bookHandbookCta');
+  if (handbookLink) handbookLink.href = lang === 'ro' ? '/go/ghid-maia' : '/go/ebook';
 
   // Elena section
   setText('#elenaSub', L.elenaSub);

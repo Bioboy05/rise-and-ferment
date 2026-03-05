@@ -156,10 +156,17 @@
   status = 302
   force = true
 
-# Ebook — Gumroad
+# Ebook — Gumroad (EN)
 [[redirects]]
   from = "/go/ebook"
   to = "https://fermenter26.gumroad.com/l/handbook"
+  status = 302
+  force = true
+
+# Ebook — Gumroad (RO)
+[[redirects]]
+  from = "/go/ghid-maia"
+  to = "https://fermenter26.gumroad.com/l/ghid-maia"
   status = 302
   force = true
 
