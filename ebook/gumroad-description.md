@@ -7,7 +7,7 @@
 The Complete Sourdough Handbook
 
 ### Summary (paste in "Summary" field)
-100+ page PDF guide: 14 chapters, 14 exclusive Deep Dives, 5 recipes, printable tools, glossary, FAQ & seasonal calendar. From first starter to perfect loaf.
+100+ page PDF guide: 15 chapters, 15 exclusive Deep Dives, 5 recipes, 5 printable tools, glossary, FAQ & seasonal calendar. Third Edition — now with trending techniques. From first starter to perfect loaf.
 
 ### Tags (for Gumroad)
 sourdough, bread baking, sourdough starter, baking guide, bread making, artisan bread, sourdough handbook, baking ebook, fermentation, home baking
@@ -37,7 +37,7 @@ We've been there. After 3 years of daily baking, hundreds of failed loaves, and 
 
 **1. Download instantly** — open the PDF on any device or print it for your kitchen counter
 
-**2. Follow the path** — 14 chapters guide you step-by-step, from starter creation to advanced scoring
+**2. Follow the path** — 15 chapters guide you step-by-step, from starter creation to trending techniques
 
 **3. Bake with confidence** — use the Deep Dives, printable tools, and seasonal calendar to get consistent results every time
 
@@ -53,13 +53,13 @@ We've been there. After 3 years of daily baking, hundreds of failed loaves, and 
 
 ## What's Inside
 
-✅ **14 in-depth chapters** — not summaries, not bullet points. Full narrative chapters that explain the WHY behind every technique
+✅ **15 in-depth chapters** — not summaries, not bullet points. Full narrative chapters that explain the WHY behind every technique
 
-✅ **14 exclusive Deep Dive sections** — advanced content you won't find anywhere else (not in our free app, not on YouTube, not on Reddit)
+✅ **15 exclusive Deep Dive sections** — advanced content you won't find anywhere else (not in our free app, not on YouTube, not on Reddit)
 
 ✅ **5 tested recipes** — from your first simple loaf to focaccia, pizza, and enriched dough
 
-✅ **3 printable tools** — hang them on your fridge and never miss a feeding again
+✅ **5 printable tools** — baking journal, quick reference card, weekly planner, and more — hang them in your kitchen
 
 ✅ **45-term glossary** — finally understand what "autolyse," "bulk ferment," and "windowpane test" actually mean
 
@@ -69,9 +69,9 @@ We've been there. After 3 years of daily baking, hundreds of failed loaves, and 
 
 ✅ **Quick-start checklist** — everything you need to start baking TODAY
 
-## The 14 Deep Dives (Handbook Exclusive)
+## The 15 Deep Dives (Handbook Exclusive)
 
-These sections alone contain 8,000+ words of advanced knowledge that doesn't exist anywhere else:
+These sections alone contain 9,000+ words of advanced knowledge that doesn't exist anywhere else:
 
 🔬 Building Your Flour Library — 8+ brands compared side by side
 🌡️ The Temperature Map — map your kitchen's microclimates + build a DIY proofing box
@@ -87,6 +87,7 @@ These sections alone contain 8,000+ words of advanced knowledge that doesn't exi
 🔪 Scoring Pattern Guide — 8 classic patterns with technique breakdowns
 ⏰ 5 Complete Baking Timelines — whether you have all day or only 30 minutes
 📈 Your First Year Roadmap — month-by-month from beginner to confident baker
+🔥 Building Your Online Sourdough Community — best accounts to follow + sharing your journey
 
 ## Before vs After
 
@@ -113,7 +114,8 @@ This handbook is 100+ pages of curated, tested, organized knowledge — written 
 🛡️ **30-day money-back guarantee.** If this handbook doesn't level up your baking, you get a full refund. No questions asked.
 
 **Format:** PDF — read on phone, tablet, laptop, or print it
-**Length:** 100+ pages (143 pages total)
+**Edition:** Third Edition (2026)
+**Length:** 150+ pages
 **Delivery:** Instant download after purchase
 **Updates:** All future updates included free
 

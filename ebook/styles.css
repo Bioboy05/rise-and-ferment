@@ -20,7 +20,7 @@
    ============================================================ */
 @page {
   size: A4;
-  margin: 25mm 20mm 30mm 20mm;
+  margin: 25mm 20mm 25mm 20mm;
 }
 
 @page :first {
@@ -96,8 +96,8 @@ h4 {
 
 p {
   margin-bottom: 4mm;
-  orphans: 3;
-  widows: 3;
+  orphans: 4;
+  widows: 4;
 }
 
 strong {
@@ -186,6 +186,129 @@ em {
   border: none;
 }
 
+.cover-brand {
+  font-family: var(--font-body);
+  font-size: 11pt;
+  font-variant: small-caps;
+  letter-spacing: 0.25em;
+  color: var(--amber);
+  font-weight: 600;
+  margin-bottom: 6mm;
+}
+
+.cover-decoration {
+  position: absolute;
+  left: 15mm;
+  right: 15mm;
+  height: 1px;
+  background: linear-gradient(90deg, transparent 10%, var(--amber) 50%, transparent 90%);
+}
+
+.cover-decoration--top {
+  top: 15mm;
+}
+
+.cover-decoration--bottom {
+  bottom: 15mm;
+}
+
+.cover-separator {
+  width: 50mm;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, var(--brown), transparent);
+  margin: 5mm auto;
+  border: none;
+}
+
+.cover-wheat {
+  display: flex;
+  justify-content: center;
+  gap: 8mm;
+  margin-top: 8mm;
+}
+
+.wheat-stalk {
+  width: 2px;
+  height: 20mm;
+  background: var(--amber);
+  position: relative;
+  opacity: 0.5;
+}
+
+.wheat-stalk::before,
+.wheat-stalk::after {
+  content: '';
+  position: absolute;
+  width: 8mm;
+  height: 1px;
+  background: var(--amber);
+}
+
+.wheat-stalk--left::before {
+  top: 4mm;
+  right: 0;
+  transform: rotate(-30deg);
+  transform-origin: right center;
+}
+
+.wheat-stalk--left::after {
+  top: 10mm;
+  right: 0;
+  transform: rotate(-25deg);
+  transform-origin: right center;
+}
+
+.wheat-stalk--right::before {
+  top: 4mm;
+  left: 0;
+  transform: rotate(30deg);
+  transform-origin: left center;
+}
+
+.wheat-stalk--right::after {
+  top: 10mm;
+  left: 0;
+  transform: rotate(25deg);
+  transform-origin: left center;
+}
+
+/* ============================================================
+   COLOPHON PAGE
+   ============================================================ */
+.colophon {
+  page-break-after: always;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  text-align: center;
+  padding: 30mm 25mm;
+}
+
+.colophon-content {
+  max-width: 120mm;
+}
+
+.colophon-title {
+  font-family: var(--font-display);
+  font-size: 20pt;
+  color: var(--brown);
+  margin-bottom: 8mm;
+  line-height: 1.3;
+}
+
+.colophon p {
+  font-size: 9.5pt;
+  color: var(--dark);
+  line-height: 1.8;
+  margin-bottom: 3mm;
+}
+
+.colophon p:last-child {
+  margin-bottom: 0;
+}
+
 /* ============================================================
    TABLE OF CONTENTS
    ============================================================ */
@@ -260,6 +383,89 @@ em {
   color: #6b5b4f;
 }
 
+.toc-heading {
+  font-family: var(--font-display);
+  font-size: 32pt;
+  color: var(--brown);
+  text-align: center;
+  margin-bottom: 10mm;
+}
+
+.toc-section {
+  margin-bottom: 4mm;
+}
+
+.toc-section-title {
+  font-family: var(--font-body);
+  font-size: 10pt;
+  font-weight: 800;
+  color: var(--brown);
+  margin-top: 5mm;
+  margin-bottom: 2mm;
+  padding-bottom: 1mm;
+  border-bottom: 1.5px solid var(--amber);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+
+.toc-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+/* ============================================================
+   PART DIVIDERS
+   ============================================================ */
+.part-divider {
+  page-break-before: always;
+  page-break-after: always;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  text-align: center;
+  background: var(--cream);
+  position: relative;
+}
+
+.part-divider::before {
+  content: '';
+  position: absolute;
+  inset: 15mm;
+  border: 1px solid var(--border-light);
+  border-radius: 2px;
+  pointer-events: none;
+}
+
+.part-number {
+  font-family: var(--font-body);
+  font-size: 12pt;
+  font-variant: small-caps;
+  letter-spacing: 0.2em;
+  color: var(--amber);
+  font-weight: 600;
+  margin-bottom: 3mm;
+}
+
+.part-divider-title {
+  font-family: var(--font-display);
+  font-size: 36pt;
+  color: var(--brown);
+  line-height: 1.2;
+  margin-bottom: 4mm;
+}
+
+.part-divider-subtitle {
+  font-family: var(--font-body);
+  font-size: 11pt;
+  color: var(--amber);
+  font-weight: 400;
+  max-width: 100mm;
+  line-height: 1.6;
+}
+
 /* ============================================================
    CHAPTERS
    ============================================================ */
@@ -292,6 +498,215 @@ em {
   color: var(--brown);
   margin-bottom: 6mm;
   font-weight: 400;
+}
+
+.chapter-header {
+  margin-bottom: 8mm;
+  position: relative;
+}
+
+.chapter-title {
+  font-family: var(--font-display);
+  font-size: 28pt;
+  color: var(--brown);
+  line-height: 1.2;
+  padding-bottom: 4mm;
+  border-bottom: 2px solid var(--amber);
+  margin-bottom: 0;
+}
+
+.part-title {
+  font-family: var(--font-body);
+  font-size: 9pt;
+  color: var(--amber);
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  display: block;
+  margin-bottom: 1mm;
+}
+
+/* --- Drop Caps --- */
+.chapter-content > p:first-of-type::first-letter {
+  font-family: var(--font-display);
+  font-size: 48pt;
+  float: left;
+  line-height: 0.75;
+  padding-right: 3mm;
+  padding-top: 2mm;
+  color: var(--brown);
+  font-weight: 700;
+}
+
+/* --- Pull Quotes --- */
+.pull-quote {
+  text-align: center;
+  font-family: var(--font-display);
+  font-size: 16pt;
+  color: var(--brown);
+  padding: 6mm 10mm;
+  margin: 6mm 0;
+  border-top: 1px solid var(--amber);
+  border-bottom: 1px solid var(--amber);
+  line-height: 1.4;
+  page-break-inside: avoid;
+  font-style: italic;
+}
+
+/* --- Enhanced Callout Boxes --- */
+.tip-box {
+  background: #f0f7f0;
+  border-left: 3px solid #5a8f5a;
+  border-radius: 0 6px 6px 0;
+  padding: 4mm 5mm 4mm 12mm;
+  margin: 4mm 0;
+  page-break-inside: avoid;
+  position: relative;
+}
+
+.tip-box::before {
+  content: '\2713';
+  position: absolute;
+  left: 4mm;
+  top: 4mm;
+  color: #5a8f5a;
+  font-size: 12pt;
+  font-weight: 700;
+}
+
+.tip-box h4 {
+  font-size: 10pt;
+  color: #3d6b3d;
+  font-weight: 800;
+  margin-bottom: 1.5mm;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+}
+
+.tip-box p {
+  font-size: 10pt;
+  margin-bottom: 0;
+  line-height: 1.6;
+}
+
+.did-you-know {
+  background: var(--cream);
+  border: 1px solid var(--amber);
+  border-radius: 8px;
+  padding: 4mm 5mm 4mm 12mm;
+  margin: 4mm 0;
+  page-break-inside: avoid;
+  position: relative;
+}
+
+.did-you-know::before {
+  content: '?';
+  position: absolute;
+  left: 3.5mm;
+  top: 3mm;
+  color: var(--amber);
+  font-size: 14pt;
+  font-weight: 800;
+  font-family: var(--font-display);
+}
+
+.did-you-know h4 {
+  font-size: 10pt;
+  color: var(--brown);
+  font-weight: 800;
+  margin-bottom: 1.5mm;
+}
+
+.did-you-know p {
+  font-size: 10pt;
+  margin-bottom: 0;
+  line-height: 1.6;
+}
+
+/* --- Chapter Objectives --- */
+.chapter-objectives {
+  background: var(--warm-bg);
+  border: 1px solid var(--border-light);
+  border-radius: 6px;
+  padding: 4mm 5mm;
+  margin-bottom: 6mm;
+  page-break-inside: avoid;
+}
+
+.chapter-objectives h4 {
+  font-size: 10pt;
+  color: var(--brown);
+  font-weight: 700;
+  margin-bottom: 2mm;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  font-size: 9pt;
+}
+
+.chapter-objectives ul {
+  list-style: none;
+  padding-left: 0;
+  margin-bottom: 0;
+}
+
+.chapter-objectives li {
+  position: relative;
+  padding-left: 5mm;
+  margin-bottom: 1.5mm;
+  font-size: 10pt;
+  color: var(--dark);
+  line-height: 1.5;
+}
+
+.chapter-objectives li::before {
+  content: '\2022';
+  color: var(--amber);
+  font-weight: 700;
+  position: absolute;
+  left: 0;
+  top: 0;
+}
+
+/* --- Chapter End Ornament --- */
+.chapter-end {
+  text-align: center;
+  margin: 8mm 0 0;
+  color: var(--amber);
+  font-size: 14pt;
+  letter-spacing: 6mm;
+  opacity: 0.6;
+}
+
+/* ============================================================
+   INTRODUCTION
+   ============================================================ */
+.introduction {
+  page-break-before: always;
+}
+
+.intro-heading {
+  font-family: var(--font-display);
+  font-size: 28pt;
+  color: var(--brown);
+  text-align: center;
+  margin-bottom: 8mm;
+}
+
+.intro-callout {
+  background: var(--warm-bg);
+  border: 1px solid var(--border-light);
+  border-radius: 8px;
+  padding: 5mm 6mm;
+  margin: 6mm 0;
+  text-align: center;
+  page-break-inside: avoid;
+}
+
+.intro-callout p {
+  font-size: 11pt;
+  color: var(--brown);
+  font-weight: 600;
+  margin-bottom: 0;
 }
 
 /* --- Lists --- */
@@ -585,6 +1000,54 @@ blockquote footer {
   margin-bottom: 0;
 }
 
+.recipe-meta-item {
+  display: inline-flex;
+  align-items: center;
+  gap: 1.5mm;
+  background: var(--warm-bg);
+  color: var(--brown);
+  font-size: 9pt;
+  font-weight: 600;
+  padding: 1.5mm 4mm;
+  border-radius: 20px;
+  border: 1px solid var(--border-light);
+  white-space: nowrap;
+}
+
+.recipe-tips {
+  background: var(--warm-bg);
+  border-left: 3px solid var(--amber);
+  border-radius: 0 6px 6px 0;
+  padding: 4mm 5mm;
+  margin-top: 4mm;
+  page-break-inside: avoid;
+}
+
+.recipe-tips h4 {
+  font-size: 10pt;
+  color: var(--brown);
+  font-weight: 800;
+  margin-bottom: 1.5mm;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+}
+
+.recipe-variant {
+  background: #faf5ee;
+  border: 1px dashed var(--amber);
+  border-radius: 6px;
+  padding: 4mm 5mm;
+  margin: 4mm 0;
+  page-break-inside: avoid;
+}
+
+.recipe-variant h4 {
+  font-size: 10pt;
+  color: var(--amber);
+  font-weight: 700;
+  margin-bottom: 1.5mm;
+}
+
 /* ============================================================
    PRINTABLE PAGES (Planners, Logs, Trackers)
    ============================================================ */
@@ -634,6 +1097,81 @@ blockquote footer {
 
 .printable .notes-area {
   min-height: 30mm;
+  border: 1px solid var(--border-light);
+  border-radius: 4px;
+  padding: 3mm;
+  margin-top: 4mm;
+}
+
+.printable-title {
+  font-family: var(--font-body);
+  font-size: 20pt;
+  color: var(--brown);
+  font-weight: 800;
+  text-align: center;
+  margin-bottom: 3mm;
+}
+
+.printable-subtitle {
+  font-family: var(--font-body);
+  font-size: 11pt;
+  color: var(--amber);
+  text-align: center;
+  margin-bottom: 6mm;
+  font-style: italic;
+}
+
+.printable-reminders {
+  margin-top: 6mm;
+}
+
+.printable-reminders h3 {
+  font-size: 12pt;
+  color: var(--brown);
+  margin-bottom: 3mm;
+}
+
+/* --- Planner Table --- */
+.planner-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-bottom: 4mm;
+}
+
+.planner-table th {
+  background: var(--brown);
+  color: white;
+  padding: 2.5mm 3mm;
+  text-align: left;
+  font-size: 9pt;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+.planner-table td {
+  padding: 3mm;
+  border-bottom: 1px solid var(--border-light);
+  font-size: 10pt;
+  vertical-align: top;
+}
+
+.planner-cell {
+  min-height: 18mm;
+}
+
+.planner-goals {
+  margin-top: 4mm;
+}
+
+.planner-goal-line {
+  border-bottom: 1px dotted var(--border-light);
+  min-height: 8mm;
+  margin-bottom: 2mm;
+}
+
+.planner-reflection {
+  min-height: 25mm;
   border: 1px solid var(--border-light);
   border-radius: 4px;
   padding: 3mm;
@@ -723,7 +1261,7 @@ tbody tr:nth-child(even) td {
   border-radius: 0 8px 8px 0;
   padding: 5mm 6mm;
   margin: 6mm 0;
-  page-break-inside: avoid;
+  page-break-inside: auto;
   position: relative;
 }
 
@@ -983,6 +1521,33 @@ figcaption {
   margin-top: 6mm;
 }
 
+.back-cover-content {
+  max-width: 130mm;
+}
+
+.back-cover-thanks {
+  font-family: var(--font-display);
+  font-size: 32pt;
+  color: var(--brown);
+  margin-bottom: 6mm;
+  line-height: 1.2;
+}
+
+.back-cover-separator {
+  width: 30mm;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--amber), transparent);
+  margin: 5mm auto;
+  border: none;
+}
+
+.back-cover-legal {
+  font-size: 8pt;
+  color: var(--amber);
+  margin-top: 8mm;
+  line-height: 1.6;
+}
+
 /* ============================================================
    UTILITY CLASSES
    ============================================================ */
@@ -1054,6 +1619,20 @@ hr {
   height: 1px;
   background: linear-gradient(90deg, transparent, var(--amber), transparent);
   margin: 6mm 0;
+  position: relative;
+}
+
+hr::after {
+  content: '\2767';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: white;
+  padding: 0 3mm;
+  color: var(--amber);
+  font-size: 10pt;
+  line-height: 1;
 }
 
 .divider-ornament {
@@ -1112,15 +1691,26 @@ hr {
   .pro-tip,
   .recipe-variation,
   .variation,
+  .recipe-meta-item,
+  .recipe-tips,
+  .recipe-variant,
   .info-box,
   .warning-box,
   .highlight-box,
   .deep-dive,
+  .intro-callout,
   .back-cover-links,
+  .part-divider,
+  .colophon,
+  .planner-table th,
   th,
   tbody tr:nth-child(even) td,
   blockquote,
-  .cover {
+  .cover,
+  .tip-box,
+  .did-you-know,
+  .chapter-objectives,
+  .pull-quote {
     -webkit-print-color-adjust: exact;
     print-color-adjust: exact;
   }
@@ -1142,7 +1732,8 @@ hr {
   .chapter,
   .recipe,
   .printable,
-  .appendix {
+  .appendix,
+  .introduction {
     page-break-before: always;
   }
 
@@ -1168,7 +1759,10 @@ hr {
   .recipe,
   .printable,
   .appendix,
-  .back-cover {
+  .back-cover,
+  .part-divider,
+  .colophon,
+  .introduction {
     background: white;
     padding: 25mm 20mm 30mm 20mm;
     margin-bottom: 5mm;

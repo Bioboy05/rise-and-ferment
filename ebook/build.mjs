@@ -281,6 +281,7 @@ const chapterFiles = [
   '12-shaping-and-scoring.md',
   '13-baking-schedules.md',
   '14-beyond-the-basics.md',
+  '15-trending-techniques.md',
 ];
 
 let chapterCount = 0;
@@ -295,7 +296,7 @@ for (let i = 0; i < chapterFiles.length; i++) {
   html = html.replace(`{{chapterContent_${i + 1}}}`, parsed);
   chapterCount++;
 }
-console.log(`${chapterCount}/14 chapter placeholders replaced.`);
+console.log(`${chapterCount}/15 chapter placeholders replaced.`);
 
 // ---------------------------------------------------------------------------
 // 4. Replace appendix placeholders
@@ -405,7 +406,7 @@ async function generateThumbnail(puppeteer) {
       <div style="font-size: 42px; color: #3D2914; line-height: 1.15; margin-bottom: 16px; font-weight: bold;">The Complete<br>Sourdough<br>Handbook</div>
       <div style="width: 60px; height: 2px; background: #D4A574; margin: 0 auto 16px;"></div>
       <div style="font-size: 15px; color: #8B5A2B; font-family: 'Nunito', sans-serif;">From First Feed to Perfect Loaf</div>
-      <div style="margin-top: 24px; font-size: 13px; color: #A0845C; font-family: 'Nunito', sans-serif;">100+ Pages · 14 Deep Dives · 5 Recipes</div>
+      <div style="margin-top: 24px; font-size: 13px; color: #A0845C; font-family: 'Nunito', sans-serif;">150+ Pages · 15 Deep Dives · 5 Recipes</div>
     `;
     document.body.appendChild(div);
     document.body.style.margin = '0';
@@ -504,7 +505,7 @@ async function generatePreview(puppeteer) {
     path: previewPath,
     format: 'A4',
     printBackground: true,
-    margin: { top: '25mm', right: '20mm', bottom: '30mm', left: '20mm' },
+    margin: { top: '25mm', right: '20mm', bottom: '25mm', left: '20mm' },
     displayHeaderFooter: true,
     headerTemplate: '<span></span>',
     footerTemplate: `
@@ -534,7 +535,7 @@ async function generatePDF(puppeteer) {
     path: outputPath,
     format: 'A4',
     printBackground: true,
-    margin: { top: '25mm', right: '20mm', bottom: '30mm', left: '20mm' },
+    margin: { top: '25mm', right: '20mm', bottom: '25mm', left: '20mm' },
     displayHeaderFooter: true,
     headerTemplate: '<span></span>',
     footerTemplate: `
