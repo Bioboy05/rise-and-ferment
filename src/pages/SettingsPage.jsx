@@ -16,17 +16,13 @@ function SettingsPage() {
   const theme = useSettingsStore((state) => state.theme);
   const language = useSettingsStore((state) => state.language);
   const beginnerMode = useSettingsStore((state) => state.beginnerMode);
-  const soundEnabled = useSettingsStore((state) => state.soundEnabled);
   const tempUnit = useSettingsStore((state) => state.tempUnit);
   const weightUnit = useSettingsStore((state) => state.weightUnit);
-  const notificationsEnabled = useSettingsStore((state) => state.notifications.enabled);
   const toggleTheme = useSettingsStore((state) => state.toggleTheme);
   const setLanguage = useSettingsStore((state) => state.setLanguage);
   const toggleBeginnerMode = useSettingsStore((state) => state.toggleBeginnerMode);
-  const toggleSound = useSettingsStore((state) => state.toggleSound);
   const setTempUnit = useSettingsStore((state) => state.setTempUnit);
   const setWeightUnit = useSettingsStore((state) => state.setWeightUnit);
-  const toggleNotifications = useSettingsStore((state) => state.toggleNotifications);
   const resetAll = useSettingsStore((state) => state.resetAll);
   const fileInputRef = useRef(null);
 
@@ -203,43 +199,6 @@ function SettingsPage() {
               </span>
             </div>
           )}
-        </div>
-      </div>
-
-      <div className="settings-section">
-        <div className="settings-section-title">
-          <Icon name="alert" size={16} style={{ display: "inline", verticalAlign: "middle", marginRight: "6px" }} />
-          <span>{t("notifications")}</span>
-        </div>
-        <div className="settings-card">
-          <div className="settings-row">
-            <div>
-              <div className="settings-label">{t("feedingReminder")}</div>
-              <div className="settings-sublabel">{t("feedingReminderDesc")}</div>
-            </div>
-            <button
-              className={`toggle-switch ${notificationsEnabled ? "on" : ""}`}
-              type="button"
-              onClick={toggleNotifications}
-              aria-label={t("feedingReminder")}
-            >
-              <div className="toggle-knob" />
-            </button>
-          </div>
-          <div className="settings-row">
-            <div>
-              <div className="settings-label">{t("soundEffects")}</div>
-              <div className="settings-sublabel">{t("soundEffectsDesc")}</div>
-            </div>
-            <button
-              className={`toggle-switch ${soundEnabled ? "on" : ""}`}
-              type="button"
-              onClick={toggleSound}
-              aria-label={t("soundEffects")}
-            >
-              <div className="toggle-knob" />
-            </button>
-          </div>
         </div>
       </div>
 
