@@ -266,6 +266,35 @@ const useStarterStore = create(
     }),
     {
       name: "riseFermentStarters",
+      storage: {
+        getItem: (name) => {
+          const str = localStorage.getItem(name);
+          return str ? JSON.parse(str) : null;
+        },
+        setItem: (name, value) => {
+          try {
+            localStorage.setItem(name, JSON.stringify(value));
+          } catch (e) {
+            if (e?.name === "QuotaExceededError" || e?.code === 22) {
+              const trimmed = JSON.parse(JSON.stringify(value));
+              const starters = trimmed?.state?.starters;
+              if (Array.isArray(starters)) {
+                starters.forEach((s) => {
+                  if (Array.isArray(s.history) && s.history.length > 500) {
+                    s.history = s.history.slice(-500);
+                  }
+                });
+              }
+              try {
+                localStorage.setItem(name, JSON.stringify(trimmed));
+              } catch {
+                console.error("[Storage] Unable to persist state after trimming history");
+              }
+            }
+          }
+        },
+        removeItem: (name) => localStorage.removeItem(name),
+      },
       partialize: (state) => ({
         starters: state.starters,
         activeStarterId: state.activeStarterId,
