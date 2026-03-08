@@ -1,4 +1,5 @@
 import { Component } from "react";
+import i18n from "../../i18n";
 
 class ErrorBoundary extends Component {
   state = { hasError: false };
@@ -40,9 +41,9 @@ class ErrorBoundary extends Component {
           }}
         >
           <div style={{ fontSize: "48px" }}>&#x1F35E;</div>
-          <h2 style={{ margin: 0, fontSize: "20px" }}>Something went wrong</h2>
+          <h2 style={{ margin: 0, fontSize: "20px" }}>{i18n.t("errorBoundaryTitle")}</h2>
           <p style={{ margin: 0, fontSize: "14px", opacity: 0.7, maxWidth: "300px" }}>
-            The app encountered an unexpected error. You can try again or reset to start fresh.
+            {i18n.t("errorBoundaryMessage")}
           </p>
           <div style={{ display: "flex", gap: "12px", marginTop: "8px" }}>
             <button
@@ -58,7 +59,7 @@ class ErrorBoundary extends Component {
                 cursor: "pointer",
               }}
             >
-              Try Again
+              {i18n.t("errorBoundaryRetry")}
             </button>
             <button
               onClick={this.handleReset}
@@ -72,7 +73,7 @@ class ErrorBoundary extends Component {
                 cursor: "pointer",
               }}
             >
-              Reset App
+              {i18n.t("errorBoundaryReset")}
             </button>
           </div>
         </div>

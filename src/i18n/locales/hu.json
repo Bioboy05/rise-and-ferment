@@ -864,6 +864,10 @@
     "affiliateProgramsTitle": "Affiliate programok, amelyekben részt veszünk",
     "affiliateFTCTitle": "FTC és EU megfelelőség",
     "affiliateFTCBody": "Ez a nyilatkozat az FTC irányelveknek (16 CFR Part 255) és a tisztességtelen kereskedelmi gyakorlatokról szóló 2005/29/EK EU irányelvnek megfelelően készült. Az Amazon EU társult programjának résztvevői vagyunk.",
-    "affiliateContact": "Kérdésed van? Írj nekünk: hello@riseandferment.com"
+    "affiliateContact": "Kérdésed van? Írj nekünk: hello@riseandferment.com",
+    "errorBoundaryTitle": "Valami hiba történt",
+    "errorBoundaryMessage": "Az alkalmazás váratlan hibába ütközött. Próbáld újra, vagy állítsd vissza az alapértelmezéseket.",
+    "errorBoundaryRetry": "Újra próbálom",
+    "errorBoundaryReset": "Visszaállítás"
   }
 }

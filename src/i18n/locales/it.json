@@ -867,6 +867,10 @@
     "affiliateProgramsTitle": "Programmi di affiliazione a cui partecipiamo",
     "affiliateFTCTitle": "Conformità FTC e UE",
     "affiliateFTCBody": "Questa informativa è resa in conformità con le linee guida FTC (16 CFR Part 255) e la Direttiva UE 2005/29/CE sulle pratiche commerciali. Siamo partecipanti al Programma Associati Amazon UE.",
-    "affiliateContact": "Domande? Contattaci a hello@riseandferment.com"
+    "affiliateContact": "Domande? Contattaci a hello@riseandferment.com",
+    "errorBoundaryTitle": "Qualcosa è andato storto",
+    "errorBoundaryMessage": "L'app ha riscontrato un errore imprevisto. Puoi riprovare o ripristinare per ricominciare da zero.",
+    "errorBoundaryRetry": "Riprova",
+    "errorBoundaryReset": "Ripristina"
   }
 }

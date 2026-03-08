@@ -882,6 +882,10 @@
     "affiliateProgramsTitle": "Programele de afiliere la care participăm",
     "affiliateFTCTitle": "Conformitate FTC și UE",
     "affiliateFTCBody": "Această declarație este făcută în conformitate cu liniile directoare FTC (16 CFR Part 255) și Directiva UE 2005/29/CE privind practicile comerciale. Suntem participanți în Programul de Asociați Amazon UE.",
-    "affiliateContact": "Întrebări? Contactează-ne la hello@riseandferment.com"
+    "affiliateContact": "Întrebări? Contactează-ne la hello@riseandferment.com",
+    "errorBoundaryTitle": "Ceva nu a mers bine",
+    "errorBoundaryMessage": "Aplicația a întâmpinat o eroare neașteptată. Poți încerca din nou sau reseta pentru a începe de la zero.",
+    "errorBoundaryRetry": "Încearcă din nou",
+    "errorBoundaryReset": "Resetează aplicația"
   }
 }
