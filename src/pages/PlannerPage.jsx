@@ -1,10 +1,9 @@
 ﻿import { useMemo, useState } from "react";
-import { useTranslation } from "react-i18next";
+import { useTranslation, Trans } from "react-i18next";
 import useSettingsStore from "../store/useSettingsStore";
 import useActiveStarter from "../hooks/useActiveStarter";
 import { calculateBreadRecipe } from "../utils/calculations";
 import { generateICS } from "../utils/exportHelpers";
-import { sanitizeLimitedHtml } from "../utils/sanitizeHtml";
 
 function PlannerPage() {
   const { t } = useTranslation();
@@ -31,11 +30,11 @@ function PlannerPage() {
     const hoursUntilReady = (targetDate - now) / (1000 * 60 * 60);
     const MIN_HOURS = 20;
 
-    const warning =
+    const warningKey =
       hoursUntilReady < MIN_HOURS
-        ? t("scheduleNoTime")
+        ? "scheduleNoTime"
         : hoursUntilReady < 26
-          ? t("scheduleTight")
+          ? "scheduleTight"
           : "";
 
     const steps = [
@@ -98,7 +97,7 @@ function PlannerPage() {
       })
       .reverse();
 
-    return { targetDate, warning, items };
+    return { targetDate, warningKey, items };
   }, [readyTime, readyDayOffset, t]);
 
   const handleCalendarExport = () => {
@@ -141,11 +140,10 @@ function PlannerPage() {
             <option value={7}>{t("daysPlus7")}</option>
           </select>
         </div>
-        {schedule.warning && (
-          <div
-            className="tip-box warning"
-            dangerouslySetInnerHTML={{ __html: sanitizeLimitedHtml(schedule.warning) }}
-          />
+        {schedule.warningKey && (
+          <div className="tip-box warning">
+            <Trans i18nKey={schedule.warningKey} components={{ strong: <strong /> }} />
+          </div>
         )}
       </div>
 
