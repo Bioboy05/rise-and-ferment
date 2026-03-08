@@ -1,7 +1,6 @@
 import { useEffect, useMemo, useState } from "react";
 import { useTranslation } from "react-i18next";
 import useStarterStore from "../store/useStarterStore";
-import useSettingsStore from "../store/useSettingsStore";
 import useStreak from "../hooks/useStreak";
 import useActiveStarter from "../hooks/useActiveStarter";
 import useStarterStatus from "../hooks/useStarterStatus";
@@ -22,7 +21,6 @@ function HomePage() {
   const advanceMicroStep = useStarterStore((state) => state.advanceMicroStep);
   const starter = useActiveStarter();
   const streak = useStreak();
-  const beginnerMode = useSettingsStore((s) => s.beginnerMode);
 
   const [taskFeedModal, setTaskFeedModal] = useState(false);
   const [troubleOpen, setTroubleOpen] = useState(false);

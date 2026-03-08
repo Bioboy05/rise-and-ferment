@@ -10,6 +10,16 @@ const RISE_ICON = "stats";
 const BUBBLE_ICON = "droplet";
 const AROMA_ICON = "leaf";
 
+const LOCALE_MAP = {
+  ro: "ro-RO",
+  en: "en-US",
+  de: "de-DE",
+  fr: "fr-FR",
+  es: "es-ES",
+  it: "it-IT",
+  hu: "hu-HU",
+};
+
 function HistoryPage() {
   const { t } = useTranslation();
   const starter = useActiveStarter();
@@ -31,15 +41,7 @@ function HistoryPage() {
     );
   }
 
-  const localeMap = {
-    ro: "ro-RO",
-    en: "en-US",
-    de: "de-DE",
-    fr: "fr-FR",
-    es: "es-ES",
-    it: "it-IT",
-  };
-  const locale = localeMap[language] || localeMap.ro;
+  const locale = LOCALE_MAP[language] || LOCALE_MAP.ro;
   const todayStr = new Date().toDateString();
   const sorted = [...history].sort((a, b) => b.time - a.time);
   const visible = sorted.slice(0, visibleCount);
