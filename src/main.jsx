@@ -26,6 +26,10 @@ if (isSafeRedirectPath) {
   window.history.replaceState(null, '', redirectPath)
 }
 
+window.addEventListener('unhandledrejection', (event) => {
+  console.error('[Unhandled Promise Rejection]', event.reason)
+})
+
 const isAppHtmlRoute = window.location.pathname.startsWith('/app.html')
 const routerBase = isAppHtmlRoute ? '/app.html' : '/app'
 
