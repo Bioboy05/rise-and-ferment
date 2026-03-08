@@ -27,7 +27,6 @@ const createStarter = (id, name = "Pufi", guidedMode = "new") => ({
   createdAt: null,
   lastFed: null,
   history: [],
-  streak: 0,
   feedAmount: 50,
   useBran: false,
   personalNotes: "",
@@ -131,7 +130,6 @@ const useStarterStore = create(
           "useBran",
           "personalNotes",
           "history",
-          "streak",
           // Milestone fields
           "currentMilestoneId",
           "milestoneHistory",

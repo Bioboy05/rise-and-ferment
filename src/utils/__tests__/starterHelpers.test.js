@@ -151,7 +151,6 @@ describe("normalizeStarter", () => {
       flourType: "white",
       hydration: "100",
       history: [],
-      streak: 0,
       feedAmount: 50,
       useBran: false,
       currentDay: 1,
@@ -179,7 +178,6 @@ describe("normalizeStarter", () => {
       name: "Bubbles",
       flourType: "rye",
       hydration: "80",
-      streak: 5,
       feedAmount: 75,
       useBran: true,
       personalNotes: "Smells great today",
@@ -191,7 +189,6 @@ describe("normalizeStarter", () => {
     expect(result.name).toBe("Bubbles");
     expect(result.flourType).toBe("rye");
     expect(result.hydration).toBe("80");
-    expect(result.streak).toBe(5);
     expect(result.feedAmount).toBe(75);
     expect(result.useBran).toBe(true);
     expect(result.personalNotes).toBe("Smells great today");

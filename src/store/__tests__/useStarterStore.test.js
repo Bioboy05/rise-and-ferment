@@ -20,7 +20,6 @@ function makeStarter(id, overrides = {}) {
     createdAt: null,
     lastFed: null,
     history: [],
-    streak: 0,
     feedAmount: 50,
     useBran: false,
     personalNotes: "",

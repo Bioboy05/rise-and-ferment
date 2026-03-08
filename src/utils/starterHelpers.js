@@ -179,7 +179,6 @@ export function normalizeStarter(s) {
     createdAt: Number.isFinite(source.createdAt) ? source.createdAt : null,
     lastFed: Number.isFinite(source.lastFed) ? source.lastFed : null,
     history: normalizedHistory,
-    streak: Number.isFinite(source.streak) ? Math.max(0, Math.round(source.streak)) : 0,
     feedAmount: Number.isFinite(source.feedAmount) ? Math.max(25, Math.min(200, Math.round(source.feedAmount))) : 50,
     useBran: Boolean(source.useBran),
     personalNotes: sanitizeString(String(source.personalNotes || ""), MAX_NOTE_LENGTH),
