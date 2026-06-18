@@ -4,11 +4,13 @@ import useSettingsStore from "../store/useSettingsStore";
 import useActiveStarter from "../hooks/useActiveStarter";
 import { calculateBreadRecipe } from "../utils/calculations";
 import { generateICS } from "../utils/exportHelpers";
+import { formatWeight } from "../utils/units";
 
 function PlannerPage() {
   const { t } = useTranslation();
   const loaves = useSettingsStore((state) => state.calcLoaves);
   const bakeNotes = useSettingsStore((state) => state.bakeNotes);
+  const weightUnit = useSettingsStore((state) => state.weightUnit);
   const setCalcLoaves = useSettingsStore((state) => state.setCalcLoaves);
   const setBakeNotes = useSettingsStore((state) => state.setBakeNotes);
   const activeStarter = useActiveStarter();
@@ -101,7 +103,13 @@ function PlannerPage() {
   }, [readyTime, readyDayOffset, t]);
 
   const handleCalendarExport = () => {
-    generateICS(activeStarter?.name || "Starter", schedule.targetDate);
+    const name = activeStarter?.name || "Starter";
+    generateICS(name, schedule.targetDate, {
+      feedSummary: t("icsFeedSummary", { name }),
+      feedDescription: t("icsFeedDesc"),
+      readySummary: t("icsReadySummary", { name }),
+      readyDescription: t("icsReadyDesc"),
+    });
   };
 
   return (
@@ -216,19 +224,19 @@ function PlannerPage() {
         <div className="recipe-mini">
           <div className="recipe-row-mini">
             <span>{t("calcStarter")}</span>
-            <span>{ingredients.starter}g</span>
+            <span>{formatWeight(ingredients.starter, weightUnit)}</span>
           </div>
           <div className="recipe-row-mini">
             <span>{t("calcFlourWhite")}</span>
-            <span>{ingredients.flour}g</span>
+            <span>{formatWeight(ingredients.flour, weightUnit)}</span>
           </div>
           <div className="recipe-row-mini">
             <span>{t("calcWater")}</span>
-            <span>{ingredients.water}g</span>
+            <span>{formatWeight(ingredients.water, weightUnit)}</span>
           </div>
           <div className="recipe-row-mini">
             <span>{t("calcSalt")}</span>
-            <span>{ingredients.salt}g</span>
+            <span>{formatWeight(ingredients.salt, weightUnit)}</span>
           </div>
         </div>
       </div>

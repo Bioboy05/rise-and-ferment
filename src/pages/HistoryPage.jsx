@@ -2,6 +2,7 @@ import { useState } from "react";
 import { useTranslation } from "react-i18next";
 import useActiveStarter from "../hooks/useActiveStarter";
 import useSettingsStore from "../store/useSettingsStore";
+import { formatWeight } from "../utils/units";
 import Icon from "../components/common/Icon";
 
 const PAGE_SIZE = 20;
@@ -24,6 +25,7 @@ function HistoryPage() {
   const { t } = useTranslation();
   const starter = useActiveStarter();
   const language = useSettingsStore((state) => state.language);
+  const weightUnit = useSettingsStore((state) => state.weightUnit);
   const history = starter.history || [];
   const [visibleCount, setVisibleCount] = useState(PAGE_SIZE);
 
@@ -79,7 +81,7 @@ function HistoryPage() {
               <div style={{ display: "flex", justifyContent: "space-between", width: "100%", alignItems: "center" }}>
                 <span className="history-time">{`${label}, ${time}`}</span>
                 <span className="history-amount" style={{ display: "flex", alignItems: "center", gap: "6px" }}>
-                  {entry.amount}g
+                  {formatWeight(entry.amount, weightUnit)}
                   {entry.withBran ? (
                     <Icon name="sprout" size={13} style={{ color: "var(--accent)" }} />
                   ) : null}

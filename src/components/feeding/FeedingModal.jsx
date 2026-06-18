@@ -4,6 +4,7 @@ import useStarterStore from "../../store/useStarterStore";
 import useSettingsStore from "../../store/useSettingsStore";
 import useActiveStarter from "../../hooks/useActiveStarter";
 import { MAX_TEMP_C, MAX_TEMP_F } from "../../constants/validation";
+import { gramsToDisplay, weightUnitLabel } from "../../utils/units";
 import Modal from "../common/Modal";
 import Toggle from "../common/Toggle";
 import Icon from "../common/Icon";
@@ -14,6 +15,7 @@ function FeedingModal({ onClose }) {
   const addFeeding = useStarterStore((state) => state.addFeeding);
 
   const tempUnit = useSettingsStore((state) => state.tempUnit);
+  const weightUnit = useSettingsStore((state) => state.weightUnit);
   const starter = useActiveStarter();
 
   const [amount, setAmount] = useState(starter.feedAmount);
@@ -23,6 +25,9 @@ function FeedingModal({ onClose }) {
   const [riseLevel, setRiseLevel] = useState(null);
   const [bubbleActivity, setBubbleActivity] = useState(null);
   const [aroma, setAroma] = useState(null);
+  const [isSaving, setIsSaving] = useState(false);
+
+  const wLabel = weightUnitLabel(weightUnit);
 
   const changeAmount = (delta) => {
     setAmount((prev) => Math.max(25, Math.min(200, prev + delta)));
@@ -32,9 +37,13 @@ function FeedingModal({ onClose }) {
   const branAmount = useBran ? Math.round(amount * 0.1) : 0;
 
   const handleSave = () => {
+    if (isSaving) return; // guard against double-submit (fast double-tap)
+    setIsSaving(true);
+
     let validTemp = null;
     if (temperature) {
-      const parsed = parseFloat(temperature);
+      // Accept comma decimals (RO/EU keyboards type "23,5")
+      const parsed = parseFloat(String(temperature).replace(",", "."));
       const maxTemp = tempUnit === "f" ? MAX_TEMP_F : MAX_TEMP_C;
       if (!isNaN(parsed) && parsed >= 0 && parsed <= maxTemp) {
         validTemp = parsed;
@@ -126,7 +135,7 @@ function FeedingModal({ onClose }) {
               color: "var(--accent)",
             }}
           >
-            {amount}
+            {gramsToDisplay(amount, weightUnit)}
           </span>
           <span
             style={{
@@ -135,7 +144,7 @@ function FeedingModal({ onClose }) {
               marginLeft: "4px",
             }}
           >
-            g
+            {wLabel}
           </span>
         </div>
         <button
@@ -172,11 +181,11 @@ function FeedingModal({ onClose }) {
         }}
       >
         <strong>{t("feedAdd")}:</strong>
-        <br />• {amount}g {t("feedWaterTemp")}
+        <br />• {gramsToDisplay(amount, weightUnit)}{wLabel} {t("feedWaterTemp")}
         <br />•{" "}
         {useBran
-          ? `${whiteFlour}g ${t("feedWhiteFlour")} + ${branAmount}g ${t("feedBran")} `
-          : `${amount}g ${t("feedWhiteFlour")}`}
+          ? `${gramsToDisplay(whiteFlour, weightUnit)}${wLabel} ${t("feedWhiteFlour")} + ${gramsToDisplay(branAmount, weightUnit)}${wLabel} ${t("feedBran")} `
+          : `${gramsToDisplay(amount, weightUnit)}${wLabel} ${t("feedWhiteFlour")}`}
       </div>
 
       {/* Bran toggle */}
@@ -315,14 +324,12 @@ function FeedingModal({ onClose }) {
           {t("roomTemp")}
         </span>
         <input
-          type="number"
+          type="text"
           inputMode="decimal"
+          maxLength={5}
           value={temperature}
           onChange={(e) => setTemperature(e.target.value)}
           placeholder={tempUnit === "f" ? "73" : "23"}
-          min={tempUnit === "f" ? "50" : "10"}
-          max={tempUnit === "f" ? "104" : "40"}
-          step="0.5"
           style={{
             width: "60px",
             padding: "6px 8px",
@@ -504,6 +511,7 @@ function FeedingModal({ onClose }) {
       </div>
       <button
         onClick={handleSave}
+        disabled={isSaving}
         style={{
           width: "100%",
           padding: "14px",
@@ -513,7 +521,8 @@ function FeedingModal({ onClose }) {
           color: "white",
           fontSize: "16px",
           fontWeight: "700",
-          cursor: "pointer",
+          cursor: isSaving ? "default" : "pointer",
+          opacity: isSaving ? 0.6 : 1,
           marginBottom: "8px",
         }}
       >

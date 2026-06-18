@@ -97,33 +97,65 @@ export async function importData(file) {
   return data;
 }
 
+/** Escape a value for an ICS text field (RFC 5545 §3.3.11). */
+function escapeICS(text) {
+  return String(text)
+    .replace(/\\/g, "\\\\")
+    .replace(/;/g, "\\;")
+    .replace(/,/g, "\\,")
+    .replace(/\r?\n/g, "\\n");
+}
+
+/** Generate a unique iCalendar UID. */
+function makeUID() {
+  const id =
+    typeof crypto !== "undefined" && typeof crypto.randomUUID === "function"
+      ? crypto.randomUUID()
+      : `${Date.now()}-${Math.random().toString(36).slice(2)}`;
+  return `${id}@riseandferment.com`;
+}
+
 /**
  * Generate an ICS calendar file for a scheduled bake.
  *
  * @param {string} starterName - Name of the starter
  * @param {Date} bakeDate - When the bread should be ready
+ * @param {Object} [labels] - Localized event text (falls back to English)
  * @returns {void} Downloads the .ics file
  */
-export function generateICS(starterName, bakeDate) {
+export function generateICS(starterName, bakeDate, labels = {}) {
   const sanitizedName = String(starterName || "Starter").slice(0, 50);
   const start = new Date(bakeDate);
   const feedTime = new Date(start.getTime() - 8 * 60 * 60 * 1000); // 8h before
+  const stamp = formatICSDate(new Date());
+
+  const feedSummary = labels.feedSummary || `Feed ${sanitizedName} for baking`;
+  const feedDescription =
+    labels.feedDescription || "Feed your starter so it reaches peak in time for baking.";
+  const readySummary = labels.readySummary || `Bread ready! (${sanitizedName})`;
+  const readyDescription =
+    labels.readyDescription || "Your bread should be ready. Don't cut it for 1 hour!";
 
   const ics = [
     "BEGIN:VCALENDAR",
     "VERSION:2.0",
     "PRODID:-//RiseAndFerment//EN",
+    "CALSCALE:GREGORIAN",
     "BEGIN:VEVENT",
+    `UID:${makeUID()}`,
+    `DTSTAMP:${stamp}`,
     `DTSTART:${formatICSDate(feedTime)}`,
     `DTEND:${formatICSDate(start)}`,
-    `SUMMARY:Feed ${sanitizedName} for baking`,
-    `DESCRIPTION:Feed your starter so it reaches peak in time for baking.`,
+    `SUMMARY:${escapeICS(feedSummary)}`,
+    `DESCRIPTION:${escapeICS(feedDescription)}`,
     "END:VEVENT",
     "BEGIN:VEVENT",
+    `UID:${makeUID()}`,
+    `DTSTAMP:${stamp}`,
     `DTSTART:${formatICSDate(start)}`,
     `DTEND:${formatICSDate(new Date(start.getTime() + 60 * 60 * 1000))}`,
-    `SUMMARY:Bread ready! (${sanitizedName})`,
-    `DESCRIPTION:Your bread should be ready. Don't cut it for 1 hour!`,
+    `SUMMARY:${escapeICS(readySummary)}`,
+    `DESCRIPTION:${escapeICS(readyDescription)}`,
     "END:VEVENT",
     "END:VCALENDAR",
   ].join("\r\n");
