@@ -38,7 +38,7 @@ export function formatTimeAgo(date, t) {
   const diffDays = Math.floor(diffMs / (1000 * 60 * 60 * 24));
 
   if (diffMins < 1) return t("justNow");
-  if (diffHours < 1) return `${diffMins}m`;
+  if (diffHours < 1) return t("minutesAgo", { m: diffMins });
   if (diffDays < 1) return t("hoursAgo", { h: diffHours });
   if (diffDays === 1) return t("scheduleYesterday");
   return t("scheduleDaysAgo", { n: diffDays });
