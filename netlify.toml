@@ -9,7 +9,7 @@
   node_bundler = "esbuild"
   # Skip build when only content/docs/non-app files changed
   # Returns exit code 0 = skip build, 1 = proceed with build
-  ignore = "git diff --quiet $CACHED_COMMIT_REF $COMMIT_REF -- src/ public/ index.html package.json netlify.toml vite.config.js"
+  ignore = "git diff --quiet $CACHED_COMMIT_REF $COMMIT_REF -- src/ public/ index.html app.html package.json netlify.toml vite.config.js"
 
 [functions]
   directory = "netlify/functions"
@@ -70,7 +70,7 @@
     Referrer-Policy = "strict-origin-when-cross-origin"
     Permissions-Policy = "camera=(), microphone=(), geolocation=()"
     Strict-Transport-Security = "max-age=31536000; includeSubDomains"
-    Content-Security-Policy = "default-src 'self'; script-src 'self' 'unsafe-inline' https://assets.mailerlite.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: https:; connect-src 'self' https://*.netlify.app https://api.mailerlite.com https://assets.mailerlite.com https://*.nsvcs.net; frame-ancestors 'none'"
+    Content-Security-Policy = "default-src 'self'; script-src 'self' 'unsafe-inline' https://assets.mailerlite.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: https:; connect-src 'self' https://*.netlify.app https://api.mailerlite.com https://assets.mailerlite.com https://*.nsvcs.net https://connect.mailerlite.com; frame-ancestors 'none'"
 
 # ============================================================
 # REDIRECT RULES — Affiliate + App routing
@@ -187,6 +187,13 @@
 # App SPA routing
 [[redirects]]
   from = "/app/*"
+  to = "/app.html"
+  status = 200
+
+# Bare /app (no trailing slash) — explicit so it never falls through to the
+# landing catch-all below, regardless of Netlify splat-matching behavior.
+[[redirects]]
+  from = "/app"
   to = "/app.html"
   status = 200
 
