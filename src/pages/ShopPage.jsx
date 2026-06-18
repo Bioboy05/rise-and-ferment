@@ -298,7 +298,7 @@ function ProductCard({ product }) {
       <a
         href={`/go/${product.slug}`}
         target="_blank"
-        rel="noopener sponsored"
+        rel="noopener noreferrer sponsored"
         className="shop-card__btn"
         aria-label={`${t(ctaKey)} — ${t(`shopProd_${product.id}_name`)}`}
       >
