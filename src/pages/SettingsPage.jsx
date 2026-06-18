@@ -1,4 +1,5 @@
 import { useRef } from "react";
+import { Link } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 import useStarterStore from "../store/useStarterStore";
 import useSettingsStore from "../store/useSettingsStore";
@@ -8,6 +9,7 @@ import { normalizeStarter } from "../utils/starterHelpers";
 import { sanitizeSettings } from "../utils/settingsSanitizer";
 import Icon from "../components/common/Icon";
 import { LANGUAGES } from "../constants/languages";
+import { APP_VERSION } from "../version";
 
 function SettingsPage() {
   const { t, i18n } = useTranslation();
@@ -300,11 +302,25 @@ function SettingsPage() {
       </div>
 
       <div style={{ textAlign: "center", marginTop: "40px", paddingBottom: "20px" }}>
+        <div
+          style={{
+            display: "flex",
+            justifyContent: "center",
+            gap: "16px",
+            flexWrap: "wrap",
+            marginBottom: "14px",
+            fontSize: "12px",
+          }}
+        >
+          <Link to="/privacy" style={{ color: "var(--text-muted)" }}>{t("privacyTitle")}</Link>
+          <Link to="/terms" style={{ color: "var(--text-muted)" }}>{t("termsTitle")}</Link>
+          <Link to="/affiliate" style={{ color: "var(--text-muted)" }}>{t("affiliateTitle")}</Link>
+        </div>
         <p style={{ fontFamily: "Caveat, cursive", fontSize: "24px", color: "var(--accent)" }}>
           Rise &amp; Ferment
         </p>
         <p style={{ fontSize: "12px", color: "var(--text-muted)" }}>
-          v3.0 &bull; <span>{t("madeWith")}</span>
+          v{APP_VERSION} &bull; <span>{t("madeWith")}</span>
         </p>
       </div>
     </div>

@@ -9,6 +9,7 @@ function Navigation() {
     { to: "/", label: t("tabHome"), icon: "home" },
     { to: "/history", label: t("tabHistory"), icon: "history" },
     { to: "/recipes", label: t("tabRecipes"), icon: "bread" },
+    { to: "/planner", label: t("tabPlanner"), icon: "planner" },
     { to: "/shop", label: t("tabShop"), icon: "shop" },
     { to: "/stats", label: t("tabStats"), icon: "stats" },
     { to: "/learn", label: t("tabLearn"), icon: "book" },

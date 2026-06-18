@@ -1433,21 +1433,30 @@ body::after {
   stroke: var(--accent);
 }
 
+/* Icon-first nav: 8 tabs don't fit legible labels on every item, so the
+   label is shown only for the active tab. Inactive labels keep their space
+   (visibility:hidden, not display:none) so the bar height stays stable.
+   Every NavLink has an aria-label, so screen readers still announce all tabs. */
 .nav-label {
-  font-family: var(--font-display);
-  font-size: 9px;
-  margin-top: 2px;
-  color: var(--text-muted);
-  transition: all 0.2s;
+  font-family: var(--font-body);
+  font-size: 10px;
+  line-height: 1.2;
+  height: 13px;
+  margin-top: 3px;
+  color: var(--text-secondary);
+  transition: color 0.2s;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
-  padding: 0 2px;
+  max-width: 100%;
+  padding: 0 1px;
+  visibility: hidden;
 }
 
 .nav-item.active .nav-label {
-  color: var(--text-secondary);
-  font-weight: 600;
+  visibility: visible;
+  color: var(--accent);
+  font-weight: 700;
 }
 
 /* ========================================

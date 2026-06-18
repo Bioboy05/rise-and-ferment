@@ -1,4 +1,4 @@
-import { useEffect, useMemo, useState } from "react";
+import { lazy, Suspense, useEffect, useMemo, useState } from "react";
 import { Routes, Route, Navigate } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 import useSettingsStore from "./store/useSettingsStore";
@@ -7,19 +7,21 @@ import useActiveStarter from "./hooks/useActiveStarter";
 import Header from "./components/layout/Header";
 import Icon from "./components/common/Icon";
 import Navigation from "./components/layout/Navigation";
-import HomePage from "./pages/HomePage";
-import HistoryPage from "./pages/HistoryPage";
-import LearnPage from "./pages/LearnPage";
-import RecipesPage from "./pages/RecipesPage";
-import StatsPage from "./pages/StatsPage";
-import SettingsPage from "./pages/SettingsPage";
 import OnboardingPage from "./pages/OnboardingPage";
-import PlannerPage from "./pages/PlannerPage";
-import ShopPage from "./pages/ShopPage";
-import PrivacyPage from "./pages/PrivacyPage";
-import TermsPage from "./pages/TermsPage";
-import AffiliatePage from "./pages/AffiliatePage";
+
+const HomePage = lazy(() => import("./pages/HomePage"));
+const HistoryPage = lazy(() => import("./pages/HistoryPage"));
+const LearnPage = lazy(() => import("./pages/LearnPage"));
+const RecipesPage = lazy(() => import("./pages/RecipesPage"));
+const StatsPage = lazy(() => import("./pages/StatsPage"));
+const SettingsPage = lazy(() => import("./pages/SettingsPage"));
+const PlannerPage = lazy(() => import("./pages/PlannerPage"));
+const ShopPage = lazy(() => import("./pages/ShopPage"));
+const PrivacyPage = lazy(() => import("./pages/PrivacyPage"));
+const TermsPage = lazy(() => import("./pages/TermsPage"));
+const AffiliatePage = lazy(() => import("./pages/AffiliatePage"));
 import { checkMilestones } from "./data/celebrations";
+import { APP_VERSION } from "./version";
 
 const CELEBRATION_STORAGE_KEY = "riseFermentCelebrations";
 
@@ -221,33 +223,41 @@ function App() {
       </div>
 
       <p className="desktop-info">
-        <Icon name="phone" size={16} style={{ display: "inline", verticalAlign: "middle", marginRight: "4px" }} /> Rise &amp; Ferment v3.0 - <span>{t("desktopInfo")}</span>
+        <Icon name="phone" size={16} style={{ display: "inline", verticalAlign: "middle", marginRight: "4px" }} /> Rise &amp; Ferment v{APP_VERSION} - <span>{t("desktopInfo")}</span>
       </p>
       <div className="phone-frame" style={{ color: "var(--text-primary)" }}>
         <div className="phone-notch" />
         <div className="app-container">
           {!onboardingComplete ? (
-            <main className="app-main onboarding-main">
-              <OnboardingPage />
-            </main>
+            // Legal pages must be reachable BEFORE onboarding (GDPR + FTC).
+            <Suspense fallback={null}>
+              <Routes>
+                <Route path="/privacy" element={<main className="app-main"><PrivacyPage /></main>} />
+                <Route path="/terms" element={<main className="app-main"><TermsPage /></main>} />
+                <Route path="/affiliate" element={<main className="app-main"><AffiliatePage /></main>} />
+                <Route path="*" element={<main className="app-main onboarding-main"><OnboardingPage /></main>} />
+              </Routes>
+            </Suspense>
           ) : (
             <>
               <Header />
               <main className="app-main with-nav">
-                <Routes>
-                  <Route path="/" element={<HomePage />} />
-                  <Route path="/history" element={<HistoryPage />} />
-                  <Route path="/recipes" element={<RecipesPage />} />
-                  <Route path="/planner" element={<PlannerPage />} />
-                  <Route path="/learn" element={<LearnPage />} />
-                  <Route path="/stats" element={<StatsPage />} />
-                  <Route path="/settings" element={<SettingsPage />} />
-                  <Route path="/shop" element={<ShopPage />} />
-                  <Route path="/privacy" element={<PrivacyPage />} />
-                  <Route path="/terms" element={<TermsPage />} />
-                  <Route path="/affiliate" element={<AffiliatePage />} />
-                  <Route path="*" element={<Navigate to="/" replace />} />
-                </Routes>
+                <Suspense fallback={null}>
+                  <Routes>
+                    <Route path="/" element={<HomePage />} />
+                    <Route path="/history" element={<HistoryPage />} />
+                    <Route path="/recipes" element={<RecipesPage />} />
+                    <Route path="/planner" element={<PlannerPage />} />
+                    <Route path="/learn" element={<LearnPage />} />
+                    <Route path="/stats" element={<StatsPage />} />
+                    <Route path="/settings" element={<SettingsPage />} />
+                    <Route path="/shop" element={<ShopPage />} />
+                    <Route path="/privacy" element={<PrivacyPage />} />
+                    <Route path="/terms" element={<TermsPage />} />
+                    <Route path="/affiliate" element={<AffiliatePage />} />
+                    <Route path="*" element={<Navigate to="/" replace />} />
+                  </Routes>
+                </Suspense>
               </main>
               <Navigation />
             </>
