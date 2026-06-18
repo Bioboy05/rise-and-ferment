@@ -63,7 +63,7 @@ function PrivacyPage() {
           {[
             t("privacySec1Li1", "Starter names and feeding history — stored only on your device"),
             t("privacySec1Li2", "App preferences (theme, language, units) — stored only on your device"),
-            t("privacySec1Li3", "Email address — only if you subscribe to our newsletter via the landing page form (processed by Netlify Forms)"),
+            t("privacySec1Li3", "Email address — only if you subscribe to our newsletter or download the free guide. It is sent to and stored by MailerLite, our email service provider."),
           ].map((item, i) => (
             <li key={i} style={{ marginBottom: "6px" }}>{item}</li>
           ))}
@@ -74,7 +74,7 @@ function PrivacyPage() {
         <p>
           {t(
             "privacySec2Body",
-            "The app itself does not use cookies or tracking scripts. The landing page (riseandferment.com) may use Netlify Analytics, which is based on server-side log analysis — no cookies, no fingerprinting, fully GDPR-compliant. No third-party advertising or tracking scripts are loaded."
+            "The app itself does not use cookies or tracking scripts. The landing page (riseandferment.com) loads the MailerLite script to power our newsletter sign-up form; MailerLite may set cookies needed for that form to work. We do not use third-party advertising or cross-site tracking scripts."
           )}
         </p>
       </Section>
@@ -92,7 +92,7 @@ function PrivacyPage() {
         <p>
           {t(
             "privacySec4Body",
-            "If you subscribe to our newsletter or download the free starter guide, your email address is collected via Netlify Forms. We use this to send you sourdough tips and occasional product recommendations. You can unsubscribe at any time by clicking the link in any email. We do not sell or share your email with third parties."
+            "If you subscribe to our newsletter or download the free starter guide, your email address is collected and processed by MailerLite (our email service provider, acting as our data processor). We use it to send you sourdough tips and occasional product recommendations. You can unsubscribe at any time using the link in any email. We never sell your email or share it with third parties for their own marketing."
           )}
         </p>
       </Section>
