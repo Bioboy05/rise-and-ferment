@@ -84,6 +84,7 @@ const useSettingsStore = create(
       resetAll: () => {
         localStorage.removeItem("riseFermentSettings");
         localStorage.removeItem("riseFermentStarters");
+        localStorage.removeItem("riseFermentCelebrations");
         window.location.reload();
       },
     }),

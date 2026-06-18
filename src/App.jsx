@@ -90,8 +90,14 @@ function App() {
   }, []);
 
   const celebration = useMemo(() => {
-    const celebrated = loadCelebratedMilestones();
-    const next = checkMilestones(starter, streak, celebrated);
+    // Celebrations are tracked per-starter so a second starter (or a fresh
+    // start after reset) can still earn the same milestone/streak rewards.
+    const prefix = `${starter?.id ?? ""}:`;
+    const all = loadCelebratedMilestones();
+    const celebratedForStarter = new Set(
+      [...all].filter((k) => k.startsWith(prefix)).map((k) => k.slice(prefix.length))
+    );
+    const next = checkMilestones(starter, streak, celebratedForStarter);
     if (!next) return null;
     if (dismissedCelebrationId === next.id) return null;
     return next;
@@ -126,7 +132,7 @@ function App() {
   const closeCelebration = () => {
     if (!celebration) return;
     const celebrated = loadCelebratedMilestones();
-    celebrated.add(celebration.id);
+    celebrated.add(`${starter?.id ?? ""}:${celebration.id}`);
     saveCelebratedMilestones(celebrated);
     setDismissedCelebrationId(celebration.id);
   };

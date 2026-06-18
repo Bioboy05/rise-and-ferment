@@ -19,6 +19,7 @@ class ErrorBoundary extends Component {
   handleReset = () => {
     localStorage.removeItem("riseFermentStarters");
     localStorage.removeItem("riseFermentSettings");
+    localStorage.removeItem("riseFermentCelebrations");
     window.location.reload();
   };
 
