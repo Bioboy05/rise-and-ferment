@@ -43,7 +43,7 @@ export function exportData(starterState, settingsState) {
 
   const a = document.createElement("a");
   a.href = url;
-  a.download = `maiaua-mea-backup-${name}-${date}.json`;
+  a.download = `rise-ferment-backup-${name}-${date}.json`;
   a.click();
   URL.revokeObjectURL(url);
 }

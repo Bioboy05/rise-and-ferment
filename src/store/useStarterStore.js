@@ -268,8 +268,13 @@ const useStarterStore = create(
       name: "riseFermentStarters",
       storage: {
         getItem: (name) => {
-          const str = localStorage.getItem(name);
-          return str ? JSON.parse(str) : null;
+          try {
+            const str = localStorage.getItem(name);
+            return str ? JSON.parse(str) : null;
+          } catch {
+            // Corrupted blob — degrade to defaults instead of crashing hydration.
+            return null;
+          }
         },
         setItem: (name, value) => {
           try {
