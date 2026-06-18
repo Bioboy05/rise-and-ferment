@@ -21,12 +21,18 @@ function getLast14DaysActivity(history) {
   return days;
 }
 
-function getTempData(history) {
+function convertTemp(value, from, to) {
+  if (from === to) return value;
+  return from === "c" ? (value * 9) / 5 + 32 : ((value - 32) * 5) / 9;
+}
+
+function getTempData(history, targetUnit) {
   return history
     .filter((h) => Number.isFinite(h?.time) && h.temp != null)
     .sort((a, b) => b.time - a.time)
     .slice(0, 14)
-    .reverse();
+    .reverse()
+    .map((h) => ({ ...h, temp: convertTemp(h.temp, h.tempUnit || "c", targetUnit) }));
 }
 
 function getWeeklyPattern(history) {
@@ -55,14 +61,12 @@ function StatsPage() {
   const tempsWithValue = history.filter((e) => Number.isFinite(e?.temp));
   const avgTemp =
     tempsWithValue.length > 0
-      ? (() => {
-          const converted = tempsWithValue.map((e) => {
-            const unit = e.tempUnit || "c";
-            if (unit === currentTempUnit) return e.temp;
-            return unit === "c" ? (e.temp * 9) / 5 + 32 : ((e.temp - 32) * 5) / 9;
-          });
-          return (converted.reduce((s, t) => s + t, 0) / converted.length).toFixed(1);
-        })()
+      ? (
+          tempsWithValue.reduce(
+            (sum, e) => sum + convertTemp(e.temp, e.tempUnit || "c", currentTempUnit),
+            0
+          ) / tempsWithValue.length
+        ).toFixed(1)
       : null;
   const ageDays = starter.createdAt
     ? Math.floor((nowMs - new Date(starter.createdAt).getTime()) / (1000 * 60 * 60 * 24))
@@ -73,7 +77,7 @@ function StatsPage() {
   const activity = getLast14DaysActivity(history);
   const maxActivity = Math.max(...activity.map((d) => d.count), 1);
 
-  const tempData = getTempData(history);
+  const tempData = getTempData(history, currentTempUnit);
   const tempMin = tempData.length > 0 ? Math.min(...tempData.map((d) => d.temp)) - 2 : 0;
   const tempMax = tempData.length > 0 ? Math.max(...tempData.map((d) => d.temp)) + 2 : 1;
   const tempRange = tempMax - tempMin || 1;
@@ -190,7 +194,7 @@ function StatsPage() {
                     }}
                   >
                     <span style={{ fontSize: "9px", color: "var(--accent)" }}>
-                      {d.temp}°{(d.tempUnit || "c").toUpperCase()}
+                      {Math.round(d.temp)}°{currentTempUnit.toUpperCase()}
                     </span>
                     <div
                       style={{

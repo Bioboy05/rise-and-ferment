@@ -40,7 +40,8 @@ export default function useStarterStatus(nowMs) {
             return { main: t("statusPostPeak"), sub: t("statusPostPeakSub"), cls: "good" };
         }
         if (hoursSince < 4) {
-            const remaining = Math.max(0, 6 - hoursSince);
+            // Peak starts at 4h (see thresholds above) — count down to that, not to 6h.
+            const remaining = 4 - hoursSince;
             return { main: t("statusGrowing"), sub: t("statusGrowingSub", { h: remaining }), cls: "" };
         }
         return { main: t("statusHungry"), sub: t("statusHungrySub"), cls: "urgent" };
