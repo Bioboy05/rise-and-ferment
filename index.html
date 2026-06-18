@@ -7,7 +7,7 @@
 <meta name="author" content="Rise & Ferment">
 <meta property="og:title" content="Rise & Ferment — Your Sourdough Journey Starts Here">
 <meta property="og:description" content="Beginner-friendly app + free 14‑day starter guide. Real tips, real science.">
-<meta property="og:image" content="https://riseandferment.com/assets/photo-bread.jpg">
+<meta property="og:image" content="https://riseandferment.com/assets/og-cover.jpg">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
 <meta property="og:url" content="https://riseandferment.com/">
@@ -17,7 +17,7 @@
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="Rise & Ferment — Your Sourdough Journey Starts Here">
 <meta name="twitter:description" content="Free 14-day starter guide + beginner app. Real sourdough tips, no gatekeeping.">
-<meta name="twitter:image" content="https://riseandferment.com/assets/photo-bread.jpg">
+<meta name="twitter:image" content="https://riseandferment.com/assets/og-cover.jpg">
 <meta name="theme-color" content="#8B5A2B">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="default">
@@ -718,7 +718,7 @@ body{min-height:100dvh;-webkit-tap-highlight-color:transparent}
 <div><h4 class="ft__col-t">Learn</h4><ul class="ft__links"><li><button class="ft__link" onclick="showBlogPage()">Blog</button></li><li><a href="#guide" class="ft__link" onclick="showLanding()">Free Guide</a></li><li><a href="#books" class="ft__link" onclick="showLanding()">Our Books</a></li></ul></div>
 <div><h4 class="ft__col-t">Connect</h4><ul class="ft__links"><li><a href="https://instagram.com/rise_and_ferment" target="_blank" rel="noopener noreferrer" class="ft__link">Instagram</a></li><li><a href="https://tiktok.com/@rise.and.ferment" target="_blank" rel="noopener noreferrer" class="ft__link">TikTok</a></li><li><a href="mailto:hello@riseandferment.com" class="ft__link">Contact</a></li></ul></div>
 </div>
-<div class="ft__btm"><p class="ft__copy">© 2026 Rise & Ferment. Made with flour and love.</p><div class="ft__btm-links"><a href="/app#/privacy" class="ft__btm-link">Privacy</a><a href="/app#/terms" class="ft__btm-link">Terms</a><a href="/app#/affiliate" class="ft__btm-link">Affiliate Disclosure</a></div></div>
+<div class="ft__btm"><p class="ft__copy">© 2026 Rise & Ferment. Made with flour and love.</p><div class="ft__btm-links"><a href="/app/privacy" class="ft__btm-link">Privacy</a><a href="/app/terms" class="ft__btm-link">Terms</a><a href="/app/affiliate" class="ft__btm-link">Affiliate Disclosure</a></div></div>
 </div></footer>
 
 <!-- EXIT INTENT POPUP -->
@@ -753,6 +753,14 @@ function normalizeLangCode(code) {
   if (SUPPORTED_LANGS.includes(cleaned)) return cleaned;
   const base = cleaned.split("-")[0];
   return SUPPORTED_LANGS.includes(base) ? base : null;
+}
+
+function readUrlLang() {
+  try {
+    return normalizeLangCode(new URLSearchParams(window.location.search).get("lang"));
+  } catch {
+    return null;
+  }
 }
 
 function detectBrowserLang() {
@@ -808,7 +816,7 @@ function persistLang(langCode) {
   }
 }
 
-let lang = readPersistedLang() || detectBrowserLang() || "en";
+let lang = readUrlLang() || readPersistedLang() || detectBrowserLang() || "en";
 
 // ═══ CURRENCY DETECTION ═══
 function detectCurrency() {
@@ -2609,6 +2617,20 @@ function renderArticle(id) {
 function setLang(l) {
   lang = SUPPORTED_LANGS.includes(l) ? l : "en";
   persistLang(lang);
+
+  // Keep ?lang= in the URL in sync with the rendered language so the
+  // hreflang/sitemap URLs Google crawls match what is actually shown.
+  try {
+    const url = new URL(window.location.href);
+    if (lang === "en") {
+      url.searchParams.delete("lang");
+    } else {
+      url.searchParams.set("lang", lang);
+    }
+    window.history.replaceState(null, "", url);
+  } catch {
+    // no-op: URL sync is best-effort
+  }
 
   applyLandingTranslations();
   applyCurrency();

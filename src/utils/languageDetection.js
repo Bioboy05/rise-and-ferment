@@ -12,6 +12,16 @@ function normalizeLanguageCode(code) {
   return isSupportedLanguage(base) ? base : null;
 }
 
+function readUrlLanguage() {
+  if (typeof window === "undefined" || !window.location) return null;
+  try {
+    const param = new URLSearchParams(window.location.search).get("lang");
+    return normalizeLanguageCode(param);
+  } catch {
+    return null;
+  }
+}
+
 function readPersistedLanguage() {
   if (typeof localStorage === "undefined") return null;
 
@@ -49,6 +59,8 @@ function detectBrowserLanguage() {
 
 export function resolveInitialLanguage(fallback = "en") {
   const normalizedFallback = normalizeLanguageCode(fallback) || "en";
-  return readPersistedLanguage() || detectBrowserLanguage() || normalizedFallback;
+  return (
+    readUrlLanguage() || readPersistedLanguage() || detectBrowserLanguage() || normalizedFallback
+  );
 }
 
