@@ -1220,6 +1220,13 @@ select:focus-visible {
   .celebration-emoji {
     animation: none;
   }
+
+  .main-btn.urgent,
+  .splash-loader,
+  .day-tracker::before,
+  .day-tracker::after {
+    animation: none !important;
+  }
 }
 
 .info-card {
